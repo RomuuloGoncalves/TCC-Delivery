@@ -1,6 +1,6 @@
 <ion-row size="12" class="footer">
   <ion-col>
-    <ion-row>
+    <ion-row class="ion-margin-bottom">
       <ion-col>
         <ion-row class="titulos__footer">
           <ion-label>
@@ -8,9 +8,13 @@
           </ion-label>
         </ion-row>
         <ion-row class="informacoes__footer">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos velit tenetur exercitationem ipsam illo numquam molestias voluptatem repudiandae, tempora aspernatur est quia officiis quas autem iste voluptas veritatis inventore eius.
-          </p>
+          <ion-col size="10">
+            <ion-text>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos velit tenetur exercitationem ipsam
+              illo numquam molestias voluptatem repudiandae, tempora aspernatur est quia officiis quas autem iste
+              voluptas veritatis inventore eius.
+            </ion-text>
+          </ion-col>
         </ion-row>
       </ion-col>
       <ion-col>
@@ -20,10 +24,16 @@
           </ion-label>
         </ion-row>
         <ion-row class="informacoes__footer">
-          <p>
-           Rua Capitão Lisboa, Nº 892, Tatuí, São Paulo, Brasil, 182700070
-          </p>
-          </ion-row>
+          <ion-col size="10">
+            <ion-text>
+              Rua Capitão Lisboa, Nº 892, Tatuí, São Paulo, Brasil
+            </ion-text>
+            <br>
+            <ion-text>
+             CEP: 18270-070
+            </ion-text>
+          </ion-col>
+        </ion-row>
       </ion-col>
       <ion-col>
         <ion-row class="titulos__footer">
@@ -32,30 +42,23 @@
           </ion-label>
         </ion-row>
         <ion-row class="informacoes__footer">
-         
-          <ion-list lines="none">
-            <ion-item>
-              <ion-label>Telefone:</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Telefone fixo</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>WhatsApp</ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-label>Email</ion-label>
-            </ion-item>
-          </ion-list>
+          <ion-col class="ion-justify-content-between">
+            <ion-row><ion-label>Telefone:</ion-label></ion-row>
+            <ion-row><ion-label>Telefone Fixo:</ion-label></ion-row>
+            <ion-row><ion-label>WhatsApp:</ion-label></ion-row>
+            <ion-row><ion-label>E-mail:</ion-label></ion-row>
+          </ion-col>
         </ion-row>
       </ion-col>
     </ion-row>
 
     <ion-row class="ion-flex" class="termos">
-      <ion-col>Divina refeição</ion-col>
+      <ion-col>
+        <img src="../../../assets/images/logo.png" alt="logo">
+      </ion-col>
 
-      <ion-col >
-        <ion-row size="12" class="ion-justify-content-around">
+      <ion-col size="3">
+        <ion-row class="ion-justify-content-around">
           <ion-label>Termos</ion-label>
           <ion-label>Privacidade</ion-label>
           <ion-label>Cookies</ion-label>
@@ -63,10 +66,10 @@
       </ion-col>
 
       <ion-col>
-        <ion-row class="ion-justify-content-end">
-          <ion-label><ion-icon name="logo-whatsapp"></ion-icon></ion-label>
-          <ion-label><ion-icon name="logo-facebook"></ion-icon> </ion-label>
-          <ion-label><ion-icon name="logo-instagram"></ion-icon></ion-label>
+        <ion-row class="redes__sociais ion-justify-content-end">
+          <a href="#"><ion-label><ion-icon name="logo-whatsapp"></ion-icon></ion-label></a>
+          <a href="https://www.facebook.com/divinarefeicaotatui/?locale=pt_BR"><ion-label><ion-icon name="logo-facebook"></ion-icon></ion-label></a>
+          <a href="https://www.instagram.com/divinarefeicao_/"><ion-label><ion-icon name="logo-instagram"></ion-icon></ion-label></a>
         </ion-row>
       </ion-col>
     </ion-row>
