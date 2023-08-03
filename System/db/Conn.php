@@ -8,7 +8,7 @@ use \PDOException;
 final class Conn
 {
   const HOST = 'localhost';
-  const DATABASE = 'DIVINA_REFEICAO';
+  const DATABASE = 'DELIVERY';
   const USER = 'root';
   const PASSWORD = '';
   const CHARSET = 'utf8mb4';
