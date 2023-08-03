@@ -8,14 +8,16 @@ import { CadastroPageRoutingModule } from './cadastro-routing.module';
 
 import { CadastroPage } from './cadastro.page';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { FooterModule } from 'src/app/components/footer/footer.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CadastroPageRoutingModule
+    CadastroPageRoutingModule,
+    FooterModule
   ],
-  declarations: [CadastroPage, FooterComponent]
+  declarations: [CadastroPage]
 })
 export class CadastroPageModule {}
