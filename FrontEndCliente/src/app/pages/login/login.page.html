@@ -1,59 +1,61 @@
 <ion-content [fullscreen]="true">
-  <ion-row>
-    <ion-col class="main">
+  <ion-row class="ion-justify-content-center ion-align-items-center main" >
+    <ion-col size="10" sizeMd="8" sizeLg="5">
       <ion-col size="12" sizeMd="4">
         <ion-row class="ion-justify-content-center ion-text-md-ion-justify-content-start">
-          <h1 id="login__logo">Divina Refeição</h1>
+          <h1 class="login__logo">Divina Refeição</h1>
         </ion-row>
       </ion-col>
-      <form action="">
-        <ion-row>
-          <ion-col>
+      <ion-row>
+        <ion-col>
+          <form action="">
             <ion-list>
               <ion-list>
                 <ion-item>
-                  <ion-input label="Text input" placeholder="Enter text"></ion-input>
+                  <ion-input label="E-mail" type="email"></ion-input>
                 </ion-item>
                 <ion-item>
-                  <ion-input label="Text input" placeholder="Enter text"></ion-input>
+                  <ion-input label="Senha" type="password"></ion-input>
                 </ion-item>
               </ion-list>
-              <ion-text>
-                <p>Esqueceu sua senha?<a routerLink="/cadastrar">clique aqui</a></p>
-              </ion-text>
             </ion-list>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-button>Entrar</ion-button>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-text>
-              <p>Entrar com</p>
+            <ion-text class="ion-padding">
+              <p class="login__esqueceu-senha">Esqueceu sua senha? <a routerLink="/cadastrar">clique aqui</a></p>
             </ion-text>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-button class="btn-redes" color="tertiary">
-              <ion-icon name="logo-google"></ion-icon>
-            </ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button class="btn-redes" color="tertiary">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button class="btn-redes" color="tertiary">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </form>
+            <ion-row class="ion-justify-content-center ion-padding">
+              <ion-col size="auto">
+                <ion-button class="login__btn-entrar">Entrar</ion-button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center ion-align-items-center">
+        <ion-col size="auto">
+          <p class="login__entrar-com">Entrar com</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="login_wrapper-redes">
+          <ion-row class="ion-justify-content-between ion-align-items-center">
+            <ion-col size="auto">
+              <ion-button class="btn-redes" color="tertiary">
+                <ion-icon name="logo-google" size="large"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col size="auto">
+              <ion-button class="btn-redes" color="tertiary">
+                <ion-icon name="logo-facebook" size="large"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col size="auto">
+              <ion-button class="btn-redes" color="tertiary">
+                <ion-icon name="logo-twitter" size="large"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
     </ion-col>
   </ion-row>
   <app-footer></app-footer>
