@@ -9,6 +9,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { HeaderModule } from 'src/app/components/header/header.module';
+import { CardHomeComponent } from 'src/app/components/card-home/card-home.component';
 
 @NgModule({
   imports: [
@@ -17,10 +18,11 @@ import { HeaderModule } from 'src/app/components/header/header.module';
     IonicModule,
     HomePageRoutingModule,
     FooterModule,
-    HeaderModule
+    HeaderModule,
   ],
   declarations: [
-    HomePage
+    HomePage,
+    CardHomeComponent
   ]
 })
 export class HomePageModule {}
