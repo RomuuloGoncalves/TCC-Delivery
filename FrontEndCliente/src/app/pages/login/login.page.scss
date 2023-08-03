@@ -1,47 +1,47 @@
-.main {
-  height: 100vh;
-}
+.login {
+  min-height: 100vh;
 
-.login_wrapper-redes {
-  max-width: 250px;
-}
+  &__wrapper-redes {
+    max-width: 250px;
 
-.btn-redes {
-  width: 55px;
-  height: 55px;
-  --border-radius: 100%;
-}
+    .btn-redes {
+      width: 55px;
+      height: 55px;
+      --border-radius: 100%;
+    }
+  }
 
-.login__logo {
-  font-family: 'mrDafoe';
-  color: var(--ion-color-primary);
-  font-size: 4rem;
-}
+  &__logo {
+    font-family: 'mrDafoe';
+    color: var(--ion-color-primary);
+    font-size: 4rem;
+  }
 
-.login__esqueceu-senha {
-  font-size: 0.9em;
-  font-weight: bold;
-  margin-left: 15px;
-}
+  &__esqueceu-senha {
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-left: 15px;
+  }
 
+  &__btn-entrar {
+    --padding-top: 25px;
+    --padding-bottom: 25px;
+    --padding-end: 75px;
+    --padding-start: 75px;
+  }
 
-.login__btn-entrar {
-  --padding-top: 25px;
-  --padding-bottom: 25px;
-  --padding-end: 75px;
-  --padding-start: 75px;
-}
+  &__entrar-com {
 
-.login__entrar-com {
-  &::after,
-  &::before {
-    content: '';
-    display: inline-block;
-    width: 12vw;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 4px;
-    height: 1px;
-    background-color: var(--ion-color-primary);
+    &::after,
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 12vw;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-bottom: 4px;
+      height: 1px;
+      background-color: var(--ion-color-primary);
+    }
   }
 }
