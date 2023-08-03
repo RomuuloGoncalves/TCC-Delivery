@@ -1,0 +1,41 @@
+.header {
+    background-color: var(--ion-color-primary);
+}
+
+.header {
+    .menu {
+        height: 100%;
+        color: var(--ion-color-light);
+        font-size: 1.4rem;
+    }
+
+    .btn__acesso {
+        height: 100%;
+
+    }
+
+    ion-button {
+        --border-radius: 5px;
+        --ripple-color: var(--ion-color-primary);
+        --padding-top: 10px;
+        --padding-bottom: 10px;
+    }
+
+    #btn {
+        &__entrar {
+            --background: var(--ion-color-primary);
+            --background-hover: #ffff;
+            --background-activated: #ffff;
+            --background-focused: #ffff;
+            --color: #ffff;
+        }
+
+        &__cadastrar {
+            --background: #ffff;
+            --background-hover: var(--ion-color-primary);
+            --background-activated: var(--ion-color-primary);
+            --background-focused: var(--ion-color-primary);
+            --color: var(--ion-color-primary);
+        }
+    }
+}
