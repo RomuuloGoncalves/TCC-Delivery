@@ -1,20 +1,22 @@
-.container__item{
-    width: 100% !important;
+.container__item {
+  width: 100% !important;
 }
 
-img{
-    width: 6rem;
+img {
+  width: 6rem;
 }
 
-ion-text{
-    font-size: 1.1rem;
+ion-text {
+  font-size: 1.1rem;
 }
 
-#contador__quantidade{
-    width: 50px;
+#contador__quantidade {
+  width: 50px;
 }
 
-ion-button{
-    font-weight: 700;
-    font-size:1.1rem;
+.btn-qtde {
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
 }

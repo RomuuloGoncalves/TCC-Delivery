@@ -1,25 +1,31 @@
-.container__item{
-    width: 100% !important;
+.container__item {
+  width: 100% !important;
 }
 
-ion-text{
-    font-size: 1.3rem;
+ion-text {
+  font-size: 1.3rem;
 }
 
-.titulo__sessao{
-    color: var(--ion-color-dark);
-    font-size: 1.6rem !important;
+.titulo-sessao {
+  margin: 50px 0 25px 0;
+  font-size: 1.6rem !important;
+  font-weight: bold;
+  color: var(--ion-color-dark);
 }
-#divisoria{
-    border: 1px solid var(--ion-color-medium);
+#divisoria {
+  border: 1px solid var(--ion-color-medium);
 }
 
-.finalizacao{
+.finalizacao {
+  font-size: 1.2rem;
+
+  &__valores {
+    color: var(--ion-color-success);
     font-size: 1.2rem;
+    font-weight: 700;
+  }
+}
 
-    &__valores{
-        color: #309422b4;
-        font-size: 1.2rem;
-        font-weight: 700;
-    }
+#finalizacao__total {
+  font-weight: bold;
 }

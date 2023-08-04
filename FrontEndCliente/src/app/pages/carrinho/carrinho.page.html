@@ -3,45 +3,48 @@
     <app-header></app-header>
   </ion-header>
 
-
   <ion-row class="ion-margin">
     <ion-col size="12">
-      <ion-row class="titulo__sessao">
-        <ion-label>
-          Carrinho
-        </ion-label>
+      <ion-row class="titulo-sessao">
+        <ion-label> Carrinho </ion-label>
       </ion-row>
     </ion-col>
 
     <ion-col>
       <ion-list>
         <ion-item>
-          <ion-row class="container__item ion-align-items-center ion-justify-content-around">
+          <ion-row
+            class="container__item ion-align-items-center ion-justify-content-around"
+          >
             <ion-col size="3">
-              <ion-row class="ion-justify-content-center ion-align-items-center">
+              <ion-row
+                class="ion-justify-content-center ion-align-items-center"
+              >
                 <ion-text>Itens no carrinho</ion-text>
               </ion-row>
             </ion-col>
 
             <ion-col size="3">
-              <ion-row class="ion-justify-content-center ion-align-items-center">
-                <ion-text>
-                  Preço
-                </ion-text>
+              <ion-row
+                class="ion-justify-content-center ion-align-items-center"
+              >
+                <ion-text> Preço </ion-text>
               </ion-row>
             </ion-col>
 
             <ion-col size="3">
-              <ion-row class="ion-justify-content-center ion-align-items-center">
+              <ion-row
+                class="ion-justify-content-center ion-align-items-center"
+              >
                 <ion-text>Quantidade</ion-text>
               </ion-row>
             </ion-col>
 
             <ion-col size="3">
-              <ion-row class="ion-justify-content-center ion-align-items-center">
-                <ion-text>
-                  Subtotal
-                </ion-text>
+              <ion-row
+                class="ion-justify-content-center ion-align-items-center"
+              >
+                <ion-text> Subtotal </ion-text>
               </ion-row>
             </ion-col>
           </ion-row>
@@ -50,8 +53,6 @@
         <app-card-carrinho></app-card-carrinho>
         <app-card-carrinho></app-card-carrinho>
         <app-card-carrinho></app-card-carrinho>
-
-
       </ion-list>
     </ion-col>
   </ion-row>
@@ -65,11 +66,11 @@
       <ion-row class="ion-align-items-center">
         <ion-col size="1">
           <ion-row>
-            <img src="../../../assets/img/carrinho-icons/cupom 1.png" alt="">
+            <img src="../../../assets/img/carrinho-icons/cupom 1.png" alt="" />
           </ion-row>
         </ion-col>
         <ion-col size="auto">
-          <ion-input placeholder="Enter text"></ion-input>
+          <ion-input placeholder="Cupom"></ion-input>
         </ion-col>
         <ion-col>
           <ion-button>Regatar</ion-button>
@@ -80,27 +81,29 @@
     <ion-col size="5">
       <ion-row class="ion-align-items-center ion-justify-content-center">
         <ion-col size="8">
-          <ion-row class="ion-justify-content-around">
+          <ion-row class="ion-justify-content-between">
             <ion-label class="finalizacao">Subtotal</ion-label>
             <ion-text class="finalizacao__valores">R$ 210,00</ion-text>
           </ion-row>
         </ion-col>
         <ion-col size="8">
-          <ion-row class="ion-justify-content-around">
+          <ion-row class="ion-justify-content-between">
             <ion-label class="finalizacao">Frete</ion-label>
             <ion-text class="finalizacao__valores">R$ 10,00</ion-text>
           </ion-row>
         </ion-col>
         <ion-col size="8">
-          <ion-row class="ion-justify-content-around">
-            <ion-label class="finalizacao">Subtotal</ion-label>
+          <ion-row class="ion-justify-content-between">
+            <ion-label id="finalizacao__total" class="finalizacao"
+              >Total</ion-label
+            >
             <ion-text class="finalizacao__valores">R$ 220,00</ion-text>
           </ion-row>
         </ion-col>
 
         <ion-col size="12">
           <ion-row class="ion-justify-content-center">
-            <ion-col size="11">
+            <ion-col size="9">
               <ion-row id="divisoria"></ion-row>
             </ion-col>
           </ion-row>
@@ -111,7 +114,6 @@
             <ion-button>Finalizar</ion-button>
           </ion-row>
         </ion-col>
-
       </ion-row>
     </ion-col>
   </ion-row>
