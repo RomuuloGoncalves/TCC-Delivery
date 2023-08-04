@@ -2,10 +2,24 @@
     width: 100% !important;
 }
 
+ion-text{
+    font-size: 1.3rem;
+}
+
 .titulo__sessao{
     color: var(--ion-color-dark);
-    font-size: 1.6rem;
+    font-size: 1.6rem !important;
 }
 #divisoria{
     border: 1px solid var(--ion-color-medium);
+}
+
+.finalizacao{
+    font-size: 1.2rem;
+
+    &__valores{
+        color: #309422b4;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
 }
