@@ -13,8 +13,8 @@
 
   <ion-col size="3">
     <ion-row class="btn__acesso ion-align-items-center ion-justify-content-center">
-      <ion-button id="btn__entrar" class="" fill="clear">Entrar</ion-button>
-      <ion-button id="btn__cadastrar" class="" fill="clear">Cadastrar</ion-button>
+      <ion-button id="btn__entrar" [routerLink]="['/login']" fill="clear">Entrar</ion-button>
+      <ion-button id="btn__cadastrar" [routerLink]="['/cadastro']" fill="clear">Cadastrar</ion-button>
     </ion-row>
   </ion-col>
 </ion-row>
