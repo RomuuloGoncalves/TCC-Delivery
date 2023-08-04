@@ -9,6 +9,7 @@ import { CarrinhoPageRoutingModule } from './carrinho-routing.module';
 import { CarrinhoPage } from './carrinho.page';
 import { HeaderModule } from 'src/app/components/header/header.module';
 import { FooterModule } from 'src/app/components/footer/footer.module';
+import { CardCarrinhoComponent } from 'src/app/components/card-carrinho/card-carrinho.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { FooterModule } from 'src/app/components/footer/footer.module';
     HeaderModule,
     FooterModule
   ],
-  declarations: [CarrinhoPage]
+  declarations: [CarrinhoPage,CardCarrinhoComponent]
 })
 export class CarrinhoPageModule {}
