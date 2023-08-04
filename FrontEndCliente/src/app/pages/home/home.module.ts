@@ -10,6 +10,7 @@ import { HomePage } from './home.page';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { HeaderModule } from 'src/app/components/header/header.module';
 import { CardHomeComponent } from 'src/app/components/card-home/card-home.component';
+import { CardMontagemHomeComponent } from 'src/app/components/card-montagem-home/card-montagem-home.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { CardHomeComponent } from 'src/app/components/card-home/card-home.compon
   ],
   declarations: [
     HomePage,
-    CardHomeComponent
+    CardHomeComponent,
+    CardMontagemHomeComponent
   ]
 })
 export class HomePageModule {}
