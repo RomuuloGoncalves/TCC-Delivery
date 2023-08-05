@@ -3,9 +3,9 @@
     <ion-row class="ion-align-items-center ion-justify-content-around">
       <ion-col size="6">
         <ion-row class="card__wrapper-content ion-align-items-center">
-          <ion-card-title>Nome marmita</ion-card-title>
-          <ion-text>Descrição marmita </ion-text>
-          <ion-text>R$ 29,99</ion-text>
+          <ion-card-title>{{ Produto?.NOME }}</ion-card-title>
+          <ion-text>{{ Produto?.DESCRICAO }}</ion-text>
+          <ion-text>R$ {{Produto?.VARIACAO.VALOR}}</ion-text>
         </ion-row>
       </ion-col>
       <ion-col size="4">

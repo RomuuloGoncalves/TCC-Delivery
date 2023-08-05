@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Produto } from 'src/app/core/interfaces/produto';
 
 @Component({
   selector: 'app-card-home',
@@ -8,6 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CardHomeComponent  implements OnInit {
 
   constructor() { }
+
+  @Input() Produto?: Produto;
 
   ngOnInit() {}
 
