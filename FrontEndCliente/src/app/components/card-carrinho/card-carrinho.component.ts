@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Produto } from 'src/app/core/interfaces/produto';
 
 @Component({
   selector: 'app-card-carrinho',
@@ -9,6 +10,13 @@ export class CardCarrinhoComponent  implements OnInit {
 
   constructor() { }
 
+  @Input() Produto?: Produto;
+  @Input() quantidade: number = 0;
+
   ngOnInit() {}
+
+  addQuantidade(qtde: number) {
+    this.quantidade += qtde;
+  }
 
 }

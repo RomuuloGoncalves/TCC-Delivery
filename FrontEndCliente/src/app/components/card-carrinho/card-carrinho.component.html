@@ -10,30 +10,30 @@
           </ion-row>
         </ion-col>
         <ion-col>
-          <ion-text>Marmita 1</ion-text>
+          <ion-text>{{ Produto?.NOME }}</ion-text>
         </ion-col>
       </ion-row>
     </ion-col>
 
     <ion-col size="3">
       <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-text> R$ 29,99 </ion-text>
+        <ion-text>{{ Produto?.VARIACAO?.VALOR_DESCONTO }}</ion-text>
       </ion-row>
     </ion-col>
 
     <ion-col size="3">
       <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-button class="btn-qtde">-</ion-button>
+        <ion-button (click)="addQuantidade(-1)" class="btn-qtde">-</ion-button>
         <ion-text class="ion-padding ion-text-center" id="quantidade">
-          <p>0</p>
+          <p>{{ quantidade }}</p>
         </ion-text>
-        <ion-button class="btn-qtde">+</ion-button>
+        <ion-button (click)="addQuantidade(1)" class="btn-qtde">+</ion-button>
       </ion-row>
     </ion-col>
 
     <ion-col size="3">
       <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-text> R$ 89,99 </ion-text>
+        <ion-text>R$ {{Produto?.VARIACAO?.VALOR_DESCONTO! * quantidade}}</ion-text>
       </ion-row>
     </ion-col>
   </ion-row>
