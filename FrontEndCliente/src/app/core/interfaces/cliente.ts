@@ -3,4 +3,5 @@ export interface Cliente {
   NOME: string;
   EMAIL: string;
   TELEFONE: string;
+  IMAGEM?: string;
 }
