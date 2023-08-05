@@ -2,7 +2,7 @@
     min-height: 100vh;
   }
   
-  .login_wrapper-redes {
+  .cadastro_wrapper-redes {
     max-width: 250px;
   }
   
@@ -12,26 +12,26 @@
     --border-radius: 100%;
   }
   
-  .login__logo {
+  .cadastro__logo {
     font-family: 'mrDafoe';
     color: var(--ion-color-primary);
     font-size: 4rem;
   }
   
-  .login__esqueceu-senha {
+  .cadastro__esqueceu-senha {
     font-size: 0.9em;
     font-weight: bold;
     margin-left: 15px;
   }
   
-  .login__btn-entrar {
+  .cadastro__btn-entrar {
     --padding-top: 25px;
     --padding-bottom: 25px;
     --padding-end: 75px;
     --padding-start: 75px;
   }
   
-  .login__entrar-com {
+  .cadastro__entrar-com {
     &::after,
     &::before {
       content: '';
