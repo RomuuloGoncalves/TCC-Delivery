@@ -21,56 +21,18 @@
 
     <ion-col size="8">
       <ion-row class="ion-justify-content-around">
-        <ion-col size="4">
-          <ion-row class="card__atalhos ion-justify-content-center">
-            <ion-col size="12">
-              <ion-row class="ion-justify-content-center">
-                <img
-                  class="icones__atalhos"
-                  src="../../../assets/img/home-icons/garfo_faca_1.png"
-                  alt=""
-                />
-              </ion-row>
-              <ion-row class="ion-justify-content-center">
-                <h2>Marmitas</h2>
-              </ion-row>
-            </ion-col>
-          </ion-row>
-        </ion-col>
-
-        <ion-col size="4">
-          <ion-row class="card__atalhos ion-justify-content-center">
-            <ion-col size="12">
-              <ion-row class="ion-justify-content-center">
-                <img
-                  class="icones__atalhos"
-                  src="../../../assets/img/home-icons/bebidas_1.png"
-                  alt=""
-                />
-              </ion-row>
-              <ion-row class="ion-justify-content-center">
-                <h2>Bebidas</h2>
-              </ion-row>
-            </ion-col>
-          </ion-row>
-        </ion-col>
-
-        <ion-col size="4">
-          <ion-row class="card__atalhos ion-justify-content-center">
-            <ion-col size="12">
-              <ion-row class="ion-justify-content-center">
-                <img
-                  class="icones__atalhos"
-                  src="../../../assets/img/home-icons/combos_1.png"
-                  alt=""
-                />
-              </ion-row>
-              <ion-row class="ion-justify-content-center">
-                <h2>Combos</h2>
-              </ion-row>
-            </ion-col>
-          </ion-row>
-        </ion-col>
+        <app-atalho-home
+          [nomeAtalho]="'Marmitas'"
+          [iconeAtalho]="'../../../assets/img/home-icons/garfo_faca_outline.png'"
+        ></app-atalho-home>
+        <app-atalho-home
+          [nomeAtalho]="'Bebidas'"
+          [iconeAtalho]="'../../../assets/img/home-icons/bebidas_outline.png'"
+        ></app-atalho-home>
+        <app-atalho-home
+          [nomeAtalho]="'Combos'"
+          [iconeAtalho]="'../../../assets/img/home-icons/combos_outline.png'"
+        ></app-atalho-home>
       </ion-row>
     </ion-col>
   </ion-row>
