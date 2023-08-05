@@ -6,7 +6,11 @@ import { CardHomeComponent } from '../card-home/card-home.component';
 import { SessaoCardsHomeComponent } from './sessao-cards-home.component';
 
 @NgModule({
-  declarations: [SessaoCardsHomeComponent, CardMontagemHomeComponent, CardHomeComponent],
+  declarations: [
+    SessaoCardsHomeComponent,
+    CardMontagemHomeComponent,
+    CardHomeComponent,
+  ],
   imports: [CommonModule, IonicModule],
   exports: [SessaoCardsHomeComponent],
 })

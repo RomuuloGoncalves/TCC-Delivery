@@ -7,9 +7,9 @@ import { IonicModule } from '@ionic/angular';
 import { CarrinhoPageRoutingModule } from './carrinho-routing.module';
 
 import { CarrinhoPage } from './carrinho.page';
-import { HeaderModule } from 'src/app/components/header/header.module';
-import { FooterModule } from 'src/app/components/footer/footer.module';
-import { CardCarrinhoComponent } from 'src/app/components/card-carrinho/card-carrinho.component';
+import { HeaderModule } from 'src/app/components/common/header/header.module';
+import { FooterModule } from 'src/app/components/common/footer/footer.module';
+import { CardCarrinhoComponent } from 'src/app/components/carrinho/card-carrinho/card-carrinho.component';
 
 @NgModule({
   imports: [
@@ -18,8 +18,8 @@ import { CardCarrinhoComponent } from 'src/app/components/card-carrinho/card-car
     IonicModule,
     CarrinhoPageRoutingModule,
     HeaderModule,
-    FooterModule
+    FooterModule,
   ],
-  declarations: [CarrinhoPage,CardCarrinhoComponent]
+  declarations: [CarrinhoPage, CardCarrinhoComponent],
 })
 export class CarrinhoPageModule {}

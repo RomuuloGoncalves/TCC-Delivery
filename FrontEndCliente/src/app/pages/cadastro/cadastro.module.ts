@@ -7,8 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { CadastroPageRoutingModule } from './cadastro-routing.module';
 
 import { CadastroPage } from './cadastro.page';
-import { FooterModule } from 'src/app/components/footer/footer.module';
-import { HeaderModule } from 'src/app/components/header/header.module';
+import { FooterModule } from 'src/app/components/common/footer/footer.module';
+import { HeaderModule } from 'src/app/components/common/header/header.module';
 
 @NgModule({
   imports: [
@@ -17,8 +17,8 @@ import { HeaderModule } from 'src/app/components/header/header.module';
     IonicModule,
     CadastroPageRoutingModule,
     FooterModule,
-    HeaderModule
+    HeaderModule,
   ],
-  declarations: [CadastroPage]
+  declarations: [CadastroPage],
 })
 export class CadastroPageModule {}

@@ -7,9 +7,9 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
-import { FooterModule } from 'src/app/components/footer/footer.module';
-import { HeaderModule } from 'src/app/components/header/header.module';
-import { SessaoCardsHomeModule } from 'src/app/components/sessao-cards-home/sessao-cards-home.module';
+import { FooterModule } from 'src/app/components/common/footer/footer.module';
+import { HeaderModule } from 'src/app/components/common/header/header.module';
+import { SessaoCardsHomeModule } from 'src/app/components/home/sessao-cards-home/sessao-cards-home.module';
 
 @NgModule({
   imports: [
@@ -19,10 +19,8 @@ import { SessaoCardsHomeModule } from 'src/app/components/sessao-cards-home/sess
     HomePageRoutingModule,
     FooterModule,
     HeaderModule,
-    SessaoCardsHomeModule
+    SessaoCardsHomeModule,
   ],
-  declarations: [
-    HomePage
-  ]
+  declarations: [HomePage],
 })
 export class HomePageModule {}
