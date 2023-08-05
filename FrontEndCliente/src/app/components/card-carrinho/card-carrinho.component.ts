@@ -10,7 +10,7 @@ export class CardCarrinhoComponent  implements OnInit {
 
   constructor() { }
 
-  @Input() Produto?: Produto;
+  @Input() produto?: Produto;
   @Input() quantidade: number = 0;
 
   ngOnInit() {}

@@ -10,7 +10,7 @@ export class CardHomeComponent  implements OnInit {
 
   constructor() { }
 
-  @Input() Produto?: Produto;
+  @Input() produto?: Produto;
 
   ngOnInit() {}
 

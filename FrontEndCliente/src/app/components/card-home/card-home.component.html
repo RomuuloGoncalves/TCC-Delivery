@@ -3,14 +3,14 @@
     <ion-row class="ion-align-items-center ion-justify-content-around">
       <ion-col size="6">
         <ion-row class="card__wrapper-content ion-align-items-center">
-          <ion-card-title>{{ Produto?.VARIACAO?.NOME }}</ion-card-title>
-          <ion-text>{{ Produto?.DESCRICAO }}</ion-text>
-          <ion-text>R$ {{Produto?.VARIACAO?.VALOR_DESCONTO}}</ion-text>
+          <ion-card-title>{{ this.produto?.VARIACAO?.NOME }}</ion-card-title>
+          <ion-text>{{ this.produto?.DESCRICAO }}</ion-text>
+          <ion-text>R$ {{this.produto?.VARIACAO?.VALOR_DESCONTO}}</ion-text>
         </ion-row>
       </ion-col>
       <ion-col size="4">
         <ion-row>
-          <img class="img-marmita" src="../../../assets/img/home-icons/garfo_faca_2.png" alt="{{Produto?.VARIACAO?.NOME}}">
+          <img class="img-marmita" src="../../../assets/img/home-icons/garfo_faca_2.png" alt="{{this.produto?.VARIACAO?.NOME}}">
         </ion-row>
       </ion-col>
     </ion-row>

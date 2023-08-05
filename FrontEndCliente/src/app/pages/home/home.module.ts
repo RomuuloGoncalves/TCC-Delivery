@@ -9,8 +9,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { HeaderModule } from 'src/app/components/header/header.module';
-import { CardHomeComponent } from 'src/app/components/card-home/card-home.component';
-import { CardMontagemHomeComponent } from 'src/app/components/card-montagem-home/card-montagem-home.component';
+import { SessaoCardsHomeModule } from 'src/app/components/sessao-cards-home/sessao-cards-home.module';
 
 @NgModule({
   imports: [
@@ -20,11 +19,10 @@ import { CardMontagemHomeComponent } from 'src/app/components/card-montagem-home
     HomePageRoutingModule,
     FooterModule,
     HeaderModule,
+    SessaoCardsHomeModule
   ],
   declarations: [
-    HomePage,
-    CardHomeComponent,
-    CardMontagemHomeComponent
+    HomePage
   ]
 })
 export class HomePageModule {}

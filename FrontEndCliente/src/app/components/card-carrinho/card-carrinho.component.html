@@ -6,34 +6,34 @@
       <ion-row class="ion-justify-content-center ion-align-items-center">
         <ion-col>
           <ion-row class="ion-justify-content-end">
-            <img src="../../../assets/img/produto-varicao/{{Produto?.VARIACAO?.IMAGEM}}" alt="" />
+            <img src="../../../assets/img/this.produto-varicao/{{this.produto?.VARIACAO?.IMAGEM}}" alt="" />
           </ion-row>
         </ion-col>
         <ion-col>
-          <ion-text>{{ Produto?.VARIACAO?.NOME }}</ion-text>
+          <ion-text>{{ this.produto?.VARIACAO?.NOME }}</ion-text>
         </ion-col>
       </ion-row>
     </ion-col>
 
     <ion-col size="3">
       <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-text>{{ Produto?.VARIACAO?.VALOR_DESCONTO }}</ion-text>
+        <ion-text>{{ this.produto?.VARIACAO?.VALOR_DESCONTO }}</ion-text>
       </ion-row>
     </ion-col>
 
     <ion-col size="3">
       <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-button (click)="addQuantidade(-1)" class="btn-qtde">-</ion-button>
-        <ion-text class="ion-padding ion-text-center" id="quantidade">
-          <p>{{ quantidade }}</p>
+        <ion-button (click)="this.addQuantidade(-1)" class="btn-qtde">-</ion-button>
+        <ion-text class="ion-padding ion-text-center" id="this.quantidade">
+          <p>{{ this.quantidade }}</p>
         </ion-text>
-        <ion-button (click)="addQuantidade(1)" class="btn-qtde">+</ion-button>
+        <ion-button (click)="this.addQuantidade(1)" class="btn-qtde">+</ion-button>
       </ion-row>
     </ion-col>
 
     <ion-col size="3">
       <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-text>R$ {{Produto?.VARIACAO?.VALOR_DESCONTO! * quantidade}}</ion-text>
+        <ion-text>R$ {{this.produto?.VARIACAO?.VALOR_DESCONTO! * this.quantidade}}</ion-text>
       </ion-row>
     </ion-col>
   </ion-row>
