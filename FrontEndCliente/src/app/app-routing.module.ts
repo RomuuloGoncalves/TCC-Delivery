@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'carrinho',
     loadChildren: () => import('./pages/carrinho/carrinho.module').then( m => m.CarrinhoPageModule)
   },
+  {
+    path: 'montagem-marmita',
+    loadChildren: () => import('./pages/montagem-marmita/montagem-marmita.module').then( m => m.MontagemMarmitaPageModule)
+  },
 ];
 
 @NgModule({
