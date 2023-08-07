@@ -1,7 +1,5 @@
 <ion-content [fullscreen]="true">
-  <ion-header>
-    <app-header></app-header>
-  </ion-header>
+  <app-header></app-header>
 
   <ion-row class="ion-justify-content-center">
     <ion-col size="12">
@@ -11,28 +9,19 @@
 
       <ion-row class="ion-justify-content-center">
         <ion-col size="8">
-          <ion-searchbar
-            show-cancel-button="never"
-            placeholder="Pesquisar"
-          ></ion-searchbar>
+          <ion-searchbar show-cancel-button="never" placeholder="Pesquisar"></ion-searchbar>
         </ion-col>
       </ion-row>
     </ion-col>
 
     <ion-col size="8">
       <ion-row class="ion-justify-content-around">
-        <app-atalho-home
-          [nomeAtalho]="'Marmitas'"
-          [iconeAtalho]="'../../../assets/img/home-icons/garfo_faca_outline.png'"
-        ></app-atalho-home>
-        <app-atalho-home
-          [nomeAtalho]="'Bebidas'"
-          [iconeAtalho]="'../../../assets/img/home-icons/bebidas_outline.png'"
-        ></app-atalho-home>
-        <app-atalho-home
-          [nomeAtalho]="'Combos'"
-          [iconeAtalho]="'../../../assets/img/home-icons/combos_outline.png'"
-        ></app-atalho-home>
+        <app-atalho-home [nomeAtalho]="'Marmitas'"
+          [iconeAtalho]="'../../../assets/img/home-icons/garfo_faca_outline.png'"></app-atalho-home>
+        <app-atalho-home [nomeAtalho]="'Bebidas'"
+          [iconeAtalho]="'../../../assets/img/home-icons/bebidas_outline.png'"></app-atalho-home>
+        <app-atalho-home [nomeAtalho]="'Combos'"
+          [iconeAtalho]="'../../../assets/img/home-icons/combos_outline.png'"></app-atalho-home>
       </ion-row>
     </ion-col>
   </ion-row>

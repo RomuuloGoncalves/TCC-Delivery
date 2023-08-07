@@ -37,3 +37,44 @@
     }
   }
 }
+
+ion-menu::part(backdrop) {
+  background-color: rgba(204, 202, 204, 0.5);
+}
+
+ion-menu::part(container) {
+  width: 100vw;
+  box-shadow: 4px 0px 16px var(--ion-color-dark);
+}
+
+#menu-container, ion-toolbar{
+  background-color: var(--ion-color-primary);
+}
+
+#logo {
+  font-size: 1.5rem;
+  font-family: 'mrDafoe';
+}
+
+ion-menu-button{
+  font-size: 2.5rem;
+}
+
+.menu{
+  display: none;
+}
+
+.header__menu-tirar{
+    display: block;
+}
+
+@media(max-width:800px){
+  .menu{
+    display: block;
+  }
+
+  .header__menu-tirar{
+    display: none;
+
+  }
+}

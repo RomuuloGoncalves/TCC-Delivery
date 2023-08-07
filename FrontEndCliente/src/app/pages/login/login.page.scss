@@ -12,6 +12,10 @@
   --border-radius: 100%;
 }
 
+.login__link{
+  text-decoration: none;
+}
+
 .login__logo {
   font-family: 'mrDafoe';
   color: var(--ion-color-primary);

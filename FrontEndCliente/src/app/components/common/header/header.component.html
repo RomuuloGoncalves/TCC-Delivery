@@ -1,18 +1,59 @@
-<ion-row class="header ion-justify-content-around ion-padding">
-  <ion-img class="header__logo" src="../../../assets/img/Logo.png" alt="logo"></ion-img>
+<ion-menu contentId="main-content">
+  <ion-header class="menu-container">
+    <ion-toolbar color="primary" class="ion-justify-content-around">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-label id="logo">Divina Refeição</ion-label>
+    </ion-toolbar>
+  </ion-header>
 
-  <ion-col size="3">
-    <ion-row class="header__menu ion-align-items-center ion-justify-content-around">
-      <ion-label>Home</ion-label>
-      <ion-label>Montagem</ion-label>
-      <ion-label>Contato</ion-label>
-    </ion-row>
-  </ion-col>
+  <ion-content class="">
+    <ion-list lines="full">
+      <ion-item>
+        <ion-label>Montage</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Destaques</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Contato</ion-label>
+      </ion-item>
+    </ion-list>
 
-  <ion-col size="3">
-    <ion-row class="btn-acesso ion-align-items-center ion-justify-content-center">
-      <ion-button class="btn-acesso__entrar" [routerLink]="['/login']" fill="clear">Entrar</ion-button>
-      <ion-button class="btn-acesso__cadastrar" [routerLink]="['/cadastro']" fill="clear">Cadastrar</ion-button>
+    <ion-row>
+      <ion-col size="12">
+        <ion-row class="btn-acesso ion-align-items-center ion-justify-content-center">
+          <ion-button class="btn-acesso__entrar" [routerLink]="['/login']" fill="clear">Entrar</ion-button>
+          <ion-button class="btn-acesso__cadastrar" [routerLink]="['/cadastro']" fill="clear">Cadastrar</ion-button>
+        </ion-row>
+      </ion-col>
     </ion-row>
-  </ion-col>
-</ion-row>
+  </ion-content>
+</ion-menu>
+
+<div id="main-content">
+  <ion-header>
+    <ion-row class="header ion-justify-content-around ion-padding">
+      <ion-col class="menu">
+        <ion-menu-button color="light"></ion-menu-button>
+      </ion-col>
+      <ion-img class="header__logo" src="../../../assets/img/Logo.png" alt="logo"></ion-img>
+
+      <ion-col size="3" class="header__menu-tirar">
+        <ion-row class="header__menu ion-align-items-center ion-justify-content-around">
+          <ion-label>Home</ion-label>
+          <ion-label>Montagem</ion-label>
+          <ion-label>Contato</ion-label>
+        </ion-row>
+      </ion-col>
+
+      <ion-col size="3" class="header__menu-tirar">
+        <ion-row class="btn-acesso ion-align-items-center ion-justify-content-center">
+          <ion-button class="btn-acesso__entrar" [routerLink]="['/login']" fill="clear">Entrar</ion-button>
+          <ion-button class="btn-acesso__cadastrar" [routerLink]="['/cadastro']" fill="clear">Cadastrar</ion-button>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-header>
+</div>
