@@ -34,11 +34,16 @@
 
 <div id="main-content">
   <ion-header>
-    <ion-row class="header ion-justify-content-around ion-padding">
+    <ion-row class="header ion-justify-content-between ion-padding">
       <ion-col class="menu">
         <ion-menu-button color="light"></ion-menu-button>
       </ion-col>
-      <ion-img class="header__logo" src="../../../assets/img/Logo.png" alt="logo"></ion-img>
+
+      <ion-col size="2">
+        <ion-row class="ion-align-items-center">
+          <ion-img class="header__logo" src="../../../assets/img/Logo.png" alt="logo"></ion-img>
+        </ion-row>
+      </ion-col>
 
       <ion-col size="3" class="header__menu-tirar">
         <ion-row class="header__menu ion-align-items-center ion-justify-content-around">
@@ -48,8 +53,8 @@
         </ion-row>
       </ion-col>
 
-      <ion-col size="3" class="header__menu-tirar">
-        <ion-row class="btn-acesso ion-align-items-center ion-justify-content-center">
+      <ion-col size="2" class="header__menu-tirar">
+        <ion-row class="btn-acesso ion-align-items-center ion-justify-content-end">
           <ion-button class="btn-acesso__entrar" [routerLink]="['/login']" fill="clear">Entrar</ion-button>
           <ion-button class="btn-acesso__cadastrar" [routerLink]="['/cadastro']" fill="clear">Cadastrar</ion-button>
         </ion-row>
