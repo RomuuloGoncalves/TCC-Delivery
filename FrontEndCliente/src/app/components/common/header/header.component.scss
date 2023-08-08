@@ -1,6 +1,6 @@
 .header {
   background-color: var(--ion-color-primary);
-
+  padding-inline: 50px;
   &__logo {
     width: 225px;
   }
@@ -20,6 +20,7 @@
   
   .btn-acesso {
     height: 100%;
+
     &__entrar {
       --background: var(--ion-color-primary);
       --background-hover: #ffff;
