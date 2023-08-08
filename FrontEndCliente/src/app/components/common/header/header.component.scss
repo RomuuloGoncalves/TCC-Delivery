@@ -1,6 +1,7 @@
 .header {
   background-color: var(--ion-color-primary);
   padding-inline: 50px;
+  
   &__logo {
     width: 225px;
   }
@@ -76,6 +77,5 @@ ion-menu-button{
 
   .header__menu-tirar{
     display: none;
-
   }
 }
