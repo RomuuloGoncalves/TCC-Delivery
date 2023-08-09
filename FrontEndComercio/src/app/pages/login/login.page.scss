@@ -1,0 +1,27 @@
+.main {
+    min-height: 100vh;
+}
+
+.login__link {
+    text-decoration: none;
+}
+
+.login__logo {
+    font-family: 'mrDafoe';
+    color: var(--ion-color-primary);
+    font-size: 4rem;
+}
+
+.login__esqueceu-senha {
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.login__btn-entrar {
+    color: #ffff;
+    --padding-top: 25px;
+    --padding-bottom: 25px;
+    --padding-end: 75px;
+    --padding-start: 75px;
+}
