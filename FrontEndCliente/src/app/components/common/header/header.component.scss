@@ -1,6 +1,6 @@
 .header {
   background-color: var(--ion-color-primary);
-  padding-inline: 50px;
+  padding: 16px 50px;
 
   &__logo {
     width: 225px;
@@ -38,6 +38,22 @@
       --color: var(--ion-color-primary);
     }
   }
+  
+  @media(max-width:975px){
+    &__menu {
+      font-size: 1rem ;
+    }
+    &__logo {
+      width: 175px;
+    }
+    ion-button {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media(max-width:460px){
+    padding: 10px 20px;
+  }
 }
 
 ion-menu::part(backdrop) {
@@ -67,16 +83,15 @@ ion-menu-button{
 }
 
 .header__menu-tirar{
-    display: block;
+  display: block;
 }
 
-@media(max-width:800px){
+
+@media(max-width:768px){
   .menu{
     display: block;
   }
-
   .header__menu-tirar{
     display: none;
   }
-  
 }
