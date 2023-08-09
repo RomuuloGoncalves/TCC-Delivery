@@ -56,6 +56,12 @@
   }
 }
 
+#menu-container__toolbar{
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
 ion-menu::part(backdrop) {
   background-color: rgba(204, 202, 204, 0.5);
 }
