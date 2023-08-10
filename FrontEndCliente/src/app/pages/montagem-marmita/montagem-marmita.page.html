@@ -1,14 +1,12 @@
-<ion-header [translucent]="true">
-  <app-header></app-header>
-</ion-header>
-
 <ion-content [fullscreen]="true">
+  <app-header></app-header>
 
   <ion-row class="ion-justify-content-center ingredientes">
     <ion-col size="0" size-lg="5" class="image">
       <ion-card color="primary" class="card-image">
         <ion-card-content>
-          <ion-img class="card-image__image" src="https://images.pexels.com/photos/16890470/pexels-photo-16890470/free-photo-of-sourdough-pizza-margherita-com-manjericao-fresco-picado.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></ion-img>
+          <ion-img class="card-image__image"
+            src="https://images.pexels.com/photos/16890470/pexels-photo-16890470/free-photo-of-sourdough-pizza-margherita-com-manjericao-fresco-picado.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></ion-img>
         </ion-card-content>
       </ion-card>
     </ion-col>
@@ -17,22 +15,22 @@
       <ion-card class="card-marmita-atual">
         <ion-card-content>
           <!-- <ion-list class="lista-ingredientes"> -->
-            <ion-item class="lista-ingredientes_ingredientes ion-text-capitalize">
-              <ion-label>{{this.marmita.arroz.grup_var}}</ion-label>
-              <ion-label>{{this.marmita.arroz.variacao}}</ion-label>
-            </ion-item>
-            <ion-item class="lista-ingredientes_ingredientes ion-text-capitalize">
-              <ion-label>{{this.marmita.feijao.grup_var}}</ion-label>
-              <ion-label>{{this.marmita.feijao.variacao}}</ion-label>
-            </ion-item>
-            <ion-item class="lista-ingredientes_ingredientes ion-text-capitalize">
-              <ion-label>{{this.marmita.guarnicao.grup_var}}</ion-label>
-              <ion-label>{{this.marmita.guarnicao.variacao}}</ion-label>
-            </ion-item>
-            <ion-item class="lista-ingredientes_ingredientes ion-text-capitalize">
-              <ion-label>{{this.marmita.acompanhamento.grup_var}}</ion-label>
-              <ion-label>{{this.marmita.acompanhamento.variacao}}</ion-label>
-            </ion-item>
+          <ion-item class="lista-ingredientes_ingredientes ion-text-capitalize">
+            <ion-label>{{this.marmita.arroz.grup_var}}</ion-label>
+            <ion-label>{{this.marmita.arroz.variacao}}</ion-label>
+          </ion-item>
+          <ion-item class="lista-ingredientes_ingredientes ion-text-capitalize">
+            <ion-label>{{this.marmita.feijao.grup_var}}</ion-label>
+            <ion-label>{{this.marmita.feijao.variacao}}</ion-label>
+          </ion-item>
+          <ion-item class="lista-ingredientes_ingredientes ion-text-capitalize">
+            <ion-label>{{this.marmita.guarnicao.grup_var}}</ion-label>
+            <ion-label>{{this.marmita.guarnicao.variacao}}</ion-label>
+          </ion-item>
+          <ion-item class="lista-ingredientes_ingredientes ion-text-capitalize">
+            <ion-label>{{this.marmita.acompanhamento.grup_var}}</ion-label>
+            <ion-label>{{this.marmita.acompanhamento.variacao}}</ion-label>
+          </ion-item>
           <!-- </ion-list> -->
         </ion-card-content>
       </ion-card>
@@ -40,100 +38,104 @@
   </ion-row>
 
   <!-- categorias de ingredientes para seleção -->
-      <ion-row class="ion-justify-content-center todos-ingredientes">
+  <ion-row class="ion-justify-content-center todos-ingredientes">
 
-        <ion-col>
-          <swiper-container [pagination]="true" class="ion-padding">
-            <!-- arroz -->
-            <swiper-slide>
-              <ion-card>
-                <ion-card-header>
-                  <ion-card-title>Arroz</ion-card-title>
-                  <ion-card-subtitle>Selecione o tipo de arroz desejado</ion-card-subtitle>
-                </ion-card-header>
-              
-                <ion-card-content>
-                  <ion-list>
-                    <ion-radio-group value="ingredientes" [(ngModel)]="opcaoSelecionada.arroz" (ionChange)="trocarOpcao('arroz')">
-                      <ion-item *ngFor="let ingrediente of this.ingredientes.arroz">
-                        <ion-label class="ion-text-capitalize">{{this.ingrediente}}</ion-label>
-                        <ion-radio slot="end" value="{{this.ingrediente}}"></ion-radio>
-                      </ion-item>
-                      </ion-radio-group>
-                  </ion-list>
-                </ion-card-content>
-              </ion-card>
-            </swiper-slide>
-            <!-- feijao -->
-            <swiper-slide>
-              <ion-card>
-                <ion-card-header>
-                  <ion-card-title>Feijão</ion-card-title>
-                  <ion-card-subtitle>Selecione o tipo de feijão desejado</ion-card-subtitle>
-                </ion-card-header>
-              
-                <ion-card-content>
-                  <ion-list>
-                    <ion-radio-group value="ingredientes" [(ngModel)]="opcaoSelecionada.feijao" (ionChange)="trocarOpcao('feijao')">
-                      <ion-item *ngFor="let ingrediente of this.ingredientes.feijao">
-                        <ion-label class="ion-text-capitalize">{{this.ingrediente}}</ion-label>
-                        <ion-radio slot="end" value="{{this.ingrediente}}"></ion-radio>
-                      </ion-item>
-                      </ion-radio-group>
-                  </ion-list>
-                </ion-card-content>
-              </ion-card>
-            </swiper-slide>
-            <!-- mistura -->
-            <swiper-slide>
-              <ion-card>
-                <ion-card-header>
-                  <ion-card-title>Mistura</ion-card-title>
-                  <ion-card-subtitle>Selecione o tipo de mistura desejado</ion-card-subtitle>
-                </ion-card-header>
-              
-                <ion-card-content>
-                  <ion-list>
-                    <ion-radio-group value="ingredientes" [(ngModel)]="opcaoSelecionada.mistura" (ionChange)="trocarOpcao('mistura')">
-                      <ion-item *ngFor="let ingrediente of this.ingredientes.mistura">
-                        <ion-label class="ion-text-capitalize">{{this.ingrediente}}</ion-label>
-                        <ion-radio slot="end" value="{{this.ingrediente}}"></ion-radio>
-                      </ion-item>
-                      </ion-radio-group>
-                  </ion-list>
-                </ion-card-content>
-              </ion-card>
-            </swiper-slide>
-            <!-- acompanhamento -->
-            <swiper-slide>
-              <ion-card>
-                <ion-card-header>
-                  <ion-card-title>Acompanhamento</ion-card-title>
-                  <ion-card-subtitle>Selecione o tipo de acompanhamento desejado</ion-card-subtitle>
-                </ion-card-header>
-              
-                <!-- <ion-card-content>
+    <ion-col>
+      <swiper-container [pagination]="true" class="ion-padding">
+        <!-- arroz -->
+        <swiper-slide>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Arroz</ion-card-title>
+              <ion-card-subtitle>Selecione o tipo de arroz desejado</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-list>
+                <ion-radio-group value="ingredientes" [(ngModel)]="opcaoSelecionada.arroz"
+                  (ionChange)="trocarOpcao('arroz')">
+                  <ion-item *ngFor="let ingrediente of this.ingredientes.arroz">
+                    <ion-label class="ion-text-capitalize">{{this.ingrediente}}</ion-label>
+                    <ion-radio slot="end" value="{{this.ingrediente}}"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </swiper-slide>
+        <!-- feijao -->
+        <swiper-slide>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Feijão</ion-card-title>
+              <ion-card-subtitle>Selecione o tipo de feijão desejado</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-list>
+                <ion-radio-group value="ingredientes" [(ngModel)]="opcaoSelecionada.feijao"
+                  (ionChange)="trocarOpcao('feijao')">
+                  <ion-item *ngFor="let ingrediente of this.ingredientes.feijao">
+                    <ion-label class="ion-text-capitalize">{{this.ingrediente}}</ion-label>
+                    <ion-radio slot="end" value="{{this.ingrediente}}"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </swiper-slide>
+        <!-- mistura -->
+        <swiper-slide>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Mistura</ion-card-title>
+              <ion-card-subtitle>Selecione o tipo de mistura desejado</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-list>
+                <ion-radio-group value="ingredientes" [(ngModel)]="opcaoSelecionada.mistura"
+                  (ionChange)="trocarOpcao('mistura')">
+                  <ion-item *ngFor="let ingrediente of this.ingredientes.mistura">
+                    <ion-label class="ion-text-capitalize">{{this.ingrediente}}</ion-label>
+                    <ion-radio slot="end" value="{{this.ingrediente}}"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </swiper-slide>
+        <!-- acompanhamento -->
+        <swiper-slide>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Acompanhamento</ion-card-title>
+              <ion-card-subtitle>Selecione o tipo de acompanhamento desejado</ion-card-subtitle>
+            </ion-card-header>
+
+            <!-- <ion-card-content>
                   <ion-item *ngFor="let ingrediente of this.ingredientes.acompanhamento">
                     <ion-checkbox slot="start" [(ngModel)]="this.opcaoSelecionada.acompanhamento[0]" (ionChange)="trocarOpcao('acompanhamento')"></ion-checkbox>
                     <ion-label>{{this.ingrediente}}</ion-label>
                   </ion-item>
                 </ion-card-content> -->
-    
-                <ion-list>
-                  <ion-radio-group value="ingredientes" [(ngModel)]="opcaoSelecionada.acompanhamento" (ionChange)="trocarOpcao('acompanhamento')">
-                    <ion-item *ngFor="let ingrediente of this.ingredientes.acompanhamento">
-                      <ion-label class="ion-text-capitalize">{{this.ingrediente}}</ion-label>
-                      <ion-radio slot="end" value="{{this.ingrediente}}"></ion-radio>
-                    </ion-item>
-                    </ion-radio-group>
-                </ion-list>
-    
-              </ion-card>
-            </swiper-slide>
-          </swiper-container>
-        </ion-col>
 
-      </ion-row>
+            <ion-list>
+              <ion-radio-group value="ingredientes" [(ngModel)]="opcaoSelecionada.acompanhamento"
+                (ionChange)="trocarOpcao('acompanhamento')">
+                <ion-item *ngFor="let ingrediente of this.ingredientes.acompanhamento">
+                  <ion-label class="ion-text-capitalize">{{this.ingrediente}}</ion-label>
+                  <ion-radio slot="end" value="{{this.ingrediente}}"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+
+          </ion-card>
+        </swiper-slide>
+      </swiper-container>
+    </ion-col>
+
+  </ion-row>
 
   <app-footer></app-footer>
 </ion-content>
