@@ -11,13 +11,13 @@
   <ion-content class="">
     <ion-list lines="full">
       <ion-item>
-        <ion-label>Montage</ion-label>
+        <ion-label [routerLink]="['']">Home</ion-label>
       </ion-item>
       <ion-item>
-        <ion-label>Destaques</ion-label>
+        <ion-label [routerLink]="['/montagem-marmita']">Montagem</ion-label>
       </ion-item>
       <ion-item>
-        <ion-label>Contato</ion-label>
+        <ion-label [routerLink]="['']">Contato</ion-label>
       </ion-item>
     </ion-list>
 
@@ -42,10 +42,10 @@
       </ion-col>
 
       <ion-col size="4" class="header__menu-tirar">
-        <ion-row class="header__menu ion-align-items-center ion-justify-content-around">
-          <ion-label>Home</ion-label>
-          <ion-label>Montagem</ion-label>
-          <ion-label>Contato</ion-label>
+        <ion-row class="header__menu ion-align-items-center ion-justify-content-evenly">
+          <ion-button fill="clear" class="header__menu__button" [routerLink]="['']">Home</ion-button>
+          <ion-button fill="clear" class="header__menu__button" [routerLink]="['/montagem-marmita']">Montagem</ion-button>
+          <ion-button fill="clear" class="header__menu__button" [routerLink]="['']">Contato</ion-button>
         </ion-row>
       </ion-col>
 

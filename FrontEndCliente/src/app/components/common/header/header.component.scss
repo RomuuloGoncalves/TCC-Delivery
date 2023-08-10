@@ -12,6 +12,16 @@
     font-size: 1.4rem;
   }
 
+  &__menu__button{
+    --border-radius: 5px;
+    --ripple-color: var(--ion-color-primary);
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+    color: var(--ion-color-light);
+
+    font-size: 1.1rem;
+  }
+
   ion-button {
     --border-radius: 5px;
     --ripple-color: var(--ion-color-primary);
