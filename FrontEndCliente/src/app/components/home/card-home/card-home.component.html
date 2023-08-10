@@ -5,12 +5,12 @@
         <ion-row class="card__wrapper-content ion-align-items-center">
           <ion-card-title>{{ this.produto?.VARIACAO?.NOME }}</ion-card-title>
           <ion-text>{{ this.produto?.DESCRICAO }}</ion-text>
-          <ion-text>R$ {{this.produto?.VARIACAO?.VALOR_DESCONTO}}</ion-text>
+          <ion-text>R$ {{this.produto?.VARIACAO?.VALOR_DESCONTO?.toFixed(2)}}</ion-text>
         </ion-row>
       </ion-col>
       <ion-col size="4">
         <ion-row>
-          <img class="img-marmita" src="../../../assets/img/home-icons/garfo_faca_2.png" alt="{{this.produto?.VARIACAO?.NOME}}">
+          <img class="img-marmita" src="{{this.produto?.VARIACAO?.IMAGEM}}" alt="{{this.produto?.VARIACAO?.NOME}}">
         </ion-row>
       </ion-col>
     </ion-row>
