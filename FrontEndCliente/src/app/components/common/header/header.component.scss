@@ -12,7 +12,7 @@
     font-size: 1.4rem;
   }
 
-  &__menu__button{
+  &__menu__button {
     --border-radius: 5px;
     --ripple-color: var(--ion-color-primary);
     --padding-top: 10px;
@@ -28,7 +28,7 @@
     --padding-top: 10px;
     --padding-bottom: 10px;
   }
-  
+
   .btn-acesso {
     height: 100%;
 
@@ -38,6 +38,8 @@
       --background-activated: #ffff;
       --background-focused: #ffff;
       --color: #ffff;
+      display: inline-block;
+
     }
 
     &__cadastrar {
@@ -47,41 +49,64 @@
       --background-focused: var(--ion-color-primary);
       --color: var(--ion-color-primary);
     }
-  }
-  
-  @media(max-width:975px){
-    &__menu {
-      font-size: 1rem ;
+
+    &-entrar__menu {
+      --background: #ffff;
+      --background-hover: var(--ion-color-primary);
+      --background-activated: var(--ion-color-primary);
+      --background-focused: var(--ion-color-primary);
+      --color: var(--ion-color-primary);
     }
+  }
+
+  @media(max-width:975px) {
+    &__menu {
+      font-size: 1rem;
+    }
+
     &__logo {
       width: 175px;
     }
+
     ion-button {
       font-size: 0.8rem;
     }
   }
 
-  @media(max-width:460px){
+  @media(max-width:460px) {
     padding: 10px 20px;
   }
 }
 
-#menu-container__toolbar{
+.menu-container{
+  padding-left: 5px;
+  ion-avatar{
+    height: 50px;
+    width: 50px;
+  }
+
+}
+#saudacao{
+  font-size: 1.2rem;
+}
+#menu-container__toolbar {
   height: 80px;
   display: flex;
   align-items: center;
 }
 
 ion-menu::part(backdrop) {
-  background-color: rgba(204, 202, 204, 0.5);
+  background-color: rgb(0, 0, 0);
 }
 
 ion-menu::part(container) {
-  width: 100vw;
+  // width: 100vw;
   box-shadow: 4px 0px 16px var(--ion-color-dark);
+
 }
 
-#menu-container{
+#menu-container {
+
   background-color: var(--ion-color-primary);
 }
 
@@ -90,24 +115,22 @@ ion-menu::part(container) {
   font-family: 'mrDafoe';
 }
 
-ion-menu-button{
+ion-menu-button {
   font-size: 2.5rem;
 }
 
-.menu{
-  display: none;
-}
-
-.header__menu-tirar{
+.header__menu-tirar,
+.btn-acesso-entrar__menu {
   display: block;
 }
 
-
-@media(max-width:768px){
-  .menu{
+@media(max-width:768px) {
+  .menu {
     display: block;
   }
-  .header__menu-tirar{
+
+  .header__menu-tirar,
+  .btn-acesso-entrar__menu {
     display: none;
   }
 }
