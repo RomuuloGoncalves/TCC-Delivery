@@ -1,0 +1,31 @@
+.borda {
+    border: 1px solid var(--ion-color-primary);
+}
+
+.ingredientes {
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+}
+
+.card-image,
+.card-image__image {
+    height: 60vh;
+}
+
+.ingredientes-title{
+    font-weight: bold;
+}
+
+.lista-ingredientes_ingredientes {
+    margin-top: 10px;
+    background: red;
+}
+
+.todos-ingredientes {
+    overflow: scroll;
+}
+
+.diferentes-opcoes {
+    overflow-y: scroll;
+    height: 50vh;
+}
