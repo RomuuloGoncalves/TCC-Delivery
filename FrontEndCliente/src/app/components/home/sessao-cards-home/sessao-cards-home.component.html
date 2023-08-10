@@ -9,10 +9,7 @@
     <ion-row class="ion-justify-content-center">
       <app-card-montagem-home *ngIf="cardMontagem"></app-card-montagem-home>
 
-      <app-card-home
-        *ngFor="let produto of produtos"
-        [produto]="produto"
-      ></app-card-home>
+      <app-card-home *ngFor="let produto of produtos" [produto]="produto"></app-card-home>
     </ion-row>
   </ion-col>
 </ion-row>
