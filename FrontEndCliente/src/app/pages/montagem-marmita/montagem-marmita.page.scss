@@ -1,5 +1,5 @@
 .borda {
-    border: 1px solid var(--ion-color-primary);
+    border: 1px solid #000;
 }
 
 .ingredientes {
@@ -7,22 +7,33 @@
     margin-bottom: 5vh;
 }
 
-.card-image,
+.card-image {
+    border-radius: 20px;
+}
+
 .card-image__image {
-    height: 60vh;
+    height: 35vh;
+}
+
+.card-marmita-atual {
+    --background: #ababab;
+    border-radius: 10px;
 }
 
 .ingredientes-title{
     font-weight: bold;
+    margin-top: 1vh;
+    margin-bottom: 3vh;
 }
 
 .lista-ingredientes_ingredientes {
-    margin-top: 10px;
-    background: red;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    --background: #efefef;
 }
 
 .todos-ingredientes {
-    overflow: scroll;
+    margin-bottom: 10vh;
 }
 
 .diferentes-opcoes {
