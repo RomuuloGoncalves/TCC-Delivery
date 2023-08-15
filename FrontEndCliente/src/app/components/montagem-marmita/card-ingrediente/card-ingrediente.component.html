@@ -1,0 +1,18 @@
+    <ion-card class="selecionar-ingredientes">
+      <ion-card-header>
+        <ion-card-title class="ion-text-capitalize">{{ this.produto }}</ion-card-title>
+        <ion-card-subtitle>Selecione o tipo de {{ this.produto }} desejado</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-list>
+          <ion-radio-group value="ingredientes" [(ngModel)]="opcaoSelecionada"
+            (ionChange)="trocarOpcao()">
+            <ion-item *ngFor="let ingrediente of this.ingredientes">
+              <ion-label class="ion-text-capitalize">{{ ingrediente.variacao }}</ion-label>
+              <ion-radio slot="end" value="{{ ingrediente.variacao }}"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>

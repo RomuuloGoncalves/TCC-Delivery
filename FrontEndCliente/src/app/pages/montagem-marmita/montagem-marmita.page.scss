@@ -9,27 +9,25 @@
 
 .card-image {
     border-radius: 20px;
+    height: 30vh;
 }
 
 .card-image__image {
-    height: 35vh;
+    height: 30vh;
 }
 
 .card-marmita-atual {
     --background: #ababab;
     border-radius: 10px;
+    height: 25vh;
+    overflow-y: scroll;
 }
 
 .ingredientes-title{
     font-weight: bold;
     margin-top: 1vh;
     margin-bottom: 3vh;
-}
-
-.lista-ingredientes_ingredientes {
-    border-radius: 10px;
-    margin-bottom: 10px;
-    --background: #efefef;
+    height: 5vh;
 }
 
 .todos-ingredientes {
@@ -39,4 +37,38 @@
 .diferentes-opcoes {
     overflow-y: scroll;
     height: 50vh;
+}
+
+.container-cards-ingredientes {
+    position: relative;
+}
+
+swiper-container {
+    --swiper-pagination-color: var(--ion-color-primary);
+}
+
+.trocar-card-ingrediente {
+    position: absolute;
+    height: 5vw;
+    width: 5vw;
+    top: 50%;
+    transform: translate(-50%);
+    --border-radius: 50%;
+    z-index: 20;
+}
+
+.proxCard {
+    right: -7%;
+}
+
+.voltCard {
+    left: 1%;
+}
+
+.proxCard__triangulo {
+    transform: rotate(90deg);
+}
+
+.voltCard__triangulo {
+    transform: rotate(-90deg);
 }

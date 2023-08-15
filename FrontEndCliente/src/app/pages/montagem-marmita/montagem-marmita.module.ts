@@ -11,6 +11,9 @@ import { MontagemMarmitaPage } from './montagem-marmita.page';
 import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 
+import { IngredienteSelecionadoComponent } from 'src/app/components/montagem-marmita/ingrediente-selecionado/ingrediente-selecionado.component';
+import { CardIngredienteComponent } from 'src/app/components/montagem-marmita/card-ingrediente/card-ingrediente.component';
+
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
@@ -22,7 +25,10 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     FooterModule,
     HeaderModule,
   ],
-  declarations: [MontagemMarmitaPage],
+  declarations: [MontagemMarmitaPage, 
+                 IngredienteSelecionadoComponent,
+                 CardIngredienteComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })

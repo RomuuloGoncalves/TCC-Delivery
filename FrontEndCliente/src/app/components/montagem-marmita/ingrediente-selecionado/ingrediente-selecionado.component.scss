@@ -1,0 +1,26 @@
+.lista-ingredientes_ingredientes {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    --background: #efefef;
+}
+
+ion-row{
+    width: 100%;
+}
+
+.triangulo {
+    transform: rotate(90deg);
+    color: var(--ion-color-primary);
+    cursor: pointer;
+}
+.borda {
+    outline: 1px solid orange;
+}
+
+.esconder {
+    display: none;
+}
+
+.triangulo-fechar {
+    transform: rotate(180deg);
+}
