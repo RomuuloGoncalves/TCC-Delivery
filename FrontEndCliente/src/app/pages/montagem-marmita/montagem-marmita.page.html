@@ -1,53 +1,82 @@
 <ion-content [fullscreen]="true">
   <app-header></app-header>
 
-  <ion-row class="ion-justify-content-center ingredientes">
-    <ion-col size="0" size-lg="5" class="image">
-      <ion-card color="primary" class="card-image">
-        <ion-card-content>
-          <ion-img class="card-image__image"
-            src="https://images.pexels.com/photos/16890470/pexels-photo-16890470/free-photo-of-sourdough-pizza-margherita-com-manjericao-fresco-picado.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></ion-img>
-        </ion-card-content>
-      </ion-card>
+  <ion-row class="ion-justify-content-center ingredientes ion-padding">
+    <ion-col size="11" sizeMd="4">
+      <ion-row color="primary" class="card-image ion-justify-content-center ion-align-items-center ion-padding">
+        <img src="https://i.pinimg.com/564x/34/cd/98/34cd98a30cd58f85e25e56a9030ca06c.jpg">
+      </ion-row>
     </ion-col>
-    <ion-col size="11" size-lg="5">
-      <ion-title size="large" color="primary" class="ingredientes-title">Ingredientes:</ion-title>
-      <ion-card class="card-marmita-atual">
-        <ion-card-content>
-          <!-- <ion-list class="lista-ingredientes"> -->
-          <app-ingrediente-selecionado [produto]="'arroz'" [ingrediente]="this.opcaoSelecionada.arroz" (retirarProduto)="retirarProduto('arroz', $event)"></app-ingrediente-selecionado>
-          <app-ingrediente-selecionado [produto]="'feijão'" [ingrediente]="this.opcaoSelecionada.feijao" (retirarProduto)="retirarProduto('feijao', $event)"></app-ingrediente-selecionado>
-          <app-ingrediente-selecionado [produto]="'mistura'" [ingrediente]="this.opcaoSelecionada.mistura" (retirarProduto)="retirarProduto('mistura', $event)"></app-ingrediente-selecionado>
-          <app-ingrediente-selecionado [produto]="'acompanhamento'" [ingrediente]="this.opcaoSelecionada.acompanhamento" (retirarProduto)="retirarProduto('acompanhamento', $event)"></app-ingrediente-selecionado>
-          <!-- </ion-list> -->
-        </ion-card-content>
-      </ion-card>
+
+    <ion-col size="12" sizeMd="5">
+      <ion-row>
+        <ion-col>
+          <ion-label class="ingredientes-title">Ingredientes:</ion-label>
+          <ion-card class="card-marmita-atual">
+            <ion-card-content>
+              <!-- <ion-list class="lista-ingredientes"> -->
+              <app-ingrediente-selecionado [produto]="'arroz'" [ingrediente]="this.opcaoSelecionada.arroz"
+                (retirarProduto)="retirarProduto('arroz', $event)"></app-ingrediente-selecionado>
+              <app-ingrediente-selecionado [produto]="'feijão'" [ingrediente]="this.opcaoSelecionada.feijao"
+                (retirarProduto)="retirarProduto('feijao', $event)"></app-ingrediente-selecionado>
+              <app-ingrediente-selecionado [produto]="'mistura'" [ingrediente]="this.opcaoSelecionada.mistura"
+                (retirarProduto)="retirarProduto('mistura', $event)"></app-ingrediente-selecionado>
+              <app-ingrediente-selecionado [produto]="'acompanhamento'"
+                [ingrediente]="this.opcaoSelecionada.acompanhamento"
+                (retirarProduto)="retirarProduto('acompanhamento', $event)"></app-ingrediente-selecionado>
+              <app-ingrediente-selecionado [produto]="'acompanhamento'"
+                [ingrediente]="this.opcaoSelecionada.acompanhamento"
+                (retirarProduto)="retirarProduto('acompanhamento', $event)"></app-ingrediente-selecionado>
+              <app-ingrediente-selecionado [produto]="'acompanhamento'"
+                [ingrediente]="this.opcaoSelecionada.acompanhamento"
+                (retirarProduto)="retirarProduto('acompanhamento', $event)"></app-ingrediente-selecionado>
+              <app-ingrediente-selecionado [produto]="'acompanhamento'"
+                [ingrediente]="this.opcaoSelecionada.acompanhamento"
+                (retirarProduto)="retirarProduto('acompanhamento', $event)"></app-ingrediente-selecionado>
+              <app-ingrediente-selecionado [produto]="'acompanhamento'"
+                [ingrediente]="this.opcaoSelecionada.acompanhamento"
+                (retirarProduto)="retirarProduto('acompanhamento', $event)"></app-ingrediente-selecionado>
+              <app-ingrediente-selecionado [produto]="'acompanhamento'"
+                [ingrediente]="this.opcaoSelecionada.acompanhamento"
+                (retirarProduto)="retirarProduto('acompanhamento', $event)"></app-ingrediente-selecionado>
+              <!-- </ion-list> -->
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
     </ion-col>
   </ion-row>
 
   <!-- categorias de ingredientes para seleção -->
   <ion-row class="ion-justify-content-center todos-ingredientes">
-
-    <ion-col size="10" class="container-cards-ingredientes">
+    <ion-col size="11" sizeMd="10" class="container-cards-ingredientes">
 
       <swiper-container #swiper [pagination]="true" [loop]="true">
 
         <swiper-slide>
-          <app-card-ingrediente [produto]="'arroz'" [ingredientes]="this.ingredientes.arroz" [opcaoSelecionada]="this.opcaoSelecionada.arroz.variacao" [ingrediente]="this.opcaoSelecionada.arroz" (onChangeRadio)="trocarOpcao('arroz', $event)"></app-card-ingrediente>
+            <app-card-ingrediente [produto]="'arroz'" [ingredientes]="this.ingredientes.arroz"
+            [opcaoSelecionada]="this.opcaoSelecionada.arroz.variacao" [ingrediente]="this.opcaoSelecionada.arroz"
+            (onChangeRadio)="trocarOpcao('arroz', $event)"></app-card-ingrediente>
         </swiper-slide>
 
         <swiper-slide>
-          <app-card-ingrediente [produto]="'feijão'" [ingredientes]="this.ingredientes.feijao" [opcaoSelecionada]="this.opcaoSelecionada.feijao.variacao" [ingrediente]="this.marmita.feijao.produto" (onChangeRadio)="trocarOpcao('feijao', $event)"></app-card-ingrediente>
+          <app-card-ingrediente [produto]="'feijão'" [ingredientes]="this.ingredientes.feijao"
+            [opcaoSelecionada]="this.opcaoSelecionada.feijao.variacao" [ingrediente]="this.marmita.feijao.produto"
+            (onChangeRadio)="trocarOpcao('feijao', $event)"></app-card-ingrediente>
         </swiper-slide>
 
         <swiper-slide>
-          <app-card-ingrediente [produto]="'mistura'" [ingredientes]="this.ingredientes.mistura" [opcaoSelecionada]="this.opcaoSelecionada.mistura.variacao" [ingrediente]="this.marmita.guarnicao.produto" (onChangeRadio)="trocarOpcao('mistura', $event)"></app-card-ingrediente>
+          <app-card-ingrediente [produto]="'mistura'" [ingredientes]="this.ingredientes.mistura"
+            [opcaoSelecionada]="this.opcaoSelecionada.mistura.variacao" [ingrediente]="this.marmita.guarnicao.produto"
+            (onChangeRadio)="trocarOpcao('mistura', $event)"></app-card-ingrediente>
         </swiper-slide>
-        
+
         <swiper-slide>
-          <app-card-ingrediente [produto]="'acompanhamento'" [ingredientes]="this.ingredientes.acompanhamento" [opcaoSelecionada]="this.opcaoSelecionada.acompanhamento.variacao" [ingrediente]="this.marmita.acompanhamento.produto" (onChangeRadio)="trocarOpcao('acompanhamento', $event)"></app-card-ingrediente>
+          <app-card-ingrediente [produto]="'acompanhamento'" [ingredientes]="this.ingredientes.acompanhamento"
+            [opcaoSelecionada]="this.opcaoSelecionada.acompanhamento.variacao"
+            [ingrediente]="this.marmita.acompanhamento.produto"
+            (onChangeRadio)="trocarOpcao('acompanhamento', $event)"></app-card-ingrediente>
         </swiper-slide>
-        
       </swiper-container>
 
       <ion-button (click)="proxCard()" class="trocar-card-ingrediente proxCard">
@@ -56,9 +85,7 @@
       <ion-button (click)="voltCard()" class="trocar-card-ingrediente voltCard">
         <ion-icon name="triangle" class="voltCard__triangulo"></ion-icon>
       </ion-button>
-
     </ion-col>
-
   </ion-row>
 
   <app-footer></app-footer>

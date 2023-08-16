@@ -1,51 +1,40 @@
-.borda {
-    border: 1px solid #000;
-}
-
 .ingredientes {
-    margin-top: 10vh;
-    margin-bottom: 5vh;
+    gap: 20px;
 }
 
 .card-image {
-    border-radius: 20px;
-    height: 30vh;
-}
-
-.card-image__image {
-    height: 30vh;
+    height: 100%;
+    border-radius: 10px;
+    background-color: var(--ion-color-primary);
+    img {
+        height: 30vh;
+    }
 }
 
 .card-marmita-atual {
+    height: 40vh;
     --background: #ababab;
-    border-radius: 10px;
-    height: 25vh;
-    overflow-y: scroll;
+    overflow: scroll;
 }
 
 .ingredientes-title{
-    font-weight: bold;
-    margin-top: 1vh;
-    margin-bottom: 3vh;
-    height: 5vh;
+    color: var(--ion-color-primary);
+    font-size: 1.3rem;
 }
-
-.todos-ingredientes {
-    margin-bottom: 10vh;
-}
-
-.diferentes-opcoes {
-    overflow-y: scroll;
-    height: 50vh;
-}
-
-.container-cards-ingredientes {
-    position: relative;
+.card-marmita-atual::-webkit-scrollbar{
+    display: none;
 }
 
 swiper-container {
+    height: 100%;
+    border-radius: 5px;
     --swiper-pagination-color: var(--ion-color-primary);
 }
+
+app-card-ingrediente{
+    width: 100%;
+}
+
 
 .trocar-card-ingrediente {
     position: absolute;
