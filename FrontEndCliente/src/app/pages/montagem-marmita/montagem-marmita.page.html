@@ -3,43 +3,65 @@
 
   <ion-row class="ion-justify-content-center ingredientes ion-padding">
     <ion-col size="11" sizeMd="4">
-      <ion-row color="primary" class="card-image ion-justify-content-center ion-align-items-center ion-padding">
-        <img src="https://i.pinimg.com/564x/34/cd/98/34cd98a30cd58f85e25e56a9030ca06c.jpg">
+      <ion-row
+        color="primary"
+        class="card-image ion-justify-content-center ion-align-items-center ion-padding"
+      >
+        <img
+          src="https://i.pinimg.com/564x/34/cd/98/34cd98a30cd58f85e25e56a9030ca06c.jpg"
+        />
       </ion-row>
     </ion-col>
 
     <ion-col size="12" sizeMd="5">
-      <ion-row>
+      <ion-row class="card">
         <ion-col>
-          <ion-label class="ingredientes-title">Ingredientes:</ion-label>
-          <ion-card class="card-marmita-atual">
+          <ion-label class="card__titulo">Ingredientes</ion-label>
+          <ion-card class="card__marmita-atual">
             <ion-card-content>
-              <!-- <ion-list class="lista-ingredientes"> -->
-              <app-ingrediente-selecionado [produto]="'arroz'" [ingrediente]="this.opcaoSelecionada.arroz"
-                (retirarProduto)="retirarProduto('arroz', $event)"></app-ingrediente-selecionado>
-              <app-ingrediente-selecionado [produto]="'feijão'" [ingrediente]="this.opcaoSelecionada.feijao"
-                (retirarProduto)="retirarProduto('feijao', $event)"></app-ingrediente-selecionado>
-              <app-ingrediente-selecionado [produto]="'mistura'" [ingrediente]="this.opcaoSelecionada.mistura"
-                (retirarProduto)="retirarProduto('mistura', $event)"></app-ingrediente-selecionado>
-              <app-ingrediente-selecionado [produto]="'acompanhamento'"
-                [ingrediente]="this.opcaoSelecionada.acompanhamento"
-                (retirarProduto)="retirarProduto('acompanhamento', $event)"></app-ingrediente-selecionado>
-              <app-ingrediente-selecionado [produto]="'acompanhamento'"
-                [ingrediente]="this.opcaoSelecionada.acompanhamento"
-                (retirarProduto)="retirarProduto('acompanhamento', $event)"></app-ingrediente-selecionado>
-              <app-ingrediente-selecionado [produto]="'acompanhamento'"
-                [ingrediente]="this.opcaoSelecionada.acompanhamento"
-                (retirarProduto)="retirarProduto('acompanhamento', $event)"></app-ingrediente-selecionado>
-              <app-ingrediente-selecionado [produto]="'acompanhamento'"
-                [ingrediente]="this.opcaoSelecionada.acompanhamento"
-                (retirarProduto)="retirarProduto('acompanhamento', $event)"></app-ingrediente-selecionado>
-              <app-ingrediente-selecionado [produto]="'acompanhamento'"
-                [ingrediente]="this.opcaoSelecionada.acompanhamento"
-                (retirarProduto)="retirarProduto('acompanhamento', $event)"></app-ingrediente-selecionado>
-              <app-ingrediente-selecionado [produto]="'acompanhamento'"
-                [ingrediente]="this.opcaoSelecionada.acompanhamento"
-                (retirarProduto)="retirarProduto('acompanhamento', $event)"></app-ingrediente-selecionado>
-              <!-- </ion-list> -->
+              <ion-accordion-group>
+                <ng-container *ngFor="let ingrediente of this.marmita">
+                  <ion-accordion value="{{ ingrediente.NOME }}">
+                    <ion-item slot="header" color="light">
+                      <ion-text>
+                        <b>{{ ingrediente.NOME }}</b>
+                      </ion-text>
+                    </ion-item>
+                    <div class="ion-padding" slot="content">
+                      <ion-list>
+                        <ion-item>
+                          <ion-row class="ion-justify-content-between">
+                            <ion-col size="auto">
+                              <ion-text color="primary">
+                                <b>Variação:</b>
+                              </ion-text>
+                            </ion-col>
+                            <ion-col size="auto">
+                              <ion-text>
+                                <b>{{ ingrediente.VARIACAO?.NOME }}</b>
+                              </ion-text>
+                            </ion-col>
+                          </ion-row>
+                        </ion-item>
+                        <ion-item>
+                          <ion-row class="ion-justify-content-between">
+                            <ion-col size="auto">
+                              <ion-text color="primary">
+                                <b>Descrição:</b>
+                              </ion-text>
+                            </ion-col>
+                            <ion-col size="auto">
+                              <ion-text>
+                                <b>{{ ingrediente.VARIACAO?.DESCRICAO }}</b>
+                              </ion-text>
+                            </ion-col>
+                          </ion-row>
+                        </ion-item>
+                      </ion-list>
+                    </div>
+                  </ion-accordion>
+                </ng-container>
+              </ion-accordion-group>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -50,39 +72,34 @@
   <!-- categorias de ingredientes para seleção -->
   <ion-row class="ion-justify-content-center todos-ingredientes">
     <ion-col size="11" sizeMd="10" class="container-cards-ingredientes">
-
       <swiper-container #swiper [pagination]="true" [loop]="true">
-
-        <swiper-slide>
-            <app-card-ingrediente [produto]="'arroz'" [ingredientes]="this.ingredientes.arroz"
-            [opcaoSelecionada]="this.opcaoSelecionada.arroz.variacao" [ingrediente]="this.opcaoSelecionada.arroz"
-            (onChangeRadio)="trocarOpcao('arroz', $event)"></app-card-ingrediente>
-        </swiper-slide>
-
-        <swiper-slide>
-          <app-card-ingrediente [produto]="'feijão'" [ingredientes]="this.ingredientes.feijao"
-            [opcaoSelecionada]="this.opcaoSelecionada.feijao.variacao" [ingrediente]="this.marmita.feijao.produto"
-            (onChangeRadio)="trocarOpcao('feijao', $event)"></app-card-ingrediente>
-        </swiper-slide>
-
-        <swiper-slide>
-          <app-card-ingrediente [produto]="'mistura'" [ingredientes]="this.ingredientes.mistura"
-            [opcaoSelecionada]="this.opcaoSelecionada.mistura.variacao" [ingrediente]="this.marmita.guarnicao.produto"
-            (onChangeRadio)="trocarOpcao('mistura', $event)"></app-card-ingrediente>
-        </swiper-slide>
-
-        <swiper-slide>
-          <app-card-ingrediente [produto]="'acompanhamento'" [ingredientes]="this.ingredientes.acompanhamento"
-            [opcaoSelecionada]="this.opcaoSelecionada.acompanhamento.variacao"
-            [ingrediente]="this.marmita.acompanhamento.produto"
-            (onChangeRadio)="trocarOpcao('acompanhamento', $event)"></app-card-ingrediente>
-        </swiper-slide>
+        <ng-container *ngFor="let ingrediente of this.ingredientes">
+          <swiper-slide>
+            <ion-card class="selecionar-ingredientes">
+              <ion-card-header>
+                <ion-card-title class="ion-text-capitalize">{{ ingrediente.NOME }}</ion-card-title>
+                <ion-card-subtitle>Selecione o tipo de {{ ingrediente.NOME.toLocaleLowerCase()  }} desejado</ion-card-subtitle>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <ion-list>
+                  <ion-radio-group value="variacao">
+                    <ion-item *ngFor="let variacao of this.ingrediente.VARIACOES">
+                      <ion-label class="ion-text-capitalize">{{ variacao.NOME }}</ion-label>
+                      <ion-radio slot="end" value="{{ variacao.NOME }}"></ion-radio>
+                    </ion-item>
+                  </ion-radio-group>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+          </swiper-slide>
+        </ng-container>
       </swiper-container>
 
-      <ion-button (click)="proxCard()" class="trocar-card-ingrediente proxCard">
+      <ion-button (click)="this.proximoCard()" class="trocar-card-ingrediente proxCard">
         <ion-icon name="triangle" class="proxCard__triangulo"></ion-icon>
       </ion-button>
-      <ion-button (click)="voltCard()" class="trocar-card-ingrediente voltCard">
+      <ion-button (click)="this.voltarCard()" class="trocar-card-ingrediente voltCard">
         <ion-icon name="triangle" class="voltCard__triangulo"></ion-icon>
       </ion-button>
     </ion-col>

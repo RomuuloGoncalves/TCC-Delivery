@@ -4,7 +4,7 @@
       <ion-col size="6">
         <ion-row class="card__wrapper-content ion-align-items-center">
           <ion-card-title>{{ this.produto?.VARIACAO?.NOME }}</ion-card-title>
-          <ion-text class="card__desc">{{ this.produto?.DESCRICAO }}</ion-text>
+          <ion-text class="card__desc">{{ this.produto?.VARIACAO?.DESCRICAO }}</ion-text>
           <ion-text>
             <p class="card__preco">R$ {{ this.produto?.VARIACAO?.VALOR_DESCONTO?.toFixed(2) }}</p>
           </ion-text>
