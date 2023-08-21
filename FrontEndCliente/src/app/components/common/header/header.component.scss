@@ -1,3 +1,11 @@
+
+
+ @media(min-width:975px) {
+.ion-menu{
+      display: none;
+    }
+
+  }
 .header {
   background-color: var(--ion-color-primary);
   padding: 16px 50px;
@@ -58,8 +66,22 @@
       --color: var(--ion-color-primary);
     }
   }
+  #icon-menu-desktop{
+    display: none;
+  }
 
+  
+  
   @media(max-width:975px) {
+    .ativar-popover{
+      display: none;
+    }
+
+    #icon-menu-desktop, #ion-menu{
+      display: block;
+    }
+    
+
     &__menu {
       font-size: 1rem;
     }
@@ -76,6 +98,17 @@
   @media(max-width:460px) {
     padding: 10px 20px;
   }
+}
+
+ion-popover {
+  --width: 300px;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 80px;
 }
 
 .menu-container{
