@@ -1,3 +1,4 @@
+<!-- Menu / SideBar -->
 <ion-menu side="end" class="ion-menu" contentId="main-content">
   <ion-header class="menu-container">
     <ion-toolbar id="menu-container__toolbar">
@@ -10,7 +11,6 @@
         <ion-col size="9">
           <ion-label>Rômulo</ion-label>
         </ion-col>
-
       </ion-row>
       <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>
@@ -29,18 +29,20 @@
             <ion-label [routerLink]="['']">Seu perfil</ion-label>
           </ion-item>
           <ion-item>
-            <ion-label [routerLink]="['/montagem-marmita']">Histórico de pedidos</ion-label>
+            <ion-label [routerLink]="['/montagem-marmita']">Montar marmita</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label [routerLink]="['']">Histórico de pedidos</ion-label>
           </ion-item>
           <ion-item>
             <ion-label [routerLink]="['']">Formas de pagamanto</ion-label>
           </ion-item>
           <ion-item>
-            <ion-label [routerLink]="['']" class="ion-align-items-center">Sair</ion-label> <ion-icon
-              name="log-out-outline"></ion-icon>
+            <ion-label [routerLink]="['']" class="ion-align-items-center">Sair</ion-label>
+            <ion-icon name="log-out-outline"></ion-icon>
           </ion-item>
         </ion-list>
       </ion-col>
-
     </ion-row>
 
     <ion-row>
@@ -59,6 +61,7 @@
   </ion-content>
 </ion-menu>
 
+<!-- Header -->
 <div id="main-content">
   <ion-header>
     <ion-row class="header ion-justify-content-between ion-align-items-center">
@@ -68,11 +71,12 @@
         </ion-row>
       </ion-col>
 
-
-
       <ion-col size="2">
         <ion-row class="ion-align-items-center ion-justify-content-end">
+          <!-- Botões de login -->
           <ion-button class="btn-acesso-entrar__menu" [routerLink]="['/login']" fill="clear">Entrar</ion-button>
+
+          <!-- Icone Avatar -->
           <ion-col>
             <ion-row id="click-trigger" class="ativar-popover ion-justify-content-end">
               <ion-col size="10.5">
@@ -93,14 +97,17 @@
                           <ion-label [routerLink]="['']">Seu perfil</ion-label>
                         </ion-item>
                         <ion-item>
-                          <ion-label [routerLink]="['/montagem-marmita']">Histórico de pedidos</ion-label>
+                          <ion-label [routerLink]="['/montagem-marmita']">Montar marmita</ion-label>
+                        </ion-item>
+                        <ion-item>
+                          <ion-label [routerLink]="['']">Histórico de pedidos</ion-label>
                         </ion-item>
                         <ion-item>
                           <ion-label [routerLink]="['']">Formas de pagamanto</ion-label>
                         </ion-item>
                         <ion-item>
-                          <ion-label [routerLink]="['']" class="ion-align-items-center">Sair</ion-label> <ion-icon
-                            name="log-out-outline"></ion-icon>
+                          <ion-label [routerLink]="['']" class="ion-align-items-center">Sair</ion-label>
+                          <ion-icon name="log-out-outline"></ion-icon>
                         </ion-item>
                       </ion-list>
                     </ion-col>
@@ -110,6 +117,7 @@
             </ion-popover>
           </ion-col>
 
+          <!-- Menu hamburguer -->
           <ion-menu-button id="icon-menu-desktop" color="light"></ion-menu-button>
         </ion-row>
       </ion-col>

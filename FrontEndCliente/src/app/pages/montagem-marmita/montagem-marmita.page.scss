@@ -8,7 +8,22 @@
   &__marmita-atual {
     height: 400px;
     --background: #f5f5f5;
-    overflow: scroll;
+    overflow-y: scroll;
+  }
+
+  /* Chrome, Edge, and Safari */
+  ::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #d11515;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
   }
 }
 
@@ -47,3 +62,4 @@ app-card-ingrediente {
 .voltCard__triangulo {
   transform: rotate(-90deg);
 }
+
