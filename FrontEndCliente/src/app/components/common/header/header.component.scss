@@ -1,11 +1,9 @@
-
-
- @media(min-width:975px) {
-.ion-menu{
-      display: none;
-    }
-
+@media(min-width:975px) {
+  .ion-menu {
+    display: none;
   }
+}
+
 .header {
   background-color: var(--ion-color-primary);
   padding: 16px 50px;
@@ -46,8 +44,6 @@
       --background-activated: #ffff;
       --background-focused: #ffff;
       --color: #ffff;
-      display: inline-block;
-
     }
 
     &__cadastrar {
@@ -66,21 +62,21 @@
       --color: var(--ion-color-primary);
     }
   }
-  #icon-menu-desktop{
+
+  #icon-menu-desktop {
     display: none;
   }
 
-  
-  
   @media(max-width:975px) {
-    .ativar-popover{
+    .ativar-popover {
       display: none;
     }
 
-    #icon-menu-desktop, #ion-menu{
+    #icon-menu-desktop,
+    #ion-menu {
       display: block;
     }
-    
+
 
     &__menu {
       font-size: 1rem;
@@ -111,17 +107,20 @@ ion-popover {
   padding: 80px;
 }
 
-.menu-container{
+.menu-container {
   padding-left: 5px;
-  ion-avatar{
+
+  ion-avatar {
     height: 50px;
     width: 50px;
   }
 
 }
-#saudacao{
+
+#saudacao {
   font-size: 1.2rem;
 }
+
 #menu-container__toolbar {
   height: 80px;
   display: flex;

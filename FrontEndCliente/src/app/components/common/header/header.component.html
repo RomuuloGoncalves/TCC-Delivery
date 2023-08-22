@@ -3,7 +3,7 @@
   <ion-header class="menu-container">
     <ion-toolbar id="menu-container__toolbar">
       <ion-row class="ion-align-items-center ion-justify-content-around">
-        <ion-col size="">
+        <ion-col size="3">
           <ion-avatar>
             <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
           </ion-avatar>
@@ -65,24 +65,21 @@
 <div id="main-content">
   <ion-header>
     <ion-row class="header ion-justify-content-between ion-align-items-center">
-      <ion-col size="10" size-md="4">
+      <ion-col size="8" size-md="4">
         <ion-row class="ion-align-items-center">
           <ion-img class="header__logo" src="../../../assets/img/Logo.png" alt="logo"></ion-img>
         </ion-row>
       </ion-col>
 
-      <ion-col size="2">
+      <ion-col size="4">
         <ion-row class="ion-align-items-center ion-justify-content-end">
           <!-- Botões de login -->
           <ion-button class="btn-acesso-entrar__menu" [routerLink]="['/login']" fill="clear">Entrar</ion-button>
-
+          
           <!-- Icone Avatar -->
-          <ion-col>
-            <ion-row id="click-trigger" class="ativar-popover ion-justify-content-end">
-              <ion-col size="10.5">
-                <img alt="Avatar perfil" src="../../../../assets/img/header-icons/user.png" />
-              </ion-col>
-            </ion-row>
+          <ion-col class="ativar-popover" size="auto">
+            <img id="click-trigger" class="ativar-popover ion-justify-content-end" alt="Avatar perfil"
+              src="../../../../assets/img/header-icons/user.png" />
 
             <ion-popover trigger="click-trigger" triggerAction="click" side="left" alignment="end" mode="ios">
               <ng-template>
@@ -118,11 +115,9 @@
           </ion-col>
 
           <!-- Menu hamburguer -->
-          <ion-menu-button id="icon-menu-desktop" color="light"></ion-menu-button>
+            <ion-menu-button id="icon-menu-desktop" color="light"></ion-menu-button>
         </ion-row>
       </ion-col>
-
-
     </ion-row>
   </ion-header>
 </div>
