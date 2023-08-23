@@ -2,7 +2,7 @@
 <ion-menu side="end" class="ion-menu" contentId="main-content">
   <ion-header class="menu-container">
     <ion-toolbar id="menu-container__toolbar">
-      <ion-row class="ion-align-items-center ion-justify-content-around">
+      <ion-row *ngIf="this.login" class="ion-align-items-center ion-justify-content-around">
         <ion-col size="3">
           <ion-avatar>
             <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
@@ -12,6 +12,11 @@
           <ion-label>Rômulo</ion-label>
         </ion-col>
       </ion-row>
+
+      <ion-row *ngIf="!this.login">
+        <ion-title>Faça login</ion-title>
+      </ion-row>
+
       <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
@@ -19,7 +24,7 @@
   </ion-header>
 
   <ion-content class="">
-    <ion-row class="ion-padding">
+    <ion-row *ngIf="this.login"  class="ion-padding">
       <ion-col>
         <ion-label id="saudacao">Olá Rômulo</ion-label>
       </ion-col>
@@ -45,15 +50,16 @@
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <ion-row *ngIf="!this.login" >
       <ion-col size="12">
         <ion-row class="btn-acesso ion-align-items-center ion-justify-content-center">
           <ion-col size="8">
-            <ion-button class="btn-acesso__entrar" [routerLink]="['/login']" fill="clear"
+            <ion-button class="btn-acesso-entrar__sidebar" [routerLink]="['/login']" fill="clear"
               expand="block">Entrar</ion-button>
           </ion-col>
           <ion-col size="8">
-            <ion-button class="btn-acesso__cadastrar" [routerLink]="['/cadastro']" expand="block">Cadastrar</ion-button>
+            <ion-button class="btn-acesso-cadastrar__sidebar" [routerLink]="['/cadastro']"
+              expand="block">Cadastrar</ion-button>
           </ion-col>
         </ion-row>
       </ion-col>
@@ -71,13 +77,19 @@
         </ion-row>
       </ion-col>
 
-      <ion-col size="4">
+      <ion-col size="auto">
         <ion-row class="ion-align-items-center ion-justify-content-end">
           <!-- Botões de login -->
-          <ion-button class="btn-acesso-entrar__menu" [routerLink]="['/login']" fill="clear">Entrar</ion-button>
-          
+          <ion-col *ngIf="!this.login" class="btn-acesso__menu" size="auto">
+            <ion-row>
+              <ion-button class="btn-acesso-entrar__menu" [routerLink]="['/login']" fill="clear">Entrar</ion-button>
+              <ion-button class="btn-acesso-cadastrar__menu" [routerLink]="['/login']"
+                fill="clear">Cadastrar-se</ion-button>
+            </ion-row>
+          </ion-col>
+
           <!-- Icone Avatar -->
-          <ion-col class="ativar-popover" size="auto">
+          <ion-col *ngIf="this.login" class="ativar-popover" size="auto">
             <img id="click-trigger" class="ativar-popover ion-justify-content-end" alt="Avatar perfil"
               src="../../../../assets/img/header-icons/user.png" />
 
@@ -115,7 +127,7 @@
           </ion-col>
 
           <!-- Menu hamburguer -->
-            <ion-menu-button id="icon-menu-desktop" color="light"></ion-menu-button>
+          <ion-menu-button id="icon-menu-desktop" color="light"></ion-menu-button>
         </ion-row>
       </ion-col>
     </ion-row>
