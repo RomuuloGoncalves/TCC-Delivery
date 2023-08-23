@@ -24,7 +24,7 @@
   </ion-header>
 
   <ion-content class="">
-    <ion-row *ngIf="this.login"  class="ion-padding">
+    <ion-row *ngIf="this.login" class="ion-padding">
       <ion-col>
         <ion-label id="saudacao">Olá Rômulo</ion-label>
       </ion-col>
@@ -50,7 +50,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row *ngIf="!this.login" >
+    <ion-row *ngIf="!this.login">
       <ion-col size="12">
         <ion-row class="btn-acesso ion-align-items-center ion-justify-content-center">
           <ion-col size="8">
@@ -90,8 +90,15 @@
 
           <!-- Icone Avatar -->
           <ion-col *ngIf="this.login" class="ativar-popover" size="auto">
-            <img id="click-trigger" class="ativar-popover ion-justify-content-end" alt="Avatar perfil"
+            <ion-row class="ion-align-items-center">
+              <ion-button fill="clear" [routerLink]="['carrinho']" >
+                <img id="" alt="Icone carrinho"
+                src="../../../../assets/img/header-icons/carrinho.png" />
+              </ion-button>
+              
+              <img id="click-trigger" class="ativar-popover ion-justify-content-end" alt="Avatar perfil"
               src="../../../../assets/img/header-icons/user.png" />
+            </ion-row>
 
             <ion-popover trigger="click-trigger" triggerAction="click" side="left" alignment="end" mode="ios">
               <ng-template>
