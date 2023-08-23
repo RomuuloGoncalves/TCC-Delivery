@@ -1,0 +1,67 @@
+<ion-menu type="push" content-id="main-content">
+  <ion-content class="container-menu">
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      <span></span>
+      <ion-label>Pedidos</ion-label>
+      <span></span>
+      <ion-label>Histórico</ion-label>
+      <span></span>
+      <ion-label>Produtos</ion-label>
+      <span></span>
+      <ion-label>Cupons</ion-label>
+      <span></span>
+
+    </ion-row>
+  </ion-content>
+</ion-menu>
+
+<div id="main-content">
+  <ion-header class="header">
+    <ion-row class="ion-justify-content-between ion-align-items-center ion-padding">
+      <ion-col size="auto">
+        <ion-row class="ion-align-items-center">
+          <ion-menu-button mode="md"></ion-menu-button>
+          <ion-label id="header__titulo">
+            Divina Refeição
+          </ion-label>
+        </ion-row>
+      </ion-col>
+
+      <ion-col size="auto">
+        <ion-row class="ion-align-items-center ion-justify-content-end">
+
+          <!-- Icone Avatar -->
+          <ion-col size="auto">
+            <ion-row class="ion-align-items-center">
+              <ion-button id="sino" fill="clear">
+                <img  alt="Icone carrinho" src="../../../../assets/imgs/header-icons/notificacao.png" />
+              </ion-button>
+
+              <img id="click-trigger" class="ativar-popover user ion-justify-content-end" alt="Avatar perfil"
+                src="../../../../assets/imgs/header-icons/user.png" />
+            </ion-row>
+
+            <ion-popover trigger="click-trigger" triggerAction="click" side="left" alignment="end" mode="ios">
+              <ng-template>
+                <ion-content class="ion-padding">
+                  <ion-row class="">
+                    <ion-col>
+                      <ion-label id="saudacao">...</ion-label>
+                    </ion-col>
+                    <ion-col size="12">
+                      <ion-list lines="full">
+                        <ion-item>
+                          <ion-label [routerLink]="['']">...</ion-label>
+                        </ion-item>
+                      </ion-list>
+                    </ion-col>
+                  </ion-row>
+                </ion-content>
+              </ng-template>
+            </ion-popover>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-header>
+</div>

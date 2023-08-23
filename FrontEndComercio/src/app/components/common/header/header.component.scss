@@ -1,0 +1,64 @@
+.container-menu {
+    ion-row {
+        height: 100%;
+        background-color: var(--ion-color-primary);
+        flex-direction: column;
+
+        ion-label {
+            font-size: 1.5rem;
+            color: #ffff;
+        }
+
+        span {
+            border: 2px solid #ffff;
+            width: 80%;
+            margin: 30px 0;
+        }
+    }
+}
+
+.header {
+    background-color: var(--ion-color-tertiary);
+
+    ion-menu-button {
+        font-size: 15rem;
+    }
+}
+
+#header__titulo {
+    color: var(--ion-color-primary);
+    font-size: 3rem;
+    font-family: mrdafoe;
+}
+
+#sino img{
+    height: 100%;
+}
+
+
+
+
+
+@media(max-width:975px) {}
+
+
+@media(max-width:460px) {}
+
+
+
+
+@media(max-width:768px) {
+    #header__titulo {
+        color: var(--ion-color-primary);
+        font-size: 1.5rem;
+        font-family: mrdafoe;
+    }
+
+    #sino{
+        display: none;
+    }
+
+    .user{
+        height: auto;
+    }
+}
