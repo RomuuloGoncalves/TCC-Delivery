@@ -100,7 +100,7 @@ export class MontagemMarmitaPage implements OnInit {
   }
 
   selecionarIngrediente(event: any) {
-    const ingredienteNome = event.originalTarget.attributes['ng-reflect-value'].nodeValue;
+    const ingredienteNome = event.target.attributes['ng-reflect-value'].nodeValue;
     const variacaoNome = event.detail.value;
 
     const ingredienteObj = this.ingredientes.find((ingrediente: Produto) => {
