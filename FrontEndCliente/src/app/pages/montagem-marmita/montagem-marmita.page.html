@@ -19,6 +19,9 @@
           <ion-label class="card__titulo">Ingredientes</ion-label>
           <ion-card class="card__marmita-atual">
             <ion-card-content>
+              <ion-text class="card__mensagem ion-text-center" *ngIf="!this.marmita.length">
+                <h2>Não há ingredientes selecionados</h2>
+              </ion-text>
               <ion-accordion-group>
                 <ng-container *ngFor="let ingrediente of this.marmita">
                   <ion-accordion value="{{ ingrediente.NOME }}">
@@ -77,16 +80,28 @@
           <swiper-slide>
             <ion-card class="selecionar-ingredientes">
               <ion-card-header>
-                <ion-card-title class="ion-text-capitalize">{{ ingrediente.NOME }}</ion-card-title>
-                <ion-card-subtitle>Selecione o tipo de {{ ingrediente.NOME.toLocaleLowerCase()  }} desejado</ion-card-subtitle>
+                <ion-card-title class="ion-text-capitalize"
+                  >{{ ingrediente.NOME }}</ion-card-title
+                >
+                <ion-card-subtitle
+                  >Selecione o tipo de {{ ingrediente.NOME.toLocaleLowerCase()
+                  }} desejado</ion-card-subtitle
+                >
               </ion-card-header>
-            
+
               <ion-card-content>
                 <ion-list>
-                  <ion-radio-group value="variacao">
-                    <ion-item *ngFor="let variacao of this.ingrediente.VARIACOES">
-                      <ion-label class="ion-text-capitalize">{{ variacao.NOME }}</ion-label>
-                      <ion-radio slot="end" value="{{ variacao.NOME }}"></ion-radio>
+                  <ion-radio-group value="{{ ingrediente.NOME }}" (ionChange)="this.selecionarIngrediente($event)">
+                    <ion-item
+                      *ngFor="let variacao of this.ingrediente.VARIACOES; let id = index"
+                    >
+                      <ion-label class="ion-text-capitalize"
+                        >{{ variacao.NOME }}</ion-label
+                      >
+                      <ion-radio
+                        slot="end"
+                        value="{{ variacao.NOME }}"
+                      ></ion-radio>
                     </ion-item>
                   </ion-radio-group>
                 </ion-list>
@@ -94,12 +109,46 @@
             </ion-card>
           </swiper-slide>
         </ng-container>
+        <swiper-slide>
+          <ion-card class="selecionar-ingredientes">
+            <ion-card-header>
+              <ion-card-title class="ion-text-capitalize"
+                >Acompanhamentos</ion-card-title
+              >
+              <ion-card-subtitle
+                >Selecione os acompanhamentos desejados</ion-card-subtitle
+              >
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-list>
+                <ion-radio-group value="variacao">
+                  <ion-item *ngFor="let variacao of this.acompanhamentos.VARIACOES">
+                    <ion-label class="ion-text-capitalize"
+                      >{{ variacao.NOME }}</ion-label
+                    >
+                    <ion-radio
+                      slot="end"
+                      value="{{ variacao.NOME }}"
+                    ></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </swiper-slide>
       </swiper-container>
 
-      <ion-button (click)="this.proximoCard()" class="trocar-card-ingrediente proxCard">
+      <ion-button
+        (click)="this.proximoCard()"
+        class="trocar-card-ingrediente proxCard"
+      >
         <ion-icon name="triangle" class="proxCard__triangulo"></ion-icon>
       </ion-button>
-      <ion-button (click)="this.voltarCard()" class="trocar-card-ingrediente voltCard">
+      <ion-button
+        (click)="this.voltarCard()"
+        class="trocar-card-ingrediente voltCard"
+      >
         <ion-icon name="triangle" class="voltCard__triangulo"></ion-icon>
       </ion-button>
     </ion-col>

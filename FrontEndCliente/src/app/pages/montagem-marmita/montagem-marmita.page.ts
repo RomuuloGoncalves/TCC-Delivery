@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Produto } from 'src/app/core/interfaces/produto';
+import { Variacao } from 'src/app/core/interfaces/variacao';
 
 import Swiper from 'swiper';
 
@@ -13,29 +14,7 @@ export class MontagemMarmitaPage implements OnInit {
   swiperRef: ElementRef | undefined;
   swiper?: Swiper;
 
-  marmita: Produto[] = [
-    {
-      NOME: 'Arroz',
-      VARIACAO: {
-        NOME: 'Branco',
-        DESCRICAO: 'arroz branco cozido',
-      },
-    },
-    {
-      NOME: 'Feijão',
-      VARIACAO: {
-        NOME: 'Tropeiro',
-        DESCRICAO: 'Feijão cozido',
-      },
-    },
-    {
-      NOME: 'Guarnição',
-      VARIACAO: {
-        NOME: 'Almondega',
-        DESCRICAO: 'Almondega braba',
-      },
-    },
-  ];
+  marmita: Produto[] = [];
 
   ingredientes: Produto[] = [
     {
@@ -53,56 +32,61 @@ export class MontagemMarmitaPage implements OnInit {
           NOME: 'À grega',
           DESCRICAO: 'arroz à grega cozido',
         },
-        {
-          NOME: 'Branco',
-          DESCRICAO: 'arroz branco cozido',
-        },
-        {
-          NOME: 'Integral',
-          DESCRICAO: 'arroz integral cozido',
-        },
-        {
-          NOME: 'À grega',
-          DESCRICAO: 'arroz à grega cozido',
-        },
       ],
     },
     {
       NOME: 'Feijão',
       VARIACOES: [
         {
-          NOME: 'Branco',
-          DESCRICAO: 'Feijão branco cozido',
+          NOME: 'Preto',
+          DESCRICAO: 'feijão preto cozido',
         },
         {
-          NOME: 'Integral',
-          DESCRICAO: 'Feijão integral cozido',
+          NOME: 'Carioquinha',
+          DESCRICAO: 'feijão carioquinha cozido',
         },
         {
-          NOME: 'À grega',
-          DESCRICAO: 'Feijão à grega cozido',
+          NOME: 'Fradinho',
+          DESCRICAO: 'feijão fradinho cozido',
         },
       ],
     },
     {
-      NOME: 'Mistura',
+      NOME: 'Salada',
       VARIACOES: [
         {
-          NOME: 'Branco',
-          DESCRICAO: 'Mistura branco cozido',
+          NOME: 'Alface',
+          DESCRICAO: 'Alface verdinha',
         },
         {
-          NOME: 'Integral',
-          DESCRICAO: 'Mistura integral cozido',
+          NOME: 'Pepino',
+          DESCRICAO: 'Pepino fresquinho',
         },
         {
-          NOME: 'À grega',
-          DESCRICAO: 'Mistura à grega cozido',
+          NOME: 'Couve',
+          DESCRICAO: 'Couve ralada  ',
         },
       ],
     },
   ];
 
+  acompanhamentos: Produto = {
+    NOME: 'Acompanhamento',
+    VARIACOES: [
+      {
+        NOME: 'Bife',
+        DESCRICAO: 'Muito boa carne',
+      },
+      {
+        NOME: 'Mandioca',
+        DESCRICAO: 'Mandioca cozida',
+      },
+      {
+        NOME: 'Frango Frito',
+        DESCRICAO: 'Frango frito da casa',
+      },
+    ],
+  };
   constructor() {}
 
   ngOnInit() {}
@@ -113,5 +97,28 @@ export class MontagemMarmitaPage implements OnInit {
 
   voltarCard() {
     this.swiperRef?.nativeElement.swiper.slidePrev();
+  }
+
+  selecionarIngrediente(event: any) {
+    const ingredienteNome = event.originalTarget.attributes['ng-reflect-value'].nodeValue;
+    const variacaoNome = event.detail.value;
+
+    const ingredienteObj = this.ingredientes.find((ingrediente: Produto) => {
+      return ingrediente.NOME === ingredienteNome;
+    });
+
+    const variacaoObj = ingredienteObj?.VARIACOES?.find((variacao: Variacao) => {
+      return variacao.NOME === variacaoNome;
+    });
+
+    this.marmita.filter((produto: Produto, id: number) => {
+      if (produto.NOME === ingredienteNome)
+        this.marmita.splice(id, 1);
+    })
+
+    this.marmita.push({
+      NOME: ingredienteObj!.NOME,
+      VARIACAO: variacaoObj,
+    });
   }
 }
