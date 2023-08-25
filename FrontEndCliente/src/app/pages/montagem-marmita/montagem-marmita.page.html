@@ -75,7 +75,7 @@
   <!-- categorias de ingredientes para seleção -->
   <ion-row class="ion-justify-content-center todos-ingredientes">
     <ion-col size="11" sizeMd="10" class="container-cards-ingredientes">
-      <swiper-container #swiper [pagination]="true" [loop]="true">
+      <swiper-container #swiper [pagination]="true" [loop]="true" [slidesPerView]="1.3" [centeredSlides]="true" [pagination]="{clickable: true, dynamicBullets: true}">
         <ng-container *ngFor="let ingrediente of this.ingredientes">
           <swiper-slide>
             <ion-card class="selecionar-ingredientes">
