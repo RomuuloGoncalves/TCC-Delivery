@@ -5,8 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { ProdutosPageRoutingModule } from './produtos-routing.module';
 import { ProdutosPage } from './produtos.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
-import { CardsComponent } from 'src/app/components/produtos/cards/cards.component';
 import { AccordionComponent } from 'src/app/components/produtos/accordion/accordion.component';
+import { CardsComponent } from 'src/app/components/produtos/cards/cards.component';
 
 @NgModule({
   imports: [
@@ -14,8 +14,10 @@ import { AccordionComponent } from 'src/app/components/produtos/accordion/accord
     FormsModule,
     IonicModule,
     ProdutosPageRoutingModule,
-    HeaderModule
+    HeaderModule,
+
+    
   ],
-  declarations: [ProdutosPage, CardsComponent, AccordionComponent]
+  declarations: [ProdutosPage, AccordionComponent, CardsComponent]
 })
 export class ProdutosPageModule {}

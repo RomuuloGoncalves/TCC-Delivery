@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccordionComponent } from './accordion.component';
-import { CardsComponent } from '../cards/cards.component';
+import { CardsModule } from '../cards/cards.module';
 
 
 
 @NgModule({
-  declarations: [AccordionComponent, CardsComponent],
+  declarations: [AccordionComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    CardsModule
+  ],
+  exports:[AccordionModule, CardsModule]
 })
 export class AccordionModule { }
