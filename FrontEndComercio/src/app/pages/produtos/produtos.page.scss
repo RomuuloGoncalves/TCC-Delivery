@@ -1,0 +1,12 @@
+ion-accordion-group {
+    width: 100%;
+}
+
+div[slot='content'] {
+    background: var(--ion-color-tertiary);
+}
+
+#titulo{
+    font-size: 1.5rem;
+    font-weight: 500;
+}

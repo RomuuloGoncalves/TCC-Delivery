@@ -1,16 +1,17 @@
-<ion-menu type="push" content-id="main-content">
+<ion-menu type="overlay" content-id="main-content">
   <ion-content class="container-menu">
     <ion-row class="ion-align-items-center ion-justify-content-center">
-      <span></span>
-      <ion-label>Pedidos</ion-label>
-      <span></span>
-      <ion-label>Histórico</ion-label>
-      <span></span>
-      <ion-label>Produtos</ion-label>
-      <span></span>
-      <ion-label>Cupons</ion-label>
-      <span></span>
+      <ion-menu-button mode="md"></ion-menu-button>
 
+      <span></span>
+      <ion-label [routerLink]="['']">Pedidos</ion-label>
+      <span></span>
+      <ion-label [routerLink]="['']">Histórico</ion-label>
+      <span></span>
+      <ion-label [routerLink]="['produtos']">Produtos</ion-label>
+      <span></span>
+      <ion-label [routerLink]="['']">Cupons</ion-label>
+      <span></span>
     </ion-row>
   </ion-content>
 </ion-menu>
@@ -34,7 +35,7 @@
           <ion-col size="auto">
             <ion-row class="ion-align-items-center">
               <ion-button id="sino" fill="clear">
-                <img  alt="Icone carrinho" src="../../../../assets/imgs/header-icons/notificacao.png" />
+                <img alt="Icone carrinho" src="../../../../assets/imgs/header-icons/notificacao.png" />
               </ion-button>
 
               <img id="click-trigger" class="ativar-popover user ion-justify-content-end" alt="Avatar perfil"
