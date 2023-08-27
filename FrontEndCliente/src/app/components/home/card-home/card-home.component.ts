@@ -6,12 +6,12 @@ import { Produto } from 'src/app/core/interfaces/produto';
   templateUrl: './card-home.component.html',
   styleUrls: ['./card-home.component.scss'],
 })
-export class CardHomeComponent  implements OnInit {
+export class CardHomeComponent implements OnInit {
 
   constructor() { }
 
   @Input() produto?: Produto;
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }

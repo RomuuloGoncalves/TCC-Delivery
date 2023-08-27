@@ -97,10 +97,11 @@ ion-popover {
   --width: 300px;
 }
 
-.ativar-popover ion-row:nth-child(1){
-  &:hover{
+.ativar-popover ion-row:nth-child(1) {
+  &:hover {
     cursor: pointer;
   }
+
   gap: 20px;
 }
 
