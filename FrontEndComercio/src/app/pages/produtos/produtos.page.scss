@@ -6,15 +6,16 @@ div[slot='content'] {
     background: var(--ion-color-tertiary);
 }
 
-#titulo{
+#titulo {
     font-size: 1.5rem;
     font-weight: 500;
 }
 
-ion-icon{
-    &:hover{
+ion-icon {
+    &:hover {
         cursor: pointer;
     }
+
     font-size: 2rem;
     font-weight: 600;
 }

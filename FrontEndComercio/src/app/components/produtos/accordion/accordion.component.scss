@@ -1,15 +1,14 @@
-app-cards{
+app-cards {
     display: flex;
 }
 
-div[slot="content"]{
+div[slot="content"] {
 
-   display: flex;
-   flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 
-   app-cards{
-    flex: 1 0 300px;
-    max-width: 500px;
-   }
+    app-cards {
+        flex: 1 0 300px;
+        max-width: 500px;
+    }
 }
-

@@ -12,9 +12,7 @@
             <ion-col size="11">
               <ion-list>
                 <ion-item>
-                  <ion-select (ionChange)="filtrarSelecao($event)" 
-                     interface="popover" mode="ios" placeholder="Select"
-                    [multiple]="true" [(ngModel)]="selectedOptions">
+                  <ion-select (ionChange)="filtrarSelecao($event)" interface="popover" mode="ios" placeholder="Select" [multiple]="true" [(ngModel)]="selectedOptions">
                     <ion-select-option value="marmita" Default="true">Marmitas</ion-select-option>
                     <ion-select-option value="bebida">Bebidas</ion-select-option>
                     <ion-select-option value="combo">Combo</ion-select-option>
@@ -28,7 +26,7 @@
               <ion-icon name="add-outline"></ion-icon>
             </ion-col>
 
-      
+
           </ion-row>
         </ion-col>
       </ion-row>
@@ -38,10 +36,14 @@
       <ion-row class="ion-justify-content-center">
         <ion-col size="11.9">
           <ion-accordion-group [multiple]="true" [value]="['Marmitas']">
-            <app-accordion *ngIf="this.filtrar['marmita']" [tituloSessao]="'Marmitas'" [produtos]="this.marmitas"></app-accordion>
-            <app-accordion *ngIf="this.filtrar['bebida']" [tituloSessao]="'Bebidas'" [produtos]="this.bebidas"></app-accordion>
-            <app-accordion *ngIf="this.filtrar['combo']" [tituloSessao]="'Combos'" [produtos]="this.combos"></app-accordion>
-            <app-accordion *ngIf="this.filtrar['acompanhamento']" [tituloSessao]="'Acompanhamentos'" [produtos]="this.acompanhamentos"></app-accordion>
+            <app-accordion *ngIf="this.filtrar['marmita']" [tituloSessao]="'Marmitas'"
+              [produtos]="this.marmitas"></app-accordion>
+            <app-accordion *ngIf="this.filtrar['bebida']" [tituloSessao]="'Bebidas'"
+              [produtos]="this.bebidas"></app-accordion>
+            <app-accordion *ngIf="this.filtrar['combo']" [tituloSessao]="'Combos'"
+              [produtos]="this.combos"></app-accordion>
+            <app-accordion *ngIf="this.filtrar['acompanhamento']" [tituloSessao]="'Acompanhamentos'"
+              [produtos]="this.acompanhamentos"></app-accordion>
           </ion-accordion-group>
         </ion-col>
       </ion-row>
