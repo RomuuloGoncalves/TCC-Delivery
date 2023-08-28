@@ -6,13 +6,10 @@
   </ion-col>
 
   <ion-col size="12">
-    <ion-row class="ion-justify-content-start">
+    <ion-row class="grid ion-justify-content-start">
       <app-card-montagem-home *ngIf="cardMontagem" class="cards"></app-card-montagem-home>
 
       <app-card-home *ngFor="let produto of produtos" [produto]="produto" class="cards"></app-card-home>
-
-      <!-- <app-card-montagem-home *ngIf="cardMontagem" class="cards"></app-card-montagem-home> -->
-
     </ion-row>
   </ion-col>
 </ion-row>
