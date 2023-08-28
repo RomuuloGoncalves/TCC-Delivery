@@ -3,3 +3,20 @@
   font-size: 1.6rem;
   color: var(--ion-color-dark);
 }
+
+.cards {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 400px;
+  max-width: 600px;
+}
+
+// .cards:last-child{
+//   visibility: hidden;
+// }
+
+@media(max-width: 500px) {
+  .cards {
+    flex-basis: 250px;
+  }
+}
