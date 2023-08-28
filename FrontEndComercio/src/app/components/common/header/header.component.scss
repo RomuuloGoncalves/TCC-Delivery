@@ -5,6 +5,9 @@
         flex-direction: column;
 
         ion-label {
+            &:hover{
+                cursor: pointer;
+            }
             font-size: 1.5rem;
             color: #ffff;
         }

@@ -1,0 +1,30 @@
+ion-accordion-group {
+    width: 100%;
+}
+
+div[slot='content'] {
+    background: var(--ion-color-tertiary);
+}
+
+#titulo {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+ion-icon {
+    &:hover {
+        cursor: pointer;
+    }
+
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+div{
+    app-cards-cupons{
+        flex: 1 1 auto;
+    }    
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}

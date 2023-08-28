@@ -1,0 +1,18 @@
+.img-cupom{
+
+    background-image: url('../../../../assets/imgs/cupons/cupom.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+   
+    .informacoes{
+        height: 150px;
+        color: #fff;
+    }
+
+    ion-label{
+        font-size: 2rem;
+    }
+    ion-text{
+        font-size: 0.9rem;
+    }
+}
