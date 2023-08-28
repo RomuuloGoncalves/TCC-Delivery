@@ -20,11 +20,30 @@ ion-icon {
     font-weight: 600;
 }
 
-div{
-    app-cards-cupons{
-        flex: 1 1 auto;
-    }    
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 10px;
 }
+@media(max-width: 1490px) {
+    .grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+@media(max-width: 1050px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media(max-width: 800px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }  
+  @media(max-width: 480px) {
+    .grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
