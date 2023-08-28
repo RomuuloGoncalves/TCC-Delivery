@@ -6,10 +6,12 @@
 
 .header {
   background-color: var(--ion-color-primary);
-  padding: 16px 50px;
-
+  padding: 16px 20px;
+  ion-col {
+    padding-inline: 0;
+  }
   &__logo {
-    width: 225px;
+    width: 200px;
   }
 
   &__menu {
@@ -35,6 +37,20 @@
     --padding-bottom: 10px;
   }
 
+  &__bookmaker {
+    font-size: 1.4rem;
+    color: #ffff;
+    
+    img {
+      margin-right: 10px;
+      height: 30px;
+    }
+
+    .item:nth-child(-n+2) {
+      margin-right: 15px;
+    }
+    
+  }
   .btn-acesso {
     height: 100%;
 
@@ -90,6 +106,10 @@
 
   @media(max-width:460px) {
     padding: 10px 20px;
+  }
+
+  img.ativar-popover {
+    height: 50px;
   }
 }
 
@@ -156,7 +176,7 @@ ion-menu-button {
   display: block;
 }
 
-@media(max-width:768px) {
+@media(max-width:800px) {
   .header {
     #icon-menu-desktop {
       display: block;

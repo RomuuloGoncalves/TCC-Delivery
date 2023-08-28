@@ -71,32 +71,36 @@
 <div id="main-content">
   <ion-header>
     <ion-row class="header ion-justify-content-between ion-align-items-center">
-      <ion-col size="8" size-md="4">
-        <ion-row class="ion-align-items-center">
+      <ion-col size="auto" size-md="2.8">
+        <ion-row class="ion-align-items-center ion-no-padding">
           <ion-img class="header__logo" src="../../../assets/img/Logo.png" alt="logo"></ion-img>
         </ion-row>
       </ion-col>
 
-      <ion-row class="header ion-justify-content-between ion-align-items-center">
-        <ion-col size="4">
-          <ion-list>
-            <ion-item >
-              <img src="../../../../assets/img/header-icons/home_white.png" alt="carrinho">
-              <ion-label>Home</ion-label>
-            </ion-item>
-            <ion-item>
-              <img src="../../../../assets/img/header-icons/motagem_white_bold.png" alt="carrinho">
-              <ion-label>Montagem</ion-label>
-            </ion-item>
-            <ion-item>
-              <img src="../../../../assets/img/header-icons/carrinho_white.png" alt="carrinho">
-              <ion-label>Carrinho</ion-label>
-            </ion-item>
-          </ion-list>
+      <ion-col size="auto">
+        <ion-row class="header__bookmaker ion-align-items-center ion-justify-content-between ion-no-padding">
+            <ion-col class="item" size="auto">
+              <ion-row class="ion-align-items-center">
+                <img class="icon" src="../../../../assets/img/header-icons/home_white.png" alt="carrinho">
+                <ion-label>Home</ion-label> 
+              </ion-row>
+            </ion-col>
+            <ion-col class="item" size="auto">
+              <ion-row class="ion-align-items-center">
+                <img class="icon" src="../../../../assets/img/header-icons/motagem_white_bold.png" alt="carrinho">
+                <ion-label>Montagem</ion-label>
+              </ion-row>
+            </ion-col>
+            <ion-col class="item" size="auto">
+              <ion-row class="ion-align-items-center">
+                <img class="icon" src="../../../../assets/img/header-icons/carrinho_white.png" alt="carrinho">
+                <ion-label>Carrinho</ion-label>
+              </ion-row>
+            </ion-col>
+          </ion-row>
         </ion-col>
-      </ion-row>
 
-      <ion-col size="4">
+      <ion-col size="auto" size-md="2.8">
         <ion-row class="ion-align-items-center ion-justify-content-end">
           <!-- Botões de login -->
           <ion-col *ngIf="!this.login" class="btn-acesso__menu" size="auto">
