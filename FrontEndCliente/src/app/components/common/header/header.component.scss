@@ -4,12 +4,6 @@
   }
 }
 
-@media(min-width:975px) {
-  .ion-menu {
-    display: none;
-  }
-}
-
 .header {
   background-color: var(--ion-color-primary);
   padding: 16px 20px;
@@ -24,23 +18,6 @@
     font-size: 1.4rem;
   }
 
-  &__menu__button {
-    --border-radius: 5px;
-    --ripple-color: var(--ion-color-primary);
-    --padding-top: 10px;
-    --padding-bottom: 10px;
-    color: var(--ion-color-light);
-
-    font-size: 1.1rem;
-  }
-
-  ion-button {
-    --border-radius: 5px;
-    --ripple-color: var(--ion-color-primary);
-    --padding-top: 10px;
-    --padding-bottom: 10px;
-  }
-
   &__bookmaker {
     font-size: 1.2rem;
     color: #ffff;
@@ -49,61 +26,42 @@
       margin-right: 10px;
       height: 30px;
     }
-
-    .item:nth-child(-n+2) {
-      margin-right: 15px;
-    }
-
-
-
-    .item::after {
-      content: " ";
-      display: block;
-      
-      
-      height: 3px;
-      width: 100%;
-      border-radius: 10px;
-      background-color: #ffff;
-      
-      transform: scaleX(0);
-
-      transform-origin: center;
-      transition: transform 0.25s ease-out;
-    }
     
-    .item:hover {
-      cursor: pointer;
-      
-      
+    .item {
+      &:nth-child(-n+2) {
+        margin-right: 15px;
+      }
+
       &::after {
-        margin-top: 10px;
-        transform: scaleX(1);
+        content: " ";
+        display: block;
+        
+        height: 3px;
+        width: 100%;
+        border-radius: 10px;
+        background-color: #ffff;
+        
+        transform: scaleX(0);
         transform-origin: center;
+        transition: transform 0.25s ease-out;
+      }
+      
+      &:hover {
+        cursor: pointer;
+        
+        &::after {
+          margin-top: 10px;
+          transform: scaleX(1);
+          transform-origin: center;
+        }
       }
     }
   }
 
-  .btn-acesso {
+  &__btn-acesso {
     height: 100%;
 
-    &-entrar__sidebar {
-      --background: var(--ion-color-primary);
-      --background-hover: #ffff;
-      --background-activated: #ffff;
-      --background-focused: #ffff;
-      --color: #ffff;
-    }
-
-    &-cadastrar__sidebar {
-      --background: #ffff;
-      --background-hover: var(--ion-color-primary);
-      --background-activated: var(--ion-color-primary);
-      --background-focused: var(--ion-color-primary);
-      --color: var(--ion-color-primary);
-    }
-
-    &-entrar__menu {
+    &__entrar {
       width: 60px;
       margin-inline: 0 7px;
       --background-hover: var(--ion-color-primary);
@@ -112,7 +70,7 @@
       --color: #fff;
     }
 
-    &-cadastrar__menu {
+    &__cadastrar {
       width: 145px;
       --background: #ffff;
       --background-hover: var(--ion-color-primary);
@@ -120,9 +78,10 @@
       --background-focused: var(--ion-color-primary);
       --color: var(--ion-color-primary);
     }
-  }
 
-  #icon-menu-desktop {
+  }
+  
+  &__icon-menu {
     display: none;
   }
 
@@ -139,26 +98,18 @@
       font-size: 1rem;
     }
 
-    ion-button {
-      font-size: 0.8rem;
-    }
-
-    .btn-acesso { 
-      &-entrar__menu {
+    &__btn-acesso { 
+      &__entrar {
         font-size: 0.6rem;
         width: 45px;
         margin-right: 3px;
       }
   
-      &-cadastrar__menu {
+      &__cadastrar {
         font-size: 0.6rem;
         width: 117px;
       }
     }
-  }
-
-  @media(max-width:460px) {
-    padding: 10px 20px;
   }
 
   img.ativar-popover {
@@ -231,25 +182,25 @@ ion-menu-button {
 
 @media(max-width:768px) {
   .header {
-    #icon-menu-desktop {
-      display: block;
+    &__logo {
+      width: 182px;
     }
 
     &__bookmaker {
       display: none;
     }
-  }
 
-  .menu {
-    display: block;
+    &__icon-menu {
+      display: block;
+    }
   }
 
   .ativar-popover {
     display: none;
   }
 
-  .header__menu-tirar,
-  .btn-acesso__menu {
+  .menu__header,
+  .header__btn-acesso {
     display: none;
   }
 }
