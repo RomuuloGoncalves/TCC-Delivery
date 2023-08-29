@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'cupons',
     loadChildren: () => import('./pages/cupons/cupons.module').then( m => m.CuponsPageModule)
   },
+  {
+    path: 'detalhe-pedido',
+    loadChildren: () => import('./pages/detalhe-pedido/detalhe-pedido.module').then( m => m.DetalhePedidoPageModule)
+  },
 ];
 
 @NgModule({
