@@ -177,3 +177,11 @@ ion-menu-button {
     display: none;
   }
 }
+
+.links{
+  &:hover{
+    transition: 0.3s;
+    cursor: pointer;
+    transform: scale(1.111);
+  }
+}
