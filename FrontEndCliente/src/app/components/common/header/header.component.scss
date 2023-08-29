@@ -14,8 +14,6 @@
   background-color: var(--ion-color-primary);
   padding: 16px 20px;
   
-  
-
   &__logo {
     width: 220px;
   }
@@ -44,7 +42,7 @@
   }
 
   &__bookmaker {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #ffff;
     
     img {
@@ -56,39 +54,36 @@
       margin-right: 15px;
     }
 
-    .item {
-      transition: 0.3s all;
+
+
+    .item::after {
+      content: " ";
+      display: block;
+      
+      
+      height: 3px;
+      width: 100%;
+      border-radius: 10px;
+      background-color: #ffff;
+      
+      transform: scaleX(0);
+
+      transform-origin: center;
+      transition: transform 0.25s ease-out;
     }
     
     .item:hover {
-      transform: scale(1.05);
-      transition: 0.5s all;
-      font-weight: bold;
-
-      &:nth-child(1) {
-        padding-right: 20px;
-      }
+      cursor: pointer;
       
-      &:nth-child(2) {
-        padding-inline: 20px;
-      }
       
-      &:nth-child(3) {
-        padding-left: 20px;
-      }
-
       &::after {
-        content: " ";
-        display: block;
-        height: 3px;
-        width: 100%;
-        margin-top: 7px;
-        border-radius: 10px;
-        background-color: #ffff;
+        margin-top: 10px;
+        transform: scaleX(1);
+        transform-origin: center;
       }
     }
-    
   }
+
   .btn-acesso {
     height: 100%;
 
@@ -110,8 +105,7 @@
 
     &-entrar__menu {
       width: 60px;
-      margin-inline: 0;
-      margin-right: 7px;
+      margin-inline: 0 7px;
       --background-hover: var(--ion-color-primary);
       --background-activated: var(--ion-color-primary);
       --background-focused: var(--ion-color-primary);
