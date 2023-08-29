@@ -1,3 +1,9 @@
+* {
+  ion-col {
+    padding-inline: 0;
+  }
+}
+
 @media(min-width:975px) {
   .ion-menu {
     display: none;
@@ -7,11 +13,11 @@
 .header {
   background-color: var(--ion-color-primary);
   padding: 16px 20px;
-  ion-col {
-    padding-inline: 0;
-  }
+  
+  
+
   &__logo {
-    width: 200px;
+    width: 220px;
   }
 
   &__menu {
@@ -49,6 +55,38 @@
     .item:nth-child(-n+2) {
       margin-right: 15px;
     }
+
+    .item {
+      transition: 0.3s all;
+    }
+    
+    .item:hover {
+      transform: scale(1.05);
+      transition: 0.5s all;
+      font-weight: bold;
+
+      &:nth-child(1) {
+        padding-right: 20px;
+      }
+      
+      &:nth-child(2) {
+        padding-inline: 20px;
+      }
+      
+      &:nth-child(3) {
+        padding-left: 20px;
+      }
+
+      &::after {
+        content: " ";
+        display: block;
+        height: 3px;
+        width: 100%;
+        margin-top: 7px;
+        border-radius: 10px;
+        background-color: #ffff;
+      }
+    }
     
   }
   .btn-acesso {
@@ -71,6 +109,9 @@
     }
 
     &-entrar__menu {
+      width: 60px;
+      margin-inline: 0;
+      margin-right: 7px;
       --background-hover: var(--ion-color-primary);
       --background-activated: var(--ion-color-primary);
       --background-focused: var(--ion-color-primary);
@@ -78,6 +119,7 @@
     }
 
     &-cadastrar__menu {
+      width: 145px;
       --background: #ffff;
       --background-hover: var(--ion-color-primary);
       --background-activated: var(--ion-color-primary);
@@ -92,15 +134,32 @@
 
   @media(max-width:975px) {
     &__menu {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
 
     &__logo {
-      width: 175px;
+      width: 100%;
+    }
+
+    &__bookmaker {
+      font-size: 1rem;
     }
 
     ion-button {
       font-size: 0.8rem;
+    }
+
+    .btn-acesso { 
+      &-entrar__menu {
+        font-size: 0.6rem;
+        width: 45px;
+        margin-right: 3px;
+      }
+  
+      &-cadastrar__menu {
+        font-size: 0.6rem;
+        width: 117px;
+      }
     }
   }
 
@@ -176,10 +235,14 @@ ion-menu-button {
   display: block;
 }
 
-@media(max-width:800px) {
+@media(max-width:768px) {
   .header {
     #icon-menu-desktop {
       display: block;
+    }
+
+    &__bookmaker {
+      display: none;
     }
   }
 

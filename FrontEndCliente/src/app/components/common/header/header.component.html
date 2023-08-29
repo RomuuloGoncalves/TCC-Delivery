@@ -73,25 +73,25 @@
     <ion-row class="header ion-justify-content-between ion-align-items-center">
       <ion-col size="auto" size-md="2.8">
         <ion-row class="ion-align-items-center ion-no-padding">
-          <ion-img class="header__logo" src="../../../assets/img/Logo.png" alt="logo"></ion-img>
+          <ion-img [routerLink]="['/home']" class="header__logo" src="../../../assets/img/Logo.png" alt="logo"></ion-img>
         </ion-row>
       </ion-col>
 
       <ion-col size="auto">
         <ion-row class="header__bookmaker ion-align-items-center ion-justify-content-between ion-no-padding">
-            <ion-col class="item" size="auto">
+            <ion-col class="item" [routerLink]="['/home']" size="auto">
               <ion-row class="ion-align-items-center">
                 <img class="icon" src="../../../../assets/img/header-icons/home_white.png" alt="carrinho">
                 <ion-label>Home</ion-label> 
               </ion-row>
             </ion-col>
-            <ion-col class="item" size="auto">
+            <ion-col class="item" [routerLink]="['/montagem-marmita']" size="auto">
               <ion-row class="ion-align-items-center">
                 <img class="icon" src="../../../../assets/img/header-icons/motagem_white_bold.png" alt="carrinho">
                 <ion-label>Montagem</ion-label>
               </ion-row>
             </ion-col>
-            <ion-col class="item" size="auto">
+            <ion-col class="item" [routerLink]="['/carrinho']" size="auto">
               <ion-row class="ion-align-items-center">
                 <img class="icon" src="../../../../assets/img/header-icons/carrinho_white.png" alt="carrinho">
                 <ion-label>Carrinho</ion-label>
@@ -103,15 +103,15 @@
       <ion-col size="auto" size-md="2.8">
         <ion-row class="ion-align-items-center ion-justify-content-end">
           <!-- Botões de login -->
-          <ion-col *ngIf="!this.login" class="btn-acesso__menu" size="auto">
+          <ion-col *ngIf="this.login" class="btn-acesso__menu" size="auto">
             <ion-row>
               <ion-button class="btn-acesso-entrar__menu" [routerLink]="['/login']" fill="clear">Entrar</ion-button>
-              <ion-button class="btn-acesso-cadastrar__menu" [routerLink]="['/login']" fill="clear">Cadastrar-se</ion-button>
+              <ion-button class="btn-acesso-cadastrar__menu" [routerLink]="['/cadastro']" fill="clear">Cadastrar-se</ion-button>
             </ion-row>
           </ion-col>
 
           <!-- Icone Avatar -->
-          <ion-col *ngIf="this.login" class="ativar-popover" size="auto">
+          <ion-col *ngIf="!this.login" class="ativar-popover" size="auto">
             <ion-row class="ion-align-items-center">
               <img id="click-trigger" class="ativar-popover ion-justify-content-end" alt="Avatar perfil"
               src="../../../../assets/img/header-icons/user.png" />
