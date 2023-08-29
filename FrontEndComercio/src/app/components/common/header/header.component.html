@@ -4,13 +4,13 @@
       <ion-menu-button mode="md"></ion-menu-button>
 
       <span></span>
-      <ion-label [routerLink]="['']">Pedidos</ion-label>
+      <ion-label (click)="redirection('')">Pedidos</ion-label>
       <span></span>
-      <ion-label [routerLink]="['']">Histórico</ion-label>
+      <ion-label (click)="redirection('')">Histórico</ion-label>
       <span></span>
-      <ion-label [routerLink]="['./produtos']">Produtos</ion-label>
+      <ion-label (click)="redirection('produtos')">Produtos</ion-label>
       <span></span>
-      <ion-label [routerLink]="['./cupons']">Cupons</ion-label>
+      <ion-label (click)="redirection('cupons')">Cupons</ion-label>
       <span></span>
     </ion-row>
   </ion-content>
@@ -52,7 +52,7 @@
                     <ion-col size="12">
                       <ion-list lines="full">
                         <ion-item>
-                          <ion-label [routerLink]="['']">...</ion-label>
+                          <ion-label (click)="redirection('')">...</ion-label>
                         </ion-item>
                       </ion-list>
                     </ion-col>

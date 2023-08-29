@@ -10,4 +10,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() { }
 
   login: Boolean = true
+
+  redirection(router:string){
+    window.location.href=`./${router}`
+  }
 }

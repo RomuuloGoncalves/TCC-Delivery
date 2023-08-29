@@ -10,4 +10,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() { }
 
   menuType: string = 'overlay';
+  redirection(router:string){
+    window.location.href=`./${router}`
+  }
 }

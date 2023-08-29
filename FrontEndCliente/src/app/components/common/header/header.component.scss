@@ -178,10 +178,12 @@ ion-menu-button {
   }
 }
 
-.links{
-  &:hover{
+.links {
+  transition: 0.3s;
+
+  &:hover {
     transition: 0.3s;
     cursor: pointer;
-    transform: scale(1.111);
+    transform: scale(1.05);
   }
 }
