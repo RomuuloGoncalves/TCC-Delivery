@@ -3,13 +3,8 @@
 
   <ion-row class="ion-justify-content-center ingredientes ion-padding">
     <ion-col size="11" sizeMd="4">
-      <ion-row
-        color="primary"
-        class="card-image ion-justify-content-center ion-align-items-center ion-padding"
-      >
-        <img
-          src="https://i.pinimg.com/564x/34/cd/98/34cd98a30cd58f85e25e56a9030ca06c.jpg"
-        />
+      <ion-row color="primary" class="card-image ion-justify-content-center ion-align-items-center ion-padding">
+        <img src="https://i.pinimg.com/564x/34/cd/98/34cd98a30cd58f85e25e56a9030ca06c.jpg" />
       </ion-row>
     </ion-col>
 
@@ -74,34 +69,28 @@
 
   <!-- categorias de ingredientes para seleção -->
   <ion-row class="ion-justify-content-center todos-ingredientes">
+<<<<<<< HEAD
     <ion-col size="11" sizeMd="8.5" class="container-cards-ingredientes">
       <swiper-container #swiper [pagination]="true" [loop]="true" [centeredSlides]="true" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints">
+=======
+    <ion-col size="11" sizeMd="10" class="container-cards-ingredientes">
+      <swiper-container #swiper [pagination]="true" [loop]="true" [slidesPerView]="1.3" [centeredSlides]="true"
+        [pagination]="{clickable: true, dynamicBullets: true}">
+>>>>>>> 88f87451f68e2cbacb29c5c70736310f643b4406
         <ng-container *ngFor="let ingrediente of this.ingredientes">
           <swiper-slide>
             <ion-card class="selecionar-ingredientes">
               <ion-card-header>
-                <ion-card-title class="ion-text-capitalize"
-                  >{{ ingrediente.NOME }}</ion-card-title
-                >
-                <ion-card-subtitle
-                  >Selecione o tipo de {{ ingrediente.NOME.toLocaleLowerCase()
-                  }} desejado</ion-card-subtitle
-                >
+                <ion-card-title class="ion-text-capitalize">{{ ingrediente.NOME }}</ion-card-title>
+                <ion-card-subtitle>Selecione o tipo de {{ ingrediente.NOME.toLocaleLowerCase()}}desejado</ion-card-subtitle>
               </ion-card-header>
 
               <ion-card-content>
                 <ion-list>
                   <ion-radio-group value="{{ ingrediente.NOME }}" (ionChange)="this.selecionarIngrediente($event)">
-                    <ion-item
-                      *ngFor="let variacao of this.ingrediente.VARIACOES; let id = index"
-                    >
-                      <ion-label class="ion-text-capitalize"
-                        >{{ variacao.NOME }}</ion-label
-                      >
-                      <ion-radio
-                        slot="end"
-                        value="{{ variacao.NOME }}"
-                      ></ion-radio>
+                    <ion-item *ngFor="let variacao of this.ingrediente.VARIACOES; let id = index">
+                      <ion-label class="ion-text-capitalize">{{ variacao.NOME }}</ion-label>
+                      <ion-radio slot="end" value="{{ variacao.NOME }}"></ion-radio>
                     </ion-item>
                   </ion-radio-group>
                 </ion-list>
@@ -112,25 +101,16 @@
         <swiper-slide>
           <ion-card class="selecionar-ingredientes">
             <ion-card-header>
-              <ion-card-title class="ion-text-capitalize"
-                >Acompanhamentos</ion-card-title
-              >
-              <ion-card-subtitle
-                >Selecione os acompanhamentos desejados</ion-card-subtitle
-              >
+              <ion-card-title class="ion-text-capitalize">Acompanhamentos</ion-card-title>
+              <ion-card-subtitle>Selecione os acompanhamentos desejados</ion-card-subtitle>
             </ion-card-header>
 
             <ion-card-content>
               <ion-list>
                 <ion-radio-group value="variacao">
                   <ion-item *ngFor="let variacao of this.acompanhamentos.VARIACOES">
-                    <ion-label class="ion-text-capitalize"
-                      >{{ variacao.NOME }}</ion-label
-                    >
-                    <ion-radio
-                      slot="end"
-                      value="{{ variacao.NOME }}"
-                    ></ion-radio>
+                    <ion-label class="ion-text-capitalize">{{ variacao.NOME }}</ion-label>
+                    <ion-radio slot="end" value="{{ variacao.NOME }}"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
               </ion-list>
@@ -139,6 +119,7 @@
         </swiper-slide>
       </swiper-container>
 
+<<<<<<< HEAD
           <ion-button
           (click)="this.proximoCard()"
           class="trocar-card-ingrediente prox-card"
@@ -150,6 +131,13 @@
         class="trocar-card-ingrediente volt-card"
         >
         <ion-icon name="triangle" class="volt-card__triangulo"></ion-icon>
+=======
+      <ion-button (click)="this.proximoCard()" class="trocar-card-ingrediente proxCard">
+        <ion-icon name="triangle" class="proxCard__triangulo"></ion-icon>
+      </ion-button>
+      <ion-button (click)="this.voltarCard()" class="trocar-card-ingrediente voltCard">
+        <ion-icon name="triangle" class="voltCard__triangulo"></ion-icon>
+>>>>>>> 88f87451f68e2cbacb29c5c70736310f643b4406
       </ion-button>
 
     </ion-col>

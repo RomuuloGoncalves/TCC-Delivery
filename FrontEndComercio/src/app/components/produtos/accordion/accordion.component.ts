@@ -6,10 +6,10 @@ import { Produto } from 'src/app/core/interfaces/produto';
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss'],
 })
-export class AccordionComponent  implements OnInit {
+export class AccordionComponent implements OnInit {
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
   @Input() produtos?: Produto[];
   @Input() tituloSessao?: string;
 

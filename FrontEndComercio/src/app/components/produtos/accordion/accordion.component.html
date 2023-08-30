@@ -1,9 +1,8 @@
 <ion-accordion value="{{tituloSessao}}">
-
   <ion-item slot="header" color="secondary">
     <ion-label>{{ tituloSessao }}</ion-label>
   </ion-item>
-  <div class="" slot="content" >
-      <app-cards *ngFor="let produto of produtos" [produto]="produto"></app-cards>
+  <div class="" slot="content">
+    <app-cards *ngFor="let produto of produtos" [produto]="produto"></app-cards>
   </div>
 </ion-accordion>

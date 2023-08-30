@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
+import { CardPedidosComponent } from 'src/app/components/home/card-pedidos/card-pedidos.component';
 
 @NgModule({
   imports: [
@@ -12,10 +13,8 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    HeaderModule
+    HeaderModule,
   ],
-  declarations: [
-    HomePage
-  ]
+  declarations: [HomePage, CardPedidosComponent]
 })
 export class HomePageModule {}

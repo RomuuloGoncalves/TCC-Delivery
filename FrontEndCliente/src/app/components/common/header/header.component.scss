@@ -97,10 +97,11 @@ ion-popover {
   --width: 300px;
 }
 
-.ativar-popover ion-row:nth-child(1){
-  &:hover{
+.ativar-popover ion-row:nth-child(1) {
+  &:hover {
     cursor: pointer;
   }
+
   gap: 20px;
 }
 
@@ -174,5 +175,15 @@ ion-menu-button {
   .header__menu-tirar,
   .btn-acesso__menu {
     display: none;
+  }
+}
+
+.links {
+  transition: 0.3s;
+
+  &:hover {
+    transition: 0.3s;
+    cursor: pointer;
+    transform: scale(1.05);
   }
 }

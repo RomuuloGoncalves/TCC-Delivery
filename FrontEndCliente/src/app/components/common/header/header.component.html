@@ -31,19 +31,19 @@
       <ion-col size="12">
         <ion-list lines="full">
           <ion-item>
-            <ion-label [routerLink]="['']">Seu perfil</ion-label>
+            <ion-label (click)="redirection('')">Seu perfil</ion-label>
           </ion-item>
           <ion-item>
             <ion-label [routerLink]="['/montagem-marmita']">Montar marmita</ion-label>
           </ion-item>
           <ion-item>
-            <ion-label [routerLink]="['']">Histórico de pedidos</ion-label>
+            <ion-label (click)="redirection('')">Histórico de pedidos</ion-label>
           </ion-item>
           <ion-item>
-            <ion-label [routerLink]="['']">Formas de pagamanto</ion-label>
+            <ion-label (click)="redirection('')">Formas de pagamanto</ion-label>
           </ion-item>
           <ion-item>
-            <ion-label [routerLink]="['']" class="ion-align-items-center">Sair</ion-label>
+            <ion-label (click)="redirection('')" class="ion-align-items-center">Sair</ion-label>
             <ion-icon name="log-out-outline"></ion-icon>
           </ion-item>
         </ion-list>
@@ -73,7 +73,7 @@
     <ion-row class="header ion-justify-content-between ion-align-items-center">
       <ion-col size="8" size-md="4">
         <ion-row class="ion-align-items-center">
-          <ion-img class="header__logo" src="../../../assets/img/Logo.png" alt="logo"></ion-img>
+          <ion-img (click)="redirection('')" class="header__logo" src="../../../assets/img/Logo.png" alt="logo"></ion-img>
         </ion-row>
       </ion-col>
 
@@ -91,13 +91,11 @@
           <!-- Icone Avatar -->
           <ion-col *ngIf="this.login" class="ativar-popover" size="auto">
             <ion-row class="ion-align-items-center">
-              <ion-button fill="clear" [routerLink]="['carrinho']" >
-                <img id="" alt="Icone carrinho"
-                src="../../../../assets/img/header-icons/carrinho.png" />
+              <ion-button fill="clear" (click)="redirection('carrinho')">
+                <img id="" alt="Icone carrinho" src="../../../../assets/img/header-icons/carrinho.png" />
               </ion-button>
-              
-              <img id="click-trigger" class="ativar-popover ion-justify-content-end" alt="Avatar perfil"
-              src="../../../../assets/img/header-icons/user.png" />
+
+              <img id="click-trigger" class="ativar-popover ion-justify-content-end" alt="Avatar perfil" src="../../../../assets/img/header-icons/user.png" />
             </ion-row>
 
             <ion-popover trigger="click-trigger" triggerAction="click" side="left" alignment="end" mode="ios">
@@ -109,20 +107,20 @@
                     </ion-col>
                     <ion-col size="12">
                       <ion-list lines="full">
-                        <ion-item>
-                          <ion-label [routerLink]="['']">Seu perfil</ion-label>
+                        <ion-item class="links">
+                          <ion-label (click)="redirection('')">Seu perfil</ion-label>
                         </ion-item>
-                        <ion-item>
-                          <ion-label [routerLink]="['/montagem-marmita']">Montar marmita</ion-label>
+                        <ion-item class="links">
+                          <ion-label (click)="redirection('montagem-marmita')">Montar marmita</ion-label>
                         </ion-item>
-                        <ion-item>
-                          <ion-label [routerLink]="['']">Histórico de pedidos</ion-label>
+                        <ion-item class="links">
+                          <ion-label (click)="redirection('')">Histórico de pedidos</ion-label>
                         </ion-item>
-                        <ion-item>
-                          <ion-label [routerLink]="['']">Formas de pagamanto</ion-label>
+                        <ion-item class="links">
+                          <ion-label (click)="redirection('')">Formas de pagamanto</ion-label>
                         </ion-item>
-                        <ion-item>
-                          <ion-label [routerLink]="['']" class="ion-align-items-center">Sair</ion-label>
+                        <ion-item class="links">
+                          <ion-label (click)="redirection('')" class="ion-align-items-center">Sair</ion-label>
                           <ion-icon name="log-out-outline"></ion-icon>
                         </ion-item>
                       </ion-list>
