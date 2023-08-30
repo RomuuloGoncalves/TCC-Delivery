@@ -39,27 +39,33 @@ app-card-ingrediente {
 
 .trocar-card-ingrediente {
   position: absolute;
-  height: 5vw;
-  width: 5vw;
+  height: 3.5rem;
+  width: 3.5rem;
   top: 50%;
   transform: translate(-50%);
   --border-radius: 50%;
   z-index: 20;
 }
 
-.proxCard {
-  right: -7%;
+
+.prox-card {
+  right: 12rem;
 }
 
-.voltCard {
-  left: 1%;
+.volt-card {
+  left: 16rem;
 }
 
-.proxCard__triangulo {
+.prox-card__triangulo {
   transform: rotate(90deg);
 }
 
-.voltCard__triangulo {
+.volt-card__triangulo {
   transform: rotate(-90deg);
 }
 
+@media (max-width: 600px) {
+  .trocar-card-ingrediente{
+    display: none;
+  }
+}
