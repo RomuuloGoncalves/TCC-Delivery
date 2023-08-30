@@ -12,7 +12,7 @@ import Swiper from 'swiper';
 export class MontagemMarmitaPage implements OnInit {
   @ViewChild('swiper')
   swiperRef: ElementRef | undefined;
-  swiper? = Swiper
+  swiper?: Swiper
 
   breakpoints = {
     900: {
