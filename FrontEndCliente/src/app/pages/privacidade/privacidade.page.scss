@@ -1,3 +1,24 @@
-// *{
-//     outline: 1px solid red;
-// }
+h1 {
+    color: var(--ion-color-primary)
+}
+
+h3 {
+    color: var(--ion-color-secondary)
+}
+
+a {
+    text-decoration: none;
+    font-weight: 600;
+    padding: 2px;
+    color: var(--dark);
+}
+
+
+ol li {
+    color: var(--ion-color-primary);
+}
+
+p {
+    font-family: 'arial';
+    color: var(--dark);
+}
