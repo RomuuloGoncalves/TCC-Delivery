@@ -1,0 +1,14 @@
+.observacoes {
+  width: 100%;
+  min-width: 250px;
+
+  &__title {
+    font-weight: 777;
+    font-size: 1.2em;
+  }
+
+  &__input {
+    height: 150px;
+    margin-top: 16px;
+  }
+}

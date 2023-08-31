@@ -71,8 +71,6 @@
   <ion-row class="ion-justify-content-center todos-ingredientes">
     <ion-col size="11" sizeMd="8.5" class="container-cards-ingredientes">
       <swiper-container #swiper [pagination]="true" [loop]="true" [centeredSlides]="true" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints">
-      <!-- <ion-col size="11" sizeMd="10" class="container-cards-ingredientes"> -->
-
           <ng-container *ngFor="let ingrediente of this.ingredientes">
             <swiper-slide>
               <ion-card class="selecionar-ingredientes">
@@ -114,8 +112,6 @@
             </ion-card>
           </swiper-slide>
       
-      <!-- </ion-col> -->
-      
         </swiper-container>
 
         <ion-button (click)="this.proximoCard()" class="trocar-card-ingrediente prox-card">
@@ -124,10 +120,19 @@
         <ion-button (click)="this.voltarCard()" class="trocar-card-ingrediente volt-card">
           <ion-icon name="triangle" class="volt-card__triangulo"></ion-icon>
         </ion-button>
-
-    
     </ion-col>  
   </ion-row>
-    
+
+  <ion-row class="ion-justify-content-center ion-align-items-center ion-padding-top">
+    <ion-col size="11" sizeMd="8.5">
+      <ion-row class="ion-justify-content-between ion-align-items-center">
+        <ion-col size="12" sizeMd="8" sizeLg="6">
+          <app-observacoes></app-observacoes>
+        </ion-col>
+        <ion-col size="12" sizeMd="8" sizeLg="6">
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
   <app-footer></app-footer>
 </ion-content>
