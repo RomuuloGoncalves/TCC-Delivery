@@ -12,6 +12,7 @@ import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ObservacoesModule } from 'src/app/components/common/observacoes/observacoes.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     MontagemMarmitaPageRoutingModule,
     FooterModule,
     HeaderModule,
+    ObservacoesModule
   ],
   declarations: [MontagemMarmitaPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

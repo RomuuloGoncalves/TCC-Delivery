@@ -27,6 +27,18 @@ const routes: Routes = [
     path: 'montagem-marmita',
     loadChildren: () => import('./pages/montagem-marmita/montagem-marmita.module').then( m => m.MontagemMarmitaPageModule)
   },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },  {
+    path: 'listagem-page',
+    loadChildren: () => import('./pages/listagem-page/listagem-page.module').then( m => m.ListagemPagePageModule)
+  },
+  {
+    path: 'privacidade',
+    loadChildren: () => import('./pages/privacidade/privacidade.module').then( m => m.PrivacidadePageModule)
+  },
+
 ];
 
 @NgModule({

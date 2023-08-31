@@ -12,22 +12,18 @@ import Swiper from 'swiper';
 export class MontagemMarmitaPage implements OnInit {
   @ViewChild('swiper')
   swiperRef: ElementRef | undefined;
-  swiper?: Swiper = new Swiper(".swiper-container", {
-    breakpoints: {
+  swiper?: Swiper
+
+    breakpoints= {
       576: {
-        slidesPerView: 1,
-        spaceBetween: 20
+        slidesPerView: 1.1,
+        spaceBetween: 15
       },
       768: {
-        slidesPerView: 3,
-        spaceBetween: 30
+        slidesPerView: 2,
+        spaceBetween: 20
       },
-      992: {
-        slidesPerView: 4,
-        spaceBetween: 40
-      }
     }
-  })
 
   marmita: Produto[] = [];
 
@@ -35,6 +31,46 @@ export class MontagemMarmitaPage implements OnInit {
     {
       NOME: 'Arroz',
       VARIACOES: [
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
         {
           NOME: 'Branco',
           DESCRICAO: 'arroz branco cozido',
@@ -107,11 +143,12 @@ export class MontagemMarmitaPage implements OnInit {
   ngOnInit() {}
 
   proximoCard() {
-    this.swiperRef?.nativeElement.swiper.slideNext();
+    this.swiper = this.swiperRef?.nativeElement.swiper.slideNext();
+    console.log(this.swiper)
   }
 
   voltarCard() {
-    this.swiperRef?.nativeElement.swiper.slidePrev();
+    this.swiper = this.swiperRef?.nativeElement.swiper.slidePrev();
   }
 
   selecionarIngrediente(event: any) {
