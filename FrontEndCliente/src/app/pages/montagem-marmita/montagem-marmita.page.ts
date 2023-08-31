@@ -16,7 +16,7 @@ export class MontagemMarmitaPage implements OnInit {
 
     breakpoints= {
       576: {
-        slidesPerView: 1.1,
+        slidesPerView: 1,
         spaceBetween: 15
       },
       768: {

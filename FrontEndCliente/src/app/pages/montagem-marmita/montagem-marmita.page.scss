@@ -40,16 +40,16 @@ swiper-container {
     height: 47vh;
     overflow-y: auto;
 
-    ::-webkit-scrollbar {
+    &::-webkit-scrollbar {
       width: 7px;
     }
-    ::-webkit-scrollbar-track {
-      background: var(--ion-color-primary);
-      border-radius: 50%;
+    &::-webkit-scrollbar-track {
+      background: #dcdcdc;
+      border-radius: 10px;
     }
-    ::-webkit-scrollbar-thumb {
-      background: #000;
-      border-radius: 50%;
+    &::-webkit-scrollbar-thumb {
+      background: #565656;
+      border-radius: 10px;
     }
 
     &:before {
