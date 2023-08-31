@@ -38,6 +38,14 @@ const routes: Routes = [
     path: 'privacidade',
     loadChildren: () => import('./pages/privacidade/privacidade.module').then( m => m.PrivacidadePageModule)
   },
+  {
+    path: 'termos-uso',
+    loadChildren: () => import('./pages/termos-uso/termos-uso.module').then( m => m.TermosUsoPageModule)
+  },
+  {
+    path: 'cookies',
+    loadChildren: () => import('./pages/cookies/cookies.module').then( m => m.CookiesPageModule)
+  },
 
 ];
 

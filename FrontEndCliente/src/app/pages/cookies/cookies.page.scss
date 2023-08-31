@@ -6,17 +6,19 @@ h3 {
   color: var(--ion-color-secondary)
 }
 
-a {
-  text-decoration: none;
-  font-weight: 600;
-  padding: 2px;
-  color: var(--ion-color-black);
+ol {
+  li {
+    color: var(--ion-color-primary);
+    font-size: 2rem;
+  }
 }
 
-
-ol li {
-  color: var(--ion-color-primary);
-  font-size: 2rem;
+ul {
+  li {
+    color: var(--ion-color-black);
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+  }
 }
 
 p {
