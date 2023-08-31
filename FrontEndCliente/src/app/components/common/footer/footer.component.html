@@ -60,17 +60,17 @@
 
       <ion-col size="12" sizeMd="4">
         <ion-row class="ion-justify-content-around">
-          <ion-label>Termos</ion-label>
-          <ion-label>Privacidade</ion-label>
-          <ion-label>Cookies</ion-label>
+          <ion-label class="links" [routerLink]="['/termos-uso']">Termos</ion-label>
+          <ion-label class="links" [routerLink]="['/privacidade']">Privacidade</ion-label>
+          <ion-label class="links" [routerLink]="['/cookies']">Cookies</ion-label>
         </ion-row>
       </ion-col>
 
       <ion-col size="12" sizeMd="4">
         <ion-row class="redes__sociais ion-justify-content-center ion-text-md-ion-justify-content-end">
-          <ion-label><ion-icon name="logo-whatsapp"></ion-icon></ion-label>
-          <ion-label><ion-icon name="logo-facebook"></ion-icon></ion-label>
-          <ion-label><ion-icon name="logo-instagram"></ion-icon></ion-label>
+          <ion-label class="links"><ion-icon name="logo-facebook"></ion-icon></ion-label>
+          <ion-label class="links"><ion-icon name="logo-instagram"></ion-icon></ion-label>
+          <ion-label class="links"><ion-icon name="logo-whatsapp"></ion-icon></ion-label>
         </ion-row>
       </ion-col>
     </ion-row>

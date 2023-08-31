@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MenuController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-header',
@@ -6,12 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() { }
-  ngOnInit() { }
+  @ViewChild('popover') popover:any
+
+  ngOnInit() { 
+    this.isOpen = false
+  }
 
   login: Boolean = true
 
-  redirection(router:string){
-    window.location.href=`./${router}`
+  // redirection(router: string) {
+  //   window.location.href = `./${router}`
+  // }
+  
+  isOpen = false;
+
+  presentPopover(e: Event) {
+    this.popover.event = e;
+    this.isOpen = true;
   }
 }

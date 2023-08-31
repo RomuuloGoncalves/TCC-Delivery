@@ -4,13 +4,13 @@
       <ion-menu-button mode="md"></ion-menu-button>
 
       <span></span>
-      <ion-label (click)="redirection('')">Pedidos</ion-label>
+      <ion-label [routerLink]="['']" routerDirection="root" routerLinkActive="active-item">Pedidos</ion-label>
       <span></span>
-      <ion-label (click)="redirection('')">Histórico</ion-label>
+      <ion-label [routerLink]="['']" routerDirection="root" routerLinkActive="active-item">Histórico</ion-label>
       <span></span>
-      <ion-label (click)="redirection('produtos')">Produtos</ion-label>
+      <ion-label [routerLink]="['/produtos']" routerDirection="root" routerLinkActive="active-item">Produtos</ion-label>
       <span></span>
-      <ion-label (click)="redirection('cupons')">Cupons</ion-label>
+      <ion-label [routerLink]="['cupons']" routerDirection="root" routerLinkActive="active-item">Cupons</ion-label>
       <span></span>
     </ion-row>
   </ion-content>
@@ -38,12 +38,12 @@
                 <img alt="Icone carrinho" src="../../../../assets/imgs/header-icons/notificacao.png" />
               </ion-button>
 
-              <img id="click-trigger" class="ativar-popover user ion-justify-content-end" alt="Avatar perfil"
+              <img (click)="presentPopover($event)" class="ativar-popover user ion-justify-content-end" alt="Avatar perfil"
                 src="../../../../assets/imgs/header-icons/user.png" />
             </ion-row>
 
-            <ion-popover trigger="click-trigger" triggerAction="click" side="left" alignment="end" mode="ios">
-              <ng-template>
+            <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" side="left" alignment="end" mode="ios">
+              <ng-template ngIf="{{popover}}">
                 <ion-content class="ion-padding">
                   <ion-row class="">
                     <ion-col>
@@ -52,7 +52,7 @@
                     <ion-col size="12">
                       <ion-list lines="full">
                         <ion-item>
-                          <ion-label (click)="redirection('')">...</ion-label>
+                          <ion-label [routerLink]="['']">...</ion-label>
                         </ion-item>
                       </ion-list>
                     </ion-col>

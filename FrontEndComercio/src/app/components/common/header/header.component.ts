@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   constructor() { }
-  ngOnInit() { }
+  @ViewChild('popover') popover:any
 
   menuType: string = 'overlay';
-  redirection(router:string){
-    window.location.href=`./${router}`
+  // redirection(router:string){
+  //   window.location.href=`./${router}`
+  // }
+
+  ngOnInit() { 
+    this.isOpen = false
+  }
+  
+  isOpen = false;
+
+  presentPopover(e: Event) {
+    this.popover.event = e;
+    this.isOpen = true;
   }
 }
