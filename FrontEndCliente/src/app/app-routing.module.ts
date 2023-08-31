@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'listagem-page',
     loadChildren: () => import('./pages/listagem-page/listagem-page.module').then( m => m.ListagemPagePageModule)
   },
+  {
+    path: 'privacidade',
+    loadChildren: () => import('./pages/privacidade/privacidade.module').then( m => m.PrivacidadePageModule)
+  },
 
 ];
 

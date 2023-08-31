@@ -14,17 +14,16 @@ export class MontagemMarmitaPage implements OnInit {
   swiperRef: ElementRef | undefined;
   swiper?: Swiper
 
-  breakpoints = {
-    900: {
-      slidesPerView: 2.2,
-      spaceBetween: 40,
-    },
-    600: {
-      slidesPerview: 1.4,
-      spaceBetween: 20,
-
+    breakpoints= {
+      576: {
+        slidesPerView: 1.1,
+        spaceBetween: 15
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20
+      },
     }
-  }
 
   marmita: Produto[] = [];
 
@@ -32,6 +31,46 @@ export class MontagemMarmitaPage implements OnInit {
     {
       NOME: 'Arroz',
       VARIACOES: [
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
+        {
+          NOME: 'Branco',
+          DESCRICAO: 'arroz branco cozido',
+        },
         {
           NOME: 'Branco',
           DESCRICAO: 'arroz branco cozido',

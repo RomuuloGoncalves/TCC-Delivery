@@ -31,8 +31,40 @@ swiper-container {
   height: 100%;
   border-radius: 5px;
   --swiper-pagination-color: var(--ion-color-primary);
-}
+  box-shadow: 0px 0px 15px 3px #00000033;  
 
+
+  .selecionar-ingredientes {
+    --background: transparent;
+    box-shadow: none;
+    height: 47vh;
+    overflow-y: auto;
+
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--ion-color-primary);
+      border-radius: 50%;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #000;
+      border-radius: 50%;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 3px;
+      height: 45vh;
+      background: var(--ion-color-primary);
+    }
+
+  }
+
+}
+  
 app-card-ingrediente {
   width: 100%;
 }
@@ -47,13 +79,12 @@ app-card-ingrediente {
   z-index: 20;
 }
 
-
 .prox-card {
-  right: 12rem;
+  right: -3.5rem;
 }
 
 .volt-card {
-  left: 16rem;
+  left: 0rem;
 }
 
 .prox-card__triangulo {
@@ -64,7 +95,7 @@ app-card-ingrediente {
   transform: rotate(-90deg);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .trocar-card-ingrediente{
     display: none;
   }

@@ -70,7 +70,7 @@
   <!-- categorias de ingredientes para seleção -->
   <ion-row class="ion-justify-content-center todos-ingredientes">
     <ion-col size="11" sizeMd="8.5" class="container-cards-ingredientes">
-      <swiper-container #swiper [pagination]="true" [loop]="true" [centeredSlides]="true" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints">
+      <swiper-container #swiper [pagination]="true" [loop]="true" [centeredSlides]="" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints" [initialSlide]="2">
           <ng-container *ngFor="let ingrediente of this.ingredientes">
             <swiper-slide>
               <ion-card class="selecionar-ingredientes">
@@ -122,6 +122,7 @@
         </ion-button>
     </ion-col>  
   </ion-row>
+
 
   <ion-row class="ion-justify-content-center ion-align-items-center ion-padding-top">
     <ion-col size="11" sizeMd="8.5">
