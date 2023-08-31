@@ -1,0 +1,21 @@
+.barra-superior{
+    font-size: 1.4rem;
+}
+
+.marmita {
+
+    max-width: 30vw;
+
+    .titulo {
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+    .valor {
+        font-size: 1.2rem;
+    }
+
+    .imagem{
+        height: 15vh;
+        --border-radius: 10px;
+    }
+}
