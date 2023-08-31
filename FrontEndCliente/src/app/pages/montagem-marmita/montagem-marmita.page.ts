@@ -12,7 +12,22 @@ import Swiper from 'swiper';
 export class MontagemMarmitaPage implements OnInit {
   @ViewChild('swiper')
   swiperRef: ElementRef | undefined;
-  swiper?: Swiper;
+  swiper?: Swiper = new Swiper(".swiper-container", {
+    breakpoints: {
+      576: {
+        slidesPerView: 1,
+        spaceBetween: 20
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 30
+      },
+      992: {
+        slidesPerView: 4,
+        spaceBetween: 40
+      }
+    }
+  })
 
   marmita: Produto[] = [];
 
