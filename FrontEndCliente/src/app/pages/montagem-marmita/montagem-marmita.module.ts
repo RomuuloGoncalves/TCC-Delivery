@@ -13,6 +13,7 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ObservacoesModule } from 'src/app/components/common/observacoes/observacoes.module';
+import { ContadorModule } from 'src/app/components/common/contador/contador';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { ObservacoesModule } from 'src/app/components/common/observacoes/observa
     MontagemMarmitaPageRoutingModule,
     FooterModule,
     HeaderModule,
-    ObservacoesModule
+    ObservacoesModule,
+    ContadorModule
   ],
   declarations: [MontagemMarmitaPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

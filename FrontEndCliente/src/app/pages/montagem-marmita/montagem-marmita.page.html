@@ -126,10 +126,32 @@
   <ion-row class="ion-justify-content-center ion-align-items-center ion-padding-top">
     <ion-col size="11" sizeMd="8.5">
       <ion-row class="ion-justify-content-between ion-align-items-center">
-        <ion-col size="12" sizeMd="8" sizeLg="6">
+        <ion-col size="12" sizeLg="6">
           <app-observacoes></app-observacoes>
         </ion-col>
-        <ion-col size="12" sizeMd="8" sizeLg="6">
+        <ion-col size="12" sizeLg="4">
+          <ion-row class="sessao-total ion-justify-content-between">
+            <ion-text class="sessao-total__preco">
+              <p>Preço</p>
+            </ion-text>
+            <ion-text class="sessao-total__info">
+              <p>0.00</p>
+            </ion-text>
+          </ion-row>
+          <ion-row class="sessao-total ion-justify-content-between">
+            <ion-text class="sessao-total__preco">
+              <p>Total</p>
+            </ion-text>
+            <ion-text class="sessao-total__info">
+              <p>0.00</p>
+            </ion-text>
+          </ion-row>
+          <ion-row class="sessao-total ion-justify-content-between">
+            <app-contador></app-contador>
+            <ion-button>
+              Adicionar
+            </ion-button>
+          </ion-row>
         </ion-col>
       </ion-row>
     </ion-col>
