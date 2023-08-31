@@ -11,4 +11,8 @@ export class ContadorComponent  implements OnInit {
 
   ngOnInit() {}
 
+  addContador() {
+    
+  }
+
 }
