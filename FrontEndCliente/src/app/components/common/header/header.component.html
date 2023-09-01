@@ -1,13 +1,14 @@
 <!-- Menu / SideBar -->
 <ion-menu side="end" class="menu ion-menu" contentId="main-content">
-  <ion-header>
-    <ion-row class="menu__header ion-align-items-center ion-justify-content-between">
+  <ion-row>
+    <ion-col size="12">
+      <ion-row class="menu__header ion-align-items-center ion-justify-content-between">
         <ion-col size="10">
           <ion-row class=" menu__header__logo-container ion-align-items-center ion-no-padding">
             <ion-label class="menu__header__logo">Divina Refeição</ion-label>
           </ion-row>
         </ion-col>
-        
+      
         <ion-col size="2">
           <ion-row class="ion-align-items-center ion-justify-content-end">
             <ion-menu-toggle>
@@ -15,27 +16,51 @@
             </ion-menu-toggle>
           </ion-row>
         </ion-col>
-    </ion-row>
-  </ion-header>
-
-  <ion-content class="menu__content">
+      </ion-row>
     
-    <!-- <ion-row *ngIf="this.login" class="ion-align-items-center ion-justify-content-around"> -->
-    <ion-row *ngIf="!this.login">
-      <ion-col size="12">
-        <ion-row class="btn-acesso ion-align-items-center ion-justify-content-center">
-          <ion-col size="8">
-            <ion-button class="btn-acesso-entrar__sidebar" [routerLink]="['/login']" fill="clear"
-              expand="block">Entrar</ion-button>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="11">
+          <ion-row class="menu__divisoria"></ion-row>
+        </ion-col>
+      </ion-row>
+    
+      <ion-row class="menu__bookmaker ion-align-items-center ion-justify-content-center">
+        <ion-col>
+          <ion-row class="item ion-align-items-center ion-justify-content-between">
+            <ion-label>Home</ion-label> 
+            <img class="icon" src="../../../../assets/img/header-icons/home_red.png" alt="carrinho">
+          </ion-row>
+  
+          <ion-row class="item ion-align-items-center ion-justify-content-between">
+            <ion-label>Montagem</ion-label>
+            <img class="icon" src="../../../../assets/img/header-icons/motagem_red_bold.png" alt="carrinho">
+          </ion-row>
+  
+          <ion-row class="item ion-align-items-center ion-justify-content-between">
+            <ion-label>Carrinho</ion-label>
+            <img class="icon" src="../../../../assets/img/header-icons/carrinho_red_bold.png" alt="carrinho">
+          </ion-row>
+        </ion-col>
+      </ion-row>
+        
+        <!-- <ion-row *ngIf="this.login" class="ion-align-items-center ion-justify-content-around"> -->
+        <!-- <ion-row ngIf="this.login">
+          <ion-col size="12">
+            <ion-row class="btn-acesso ion-align-items-center ion-justify-content-center">
+              <ion-col size="8">
+                <ion-button class="btn-acesso-entrar__sidebar" [routerLink]="['/login']" fill="clear"
+                  expand="block">Entrar</ion-button>
+              </ion-col>
+              <ion-col size="8">
+                <ion-button class="btn-acesso-cadastrar__sidebar" [routerLink]="['/cadastro']"
+                  expand="block">Cadastrar</ion-button>
+              </ion-col>
+            </ion-row>
           </ion-col>
-          <ion-col size="8">
-            <ion-button class="btn-acesso-cadastrar__sidebar" [routerLink]="['/cadastro']"
-              expand="block">Cadastrar</ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-  </ion-content>
+        </ion-row> -->
+    </ion-col>
+  </ion-row>
+
 </ion-menu>
 
 <!-- Header -->
