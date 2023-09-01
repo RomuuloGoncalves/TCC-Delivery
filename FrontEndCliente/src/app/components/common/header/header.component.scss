@@ -1,15 +1,16 @@
-@media(min-width:975px) {
-  .ion-menu {
-    display: none;
+* {
+  ion-col {
+    padding-inline: 0;
   }
 }
 
 .header {
   background-color: var(--ion-color-primary);
-  padding: 16px 50px;
-
+  padding: 16px 20px;
+  
   &__logo {
-    width: 225px;
+    width: 220px;
+    cursor: pointer;
   }
 
   &__menu {
@@ -18,172 +19,151 @@
     font-size: 1.4rem;
   }
 
-  &__menu__button {
-    --border-radius: 5px;
-    --ripple-color: var(--ion-color-primary);
-    --padding-top: 10px;
-    --padding-bottom: 10px;
-    color: var(--ion-color-light);
+  &__bookmaker {
+    font-size: 1.2rem;
+    color: #ffff;
+    
+    img {
+      margin-right: 10px;
+      height: 30px;
+    }
+    
+    .item {
+      &:nth-child(-n+2) {
+        margin-right: 15px;
+      }
 
-    font-size: 1.1rem;
+      &::after {
+        content: " ";
+        display: block;
+        
+        height: 3px;
+        width: 100%;
+        border-radius: 10px;
+        background-color: #ffff;
+        
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.25s ease-out;
+      }
+      
+      &:hover {
+        cursor: pointer;
+        
+        &::after {
+          margin-top: 10px;
+          transform: scaleX(1);
+          transform-origin: center;
+        }
+      }
+    }
   }
 
-  ion-button {
-    --border-radius: 5px;
-    --ripple-color: var(--ion-color-primary);
-    --padding-top: 10px;
-    --padding-bottom: 10px;
-  }
-
-  .btn-acesso {
+  &__btn-acesso {
     height: 100%;
 
-    &-entrar__sidebar {
-      --background: var(--ion-color-primary);
-      --background-hover: #ffff;
-      --background-activated: #ffff;
-      --background-focused: #ffff;
-      --color: #ffff;
-    }
-
-    &-cadastrar__sidebar {
-      --background: #ffff;
-      --background-hover: var(--ion-color-primary);
-      --background-activated: var(--ion-color-primary);
-      --background-focused: var(--ion-color-primary);
-      --color: var(--ion-color-primary);
-    }
-
-    &-entrar__menu {
+    &__entrar {
+      width: 60px;
+      margin-inline: 0 7px;
       --background-hover: var(--ion-color-primary);
       --background-activated: var(--ion-color-primary);
       --background-focused: var(--ion-color-primary);
       --color: #fff;
     }
 
-    &-cadastrar__menu {
+    &__cadastrar {
+      width: 145px;
       --background: #ffff;
       --background-hover: var(--ion-color-primary);
       --background-activated: var(--ion-color-primary);
       --background-focused: var(--ion-color-primary);
       --color: var(--ion-color-primary);
     }
+
+  }
+  
+  &__btn-menu {
+    display: none;
   }
 
-  #icon-menu-desktop {
-    display: none;
+  ion-popover {
+    --width: 300px;
+  }
+  
+  .ativar-popover ion-row:nth-child(1){
+    &:hover{
+      cursor: pointer;
+    }
+    gap: 20px;
+  }
+
+  img.ativar-popover {
+    height: 50px;
   }
 
   @media(max-width:975px) {
     &__menu {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
 
     &__logo {
-      width: 175px;
+      width: 100%;
     }
 
-    ion-button {
-      font-size: 0.8rem;
+    &__bookmaker {
+      font-size: 1rem;
+    }
+
+    &__btn-acesso { 
+      &__entrar {
+        font-size: 0.6rem;
+        width: 45px;
+        margin-right: 3px;
+      }
+  
+      &__cadastrar {
+        font-size: 0.6rem;
+        width: 117px;
+      }
     }
   }
+ 
 
-  @media(max-width:460px) {
-    padding: 10px 20px;
-  }
-}
+  @media(max-width:768px) {
+    &__logo {
+      width: 182px;
+    }
+  
+    &__bookmaker {
+     display: none;
+    }
 
-ion-popover {
-  --width: 300px;
-}
-
-.ativar-popover ion-row:nth-child(1) {
-  &:hover {
-    cursor: pointer;
-  }
-
-  gap: 20px;
-}
-
-.container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  padding: 80px;
-}
-
-.menu-container {
-  padding-left: 5px;
-
-  ion-avatar {
-    height: 50px;
-    width: 50px;
-  }
-}
-
-#saudacao {
-  font-size: 1.2rem;
-}
-
-#menu-container__toolbar {
-  height: 80px;
-  display: flex;
-  align-items: center;
-}
-
-ion-menu::part(backdrop) {
-  background-color: rgb(0, 0, 0);
-}
-
-ion-menu::part(container) {
-  box-shadow: 4px 0px 16px var(--ion-color-dark);
-}
-
-#menu-container {
-  background-color: var(--ion-color-primary);
-}
-
-#logo {
-  font-size: 1.5rem;
-  font-family: 'mrDafoe';
-}
-
-ion-menu-button {
-  font-size: 2.5rem;
-}
-
-.header__menu-tirar,
-.btn-acesso-entrar__menu {
-  display: block;
-}
-
-@media(max-width:768px) {
-  .header {
-    #icon-menu-desktop {
+    &__btn-menu {
       display: block;
     }
-  }
 
-  .menu {
-    display: block;
-  }
-
-  .ativar-popover {
-    display: none;
-  }
-
-  .header__menu-tirar,
-  .btn-acesso__menu {
-    display: none;
+    &__bnt-avatar,
+    &__btn-acesso {
+      display: none;
+    }
   }
 }
 
-.links {
-  transition: 0.3s;
-
-  &:hover {
-    transition: 0.3s;
-    cursor: pointer;
-    transform: scale(1.05);
+.menu {
+  --background: #ffff;
+  --width: 100%;
+  &__header {
+    padding: 16px 20px;
+    height: 92.08px;
+    &__logo {
+      font-size: 2rem;
+      font-family: 'mrDafoe';
+      color: var(--ion-color-primary-variation);
+      cursor: pointer;
+    }
+    &__btn-close {
+      width: 24px;
+    }
   }
 }
+
