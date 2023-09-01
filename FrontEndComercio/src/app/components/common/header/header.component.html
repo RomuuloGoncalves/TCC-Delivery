@@ -1,16 +1,17 @@
-<ion-menu type="push" content-id="main-content">
+<ion-menu type="overlay" content-id="main-content">
   <ion-content class="container-menu">
     <ion-row class="ion-align-items-center ion-justify-content-center">
-      <span></span>
-      <ion-label>Pedidos</ion-label>
-      <span></span>
-      <ion-label>Histórico</ion-label>
-      <span></span>
-      <ion-label>Produtos</ion-label>
-      <span></span>
-      <ion-label>Cupons</ion-label>
-      <span></span>
+      <ion-menu-button mode="md"></ion-menu-button>
 
+      <span></span>
+      <ion-label [routerLink]="['']" routerDirection="root" routerLinkActive="active-item">Pedidos</ion-label>
+      <span></span>
+      <ion-label [routerLink]="['']" routerDirection="root" routerLinkActive="active-item">Histórico</ion-label>
+      <span></span>
+      <ion-label [routerLink]="['/produtos']" routerDirection="root" routerLinkActive="active-item">Produtos</ion-label>
+      <span></span>
+      <ion-label [routerLink]="['cupons']" routerDirection="root" routerLinkActive="active-item">Cupons</ion-label>
+      <span></span>
     </ion-row>
   </ion-content>
 </ion-menu>
@@ -34,15 +35,15 @@
           <ion-col size="auto">
             <ion-row class="ion-align-items-center">
               <ion-button id="sino" fill="clear">
-                <img  alt="Icone carrinho" src="../../../../assets/imgs/header-icons/notificacao.png" />
+                <img alt="Icone carrinho" src="../../../../assets/imgs/header-icons/notificacao.png" />
               </ion-button>
 
-              <img id="click-trigger" class="ativar-popover user ion-justify-content-end" alt="Avatar perfil"
+              <img (click)="presentPopover($event)" class="ativar-popover user ion-justify-content-end" alt="Avatar perfil"
                 src="../../../../assets/imgs/header-icons/user.png" />
             </ion-row>
 
-            <ion-popover trigger="click-trigger" triggerAction="click" side="left" alignment="end" mode="ios">
-              <ng-template>
+            <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" side="left" alignment="end" mode="ios">
+              <ng-template ngIf="{{popover}}">
                 <ion-content class="ion-padding">
                   <ion-row class="">
                     <ion-col>

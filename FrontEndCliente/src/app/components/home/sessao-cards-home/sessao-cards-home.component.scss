@@ -1,5 +1,22 @@
-.titulo-sessao{
+.titulo-sessao {
   margin: 20px 0 20px 0;
   font-size: 1.6rem;
   color: var(--ion-color-dark);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 0.5fr) ;
+}
+
+@media(max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 630px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }

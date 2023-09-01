@@ -6,7 +6,7 @@ import { Produto } from 'src/app/core/interfaces/produto';
   templateUrl: './sessao-cards-home.component.html',
   styleUrls: ['./sessao-cards-home.component.scss'],
 })
-export class SessaoCardsHomeComponent  implements OnInit {
+export class SessaoCardsHomeComponent implements OnInit {
 
   constructor() { }
 
@@ -14,6 +14,6 @@ export class SessaoCardsHomeComponent  implements OnInit {
   @Input() produtos?: Produto[];
   @Input() cardMontagem: boolean = false;
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }

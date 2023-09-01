@@ -5,6 +5,9 @@
         flex-direction: column;
 
         ion-label {
+            &:hover{
+                cursor: pointer;
+            }
             font-size: 1.5rem;
             color: #ffff;
         }
@@ -14,17 +17,21 @@
             width: 80%;
             margin: 30px 0;
         }
+
+        ion-menu-button{
+            color: #ffff;
+        }
     }
 }
 
 .header {
     background-color: var(--ion-color-tertiary);
 
-    ion-menu-button {
-        font-size: 15rem;
-    }
 }
 
+ion-menu-button {
+    font-size: 15rem;
+}
 #header__titulo {
     color: var(--ion-color-primary);
     font-size: 3rem;
@@ -35,16 +42,8 @@
     height: 100%;
 }
 
-
-
-
-
 @media(max-width:975px) {}
-
-
 @media(max-width:460px) {}
-
-
 
 
 @media(max-width:768px) {

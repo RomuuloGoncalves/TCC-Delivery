@@ -1,0 +1,28 @@
+h1 {
+  color: var(--ion-color-primary)
+}
+
+h3 {
+  color: var(--ion-color-secondary)
+}
+
+a {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 2px;
+  color: var(--ion-color-black);
+}
+
+
+ol li {
+  color: var(--ion-color-primary);
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.1rem;
+  font-family: 'arial';
+  color: var(--ion-color-black);
+  line-height: 1.5rem;
+  text-align: justify;
+}

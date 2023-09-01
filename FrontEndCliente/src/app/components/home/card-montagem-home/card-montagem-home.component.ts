@@ -5,10 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './card-montagem-home.component.html',
   styleUrls: ['./card-montagem-home.component.scss'],
 })
-export class CardMontagemHomeComponent  implements OnInit {
+export class CardMontagemHomeComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }
