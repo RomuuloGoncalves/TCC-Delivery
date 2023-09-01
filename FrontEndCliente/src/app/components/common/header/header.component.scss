@@ -148,6 +148,7 @@
 }
 
 .menu {
+  overflow: hidden;
   ion-col {
     padding: 0;
   }
@@ -176,17 +177,43 @@
     width: 100%;
     border-radius: 30px;
   }
-
+  
   &__bookmaker {
-    width: 250px;
-
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 500;
+
     color: var(--ion-color-primary-variation);
+    width: 250px;
+    margin: 0 auto;
     padding-block: 10%;
     
     .item {
       padding-block: 15px;
+
+      &::after {
+        content: " ";
+        display: block;
+        
+        height: 3px;
+        width: 100%;
+        margin-top: 10px;
+
+        border-radius: 10px;
+        background-color: var(--ion-color-primary-variation);
+        
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.1s ease-out;
+      }
+      
+      &:active {
+        cursor: pointer;
+
+        &::after {
+          transform: scaleX(1);
+          transform-origin: center;
+        }
+      }
     }
 
     img {
