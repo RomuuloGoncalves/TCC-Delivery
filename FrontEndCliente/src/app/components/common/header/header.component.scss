@@ -148,10 +148,10 @@
 }
 
 .menu {
-  overflow: hidden;
   ion-col {
     padding: 0;
   }
+
   --background: #ffff;
   --width: 100%;
   flex-direction: column;
@@ -159,6 +159,7 @@
   &__header {
     padding: 16px 20px;
     height: 92.08px;
+
     &__logo {
       font-size: 2rem;
       font-family: 'mrDafoe';
@@ -173,20 +174,23 @@
   
   &__divisoria {
     background-color: var(--ion-color-primary-variation);
+  
     height: 3px;
     width: 100%;
     border-radius: 30px;
   }
   
   &__bookmaker {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 500;
 
     color: var(--ion-color-primary-variation);
-    width: 250px;
+
+    width: 220px;
     margin: 0 auto;
     padding-block: 10%;
     
+
     .item {
       padding-block: 15px;
 
@@ -214,11 +218,34 @@
           transform-origin: center;
         }
       }
+
+      .icon {
+        height: 40px;
+      }
     }
 
-    img {
-      height: 50px;
+  }
+
+  &__btn-acesso {
+    height: 100%;
+
+    &__entrar {
+      width: 65px;
+      --background-hover: var(--ion-color-primary);
+      --background-activated: var(--ion-color-primary);
+      --background-focused: var(--ion-color-primary);
+      --color: var(--ion-color-primary-variation);
     }
+
+    &__cadastrar {
+      width: 155px;
+      --background: var(--ion-color-primary-variation);
+      --background-hover: var(--ion-color-primary);
+      --background-activated: var(--ion-color-primary);
+      --background-focused: var(--ion-color-primary);
+      --color: #ffff;
+    }
+
   }
 }
 

@@ -44,20 +44,14 @@
       </ion-row>
         
         <!-- <ion-row *ngIf="this.login" class="ion-align-items-center ion-justify-content-around"> -->
-        <!-- <ion-row ngIf="this.login">
-          <ion-col size="12">
-            <ion-row class="btn-acesso ion-align-items-center ion-justify-content-center">
-              <ion-col size="8">
-                <ion-button class="btn-acesso-entrar__sidebar" [routerLink]="['/login']" fill="clear"
-                  expand="block">Entrar</ion-button>
-              </ion-col>
-              <ion-col size="8">
-                <ion-button class="btn-acesso-cadastrar__sidebar" [routerLink]="['/cadastro']"
-                  expand="block">Cadastrar</ion-button>
-              </ion-col>
-            </ion-row>
-          </ion-col>
-        </ion-row> -->
+      <ion-row class="menu__btn-acesso ion-justify-content-center">
+        <ion-col size="6">
+          <ion-row class="ion-align-items-center ion-justify-content-center">
+            <ion-button class="menu__btn-acesso__entrar" [routerLink]="['/login']" fill="clear">Entrar</ion-button>
+            <ion-button class="menu__btn-acesso__cadastrar" [routerLink]="['/cadastro']" fill="clear">Cadastrar-se</ion-button>
+          </ion-row>
+        </ion-col>
+      </ion-row>
     </ion-col>
   </ion-row>
 
