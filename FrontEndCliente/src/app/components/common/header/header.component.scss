@@ -188,7 +188,7 @@
 
     width: 220px;
     margin: 0 auto;
-    padding-block: 10%;
+    padding-block: 10% 5%;
     
 
     .item {
@@ -246,6 +246,16 @@
       --color: #ffff;
     }
 
+  }
+
+  &__perfil {
+    
+    &__avatar {
+      height: 200px;
+      width: 200px;
+
+      border-radius: 100%;
+    }
   }
 }
 
