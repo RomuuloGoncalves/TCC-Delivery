@@ -1,21 +1,79 @@
+
 .barra-superior{
     font-size: 1.4rem;
 }
 
-.marmita {
+.lista {
+    display: grid;
+    grid-template-columns: repeat(3, .4fr);
+    min-height: 60vh;
+    width: 100vw;
+    position: relative;
+    justify-content: center;
 
-    max-width: 30vw;
+    .marmita {
 
-    .titulo {
-        font-weight: bold;
-        font-size: 1.1rem;
+        position: relative;
+        // padding: 0 1rem .5rem;
+        width: 100%;
+
+        .texto {
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+        }
+    
+        .titulo {
+            top: .3rem;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+        .valor {
+            bottom: .3rem;
+            font-size: 1.2rem;
+        }
+    
+        .desc-marmita {
+            font-size: .9rem;
+            width: 100%;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    
+        .imagem{
+            aspect-ratio: 27/22;
+            min-width: 0;
+            flex: 1 1 10px;
+            object-fit: cover;
+            margin: .5rem 0;
+            overflow: hidden;
+            height: 100%;
+            border-radius: 7px;
+            margin-right: 1rem;
+        }
     }
-    .valor {
-        font-size: 1.2rem;
-    }
+}
 
-    .imagem{
-        height: 15vh;
-        --border-radius: 10px;
+.text {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@media (max-width: 768px ) {
+    .lista {
+        grid-template-columns: repeat(2, .6fr);
+    }
+}
+
+@media (max-width: 576px ) {
+    .lista {
+        grid-template-columns: .8fr;
     }
 }

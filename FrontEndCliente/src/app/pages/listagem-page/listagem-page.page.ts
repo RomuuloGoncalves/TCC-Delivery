@@ -9,6 +9,8 @@ export class ListagemPagePage implements OnInit {
 
   constructor() { }
 
+  loaded: boolean = false
+
   ngOnInit() {
   }
 
