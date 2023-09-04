@@ -35,21 +35,11 @@
     <ion-col size="11">
       <ion-row class="ion-justify-content-center">
         <ion-col size="11.9" class="grid">
-          <app-cards-cupons></app-cards-cupons>
-          <app-cards-cupons></app-cards-cupons>
-          <app-cards-cupons></app-cards-cupons>
-          <app-cards-cupons></app-cards-cupons>
-          <app-cards-cupons></app-cards-cupons>
-          <app-cards-cupons></app-cards-cupons>
-          <app-cards-cupons></app-cards-cupons>
-          <app-cards-cupons></app-cards-cupons>
-          <app-cards-cupons></app-cards-cupons>
-          <app-cards-cupons></app-cards-cupons>
-          <app-cards-cupons></app-cards-cupons>
-          <app-cards-cupons></app-cards-cupons>
-          <app-cards-cupons></app-cards-cupons>
-          <app-cards-cupons></app-cards-cupons>
-          <app-cards-cupons></app-cards-cupons>
+          <ng-container *ngFor="let cupom of this.cupons">
+            <app-cards-cupons
+              [cupom]="cupom"
+            ></app-cards-cupons>
+          </ng-container>
         </ion-col>
       </ion-row>
 

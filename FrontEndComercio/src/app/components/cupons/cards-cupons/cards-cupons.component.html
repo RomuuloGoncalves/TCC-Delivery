@@ -1,17 +1,17 @@
-<ion-row  class="img-cupom">
+<ion-row  [class.desativado]="!this.cupom!.STATUS" class="img-cupom">
   <ion-col size="12">
     <ion-row class="ion-justify-content-end">
       <ion-col size="11" class="">
         <ion-row class="informacoes ion-align-items-center ion-justify-content-end">
           <ion-col size="8">
-            <ion-label>Cupom</ion-label>
+            <ion-label>{{ this.cupom!.NOME }}</ion-label>
           </ion-col>
           <ion-col size="8">
             <ion-row>
-              <ion-text>Restam: 5</ion-text>
+              <ion-text>Restam: {{ this.cupom!.QUANTIDADE }}</ion-text>
             </ion-row>
             <ion-row>
-              <ion-text>Validade: 28-6</ion-text>
+              <ion-text>Validade: {{ this.cupom!.DATA_VALIDADE }}</ion-text>
             </ion-row>
           </ion-col>
         </ion-row>

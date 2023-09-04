@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Cupom } from 'src/app/core/interfaces/cupom';
 
 @Component({
   selector: 'app-cards-cupons',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class CardsCuponsComponent  implements OnInit {
 
   constructor() { }
+
+  @Input() public cupom?: Cupom;
 
   ngOnInit() {}
 
