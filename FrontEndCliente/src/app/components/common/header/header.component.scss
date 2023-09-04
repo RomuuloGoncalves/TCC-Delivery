@@ -28,7 +28,7 @@
     
     .item {
       &:nth-child(-n+2) {
-        margin-right: 15px;
+        margin-right: 20px;
       }
 
       &::after {
@@ -181,18 +181,18 @@
   }
   
   &__bookmaker {
-    font-size: 1.2rem;
-    font-weight: 500;
+    font-size: 1.3rem;
+    font-weight: bold;
 
     color: var(--ion-color-primary-variation);
 
     width: 220px;
     margin: 0 auto;
-    padding-block: 10% 5%;
+    padding-block: 50px;
     
 
     .item {
-      padding-block: 15px;
+      padding-block: 7px;
 
       &::after {
         content: " ";
@@ -249,13 +249,40 @@
   }
 
   &__perfil {
-    
     &__avatar {
+      margin-top: 30px;
       height: 200px;
       width: 200px;
-
       border-radius: 100%;
     }
+
+    &__title {
+      font-size: 2rem;
+      color: var(--ion-color-dark);
+      font-weight: 500;
+      margin-inline: 10px;
+    }
+
+    &__btn-config {
+      font-size: 1.2rem;
+      font-weight: bold;
+
+      height: 45px;
+      width: 180px;
+
+      --border-radius: 10px;
+      --background: var(--ion-color-primary-variation);
+      --background-hover: var(--ion-color-primary);
+      --background-activated: var(--ion-color-primary);
+      --background-focused: var(--ion-color-primary);
+      --color: #ffff;
+      
+      &__icon {
+        margin-left: 50px;
+        height: 25px;
+      }
+    }
+
   }
 }
 
