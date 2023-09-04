@@ -1,0 +1,13 @@
+<ion-row class="ion-margin">
+  <ion-col size="12">
+    <ion-row class="titulo-sessao">
+      <ion-label>{{ tituloSessao }}</ion-label>
+    </ion-row>
+  </ion-col>
+
+  <ion-col size="12">
+    <ion-row class="grid ion-justify-content-start">
+      <app-card-produto *ngFor="let produto of produtos" [produto]="produto" class="cards"></app-card-produto>
+    </ion-row>
+  </ion-col>
+</ion-row>

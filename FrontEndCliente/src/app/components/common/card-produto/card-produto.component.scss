@@ -1,0 +1,15 @@
+.card {
+    height: 180px;
+    
+    &__wrapper-content {
+      gap: 5px;
+    }
+  
+    &__desc {
+      height: 80px;
+    }
+  
+    &__preco {
+      font-weight: bolder;
+    }
+  }
