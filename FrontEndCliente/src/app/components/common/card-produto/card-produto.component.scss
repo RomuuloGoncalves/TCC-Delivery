@@ -6,10 +6,22 @@
     }
   
     &__desc {
-      height: 80px;
+      width: 100%;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   
     &__preco {
       font-weight: bolder;
     }
+  }
+  
+  .text {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }

@@ -10,6 +10,7 @@ import { ListagemPagePage } from './listagem-page.page';
 
 import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
+import { SessaoCardsProdutoModule } from 'src/app/components/common/sessao-cards-produto/sessao-cards-produto.module';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     ListagemPagePageRoutingModule,
     FooterModule,
     HeaderModule,
+    SessaoCardsProdutoModule
   ],
   declarations: [ListagemPagePage]
 })
