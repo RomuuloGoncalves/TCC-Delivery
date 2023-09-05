@@ -24,9 +24,22 @@
         </ion-col>
       </ion-row>
 
-      <ion-row class="menu__perfil ion-justify-content-center">
-        <ion-col size="12" >
-          <img class="menu__perfil__avatar"  src="../../../assets/img/header-icons/avatar_default.png" alt="avatar">
+      <ion-row *ngIf="this.login" class="menu__perfil ion-justify-content-center">
+        <ion-col size="12">
+
+          <ion-row class="ion-align-items-center ion-justify-content-center">
+            <img class="menu__perfil__avatar" src="../../../assets/img/header-icons/avatar_default.png" alt="avatar">
+          </ion-row>
+
+          <ion-row class="ion-align-items-center ion-justify-content-center">
+            <h1 class="menu__perfil__title">Danoninho</h1>
+          </ion-row>
+
+          <ion-row class="ion-align-items-center ion-justify-content-center">
+            <ion-button class="menu__perfil__btn-config" [routerLink]="['/perfil']">
+              Perfil
+              <img class="menu__perfil__btn-config__icon" src="../../../assets/img/header-icons/btn-perfil.svg" alt="perfil"></ion-button>
+          </ion-row>
         </ion-col>
 
       </ion-row>
@@ -50,8 +63,7 @@
         </ion-col>
       </ion-row>
         
-        <!-- <ion-row *ngIf="this.login" class="ion-align-items-center ion-justify-content-around"> -->
-      <ion-row class="menu__btn-acesso ion-justify-content-center">
+      <ion-row *ngIf="!this.login" class="menu__btn-acesso ion-justify-content-center">
         <ion-col size="6">
           <ion-row class="ion-align-items-center ion-justify-content-center">
             <ion-button class="menu__btn-acesso__entrar" [routerLink]="['/login']" fill="clear">Entrar</ion-button>
