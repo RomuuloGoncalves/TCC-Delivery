@@ -1,9 +1,12 @@
-
 .barra-superior{
     font-weight: bold;
-    color: var(--ion-color-primary);
+    color: var(--ion-color-primary-shade);
     margin-top: 1rem;
     margin-left: 1rem;
     font-size: 1.4rem;
+    margin-bottom: -2rem;
+}
 
+.borda {
+    outline: 1px solid red;
 }

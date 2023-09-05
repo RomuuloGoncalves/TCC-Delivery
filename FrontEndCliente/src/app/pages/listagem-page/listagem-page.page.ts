@@ -10,6 +10,30 @@ export class ListagemPagePage implements OnInit {
 
   constructor() { }
 
+  
+  filtrar: { [chave: string]: boolean } = {
+    "marmita": true,
+    "bebida": true,
+    "combo": true,
+    "acompanhamento": true
+  }
+
+  selectedOptions: string = "nenhum"
+
+  filtrarSelecao(e: any) {
+    console.log(e.detail.value);
+    console.log(this.filtrar[e.detail.value])
+    for (const [chave, valor] of Object.entries(this.filtrar)) {
+      this.filtrar[chave] = false
+    }
+
+    e.detail.value.forEach((chave: any) => {
+      if (this.filtrar.hasOwnProperty(chave)) {
+        this.filtrar[chave] = true; // Definir o valor booleano como true se a chave existir no objeto
+      }
+    });
+  }
+
   loaded: boolean = false
   produtos: Produto[] = [
     {

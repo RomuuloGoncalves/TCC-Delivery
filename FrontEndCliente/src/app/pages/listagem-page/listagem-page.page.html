@@ -1,13 +1,18 @@
 <ion-content [fullscreen]="true">
   <app-header></app-header>
 
-  <ion-row class="ion-justify-content-space-between barra-superior">
-    <ion-col>
+  <ion-row class="ion-justify-content-space-between ion-align-items-center barra-superior">
+    <ion-col size="8" size-lg="10">
       <ion-label>Marmitas</ion-label>
     </ion-col>
-    <ion-col size="3">
-      <ion-label>Filtros</ion-label>
-      <ion-icon name="filter-outline"></ion-icon>
+    <ion-col size="4" size-lg="2" class="ion-justify-content-center ">
+      <ion-select (ionChange)="filtrarSelecao($event)" interface="popover" mode="ios" placeholder="Filtros" [(ngModel)]="selectedOptions" class="">
+        <ion-select-option value="nenhum" default="true">Nenhum</ion-select-option>
+        <ion-select-option value="relevancia">Relevância</ion-select-option>
+        <ion-select-option value="menorPreco">Menor Preço</ion-select-option>
+        <ion-select-option value="maiorPreco">Maior Preço</ion-select-option>
+      </ion-select>
+      <!-- <ion-icon name="filter-outline"></ion-icon> -->
     </ion-col>
   </ion-row>
 
