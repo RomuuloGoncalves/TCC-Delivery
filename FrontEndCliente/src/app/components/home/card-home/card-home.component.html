@@ -1,4 +1,4 @@
-<ion-card class="card">
+<ion-card class="card"  id="open-custom-dialog-{{ this.produto?.COD_PRODUTO }}">
   <ion-card-content>
     <ion-row class="ion-align-items-center ion-justify-content-around">
       <ion-col size="6">
@@ -18,3 +18,11 @@
     </ion-row>
   </ion-card-content>
 </ion-card>
+
+<ion-modal id="modal-{{ this.produto?.COD_PRODUTO }}" #modal trigger="open-custom-dialog-{{ this.produto?.COD_PRODUTO }}">
+  <ng-template>
+    <div class="wrapper">
+      <h1>{{this.produto?.VARIACAO?.NOME}}</h1>
+    </div>
+  </ng-template>
+</ion-modal>

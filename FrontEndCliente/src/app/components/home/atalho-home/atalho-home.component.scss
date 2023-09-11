@@ -2,6 +2,12 @@
   height: 10rem;
 }
 
-.cards__atalho{
-  cursor: pointer;
+.cards{
+
+  margin-bottom: 1rem;
+
+  &__atalho{
+    cursor: pointer;
+  }
+
 }

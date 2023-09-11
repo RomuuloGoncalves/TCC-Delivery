@@ -138,13 +138,13 @@ export class MontagemMarmitaPage implements OnInit {
       },
     ],
   };
+
   constructor() {}
 
   ngOnInit() {}
 
   proximoCard() {
     this.swiper = this.swiperRef?.nativeElement.swiper.slideNext();
-    console.log(this.swiper)
   }
 
   voltarCard() {
@@ -173,4 +173,5 @@ export class MontagemMarmitaPage implements OnInit {
       VARIACAO: variacaoObj,
     });
   }
+
 }

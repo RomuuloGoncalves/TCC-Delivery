@@ -11,6 +11,7 @@ import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 import { SessaoCardsHomeModule } from 'src/app/components/home/sessao-cards-home/sessao-cards-home.module';
 import { AtalhoHomeComponent } from 'src/app/components/home/atalho-home/atalho-home.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   imports: [
@@ -23,5 +24,6 @@ import { AtalhoHomeComponent } from 'src/app/components/home/atalho-home/atalho-
     SessaoCardsHomeModule,
   ],
   declarations: [HomePage, AtalhoHomeComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePageModule {}
