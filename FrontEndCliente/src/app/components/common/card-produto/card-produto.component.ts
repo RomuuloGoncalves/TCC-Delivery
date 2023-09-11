@@ -15,24 +15,4 @@ export class CardProdutoComponent  implements OnInit {
   ngOnInit() { }
 
   @Input() produto!: Produto;
-
-  calcValorFinal() {
-
-    let valorDesconto, valorInicial, valorFinal
-    this.produto.VARIACAO ? ( 
-      valorDesconto = this.produto.VARIACAO.VALOR_DESCONTO,
-      valorInicial = this.produto.VARIACAO.VALOR_INICIAL 
-      ) : null
-
-    valorDesconto != undefined && valorInicial != undefined ? (
-     valorFinal = valorInicial - valorDesconto
-    ) : null
-
-    return valorFinal
-
-
-
-  }
-
-
 }

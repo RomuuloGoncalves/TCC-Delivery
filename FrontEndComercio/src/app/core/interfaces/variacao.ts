@@ -5,5 +5,6 @@ export interface Variacao {
   PORCENTAGEM_DESCONTO?: number;
   VALOR_DESCONTO?: number;
   VALOR_INICIAL?: number;
+  VALOR_FINAL?: number;
   IMAGEM?: string;
 }

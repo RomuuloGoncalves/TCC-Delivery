@@ -30,9 +30,6 @@ const routes: Routes = [
   {
     path: 'perfil',
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
-  },  {
-    path: 'listagem-page',
-    loadChildren: () => import('./pages/listagem-page/listagem-page.module').then( m => m.ListagemPagePageModule)
   },
   {
     path: 'privacidade',
@@ -45,6 +42,10 @@ const routes: Routes = [
   {
     path: 'cookies',
     loadChildren: () => import('./pages/cookies/cookies.module').then( m => m.CookiesPageModule)
+  },
+  {
+    path: 'listagem',
+    loadChildren: () => import('./pages/listagem/listagem.module').then( m => m.ListagemPageModule)
   },
 
 ];

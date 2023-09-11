@@ -45,6 +45,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 15.00,
         VALOR_INICIAL: 19.50,
         DESCRICAO: 'Batata muito boa tipo muito muito boa mesmo',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -57,6 +58,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 10.00,
         VALOR_INICIAL: 25.00,
         DESCRICAO: 'Peito de frango grelhado com temperos especiais',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -69,6 +71,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 8.00,
         VALOR_INICIAL: 12.50,
         DESCRICAO: 'Mix de folhas frescas com vegetais diversos',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -81,6 +84,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 20.00,
         VALOR_INICIAL: 32.00,
         DESCRICAO: 'Lasanha tradicional com carne bolonhesa',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -93,6 +97,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 25.00,
         VALOR_INICIAL: 45.00,
         DESCRICAO: 'Combinação variada de sushis e sashimis',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -105,6 +110,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 12.00,
         VALOR_INICIAL: 18.50,
         DESCRICAO: 'Hambúrguer com carne suculenta e molhos especiais',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -117,6 +123,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 18.00,
         VALOR_INICIAL: 26.00,
         DESCRICAO: 'Pizza com molho de tomate, queijo e manjericão',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -129,6 +136,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 14.00,
         VALOR_INICIAL: 21.50,
         DESCRICAO: 'Massa com molho pesto e pinhões',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -141,6 +149,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 10.00,
         VALOR_INICIAL: 16.00,
         DESCRICAO: 'Taco recheado com carne, feijão e vegetais',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -153,6 +162,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 16.00,
         VALOR_INICIAL: 28.00,
         DESCRICAO: 'Filé de peixe grelhado com temperos leves',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     }
@@ -168,6 +178,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 5.00,
         VALOR_INICIAL: 7.00,
         DESCRICAO: 'Refrigerante Coca-Cola gelado',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -180,6 +191,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 6.00,
         VALOR_INICIAL: 9.00,
         DESCRICAO: 'Suco natural de laranja fresca',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -192,6 +204,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 2.50,
         VALOR_INICIAL: 3.50,
         DESCRICAO: 'Garrafa de água mineral 500ml',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -204,6 +217,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 3.00,
         VALOR_INICIAL: 4.50,
         DESCRICAO: 'Café espresso quente e encorpado',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -216,6 +230,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 4.00,
         VALOR_INICIAL: 5.50,
         DESCRICAO: 'Chá de camomila calmante e reconfortante',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     }
@@ -231,6 +246,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 25.00,
         VALOR_INICIAL: 35.00,
         DESCRICAO: 'Combo com marmita, refrigerante e sobremesa',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -243,6 +259,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 20.00,
         VALOR_INICIAL: 28.00,
         DESCRICAO: 'Combo com salada, suco e fruta',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -255,6 +272,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 18.00,
         VALOR_INICIAL: 24.00,
         DESCRICAO: 'Combo com pipoca, refrigerante e doce',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     }
@@ -270,6 +288,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 5.00,
         VALOR_INICIAL: 7.00,
         DESCRICAO: 'Porção de batata frita crocante',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -282,6 +301,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 6.00,
         VALOR_INICIAL: 9.00,
         DESCRICAO: 'Mix de legumes frescos salteados na manteiga',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     },
@@ -294,6 +314,7 @@ export class ProdutosPage implements OnInit {
         VALOR_DESCONTO: 3.00,
         VALOR_INICIAL: 5.00,
         DESCRICAO: 'Porção de arroz branco soltinho',
+        VALOR_FINAL: 23.00,
         IMAGEM: ''
       }
     }

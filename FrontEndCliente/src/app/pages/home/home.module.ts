@@ -9,8 +9,8 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
-import { SessaoCardsHomeModule } from 'src/app/components/home/sessao-cards-home/sessao-cards-home.module';
 import { AtalhoHomeComponent } from 'src/app/components/home/atalho-home/atalho-home.component';
+import { SessaoCardsProdutoModule } from 'src/app/components/common/sessao-cards-produto/sessao-cards-produto.module';
 
 @NgModule({
   imports: [
@@ -20,7 +20,7 @@ import { AtalhoHomeComponent } from 'src/app/components/home/atalho-home/atalho-
     HomePageRoutingModule,
     FooterModule,
     HeaderModule,
-    SessaoCardsHomeModule,
+    SessaoCardsProdutoModule,
   ],
   declarations: [HomePage, AtalhoHomeComponent],
 })

@@ -20,6 +20,7 @@ export class HomePage implements OnInit {
         NOME: 'Batata Frita',
         VALOR_DESCONTO: 15.00,
         VALOR_INICIAL: 19.50,
+        VALOR_FINAL: 33,
         DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
         IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
       }
@@ -32,6 +33,7 @@ export class HomePage implements OnInit {
         NOME: 'Batata cozida',
         VALOR_DESCONTO: 10.00,
         VALOR_INICIAL: 14.50,
+        VALOR_FINAL: 33,
         DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
         IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
       }
@@ -44,6 +46,7 @@ export class HomePage implements OnInit {
         NOME: 'Batata Doce',
         VALOR_DESCONTO: 17.00,
         VALOR_INICIAL: 21.00,
+        VALOR_FINAL: 33,
         DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
         IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
       }
@@ -56,6 +59,7 @@ export class HomePage implements OnInit {
         NOME: 'Batata Chips',
         VALOR_DESCONTO: 20.00,
         VALOR_INICIAL: 25.50,
+        VALOR_FINAL: 33,
         DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
         IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
       }

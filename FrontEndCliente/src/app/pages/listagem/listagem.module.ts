@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ListagemPagePageRoutingModule } from './listagem-page-routing.module';
+import { ListagemPageRoutingModule } from './listagem-routing.module';
 
-import { ListagemPagePage } from './listagem-page.page';
-
+import { ListagemPage } from './listagem.page';
 import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 import { SessaoCardsProdutoModule } from 'src/app/components/common/sessao-cards-produto/sessao-cards-produto.module';
@@ -17,11 +16,11 @@ import { SessaoCardsProdutoModule } from 'src/app/components/common/sessao-cards
     CommonModule,
     FormsModule,
     IonicModule,
-    ListagemPagePageRoutingModule,
+    ListagemPageRoutingModule,
     FooterModule,
     HeaderModule,
     SessaoCardsProdutoModule
   ],
-  declarations: [ListagemPagePage]
+  declarations: [ListagemPage]
 })
-export class ListagemPagePageModule {}
+export class ListagemPageModule {}
