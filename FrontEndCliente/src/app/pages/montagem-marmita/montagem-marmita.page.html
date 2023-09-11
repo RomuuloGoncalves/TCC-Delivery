@@ -149,7 +149,10 @@
             </ion-text>
           </ion-row>
           <ion-row class="sessao-total ion-justify-content-between">
-            <app-contador></app-contador>
+            <app-contador
+              [contador]="this.qtddMarmita"
+              (change)="this.qtddMarmita = $event"
+              [min]="0"></app-contador>
             <ion-button>
               Adicionar
             </ion-button>

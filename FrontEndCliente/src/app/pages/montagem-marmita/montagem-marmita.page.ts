@@ -10,11 +10,14 @@ import Swiper from 'swiper';
   styleUrls: ['./montagem-marmita.page.scss'],
 })
 export class MontagemMarmitaPage implements OnInit {
+
+  qtddMarmita: number = 0;
+
   @ViewChild('swiper')
   swiperRef: ElementRef | undefined;
   swiper?: Swiper
 
-    breakpoints= {
+  breakpoints= {
       576: {
         slidesPerView: 1,
         spaceBetween: 15
@@ -23,7 +26,7 @@ export class MontagemMarmitaPage implements OnInit {
         slidesPerView: 2,
         spaceBetween: 20
       },
-    }
+  }
 
   marmita: Produto[] = [];
 
@@ -141,6 +144,7 @@ export class MontagemMarmitaPage implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
 
   proximoCard() {
     this.swiper = this.swiperRef?.nativeElement.swiper.slideNext();
