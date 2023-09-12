@@ -2,6 +2,10 @@
 /.idea
 Homestead.json
 Homestead.yaml
+<<<<<<< HEAD
 # .env editavel
+=======
+# env editavel
+>>>>>>> refs/remotes/origin/main
 # .env
 .phpunit.result.cache
