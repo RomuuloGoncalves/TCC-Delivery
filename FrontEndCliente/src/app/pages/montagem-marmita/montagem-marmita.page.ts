@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { Variacao } from 'src/app/core/interfaces/variacao';
+import { GrupoVariacoes } from 'src/app/core/interfaces/grupo-variacoes';
 
 import Swiper from 'swiper';
 
@@ -124,22 +125,19 @@ export class MontagemMarmitaPage implements OnInit {
     },
   ];
 
-  acompanhamentos: Produto = {
-    NOME: 'Acompanhamento',
+  acompanhamentos: GrupoVariacoes = {
+    COD_GRUPO_VARIACOES: 1,
+    TIPO: "Acompanhamentos",
     VARIACOES: [
       {
-        NOME: 'Bife',
-        DESCRICAO: 'Muito boa carne',
-      },
-      {
-        NOME: 'Mandioca',
-        DESCRICAO: 'Mandioca cozida',
-      },
-      {
-        NOME: 'Frango Frito',
-        DESCRICAO: 'Frango frito da casa',
-      },
-    ],
+        COD_VARIACAO: 1,
+        NOME: "mandioquinha",
+        DESCRICAO: "mandioca frita",
+        VALOR_INICIAL: 20.00,
+        VALOR_FINAL: 20.00,
+      }
+    ]
+
   };
 
   constructor() {}
@@ -176,6 +174,11 @@ export class MontagemMarmitaPage implements OnInit {
       NOME: ingredienteObj!.NOME,
       VARIACAO: variacaoObj,
     });
+  }
+
+  selecionarAcompanhamento(event: any) {
+
+
   }
 
 }

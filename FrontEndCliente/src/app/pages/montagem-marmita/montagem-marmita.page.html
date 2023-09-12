@@ -70,7 +70,6 @@
   <!-- categorias de ingredientes para seleção -->
   <ion-row class="ion-justify-content-center todos-ingredientes">
     <ion-col size="11" sizeMd="9" class="container-cards-ingredientes">
-      <!-- <swiper-container #swiper [pagination]="true" [loop]="true" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints" [initialSlide]="2"> -->
       <swiper-container #swiper [pagination]="true" [loop]="true" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints">
           <ng-container *ngFor="let ingrediente of this.ingredientes">
             <swiper-slide>
@@ -102,12 +101,14 @@
 
               <ion-card-content>
                 <ion-list>
-                  <ion-radio-group value="variacao">
-                    <ion-item *ngFor="let variacao of this.acompanhamentos.VARIACOES">
-                      <ion-label class="ion-text-capitalize">{{ variacao.NOME }}</ion-label>
-                      <ion-radio slot="end" value="{{ variacao.NOME }}"></ion-radio>
-                    </ion-item>
-                  </ion-radio-group>
+                  <ng-container *ngFor="let variacao of this.acompanhamentos.VARIACOES">
+                    <ion-radio-group value="variacao" (ionChange)="this.selecionarAcompanhamento($event)" [allowEmptySelection]="true">
+                      <ion-item>
+                        <ion-label class="ion-text-capitalize">{{ variacao.NOME }}</ion-label>
+                        <ion-radio slot="end" value="{{ variacao.NOME }}"></ion-radio>
+                      </ion-item>
+                    </ion-radio-group>
+                  </ng-container>
                 </ion-list>
               </ion-card-content>
             </ion-card>
