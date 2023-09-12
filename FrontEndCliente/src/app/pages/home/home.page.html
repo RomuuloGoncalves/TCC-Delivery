@@ -14,11 +14,33 @@
       </ion-row>
     </ion-col>
 
-    <ion-col size="8">
+    <ion-col size="12" sizeMd="8">
       <ion-row class="ion-justify-content-around">
+<<<<<<< HEAD
         <app-atalho-home [routerLink]="['listagem']" [nomeAtalho]="'Marmitas'" [iconeAtalho]="'../../../assets/img/home-icons/garfo_faca_outline.png'"></app-atalho-home>
         <app-atalho-home [nomeAtalho]="'Bebidas'" [iconeAtalho]="'../../../assets/img/home-icons/bebidas_outline.png'"></app-atalho-home>
         <app-atalho-home [nomeAtalho]="'Combos'" [iconeAtalho]="'../../../assets/img/home-icons/combos_outline.png'"></app-atalho-home>
+=======
+
+        <ion-col size=12>
+          <swiper-container #swiper [pagination]="true" [loop]="true" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints" [initialSlide]="2">
+
+            <swiper-slide>
+              <app-atalho-home [routerLink]="['listagem-page']" [nomeAtalho]="'Marmitas'" [iconeAtalho]="'../../../assets/img/home-icons/garfo_faca_outline.png'"></app-atalho-home>
+            </swiper-slide>
+            <swiper-slide>
+              <app-atalho-home [nomeAtalho]="'Bebidas'" [iconeAtalho]="'../../../assets/img/home-icons/bebidas_outline.png'"></app-atalho-home>
+            </swiper-slide>
+            <swiper-slide>
+              <app-atalho-home [nomeAtalho]="'Combos'" [iconeAtalho]="'../../../assets/img/home-icons/combos_outline.png'"></app-atalho-home>
+            </swiper-slide>
+          </swiper-container>
+        </ion-col>
+
+
+
+
+>>>>>>> 86d51b08783a2cf431e125c0b889d41a44c464d2
       </ion-row>
     </ion-col>
   </ion-row>

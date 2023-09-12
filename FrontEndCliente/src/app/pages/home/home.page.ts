@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Produto } from 'src/app/core/interfaces/produto';
+
+import Swiper from 'swiper';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,26 @@ import { Produto } from 'src/app/core/interfaces/produto';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+
+  @ViewChild('swiper')
+  swiperRef: ElementRef | undefined;
+  swiper?: Swiper
+
+
   constructor() { }
 
   ngOnInit() { }
+
+  breakpoints = {
+    576: {
+      slidesPerView: 1,
+      spaceBetween: 15
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 20
+    },
+  }
 
   produtos: Produto[] = [
     {
@@ -52,10 +71,10 @@ export class HomePage implements OnInit {
       }
     },
     {
-      COD_PRODUTO: 1,
+      COD_PRODUTO: 4,
       NOME: 'Batata',
       VARIACAO: {
-        COD_VARIACAO: 1,
+        COD_VARIACAO: 4,
         NOME: 'Batata Chips',
         VALOR_DESCONTO: 20.00,
         VALOR_INICIAL: 25.50,
@@ -65,4 +84,5 @@ export class HomePage implements OnInit {
       }
     }
   ]
+
 }
