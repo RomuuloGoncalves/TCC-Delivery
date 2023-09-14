@@ -1,0 +1,3 @@
+Add FK Cod_Grupo_Variações in Variações
+Add Attribute MultiSelecionavel (bool) Grupo_Variações
+Add Attribute QuantidadeVariação (int) Grupo_Variações
