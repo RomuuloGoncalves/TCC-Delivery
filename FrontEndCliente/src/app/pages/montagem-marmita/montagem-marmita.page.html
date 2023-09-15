@@ -19,42 +19,44 @@
               </ion-text>
               <ion-accordion-group>
                 <ng-container *ngFor="let ingrediente of this.marmita">
-                  <ion-accordion value="{{ ingrediente.NOME }}">
+                  <ion-accordion value="{{ ingrediente.TIPO }}">
                     <ion-item slot="header" color="light">
                       <ion-text>
-                        <b>{{ ingrediente.NOME }}</b>
+                        <b>{{ ingrediente.TIPO }}</b>
                       </ion-text>
                     </ion-item>
                     <div class="ion-padding" slot="content">
                       <ion-list>
-                        <ion-item>
-                          <ion-row class="ion-justify-content-between">
-                            <ion-col size="auto">
-                              <ion-text color="primary">
-                                <b>Variação:</b>
-                              </ion-text>
-                            </ion-col>
-                            <ion-col size="auto">
-                              <ion-text>
-                                <b>{{ ingrediente.VARIACAO?.NOME }}</b>
-                              </ion-text>
-                            </ion-col>
-                          </ion-row>
-                        </ion-item>
-                        <ion-item>
-                          <ion-row class="ion-justify-content-between">
-                            <ion-col size="auto">
-                              <ion-text color="primary">
-                                <b>Descrição:</b>
-                              </ion-text>
-                            </ion-col>
-                            <ion-col size="auto">
-                              <ion-text>
-                                <b>{{ ingrediente.VARIACAO?.DESCRICAO }}</b>
-                              </ion-text>
-                            </ion-col>
-                          </ion-row>
-                        </ion-item>
+                        <ng-container *ngFor="let variacao of ingrediente.VARIACOES ">
+                          <ion-item>
+                            <ion-row class="ion-justify-content-between">
+                              <ion-col size="auto">
+                                <ion-text color="primary">
+                                  <b>Variação:</b>
+                                </ion-text>
+                              </ion-col>
+                              <ion-col size="auto">
+                                <ion-text>
+                                  <b>{{ variacao.NOME }}</b>
+                                </ion-text>
+                              </ion-col>
+                            </ion-row>
+                          </ion-item>
+                          <ion-item>
+                            <ion-row class="ion-justify-content-between">
+                              <ion-col size="auto">
+                                <ion-text color="primary">
+                                  <b>Descrição:</b>
+                                </ion-text>
+                              </ion-col>
+                              <ion-col size="auto">
+                                <ion-text>
+                                  <b>{{ variacao.DESCRICAO }}</b>
+                                </ion-text>
+                              </ion-col>
+                            </ion-row>
+                          </ion-item>
+                        </ng-container>
                       </ion-list>
                     </div>
                   </ion-accordion>
@@ -71,49 +73,34 @@
   <ion-row class="ion-justify-content-center todos-ingredientes">
     <ion-col size="11" sizeMd="9" class="container-cards-ingredientes">
       <swiper-container #swiper [pagination]="true" [loop]="true" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints">
-          <ng-container *ngFor="let ingrediente of this.ingredientes">
+          <ng-container *ngFor="let ingrediente of this.ingredientes; let id = index">
             <swiper-slide>
               <ion-card class="selecionar-ingredientes">
                 <ion-card-header>
-                  <ion-card-title class="ion-text-capitalize">{{ ingrediente.NOME }}</ion-card-title>
-                  <ion-card-subtitle>Selecione o tipo de {{ ingrediente.NOME.toLocaleLowerCase()}}desejado</ion-card-subtitle>
+                  <ion-card-title class="ion-text-capitalize">{{ ingrediente.TIPO }}</ion-card-title>
+                  <ion-card-subtitle>Selecione o tipo de {{ ingrediente.TIPO.toLocaleLowerCase()}} desejado</ion-card-subtitle>
                 </ion-card-header>
 
                 <ion-card-content>
                   <ion-list>
-                    <ion-radio-group value="{{ ingrediente.NOME }}" (ionChange)="this.selecionarIngrediente($event)">
-                      <ion-item *ngFor="let variacao of this.ingrediente.VARIACOES; let id = index">
-                        <ion-label class="ion-text-capitalize">{{ variacao.NOME }}</ion-label>
-                        <ion-radio slot="end" value="{{ variacao.NOME }}"></ion-radio>
+                    <ng-container *ngIf="!ingrediente.MULTISELECIONAVEL">
+                      <ion-radio-group value="{{ ingrediente.TIPO }}" (ionChange)="this.selecionarIndividuais($event)">
+                        <ion-item *ngFor="let variacao of this.ingrediente.VARIACOES; let idIngrediente = index">
+                          <ion-label class="ion-text-capitalize">{{ variacao.NOME }}</ion-label>
+                          <ion-radio slot="end" value="{{ variacao.COD_VARIACAO! }}"></ion-radio>
+                        </ion-item>
+                      </ion-radio-group>
+                    </ng-container>
+                    <ng-container *ngIf="ingrediente.MULTISELECIONAVEL">
+                      <ion-item *ngFor="let variacao of this.ingrediente.VARIACOES; let idVariacao = index">
+                        <ion-checkbox (ionChange)="selecionarMultiSelecionaveis(idIngrediente, idVariacao, $event)">{{ variacao.NOME }}</ion-checkbox>
                       </ion-item>
-                    </ion-radio-group>
+                    </ng-container>
                   </ion-list>
                 </ion-card-content>
               </ion-card>
             </swiper-slide>
           </ng-container>
-          <swiper-slide>
-            <ion-card class="selecionar-ingredientes">
-              <ion-card-header>
-                <ion-card-title class="ion-text-capitalize">Acompanhamentos</ion-card-title>
-                <ion-card-subtitle>Selecione os acompanhamentos desejados</ion-card-subtitle>
-              </ion-card-header>
-
-              <ion-card-content>
-                <ion-list>
-                  <ng-container *ngFor="let variacao of this.acompanhamentos.VARIACOES">
-                    <ion-radio-group value="variacao" (ionChange)="this.selecionarAcompanhamento($event)" [allowEmptySelection]="true">
-                      <ion-item>
-                        <ion-label class="ion-text-capitalize">{{ variacao.NOME }}</ion-label>
-                        <ion-radio slot="end" value="{{ variacao.NOME }}"></ion-radio>
-                      </ion-item>
-                    </ion-radio-group>
-                  </ng-container>
-                </ion-list>
-              </ion-card-content>
-            </ion-card>
-          </swiper-slide>
-      
         </swiper-container>
 
         <ion-button (click)="this.proximoCard()" class="trocar-card-ingrediente prox-card">

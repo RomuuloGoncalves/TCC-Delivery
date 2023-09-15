@@ -29,116 +29,75 @@ export class MontagemMarmitaPage implements OnInit {
       },
   }
 
-  marmita: Produto[] = [];
-
-  ingredientes: Produto[] = [
-    {
-      NOME: 'Arroz',
-      VARIACOES: [
-        {
-          NOME: 'Branco',
-          DESCRICAO: 'arroz branco cozido',
-        },
-        {
-          NOME: 'Branco',
-          DESCRICAO: 'arroz branco cozido',
-        },
-        {
-          NOME: 'Branco',
-          DESCRICAO: 'arroz branco cozido',
-        },
-        {
-          NOME: 'Branco',
-          DESCRICAO: 'arroz branco cozido',
-        },
-        {
-          NOME: 'Branco',
-          DESCRICAO: 'arroz branco cozido',
-        },
-        {
-          NOME: 'Branco',
-          DESCRICAO: 'arroz branco cozido',
-        },
-        {
-          NOME: 'Branco',
-          DESCRICAO: 'arroz branco cozido',
-        },
-        {
-          NOME: 'Branco',
-          DESCRICAO: 'arroz branco cozido',
-        },
-        {
-          NOME: 'Branco',
-          DESCRICAO: 'arroz branco cozido',
-        },
-        {
-          NOME: 'Branco',
-          DESCRICAO: 'arroz branco cozido',
-        },
-        {
-          NOME: 'Branco',
-          DESCRICAO: 'arroz branco cozido',
-        },
-        {
-          NOME: 'Integral',
-          DESCRICAO: 'arroz integral cozido',
-        },
-        {
-          NOME: 'À grega',
-          DESCRICAO: 'arroz à grega cozido',
-        },
-      ],
-    },
-    {
-      NOME: 'Feijão',
-      VARIACOES: [
-        {
-          NOME: 'Preto',
-          DESCRICAO: 'feijão preto cozido',
-        },
-        {
-          NOME: 'Carioquinha',
-          DESCRICAO: 'feijão carioquinha cozido',
-        },
-        {
-          NOME: 'Fradinho',
-          DESCRICAO: 'feijão fradinho cozido',
-        },
-      ],
-    },
-    {
-      NOME: 'Salada',
-      VARIACOES: [
-        {
-          NOME: 'Alface',
-          DESCRICAO: 'Alface verdinha',
-        },
-        {
-          NOME: 'Pepino',
-          DESCRICAO: 'Pepino fresquinho',
-        },
-        {
-          NOME: 'Couve',
-          DESCRICAO: 'Couve ralada  ',
-        },
-      ],
-    },
+  marmita: GrupoVariacoes[] = [
   ];
 
-  acompanhamentos: GrupoVariacoes = {
-    COD_GRUPO_VARIACOES: 1,
-    TIPO: "Acompanhamentos",
-    VARIACOES: [
-      {
-        COD_VARIACAO: 1,
-        NOME: "mandioquinha",
-        DESCRICAO: "mandioca frita",
-        VALOR_INICIAL: 20.00,
-        VALOR_FINAL: 20.00,
-      }
-    ]
+  ingredientes: GrupoVariacoes[] = [
+    {
+      TIPO: 'Arroz',
+      COD_PROD: 2,
+      COD_GRUPO_VARIACOES: 3,
 
-  };
+      VARIACOES: [
+        {
+          COD_VARIACAO: 1,
+          NOME: 'Branco',
+          DESCRICAO: 'HUMMMMMMMMMM',
+          VALOR_INICIAL: 20.00,
+          VALOR_FINAL: 20.00,
+        },
+        {
+          COD_VARIACAO: 2,
+          NOME: 'Integral',
+          DESCRICAO: 'HUMMMMMMMMMM',
+          VALOR_INICIAL: 20.00,
+          VALOR_FINAL: 20.00,
+        },
+        {
+          COD_VARIACAO: 3,
+          NOME: 'Grego',
+          DESCRICAO: 'HUMMMMMMMMMM',
+          VALOR_INICIAL: 20.00,
+          VALOR_FINAL: 20.00,
+        },
+      ]
+    },
+    {
+      COD_GRUPO_VARIACOES: 1,
+      TIPO: "Acompanhamentos",
+      MULTISELECIONAVEL: true,
+      VARIACOES: [
+        {
+          COD_VARIACAO: 4,
+          NOME: "mandioquinha",
+          DESCRICAO: "mandioca frita",
+          VALOR_INICIAL: 20.00,
+          VALOR_FINAL: 20.00,
+        },
+        {
+          COD_VARIACAO: 5,
+          NOME: "Filé",
+          DESCRICAO: "Filé zica",
+          VALOR_INICIAL: 20.00,
+          VALOR_FINAL: 20.00,
+        },
+        {
+          COD_VARIACAO: 5,
+          NOME: "Filé Acebolado",
+          DESCRICAO: "Filé acebolado zika",
+          VALOR_INICIAL: 20.00,
+          VALOR_FINAL: 20.00,
+        },
+        {
+          COD_VARIACAO: 5,
+          NOME: "Patinho",
+          DESCRICAO: "Quack Quack zica",
+          VALOR_INICIAL: 20.00,
+          VALOR_FINAL: 20.00,
+        },
+      ]
+    }
+  ];
 
   constructor() {}
 
@@ -153,32 +112,12 @@ export class MontagemMarmitaPage implements OnInit {
     this.swiper = this.swiperRef?.nativeElement.swiper.slidePrev();
   }
 
-  selecionarIngrediente(event: any) {
-    const ingredienteNome = event.target.attributes['ng-reflect-value'].nodeValue;
-    const variacaoNome = event.detail.value;
-
-    const ingredienteObj = this.ingredientes.find((ingrediente: Produto) => {
-      return ingrediente.NOME === ingredienteNome;
-    });
-
-    const variacaoObj = ingredienteObj?.VARIACOES?.find((variacao: Variacao) => {
-      return variacao.NOME === variacaoNome;
-    });
-
-    this.marmita.filter((produto: Produto, id: number) => {
-      if (produto.NOME === ingredienteNome)
-        this.marmita.splice(id, 1);
-    })
-
-    this.marmita.push({
-      NOME: ingredienteObj!.NOME,
-      VARIACAO: variacaoObj,
-    });
+  selecionarIndividuais(event: any) {
+    console.log(event)
   }
 
-  selecionarAcompanhamento(event: any) {
-
-
+  selecionarMultiSelecionaveis(idIngrediente: number, idVariacao: number, event: any) {
+    console.log(event)
   }
 
 }
