@@ -11,26 +11,24 @@ import Swiper from 'swiper';
   styleUrls: ['./montagem-marmita.page.scss'],
 })
 export class MontagemMarmitaPage implements OnInit {
-
   qtddMarmita: number = 0;
 
   @ViewChild('swiper')
   swiperRef: ElementRef | undefined;
-  swiper?: Swiper
+  swiper?: Swiper;
 
-  breakpoints= {
-      576: {
-        slidesPerView: 1,
-        spaceBetween: 15
-      },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 20
-      },
-  }
+  breakpoints = {
+    576: {
+      slidesPerView: 1,
+      spaceBetween: 15,
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+  };
 
-  marmita: GrupoVariacoes[] = [
-  ];
+  marmita: GrupoVariacoes[] = [];
 
   ingredientes: GrupoVariacoes[] = [
     {
@@ -43,66 +41,65 @@ export class MontagemMarmitaPage implements OnInit {
           COD_VARIACAO: 1,
           NOME: 'Branco',
           DESCRICAO: 'HUMMMMMMMMMM',
-          VALOR_INICIAL: 20.00,
-          VALOR_FINAL: 20.00,
+          VALOR_INICIAL: 20.0,
+          VALOR_FINAL: 20.0,
         },
         {
           COD_VARIACAO: 2,
           NOME: 'Integral',
           DESCRICAO: 'HUMMMMMMMMMM',
-          VALOR_INICIAL: 20.00,
-          VALOR_FINAL: 20.00,
+          VALOR_INICIAL: 20.0,
+          VALOR_FINAL: 20.0,
         },
         {
           COD_VARIACAO: 3,
           NOME: 'Grego',
           DESCRICAO: 'HUMMMMMMMMMM',
-          VALOR_INICIAL: 20.00,
-          VALOR_FINAL: 20.00,
+          VALOR_INICIAL: 20.0,
+          VALOR_FINAL: 20.0,
         },
-      ]
+      ],
     },
     {
       COD_GRUPO_VARIACOES: 1,
-      TIPO: "Acompanhamentos",
+      TIPO: 'Acompanhamentos',
       MULTISELECIONAVEL: true,
       VARIACOES: [
         {
           COD_VARIACAO: 4,
-          NOME: "mandioquinha",
-          DESCRICAO: "mandioca frita",
-          VALOR_INICIAL: 20.00,
-          VALOR_FINAL: 20.00,
+          NOME: 'mandioquinha',
+          DESCRICAO: 'mandioca frita',
+          VALOR_INICIAL: 20.0,
+          VALOR_FINAL: 20.0,
         },
         {
           COD_VARIACAO: 5,
-          NOME: "Filé",
-          DESCRICAO: "Filé zica",
-          VALOR_INICIAL: 20.00,
-          VALOR_FINAL: 20.00,
+          NOME: 'Filé',
+          DESCRICAO: 'Filé zica',
+          VALOR_INICIAL: 20.0,
+          VALOR_FINAL: 20.0,
         },
         {
-          COD_VARIACAO: 5,
-          NOME: "Filé Acebolado",
-          DESCRICAO: "Filé acebolado zika",
-          VALOR_INICIAL: 20.00,
-          VALOR_FINAL: 20.00,
+          COD_VARIACAO: 6,
+          NOME: 'Filé Acebolado',
+          DESCRICAO: 'Filé acebolado zika',
+          VALOR_INICIAL: 20.0,
+          VALOR_FINAL: 20.0,
         },
         {
-          COD_VARIACAO: 5,
-          NOME: "Patinho",
-          DESCRICAO: "Quack Quack zica",
-          VALOR_INICIAL: 20.00,
-          VALOR_FINAL: 20.00,
+          COD_VARIACAO: 7,
+          NOME: 'Patinho',
+          DESCRICAO: 'Quack Quack zica',
+          VALOR_INICIAL: 20.0,
+          VALOR_FINAL: 20.0,
         },
-      ]
-    }
+      ],
+    },
   ];
 
   constructor() {}
 
   ngOnInit() {}
-
 
   proximoCard() {
     this.swiper = this.swiperRef?.nativeElement.swiper.slideNext();
@@ -112,12 +109,66 @@ export class MontagemMarmitaPage implements OnInit {
     this.swiper = this.swiperRef?.nativeElement.swiper.slidePrev();
   }
 
-  selecionarIndividuais(event: any) {
-    console.log(event)
+  private adicionarIngredienteMarmita(
+    ingrediente: GrupoVariacoes,
+    variacoes: Variacao[]
+  ) {
+    const objFinal: GrupoVariacoes = {
+      TIPO: ingrediente.TIPO,
+      COD_GRUPO_VARIACOES: ingrediente.COD_GRUPO_VARIACOES,
+      COD_VARIACAO: ingrediente.COD_VARIACAO,
+      VARIACOES: variacoes,
+    };
+    this.marmita.push(objFinal);
   }
 
-  selecionarMultiSelecionaveis(idIngrediente: number, idVariacao: number, event: any) {
-    console.log(event)
+  selecionarIndividuais(idIngrediente: number, event: any) {
+    const ingrediente: GrupoVariacoes = this.ingredientes[idIngrediente];
+    const idVariacao: number = event.detail.value;
+    const variacao: Variacao = ingrediente.VARIACOES![idVariacao];
+
+    this.marmita.forEach((ingredienteMarmita: GrupoVariacoes, id: number) => {
+      ingredienteMarmita.COD_GRUPO_VARIACOES === ingrediente.COD_GRUPO_VARIACOES
+        ? this.marmita.splice(id, 1)
+        : null;
+    });
+    this.adicionarIngredienteMarmita(ingrediente, [variacao]);
   }
 
+  selecionarMultiSelecionaveis(
+    idIngrediente: number,
+    idVariacao: number,
+    event: any
+  ) {
+    const ingrediente: GrupoVariacoes = this.ingredientes[idIngrediente];
+    const variacao: Variacao = ingrediente.VARIACOES![idVariacao];
+    const adicionarVariacao: boolean = event.detail.checked;
+    let adicionado: boolean = false;
+
+    if (adicionarVariacao) {
+      this.marmita.forEach((ingredienteMarmita: GrupoVariacoes) => {
+        ingredienteMarmita.COD_GRUPO_VARIACOES! === ingrediente.COD_GRUPO_VARIACOES!
+          ? (ingredienteMarmita.VARIACOES?.push(variacao), (adicionado = true))
+          : null;
+      });
+
+      !adicionado
+        ? this.adicionarIngredienteMarmita(ingrediente, [variacao])
+        : null;
+    } else {
+      this.marmita.forEach((ingredienteMarmita: GrupoVariacoes, id: number) => {
+        if (ingredienteMarmita.COD_GRUPO_VARIACOES! === ingrediente.COD_GRUPO_VARIACOES!) {
+          ingredienteMarmita.VARIACOES?.forEach((variacaoMarmita: Variacao, id: number) => {
+            (variacaoMarmita.COD_VARIACAO === variacao.COD_VARIACAO)
+              ? ingredienteMarmita.VARIACOES?.splice(id, 1)
+              : null
+          });
+
+          (!ingredienteMarmita.VARIACOES?.length)
+            ? this.marmita.splice(id, 1)
+            : null;
+        }
+      });
+    }
+  }
 }
