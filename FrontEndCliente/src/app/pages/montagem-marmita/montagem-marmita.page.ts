@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Produto } from 'src/app/core/interfaces/produto';
 import { Variacao } from 'src/app/core/interfaces/variacao';
 import { GrupoVariacoes } from 'src/app/core/interfaces/grupo-variacoes';
 
@@ -11,8 +10,6 @@ import Swiper from 'swiper';
   styleUrls: ['./montagem-marmita.page.scss'],
 })
 export class MontagemMarmitaPage implements OnInit {
-  qtddMarmita: number = 0;
-
   @ViewChild('swiper')
   swiperRef: ElementRef | undefined;
   swiper?: Swiper;
@@ -29,6 +26,10 @@ export class MontagemMarmitaPage implements OnInit {
   };
 
   marmita: GrupoVariacoes[] = [];
+
+  precoMarmtia: number = 0.00;
+  qtddMarmita: number = 1;
+  total: number = 0.00
 
   ingredientes: GrupoVariacoes[] = [
     {
@@ -170,5 +171,19 @@ export class MontagemMarmitaPage implements OnInit {
         }
       });
     }
+  }
+
+  calcPrecoMarmita() {
+    this.precoMarmtia = this.marmita.reduce((preco: number, ingredienteMarmita: GrupoVariacoes) => {
+      const totalVariacoes = ingredienteMarmita.VARIACOES?.reduce((preco: number, variacaoMarmita: Variacao) => {
+        return preco + variacaoMarmita.VALOR_FINAL!;
+      }, 0);
+      return preco + totalVariacoes!;
+    }, 0);
+    this.calcTotal();
+  }
+
+  calcTotal() {
+    this.total = this.precoMarmtia * this.qtddMarmita
   }
 }

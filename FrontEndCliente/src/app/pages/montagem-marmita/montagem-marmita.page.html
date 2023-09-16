@@ -84,7 +84,7 @@
                 <ion-card-content>
                   <ion-list>
                     <ng-container *ngIf="!ingrediente.MULTISELECIONAVEL">
-                      <ion-radio-group value="{{ ingrediente.TIPO }}" (ionChange)="this.selecionarIndividuais(idIngrediente, $event)">
+                      <ion-radio-group value="{{ ingrediente.TIPO }}" (ionChange)="this.selecionarIndividuais(idIngrediente, $event); this.calcPrecoMarmita()">
                         <ion-item *ngFor="let variacao of this.ingrediente.VARIACOES; let idVariacao = index">
                           <ion-label class="ion-text-capitalize">{{ variacao.NOME }}</ion-label>
                           <ion-radio slot="end" value="{{ idVariacao }}"></ion-radio>
@@ -93,7 +93,7 @@
                     </ng-container>
                     <ng-container *ngIf="ingrediente.MULTISELECIONAVEL">
                       <ion-item *ngFor="let variacao of this.ingrediente.VARIACOES; let idVariacao = index">
-                        <ion-checkbox (ionChange)="selecionarMultiSelecionaveis(idIngrediente, idVariacao, $event)">{{ variacao.NOME }}</ion-checkbox>
+                        <ion-checkbox (ionChange)="selecionarMultiSelecionaveis(idIngrediente, idVariacao, $event); this.calcPrecoMarmita()">{{ variacao.NOME }}</ion-checkbox>
                       </ion-item>
                     </ng-container>
                   </ion-list>
@@ -125,7 +125,7 @@
               <p>Preço</p>
             </ion-text>
             <ion-text class="sessao-total__info">
-              <p>0.00</p>
+              <p>{{ this.precoMarmtia }}</p>
             </ion-text>
           </ion-row>
           <ion-row class="sessao-total ion-justify-content-between">
@@ -133,14 +133,14 @@
               <p>Total</p>
             </ion-text>
             <ion-text class="sessao-total__info">
-              <p>0.00</p>
+              <p>{{ this.total}}</p>
             </ion-text>
           </ion-row>
           <ion-row class="sessao-total ion-justify-content-between">
             <app-contador
               [contador]="this.qtddMarmita"
-              (change)="this.qtddMarmita = $event"
-              [min]="0"></app-contador>
+              (change)="this.qtddMarmita = $event; this.calcTotal()"
+              [min]="1"></app-contador>
             <ion-button>
               Adicionar
             </ion-button>
