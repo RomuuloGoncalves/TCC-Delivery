@@ -27,6 +27,19 @@ ion-icon {
   gap: 20px;
 }
 
+form{
+  gap: 20px;
+  ion-row{
+      margin: 10px 0;
+  }
+
+  ion-input[type=date]::-webkit-calendar-picker-indicator{
+    filter: invert(1);
+  }
+  ion-textarea{
+      height: 100px;
+  }
+}
 
 @media(max-width: 1490px) {
   .grid {

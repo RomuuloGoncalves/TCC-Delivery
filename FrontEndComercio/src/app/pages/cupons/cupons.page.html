@@ -22,11 +22,40 @@
               </ion-list>
             </ion-col>
 
-            <ion-col size="1">
+            <ion-col id="open-custom-dialog" size="1">
               <ion-icon name="add-outline"></ion-icon>
             </ion-col>
 
+            <ion-modal id="example-modal" #modal trigger="open-custom-dialog">
+              <ng-template>
+                <div class="wrapper">
+                  <h1 class="ion-text-center">Criar novo cupom</h1>
 
+                  <ion-row class="ion-justify-content-center">
+                    <ion-col size="10">
+                      <form action="" method="post">
+                        <ion-row>
+                          <ion-input label="Nome do cupom" label-placement="floating" fill="outline" placeholder="Digite o nome do cupom"></ion-input>
+                        </ion-row>
+                        <ion-row>
+                          <ion-input label="Valor do cupom" label-placement="floating" fill="outline" placeholder="Digite o valor do cupom"></ion-input>
+                        </ion-row>
+                        <ion-row>
+                          <ion-input type="date" label="Validade do cupom" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
+                        </ion-row>
+                        <ion-row>
+                          <ion-input type="number" label="Quantidade de cupons" label-placement="floating" fill="outline" placeholder="Digite a quantidade de cupons"></ion-input>
+                        </ion-row>
+                        <ion-row>
+                          <ion-textarea label="Descrição" label-placement="floating" fill="outline" placeholder="Insira uma descrição para o produto"></ion-textarea>
+                        </ion-row>
+                        <ion-button size="large" type="submit" expand="block">Novo Produto</ion-button>
+                      </form>
+                    </ion-col>
+                  </ion-row>
+                </div>
+              </ng-template>
+            </ion-modal>
           </ion-row>
         </ion-col>
       </ion-row>
@@ -36,13 +65,10 @@
       <ion-row class="ion-justify-content-center">
         <ion-col size="11.9" class="grid">
           <ng-container *ngFor="let cupom of this.cupons">
-            <app-cards-cupons
-              [cupom]="cupom"
-            ></app-cards-cupons>
+            <app-cards-cupons [cupom]="cupom"></app-cards-cupons>
           </ng-container>
         </ion-col>
       </ion-row>
-
     </ion-col>
   </ion-row>
 </ion-content>
