@@ -12,7 +12,8 @@
             <ion-col size="11">
               <ion-list>
                 <ion-item>
-                  <ion-select (ionChange)="filtrarSelecao($event)" interface="popover" mode="ios" placeholder="Select" [multiple]="true" [(ngModel)]="selectedOptions">
+                  <ion-select (ionChange)="filtrarSelecao($event)" interface="popover" mode="ios" placeholder="Select"
+                    [multiple]="true" [(ngModel)]="selectedOptions">
                     <ion-select-option value="marmita" Default="true">Marmitas</ion-select-option>
                     <ion-select-option value="bebida">Bebidas</ion-select-option>
                     <ion-select-option value="combo">Combo</ion-select-option>
@@ -22,9 +23,40 @@
               </ion-list>
             </ion-col>
 
-            <ion-col size="1">
+            <ion-col id="open-custom-dialog" size="1">
               <ion-icon name="add-outline"></ion-icon>
             </ion-col>
+
+            <ion-modal id="example-modal" #modal trigger="open-custom-dialog">
+              <ng-template>
+                <div class="wrapper">
+                  <h1 class="ion-text-center">Criar novo produto</h1>
+
+                  <ion-row class="ion-justify-content-center">
+                    <ion-col size="10">
+                      <form action="" method="post">
+                        <ion-row>
+                          <ion-input label="Nome do produto" label-placement="floating" fill="outline" placeholder="Digite o nome do produto"></ion-input>
+                        </ion-row>
+                        <ion-row>
+                          <ion-input label="Preço" label-placement="floating" fill="outline" placeholder="Digite o valor do produto"></ion-input>
+                        </ion-row>
+                        <ion-row>
+                          <ion-input label="Outline input" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
+                        </ion-row>
+                        <ion-row>
+                          <ion-input label="Outline input" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
+                        </ion-row>
+                        <ion-row>
+                          <ion-textarea label="Descrição" label-placement="floating" fill="outline" placeholder="Insira uma descrição para o produto"></ion-textarea>
+                        </ion-row>
+                        <ion-button size="large" type="submit" expand="block">Novo Produto</ion-button>
+                      </form>
+                    </ion-col>
+                  </ion-row>
+                </div>
+              </ng-template>
+            </ion-modal>
 
 
           </ion-row>

@@ -19,3 +19,13 @@ ion-icon {
     font-size: 2rem;
     font-weight: 600;
 }
+
+form{
+    gap: 20px;
+    ion-row{
+        margin: 10px 0;
+    }
+    ion-textarea{
+        height: 100px;
+    }
+}
