@@ -7,14 +7,19 @@ import { IonicModule } from '@ionic/angular';
 import { PerfilPageRoutingModule } from './perfil-routing.module';
 
 import { PerfilPage } from './perfil.page';
+import { FooterModule } from 'src/app/components/common/footer/footer.module';
+import { HeaderModule } from 'src/app/components/common/header/header.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PerfilPageRoutingModule
+    PerfilPageRoutingModule,
+    FooterModule,
+    HeaderModule
   ],
   declarations: [PerfilPage]
 })
 export class PerfilPageModule {}
+ 
