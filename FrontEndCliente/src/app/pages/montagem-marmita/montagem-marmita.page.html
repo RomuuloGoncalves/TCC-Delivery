@@ -120,12 +120,12 @@
           <app-observacoes></app-observacoes>
         </ion-col>
         <ion-col size="12" sizeLg="4">
-          <ion-row class="sessao-total ion-justify-content-between">
+          <ion-row class="sessao-total ion-justify-content-between ion-margin-right">
             <ion-text class="sessao-total__preco">
               <p>Preço</p>
             </ion-text>
             <ion-text class="sessao-total__info">
-              <p>{{ this.precoMarmtia }}</p>
+              <p>{{ this.precoMarmtia.toFixed(2).replace('.', ',') }}</p>
             </ion-text>
           </ion-row>
           <ion-row class="sessao-total ion-justify-content-between">
@@ -133,7 +133,7 @@
               <p>Total</p>
             </ion-text>
             <ion-text class="sessao-total__info">
-              <p>{{ this.total}}</p>
+              <p>{{ this.total.toFixed(2).replace('.', ',') }}</p>
             </ion-text>
           </ion-row>
           <ion-row class="sessao-total ion-justify-content-between">
