@@ -9,7 +9,7 @@
 
       <ion-row class="ion-justify-content-center">
         <ion-col size="12" sizeMd="8">
-          <ion-searchbar show-cancel-button="never" placeholder="Pesquisar"></ion-searchbar>
+          <ion-searchbar show-cancel-button="never" placeholder="Pesquisar" (ionInput)="this.filtrar($event)" debounce="250"></ion-searchbar>
         </ion-col>
       </ion-row>
     </ion-col>
@@ -31,10 +31,6 @@
             </swiper-slide>
           </swiper-container>
         </ion-col>
-
-
-
-
       </ion-row>
     </ion-col>
   </ion-row>
@@ -45,8 +41,13 @@
     </ion-col>
   </ion-row>
 
-  <ng-container *ngFor="let produto of this.produtos">
+  <ng-container *ngFor="let produto of this.produtosFiltrados">
     <app-sessao-cards-produto [tituloSessao]="produto.NOME" [cardMontagem]="true" [produto]="produto"></app-sessao-cards-produto>
+  </ng-container>
+  <ng-container *ngIf="!this.produtosFiltrados.length">
+    <ion-text class="ion-text-center">
+      <h3>Não há produtos!</h3>
+    </ion-text>
   </ng-container>
 
   <app-footer></app-footer>

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Produto } from 'src/app/core/interfaces/produto';
+import { Variacao } from 'src/app/core/interfaces/variacao';
 
 import Swiper from 'swiper';
 
@@ -20,20 +21,22 @@ export class HomePage implements OnInit {
   ngOnInit() { }
 
   breakpoints = {
-    576: {
+    975: {
       slidesPerView: 1,
       spaceBetween: 15
     },
-    768: {
+    976: {
       slidesPerView: 3,
       spaceBetween: 20
     },
   }
 
+  loading: boolean = false;
+
   produtos: Produto[] = [
     {
       COD_PRODUTO: 1,
-      NOME: 'Batata',
+      NOME: 'Porções',
       VARIACOES: [
         {
           COD_VARIACAO: 1,
@@ -46,7 +49,7 @@ export class HomePage implements OnInit {
         },
         {
           COD_VARIACAO: 1,
-          NOME: 'Batata Frita',
+          NOME: 'Mandioca Frita',
           VALOR_DESCONTO: 15.00,
           VALOR_INICIAL: 19.50,
           VALOR_FINAL: 33,
@@ -55,7 +58,7 @@ export class HomePage implements OnInit {
         },
         {
           COD_VARIACAO: 1,
-          NOME: 'Batata Frita',
+          NOME: 'Frango Frita',
           VALOR_DESCONTO: 15.00,
           VALOR_INICIAL: 19.50,
           VALOR_FINAL: 33,
@@ -66,11 +69,11 @@ export class HomePage implements OnInit {
     },
     {
       COD_PRODUTO: 1,
-      NOME: 'Batata',
+      NOME: 'Doces',
       VARIACOES: [
         {
           COD_VARIACAO: 1,
-          NOME: 'Batata Frita',
+          NOME: 'Pudim',
           VALOR_DESCONTO: 15.00,
           VALOR_INICIAL: 19.50,
           VALOR_FINAL: 33,
@@ -79,7 +82,7 @@ export class HomePage implements OnInit {
         },
         {
           COD_VARIACAO: 1,
-          NOME: 'Batata Frita',
+          NOME: 'Arroz Doce',
           VALOR_DESCONTO: 15.00,
           VALOR_INICIAL: 19.50,
           VALOR_FINAL: 33,
@@ -88,7 +91,7 @@ export class HomePage implements OnInit {
         },
         {
           COD_VARIACAO: 1,
-          NOME: 'Batata Frita',
+          NOME: 'Angu',
           VALOR_DESCONTO: 15.00,
           VALOR_INICIAL: 19.50,
           VALOR_FINAL: 33,
@@ -97,6 +100,29 @@ export class HomePage implements OnInit {
         }
       ]
     },
-  ]
+  ];
 
+  produtosFiltrados: Produto[] = [...this.produtos];
+
+  filtrar(event: any) {
+    const pesquisa: string = event.detail.value.toLowerCase().trim();
+
+    this.produtosFiltrados = [...
+        this.produtos.map((produto: Produto) => {
+        const nProduto: Produto = {
+          COD_PRODUTO: produto.COD_PRODUTO,
+          NOME: produto.NOME,
+          VARIACOES: [
+            ...produto.VARIACOES!.filter((variacao: Variacao) => {
+              return variacao.NOME.toLowerCase().trim().startsWith(pesquisa);
+          })]
+        };
+        return nProduto;
+      })
+    ];
+
+    this.produtosFiltrados = [...this.produtosFiltrados.filter((produto: Produto) => {
+      return produto.VARIACOES?.length;
+    })];
+  }
 }
