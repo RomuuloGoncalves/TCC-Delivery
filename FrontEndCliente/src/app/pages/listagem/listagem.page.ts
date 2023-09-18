@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Route } from '@angular/router';
 import { Produto } from 'src/app/core/interfaces/produto';
 
 @Component({
@@ -8,8 +9,13 @@ import { Produto } from 'src/app/core/interfaces/produto';
 })
 export class ListagemPage implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
+  nomeProduto?: string;
+
+  ngOnInit() {
+    this.route.snapshot.paramMap.get('produto');
+  }
   
   filtrar: { [chave: string]: boolean } = {
     "marmita": true,
@@ -33,10 +39,10 @@ export class ListagemPage implements OnInit {
       }
     });
   }
-
+  
   loading : boolean = false;
   produto: Produto =
-    {
+  {
       COD_PRODUTO: 1,
       NOME: 'Batata',
       VARIACOES: [
@@ -124,6 +130,4 @@ export class ListagemPage implements OnInit {
       ] 
     }
   
-  ngOnInit() {
-  }
 }

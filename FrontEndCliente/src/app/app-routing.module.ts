@@ -44,7 +44,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/cookies/cookies.module').then( m => m.CookiesPageModule)
   },
   {
-    path: 'listagem',
+    path: 'listagem/:produto',
     loadChildren: () => import('./pages/listagem/listagem.module').then( m => m.ListagemPageModule)
   },
 
