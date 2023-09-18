@@ -45,8 +45,9 @@
     </ion-col>
   </ion-row>
 
-  <app-sessao-cards-produto [tituloSessao]="'Destaques'" [cardMontagem]="true" [produtos]="this.produtos"></app-sessao-cards-produto>
-  <app-sessao-cards-produto [tituloSessao]="'Marmitas Prontas'" [produtos]="this.produtos"></app-sessao-cards-produto>
+  <ng-container *ngFor="let produto of this.produtos">
+    <app-sessao-cards-produto [tituloSessao]="produto.NOME" [cardMontagem]="true" [produto]="produto"></app-sessao-cards-produto>
+  </ng-container>
 
   <app-footer></app-footer>
 </ion-content> 

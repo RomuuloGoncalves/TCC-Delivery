@@ -13,7 +13,7 @@ export class SessaoCardsProdutoComponent  implements OnInit {
   ngOnInit() {}  
   
   @Input() tituloSessao?: string;
-  @Input() produtos?: Produto[];
+  @Input() produto?: Produto;
   @Input() cardMontagem: boolean = false;
 
 }

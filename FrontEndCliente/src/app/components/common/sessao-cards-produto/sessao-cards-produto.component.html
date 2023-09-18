@@ -7,7 +7,9 @@
 
   <ion-col size="12">
     <ion-row class="grid ion-justify-content-start">
-      <app-card-produto *ngFor="let produto of produtos" [produto]="produto" class="cards"></app-card-produto>
+      <ng-container *ngFor="let variacao of this.produto!.VARIACOES">
+        <app-card-produto [variacao]="variacao" class="cards"></app-card-produto>
+      </ng-container>
     </ion-row>
   </ion-col>
 </ion-row>

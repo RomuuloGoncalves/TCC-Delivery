@@ -34,191 +34,95 @@ export class ListagemPage implements OnInit {
     });
   }
 
-  loaded: boolean = false
-  produtos: Produto[] = [
+  loading : boolean = false;
+  produto: Produto =
     {
       COD_PRODUTO: 1,
       NOME: 'Batata',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.00,
-        VALOR_INICIAL: 19.50,
-        VALOR_FINAL: 30.00,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
-      }
-    },
-    {
-      COD_PRODUTO: 1,
-      NOME: 'Batata',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.00,
-        VALOR_INICIAL: 19.50,
-        VALOR_FINAL: 30.00,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
-      }
-    },
-    {
-      COD_PRODUTO: 1,
-      NOME: 'Batata',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.00,
-        VALOR_INICIAL: 19.50,
-        VALOR_FINAL: 30.00,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
-      }
-    },
-    {
-      COD_PRODUTO: 1,
-      NOME: 'Batata',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.00,
-        VALOR_INICIAL: 19.50,
-        VALOR_FINAL: 30.00,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
-      }
-    },
-    {
-      COD_PRODUTO: 1,
-      NOME: 'Batata',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.00,
-        VALOR_INICIAL: 19.50,
-        VALOR_FINAL: 30.00,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
-      }
-    },
-    {
-      COD_PRODUTO: 1,
-      NOME: 'Batata',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.00,
-        VALOR_INICIAL: 19.50,
-        VALOR_FINAL: 30.00,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
-      }
-    },
-    {
-      COD_PRODUTO: 1,
-      NOME: 'Batata',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.00,
-        VALOR_INICIAL: 19.50,
-        VALOR_FINAL: 30.00,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
-      }
-    },
-    {
-      COD_PRODUTO: 1,
-      NOME: 'Batata',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.00,
-        VALOR_INICIAL: 19.50,
-        VALOR_FINAL: 30.00,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
-      }
-    },
-    {
-      COD_PRODUTO: 1,
-      NOME: 'Batata',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.00,
-        VALOR_INICIAL: 19.50,
-        VALOR_FINAL: 30.00,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
-      }
-    },
-    {
-      COD_PRODUTO: 1,
-      NOME: 'Batata',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.00,
-        VALOR_INICIAL: 19.50,
-        VALOR_FINAL: 30.00,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
-      }
-    },
-    {
-      COD_PRODUTO: 1,
-      NOME: 'Batata',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.00,
-        VALOR_INICIAL: 19.50,
-        VALOR_FINAL: 30.00,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
-      }
-    },
-    {
-      COD_PRODUTO: 1,
-      NOME: 'Batata',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.00,
-        VALOR_INICIAL: 19.50,
-        VALOR_FINAL: 30.00,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
-      }
-    },
-    {
-      COD_PRODUTO: 1,
-      NOME: 'Batata',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.00,
-        VALOR_INICIAL: 19.50,
-        VALOR_FINAL: 30.00,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
-      }
-    },
-    {
-      COD_PRODUTO: 1,
-      NOME: 'Batata',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.00,
-        VALOR_INICIAL: 19.50,
-        VALOR_FINAL: 30.00,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
-      }
-    },
-  ]
+      VARIACOES: [
+        {
+          COD_VARIACAO: 1,
+          NOME: 'Batata Frita',
+          VALOR_DESCONTO: 15.00,
+          VALOR_INICIAL: 19.50,
+          VALOR_FINAL: 30.00,
+          DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
+          IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
+        },
+        {
+          COD_VARIACAO: 1,
+          NOME: 'Batata Frita',
+          VALOR_DESCONTO: 15.00,
+          VALOR_INICIAL: 19.50,
+          VALOR_FINAL: 30.00,
+          DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
+          IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
+        },
+        {
+          COD_VARIACAO: 1,
+          NOME: 'Batata Frita',
+          VALOR_DESCONTO: 15.00,
+          VALOR_INICIAL: 19.50,
+          VALOR_FINAL: 30.00,
+          DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
+          IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
+        },
+        {
+          COD_VARIACAO: 1,
+          NOME: 'Batata Frita',
+          VALOR_DESCONTO: 15.00,
+          VALOR_INICIAL: 19.50,
+          VALOR_FINAL: 30.00,
+          DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
+          IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
+        },
+        {
+          COD_VARIACAO: 1,
+          NOME: 'Batata Frita',
+          VALOR_DESCONTO: 15.00,
+          VALOR_INICIAL: 19.50,
+          VALOR_FINAL: 30.00,
+          DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
+          IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
+        },
+        {
+          COD_VARIACAO: 1,
+          NOME: 'Batata Frita',
+          VALOR_DESCONTO: 15.00,
+          VALOR_INICIAL: 19.50,
+          VALOR_FINAL: 30.00,
+          DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
+          IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
+        },
+        {
+          COD_VARIACAO: 1,
+          NOME: 'Batata Frita',
+          VALOR_DESCONTO: 15.00,
+          VALOR_INICIAL: 19.50,
+          VALOR_FINAL: 30.00,
+          DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
+          IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
+        },
+        {
+          COD_VARIACAO: 1,
+          NOME: 'Batata Frita',
+          VALOR_DESCONTO: 15.00,
+          VALOR_INICIAL: 19.50,
+          VALOR_FINAL: 30.00,
+          DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
+          IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
+        },
+        {
+          COD_VARIACAO: 1,
+          NOME: 'Batata Frita',
+          VALOR_DESCONTO: 15.00,
+          VALOR_INICIAL: 19.50,
+          VALOR_FINAL: 30.00,
+          DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
+          IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
+        },
+      ] 
+    }
   
   ngOnInit() {
   }
