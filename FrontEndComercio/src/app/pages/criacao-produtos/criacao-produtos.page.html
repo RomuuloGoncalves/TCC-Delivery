@@ -26,8 +26,7 @@
         </ion-row>
         <ion-row>
 
-
-          <ng-container *ngFor="let obj of criarFormularoProduto">
+          <!-- <ng-container *ngFor="let obj of criarFormularoProduto">
             <div *ngIf="this.produtoSelecionado == obj.NOME">
               <div *ngFor="let grupo_variacoes of obj.GRUPO_VARIACOES">
                 <div *ngIf="this.grupoVariacao == grupo_variacoes.TIPO">
@@ -38,11 +37,29 @@
               </div>
 
             </div>
-          </ng-container>
+          </ng-container> -->
+          <ion-col size="12">
+
+            <ion-row>
+              <ion-input label="Nome" label-placement="floating" fill="outline" placeholder="Digite o nome"></ion-input>
+            </ion-row>
+            <ion-row>
+              <ion-input label="Valor" label-placement="floating" fill="outline"
+                placeholder="Digite o valor"></ion-input>
+            </ion-row>
+            <ion-row>
+              <ion-input type="number" label="Valor do desconto" label-placement="floating" fill="outline"
+                placeholder="Digite o Valor do desconto"></ion-input>
+            </ion-row>
+            <ion-row>
+              <ion-textarea label="Descrição" label-placement="floating" fill="outline"
+                placeholder="Insira uma descrição"></ion-textarea>
+            </ion-row>
+          </ion-col>
         </ion-row>
 
         <ion-button size="large" type="submit" expand="block">Novo Produto</ion-button>
-      </form>
+    </form>
     </ion-col>
   </ion-row>
 </ion-content>
