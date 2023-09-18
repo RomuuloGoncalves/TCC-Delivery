@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'historico',
     loadChildren: () => import('./pages/historico/historico.module').then( m => m.HistoricoPageModule)
   },
+  {
+    path: 'criacao-produtos',
+    loadChildren: () => import('./pages/criacao-produtos/criacao-produtos.module').then( m => m.CriacaoProdutosPageModule)
+  },
 ];
 
 @NgModule({

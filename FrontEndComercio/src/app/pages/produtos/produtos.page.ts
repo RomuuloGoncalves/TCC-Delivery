@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GrupoVariacoes } from 'src/app/core/interfaces/grupo-variacoes';
 import { Produto } from 'src/app/core/interfaces/produto';
 
 @Component({
@@ -34,6 +35,36 @@ export class ProdutosPage implements OnInit {
       }
     });
   }
+  // "marmitas": [
+  //   {"Tamanho": [
+  //     "P", "G", "M"
+  //   ]},
+  //   {"Arroz":[
+  //     "Integral", "Branco", "A grega"
+  //   ]},
+  //   {"Feijão":[
+  //     "Carioca", "Preto", "Tropeiro"
+  //   ]},
+  //   {"Mistura":[
+  //     "Frango", "Bisteca", "Linguiça"
+  //   ]},
+  //   {"Acompanhamento":[
+  //     "Batata Frita", "Mandioca", "Pipoca"
+  //   ]}
+  // ],
+  // "Bebidas": [
+  //   {"Tamanho":[
+
+  //   ]},
+  //   "Sabor",
+  // ],
+  // "Combos": [
+  //   "Fé",
+  //   "Muita Fé",
+  //   "Muita muita fé mesmo"
+  // ],
+
+
 
   marmitas: Produto[] = [
     {

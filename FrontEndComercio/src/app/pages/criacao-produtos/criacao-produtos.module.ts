@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PerfilPageRoutingModule } from './perfil-routing.module';
+import { CriacaoProdutosPageRoutingModule } from './criacao-produtos-routing.module';
 
-import { PerfilPage } from './perfil.page';
-import { FooterModule } from 'src/app/components/common/footer/footer.module';
+import { CriacaoProdutosPage } from './criacao-produtos.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 
 @NgModule({
@@ -15,11 +14,9 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    PerfilPageRoutingModule,
-    FooterModule,
+    CriacaoProdutosPageRoutingModule,
     HeaderModule
   ],
-  declarations: [PerfilPage]
+  declarations: [CriacaoProdutosPage]
 })
-export class PerfilPageModule {}
- 
+export class CriacaoProdutosPageModule {}

@@ -1,0 +1,65 @@
+<ion-content [fullscreen]="true">
+  <app-header></app-header>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="6">
+      <form action="" method="post">
+        <ion-row>
+          <ion-col size="6">
+            <ion-select (ionChange)="produtoSelecionadoSelect($event)" aria-label="Variacao" interface="popover"
+              placeholder="Selecione a variação">
+              <ng-container *ngFor="let obj of criarFormularoProduto">
+                <ion-select-option value="{{obj.NOME}}">{{ obj.NOME }}</ion-select-option>
+              </ng-container>
+            </ion-select>
+          </ion-col>
+          <ion-col size="6">
+            <ion-select (ionChange)="grupoVariacaoSelecionada($event)" aria-label="Variacao" interface="popover"
+              placeholder="Selecione a variação">
+              <ng-container *ngFor="let obj of criarFormularoProduto">
+                <div *ngIf="this.produtoSelecionado == obj.NOME">
+                  <ion-select-option *ngFor="let variacao of obj.GRUPO_VARIACOES" value="{{variacao.TIPO}}">{{
+                    variacao.TIPO }}</ion-select-option>
+                </div>
+              </ng-container>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+
+          <!-- <ng-container *ngFor="let obj of criarFormularoProduto">
+            <div *ngIf="this.produtoSelecionado == obj.NOME">
+              <div *ngFor="let grupo_variacoes of obj.GRUPO_VARIACOES">
+                <div *ngIf="this.grupoVariacao == grupo_variacoes.TIPO">
+
+                  <ion-input *ngFor="let variacao of grupo_variacoes.VARIACOES" value="{{variacao.NOME}}"
+                    label="{{variacao.NOME}}" label-placement="floating" fill="outline"></ion-input>
+                </div>
+              </div>
+
+            </div>
+          </ng-container> -->
+          <ion-col size="12">
+
+            <ion-row>
+              <ion-input label="Nome" label-placement="floating" fill="outline" placeholder="Digite o nome"></ion-input>
+            </ion-row>
+            <ion-row>
+              <ion-input label="Valor" label-placement="floating" fill="outline"
+                placeholder="Digite o valor"></ion-input>
+            </ion-row>
+            <ion-row>
+              <ion-input type="number" label="Valor do desconto" label-placement="floating" fill="outline"
+                placeholder="Digite o Valor do desconto"></ion-input>
+            </ion-row>
+            <ion-row>
+              <ion-textarea label="Descrição" label-placement="floating" fill="outline"
+                placeholder="Insira uma descrição"></ion-textarea>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+        <ion-button size="large" type="submit" expand="block">Novo Produto</ion-button>
+    </form>
+    </ion-col>
+  </ion-row>
+</ion-content>
