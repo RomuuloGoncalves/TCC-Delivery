@@ -1,6 +1,15 @@
-.barra-superior{
+.barra-superior {
+  &__titulo {
+    font-size: 2.1em;
     font-weight: bold;
-    color: var(--ion-color-primary-shade);
-    margin-top: 1rem;
-    font-size: 2rem;
+  }
+
+  &__filtro {
+    border-radius: 2px;
+    font-weight: bold;
+
+    ion-select::part(icon) {
+      color: var(--ion-color-dark);
+    }
+  }
 }

@@ -1,29 +1,28 @@
 <ion-content [fullscreen]="true">
   <app-header></app-header>
 
-  <ion-row class="barra-superior ion-justify-content-center ion-no-padding">
+  <ion-row class="barra-superior ion-justify-content-center ion-padding-top">
     <ion-col size="11">
-      <ion-row class="ion-justify-content-between ion-align-items-center">
+      <ion-text color="primary" class="ion-text-center">
+        <h1 class="barra-superior__titulo">{{ this.nomeProduto }}</h1>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-justify-content-center ion-align-items-center">
+    <ion-col size="10" sizeMd="8">
+      <ion-searchbar show-cancel-button="never" placeholder="Pesquisar" debounce="250"></ion-searchbar>
+      <ion-row class="barra-superior__filtro ion-justify-content-end ion-align-items-center">
         <ion-col size="auto">
-          <ion-row class="ion-align-items-start">
-            <ion-label>Marmitas</ion-label>
-          </ion-row>
-        </ion-col>
-        
-        <ion-col size="auto">
-          <ion-row class="ion-align-items-end">
-            <ion-select (ionChange)="filtrarSelecao($event)" interface="popover" mode="ios" placeholder="Filtros"
-              [(ngModel)]="selectedOptions" class="">
-              <ion-select-option value="nenhum" default="true">Nenhum</ion-select-option>
-              <ion-select-option value="relevancia">Relevância</ion-select-option>
-              <ion-select-option value="menorPreco">Menor Preço</ion-select-option>
-              <ion-select-option value="maiorPreco">Maior Preço</ion-select-option>
-            </ion-select>
-          </ion-row>
+          <ion-select (ionChange)="filtrarSelecao($event)" [multiple]="true" interface="popover" mode="ios" placeholder="Filtros"
+            [(ngModel)]="selectedOptions">
+            <ion-select-option value="relevancia">Relevância</ion-select-option>
+            <ion-select-option value="menorPreco">Menor Preço</ion-select-option>
+            <ion-select-option value="maiorPreco">Maior Preço</ion-select-option>
+          </ion-select>
         </ion-col>
       </ion-row>
     </ion-col>
-  </ion-row>  
+  </ion-row>
 
   <app-sessao-cards-produto [produto]="this.produto"></app-sessao-cards-produto>
 

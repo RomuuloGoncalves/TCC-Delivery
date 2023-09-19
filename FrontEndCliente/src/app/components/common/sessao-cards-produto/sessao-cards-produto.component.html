@@ -1,7 +1,7 @@
 <ion-row class="ion-margin">
-  <ion-col size="12">
+  <ion-col size="12" *ngIf="this.tituloSessao">
     <ion-row class="titulo-sessao">
-      <ion-label>{{ tituloSessao }}</ion-label>
+      <ion-label>{{ this.tituloSessao }}</ion-label>
     </ion-row>
   </ion-col>
 
