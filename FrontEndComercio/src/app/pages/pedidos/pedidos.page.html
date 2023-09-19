@@ -1,0 +1,76 @@
+<ion-content [fullscreen]="true">
+  <app-header></app-header>
+
+  <ion-row class="ion-padding ion-justify-content-center ion-align-items-center">
+    <ion-col size="11.9">
+      <ion-row class="ion-justify-content-between ion-align-items-center">
+        <ion-col size="12" sizeMd="auto">
+          <ion-label id="titulo">Pedidos</ion-label>
+        </ion-col>
+        <ion-col size="12" sizeMd="auto">
+          <ion-row class="ion-justify-between ion-align-items-center">
+            <ion-col size="12">
+              <ion-list>
+                <ion-item>
+                  <ion-select interface="popover" mode="ios" placeholder="Filtrar" [multiple]="true">
+                    <ion-select-option value="" Default="true">...</ion-select-option>
+                    <ion-select-option value="">...</ion-select-option>
+                    <ion-select-option value="">...</ion-select-option>
+                    <ion-select-option value="">...</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+
+    <ion-col size="11">
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="11.9">
+          <ion-row>
+            <ion-col>
+              <ion-list>
+                <ion-item>
+                  <ion-row class="container__item ion-align-items-center ion-justify-content-around">
+                    <ion-col size="3">
+                      <ion-row class="ion-justify-content-center ion-align-items-center">
+                        <ion-text>ID</ion-text>
+                      </ion-row>
+                    </ion-col>
+
+                    <ion-col size="3">
+                      <ion-row class="ion-justify-content-center ion-align-items-center">
+                        <ion-text>Status</ion-text>
+                      </ion-row>
+                    </ion-col>
+
+                    <ion-col size="3">
+                      <ion-row class="ion-justify-content-center ion-align-items-center">
+                        <ion-text>Quantidade de itens</ion-text>
+                      </ion-row>
+                    </ion-col>
+
+                    <ion-col size="3">
+                      <ion-row class="ion-justify-content-center ion-align-items-center">
+                        <ion-text>Horário</ion-text>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row>
+                </ion-item>
+                <app-card-pedidos></app-card-pedidos>
+                <app-card-pedidos></app-card-pedidos>
+                <app-card-pedidos></app-card-pedidos>
+                <app-card-pedidos></app-card-pedidos>
+                <app-card-pedidos></app-card-pedidos>
+                <app-card-pedidos></app-card-pedidos>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+
+    </ion-col>
+  </ion-row>
+</ion-content>

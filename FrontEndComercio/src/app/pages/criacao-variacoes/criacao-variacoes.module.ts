@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
-import { HomePageRoutingModule } from './home-routing.module';
-import { HomePage } from './home.page';
+
+import { CriacaoVariacoesPageRoutingModule } from './criacao-variacoes-routing.module';
+
+import { CriacaoVariacoesPage } from './criacao-variacoes.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 
 @NgModule({
@@ -11,9 +14,9 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
-    HeaderModule,
+    CriacaoVariacoesPageRoutingModule,
+    HeaderModule
   ],
-  declarations: [HomePage]
+  declarations: [CriacaoVariacoesPage]
 })
-export class HomePageModule {}
+export class CriacaoVariacoesPageModule {}

@@ -4,7 +4,7 @@
       <ion-menu-button mode="md"></ion-menu-button>
 
       <span></span>
-      <ion-label [routerLink]="['']">Pedidos</ion-label>
+      <ion-label [routerLink]="['/pedidos']">Pedidos</ion-label>
       <span></span>
       <ion-label [routerLink]="['/historico']">Histórico</ion-label>
       <span></span>
@@ -22,7 +22,7 @@
       <ion-col size="auto">
         <ion-row class="ion-align-items-center">
           <ion-menu-button mode="md"></ion-menu-button>
-          <ion-label id="header__titulo">
+          <ion-label id="header__titulo" [routerLink]="['']">
             Divina Refeição
           </ion-label>
         </ion-row>
@@ -42,7 +42,7 @@
                 alt="Avatar perfil" src="../../../../assets/imgs/header-icons/user.png" />
             </ion-row>
 
-            <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" side="left" alignment="end"
+            <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" side="bottom" alignment="start"
               mode="ios">
               <ng-template ngIf="{{popover}}">
                 <ion-content class="ion-padding">
