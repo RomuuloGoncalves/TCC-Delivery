@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Produto } from 'src/app/core/interfaces/produto';
+import { Variacao } from 'src/app/core/interfaces/variacao';
 
 @Component({
   selector: 'app-listagem',
@@ -17,7 +18,8 @@ export class ListagemPage implements OnInit {
 
     if (!this.ehStringValida(this.nomeProduto)) this.Router.navigate(['..']);
 
-    this.nomeProduto = this.nomeProduto[0].toUpperCase() + this.nomeProduto.slice(1);
+    this.nomeProduto =
+      this.nomeProduto[0].toUpperCase() + this.nomeProduto.slice(1);
   }
 
   filtrar: { [chave: string]: boolean } = {
@@ -37,59 +39,61 @@ export class ListagemPage implements OnInit {
       {
         id_variacao: 1,
         nome: 'Pudim',
-        valor_desconto: 15.00,
-        valor_inicial: 19.50,
+        valor_desconto: 15.0,
+        valor_inicial: 19.5,
         valor_final: 33,
         descricao: 'Bata muito boa tipo muito muito boa mesmo',
-        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
+        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png',
       },
       {
         id_variacao: 1,
         nome: 'Arroz Doce',
-        valor_desconto: 15.00,
-        valor_inicial: 19.50,
+        valor_desconto: 15.0,
+        valor_inicial: 19.5,
         valor_final: 33,
         descricao: 'Bata muito boa tipo muito muito boa mesmo',
-        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
+        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png',
       },
       {
         id_variacao: 1,
         nome: 'Angu',
-        valor_desconto: 15.00,
-        valor_inicial: 19.50,
+        valor_desconto: 15.0,
+        valor_inicial: 19.5,
         valor_final: 33,
         descricao: 'Bata muito boa tipo muito muito boa mesmo',
-        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
+        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png',
       },
       {
         id_variacao: 1,
         nome: 'Angu',
-        valor_desconto: 15.00,
-        valor_inicial: 19.50,
+        valor_desconto: 15.0,
+        valor_inicial: 19.5,
         valor_final: 33,
         descricao: 'Bata muito boa tipo muito muito boa mesmo',
-        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
+        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png',
       },
       {
         id_variacao: 1,
         nome: 'Angu',
-        valor_desconto: 15.00,
-        valor_inicial: 19.50,
+        valor_desconto: 15.0,
+        valor_inicial: 19.5,
         valor_final: 33,
         descricao: 'Bata muito boa tipo muito muito boa mesmo',
-        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
+        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png',
       },
       {
         id_variacao: 1,
         nome: 'Angu',
-        valor_desconto: 15.00,
-        valor_inicial: 19.50,
+        valor_desconto: 15.0,
+        valor_inicial: 19.5,
         valor_final: 33,
         descricao: 'Bata muito boa tipo muito muito boa mesmo',
-        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
-      }
-    ]
-  }
+        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png',
+      },
+    ],
+  };
+
+  produtoFiltrado: Produto = this.produto;
 
   ehStringValida(str: string) {
     const regexString: RegExp = /^[A-Za-z]+$/;
@@ -106,5 +110,22 @@ export class ListagemPage implements OnInit {
         this.filtrar[chave] = true;
       }
     });
+  }
+
+  filtrarPesquisa(event: any) {
+    const pesquisa: string = event.detail.value.toLowerCase().trim();
+
+    this.produtoFiltrado = {
+      id_produto: this.produto.id_produto,
+      nome: this.produto.nome,
+      variacoes: [
+        ...this.produto.variacoes!.filter((variacao: Variacao) => {
+          const nomeVariacao: string = variacao.nome.toLowerCase().trim();
+          return (
+            nomeVariacao.startsWith(pesquisa) || nomeVariacao.endsWith(pesquisa)
+          );
+        }),
+      ],
+    };
   }
 }

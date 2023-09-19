@@ -9,7 +9,7 @@
 
       <ion-row class="ion-justify-content-center">
         <ion-col size="12" sizeMd="8">
-          <ion-searchbar show-cancel-button="never" placeholder="Pesquisar" (ionInput)="this.filtrar($event)" debounce="250"></ion-searchbar>
+          <ion-searchbar show-cancel-button="never" placeholder="Pesquisar" (ionInput)="this.filtrarPesquisa($event)" debounce="250"></ion-searchbar>
         </ion-col>
       </ion-row>
     </ion-col>
@@ -51,4 +51,4 @@
   </ng-container>
 
   <app-footer></app-footer>
-</ion-content> 
+</ion-content>

@@ -10,7 +10,7 @@
   </ion-row>
   <ion-row class="ion-justify-content-center ion-align-items-center">
     <ion-col size="10" sizeMd="8">
-      <ion-searchbar show-cancel-button="never" placeholder="Pesquisar" debounce="250"></ion-searchbar>
+      <ion-searchbar show-cancel-button="never" (ionInput)="this.filtrarPesquisa($event)" placeholder="Pesquisar" debounce="250"></ion-searchbar>
       <ion-row class="barra-superior__filtro ion-justify-content-end ion-align-items-center">
         <ion-col size="auto">
           <ion-select (ionChange)="filtrarSelecao($event)" [multiple]="true" interface="popover" mode="ios" placeholder="Filtros"
@@ -24,7 +24,13 @@
     </ion-col>
   </ion-row>
 
-  <app-sessao-cards-produto [produto]="this.produto"></app-sessao-cards-produto>
+  <app-sessao-cards-produto [produto]="this.produtoFiltrado"></app-sessao-cards-produto>
+  
+  <ng-container *ngIf="!this.produtoFiltrado.variacoes?.length">
+    <ion-text class="ion-text-center">
+      <h3>Não há produtos!</h3>
+    </ion-text>
+  </ng-container>
 
   <app-footer></app-footer>
 </ion-content>
