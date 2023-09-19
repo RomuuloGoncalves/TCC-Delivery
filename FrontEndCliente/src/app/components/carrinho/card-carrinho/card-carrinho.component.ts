@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Produto } from 'src/app/core/interfaces/produto';
 
 @Component({
@@ -11,12 +11,12 @@ export class CardCarrinhoComponent implements OnInit {
   constructor() { }
 
   @Input() produto?: Produto;
-  @Input() quantidade: number = 0;
+  @Output() calc: EventEmitter<any> = new EventEmitter();
 
   ngOnInit() { }
 
-  addQuantidade(qtde: number) {
-    this.quantidade += qtde;
-  }
 
+  calcTotal() {
+
+  }
 }

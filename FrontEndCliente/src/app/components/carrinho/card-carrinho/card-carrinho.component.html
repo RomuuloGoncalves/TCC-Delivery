@@ -1,5 +1,5 @@
 <ion-item>
-  <ion-row class="container__item ion-align-items-center ion-justify-content-around">
+  <ion-row class="container__item ion-align-items-center ion-justify-content-around ion-padding-top ion-padding-bottom">
     <ion-col size="3">
       <ion-row class="ion-justify-content-center ion-align-items-center">
         <ion-col>
@@ -15,23 +15,23 @@
 
     <ion-col size="3">
       <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-text>{{ this.produto?.variacao?.valor_desconto }}</ion-text>
+        <ion-text>R$ {{ this.produto?.variacao?.valor_final?.toFixed(2)?.replace('.', ',') }}</ion-text>
       </ion-row>
     </ion-col>
 
     <ion-col size="3">
       <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-button (click)="this.addQuantidade(-1)" class="btn-qtde">-</ion-button>
-        <ion-text class="ion-padding ion-text-center" id="this.quantidade">
-          <p>{{ this.quantidade }}</p>
-        </ion-text>
-        <ion-button (click)="this.addQuantidade(1)" class="btn-qtde">+</ion-button>
+        <app-contador
+          [contador]="this.produto!.quantidade!"
+          [min]="0"
+          (change)="this.produto!.quantidade = $event; this.calc.emit()"
+          ></app-contador>
       </ion-row>
     </ion-col>
 
     <ion-col size="3">
       <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-text>R$ {{this.produto?.variacao?.valor_desconto! * this.quantidade}}</ion-text>
+        <ion-text>R$ {{ this.produto?.subtotal?.toFixed(2)?.replace('.', ',') }}</ion-text>
       </ion-row>
     </ion-col>
   </ion-row>

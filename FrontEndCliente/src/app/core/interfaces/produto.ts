@@ -7,4 +7,6 @@ export interface Produto {
   variacao?: Variacao;
   variacoes?: Variacao[];
   grupo_variacoes?: GrupoVariacoes[];
+  quantidade?: number;
+  subtotal?: number;
 }

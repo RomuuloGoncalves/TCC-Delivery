@@ -5,13 +5,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './contador.component.html',
   styleUrls: ['./contador.component.scss'],
 })
-export class ContadorComponent  implements OnInit {
-
-  constructor() { }
+export class ContadorComponent implements OnInit {
+  constructor() {}
 
   @Input() public contador: number = 0;
-  @Output() public change: any = new EventEmitter<number>()
-  @Input() public min?: number
+  @Output() public change: any = new EventEmitter<number>();
+  @Input() public min?: number;
   @Input() public max?: number;
   @Input() public gap: number = 1;
 
@@ -20,20 +19,18 @@ export class ContadorComponent  implements OnInit {
   incContador() {
     const resultado = this.contador + this.gap;
 
-    if (this.max === undefined)
+    if (this.max === undefined || resultado <= this.max!) {
       this.contador = resultado;
-    else if (resultado <= this.max!)
-      this.contador = resultado;
-    this.change.emit(this.contador);
+      this.change.emit(this.contador);
+    }
   }
 
   decContador() {
     const resultado = this.contador - this.gap;
 
-    if (this.min === undefined) 
+    if (this.min === undefined || resultado >= this.min!) {
       this.contador = resultado;
-    else if (resultado >= this.min!)
-      this.contador = resultado;
-    this.change.emit(this.contador);
+      this.change.emit(this.contador);
+    }
   }
 }

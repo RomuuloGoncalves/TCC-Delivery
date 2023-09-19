@@ -14,35 +14,32 @@
       <ion-list>
         <ion-item>
           <ion-row class="container__item ion-align-items-center ion-justify-content-around">
-            <ion-col size="3">
+            <ion-col offset="3" size="3">
               <ion-row class="ion-justify-content-center ion-align-items-center">
-                <ion-text>Itens no carrinho</ion-text>
+                <ion-text><b>Preço</b></ion-text>
               </ion-row>
             </ion-col>
 
             <ion-col size="3">
               <ion-row class="ion-justify-content-center ion-align-items-center">
-                <ion-text> Preço </ion-text>
+                <ion-text><b>Quantidade</b></ion-text>
               </ion-row>
             </ion-col>
 
             <ion-col size="3">
               <ion-row class="ion-justify-content-center ion-align-items-center">
-                <ion-text>Quantidade</ion-text>
-              </ion-row>
-            </ion-col>
-
-            <ion-col size="3">
-              <ion-row class="ion-justify-content-center ion-align-items-center">
-                <ion-text> Subtotal </ion-text>
+                <ion-text><b>Subtotal</b></ion-text>
               </ion-row>
             </ion-col>
           </ion-row>
         </ion-item>
 
-        <app-card-carrinho></app-card-carrinho>
-        <app-card-carrinho></app-card-carrinho>
-        <app-card-carrinho></app-card-carrinho>
+        <ng-container *ngFor="let produto of this.produtos">
+          <app-card-carrinho
+            [produto]="produto"
+            (calc)="this.calcTotal()"
+          ></app-card-carrinho>
+        </ng-container>
       </ion-list>
     </ion-col>
   </ion-row>
@@ -56,7 +53,7 @@
       <ion-row class="ion-align-items-center">
         <ion-col size="1">
           <ion-row>
-            <img src="../../../assets/img/carrinho-icons/cupom 1.png" alt="" />
+            <img src="../../../assets/img/carrinho-icons/cupom 1.png" alt="Cupom" />
           </ion-row>
         </ion-col>
         <ion-col size="auto">
@@ -73,19 +70,19 @@
         <ion-col size="8">
           <ion-row class="ion-justify-content-between">
             <ion-label class="finalizacao">Subtotal</ion-label>
-            <ion-text class="finalizacao__valores">R$ 210,00</ion-text>
+            <ion-text class="finalizacao__valores">R$ {{ this.subtotal.toFixed(2).replace('.', ',') }}</ion-text>
           </ion-row>
         </ion-col>
         <ion-col size="8">
           <ion-row class="ion-justify-content-between">
             <ion-label class="finalizacao">Frete</ion-label>
-            <ion-text class="finalizacao__valores">R$ 10,00</ion-text>
+            <ion-text class="finalizacao__valores">R$ {{ this.frete.toFixed(2).replace('.', ',') }}</ion-text>
           </ion-row>
         </ion-col>
         <ion-col size="8">
           <ion-row class="ion-justify-content-between">
             <ion-label id="finalizacao__total" class="finalizacao">Total</ion-label>
-            <ion-text class="finalizacao__valores">R$ 220,00</ion-text>
+            <ion-text class="finalizacao__valores">R$ {{ this.total.toFixed(2).replace('.', ',') }}</ion-text>
           </ion-row>
         </ion-col>
 
