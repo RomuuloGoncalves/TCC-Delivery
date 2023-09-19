@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'criacao-produtos',
     loadChildren: () => import('./pages/criacao-produtos/criacao-produtos.module').then( m => m.CriacaoProdutosPageModule)
   },
+  {
+    path: 'criacao-cupons',
+    loadChildren: () => import('./pages/criacao-cupons/criacao-cupons.module').then( m => m.CriacaoCuponsPageModule)
+  },
 ];
 
 @NgModule({

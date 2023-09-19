@@ -4,13 +4,13 @@
       <ion-menu-button mode="md"></ion-menu-button>
 
       <span></span>
-      <ion-label [routerLink]="['']" routerDirection="root" routerLinkActive="active-item">Pedidos</ion-label>
+      <ion-label [routerLink]="['']">Pedidos</ion-label>
       <span></span>
-      <ion-label [routerLink]="['/historico']" routerDirection="root" routerLinkActive="active-item">Histórico</ion-label>
+      <ion-label [routerLink]="['/historico']">Histórico</ion-label>
       <span></span>
-      <ion-label [routerLink]="['/produtos']" routerDirection="root" routerLinkActive="active-item">Produtos</ion-label>
+      <ion-label [routerLink]="['/produtos']">Produtos</ion-label>
       <span></span>
-      <ion-label [routerLink]="['/cupons']" routerDirection="root" routerLinkActive="active-item">Cupons</ion-label>
+      <ion-label [routerLink]="['/cupons']">Cupons</ion-label>
       <span></span>
     </ion-row>
   </ion-content>
@@ -38,11 +38,12 @@
                 <img alt="Icone carrinho" src="../../../../assets/imgs/header-icons/notificacao.png" />
               </ion-button>
 
-              <img (click)="presentPopover($event)" class="ativar-popover user ion-justify-content-end" alt="Avatar perfil"
-                src="../../../../assets/imgs/header-icons/user.png" />
+              <img (click)="presentPopover($event)" class="ativar-popover user ion-justify-content-end"
+                alt="Avatar perfil" src="../../../../assets/imgs/header-icons/user.png" />
             </ion-row>
 
-            <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" side="left" alignment="end" mode="ios">
+            <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" side="left" alignment="end"
+              mode="ios">
               <ng-template ngIf="{{popover}}">
                 <ion-content class="ion-padding">
                   <ion-row class="">

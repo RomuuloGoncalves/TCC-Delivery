@@ -5,6 +5,10 @@ form {
     margin: 10px 0;
   }
 
+  ion-input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+
   ion-textarea {
     height: 100px;
   }

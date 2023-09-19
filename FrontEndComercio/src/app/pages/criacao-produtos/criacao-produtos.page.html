@@ -2,11 +2,14 @@
   <app-header></app-header>
   <ion-row class="ion-justify-content-center">
     <ion-col size="6">
+      <ion-row class="ion-justify-content-center">
+        <h1>CRIAR PRODUTO</h1>
+      </ion-row>
       <form action="" method="post">
         <ion-row>
           <ion-col size="6">
             <ion-select (ionChange)="produtoSelecionadoSelect($event)" aria-label="Variacao" interface="popover"
-              placeholder="Selecione a variação">
+              placeholder="Selecione o produto">
               <ng-container *ngFor="let obj of criarFormularoProduto">
                 <ion-select-option value="{{obj.NOME}}">{{ obj.NOME }}</ion-select-option>
               </ng-container>
@@ -58,8 +61,15 @@
           </ion-col>
         </ion-row>
 
-        <ion-button size="large" type="submit" expand="block">Novo Produto</ion-button>
-    </form>
+        <ion-row>
+          <ion-col size=6>
+            <ion-button size="large" type="submit" [routerLink]="['/produtos']" expand="block">Voltar</ion-button>
+          </ion-col>
+          <ion-col size=6>
+            <ion-button size="large" type="submit" expand="block">Novo Produto</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
     </ion-col>
   </ion-row>
 </ion-content>
