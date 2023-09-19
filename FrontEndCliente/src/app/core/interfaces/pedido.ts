@@ -1,18 +1,14 @@
 import { Produto } from "./produto";
 
 export interface Pedido {
-  COD_PEDIDO?: number;
-  VALOR_TOTAL?: number;
-  VALOR_COM_DESCONTO: number;
-  DATA_PEDIDO: string;
-  DATA_ENTREGA: string;
-  DATA_PAGAMENTO: string;
-  COMPLEMENTO?: string;
-  BAIRRO: string;
-  NUMERO: string;
-  RUA: string;
-  CEP: string;
-  FORMA_PAGAMENTO: string;
-  STATUS: string;
-  PRODUTOS: Produto[];
+  id_pedido?: number;
+  valor_total?: number;
+  valor_com_desconto: number;
+  data_pedido: string;
+  data_entrega: string;
+  data_pagamento: string;
+  endereco_pedido: string;
+  forma_pagamento: string;
+  status: string;
+  produtos: Produto[];
 }

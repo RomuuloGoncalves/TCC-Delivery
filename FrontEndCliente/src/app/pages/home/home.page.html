@@ -42,7 +42,7 @@
   </ion-row>
 
   <ng-container *ngFor="let produto of this.produtosFiltrados">
-    <app-sessao-cards-produto [tituloSessao]="produto.NOME" [cardMontagem]="true" [produto]="produto"></app-sessao-cards-produto>
+    <app-sessao-cards-produto [tituloSessao]="produto.nome" [cardMontagem]="true" [produto]="produto"></app-sessao-cards-produto>
   </ng-container>
   <ng-container *ngIf="!this.produtosFiltrados.length">
     <ion-text class="ion-text-center">

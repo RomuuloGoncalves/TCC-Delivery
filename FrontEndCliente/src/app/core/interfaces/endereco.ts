@@ -1,9 +1,9 @@
 export interface Endereco {
-  COD_ENDERECO?: number;
-  NOME: string;
-  COMPLEMENTO?: string;
-  BAIRRO: string;
-  NUMERO: string;
-  RUA: string;
-  CEP: string;
+  id_endereco?: number;
+  nome: string;
+  complemento?: string;
+  bairro: string;
+  numero: string;
+  rua: string;
+  cep: string;
 }
