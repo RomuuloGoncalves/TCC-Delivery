@@ -35,68 +35,68 @@ export class HomePage implements OnInit {
 
   produtos: Produto[] = [
     {
-      COD_PRODUTO: 1,
-      NOME: 'Porções',
-      VARIACOES: [
+      id_produto: 1,
+      nome: 'Porções',
+      variacoes: [
         {
-          COD_VARIACAO: 1,
-          NOME: 'Batata Frita',
-          VALOR_DESCONTO: 15.00,
-          VALOR_INICIAL: 19.50,
-          VALOR_FINAL: 33,
-          DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-          IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
+          id_variacao: 1,
+          nome: 'Batata Frita',
+          valor_desconto: 15.00,
+          valor_inicial: 19.50,
+          valor_final: 33,
+          descricao: 'Bata muito boa tipo muito muito boa mesmo',
+          imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
         },
         {
-          COD_VARIACAO: 1,
-          NOME: 'Mandioca Frita',
-          VALOR_DESCONTO: 15.00,
-          VALOR_INICIAL: 19.50,
-          VALOR_FINAL: 33,
-          DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-          IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
+          id_variacao: 1,
+          nome: 'Mandioca Frita',
+          valor_desconto: 15.00,
+          valor_inicial: 19.50,
+          valor_final: 33,
+          descricao: 'Bata muito boa tipo muito muito boa mesmo',
+          imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
         },
         {
-          COD_VARIACAO: 1,
-          NOME: 'Frango Frita',
-          VALOR_DESCONTO: 15.00,
-          VALOR_INICIAL: 19.50,
-          VALOR_FINAL: 33,
-          DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-          IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
+          id_variacao: 1,
+          nome: 'Frango Frita',
+          valor_desconto: 15.00,
+          valor_inicial: 19.50,
+          valor_final: 33,
+          descricao: 'Bata muito boa tipo muito muito boa mesmo',
+          imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
         }
       ]
     },
     {
-      COD_PRODUTO: 1,
-      NOME: 'Doces',
-      VARIACOES: [
+      id_produto: 1,
+      nome: 'Doces',
+      variacoes: [
         {
-          COD_VARIACAO: 1,
-          NOME: 'Pudim',
-          VALOR_DESCONTO: 15.00,
-          VALOR_INICIAL: 19.50,
-          VALOR_FINAL: 33,
-          DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-          IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
+          id_variacao: 1,
+          nome: 'Pudim',
+          valor_desconto: 15.00,
+          valor_inicial: 19.50,
+          valor_final: 33,
+          descricao: 'Bata muito boa tipo muito muito boa mesmo',
+          imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
         },
         {
-          COD_VARIACAO: 1,
-          NOME: 'Arroz Doce',
-          VALOR_DESCONTO: 15.00,
-          VALOR_INICIAL: 19.50,
-          VALOR_FINAL: 33,
-          DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-          IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
+          id_variacao: 1,
+          nome: 'Arroz Doce',
+          valor_desconto: 15.00,
+          valor_inicial: 19.50,
+          valor_final: 33,
+          descricao: 'Bata muito boa tipo muito muito boa mesmo',
+          imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
         },
         {
-          COD_VARIACAO: 1,
-          NOME: 'Angu',
-          VALOR_DESCONTO: 15.00,
-          VALOR_INICIAL: 19.50,
-          VALOR_FINAL: 33,
-          DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-          IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png'
+          id_variacao: 1,
+          nome: 'Angu',
+          valor_desconto: 15.00,
+          valor_inicial: 19.50,
+          valor_final: 33,
+          descricao: 'Bata muito boa tipo muito muito boa mesmo',
+          imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
         }
       ]
     },
@@ -110,11 +110,11 @@ export class HomePage implements OnInit {
     this.produtosFiltrados = [...
         this.produtos.map((produto: Produto) => {
         const nProduto: Produto = {
-          COD_PRODUTO: produto.COD_PRODUTO,
-          NOME: produto.NOME,
-          VARIACOES: [
-            ...produto.VARIACOES!.filter((variacao: Variacao) => {
-              return variacao.NOME.toLowerCase().trim().startsWith(pesquisa);
+          id_produto: produto.id_produto,
+          nome: produto.nome,
+          variacoes: [
+            ...produto.variacoes!.filter((variacao: Variacao) => {
+              return variacao.nome.toLowerCase().trim().startsWith(pesquisa);
           })]
         };
         return nProduto;
@@ -122,7 +122,7 @@ export class HomePage implements OnInit {
     ];
 
     this.produtosFiltrados = [...this.produtosFiltrados.filter((produto: Produto) => {
-      return produto.VARIACOES?.length;
+      return produto.variacoes?.length;
     })];
   }
 }

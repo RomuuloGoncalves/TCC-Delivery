@@ -31,92 +31,65 @@ export class ListagemPage implements OnInit {
 
   loading: boolean = false;
   produto: Produto = {
-    COD_PRODUTO: 1,
-    NOME: 'Batata',
-    VARIACOES: [
+    id_produto: 1,
+    nome: 'Doces',
+    variacoes: [
       {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.0,
-        VALOR_INICIAL: 19.5,
-        VALOR_FINAL: 30.0,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png',
+        id_variacao: 1,
+        nome: 'Pudim',
+        valor_desconto: 15.00,
+        valor_inicial: 19.50,
+        valor_final: 33,
+        descricao: 'Bata muito boa tipo muito muito boa mesmo',
+        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
       },
       {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.0,
-        VALOR_INICIAL: 19.5,
-        VALOR_FINAL: 30.0,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png',
+        id_variacao: 1,
+        nome: 'Arroz Doce',
+        valor_desconto: 15.00,
+        valor_inicial: 19.50,
+        valor_final: 33,
+        descricao: 'Bata muito boa tipo muito muito boa mesmo',
+        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
       },
       {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.0,
-        VALOR_INICIAL: 19.5,
-        VALOR_FINAL: 30.0,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png',
+        id_variacao: 1,
+        nome: 'Angu',
+        valor_desconto: 15.00,
+        valor_inicial: 19.50,
+        valor_final: 33,
+        descricao: 'Bata muito boa tipo muito muito boa mesmo',
+        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
       },
       {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.0,
-        VALOR_INICIAL: 19.5,
-        VALOR_FINAL: 30.0,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png',
+        id_variacao: 1,
+        nome: 'Angu',
+        valor_desconto: 15.00,
+        valor_inicial: 19.50,
+        valor_final: 33,
+        descricao: 'Bata muito boa tipo muito muito boa mesmo',
+        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
       },
       {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.0,
-        VALOR_INICIAL: 19.5,
-        VALOR_FINAL: 30.0,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png',
+        id_variacao: 1,
+        nome: 'Angu',
+        valor_desconto: 15.00,
+        valor_inicial: 19.50,
+        valor_final: 33,
+        descricao: 'Bata muito boa tipo muito muito boa mesmo',
+        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
       },
       {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.0,
-        VALOR_INICIAL: 19.5,
-        VALOR_FINAL: 30.0,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png',
-      },
-      {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.0,
-        VALOR_INICIAL: 19.5,
-        VALOR_FINAL: 30.0,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png',
-      },
-      {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.0,
-        VALOR_INICIAL: 19.5,
-        VALOR_FINAL: 30.0,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png',
-      },
-      {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.0,
-        VALOR_INICIAL: 19.5,
-        VALOR_FINAL: 30.0,
-        DESCRICAO: 'Bata muito boa tipo muito muito boa mesmo',
-        IMAGEM: '../../../assets/img/home-icons/garfo_faca_outline.png',
-      },
-    ],
-  };
+        id_variacao: 1,
+        nome: 'Angu',
+        valor_desconto: 15.00,
+        valor_inicial: 19.50,
+        valor_final: 33,
+        descricao: 'Bata muito boa tipo muito muito boa mesmo',
+        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png'
+      }
+    ]
+  }
 
   ehStringValida(str: string) {
     const regexString: RegExp = /^[A-Za-z]+$/;
@@ -130,7 +103,7 @@ export class ListagemPage implements OnInit {
 
     e.detail.value.forEach((chave: any) => {
       if (this.filtrar.hasOwnProperty(chave)) {
-        this.filtrar[chave] = true; // Definir o valor booleano como true se a chave existir no objeto
+        this.filtrar[chave] = true;
       }
     });
   }

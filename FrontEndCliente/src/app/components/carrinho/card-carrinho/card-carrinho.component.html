@@ -4,18 +4,18 @@
       <ion-row class="ion-justify-content-center ion-align-items-center">
         <ion-col>
           <ion-row class="ion-justify-content-end">
-            <img src="../../../assets/img/this.produto-varicao/{{this.produto?.VARIACAO?.IMAGEM}}" alt="" />
+            <img src="../../../assets/img/this.produto-varicao/{{this.produto?.variacao?.imagem}}" alt="" />
           </ion-row>
         </ion-col>
         <ion-col>
-          <ion-text>{{ this.produto?.VARIACAO?.NOME }}</ion-text>
+          <ion-text>{{ this.produto?.variacao?.nome }}</ion-text>
         </ion-col>
       </ion-row>
     </ion-col>
 
     <ion-col size="3">
       <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-text>{{ this.produto?.VARIACAO?.VALOR_DESCONTO }}</ion-text>
+        <ion-text>{{ this.produto?.variacao?.valor_desconto }}</ion-text>
       </ion-row>
     </ion-col>
 
@@ -31,7 +31,7 @@
 
     <ion-col size="3">
       <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-text>R$ {{this.produto?.VARIACAO?.VALOR_DESCONTO! * this.quantidade}}</ion-text>
+        <ion-text>R$ {{this.produto?.variacao?.valor_desconto! * this.quantidade}}</ion-text>
       </ion-row>
     </ion-col>
   </ion-row>

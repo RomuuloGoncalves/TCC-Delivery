@@ -33,95 +33,96 @@ export class MontagemMarmitaPage implements OnInit {
 
   ingredientes: GrupoVariacoes[] = [
     {
-      TIPO: 'Arroz',
-      COD_PROD: 2,
-      COD_GRUPO_VARIACOES: 3,
+      tipo: 'Arroz',
+      id_produto: 2,
+      id_grupo_variacoes: 3,
 
-      VARIACOES: [
+      variacoes: [
         {
-          COD_VARIACAO: 1,
-          NOME: 'Branco',
-          DESCRICAO: 'HUMMMMMMMMMM',
-          VALOR_INICIAL: 7.0,
-          VALOR_FINAL: 5.0,
+          id_variacao: 1,
+          nome: 'Branco',
+          descricao: 'HUMMMMMMMMMM',
+          valor_inicial: 7.0,
+          valor_final: 5.0,
         },
         {
-          COD_VARIACAO: 2,
-          NOME: 'Integral',
-          DESCRICAO: 'HUMMMMMMMMMM',
-          VALOR_INICIAL: 8.0,
-          VALOR_FINAL: 8.0,
+          id_variacao: 2,
+          nome: 'Integral',
+          descricao: 'HUMMMMMMMMMM',
+          valor_inicial: 8.0,
+          valor_final: 8.0,
         },
         {
-          COD_VARIACAO: 3,
-          NOME: 'Grego',
-          DESCRICAO: 'HUMMMMMMMMMM',
-          VALOR_INICIAL: 6.0,
-          VALOR_FINAL: 6.0,
+          id_variacao: 3,
+          nome: 'Grego',
+          descricao: 'HUMMMMMMMMMM',
+          valor_inicial: 6.0,
+          valor_final: 6.0,
         },
       ],
     },
     {
-      TIPO: 'Feijão',
-      COD_PROD: 5,
-      COD_GRUPO_VARIACOES: 4,
+      tipo: 'Feijão',
+      id_produto: 5,
+      id_grupo_variacoes: 4,
 
-      VARIACOES: [
+      variacoes: [
         {
-          COD_VARIACAO: 5,
-          NOME: 'Tutu',
-          DESCRICAO: 'HUMMMMMMMMMM',
-          VALOR_INICIAL: 7,
-          VALOR_FINAL: 6,
+          id_variacao: 5,
+          nome: 'Tutu',
+          descricao: 'HUMMMMMMMMMM',
+          valor_inicial: 7,
+          valor_final: 6,
         },
         {
-          COD_VARIACAO: 6,
-          NOME: 'Branco',
-          DESCRICAO: 'HUMMMMMMMMMM',
-          VALOR_INICIAL: 10,
-          VALOR_FINAL: 8.5,
+          id_variacao: 6,
+          nome: 'Branco',
+          descricao: 'HUMMMMMMMMMM',
+          valor_inicial: 10,
+          valor_final: 8.5,
         },
         {
-          COD_VARIACAO: 7,
-          NOME: 'Preto',
-          DESCRICAO: 'HUMMMMMMMMMM',
-          VALOR_INICIAL: 11.0,
-          VALOR_FINAL: 9.99,
+          id_variacao: 7,
+          nome: 'Preto',
+          descricao: 'HUMMMMMMMMMM',
+          valor_inicial: 11.0,
+          valor_final: 9.99,
         },
       ],
     },
     {
-      COD_GRUPO_VARIACOES: 1,
-      TIPO: 'Acompanhamentos',
-      MULTISELECIONAVEL: true,
-      VARIACOES: [
+      id_grupo_variacoes: 1,
+      tipo: 'Acompanhamentos',
+      qtdd_max: 3,
+
+      variacoes: [
         {
-          COD_VARIACAO: 4,
-          NOME: 'mandioquinha',
-          DESCRICAO: 'mandioca frita',
-          VALOR_INICIAL: 8.0,
-          VALOR_FINAL: 8.0,
+          id_variacao: 4,
+          nome: 'mandioquinha',
+          descricao: 'mandioca frita',
+          valor_inicial: 8.0,
+          valor_final: 8.0,
         },
         {
-          COD_VARIACAO: 5,
-          NOME: 'Filé',
-          DESCRICAO: 'Filé zica',
-          VALOR_INICIAL: 11.0,
-          VALOR_FINAL: 9.49,
+          id_variacao: 5,
+          nome: 'Filé',
+          descricao: 'Filé zica',
+          valor_inicial: 11.0,
+          valor_final: 9.49,
         },
         {
-          COD_VARIACAO: 6,
-          NOME: 'Filé Acebolado',
-          DESCRICAO: 'Filé acebolado zika',
-          VALOR_INICIAL: 11.0,
-          VALOR_FINAL: 9.49,
+          id_variacao: 6,
+          nome: 'Filé Acebolado',
+          descricao: 'Filé acebolado zika',
+          valor_inicial: 11.0,
+          valor_final: 9.49,
         },
         {
-          COD_VARIACAO: 7,
-          NOME: 'Patinho',
-          DESCRICAO: 'Quack Quack zica',
-          VALOR_INICIAL: 10,
-          VALOR_FINAL: 9.49,
+          id_variacao: 7,
+          nome: 'Patinho',
+          descricao: 'Quack Quack zica',
+          valor_inicial: 10,
+          valor_final: 9.49,
         },
       ],
     },
@@ -144,10 +145,10 @@ export class MontagemMarmitaPage implements OnInit {
     variacoes: Variacao[]
   ) {
     const objFinal: GrupoVariacoes = {
-      TIPO: ingrediente.TIPO,
-      COD_GRUPO_VARIACOES: ingrediente.COD_GRUPO_VARIACOES,
-      COD_VARIACAO: ingrediente.COD_VARIACAO,
-      VARIACOES: variacoes,
+      tipo: ingrediente.tipo,
+      id_grupo_variacoes: ingrediente.id_grupo_variacoes,
+      id_variacao: ingrediente.id_variacao,
+      variacoes: variacoes,
     };
     this.marmita.push(objFinal);
   }
@@ -155,10 +156,10 @@ export class MontagemMarmitaPage implements OnInit {
   selecionarIndividuais(idIngrediente: number, event: any) {
     const ingrediente: GrupoVariacoes = this.ingredientes[idIngrediente];
     const idVariacao: number = event.detail.value;
-    const variacao: Variacao = ingrediente.VARIACOES![idVariacao];
+    const variacao: Variacao = ingrediente.variacoes![idVariacao];
 
     this.marmita.forEach((ingredienteMarmita: GrupoVariacoes, id: number) => {
-      ingredienteMarmita.COD_GRUPO_VARIACOES === ingrediente.COD_GRUPO_VARIACOES
+      ingredienteMarmita.id_grupo_variacoes === ingrediente.id_grupo_variacoes
         ? this.marmita.splice(id, 1)
         : null;
     });
@@ -171,14 +172,14 @@ export class MontagemMarmitaPage implements OnInit {
     event: any
   ) {
     const ingrediente: GrupoVariacoes = this.ingredientes[idIngrediente];
-    const variacao: Variacao = ingrediente.VARIACOES![idVariacao];
+    const variacao: Variacao = ingrediente.variacoes![idVariacao];
     const adicionarVariacao: boolean = event.detail.checked;
     let adicionado: boolean = false;
 
     if (adicionarVariacao) {
       this.marmita.forEach((ingredienteMarmita: GrupoVariacoes) => {
-        ingredienteMarmita.COD_GRUPO_VARIACOES! === ingrediente.COD_GRUPO_VARIACOES!
-          ? (ingredienteMarmita.VARIACOES?.push(variacao), (adicionado = true))
+        ingredienteMarmita.id_grupo_variacoes! === ingrediente.id_grupo_variacoes!
+          ? (ingredienteMarmita.variacoes?.push(variacao), (adicionado = true))
           : null;
       });
 
@@ -187,14 +188,14 @@ export class MontagemMarmitaPage implements OnInit {
         : null;
     } else {
       this.marmita.forEach((ingredienteMarmita: GrupoVariacoes, id: number) => {
-        if (ingredienteMarmita.COD_GRUPO_VARIACOES! === ingrediente.COD_GRUPO_VARIACOES!) {
-          ingredienteMarmita.VARIACOES?.forEach((variacaoMarmita: Variacao, id: number) => {
-            (variacaoMarmita.COD_VARIACAO === variacao.COD_VARIACAO)
-              ? ingredienteMarmita.VARIACOES?.splice(id, 1)
+        if (ingredienteMarmita.id_grupo_variacoes! === ingrediente.id_grupo_variacoes!) {
+          ingredienteMarmita.variacoes?.forEach((variacaoMarmita: Variacao, id: number) => {
+            (variacaoMarmita.id_variacao === variacao.id_variacao)
+              ? ingredienteMarmita.variacoes?.splice(id, 1)
               : null
           });
 
-          (!ingredienteMarmita.VARIACOES?.length)
+          (!ingredienteMarmita.variacoes?.length)
             ? this.marmita.splice(id, 1)
             : null;
         }
@@ -204,8 +205,8 @@ export class MontagemMarmitaPage implements OnInit {
 
   calcPrecoMarmita() {
     this.precoMarmtia = this.marmita.reduce((preco: number, ingredienteMarmita: GrupoVariacoes) => {
-      const totalVariacoes = ingredienteMarmita.VARIACOES?.reduce((preco: number, variacaoMarmita: Variacao) => {
-        return preco + variacaoMarmita.VALOR_FINAL!;
+      const totalVariacoes = ingredienteMarmita.variacoes?.reduce((preco: number, variacaoMarmita: Variacao) => {
+        return preco + variacaoMarmita.valor_final!;
       }, 0);
       return preco + totalVariacoes!;
     }, 0);
