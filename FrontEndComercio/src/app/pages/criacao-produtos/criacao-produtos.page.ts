@@ -26,10 +26,10 @@ export class CriacaoProdutosPage implements OnInit {
   criarFormularoProduto: Produto[] = [
     //Marmitas
     {
-      NOME: "Marmita",
+      NOME: "Comidas",
       GRUPO_VARIACOES: [
         {
-          TIPO: "Arroz",
+          TIPO: "Marmita",
           VARIACOES: [
             {
               NOME: "Arroz",
@@ -66,7 +66,7 @@ export class CriacaoProdutosPage implements OnInit {
           ]
         },
         {
-          TIPO: "Feijão",
+          TIPO: "Sobremesa",
           VARIACOES: [
             {
               NOME: "Carioca",
@@ -95,7 +95,7 @@ export class CriacaoProdutosPage implements OnInit {
           ]
         },
         {
-          TIPO: "Mistura",
+          TIPO: "Salada",
           VARIACOES: [
             {
               NOME: "Parmegiana",
@@ -146,41 +146,18 @@ export class CriacaoProdutosPage implements OnInit {
             },
           ]
         },
-        {
-          TIPO: "Tamanho",
-          VARIACOES: [
-            {
-              NOME: "P",
-              DESCRICAO: "Marmita respectiva",
-              VALOR_INICIAL: 10,
-              VALOR_FINAL: 10,
-            },
-            {
-              NOME: "M",
-              DESCRICAO: "Marmita respectiva",
-              VALOR_INICIAL: 10,
-              VALOR_FINAL: 10,
-            },
-            {
-              NOME: "G",
-              DESCRICAO: "Marmita respectiva",
-              VALOR_INICIAL: 10,
-              VALOR_FINAL: 10,
-            },
-          ]
-        },
       ]
     },
 
     //Bebidas
     {
-      NOME: "Coca-cola",
+      NOME: "Bebidas",
       GRUPO_VARIACOES: [
         {
-          TIPO: "Tamanho",
+          TIPO: "Refrigerante",
           VARIACOES: [
             {
-              NOME: "2L",
+              NOME: "Coca-cola",
               DESCRICAO: "coca cola muito boa",
               VALOR_DESCONTO: 5,
               VALOR_INICIAL: 10,
@@ -207,10 +184,10 @@ export class CriacaoProdutosPage implements OnInit {
           ]
         },
         {
-          TIPO: "Sabor",
+          TIPO: "Suco",
           VARIACOES: [
             {
-              NOME: "Café",
+              NOME: "Del Vale",
               DESCRICAO: "ruim",
               VALOR_DESCONTO: 2,
               VALOR_INICIAL: 6,
@@ -218,7 +195,7 @@ export class CriacaoProdutosPage implements OnInit {
               IMAGEM: "../../../../../",
             },
             {
-              NOME: "Normal",
+              NOME: "é suco",
               DESCRICAO: "Muito boa",
               VALOR_DESCONTO: 2,
               VALOR_INICIAL: 6,
@@ -226,7 +203,15 @@ export class CriacaoProdutosPage implements OnInit {
               IMAGEM: "../../../../../",
             },
             {
-              NOME: "Sem açucar",
+              NOME: "Del mole",
+              DESCRICAO: "Boa",
+              VALOR_DESCONTO: 2,
+              VALOR_INICIAL: 6,
+              VALOR_FINAL: 4,
+              IMAGEM: "../../../../../",
+            },
+            {
+              NOME: "É vapo",
               DESCRICAO: "Boa",
               VALOR_DESCONTO: 2,
               VALOR_INICIAL: 6,
