@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cupom', function (Blueprint $table) {
+        Schema::create('Cupom', function (Blueprint $table) {
             $table->id();
             $table->string('nome_cupom');
             $table->unsignedFloat('valor_desconto');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('data_validade');
             $table->integer('quantidade');
             $table->timestamps();
-        });//
+        });
     }
 
     /**

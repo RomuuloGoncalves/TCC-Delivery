@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pedido', function (Blueprint $table) {
+        Schema::create('Pedido', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('cliente_id');
             $table->unsignedBigInteger('funcionario_id');
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->index('cliente_id');
             $table->index('funcionario_id');
             $table->index('cupom_id');
-        });//
+        });
     }
 
     /**

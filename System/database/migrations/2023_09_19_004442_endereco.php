@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('endereco', function (Blueprint $table) {
+        Schema::create('Endereco', function (Blueprint $table) {
             $table->id();
             $table->string('cep');
             $table->string('rua');
