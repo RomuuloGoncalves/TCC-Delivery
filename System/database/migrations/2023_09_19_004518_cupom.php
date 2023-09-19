@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('flights', function (Blueprint $table) {
+        Schema::create('cupom', function (Blueprint $table) {
             $table->id();
             $table->string('nome_cupom');
             $table->unsignedFloat('valor_desconto');
