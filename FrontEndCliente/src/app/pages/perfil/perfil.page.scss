@@ -1,0 +1,27 @@
+.perfil {
+    background: #EAEAEA;
+}
+
+.sidebar {
+    // background-color: ;
+    width: 300px;
+    // height: 100%;
+
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // z-index: 1;
+    // overflow-x: hidden;
+
+    &__welcome {
+        &__avatar {
+            width: 150px;
+            border-radius: 100%;
+        }
+
+        &__title {
+            color: var(--ion-color-primary-variation);
+            font-size: 1.5rem;
+        }
+    }
+}
