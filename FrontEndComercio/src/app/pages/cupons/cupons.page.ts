@@ -12,52 +12,52 @@ export class CuponsPage implements OnInit {
 
   public cupons: Cupom[] = [
     {
-      COD_CUPOM: 1,
-      NOME: 'Feijuca',
-      QUANTIDADE: 45,
-      PORCENTAGEM_DESCONTO: 15,
-      DATA_VALIDADE: '2023-12-12',
-      STATUS: true
+      id_cupom: 1,
+      nome: 'Feijuca',
+      quantidade: 45,
+      porcentagem_desconto: 15,
+      data_validade: '2023-12-12',
+      status: true
     },
     {
-      COD_CUPOM: 1,
-      NOME: 'Feijuca',
-      QUANTIDADE: 45,
-      PORCENTAGEM_DESCONTO: 15,
-      DATA_VALIDADE: '2023-12-12',
-      STATUS: true
-    }, 
-    {
-      COD_CUPOM: 1,
-      NOME: 'Feijuca',
-      QUANTIDADE: 45,
-      PORCENTAGEM_DESCONTO: 15,
-      DATA_VALIDADE: '2023-12-12',
-      STATUS: true
+      id_cupom: 1,
+      nome: 'Feijuca',
+      quantidade: 45,
+      porcentagem_desconto: 15,
+      data_validade: '2023-12-12',
+      status: true
     },
     {
-      COD_CUPOM: 1,
-      NOME: 'Feijuca',
-      QUANTIDADE: 45,
-      PORCENTAGEM_DESCONTO: 15,
-      DATA_VALIDADE: '2023-12-12',
-      STATUS: true
+      id_cupom: 1,
+      nome: 'Feijuca',
+      quantidade: 45,
+      porcentagem_desconto: 15,
+      data_validade: '2023-12-12',
+      status: true
     },
     {
-      COD_CUPOM: 1,
-      NOME: 'Feijuca',
-      QUANTIDADE: 45,
-      PORCENTAGEM_DESCONTO: 15,
-      DATA_VALIDADE: '2023-12-12',
-      STATUS: true
+      id_cupom: 1,
+      nome: 'Feijuca',
+      quantidade: 45,
+      porcentagem_desconto: 15,
+      data_validade: '2023-12-12',
+      status: true
     },
     {
-      COD_CUPOM: 1,
-      NOME: 'Feijuca',
-      QUANTIDADE: 45,
-      PORCENTAGEM_DESCONTO: 15,
-      DATA_VALIDADE: '2023-12-12',
-      STATUS: false
+      id_cupom: 1,
+      nome: 'Feijuca',
+      quantidade: 45,
+      porcentagem_desconto: 15,
+      data_validade: '2023-12-12',
+      status: true
+    },
+    {
+      id_cupom: 1,
+      nome: 'Feijuca',
+      quantidade: 45,
+      porcentagem_desconto: 15,
+      data_validade: '2023-12-12',
+      status: false
     },
   ];
 

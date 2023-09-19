@@ -68,285 +68,285 @@ export class ProdutosPage implements OnInit {
 
   marmitas: Produto[] = [
     {
-      COD_PRODUTO: 1,
-      NOME: 'Batata',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 15.00,
-        VALOR_INICIAL: 19.50,
-        DESCRICAO: 'Batata muito boa tipo muito muito boa mesmo',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 1,
+      nome: 'Batata',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Batata Frita',
+        valor_desconto: 15.00,
+        valor_inicial: 19.50,
+        descricao: 'Batata muito boa tipo muito muito boa mesmo',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 2,
-      NOME: 'Frango',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Frango Grelhado',
-        VALOR_DESCONTO: 10.00,
-        VALOR_INICIAL: 25.00,
-        DESCRICAO: 'Peito de frango grelhado com temperos especiais',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 2,
+      nome: 'Frango',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Frango Grelhado',
+        valor_desconto: 10.00,
+        valor_inicial: 25.00,
+        descricao: 'Peito de frango grelhado com temperos especiais',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 3,
-      NOME: 'Salada',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Salada Fresca',
-        VALOR_DESCONTO: 8.00,
-        VALOR_INICIAL: 12.50,
-        DESCRICAO: 'Mix de folhas frescas com vegetais diversos',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 3,
+      nome: 'Salada',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Salada Fresca',
+        valor_desconto: 8.00,
+        valor_inicial: 12.50,
+        descricao: 'Mix de folhas frescas com vegetais diversos',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 4,
-      NOME: 'Lasanha',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Lasanha à Bolonhesa',
-        VALOR_DESCONTO: 20.00,
-        VALOR_INICIAL: 32.00,
-        DESCRICAO: 'Lasanha tradicional com carne bolonhesa',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 4,
+      nome: 'Lasanha',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Lasanha à Bolonhesa',
+        valor_desconto: 20.00,
+        valor_inicial: 32.00,
+        descricao: 'Lasanha tradicional com carne bolonhesa',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 5,
-      NOME: 'Sushi',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Sushi Variado',
-        VALOR_DESCONTO: 25.00,
-        VALOR_INICIAL: 45.00,
-        DESCRICAO: 'Combinação variada de sushis e sashimis',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 5,
+      nome: 'Sushi',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Sushi Variado',
+        valor_desconto: 25.00,
+        valor_inicial: 45.00,
+        descricao: 'Combinação variada de sushis e sashimis',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 6,
-      NOME: 'Hambúrguer',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Hambúrguer Clássico',
-        VALOR_DESCONTO: 12.00,
-        VALOR_INICIAL: 18.50,
-        DESCRICAO: 'Hambúrguer com carne suculenta e molhos especiais',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 6,
+      nome: 'Hambúrguer',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Hambúrguer Clássico',
+        valor_desconto: 12.00,
+        valor_inicial: 18.50,
+        descricao: 'Hambúrguer com carne suculenta e molhos especiais',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 7,
-      NOME: 'Pizza',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Pizza Margherita',
-        VALOR_DESCONTO: 18.00,
-        VALOR_INICIAL: 26.00,
-        DESCRICAO: 'Pizza com molho de tomate, queijo e manjericão',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 7,
+      nome: 'Pizza',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Pizza Margherita',
+        valor_desconto: 18.00,
+        valor_inicial: 26.00,
+        descricao: 'Pizza com molho de tomate, queijo e manjericão',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 8,
-      NOME: 'Massa',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Massa ao Pesto',
-        VALOR_DESCONTO: 14.00,
-        VALOR_INICIAL: 21.50,
-        DESCRICAO: 'Massa com molho pesto e pinhões',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 8,
+      nome: 'Massa',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Massa ao Pesto',
+        valor_desconto: 14.00,
+        valor_inicial: 21.50,
+        descricao: 'Massa com molho pesto e pinhões',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 9,
-      NOME: 'Taco',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Taco Mexicano',
-        VALOR_DESCONTO: 10.00,
-        VALOR_INICIAL: 16.00,
-        DESCRICAO: 'Taco recheado com carne, feijão e vegetais',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 9,
+      nome: 'Taco',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Taco Mexicano',
+        valor_desconto: 10.00,
+        valor_inicial: 16.00,
+        descricao: 'Taco recheado com carne, feijão e vegetais',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 10,
-      NOME: 'Peixe',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Peixe Grelhado',
-        VALOR_DESCONTO: 16.00,
-        VALOR_INICIAL: 28.00,
-        DESCRICAO: 'Filé de peixe grelhado com temperos leves',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 10,
+      nome: 'Peixe',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Peixe Grelhado',
+        valor_desconto: 16.00,
+        valor_inicial: 28.00,
+        descricao: 'Filé de peixe grelhado com temperos leves',
+        valor_final: 23.00,
+        imagem: ''
       }
     }
   ]
 
   bebidas: Produto[] = [
     {
-      COD_PRODUTO: 11,
-      NOME: 'Refrigerante',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Coca-Cola',
-        VALOR_DESCONTO: 5.00,
-        VALOR_INICIAL: 7.00,
-        DESCRICAO: 'Refrigerante Coca-Cola gelado',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 11,
+      nome: 'Refrigerante',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Coca-Cola',
+        valor_desconto: 5.00,
+        valor_inicial: 7.00,
+        descricao: 'Refrigerante Coca-Cola gelado',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 12,
-      NOME: 'Suco',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Suco de Laranja',
-        VALOR_DESCONTO: 6.00,
-        VALOR_INICIAL: 9.00,
-        DESCRICAO: 'Suco natural de laranja fresca',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 12,
+      nome: 'Suco',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Suco de Laranja',
+        valor_desconto: 6.00,
+        valor_inicial: 9.00,
+        descricao: 'Suco natural de laranja fresca',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 13,
-      NOME: 'Água',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Água Mineral',
-        VALOR_DESCONTO: 2.50,
-        VALOR_INICIAL: 3.50,
-        DESCRICAO: 'Garrafa de água mineral 500ml',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 13,
+      nome: 'Água',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Água Mineral',
+        valor_desconto: 2.50,
+        valor_inicial: 3.50,
+        descricao: 'Garrafa de água mineral 500ml',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 14,
-      NOME: 'Café',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Café Espresso',
-        VALOR_DESCONTO: 3.00,
-        VALOR_INICIAL: 4.50,
-        DESCRICAO: 'Café espresso quente e encorpado',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 14,
+      nome: 'Café',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Café Espresso',
+        valor_desconto: 3.00,
+        valor_inicial: 4.50,
+        descricao: 'Café espresso quente e encorpado',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 15,
-      NOME: 'Chá',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Chá de Camomila',
-        VALOR_DESCONTO: 4.00,
-        VALOR_INICIAL: 5.50,
-        DESCRICAO: 'Chá de camomila calmante e reconfortante',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 15,
+      nome: 'Chá',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Chá de Camomila',
+        valor_desconto: 4.00,
+        valor_inicial: 5.50,
+        descricao: 'Chá de camomila calmante e reconfortante',
+        valor_final: 23.00,
+        imagem: ''
       }
     }
   ]
 
   combos: Produto[] = [
     {
-      COD_PRODUTO: 21,
-      NOME: 'Combo Família',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Combo Clássico',
-        VALOR_DESCONTO: 25.00,
-        VALOR_INICIAL: 35.00,
-        DESCRICAO: 'Combo com marmita, refrigerante e sobremesa',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 21,
+      nome: 'Combo Família',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Combo Clássico',
+        valor_desconto: 25.00,
+        valor_inicial: 35.00,
+        descricao: 'Combo com marmita, refrigerante e sobremesa',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 22,
-      NOME: 'Combo Fitness',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Combo Saudável',
-        VALOR_DESCONTO: 20.00,
-        VALOR_INICIAL: 28.00,
-        DESCRICAO: 'Combo com salada, suco e fruta',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 22,
+      nome: 'Combo Fitness',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Combo Saudável',
+        valor_desconto: 20.00,
+        valor_inicial: 28.00,
+        descricao: 'Combo com salada, suco e fruta',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 23,
-      NOME: 'Combo Cinema',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Combo Diversão',
-        VALOR_DESCONTO: 18.00,
-        VALOR_INICIAL: 24.00,
-        DESCRICAO: 'Combo com pipoca, refrigerante e doce',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 23,
+      nome: 'Combo Cinema',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Combo Diversão',
+        valor_desconto: 18.00,
+        valor_inicial: 24.00,
+        descricao: 'Combo com pipoca, refrigerante e doce',
+        valor_final: 23.00,
+        imagem: ''
       }
     }
   ]
 
   acompanhamentos: Produto[] = [
     {
-      COD_PRODUTO: 31,
-      NOME: 'Fritas',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Batata Frita',
-        VALOR_DESCONTO: 5.00,
-        VALOR_INICIAL: 7.00,
-        DESCRICAO: 'Porção de batata frita crocante',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 31,
+      nome: 'Fritas',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Batata Frita',
+        valor_desconto: 5.00,
+        valor_inicial: 7.00,
+        descricao: 'Porção de batata frita crocante',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 32,
-      NOME: 'Legumes',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Legumes Salteados',
-        VALOR_DESCONTO: 6.00,
-        VALOR_INICIAL: 9.00,
-        DESCRICAO: 'Mix de legumes frescos salteados na manteiga',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 32,
+      nome: 'Legumes',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Legumes Salteados',
+        valor_desconto: 6.00,
+        valor_inicial: 9.00,
+        descricao: 'Mix de legumes frescos salteados na manteiga',
+        valor_final: 23.00,
+        imagem: ''
       }
     },
     {
-      COD_PRODUTO: 33,
-      NOME: 'Arroz',
-      VARIACAO: {
-        COD_VARIACAO: 1,
-        NOME: 'Arroz Branco',
-        VALOR_DESCONTO: 3.00,
-        VALOR_INICIAL: 5.00,
-        DESCRICAO: 'Porção de arroz branco soltinho',
-        VALOR_FINAL: 23.00,
-        IMAGEM: ''
+      id_produto: 33,
+      nome: 'Arroz',
+      variacao: {
+        id_variacao: 1,
+        nome: 'Arroz Branco',
+        valor_desconto: 3.00,
+        valor_inicial: 5.00,
+        descricao: 'Porção de arroz branco soltinho',
+        valor_final: 23.00,
+        imagem: ''
       }
     }
   ]

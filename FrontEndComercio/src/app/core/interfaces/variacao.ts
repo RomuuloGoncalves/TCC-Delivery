@@ -1,10 +1,10 @@
 export interface Variacao {
-  COD_VARIACAO?: number;
-  NOME: string;
-  DESCRICAO?: string;
-  PORCENTAGEM_DESCONTO?: number;
-  VALOR_DESCONTO?: number;
-  VALOR_INICIAL?: number;
-  VALOR_FINAL?: number;
-  IMAGEM?: string;
+  id_variacao?: number;
+  nome: string;
+  descricao?: string;
+  porcentagem_desconto?: number;
+  valor_desconto?: number;
+  valor_inicial?: number;
+  valor_final?: number;
+  imagem?: string;
 }

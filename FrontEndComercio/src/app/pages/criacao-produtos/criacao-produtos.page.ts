@@ -7,220 +7,223 @@ import { Produto } from 'src/app/core/interfaces/produto';
   styleUrls: ['./criacao-produtos.page.scss'],
 })
 export class CriacaoProdutosPage implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  produtoSelecionado: string = 'Marmita';
+  grupoVariacao: string = '';
+
+  produtoSelecionadoSelect(e: any) {
+    this.produtoSelecionado = e.detail.value;
   }
-
-  produtoSelecionado:string = "Marmita"
-  grupoVariacao:string = ""
-
-  produtoSelecionadoSelect(e:any){
-    this.produtoSelecionado = e.detail.value
-  }
-   grupoVariacaoSelecionada(e:any){
-    this.grupoVariacao = e.detail.value
+  grupoVariacaoSelecionada(e: any) {
+    this.grupoVariacao = e.detail.value;
   }
 
   criarFormularoProduto: Produto[] = [
     //Marmitas
     {
-      NOME: "Comidas",
-      GRUPO_VARIACOES: [
+      nome: 'Comidas',
+      grupo_variacoes: [
         {
-          TIPO: "Marmita",
-          VARIACOES: [
+          tipo: 'Marmita',
+          variacoes: [
             {
-              NOME: "Arroz",
-              DESCRICAO: "arroz branco cozido",
-              VALOR_DESCONTO: 5,
-              VALOR_INICIAL: 10,
-              VALOR_FINAL: 5,
-              IMAGEM: "../../..",
+              nome: 'Arroz',
+              descricao: 'arroz branco cozido',
+              valor_desconto: 5,
+              valor_inicial: 10,
+              valor_final: 5,
+              imagem: '../../..',
             },
             {
-              NOME: "Arroz",
-              DESCRICAO: "arroz branco cozido",
-              VALOR_DESCONTO: 5,
-              VALOR_INICIAL: 10,
-              VALOR_FINAL: 5,
-              IMAGEM: "../../..",
+              nome: 'Arroz',
+              descricao: 'arroz branco cozido',
+              valor_desconto: 5,
+              valor_inicial: 10,
+              valor_final: 5,
+              imagem: '../../..',
             },
             {
-              NOME: "Integral",
-              DESCRICAO: "arroz branco cozido",
-              VALOR_DESCONTO: 5,
-              VALOR_INICIAL: 10,
-              VALOR_FINAL: 5,
-              IMAGEM: "../../..",
+              nome: 'Integral',
+              descricao: 'arroz branco cozido',
+              valor_desconto: 5,
+              valor_inicial: 10,
+              valor_final: 5,
+              imagem: '../../..',
             },
             {
-              NOME: "a grega",
-              DESCRICAO: "arroz branco cozido",
-              VALOR_DESCONTO: 5,
-              VALOR_INICIAL: 10,
-              VALOR_FINAL: 5,
-              IMAGEM: "../../..",
+              nome: 'a grega',
+              descricao: 'arroz branco cozido',
+              valor_desconto: 5,
+              valor_inicial: 10,
+              valor_final: 5,
+              imagem: '../../..',
             },
-          ]
+          ],
         },
         {
-          TIPO: "Sobremesa",
-          VARIACOES: [
+          tipo: 'Sobremesa',
+          variacoes: [
             {
-              NOME: "Carioca",
-              DESCRICAO: "feijao carioca cozido na pressão",
-              VALOR_DESCONTO: 2,
-              VALOR_INICIAL: 6,
-              VALOR_FINAL: 4,
-              IMAGEM: "../../../../../",
+              nome: 'Carioca',
+              descricao: 'feijao carioca cozido na pressão',
+              valor_desconto: 2,
+              valor_inicial: 6,
+              valor_final: 4,
+              imagem: '../../../../../',
             },
             {
-              NOME: "tropero",
-              DESCRICAO: "feijao carioca cozido na pressão",
-              VALOR_DESCONTO: 2,
-              VALOR_INICIAL: 6,
-              VALOR_FINAL: 4,
-              IMAGEM: "../../../../../",
+              nome: 'tropero',
+              descricao: 'feijao carioca cozido na pressão',
+              valor_desconto: 2,
+              valor_inicial: 6,
+              valor_final: 4,
+              imagem: '../../../../../',
             },
             {
-              NOME: "preto",
-              DESCRICAO: "feijao carioca cozido na pressão",
-              VALOR_DESCONTO: 2,
-              VALOR_INICIAL: 6,
-              VALOR_FINAL: 4,
-              IMAGEM: "../../../../../",
+              nome: 'preto',
+              descricao: 'feijao carioca cozido na pressão',
+              valor_desconto: 2,
+              valor_inicial: 6,
+              valor_final: 4,
+              imagem: '../../../../../',
             },
-          ]
+          ],
         },
         {
-          TIPO: "Salada",
-          VARIACOES: [
+          tipo: 'Salada',
+          variacoes: [
             {
-              NOME: "Parmegiana",
-              DESCRICAO: "Frango queijo sexo",
-              VALOR_DESCONTO: 1,
-              VALOR_INICIAL: 12,
-              VALOR_FINAL: 11,
+              nome: 'Parmegiana',
+              descricao: 'Frango queijo sexo',
+              valor_desconto: 1,
+              valor_inicial: 12,
+              valor_final: 11,
+              imagem: '../../../../../',
             },
             {
-              NOME: "feijoado",
-              DESCRICAO: "Frango queijo sexo",
-              VALOR_DESCONTO: 1,
-              VALOR_INICIAL: 12,
-              VALOR_FINAL: 11,
+              nome: 'feijoado',
+              descricao: 'Frango queijo sexo',
+              valor_desconto: 1,
+              valor_inicial: 12,
+              valor_final: 11,
+              imagem: '../../../../../',
             },
             {
-              NOME: "sua mae",
-              DESCRICAO: "Frango queijo sexo",
-              VALOR_DESCONTO: 1,
-              VALOR_INICIAL: 12,
-              VALOR_FINAL: 11,
+              nome: 'sua mae',
+              descricao: 'Frango queijo sexo',
+              valor_desconto: 1,
+              valor_inicial: 12,
+              valor_final: 11,
+              imagem: '../../../../../',
             },
-          ]
+          ],
         },
         {
-          TIPO: "Acompanhamento",
-          VARIACOES: [
+          tipo: 'Acompanhamento',
+          variacoes: [
             {
-              NOME: "Batata",
-              DESCRICAO: "fritas",
-              VALOR_DESCONTO: 1,
-              VALOR_INICIAL: 4,
-              VALOR_FINAL: 3,
+              nome: 'Batata',
+              descricao: 'fritas',
+              valor_desconto: 1,
+              valor_inicial: 4,
+              valor_final: 3,
+              imagem: '../../../../../',
             },
             {
-              NOME: "Mandioca",
-              DESCRICAO: "fritas",
-              VALOR_DESCONTO: 1,
-              VALOR_INICIAL: 4,
-              VALOR_FINAL: 3,
+              nome: 'Mandioca',
+              descricao: 'fritas',
+              valor_desconto: 1,
+              valor_inicial: 4,
+              valor_final: 3,
+              imagem: '../../../../../',
             },
             {
-              NOME: "pure",
-              DESCRICAO: "fritas",
-              VALOR_DESCONTO: 1,
-              VALOR_INICIAL: 4,
-              VALOR_FINAL: 3,
+              nome: 'pure',
+              descricao: 'fritas',
+              valor_desconto: 1,
+              valor_inicial: 4,
+              valor_final: 3,
+              imagem: '../../../../../',
             },
-          ]
+          ],
         },
-      ]
+      ],
     },
 
     //Bebidas
     {
-      NOME: "Bebidas",
-      GRUPO_VARIACOES: [
+      nome: 'Bebidas',
+      grupo_variacoes: [
         {
-          TIPO: "Refrigerante",
-          VARIACOES: [
+          tipo: 'Refrigerante',
+          variacoes: [
             {
-              NOME: "Coca-cola",
-              DESCRICAO: "coca cola muito boa",
-              VALOR_DESCONTO: 5,
-              VALOR_INICIAL: 10,
-              VALOR_FINAL: 5,
-              IMAGEM: "../../..",
+              nome: 'Coca-cola',
+              descricao: 'coca cola muito boa',
+              valor_desconto: 5,
+              valor_inicial: 10,
+              valor_final: 5,
+              imagem: '../../..',
             },
             {
-              NOME: "1L",
-              DESCRICAO: "coca cola muito boa",
-              VALOR_DESCONTO: 5,
-              VALOR_INICIAL: 10,
-              VALOR_FINAL: 5,
-              IMAGEM: "../../..",
+              nome: '1L',
+              descricao: 'coca cola muito boa',
+              valor_desconto: 5,
+              valor_inicial: 10,
+              valor_final: 5,
+              imagem: '../../..',
             },
             {
-              NOME: "0.6L",
-              DESCRICAO: "coca cola muito boa",
-              VALOR_DESCONTO: 5,
-              VALOR_INICIAL: 10,
-              VALOR_FINAL: 5,
-              IMAGEM: "../../..",
+              nome: '0.6L',
+              descricao: 'coca cola muito boa',
+              valor_desconto: 5,
+              valor_inicial: 10,
+              valor_final: 5,
+              imagem: '../../..',
             },
-
-          ]
+          ],
         },
         {
-          TIPO: "Suco",
-          VARIACOES: [
+          tipo: 'Suco',
+          variacoes: [
             {
-              NOME: "Del Vale",
-              DESCRICAO: "ruim",
-              VALOR_DESCONTO: 2,
-              VALOR_INICIAL: 6,
-              VALOR_FINAL: 4,
-              IMAGEM: "../../../../../",
+              nome: 'Del Vale',
+              descricao: 'ruim',
+              valor_desconto: 2,
+              valor_inicial: 6,
+              valor_final: 4,
+              imagem: '../../../../../',
             },
             {
-              NOME: "é suco",
-              DESCRICAO: "Muito boa",
-              VALOR_DESCONTO: 2,
-              VALOR_INICIAL: 6,
-              VALOR_FINAL: 4,
-              IMAGEM: "../../../../../",
+              nome: 'é suco',
+              descricao: 'Muito boa',
+              valor_desconto: 2,
+              valor_inicial: 6,
+              valor_final: 4,
+              imagem: '../../../../../',
             },
             {
-              NOME: "Del mole",
-              DESCRICAO: "Boa",
-              VALOR_DESCONTO: 2,
-              VALOR_INICIAL: 6,
-              VALOR_FINAL: 4,
-              IMAGEM: "../../../../../",
+              nome: 'Del mole',
+              descricao: 'Boa',
+              valor_desconto: 2,
+              valor_inicial: 6,
+              valor_final: 4,
+              imagem: '../../../../../',
             },
             {
-              NOME: "É vapo",
-              DESCRICAO: "Boa",
-              VALOR_DESCONTO: 2,
-              VALOR_INICIAL: 6,
-              VALOR_FINAL: 4,
-              IMAGEM: "../../../../../",
+              nome: 'É vapo',
+              descricao: 'Boa',
+              valor_desconto: 2,
+              valor_inicial: 6,
+              valor_final: 4,
+              imagem: '../../../../../',
             },
-          ]
+          ],
         },
-      ]
-    }
-  ]
+      ],
+    },
+  ];
 }
