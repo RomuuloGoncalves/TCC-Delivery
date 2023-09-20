@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Produto } from 'src/app/core/interfaces/produto';
 
 @Component({
-  selector: 'app-criacao-produtos',
-  templateUrl: './criacao-produtos.page.html',
-  styleUrls: ['./criacao-produtos.page.scss'],
+  selector: 'app-criacao-comidas',
+  templateUrl: './criacao-comidas.page.html',
+  styleUrls: ['./criacao-comidas.page.scss'],
 })
-export class CriacaoProdutosPage implements OnInit {
-  constructor() {}
+export class CriacaoComidasPage implements OnInit {
 
-  ngOnInit() {}
+  constructor() { }
 
+  ngOnInit() {
+  }
   produtoSelecionado: string = 'Marmita';
   grupoVariacao: string = '';
 
@@ -22,12 +23,12 @@ export class CriacaoProdutosPage implements OnInit {
   }
 
   criarFormularoProduto: Produto[] = [
-    //Marmitas
+    // Marmitas
     {
-      nome: 'Comidas',
+      nome: 'Marmitas',
       grupo_variacoes: [
         {
-          tipo: 'Marmita',
+          tipo: 'Arroz',
           variacoes: [
             {
               nome: 'Arroz',
@@ -38,7 +39,7 @@ export class CriacaoProdutosPage implements OnInit {
               imagem: '../../..',
             },
             {
-              nome: 'Arroz',
+              nome: 'Queimado',
               descricao: 'arroz branco cozido',
               valor_desconto: 5,
               valor_inicial: 10,
@@ -60,11 +61,11 @@ export class CriacaoProdutosPage implements OnInit {
               valor_inicial: 10,
               valor_final: 5,
               imagem: '../../..',
-            },
+            }
           ],
         },
         {
-          tipo: 'Sobremesa',
+          tipo: 'Feijão',
           variacoes: [
             {
               nome: 'Carioca',
@@ -93,7 +94,7 @@ export class CriacaoProdutosPage implements OnInit {
           ],
         },
         {
-          tipo: 'Salada',
+          tipo: 'mistura',
           variacoes: [
             {
               nome: 'Parmegiana',
@@ -153,77 +154,168 @@ export class CriacaoProdutosPage implements OnInit {
       ],
     },
 
-    //Bebidas
+    // Sobremesas
     {
-      nome: 'Bebidas',
+      nome: 'Sobremesas',
       grupo_variacoes: [
         {
-          tipo: 'Refrigerante',
+          tipo: 'Bolo',
           variacoes: [
             {
-              nome: 'Coca-cola',
-              descricao: 'coca cola muito boa',
-              valor_desconto: 5,
-              valor_inicial: 10,
-              valor_final: 5,
+              nome: 'Chocolate',
+              descricao: 'Bolo de chocolate',
+              valor_desconto: 3,
+              valor_inicial: 15,
+              valor_final: 12,
               imagem: '../../..',
             },
             {
-              nome: '1L',
-              descricao: 'coca cola muito boa',
-              valor_desconto: 5,
-              valor_inicial: 10,
-              valor_final: 5,
-              imagem: '../../..',
-            },
-            {
-              nome: '0.6L',
-              descricao: 'coca cola muito boa',
-              valor_desconto: 5,
-              valor_inicial: 10,
-              valor_final: 5,
+              nome: 'Cenoura',
+              descricao: 'Bolo de cenoura',
+              valor_desconto: 3,
+              valor_inicial: 15,
+              valor_final: 12,
               imagem: '../../..',
             },
           ],
         },
         {
-          tipo: 'Suco',
+          tipo: 'Sorvete',
           variacoes: [
             {
-              nome: 'Del Vale',
-              descricao: 'ruim',
+              nome: 'Baunilha',
+              descricao: 'Sorvete sabor baunilha',
               valor_desconto: 2,
-              valor_inicial: 6,
-              valor_final: 4,
+              valor_inicial: 8,
+              valor_final: 6,
               imagem: '../../../../../',
             },
             {
-              nome: 'é suco',
-              descricao: 'Muito boa',
+              nome: 'Morango',
+              descricao: 'Sorvete sabor morango',
               valor_desconto: 2,
-              valor_inicial: 6,
-              valor_final: 4,
+              valor_inicial: 8,
+              valor_final: 6,
+              imagem: '../../../../../',
+            },
+          ],
+        },
+        {
+          tipo: 'Torta',
+          variacoes: [
+            {
+              nome: 'Maçã',
+              descricao: 'Torta de maçã',
+              valor_desconto: 4,
+              valor_inicial: 18,
+              valor_final: 14,
               imagem: '../../../../../',
             },
             {
-              nome: 'Del mole',
-              descricao: 'Boa',
+              nome: 'Limão',
+              descricao: 'Torta de limão',
+              valor_desconto: 4,
+              valor_inicial: 18,
+              valor_final: 14,
+              imagem: '../../../../../',
+            },
+          ],
+        },
+        {
+          tipo: 'Sobremesa Gelada',
+          variacoes: [
+            {
+              nome: 'Pudim',
+              descricao: 'Pudim de leite condensado',
               valor_desconto: 2,
-              valor_inicial: 6,
-              valor_final: 4,
+              valor_inicial: 10,
+              valor_final: 8,
               imagem: '../../../../../',
             },
             {
-              nome: 'É vapo',
-              descricao: 'Boa',
+              nome: 'Mousse de Chocolate',
+              descricao: 'Mousse de chocolate',
               valor_desconto: 2,
-              valor_inicial: 6,
-              valor_final: 4,
+              valor_inicial: 10,
+              valor_final: 8,
               imagem: '../../../../../',
             },
           ],
         },
       ],
     },
+
+    // Saladas
+    {
+      nome: 'Saladas',
+      grupo_variacoes: [
+        {
+          tipo: 'Folhas Verdes',
+          variacoes: [
+            {
+              nome: 'Alface',
+              descricao: 'Alface fresca',
+              valor_desconto: 1,
+              valor_inicial: 6,
+              valor_final: 5,
+              imagem: '../../..',
+            },
+            {
+              nome: 'Rúcula',
+              descricao: 'Rúcula fresca',
+              valor_desconto: 1,
+              valor_inicial: 6,
+              valor_final: 5,
+              imagem: '../../..',
+            },
+          ],
+        },
+        {
+          tipo: 'Legumes',
+          variacoes: [
+            {
+              nome: 'Cenoura',
+              descricao: 'Cenoura crua ralada',
+              valor_desconto: 1,
+              valor_inicial: 5,
+              valor_final: 4,
+              imagem: '../../../../../',
+            },
+            {
+              nome: 'Tomate',
+              descricao: 'Tomate em rodelas',
+              valor_desconto: 1,
+              valor_inicial: 5,
+              valor_final: 4,
+              imagem: '../../../../../',
+            },
+          ],
+        },
+        {
+          tipo: 'Grãos',
+          variacoes: [
+            {
+              nome: 'Quinoa',
+              descricao: 'Salada com quinoa',
+              valor_desconto: 2,
+              valor_inicial: 8,
+              valor_final: 6,
+              imagem: '../../../../../',
+            },
+            {
+              nome: 'Lentilhas',
+              descricao: 'Salada com lentilhas',
+              valor_desconto: 2,
+              valor_inicial: 8,
+              valor_final: 6,
+              imagem: '../../../../../',
+            },
+          ],
+        },
+      ],
+    }
+
+
+
   ];
 }
