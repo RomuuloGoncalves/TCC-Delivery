@@ -23,25 +23,25 @@
               </ion-list>
             </ion-col>
 
-            <ion-col (click)="setOpen(true)" size="1">
+            <ion-col id="click-trigger" (click)="formularioPopover($event)" size="1">
               <ion-icon name="add-outline"></ion-icon>
             </ion-col>
-            <ion-modal [isOpen]="isModalOpen">
-              <ng-template>
-                <div class="wrapper">
-                  <ion-row>
-                      <ion-icon (click)="setOpen(false)" name="add-outline"></ion-icon>
-                    <h1 class="ion-text-center">O que deseja adicionar?</h1>
-                  </ion-row>
 
+
+            <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" side="bottom" alignment="start" mode="ios">
+              <ng-template ngIf="{{popover}}">
+                <ion-content class="ion-padding">
                   <ion-row class="ion-justify-content-center">
-                    <ion-col size="10"><ion-button expand="block" (click)="setOpen(false)" [routerLink]="['/criacao-comidas']" >Comidas</ion-button></ion-col>
-                    <ion-col size="10"><ion-button expand="block" (click)="setOpen(false)" [routerLink]="['/criacao-bebidas']" >Bebidas</ion-button></ion-col>
-                    <ion-col size="10"><ion-button expand="block" (click)="setOpen(false)" [routerLink]="['/criacao-comidas']" >Combos</ion-button></ion-col>
+                    <ion-col size="10"><ion-button expand="block" [routerLink]="['/criacao-comidas']" >Comidas</ion-button></ion-col>
+                    <ion-col size="10"><ion-button expand="block" [routerLink]="['/criacao-bebidas']" >Bebidas</ion-button></ion-col>
+                    <ion-col size="10"><ion-button expand="block" [routerLink]="['/criacao-combos']" >Combos</ion-button></ion-col>
                   </ion-row>
-                </div>
+                </ion-content>
               </ng-template>
-            </ion-modal>
+            </ion-popover>
+
+    
+      
           </ion-row>
         </ion-col>
       </ion-row>

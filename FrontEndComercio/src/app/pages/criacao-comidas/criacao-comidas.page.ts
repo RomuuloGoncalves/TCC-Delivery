@@ -12,6 +12,7 @@ export class CriacaoComidasPage implements OnInit {
 
   ngOnInit() {
   }
+  
   produtoSelecionado: string = 'Marmita';
   grupoVariacao: string = '';
 

@@ -17,10 +17,8 @@ h1 {
 
 ion-radio-group{
   display: flex;
-
-  ion-radio{
-    width: 160px;
-  }
+  flex-direction: column;
+  gap: 4px;
 }
 
 .variacao{

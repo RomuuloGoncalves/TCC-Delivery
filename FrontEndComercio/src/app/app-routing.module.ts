@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'criacao-comidas',
     loadChildren: () => import('./pages/criacao-comidas/criacao-comidas.module').then( m => m.CriacaoComidasPageModule)
   },
+  {
+    path: 'criacao-combos',
+    loadChildren: () => import('./pages/criacao-combos/criacao-combos.module').then( m => m.CriacaoCombosPageModule)
+  },
 ];
 
 @NgModule({

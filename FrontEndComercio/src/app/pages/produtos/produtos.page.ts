@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GrupoVariacoes } from 'src/app/core/interfaces/grupo-variacoes';
 import { Produto } from 'src/app/core/interfaces/produto';
 
@@ -8,9 +8,18 @@ import { Produto } from 'src/app/core/interfaces/produto';
   styleUrls: ['./produtos.page.scss'],
 })
 export class ProdutosPage implements OnInit {
+  @ViewChild('popover') popover:any
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  isOpen = false;
+
+  formularioPopover(e: Event) {
+    this.popover.event = e;
+    this.isOpen = true;
   }
 
   isModalOpen = false;
