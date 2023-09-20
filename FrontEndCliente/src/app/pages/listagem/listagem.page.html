@@ -25,6 +25,8 @@
   </ion-row>
 
   <app-sessao-cards-produto [produto]="this.produtoFiltrado"></app-sessao-cards-produto>
+
+  <app-modal-marmita></app-modal-marmita>
   
   <ng-container *ngIf="!this.produtoFiltrado.variacoes?.length">
     <ion-text class="ion-text-center">
