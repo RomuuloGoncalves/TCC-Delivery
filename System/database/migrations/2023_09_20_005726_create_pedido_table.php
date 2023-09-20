@@ -20,17 +20,14 @@ return new class extends Migration
             $table->dateTime('data_pedido');
             $table->dateTime('data_entrega');
             $table->dateTime('data_pagamento');
-            $table->string('complemento')->nullable();
-            $table->string('bairro');
-            $table->string('numero', 5);
-            $table->string('rua');
-            $table->char('cep', 8)->nullable();
+            $table->string('endereco');
             $table->enum('status_pedido', ['pronto', 'em entrega', 'cancelado', 'em espera']);
             $table->enum('forma_pagamento', ['crédito', 'dinheiro', 'pix', 'débito']);
             $table->unsignedBigInteger('cod_cliente');
             $table->unsignedBigInteger('cod_funcionario');
             $table->unsignedBigInteger('cod_endereco')->nullable();
             $table->unsignedBigInteger('cod_cupom')->nullable();
+
             $table->foreign('cod_cliente')->references('cod_cliente')->on('Cliente');
             $table->foreign('cod_funcionario')->references('cod_funcionario')->on('Funcionario');
             $table->foreign('cod_endereco')->references('cod_endereco')->on('Endereco');
