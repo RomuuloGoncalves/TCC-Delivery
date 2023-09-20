@@ -30,11 +30,32 @@
         <ion-row>
           <ion-col size="12">
             <ion-row>
-              <ion-input label="nome" label-placement="floating" fill="outline" placeholder="Digite o nome"></ion-input>
+
+              <ng-container *ngFor="let obj of criarFormularoProduto">
+                <div *ngIf="this.produtoSelecionado == obj.nome">
+                  <div *ngFor="let variacao of obj.grupo_variacoes">
+                    <ion-row>
+                      <ion-label>
+                        <h5>{{variacao.tipo}}</h5>
+                      </ion-label>
+                    </ion-row>
+                    <ion-row>
+                      <ion-radio-group value="custom-checked">
+                        <ion-radio *ngFor="let ingredientes of variacao.variacoes" value="{{ingredientes.nome}}"
+                          labelPlacement="end" aria-label="Custom checkbox">{{ingredientes.nome}}</ion-radio>
+                      </ion-radio-group>
+                    </ion-row>
+                  </div>
+                </div>
+              </ng-container>
+            </ion-row>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-row>
             </ion-row>
             <ion-row>
-              <ion-input label="Valor" label-placement="floating" fill="outline"
-                placeholder="Digite o valor"></ion-input>
+              <ion-input label="Nome" label-placement="floating" fill="outline" placeholder="Digite o nome"></ion-input>
             </ion-row>
             <ion-row>
               <ion-input type="number" label="Valor do desconto" label-placement="floating" fill="outline"

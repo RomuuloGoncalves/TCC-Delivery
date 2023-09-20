@@ -24,10 +24,10 @@ export class CriacaoProdutosPage implements OnInit {
   criarFormularoProduto: Produto[] = [
     //Marmitas
     {
-      nome: 'Comidas',
+      nome: 'Marmitas',
       grupo_variacoes: [
         {
-          tipo: 'Marmita',
+          tipo: 'Arroz',
           variacoes: [
             {
               nome: 'Arroz',
@@ -38,7 +38,7 @@ export class CriacaoProdutosPage implements OnInit {
               imagem: '../../..',
             },
             {
-              nome: 'Arroz',
+              nome: 'Queimado',
               descricao: 'arroz branco cozido',
               valor_desconto: 5,
               valor_inicial: 10,
@@ -60,11 +60,11 @@ export class CriacaoProdutosPage implements OnInit {
               valor_inicial: 10,
               valor_final: 5,
               imagem: '../../..',
-            },
+            }
           ],
         },
         {
-          tipo: 'Sobremesa',
+          tipo: 'Feijão',
           variacoes: [
             {
               nome: 'Carioca',
@@ -93,7 +93,7 @@ export class CriacaoProdutosPage implements OnInit {
           ],
         },
         {
-          tipo: 'Salada',
+          tipo: 'mistura',
           variacoes: [
             {
               nome: 'Parmegiana',

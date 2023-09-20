@@ -14,3 +14,9 @@ h1 {
   color: #909090;
   font-size: 3rem;
 }
+
+ion-radio-group{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
