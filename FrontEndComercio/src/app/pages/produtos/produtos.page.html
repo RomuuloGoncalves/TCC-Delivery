@@ -23,9 +23,25 @@
               </ion-list>
             </ion-col>
 
-            <ion-col [routerLink]="['/criacao-produtos']" id="open-custom-dialog" size="1">
+            <ion-col (click)="setOpen(true)" size="1">
               <ion-icon name="add-outline"></ion-icon>
             </ion-col>
+            <ion-modal [isOpen]="isModalOpen">
+              <ng-template>
+                <div class="wrapper">
+                  <ion-row>
+                      <ion-icon (click)="setOpen(false)" name="add-outline"></ion-icon>
+                    <h1 class="ion-text-center">O que deseja adicionar?</h1>
+                  </ion-row>
+
+                  <ion-row class="ion-justify-content-center">
+                    <ion-col size="10"><ion-button expand="block" (click)="setOpen(false)" [routerLink]="['/criacao-comidas']" >Comidas</ion-button></ion-col>
+                    <ion-col size="10"><ion-button expand="block" (click)="setOpen(false)" [routerLink]="['/criacao-bebidas']" >Bebidas</ion-button></ion-col>
+                    <ion-col size="10"><ion-button expand="block" (click)="setOpen(false)" [routerLink]="['/criacao-comidas']" >Combos</ion-button></ion-col>
+                  </ion-row>
+                </div>
+              </ng-template>
+            </ion-modal>
           </ion-row>
         </ion-col>
       </ion-row>

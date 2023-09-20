@@ -32,10 +32,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/historico/historico.module').then( m => m.HistoricoPageModule)
   },
   {
-    path: 'criacao-produtos',
-    loadChildren: () => import('./pages/criacao-produtos/criacao-produtos.module').then( m => m.CriacaoProdutosPageModule)
-  },
-  {
     path: 'criacao-cupons',
     loadChildren: () => import('./pages/criacao-cupons/criacao-cupons.module').then( m => m.CriacaoCuponsPageModule)
   },
@@ -46,6 +42,14 @@ const routes: Routes = [
   {
     path: 'criacao-variacoes',
     loadChildren: () => import('./pages/criacao-variacoes/criacao-variacoes.module').then( m => m.CriacaoVariacoesPageModule)
+  },
+  {
+    path: 'criacao-bebidas',
+    loadChildren: () => import('./pages/criacao-bebidas/criacao-bebidas.module').then( m => m.CriacaoBebidasPageModule)
+  },
+  {
+    path: 'criacao-comidas',
+    loadChildren: () => import('./pages/criacao-comidas/criacao-comidas.module').then( m => m.CriacaoComidasPageModule)
   },
 ];
 

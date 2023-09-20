@@ -17,6 +17,18 @@ h1 {
 
 ion-radio-group{
   display: flex;
-  flex-direction: row;
-  gap: 10px;
+
+  ion-radio{
+    width: 160px;
+  }
+}
+
+.variacao{
+  font-size: 1.2rem;
+}
+
+.inputs{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }

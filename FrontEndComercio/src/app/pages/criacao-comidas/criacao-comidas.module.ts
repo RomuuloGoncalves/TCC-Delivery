@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CriacaoProdutosPageRoutingModule } from './criacao-produtos-routing.module';
+import { CriacaoComidasPageRoutingModule } from './criacao-comidas-routing.module';
 
-import { CriacaoProdutosPage } from './criacao-produtos.page';
+import { CriacaoComidasPage } from './criacao-comidas.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    CriacaoProdutosPageRoutingModule,
+    CriacaoComidasPageRoutingModule,
     HeaderModule
   ],
-  declarations: [CriacaoProdutosPage]
+  declarations: [CriacaoComidasPage]
 })
-export class CriacaoProdutosPageModule {}
+export class CriacaoComidasPageModule {}

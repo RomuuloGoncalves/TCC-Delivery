@@ -13,6 +13,12 @@ export class ProdutosPage implements OnInit {
   ngOnInit() {
   }
 
+  isModalOpen = false;
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
   filtrar: { [chave: string]: boolean } = {
     "marmita": true,
     "bebida": true,
