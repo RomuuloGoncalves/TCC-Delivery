@@ -1,3 +1,4 @@
+
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { EventEmitter } from '@angular/core';
@@ -19,8 +20,8 @@ export class SessaoCardsProdutoComponent  implements OnInit {
 
   @Output() produtoEmitido: any = new EventEmitter
 
-  emitirEvento() {
-    this.produtoEmitido.emit(this.produto)
+  emitirEvento(produtoEmitido: Produto) {
+    this.produtoEmitido.emit(produtoEmitido)
   }
 
 }

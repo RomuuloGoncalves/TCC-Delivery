@@ -152,9 +152,4 @@ export class ListagemPage implements OnInit {
 
   }
 
-  fecharModal() {
-    this.modalController.dismiss();
-  }
-
-
 }

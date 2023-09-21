@@ -1,48 +1,118 @@
-<ion-row>
-  <ion-col size="8">
-    <ion-label>
-      <h2>Marmita X</h2>
-    </ion-label>
-  </ion-col>
-  <ion-col size="3">
-    <ion-label>
-      <ion-icon name="close-outline"></ion-icon>
-    </ion-label>
-  </ion-col>
-</ion-row>
+<ion-content>
+      <ion-row>
+        <ion-col size="8">
+          <ion-label class="ion-padding">
+            <h2 class="titulo">{{produto.nome}}</h2>
+          </ion-label>
+        </ion-col>
+        <ion-col size="3">
+          <ion-label (click)="fecharModal()">
+            <ion-icon class="icone-fechar-modal" name="close-outline"></ion-icon>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col>
+          <ion-img src="{{produto.imagem}}"></ion-img>
+        </ion-col>
+        <ion-col>
+          <ion-row>
+            <ion-col>
+              <ion-label>
+                <h3>Ingredientes:</h3>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-accordion-group multiple="true">
+                <ion-accordion value="{{produto.nome}}">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Nome</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">{{produto.nome}}</div>
+                </ion-accordion>
+                <ion-accordion value="{{produto.descricao}}">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Descrição</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">{{produto.descricao}}</div>
+                </ion-accordion>
+                <ion-accordion value="preco">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Preço</ion-label>
+                  </ion-item>
+                  <div class="ion-padding ion-justify-content-space-between" slot="content">
+                    <p>Preço: </p>
+                    <span class="valor-inicial">R${{produto.valor_inicial}}</span>
+                    <span class="valor-final">R${{produto.valor_final}}</span>
+                  </div>
+                </ion-accordion>
+              </ion-accordion-group>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col>
+          <ion-label>
+            <h1>Categorias:</h1>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>
+            <p>Escolha num max de selecoes das opções abixo*</p>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-radio-group [allowEmptySelection]="true" value="turtles">
+            <ion-item>
+              <ion-label>Dogs</ion-label>
+              <ion-radio slot="end" value="dogs"></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label>Cats</ion-label>
+              <ion-radio slot="end" value="cats"></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label>Turtles</ion-label>
+              <ion-radio slot="end" value="turtles"></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label>Fish</ion-label>
+              <ion-radio slot="end" value="fish"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col>
+          <app-observacoes></app-observacoes>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col>
+          <app-contador></app-contador>
+        </ion-col>
+        <ion-col>
+          <ion-label>
+            <ion-icon [routerLink]="['montagem-marmita']" (click)="fecharModal()" name="create-outline"></ion-icon>
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-button mode="ios">Adicionar</ion-button>
+        </ion-col>
+      </ion-row>
 
-<ion-row>
-  <ion-col>
-    <ion-img src="https://images.pexels.com/photos/17216084/pexels-photo-17216084/free-photo-of-cesta-cesto-croissants-copo.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></ion-img>
-  </ion-col>
-  <ion-col>
-    <ion-accordion-group expand="inset">
-      <ion-accordion value="first">
-        <ion-item slot="header" color="light">
-          <ion-label>First Accordion</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">First Content</div>
-      </ion-accordion>
-      <ion-accordion value="second">
-        <ion-item slot="header" color="light">
-          <ion-label>Second Accordion</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">Second Content</div>
-      </ion-accordion>
-      <ion-accordion value="third">
-        <ion-item slot="header" color="light">
-          <ion-label>Third Accordion</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">Third Content</div>
-      </ion-accordion>
-    </ion-accordion-group>
-  </ion-col>
-</ion-row>
-
-<ion-row>
-  <ion-col>
-    <ion-label>
-      <p>a</p>
-    </ion-label>
-  </ion-col>
-</ion-row>
+</ion-content>
