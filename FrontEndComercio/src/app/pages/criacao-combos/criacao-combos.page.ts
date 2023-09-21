@@ -24,6 +24,11 @@ export class CriacaoCombosPage implements OnInit {
     console.log(this.selecionado);
   }
 
+  criarSelect(e: any) {
+    console.log(e)
+
+    console.log(Object.keys(e))
+  }
 
   marmitas: Produto[] = [
     { nome: 'Marmita de frango' },

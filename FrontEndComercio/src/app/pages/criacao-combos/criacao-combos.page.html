@@ -5,20 +5,27 @@
       <ion-row class="ion-justify-content-center">
         <h1>CRIAR COMBO</h1>
       </ion-row>
-      <form action="" method="post">
+      <form #selectForms="ngForm" (ngSubmit)="criarSelect(selectForms.value)">
         <ion-row>
           <ion-col size="12">
-            <ng-container *ngFor="let grupos of dadoFinal">
-              <ion-select [multiple]="true" (ionChange)="produtoSelecionadoSelect($event, '{{grupos[0]}}')"
-                aria-label="Variacao" label="{{grupos[0]}}" label-placement="floating" fill="outline"
-                placeholder="{{grupos[0]}}">
-                <ng-container *ngFor="let categorias of grupos[1]">
-                  <ion-select-option value="{{grupos[0]}}-{{categorias[0]}}">{{ categorias[0] }}</ion-select-option>
-                </ng-container>
-              </ion-select>
-            </ng-container>
+            <div class="selects">
+              <ng-container *ngFor="let grupos of dadoFinal">
+
+                <ion-select ngMode [multiple]="true" (ionChange)="produtoSelecionadoSelect($event, '{{grupos[0]}}')"
+                  aria-label="Variacao" label="{{grupos[0]}}" label-placement="floating" fill="outline"
+                  placeholder="{{grupos[0]}}">
+                  <ng-container *ngFor="let categorias of grupos[1]">
+                    <ion-select-option name="{{grupos[0]}}-{{categorias[0]}}" ngModel value="{{grupos[0]}}-{{categorias[0]}}">{{ categorias[0] }}</ion-select-option>
+                  </ng-container>
+                </ion-select>
+              </ng-container>
+            </div>
           </ion-col>
+          <ion-button type="submit">Teste</ion-button>
+
         </ion-row>
+      </form>
+      <form action="">
         <ion-row>
           <ion-col size="12">
             <ng-container *ngFor="let grupos of dadoFinal">
