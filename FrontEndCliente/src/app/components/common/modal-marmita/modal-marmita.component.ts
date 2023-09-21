@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { Component, Input, OnInit } from '@angular/core';
+import { NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal-marmita',
@@ -8,16 +8,16 @@ import { IonicModule } from '@ionic/angular';
 })
 export class ModalMarmitaComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private navParams: NavParams) { }
 
   ngOnInit() {}
-
-  @ViewChild('modal') modalpapa: IonicModule
-
-  this.exibirModal()
-
-  async exibirModal() {
-    await this.modalpapa.present()
-  }
+  
+  @Input() produto: any
+  
+  produtoModal = this.navParams.get('produto')
+  
+  
+  // console.log(produtoModal)
+  
 
 }
