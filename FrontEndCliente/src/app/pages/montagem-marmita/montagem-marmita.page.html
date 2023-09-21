@@ -14,12 +14,12 @@
           <ion-label class="card__titulo">Ingredientes</ion-label>
           <ion-card class="card__marmita-atual">
             <ion-card-content>
-              <ion-text class="card__mensagem ion-text-center" *ngIf="!this.marmita.length">
+              <ion-text class="card__mensagem ion-text-center" *ngIf="!this.precoMarmita">
                 <h2>Não há ingredientes selecionados</h2>
               </ion-text>
               <ion-accordion-group>
                 <ng-container *ngFor="let ingrediente of this.marmita">
-                  <ion-accordion value="{{ ingrediente.tipo }}">
+                  <ion-accordion *ngIf="ingrediente.variacoes?.length" value="{{ ingrediente.tipo }}">
                     <ion-item slot="header" color="light">
                       <ion-text>
                         <b>{{ ingrediente.tipo }}</b>
@@ -79,23 +79,22 @@
                 <ion-card-header>
                   <ion-card-title class="ion-text-capitalize">{{ ingrediente.tipo }}</ion-card-title>
                   <ion-card-subtitle>Selecione o tipo de {{ ingrediente.tipo.toLocaleLowerCase()}} desejado</ion-card-subtitle>
+                  <ion-card-subtitle *ngIf="this.ingrediente.qtdd_max">
+                    <ion-text color="danger">
+                      Máximo de {{ ingrediente.qtdd_max }} opções!
+                    </ion-text>
+                  </ion-card-subtitle>
                 </ion-card-header>
 
                 <ion-card-content>
                   <ion-list>
-                    <ng-container *ngIf="this.ingrediente.qtdd_max && this.ingrediente.qtdd_max > 1">
-                      <ion-radio-group value="{{ ingrediente.tipo }}" (ionChange)="this.selecionarIndividuais(idIngrediente, $event); this.calcPrecoMarmita()">
-                        <ion-item *ngFor="let variacao of this.ingrediente.variacoes; let idVariacao = index">
-                          <ion-label class="ion-text-capitalize">{{ variacao.nome }}</ion-label>
-                          <ion-radio slot="end" value="{{ idVariacao }}"></ion-radio>
-                        </ion-item>
-                      </ion-radio-group>
-                    </ng-container>
-                    <ng-container *ngIf="!this.ingrediente.qtdd_max && ingrediente.qtdd_max === 1">
-                      <ion-item *ngFor="let variacao of this.ingrediente.variacoes; let idVariacao = index">
-                        <ion-checkbox (ionChange)="selecionarMultiSelecionaveis(idIngrediente, idVariacao, $event); this.calcPrecoMarmita()">{{ variacao.nome }}</ion-checkbox>
-                      </ion-item>
-                    </ng-container>
+                    <ion-item *ngFor="let variacao of this.ingrediente.variacoes; let idVariacao = index">
+                      <ion-checkbox
+                      [disabled]="ingrediente.qtdd_max !== undefined
+                      && this.marmita[idIngrediente].variacoes!.length >= ingrediente.qtdd_max
+                      && !this.ingrediente.variacoes![idVariacao]!.selecionado"
+                      (ionChange)="selecionarIngrediente(idIngrediente, idVariacao, $event); this.calcPrecoMarmita()">{{ variacao.nome }}</ion-checkbox>
+                    </ion-item>
                   </ion-list>
                 </ion-card-content>
               </ion-card>
@@ -125,7 +124,7 @@
               <p>Preço</p>
             </ion-text>
             <ion-text class="sessao-total__info">
-              <p>{{ this.precoMarmtia.toFixed(2).replace('.', ',') }}</p>
+              <p>{{ this.precoMarmita.toFixed(2).replace('.', ',') }}</p>
             </ion-text>
           </ion-row>
           <ion-row class="sessao-total ion-justify-content-between">

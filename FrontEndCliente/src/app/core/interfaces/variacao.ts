@@ -7,4 +7,5 @@ export interface Variacao {
   valor_inicial?: number;
   valor_final?: number;
   imagem?: string;
+  selecionado?: boolean;
 }
