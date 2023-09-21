@@ -7,115 +7,75 @@ import { Produto } from 'src/app/core/interfaces/produto';
   styleUrls: ['./criacao-combos.page.scss'],
 })
 export class CriacaoCombosPage implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
+    console.log(this.dadoFinal);
   }
-  produtoSelecionado: string = 'Marmita';
-  grupoVariacao: string = '';
 
-  produtoSelecionadoSelect(e: any) {
+  produtoSelecionado: any = [];
+  selecionado: any = []
+
+  produtoSelecionadoSelect(e: any, grupo: any) {
     this.produtoSelecionado = e.detail.value;
-  }
-  grupoVariacaoSelecionada(e: any) {
-    this.grupoVariacao = e.detail.value;
+    this.selecionado.push([grupo, this.produtoSelecionado])
+
+
+    console.log(this.selecionado);
   }
 
-  criarFormularoProduto: Produto[] = [
-    // Bebidas
-    {
-      nome: 'Refrigerante',
-      grupo_variacoes: [
-        {
-          tipo: 'Coca-cola',
-          variacoes: [
-            {
-              nome: 'Coca cola sem açucar',
-              descricao: 'sem açucar mesmo',
-              valor_desconto: 5,
-              valor_inicial: 10,
-              valor_final: 5,
-              imagem: '../../..',
-            },
-          ],
-        },
-        {
-          tipo: 'Fanta',
-          variacoes: [
-            {
-              nome: 'Fanta Laranja',
-              descricao: 'Tem gosto de laranja mesmo',
-              valor_desconto: 2,
-              valor_inicial: 6,
-              valor_final: 4,
-              imagem: '../../../../../',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      nome: 'Suco',
-      grupo_variacoes: [
-        {
-          tipo: 'Del vale',
-          variacoes: [
-            {
-              nome: 'Laranja',
-              descricao: 'sem açucar mesmo',
-              valor_desconto: 5,
-              valor_inicial: 10,
-              valor_final: 5,
-              imagem: '../../..',
-            },
-          ],
-        },
-        {
-          tipo: 'Suquito',
-          variacoes: [
-            {
-              nome: 'Fanta Laranja',
-              descricao: 'Tem gosto de laranja mesmo',
-              valor_desconto: 2,
-              valor_inicial: 6,
-              valor_final: 4,
-              imagem: '../../../../../',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      nome: 'Cerveja',
-      grupo_variacoes: [
-        {
-          tipo: 'Iscol',
-          variacoes: [
-            {
-              nome: 'Sem alcool',
-              descricao: 'sem açucar mesmo',
-              valor_desconto: 5,
-              valor_inicial: 10,
-              valor_final: 5,
-              imagem: '../../..',
-            },
-          ],
-        },
-        {
-          tipo: 'Rainiquem',
-          variacoes: [
-            {
-              nome: 'Não beba',
-              descricao: 'Tem gosto de laranja mesmo',
-              valor_desconto: 2,
-              valor_inicial: 6,
-              valor_final: 4,
-              imagem: '../../../../../',
-            },
-          ],
-        },
-      ],
-    },
+
+  marmitas: Produto[] = [
+    { nome: 'Marmita de frango' },
+    { nome: 'Marmita de bife' },
+    { nome: 'Marmita de arroz' },
   ];
+
+  sobremesas: Produto[] = [
+    { nome: 'bolo de cenoura' },
+    { nome: 'bolo de chocolate' },
+    { nome: 'bolo de morango' },
+  ];
+
+  saladas: Produto[] = [
+    { nome: 'Salada X' },
+    { nome: 'Salada y' },
+  ];
+
+  refrigerante: Produto[] = [
+    { nome: 'Coca-Cola' },
+    { nome: 'Pepsi' },
+    { nome: 'Guaraná Antarctica' },
+  ];
+
+  suco: Produto[] = [
+    { nome: 'Suco de Laranja' },
+    { nome: 'Suco de Maçã' },
+    { nome: 'Suco de Uva' },
+  ];
+
+  cha: Produto[] = [
+    { nome: 'Chá de Camomila' },
+    { nome: 'Chá Verde' },
+    { nome: 'Chá de Hortelã' },
+  ];
+
+  comidas = {
+    marmitas: this.marmitas,
+    sobremesas: this.sobremesas,
+    saladas: this.saladas,
+  };
+
+  bebidas = {
+    refrigerante: this.refrigerante,
+    suco: this.suco,
+    cha: this.cha,
+  };
+
+  dados = {
+    comidas: Object.entries(this.comidas),
+    bebidas: Object.entries(this.bebidas),
+  };
+
+  dadoFinal = Object.entries(this.dados);
 }

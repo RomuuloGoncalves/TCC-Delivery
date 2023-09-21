@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Produto } from 'src/app/core/interfaces/produto';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sessao-cards-produto',
@@ -15,5 +16,11 @@ export class SessaoCardsProdutoComponent  implements OnInit {
   @Input() tituloSessao?: string;
   @Input() produto?: Produto;
   @Input() cardMontagem: boolean = false;
+
+  @Output() produtoEmitido: any = new EventEmitter
+
+  emitirEvento() {
+    this.produtoEmitido.emit(this.produto)
+  }
 
 }

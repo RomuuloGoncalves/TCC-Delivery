@@ -24,9 +24,7 @@
     </ion-col>
   </ion-row>
 
-  <app-sessao-cards-produto [produto]="this.produtoFiltrado"></app-sessao-cards-produto>
-
-  <app-modal-marmita></app-modal-marmita>
+  <app-sessao-cards-produto (produtoEmitido)="definirProdutoModal($event)" [produto]="this.produtoFiltrado"></app-sessao-cards-produto>
   
   <ng-container *ngIf="!this.produtoFiltrado.variacoes?.length">
     <ion-text class="ion-text-center">

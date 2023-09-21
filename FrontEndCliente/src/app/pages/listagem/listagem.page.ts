@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { ModalMarmitaComponent } from 'src/app/components/common/modal-marmita/modal-marmita.component';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { Variacao } from 'src/app/core/interfaces/variacao';
 
@@ -9,7 +11,9 @@ import { Variacao } from 'src/app/core/interfaces/variacao';
   styleUrls: ['./listagem.page.scss'],
 })
 export class ListagemPage implements OnInit {
-  constructor(private route: ActivatedRoute, private Router: Router) {}
+  constructor(private route: ActivatedRoute,
+              private Router: Router,
+              private modalController: ModalController) {}
 
   nomeProduto!: any;
 
@@ -128,4 +132,29 @@ export class ListagemPage implements OnInit {
       ],
     };
   }
+
+
+  produtoModal?: Produto
+  definirProdutoModal(produto: Produto) {
+    this.produtoModal = produto
+    this.abrirModal(this.produtoModal)
+  }
+
+  async abrirModal(produto: any) {
+    const modal = await this.modalController.create({
+      component: ModalMarmitaComponent, // Substitua pelo seu modal
+      componentProps: {
+        produto: produto // Passe os dados como propriedades para o modal
+      }
+    });
+
+    return await modal.present()
+
+  }
+
+  fecharModal() {
+    this.modalController.dismiss();
+  }
+
+
 }
