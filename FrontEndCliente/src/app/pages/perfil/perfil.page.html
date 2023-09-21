@@ -1,62 +1,60 @@
 <ion-content [fullscreen]="true">
   <app-header></app-header>
-  <ion-row class="content">
-    <ion-col size="4">
-      <ion-row class="sidebar">
-        <ion-row class="sidebar__welcome">
-          <ion-row class="ion-justify-content-center ion-align-items-center">
-            <img class="sidebar__welcome__avatar" src="../../../assets/img/header-icons/avatar_default.png" alt="avatar">
-          </ion-row>
-    
-          <ion-row class="ion-justify-content-center">
-            <h1 class="sidebar__welcome__title">Olá, Danoninho 👋</h1>
-          </ion-row>
-        </ion-row>
-    
-        <ion-row class="sidebar__options">
-          <ion-row class="sidebar__options__itens">
-            <ion-col size="12">
-    
-              <ion-row class="item">
-                <ion-label>Perfil</ion-label> 
-              </ion-row>
-      
-              <ion-row class="item">
-                <ion-label>Endereço</ion-label>
-              </ion-row>
-      
-              <ion-row class="item">
-                <ion-label>Cupons</ion-label>
-              </ion-row>
-    
-              <ion-row class="item">
-                <ion-label>Pagamentos</ion-label>
-              </ion-row>
-    
-              <ion-row class="item">
-                <ion-label>Dados</ion-label>
-              </ion-row>
-            </ion-col>
-          </ion-row>
-    
-          <ion-row class="">
-            <ion-button class="sidebar__options__sair">
-              Sair
-              <img class="sidebar__options__sair__icon " src="../../../assets/img/perfil-icons/logout.svg" alt="sair">
-            </ion-button>
-          </ion-row>
-        </ion-row>
-      </ion-row>
-    </ion-col>
-  
-    <ion-col size="">
-      <ion-row class="pages">
-  
-      </ion-row>
-    </ion-col>
 
+  <div class="content">
+    <ion-row>
+      <ion-col size="3">
+        <ion-row class="sidebar ion-justify-content-center">
+          <ion-col>
+            <ion-row class="sidebar__welcome ion-justify-content-center">
+              <ion-row class="ion-justify-content-center ion-align-items-center">
+                <img class="sidebar__welcome__avatar" src="../../../assets/img/header-icons/avatar_default.png" alt="avatar">
+              </ion-row>
+        
+              <ion-row class="ion-justify-content-center">
+                <h1 class="sidebar__welcome__title">Olá, Danoninho 👋</h1>
+              </ion-row>
+            </ion-row>
+        
+            <ion-row class="sidebar__options ion-align-item-center ion-justify-content-center">
+              <ion-col size="12">
+                  <ion-row class="item ion-align-items-center ion-justify-content-center">
+                    <ion-label>Perfil</ion-label> 
+                  </ion-row>
+          
+                  <ion-row class="item ion-align-items-center ion-justify-content-center">
+                    <ion-label>Endereço</ion-label>
+                  </ion-row>
+          
+                  <ion-row class="item ion-align-items-center ion-justify-content-center">
+                    <ion-label>Cupons</ion-label>
+                  </ion-row>
+        
+                  <ion-row class="item ion-align-items-center ion-justify-content-center">
+                    <ion-label>Pagamentos</ion-label>
+                  </ion-row>
+        
+                  <ion-row class="item ion-align-items-center ion-justify-content-center">
+                    <ion-label>Dados</ion-label>
+                  </ion-row>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="sidebar__sair">
+                <ion-label>Sair</ion-label>
+                <img class="sidebar__options__sair__icon " src="../../../assets/img/perfil-icons/logout.svg" alt="sair">
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-col>
     
-  </ion-row>
+      <ion-col>
+        <ion-row class="pages">
+    
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </div>
+
   <app-footer></app-footer>
-
 </ion-content>
