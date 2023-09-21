@@ -11,111 +11,102 @@ export class CriacaoCombosPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.dadoFinal)
   }
   produtoSelecionado: string = 'Marmita';
   grupoVariacao: string = '';
-
+  
   produtoSelecionadoSelect(e: any) {
     this.produtoSelecionado = e.detail.value;
+    console.log(this.produtoSelecionado)
   }
   grupoVariacaoSelecionada(e: any) {
     this.grupoVariacao = e.detail.value;
   }
 
-  criarFormularoProduto: Produto[] = [
-    // Bebidas
+
+  marmitas: Produto[] = [
     {
-      nome: 'Refrigerante',
-      grupo_variacoes: [
-        {
-          tipo: 'Coca-cola',
-          variacoes: [
-            {
-              nome: 'Coca cola sem açucar',
-              descricao: 'sem açucar mesmo',
-              valor_desconto: 5,
-              valor_inicial: 10,
-              valor_final: 5,
-              imagem: '../../..',
-            },
-          ],
-        },
-        {
-          tipo: 'Fanta',
-          variacoes: [
-            {
-              nome: 'Fanta Laranja',
-              descricao: 'Tem gosto de laranja mesmo',
-              valor_desconto: 2,
-              valor_inicial: 6,
-              valor_final: 4,
-              imagem: '../../../../../',
-            },
-          ],
-        },
-      ],
+      nome: 'Marmita de frango',
     },
     {
-      nome: 'Suco',
-      grupo_variacoes: [
-        {
-          tipo: 'Del vale',
-          variacoes: [
-            {
-              nome: 'Laranja',
-              descricao: 'sem açucar mesmo',
-              valor_desconto: 5,
-              valor_inicial: 10,
-              valor_final: 5,
-              imagem: '../../..',
-            },
-          ],
-        },
-        {
-          tipo: 'Suquito',
-          variacoes: [
-            {
-              nome: 'Fanta Laranja',
-              descricao: 'Tem gosto de laranja mesmo',
-              valor_desconto: 2,
-              valor_inicial: 6,
-              valor_final: 4,
-              imagem: '../../../../../',
-            },
-          ],
-        },
-      ],
+      nome: 'Marmita de bife',
     },
     {
-      nome: 'Cerveja',
-      grupo_variacoes: [
-        {
-          tipo: 'Iscol',
-          variacoes: [
-            {
-              nome: 'Sem alcool',
-              descricao: 'sem açucar mesmo',
-              valor_desconto: 5,
-              valor_inicial: 10,
-              valor_final: 5,
-              imagem: '../../..',
-            },
-          ],
-        },
-        {
-          tipo: 'Rainiquem',
-          variacoes: [
-            {
-              nome: 'Não beba',
-              descricao: 'Tem gosto de laranja mesmo',
-              valor_desconto: 2,
-              valor_inicial: 6,
-              valor_final: 4,
-              imagem: '../../../../../',
-            },
-          ],
-        },
-      ],
+      nome: 'Marmita de arroz',
     },
-  ];
+  ]
+  sobremesas: Produto[] = [
+    {
+      nome: 'bolo de cenoura',
+    },
+    {
+      nome: 'bolo de chocolate',
+    },
+    {
+      nome: 'bolo de morango',
+    },
+  ]
+  saladas: Produto[] = [
+    {
+      nome: 'Salada X',
+    },
+    {
+      nome: 'Salada y',
+    },
+  ]
+
+  refrigerante: Produto[] = [
+    {
+      nome: 'Coca-Cola',
+    },
+    {
+      nome: 'Pepsi',
+    },
+    {
+      nome: 'Guaraná Antarctica',
+    },
+  ]
+  suco: Produto[] = [
+    {
+      nome: 'Suco de Laranja',
+    },
+    {
+      nome: 'Suco de Maçã',
+    },
+    {
+      nome: 'Suco de Uva',
+    },
+  ]
+  cha: Produto[] = [
+    {
+      nome: 'Chá de Camomila',
+    },
+    {
+      nome: 'Chá Verde',
+    },
+    {
+      nome: 'Chá de Hortelã',
+    },
+  ]
+
+  comidas = {
+    marmitas: this.marmitas, 
+    sobremeas: this.sobremesas, 
+    saladas: this.saladas
+  }
+
+  bebidas = {
+    refigerante: this.refrigerante, 
+    suco: this.suco, 
+    cha: this.cha
+  };
+
+
+  dados = {
+    comidas: Object.entries(this.comidas),
+    bebidas: Object.entries(this.bebidas),
+  }
+
+  dadoFinal = Object.entries(this.dados);
 }
