@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true">
   <app-header></app-header>
-  <ion-row  class="ion-padding">
+  <ion-row class="ion-padding">
     <ion-col size="12">
       <ion-row class="ion-padding">
         <ion-label>GERENCIAR:</ion-label>
@@ -10,7 +10,7 @@
           <ion-button [routerLink]="['/pedidos']" expand="block">
             <ion-row>
               <ion-col size="12">
-                <ion-icon name="create-outline"></ion-icon>
+                <ion-icon name="mail-unread-outline"></ion-icon>
               </ion-col>
               <ion-col size="12">
                 Pedidos
@@ -22,7 +22,7 @@
           <ion-button [routerLink]="['/historico']" expand="block">
             <ion-row>
               <ion-col size="12">
-                <ion-icon name="create-outline"></ion-icon>
+                <ion-icon name="reload-outline"></ion-icon>
               </ion-col>
               <ion-col size="12">
                 Histórico
@@ -34,7 +34,7 @@
           <ion-button [routerLink]="['/produtos']" expand="block">
             <ion-row>
               <ion-col size="12">
-                <ion-icon name="create-outline"></ion-icon>
+                <ion-icon name="basket-outline"></ion-icon>
               </ion-col>
               <ion-col size="12">
                 produtos
@@ -46,7 +46,7 @@
           <ion-button [routerLink]="['/cupons']" expand="block">
             <ion-row>
               <ion-col size="12">
-                <ion-icon name="create-outline"></ion-icon>
+                <ion-icon name="documents-outline"></ion-icon>
               </ion-col>
               <ion-col size="12">
                 cupons
@@ -66,7 +66,7 @@
           <ion-button [routerLink]="['/criacao-comidas']" expand="block">
             <ion-row>
               <ion-col size="12">
-                <ion-icon name="create-outline"></ion-icon>
+                <ion-icon name="restaurant-outline"></ion-icon>
               </ion-col>
               <ion-col size="12">
                 Comidas
@@ -78,10 +78,23 @@
           <ion-button [routerLink]="['/criacao-bebidas']" expand="block">
             <ion-row>
               <ion-col size="12">
-                <ion-icon name="create-outline"></ion-icon>
+                <ion-icon name="beer-outline"></ion-icon>
               </ion-col>
               <ion-col size="12">
                 Bebidas
+              </ion-col>
+            </ion-row>
+          </ion-button>
+        </ion-col>
+        <ion-col size=10 sizeMd="6" sizeLg="3">
+          <ion-button [routerLink]="['/criacao-combos']" expand="block">
+            <ion-row>
+              <ion-col size="12">
+                <ion-icon name="restaurant-outline"></ion-icon>
+                <ion-icon name="beer-outline"></ion-icon>
+              </ion-col>
+              <ion-col size="12">
+                Combos
               </ion-col>
             </ion-row>
           </ion-button>
@@ -102,7 +115,7 @@
           <ion-button [routerLink]="['/criacao-cupons']" expand="block">
             <ion-row>
               <ion-col size="12">
-                <ion-icon name="create-outline"></ion-icon>
+                <ion-icon name="documents-outline"></ion-icon>
               </ion-col>
               <ion-col size="12">
                 cupom

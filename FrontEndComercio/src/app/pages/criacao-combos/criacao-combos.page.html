@@ -9,22 +9,24 @@
         <ion-row>
           <ion-col size="12">
             <div class="selects">
-              <ion-row>
+              <ion-row class="ion-align-items-center">
 
                 <ng-container *ngFor="let grupos of dadoFinal">
                   <ion-col size="5">
 
                     <ion-select mode="md" ngModel [multiple]="true" aria-label="Variacao" name="{{grupos[0]}}"
-                    label="{{grupos[0]}}" label-placement="floating" fill="outline" placeholder="{{grupos[0]}}">
-                    <ng-container *ngFor="let categorias of grupos[1]">
-                      <ion-select-option value="{{categorias[0]}}">{{ categorias[0] }}</ion-select-option>
-                    </ng-container>
-                  </ion-select>
-                </ion-col>
-              </ng-container>
+                      label="{{grupos[0]}}" label-placement="floating" fill="outline" placeholder="{{grupos[0]}}">
+                      <ng-container *ngFor="let categorias of grupos[1]">
+                        <ion-select-option value="{{categorias[0]}}">{{ categorias[0] }}</ion-select-option>
+                      </ng-container>
+                    </ion-select>
+                  </ion-col>
+                </ng-container>
+                <ion-col>
 
-                <ion-button eexpand="block" type="submit">ok</ion-button>
-            </ion-row>
+                  <ion-button size="large" expand="block" type="submit">ok</ion-button>
+                </ion-col>
+              </ion-row>
             </div>
           </ion-col>
 
@@ -57,25 +59,21 @@
                 </ng-container>
               </ng-container>
             </ng-container>
-
-
-            <ion-row>
-            </ion-row>
-            <ion-row>
-              <ion-input mode="md" label="Nome" label-placement="floating" fill="outline"
-                placeholder="Digite o nome"></ion-input>
-            </ion-row>
-            <ion-row>
-              <ion-input mode="md" type="number" label="Valor do desconto" label-placement="floating" fill="outline"
-                placeholder="Digite o Valor do desconto"></ion-input>
-            </ion-row>
-            <ion-row>
-              <ion-textarea mode="md" label="Descrição" label-placement="floating" fill="outline"
-                placeholder="Insira uma descrição"></ion-textarea>
-            </ion-row>
           </ion-col>
         </ion-row>
 
+        <ion-row>
+          <ion-input mode="md" label="Nome" label-placement="floating" fill="outline"
+            placeholder="Digite o nome"></ion-input>
+        </ion-row>
+        <ion-row>
+          <ion-input mode="md" type="number" label="Valor do desconto" label-placement="floating" fill="outline"
+            placeholder="Digite o Valor do desconto"></ion-input>
+        </ion-row>
+        <ion-row>
+          <ion-textarea mode="md" label="Descrição" label-placement="floating" fill="outline"
+            placeholder="Insira uma descrição"></ion-textarea>
+        </ion-row>
         <ion-row>
           <ion-col size=6>
             <ion-button size="large" type="submit" [routerLink]="['/produtos']" expand="block">Voltar</ion-button>
@@ -84,8 +82,10 @@
             <ion-button size="large" type="submit" expand="block">Criar</ion-button>
           </ion-col>
         </ion-row>
-
       </form>
     </ion-col>
   </ion-row>
+
+
+
 </ion-content>
