@@ -13,23 +13,17 @@ export class CriacaoCombosPage implements OnInit {
     console.log(this.dadoFinal);
   }
 
-  produtoSelecionado: any = [];
+  produtoSelecionado: any[] = [];
   selecionado: any = []
 
-  produtoSelecionadoSelect(e: any, grupo: any) {
-    this.produtoSelecionado = e.detail.value;
-    this.selecionado.push([grupo, this.produtoSelecionado])
+  produtoSelecionadoSelect(e: any) {
+    this.produtoSelecionado = e
 
-
-    console.log(this.selecionado);
+    this.produtoSelecionado = Object.entries(this.produtoSelecionado);
+    console.log( this.produtoSelecionado);
+    
   }
-
-  criarSelect(e: any) {
-    console.log(e)
-
-    console.log(Object.keys(e))
-  }
-
+  
   marmitas: Produto[] = [
     { nome: 'Marmita de frango' },
     { nome: 'Marmita de bife' },
