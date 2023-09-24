@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
+import { Produto } from 'src/app/core/interfaces/produto';
+import { PassarMarmitaService } from 'src/app/core/services/passar-marmita.service';
 
 @Component({
   selector: 'app-modal-marmita',
@@ -9,7 +11,8 @@ import { ModalController, NavParams } from '@ionic/angular';
 export class ModalMarmitaComponent  implements OnInit {
 
   constructor(private navParams: NavParams,
-              private modalController: ModalController) { }
+              private modalController: ModalController,
+              private passarMarmita: PassarMarmitaService) { }
 
   ngOnInit() {}
   
@@ -20,11 +23,10 @@ export class ModalMarmitaComponent  implements OnInit {
   
   fecharModal() {
     this.modalController.dismiss();
-    console.log(this.produto)
   }
 
-
-  // console.log(produtoModal)
-  
+  chamarDefinirMarmita(produto: Produto) {
+    this.passarMarmita.definirMarmita(produto)
+  }
 
 }
