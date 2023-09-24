@@ -8,7 +8,6 @@ import { PedidosPageRoutingModule } from './pedidos-routing.module';
 
 import { PedidosPage } from './pedidos.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
-import { CardPedidosComponent } from 'src/app/components/home/card-pedidos/card-pedidos.component';
 
 @NgModule({
   imports: [
@@ -18,6 +17,6 @@ import { CardPedidosComponent } from 'src/app/components/home/card-pedidos/card-
     PedidosPageRoutingModule,
     HeaderModule
   ],
-  declarations: [PedidosPage, CardPedidosComponent]
+  declarations: [PedidosPage]
 })
 export class PedidosPageModule {}
