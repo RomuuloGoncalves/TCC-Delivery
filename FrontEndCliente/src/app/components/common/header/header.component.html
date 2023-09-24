@@ -12,7 +12,7 @@
         <ion-col size="2">
           <ion-row class="ion-align-items-center ion-justify-content-end">
             <ion-menu-toggle>
-              <ion-img class="menu__header__btn-close" src="../../../assets/img/header-icons/close.png" alt="close"></ion-img> 
+              <ion-img class="menu__header__btn-close" src="../../../assets/imgs/header-icons/close.png" alt="close"></ion-img> 
             </ion-menu-toggle>
           </ion-row>
         </ion-col>
@@ -28,17 +28,17 @@
         <ion-col size="12">
 
           <ion-row class="ion-align-items-center ion-justify-content-center">
-            <img class="menu__perfil__avatar" src="../../../assets/img/header-icons/avatar_default.png" alt="avatar">
+            <img class="menu__perfil__avatar" src="../../../../assets/imgs/default/avatar_default.svg" alt="avatar">
           </ion-row>
 
           <ion-row class="ion-align-items-center ion-justify-content-center">
-            <h1 class="menu__perfil__title">Danoninho</h1>
+            <h1 class="menu__perfil__title">Usuario X</h1>
           </ion-row>
 
           <ion-row class="ion-align-items-center ion-justify-content-center">
             <ion-button class="menu__perfil__btn-config" [routerLink]="['/perfil']">
               Perfil
-              <img class="menu__perfil__btn-config__icon" src="../../../assets/img/header-icons/btn-perfil.svg" alt="perfil"></ion-button>
+              <img class="menu__perfil__btn-config__icon" src="../../../assets/imgs/header-icons/btn-perfil.svg" alt="perfil"></ion-button>
           </ion-row>
         </ion-col>
       </ion-row>
@@ -47,17 +47,17 @@
         <ion-col size="12">
           <ion-row class="item ion-align-items-center ion-justify-content-between">
             <ion-label>Home</ion-label> 
-            <img class="icon" src="../../../../assets/img/header-icons/home_red.png" alt="carrinho">
+            <img class="icon" src="../../../../assets/imgs/header-icons/home_red.png" alt="Home">
           </ion-row>
   
           <ion-row class="item ion-align-items-center ion-justify-content-between">
             <ion-label>Montagem</ion-label>
-            <img class="icon" src="../../../../assets/img/header-icons/motagem_red_bold.png" alt="carrinho">
+            <img class="icon" src="../../../../assets/imgs/header-icons/motagem_red_bold.png" alt="Montagem">
           </ion-row>
   
           <ion-row class="item ion-align-items-center ion-justify-content-between">
             <ion-label>Carrinho</ion-label>
-            <img class="icon" src="../../../../assets/img/header-icons/carrinho_red_bold.png" alt="carrinho">
+            <img class="icon" src="../../../../assets/imgs/header-icons/carrinho_red_bold.png" alt="carrinho">
           </ion-row>
         </ion-col>
       </ion-row>
@@ -80,7 +80,7 @@
     <ion-row class="header ion-justify-content-between ion-align-items-center">
       <ion-col size-sm="8" size-md="3">
         <ion-row class="ion-align-items-center ion-no-padding">
-          <ion-img [routerLink]="['/home']" class="header__logo" src="../../../assets/img/Logo.png" alt="logo"></ion-img>
+          <ion-img [routerLink]="['/home']" class="header__logo" src="../../../assets/imgs/Logo.png" alt="logo"></ion-img>
         </ion-row>
       </ion-col>
 
@@ -88,19 +88,19 @@
         <ion-row class="header__bookmaker ion-align-items-center ion-justify-content-between ion-no-padding">
             <ion-col class="item" [routerLink]="['/']" size="auto">
               <ion-row class="ion-align-items-center">
-                <img class="icon" src="../../../../assets/img/header-icons/home_white.png" alt="carrinho">
+                <img class="icon" src="../../../../assets/imgs/header-icons/home_white.png" alt="Home">
                 <ion-label>Home</ion-label> 
               </ion-row>
             </ion-col>
             <ion-col class="item" [routerLink]="['/montagem-marmita']" size="auto">
               <ion-row class="ion-align-items-center">
-                <img class="icon" src="../../../../assets/img/header-icons/motagem_white_bold.png" alt="carrinho">
+                <img class="icon" src="../../../../assets/imgs/header-icons/motagem_white_bold.png" alt="Montagem">
                 <ion-label>Montagem</ion-label>
               </ion-row>
             </ion-col>
             <ion-col class="item" [routerLink]="['/carrinho']" size="auto">
               <ion-row class="ion-align-items-center">
-                <img class="icon" src="../../../../assets/img/header-icons/carrinho_white.png" alt="carrinho">
+                <img class="icon" src="../../../../assets/imgs/header-icons/carrinho_white.png" alt="carrinho">
                 <ion-label>Carrinho</ion-label>
               </ion-row>
             </ion-col>
@@ -122,7 +122,7 @@
           <ion-col (click)="presentPopover($event)" *ngIf="this.login" class="header__btn-avatar ativar-popover" size="auto">
             <ion-row class="ion-align-items-center">
               <img id="click-trigger" class="ativar-popover ion-justify-content-end" alt="Avatar perfil"
-              src="../../../../assets/img/header-icons/user.png" />
+              src="../../../../assets/imgs/header-icons/user.png" />
             </ion-row>
           </ion-col>
           
@@ -131,7 +131,7 @@
               <ion-content class="ion-padding">
                 <ion-row class="">
                   <ion-col>
-                    <ion-label id="saudacao">Olá Rômulo</ion-label>
+                    <ion-label id="saudacao">Olá Usuario X</ion-label>
                   </ion-col>
                   <ion-col size="12">
                     <ion-list lines="full">

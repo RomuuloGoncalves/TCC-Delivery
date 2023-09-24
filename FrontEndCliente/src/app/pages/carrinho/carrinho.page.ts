@@ -29,7 +29,7 @@ export class CarrinhoPage implements OnInit {
         valor_inicial: 19.5,
         valor_final: 14.5,
         descricao: 'Bata muito boa tipo muito muito boa mesmo',
-        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png',
+        imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
       },
     },
     {
@@ -43,7 +43,7 @@ export class CarrinhoPage implements OnInit {
         valor_inicial: 12.5,
         valor_final: 8.5,
         descricao: 'Bata muito boa tipo muito muito boa mesmo',
-        imagem: '../../../assets/img/home-icons/garfo_faca_outline.png',
+        imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
       },
     },
   ];
