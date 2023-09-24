@@ -2,17 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Pedido } from 'src/app/core/interfaces/pedido';
 
 @Component({
-  selector: 'app-detalhe-pedido',
-  templateUrl: './detalhe-pedido.page.html',
-  styleUrls: ['./detalhe-pedido.page.scss'],
+  selector: 'app-pedido',
+  templateUrl: './pedido.page.html',
+  styleUrls: ['./pedido.page.scss'],
 })
-export class DetalhePedidoPage implements OnInit {
+export class PedidoPage implements OnInit {
 
   constructor() { }
 
   ngOnInit() {
   }
-
   pedido: Pedido = {
     id_pedido: 2,
     valor_com_desconto: 100,
