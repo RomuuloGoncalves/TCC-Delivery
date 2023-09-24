@@ -1,25 +1,25 @@
 <ion-item>
   <ion-row class="container__item ion-align-items-center ion-justify-content-around ion-padding-top ion-padding-bottom">
-    <ion-col size="3">
+    <ion-col size="12" sizeMd="6" sizeLg="3">
       <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-col>
+        <ion-col size="12" sizeMd="6">
           <ion-row class="ion-justify-content-end">
             <img src="../../../assets/imgs/this.produto-varicao/{{this.produto?.variacao?.imagem}}" alt="" />
           </ion-row>
         </ion-col>
-        <ion-col>
-          <ion-text>{{ this.produto?.variacao?.nome }}</ion-text>
+        <ion-col size="12" sizeMd="6">
+          <ion-text class="ion-text-center"><p>{{ this.produto?.variacao?.nome }}</p></ion-text>
         </ion-col>
       </ion-row>
     </ion-col>
 
-    <ion-col size="3">
+    <ion-col size="12" sizeMd="3" sizeLg="3">
       <ion-row class="ion-justify-content-center ion-align-items-center">
         <ion-text>R$ {{ this.produto?.variacao?.valor_final?.toFixed(2)?.replace('.', ',') }}</ion-text>
       </ion-row>
     </ion-col>
 
-    <ion-col size="3">
+    <ion-col size="12" sizeMd="3">
       <ion-row class="ion-justify-content-center ion-align-items-center">
         <app-contador
           [contador]="this.produto!.quantidade!"
@@ -29,9 +29,11 @@
       </ion-row>
     </ion-col>
 
-    <ion-col size="3">
-      <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-text>R$ {{ this.produto?.subtotal?.toFixed(2)?.replace('.', ',') }}</ion-text>
+    <ion-col size="12" sizeLg="3">
+      <ion-row class="ion-justify-content-end ion-align-items-center">
+        <ion-col sizeMd="3" sizeLg="12">
+          <ion-text class="ion-text-center"><p>R$ {{ this.produto?.subtotal?.toFixed(2)?.replace('.', ',') }}</p></ion-text>
+        </ion-col>
       </ion-row>
     </ion-col>
   </ion-row>

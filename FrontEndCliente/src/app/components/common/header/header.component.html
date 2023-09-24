@@ -8,16 +8,16 @@
             <ion-label class="menu__header__logo">Divina Refeição</ion-label>
           </ion-row>
         </ion-col>
-      
+
         <ion-col size="2">
           <ion-row class="ion-align-items-center ion-justify-content-end">
             <ion-menu-toggle>
-              <ion-img class="menu__header__btn-close" src="../../../assets/imgs/header-icons/close.png" alt="close"></ion-img> 
+              <ion-img class="menu__header__btn-close" src="../../../assets/imgs/header-icons/close.png" alt="close"></ion-img>
             </ion-menu-toggle>
           </ion-row>
         </ion-col>
       </ion-row>
-    
+
       <ion-row class="ion-justify-content-center">
         <ion-col size="11">
           <ion-row class="menu__divisoria"></ion-row>
@@ -32,7 +32,7 @@
           </ion-row>
 
           <ion-row class="ion-align-items-center ion-justify-content-center">
-            <h1 class="menu__perfil__title">Usuario X</h1>
+            <h1 class="menu__perfil__title">Usuario Guest</h1>
           </ion-row>
 
           <ion-row class="ion-align-items-center ion-justify-content-center">
@@ -42,26 +42,26 @@
           </ion-row>
         </ion-col>
       </ion-row>
-    
+
       <ion-row class="menu__bookmaker ion-align-items-center ion-justify-content-center">
         <ion-col size="12">
           <ion-row class="item ion-align-items-center ion-justify-content-between">
-            <ion-label>Home</ion-label> 
+            <ion-label>Home</ion-label>
             <img class="icon" src="../../../../assets/imgs/header-icons/home_red.png" alt="Home">
           </ion-row>
-  
+
           <ion-row class="item ion-align-items-center ion-justify-content-between">
             <ion-label>Montagem</ion-label>
             <img class="icon" src="../../../../assets/imgs/header-icons/motagem_red_bold.png" alt="Montagem">
           </ion-row>
-  
+
           <ion-row class="item ion-align-items-center ion-justify-content-between">
             <ion-label>Carrinho</ion-label>
             <img class="icon" src="../../../../assets/imgs/header-icons/carrinho_red_bold.png" alt="carrinho">
           </ion-row>
         </ion-col>
       </ion-row>
-        
+
       <ion-row *ngIf="!this.login" class="menu__btn-acesso ion-justify-content-center">
         <ion-col size="6">
           <ion-row class="ion-align-items-center ion-justify-content-center">
@@ -89,7 +89,7 @@
             <ion-col class="item" [routerLink]="['/']" size="auto">
               <ion-row class="ion-align-items-center">
                 <img class="icon" src="../../../../assets/imgs/header-icons/home_white.png" alt="Home">
-                <ion-label>Home</ion-label> 
+                <ion-label>Home</ion-label>
               </ion-row>
             </ion-col>
             <ion-col class="item" [routerLink]="['/montagem-marmita']" size="auto">
@@ -125,7 +125,7 @@
               src="../../../../assets/imgs/header-icons/user.png" />
             </ion-row>
           </ion-col>
-          
+
           <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" side="bottom" alignment="end" mode="ios">
             <ng-template ngIf="{{popover}}" >
               <ion-content class="ion-padding">
@@ -158,7 +158,7 @@
             </ng-template>
           </ion-popover>
 
-          
+
         </ion-row>
       </ion-col>
     </ion-row>
