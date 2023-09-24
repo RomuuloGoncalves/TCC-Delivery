@@ -63,9 +63,9 @@
     &__entrar {
       width: 60px;
       margin-inline: 0 7px;
-      --background-hover: var(--ion-color-primary);
-      --background-activated: var(--ion-color-primary);
-      --background-focused: var(--ion-color-primary);
+      --color-hover: #eaeaea;
+      --color-activated: #eaeaea;
+      --color-focused: #eaeaea;
       --color: #fff;
     }
 
@@ -77,16 +77,13 @@
       --background-focused: var(--ion-color-primary);
       --color: var(--ion-color-primary);
     }
-
   }
   
   &__btn-menu {
     display: none;
   }
 
-  ion-popover {
-    --width: 300px;
-  }
+  
   
   .ativar-popover ion-row:nth-child(1){
     &:hover{
@@ -96,7 +93,7 @@
   }
 
   img.ativar-popover {
-    height: 50px;
+    height: 40px;
   }
 
   @media(max-width:975px) {
@@ -125,7 +122,6 @@
       }
     }
   }
- 
 
   @media(max-width:768px) {
     &__logo {
@@ -133,7 +129,7 @@
     }
   
     &__bookmaker {
-     display: none;
+      display: none;
     }
 
     &__btn-menu {
@@ -145,6 +141,10 @@
       display: none;
     }
   }
+}
+
+ion-popover { 
+  --width: 300px;
 }
 
 .menu {
@@ -169,7 +169,6 @@
     &__btn-close {
       width: 24px;
     }
-
   }
   
   &__divisoria {
@@ -181,16 +180,15 @@
   }
   
   &__bookmaker {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: bold;
 
     color: var(--ion-color-primary-variation);
 
-    width: 220px;
+    width: 200px;
     margin: 0 auto;
     padding-block: 50px;
     
-
     .item {
       padding-block: 7px;
 
@@ -245,30 +243,28 @@
       --background-focused: var(--ion-color-primary);
       --color: #ffff;
     }
-
   }
 
   &__perfil {
     &__avatar {
-      margin-top: 30px;
-      height: 200px;
-      width: 200px;
+      width: 160px;
       border-radius: 100%;
+      margin-top: 30px;
     }
 
     &__title {
-      font-size: 2rem;
+      font-size: 1.6rem;
       color: var(--ion-color-dark);
       font-weight: 500;
       margin-inline: 10px;
     }
 
     &__btn-config {
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: bold;
 
-      height: 45px;
-      width: 180px;
+      height: 35px;
+      width: 160px;
 
       --border-radius: 10px;
       --background: var(--ion-color-primary-variation);
@@ -279,10 +275,9 @@
       
       &__icon {
         margin-left: 50px;
-        height: 25px;
+        height: 20px;
       }
     }
-
   }
 }
 

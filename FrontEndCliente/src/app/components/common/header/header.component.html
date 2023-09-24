@@ -41,7 +41,6 @@
               <img class="menu__perfil__btn-config__icon" src="../../../assets/img/header-icons/btn-perfil.svg" alt="perfil"></ion-button>
           </ion-row>
         </ion-col>
-
       </ion-row>
     
       <ion-row class="menu__bookmaker ion-align-items-center ion-justify-content-center">
@@ -73,15 +72,13 @@
       </ion-row>
     </ion-col>
   </ion-row>
-
 </ion-menu>
 
 <!-- Header -->
 <div id="main-content">
   <ion-header>
     <ion-row class="header ion-justify-content-between ion-align-items-center">
-
-      <ion-col size="auto" size-sm="8" size-md="3">
+      <ion-col size-sm="8" size-md="3">
         <ion-row class="ion-align-items-center ion-no-padding">
           <ion-img [routerLink]="['/home']" class="header__logo" src="../../../assets/img/Logo.png" alt="logo"></ion-img>
         </ion-row>
@@ -110,58 +107,58 @@
           </ion-row>
         </ion-col>
 
-      <ion-col size="auto" size-sm="2" size-md="3">
+      <ion-col size-sm="4" size-md="3">
         <ion-row class="ion-align-items-center ion-justify-content-end">
           <!-- Botões de login -->
-          <ion-col *ngIf="this.login" class="header__btn-acesso" size="auto">
+          <ion-col *ngIf="!this.login" class="header__btn-acesso" size="auto">
             <ion-row>
               <ion-button class="header__btn-acesso__entrar" [routerLink]="['/login']" fill="clear">Entrar</ion-button>
               <ion-button class="header__btn-acesso__cadastrar" [routerLink]="['/cadastro']" fill="clear">Cadastrar-se</ion-button>
             </ion-row>
           </ion-col>
-
+          <!-- Menu hamburguer -->
+          <ion-menu-button class="header__btn-menu" color="light"></ion-menu-button>
           <!-- Icone Avatar -->
-          <ion-col *ngIf="!this.login" class="header__btn-avatar ativar-popover" size="auto">
+          <ion-col (click)="presentPopover($event)" *ngIf="this.login" class="header__btn-avatar ativar-popover" size="auto">
             <ion-row class="ion-align-items-center">
               <img id="click-trigger" class="ativar-popover ion-justify-content-end" alt="Avatar perfil"
               src="../../../../assets/img/header-icons/user.png" />
             </ion-row>
-
-            <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" side="left" alignment="end" mode="ios">
-              <ng-template ngIf="{{popover}}">
-                <ion-content class="ion-padding">
-                  <ion-row class="">
-                    <ion-col>
-                      <ion-label id="saudacao">Olá Rômulo</ion-label>
-                    </ion-col>
-                    <ion-col size="12">
-                      <ion-list lines="full">
-                        <ion-item class="links">
-                          <ion-label [routerLink]="['']">Seu perfil</ion-label>
-                        </ion-item>
-                        <ion-item class="links">
-                          <ion-label [routerLink]="['/montagem-marmita']">Montar marmita</ion-label>
-                        </ion-item>
-                        <ion-item class="links">
-                          <ion-label [routerLink]="['']">Histórico de pedidos</ion-label>
-                        </ion-item>
-                        <ion-item class="links">
-                          <ion-label [routerLink]="['']">Formas de pagamanto</ion-label>
-                        </ion-item>
-                        <ion-item class="links">
-                          <ion-label [routerLink]="['']" class="ion-align-items-center">Sair</ion-label>
-                          <ion-icon name="log-out-outline"></ion-icon>
-                        </ion-item>
-                      </ion-list>
-                    </ion-col>
-                  </ion-row>
-                </ion-content>
-              </ng-template>
-            </ion-popover>
           </ion-col>
+          
+          <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" side="bottom" alignment="end" mode="ios">
+            <ng-template ngIf="{{popover}}" >
+              <ion-content class="ion-padding">
+                <ion-row class="">
+                  <ion-col>
+                    <ion-label id="saudacao">Olá Rômulo</ion-label>
+                  </ion-col>
+                  <ion-col size="12">
+                    <ion-list lines="full">
+                      <ion-item class="links">
+                        <ion-label [routerLink]="['']">Seu perfil</ion-label>
+                      </ion-item>
+                      <ion-item class="links">
+                        <ion-label [routerLink]="['/montagem-marmita']">Montar marmita</ion-label>
+                      </ion-item>
+                      <ion-item class="links">
+                        <ion-label [routerLink]="['']">Histórico de pedidos</ion-label>
+                      </ion-item>
+                      <ion-item class="links">
+                        <ion-label [routerLink]="['']">Formas de pagamanto</ion-label>
+                      </ion-item>
+                      <ion-item class="links">
+                        <ion-label [routerLink]="['']" class="ion-align-items-center">Sair</ion-label>
+                        <ion-icon name="log-out-outline"></ion-icon>
+                      </ion-item>
+                    </ion-list>
+                  </ion-col>
+                </ion-row>
+              </ion-content>
+            </ng-template>
+          </ion-popover>
 
-          <!-- Menu hamburguer -->
-          <ion-menu-button class="header__btn-menu" color="light"></ion-menu-button>
+          
         </ion-row>
       </ion-col>
     </ion-row>
