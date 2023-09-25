@@ -22,6 +22,11 @@ export class DetalhePedidoPage implements OnInit {
     endereco_pedido: "Rua Exemplo, 123",
     forma_pagamento: "Cartão de Crédito",
     status: "Aguardando Pagamento",
+    cliente: {
+      nome: 'Inocêncio Coitadinho',
+      email: 'ionocenciocoitadinhogamer@hotmail.com',
+      telefone: '15999999999'
+    },
     produtos: [
       {
         id_produto: 11,

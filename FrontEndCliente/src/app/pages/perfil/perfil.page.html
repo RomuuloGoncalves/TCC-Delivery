@@ -1,6 +1,4 @@
 <ion-content [fullscreen]="true">
-  <app-header></app-header>
-
   <div class="content">
     <ion-row>
       <ion-col size="auto" class="ion-align-items-center ">
@@ -41,14 +39,10 @@
             </ion-row>
 
             <ion-row class="ion-justify-content-center">
-              <ion-button class="sidebar__sair" fill="clear">
-                <ion-label>Sair</ion-label>
-<<<<<<< HEAD
-                <img class="sidebar__sair__icon" src="../../../assets/img/perfil-icons/logout.svg" alt="sair">
+              <ion-button [routerLink]="['/']" class="sidebar__sair" fill="clear">
+                <ion-label>Voltar</ion-label>
+                <img class="sidebar__sair__icon" src="../../../assets/imgs/perfil-icons/logout.svg" alt="voltar">
               </ion-button>
-=======
-                <img class="sidebar__options__sair__icon " src="../../../assets/imgs/perfil-icons/logout.svg" alt="sair">
->>>>>>> 2e2285f769c937a980f47a6a8d74176e0ffa02ba
             </ion-row>
           </ion-col>
         </ion-row>
@@ -63,6 +57,4 @@
       </ion-col>
     </ion-row>
   </div>
-
-  <app-footer></app-footer>
 </ion-content>

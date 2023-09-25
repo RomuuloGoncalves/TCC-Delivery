@@ -104,4 +104,16 @@ ion-col{
 .pages {
   height: 100vh;
   overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #dcdcdc;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #565656;
+    border-radius: 10px;
+  }
 }

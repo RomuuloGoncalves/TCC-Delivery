@@ -17,12 +17,17 @@ export class PedidosPage implements OnInit {
     {
       id_pedido: 2,
       valor_com_desconto: 100,
-      data_pedido: "2023-09-24",
-      data_entrega: "2023-09-30",
-      data_pagamento: "2023-09-25",
+      data_pedido: "24/09/2023",
+      data_entrega: "25/09/2023",
+      data_pagamento: "25/09/2023",
       endereco_pedido: "Rua Exemplo, 123",
       forma_pagamento: "Cartão de Crédito",
       status: "Aguardando Pagamento",
+      cliente: {
+        nome: 'Inocêncio Coitadinho',
+        email: 'ionocenciocoitadinhogamer@hotmail.com',
+        telefone: '15999999999'
+      },
       produtos: [{
         id_produto: 11,
         nome: 'Refrigerante',
@@ -41,12 +46,17 @@ export class PedidosPage implements OnInit {
     {
       id_pedido: 2,
       valor_com_desconto: 100,
-      data_pedido: "2023-09-24",
-      data_entrega: "2023-09-30",
-      data_pagamento: "2023-09-25",
+      data_pedido: "24/09/2023",
+      data_entrega: "25/09/2023",
+      data_pagamento: "25/09/2023",
       endereco_pedido: "Rua Exemplo, 123",
       forma_pagamento: "Cartão de Crédito",
       status: "Aguardando Pagamento",
+      cliente: {
+        nome: 'Rogério Roger',
+        email: 'roger_rogerio_gameplas@hotmail.com',
+        telefone: '15999999999'
+      },
       produtos: [{
         id_produto: 11,
         nome: 'Refrigerante',
@@ -65,12 +75,17 @@ export class PedidosPage implements OnInit {
     {
       id_pedido: 2,
       valor_com_desconto: 100,
-     data_pedido : "2023-09-24",
-      data_entrega: "2023-09-30",
-      data_pagamento: "2023-09-25",
+      data_pedido: "24/09/2023",
+      data_entrega: "25/09/2023",
+      data_pagamento: "25/09/2023",
       endereco_pedido: "Rua Exemplo, 123",
       forma_pagamento: "Cartão de Crédito",
       status: "Aguardando Pagamento",
+      cliente: {
+        nome: 'Joséfina Finada',
+        email: 'finafina123@hotmail.com',
+        telefone: '15999999999'
+      },
       produtos: [{
         id_produto: 11,
         nome: 'Refrigerante',

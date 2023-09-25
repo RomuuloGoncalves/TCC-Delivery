@@ -42,35 +42,20 @@
           </ion-row>
         </ion-col>
       </ion-row>
-<<<<<<< HEAD
-    
-      <ion-row [routerLink]="['/home']" class="menu__bookmaker ion-align-items-center ion-justify-content-center">
-=======
 
       <ion-row class="menu__bookmaker ion-align-items-center ion-justify-content-center">
->>>>>>> 2e2285f769c937a980f47a6a8d74176e0ffa02ba
         <ion-col size="12">
-          <ion-row class="item ion-align-items-center ion-justify-content-between">
+          <ion-row [routerLink]="['/']" class="item ion-align-items-center ion-justify-content-between">
             <ion-label>Home</ion-label>
             <img class="icon" src="../../../../assets/imgs/header-icons/home_red.png" alt="Home">
           </ion-row>
-<<<<<<< HEAD
-  
-          <ion-row [routerLink]="['/montagem-marmita']" class="item ion-align-items-center ion-justify-content-between">
-=======
 
-          <ion-row class="item ion-align-items-center ion-justify-content-between">
->>>>>>> 2e2285f769c937a980f47a6a8d74176e0ffa02ba
+          <ion-row [routerLink]="['/montagem-marmita']" class="item ion-align-items-center ion-justify-content-between">
             <ion-label>Montagem</ion-label>
             <img class="icon" src="../../../../assets/imgs/header-icons/motagem_red_bold.png" alt="Montagem">
           </ion-row>
-<<<<<<< HEAD
-  
-          <ion-row [routerLink]="['/carrinho']" class="item ion-align-items-center ion-justify-content-between">
-=======
 
-          <ion-row class="item ion-align-items-center ion-justify-content-between">
->>>>>>> 2e2285f769c937a980f47a6a8d74176e0ffa02ba
+          <ion-row [routerLink]="['/carrinho']" class="item ion-align-items-center ion-justify-content-between">
             <ion-label>Carrinho</ion-label>
             <img class="icon" src="../../../../assets/imgs/header-icons/carrinho_red_bold.png" alt="carrinho">
           </ion-row>
@@ -95,11 +80,7 @@
     <ion-row class="header ion-justify-content-between ion-align-items-center">
       <ion-col size-sm="8" size-md="3">
         <ion-row class="ion-align-items-center ion-no-padding">
-<<<<<<< HEAD
-          <ion-img [routerLink]="['/']" class="header__logo" src="../../../assets/img/Logo.png" alt="logo"></ion-img>
-=======
-          <ion-img [routerLink]="['/home']" class="header__logo" src="../../../assets/imgs/Logo.png" alt="logo"></ion-img>
->>>>>>> 2e2285f769c937a980f47a6a8d74176e0ffa02ba
+          <ion-img [routerLink]="['/']" class="header__logo" src="../../../assets/imgs/Logo.png" alt="logo"></ion-img>
         </ion-row>
       </ion-col>
 
@@ -145,7 +126,7 @@
             </ion-row>
           </ion-col>
 
-          <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" side="bottom" alignment="end" mode="ios">
+          <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" dismiss-on-select="true" side="bottom" alignment="end" mode="ios">
             <ng-template ngIf="{{popover}}">
               <ion-content class="ion-padding">
                 <ion-row class="">
@@ -176,11 +157,6 @@
               </ion-content>
             </ng-template>
           </ion-popover>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 2e2285f769c937a980f47a6a8d74176e0ffa02ba
         </ion-row>
       </ion-col>
     </ion-row>

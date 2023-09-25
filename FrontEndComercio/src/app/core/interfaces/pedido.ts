@@ -1,3 +1,4 @@
+import { Cliente } from "./cliente";
 import { Produto } from "./produto";
 
 export interface Pedido {
@@ -10,5 +11,6 @@ export interface Pedido {
   endereco_pedido: string;
   forma_pagamento: string;
   status: string;
+  cliente?: Cliente;
   produtos: Produto[];
 }
