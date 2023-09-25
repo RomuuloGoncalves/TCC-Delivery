@@ -29,3 +29,16 @@
   font-family: mrDafoe;
   src: url(./assets/font/MrDafoe-Regular.ttf);
 }
+
+
+*::-webkit-scrollbar {
+  width: 7px;
+}
+*::-webkit-scrollbar-track {
+  background: #dcdcdc;
+  border-radius: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #565656;
+  border-radius: 10px;
+}

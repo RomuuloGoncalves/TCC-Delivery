@@ -1,5 +1,4 @@
 <ion-content class="scroll">
-
   <ion-row>
     <ion-col class="container">
       <ion-row class="ion-justify-content-between ion-align-items-center">
@@ -16,7 +15,7 @@
       </ion-row>
       
       <ion-row class="ion-justify-content-center">
-        <ion-col size="10">
+      <ion-col size="10">
           <ion-row>
             <ion-col class="imagem-container ion-justify-content-center">
               <ion-img class="imagem" src="{{produto.imagem}}"></ion-img>
@@ -55,8 +54,8 @@
                   </ion-item>
                   <div class="ion-padding ion-justify-content-between" slot="content">
                     <p>Preço: </p>
-                    <span class="valor-inicial">R${{produto.valor_inicial}}</span>
-                    <span class="valor-final">R${{produto.valor_final}}</span>
+                    <span class="valor-inicial">R${{produto.valor_inicial.toFixed(2).replace('.', ',')}}</span>
+                    <span class="valor-final">R${{produto.valor_final.toFixed(2).replace('.', ',')}}</span>
                   </div>
                 </ion-accordion>
               </ion-accordion-group>
@@ -65,47 +64,6 @@
         </ion-col>
       </ion-col>
       </ion-row>
-      
-      <!-- <ion-row>
-        <ion-col>
-          <ion-label>
-            <h1>Categorias:</h1>
-          </ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-label>
-            <p>Escolha num max de selecoes das opções abaixo*</p>
-          </ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-radio-group [allowEmptySelection]="true" value="turtles">
-            <ion-item>
-              <ion-label>Dogs</ion-label>
-              <ion-radio slot="end" value="dogs"></ion-radio>
-            </ion-item>
-        
-            <ion-item>
-              <ion-label>Cats</ion-label>
-              <ion-radio slot="end" value="cats"></ion-radio>
-            </ion-item>
-        
-            <ion-item>
-              <ion-label>Turtles</ion-label>
-              <ion-radio slot="end" value="turtles"></ion-radio>
-            </ion-item>
-        
-            <ion-item>
-              <ion-label>Fish</ion-label>
-              <ion-radio slot="end" value="fish"></ion-radio>
-            </ion-item>
-          </ion-radio-group>
-        </ion-col>
-      </ion-row> -->
-      
       <ion-row>
         <ion-col>
           <app-observacoes></app-observacoes>

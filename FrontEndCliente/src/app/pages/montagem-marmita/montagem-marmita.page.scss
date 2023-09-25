@@ -24,21 +24,6 @@
 
 
   }
-
-  /* Chrome, Edge, and Safari */
-  // ::-webkit-scrollbar {
-  //   width: 16px;
-  // }
-
-  // ::-webkit-scrollbar-track {
-  //   background: transparent;
-  // }
-
-  // ::-webkit-scrollbar-thumb {
-  //   background-color: #d11515;
-  //   border-radius: 10px;
-  //   border: 3px solid #ffffff;
-  // }
 }
 
 swiper-container {
@@ -52,19 +37,7 @@ swiper-container {
     --background: transparent;
     box-shadow: none;
     height: 47vh;
-
-    // &::-webkit-scrollbar {
-    //   width: 7px;
-    // }
-    // &::-webkit-scrollbar-track {
-    //   background: #dcdcdc;
-    //   border-radius: 10px;
-    // }
-    // &::-webkit-scrollbar-thumb {
-    //   background: #565656;
-    //   border-radius: 10px;
-    // }
-
+    
     &:before {
       content: '';
       position: absolute;

@@ -28,5 +28,4 @@ export class ModalMarmitaComponent  implements OnInit {
   chamarDefinirMarmita(produto: Produto) {
     this.passarMarmita.definirMarmita(produto)
   }
-
 }

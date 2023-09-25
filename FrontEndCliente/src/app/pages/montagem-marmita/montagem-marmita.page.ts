@@ -143,7 +143,6 @@ export class MontagemMarmitaPage implements OnInit {
 
   ngOnInit() {
     this.atualizarMarmita();
-    console.log("lalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalala")
     console.log(this.passarMarmita.resgatarMarmita())
   }
 
