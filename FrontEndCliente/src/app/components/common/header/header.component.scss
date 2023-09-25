@@ -144,14 +144,18 @@
 }
 
 ion-popover { 
-  --width: 300px;
+  --width: 250px;
+  ion-label {
+    cursor: pointer;
+  }
 }
 
 .menu {
   ion-col {
     padding: 0;
   }
-
+  
+  position: fixed;
   --background: #ffff;
   --width: 100%;
   flex-direction: column;
@@ -168,6 +172,7 @@ ion-popover {
     }
     &__btn-close {
       width: 24px;
+      cursor: pointer;
     }
   }
   
@@ -262,6 +267,7 @@ ion-popover {
     &__btn-config {
       font-size: 1rem;
       font-weight: bold;
+      text-transform: capitalize;
 
       height: 35px;
       width: 160px;
@@ -280,4 +286,3 @@ ion-popover {
     }
   }
 }
-
