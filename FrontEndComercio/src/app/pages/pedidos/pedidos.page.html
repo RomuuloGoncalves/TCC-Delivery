@@ -25,52 +25,24 @@
         </ion-col>
       </ion-row>
     </ion-col>
+  </ion-row>
 
-    <ion-col size="11">
-      <ion-row class="ion-justify-content-center">
-        <ion-col size="11.9">
-          <ion-row>
-            <ion-col>
-              <ion-list>
-                <ion-item>
-                  <ion-row class="container__item ion-align-items-center ion-justify-content-around">
-                    <ion-col size="3">
-                      <ion-row class="ion-justify-content-center ion-align-items-center">
-                        <ion-text>ID</ion-text>
-                      </ion-row>
-                    </ion-col>
-
-                    <ion-col size="3">
-                      <ion-row class="ion-justify-content-center ion-align-items-center">
-                        <ion-text>Status</ion-text>
-                      </ion-row>
-                    </ion-col>
-
-                    <ion-col size="3">
-                      <ion-row class="ion-justify-content-center ion-align-items-center">
-                        <ion-text>Quantidade de itens</ion-text>
-                      </ion-row>
-                    </ion-col>
-
-                    <ion-col size="3">
-                      <ion-row class="ion-justify-content-center ion-align-items-center">
-                        <ion-text>Horário</ion-text>
-                      </ion-row>
-                    </ion-col>
-                  </ion-row>
-                </ion-item>
-                <app-card-pedidos></app-card-pedidos>
-                <app-card-pedidos></app-card-pedidos>
-                <app-card-pedidos></app-card-pedidos>
-                <app-card-pedidos></app-card-pedidos>
-                <app-card-pedidos></app-card-pedidos>
-                <app-card-pedidos></app-card-pedidos>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-col>
-      </ion-row>
-
+  <ion-row class=" ion-justify-content-center">
+    <ion-col size="11" sizeMd="9">
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Status</th>
+          <th>Quantidade</th>
+          <th>Data</th>
+        </tr>
+        <tr *ngFor="let pedido of pedidos" [routerLink]="['/pedido']">
+          <td>{{pedido.id_pedido}}</td>
+          <td>{{pedido.status}}</td>
+          <td>{{pedido.produtos.length}}</td>
+          <td>{{pedido.data_pedido}}</td>
+        </tr>
+      </table>
     </ion-col>
   </ion-row>
 </ion-content>

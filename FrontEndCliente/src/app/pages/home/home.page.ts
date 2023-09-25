@@ -43,7 +43,7 @@ export class HomePage implements OnInit {
           valor_inicial: 19.5,
           valor_final: 33,
           descricao: 'Bata muito boa tipo muito muito boa mesmo',
-          imagem: '../../../assets/img/home-icons/garfo_faca_outline.png',
+          imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
         },
         {
           id_variacao: 1,
@@ -52,7 +52,7 @@ export class HomePage implements OnInit {
           valor_inicial: 19.5,
           valor_final: 33,
           descricao: 'Bata muito boa tipo muito muito boa mesmo',
-          imagem: '../../../assets/img/home-icons/garfo_faca_outline.png',
+          imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
         },
         {
           id_variacao: 1,
@@ -61,7 +61,7 @@ export class HomePage implements OnInit {
           valor_inicial: 19.5,
           valor_final: 33,
           descricao: 'Bata muito boa tipo muito muito boa mesmo',
-          imagem: '../../../assets/img/home-icons/garfo_faca_outline.png',
+          imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
         },
       ],
     },
@@ -76,7 +76,7 @@ export class HomePage implements OnInit {
           valor_inicial: 19.5,
           valor_final: 33,
           descricao: 'Bata muito boa tipo muito muito boa mesmo',
-          imagem: '../../../assets/img/home-icons/garfo_faca_outline.png',
+          imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
         },
         {
           id_variacao: 1,
@@ -85,7 +85,7 @@ export class HomePage implements OnInit {
           valor_inicial: 19.5,
           valor_final: 33,
           descricao: 'Bata muito boa tipo muito muito boa mesmo',
-          imagem: '../../../assets/img/home-icons/garfo_faca_outline.png',
+          imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
         },
         {
           id_variacao: 1,
@@ -94,7 +94,7 @@ export class HomePage implements OnInit {
           valor_inicial: 19.5,
           valor_final: 33,
           descricao: 'Bata muito boa tipo muito muito boa mesmo',
-          imagem: '../../../assets/img/home-icons/garfo_faca_outline.png',
+          imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
         },
       ],
     },

@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PedidosPageRoutingModule } from './pedidos-routing.module';
+import { PedidoPageRoutingModule } from './pedido-routing.module';
 
-import { PedidosPage } from './pedidos.page';
+import { PedidoPage } from './pedido.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    PedidosPageRoutingModule,
+    PedidoPageRoutingModule,
     HeaderModule
   ],
-  declarations: [PedidosPage]
+  declarations: [PedidoPage]
 })
-export class PedidosPageModule {}
+export class PedidoPageModule {}

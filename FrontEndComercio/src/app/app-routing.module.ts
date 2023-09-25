@@ -55,6 +55,10 @@ const routes: Routes = [
     path: 'criacao-combos',
     loadChildren: () => import('./pages/criacao-combos/criacao-combos.module').then( m => m.CriacaoCombosPageModule)
   },
+  {
+    path: 'pedido',
+    loadChildren: () => import('./pages/pedido/pedido.module').then( m => m.PedidoPageModule)
+  },
 ];
 
 @NgModule({

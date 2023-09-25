@@ -3,6 +3,7 @@ import { Variacao } from 'src/app/core/interfaces/variacao';
 import { GrupoVariacoes } from 'src/app/core/interfaces/grupo-variacoes';
 
 import Swiper from 'swiper';
+import { PassarMarmitaService } from 'src/app/core/services/passar-marmita.service';
 
 @Component({
   selector: 'app-montagem-marmita',
@@ -138,10 +139,12 @@ export class MontagemMarmitaPage implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private passarMarmita: PassarMarmitaService) {}
 
   ngOnInit() {
     this.atualizarMarmita();
+    console.log("lalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalala")
+    console.log(this.passarMarmita.resgatarMarmita())
   }
 
   proximoCard() {
@@ -156,7 +159,7 @@ export class MontagemMarmitaPage implements OnInit {
     this.ingredientes[idIngrediente].variacoes![idVariacao].selecionado =
       event.detail.checked;
     this.atualizarMarmita();
-    console.log(this.ingredientes)
+    // console.log(this.ingredientes)
   }
 
   private atualizarMarmita() {
