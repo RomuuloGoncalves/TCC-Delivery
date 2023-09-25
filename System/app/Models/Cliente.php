@@ -19,7 +19,7 @@ class Cliente extends Model implements AuthenticatableContract, AuthorizableCont
      * @var string[]
      */
     protected $fillable = [
-        'nome', 'email', 'telefone'
+        'nome', 'email', 'telefone', 'senha'
     ];
 
     /**
