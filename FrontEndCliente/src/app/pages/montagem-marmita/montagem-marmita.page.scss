@@ -8,36 +8,6 @@
   &__marmita-atual {
     height: 400px;
     --background: #f5f5f5;
-    overflow-y: scroll;
-  }
-
-  /* Chrome, Edge, and Safari */
-  ::-webkit-scrollbar {
-    width: 16px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: #d11515;
-    border-radius: 10px;
-    border: 3px solid #ffffff;
-  }
-}
-
-swiper-container {
-  height: 100%;
-  border-radius: 5px;
-  --swiper-pagination-color: var(--ion-color-primary);
-  box-shadow: 0px 0px 15px 3px #00000033;  
-
-
-  .selecionar-ingredientes {
-    --background: transparent;
-    box-shadow: none;
-    height: 47vh;
     overflow-y: auto;
 
     &::-webkit-scrollbar {
@@ -51,6 +21,49 @@ swiper-container {
       background: #565656;
       border-radius: 10px;
     }
+
+
+  }
+
+  /* Chrome, Edge, and Safari */
+  // ::-webkit-scrollbar {
+  //   width: 16px;
+  // }
+
+  // ::-webkit-scrollbar-track {
+  //   background: transparent;
+  // }
+
+  // ::-webkit-scrollbar-thumb {
+  //   background-color: #d11515;
+  //   border-radius: 10px;
+  //   border: 3px solid #ffffff;
+  // }
+}
+
+swiper-container {
+  height: 100%;
+  border-radius: 5px;
+  --swiper-pagination-color: var(--ion-color-primary);
+  box-shadow: 0px 0px 15px 3px #00000033;  
+
+
+  .selecionar-ingredientes {
+    --background: transparent;
+    box-shadow: none;
+    height: 47vh;
+
+    // &::-webkit-scrollbar {
+    //   width: 7px;
+    // }
+    // &::-webkit-scrollbar-track {
+    //   background: #dcdcdc;
+    //   border-radius: 10px;
+    // }
+    // &::-webkit-scrollbar-thumb {
+    //   background: #565656;
+    //   border-radius: 10px;
+    // }
 
     &:before {
       content: '';
