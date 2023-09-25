@@ -3,8 +3,8 @@
 
   <div class="content">
     <ion-row>
-      <ion-col size="3">
-        <ion-row class="sidebar ion-justify-content-center">
+      <ion-col size="auto" class="ion-align-items-center ">
+        <ion-row class="sidebar">
           <ion-col>
             <ion-row class="sidebar__welcome ion-justify-content-center">
               <ion-row class="ion-justify-content-center ion-align-items-center">
@@ -15,7 +15,7 @@
                 <h1 class="sidebar__welcome__title">Olá, Danoninho 👋</h1>
               </ion-row>
             </ion-row>
-        
+
             <ion-row class="sidebar__options ion-align-item-center ion-justify-content-center">
               <ion-col size="12">
                   <ion-row class="item ion-align-items-center ion-justify-content-center">
@@ -40,18 +40,22 @@
               </ion-col>
             </ion-row>
 
-            <ion-row class="sidebar__sair">
+            <ion-row class="ion-justify-content-center">
+              <ion-button class="sidebar__sair" fill="clear">
                 <ion-label>Sair</ion-label>
-                <img class="sidebar__options__sair__icon " src="../../../assets/img/perfil-icons/logout.svg" alt="sair">
+                <img class="sidebar__sair__icon" src="../../../assets/img/perfil-icons/logout.svg" alt="sair">
+              </ion-button>
             </ion-row>
           </ion-col>
         </ion-row>
       </ion-col>
     
-      <ion-col>
-        <ion-row class="pages">
-    
-        </ion-row>
+      <ion-col class="pages">
+        <app-endereco></app-endereco>
+        <app-perfil-config></app-perfil-config>
+        <app-cupons></app-cupons>
+        <app-pagamentos></app-pagamentos>
+        <app-dados></app-dados>
       </ion-col>
     </ion-row>
   </div>
