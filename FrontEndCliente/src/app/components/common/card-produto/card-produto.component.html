@@ -12,7 +12,7 @@
       </ion-col>
       <ion-col size="5">
         <ion-row>
-          <img class="img-marmita" src="{{ this.variacao.imagem }}" alt="Imagem de {{ this.variacao.nome }}" />
+          <img class="img-marmita" src="{{ (this.variacao.imagem) ? this.variacao.imagem : '../../../assets/imgs/home-icons/garfo_faca_outline.png'}}" alt="Imagem de {{ this.variacao.nome }}" />
         </ion-row>
       </ion-col>
     </ion-row>

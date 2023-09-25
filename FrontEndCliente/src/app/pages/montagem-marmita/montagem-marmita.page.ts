@@ -42,7 +42,7 @@ export class MontagemMarmitaPage implements OnInit {
         {
           id_variacao: 1,
           nome: 'Branco',
-          descricao: 'HUMMMMMMMMMM',
+          descricao: 'Soltinho!',
           valor_inicial: 7.0,
           valor_final: 5.0,
           selecionado: false
@@ -50,7 +50,7 @@ export class MontagemMarmitaPage implements OnInit {
         {
           id_variacao: 2,
           nome: 'Integral',
-          descricao: 'HUMMMMMMMMMM',
+          descricao: 'Para ficar fitness',
           valor_inicial: 8.0,
           valor_final: 8.0,
           selecionado: false
@@ -58,7 +58,7 @@ export class MontagemMarmitaPage implements OnInit {
         {
           id_variacao: 3,
           nome: 'Grego',
-          descricao: 'HUMMMMMMMMMM',
+          descricao: 'À moda da casa',
           valor_inicial: 6.0,
           valor_final: 6.0,
           selecionado: false
@@ -74,7 +74,7 @@ export class MontagemMarmitaPage implements OnInit {
         {
           id_variacao: 5,
           nome: 'Tutu',
-          descricao: 'HUMMMMMMMMMM',
+          descricao: 'Especialidade da casa',
           valor_inicial: 7,
           valor_final: 6,
           selecionado: false
@@ -82,7 +82,7 @@ export class MontagemMarmitaPage implements OnInit {
         {
           id_variacao: 6,
           nome: 'Branco',
-          descricao: 'HUMMMMMMMMMM',
+          descricao: 'Feijão branco e quentinho!',
           valor_inicial: 10,
           valor_final: 8.5,
           selecionado: false
@@ -90,7 +90,7 @@ export class MontagemMarmitaPage implements OnInit {
         {
           id_variacao: 7,
           nome: 'Preto',
-          descricao: 'HUMMMMMMMMMM',
+          descricao: 'Feijão preto e quentinho!',
           valor_inicial: 11.0,
           valor_final: 9.99,
           selecionado: false
@@ -133,6 +133,39 @@ export class MontagemMarmitaPage implements OnInit {
           descricao: 'Quack Quack zica',
           valor_inicial: 10,
           valor_final: 9.49,
+          selecionado: false
+        },
+      ],
+    },
+    {
+      tipo: 'Salada',
+      id_produto: 2,
+      id_grupo_variacoes: 3,
+      qtdd_max: 2,
+
+      variacoes: [
+        {
+          id_variacao: 1,
+          nome: 'Alface',
+          descricao: 'Verdinho e maravilhoso!',
+          valor_inicial: 5.0,
+          valor_final: 3.0,
+          selecionado: false
+        },
+        {
+          id_variacao: 2,
+          nome: 'Tomate',
+          descricao: 'Vermelhinho e gostoso!',
+          valor_inicial: 8.0,
+          valor_final: 8.0,
+          selecionado: false
+        },
+        {
+          id_variacao: 3,
+          nome: 'Rúcula',
+          descricao: 'Verdona e gostosa!',
+          valor_inicial: 6.0,
+          valor_final: 6.0,
           selecionado: false
         },
       ],

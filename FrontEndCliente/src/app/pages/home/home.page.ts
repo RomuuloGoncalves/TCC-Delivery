@@ -43,7 +43,6 @@ export class HomePage implements OnInit {
           valor_inicial: 19.5,
           valor_final: 33,
           descricao: 'Bata muito boa tipo muito muito boa mesmo',
-          imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
         },
         {
           id_variacao: 1,
@@ -52,7 +51,6 @@ export class HomePage implements OnInit {
           valor_inicial: 19.5,
           valor_final: 33,
           descricao: 'Bata muito boa tipo muito muito boa mesmo',
-          imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
         },
         {
           id_variacao: 1,
@@ -61,7 +59,6 @@ export class HomePage implements OnInit {
           valor_inicial: 19.5,
           valor_final: 33,
           descricao: 'Bata muito boa tipo muito muito boa mesmo',
-          imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
         },
       ],
     },
@@ -76,7 +73,6 @@ export class HomePage implements OnInit {
           valor_inicial: 19.5,
           valor_final: 33,
           descricao: 'Bata muito boa tipo muito muito boa mesmo',
-          imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
         },
         {
           id_variacao: 1,
@@ -85,7 +81,6 @@ export class HomePage implements OnInit {
           valor_inicial: 19.5,
           valor_final: 33,
           descricao: 'Bata muito boa tipo muito muito boa mesmo',
-          imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
         },
         {
           id_variacao: 1,
@@ -94,10 +89,39 @@ export class HomePage implements OnInit {
           valor_inicial: 19.5,
           valor_final: 33,
           descricao: 'Bata muito boa tipo muito muito boa mesmo',
-          imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
         },
       ],
     },
+    {
+      id_produto: 3,
+      nome: 'Saladas',
+      variacoes: [
+        {
+          id_variacao: 1,
+          nome: 'Alface',
+          descricao: 'Verdinho e maravilhoso!',
+          valor_inicial: 5.0,
+          valor_final: 3.0,
+          selecionado: false
+        },
+        {
+          id_variacao: 2,
+          nome: 'Tomate',
+          descricao: 'Vermelhinho e gostoso!',
+          valor_inicial: 8.0,
+          valor_final: 8.0,
+          selecionado: false
+        },
+        {
+          id_variacao: 3,
+          nome: 'Rúcula',
+          descricao: 'Verdona e gostosa!',
+          valor_inicial: 6.0,
+          valor_final: 6.0,
+          selecionado: false
+        },
+      ],
+    }
   ];
 
   produtosFiltrados: Produto[] = [...this.produtos];
