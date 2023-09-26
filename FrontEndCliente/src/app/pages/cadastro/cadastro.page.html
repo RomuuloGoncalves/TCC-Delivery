@@ -8,10 +8,10 @@
       </ion-col>
       <ion-row>
         <ion-col>
-          <form #cadastroForm="ngForm">
+          <form #cadastroForm="ngForm" ngSubmit="this.cadastrar()">
             <ion-list>
               <ion-list>
-                <ion-item>
+              <ion-item>
                   <ion-input NgModel required name="nome" label="Nome" type="text"></ion-input>
                 </ion-item>
                 <ion-item>
@@ -19,9 +19,6 @@
                 </ion-item>
                 <ion-item>
                   <ion-input NgModel required name="telefone" label="Telefone" type="text"></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-input NgModel required name="email" label="E-mail" type="email"></ion-input>
                 </ion-item>
                 <ion-item>
                   <ion-input NgModel required name="password" label="Senha" type="password"></ion-input>
