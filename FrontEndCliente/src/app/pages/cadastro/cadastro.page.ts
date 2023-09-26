@@ -14,6 +14,7 @@ export class CadastroPage implements OnInit {
   @ViewChild('cadastroForm') private cadastoForm!: NgForm;
 
   ngOnInit() {
+    this.cadastrar();
   }
 
   public cadastrar() {
