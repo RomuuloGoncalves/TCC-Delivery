@@ -7,9 +7,10 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Lumen\Auth\Authorizable;
 
-class Cliente extends Model implements AuthenticatableContract, AuthorizableContract
+class Funcionario extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, HasFactory;
 
@@ -28,9 +29,9 @@ class Cliente extends Model implements AuthenticatableContract, AuthorizableCont
      * @var string[]
      */
     protected $hidden = [
-        'senha',
+        'password',
     ];
-    
+
     /**
      * Get all of the pedidos for the ClienteModel
      *

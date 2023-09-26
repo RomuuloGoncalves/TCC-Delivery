@@ -2,23 +2,21 @@
 
 namespace App\Models;
 
-namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-
-class Cumpom extends Model
+class Endereco extends Model
 {
     use HasFactory;
 
     /**
-     * Get the pedido that owns the CupomModel
+     * Get the enderecos that owns the EnderecoModel
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function pedido(): BelongsTo
+    public function cliente(): BelongsTo
     {
-        return $this->belongsTo(Pedido::class);
+        return $this->belongsTo(cliente::class);
     }
 }

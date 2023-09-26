@@ -7,9 +7,11 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Lumen\Auth\Authorizable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Cliente extends Model implements AuthenticatableContract, AuthorizableContract
+class Cliente extends Model implements AuthenticatableContract, AuthorizableContract, JWTSubject
 {
     use Authenticatable, Authorizable, HasFactory;
 
@@ -19,7 +21,7 @@ class Cliente extends Model implements AuthenticatableContract, AuthorizableCont
      * @var string[]
      */
     protected $fillable = [
-        'nome', 'email', 'telefone'
+        'nome', 'email', 'telefone', 'password'
     ];
 
     /**
@@ -28,8 +30,18 @@ class Cliente extends Model implements AuthenticatableContract, AuthorizableCont
      * @var string[]
      */
     protected $hidden = [
-        'senha',
+        'password',
     ];
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 
     /**
      * Get all of the endereco for the ClienteModel

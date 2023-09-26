@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Pedido', function (Blueprint $table) {
-            $table->id('cod_pedido');
+        Schema::create('Pedidos', function (Blueprint $table) {
+            $table->id('id');
             $table->float('valor_total');
             $table->float('valor_com_desconto')->nullable();
             $table->dateTime('data_pedido');
@@ -28,10 +28,11 @@ return new class extends Migration
             $table->unsignedBigInteger('cod_endereco')->nullable();
             $table->unsignedBigInteger('cod_cupom')->nullable();
 
-            $table->foreign('cod_cliente')->references('cod_cliente')->on('Cliente');
-            $table->foreign('cod_funcionario')->references('cod_funcionario')->on('Funcionario');
-            $table->foreign('cod_endereco')->references('cod_endereco')->on('Endereco');
-            $table->foreign('cod_cupom')->references('cod_cupom')->on('Cupom');
+            $table->foreign('cod_cliente')->references('id')->on('Clientes');
+            $table->foreign('cod_funcionario')->references('id')->on('Funcionarios');
+            $table->foreign('cod_endereco')->references('id')->on('Enderecos');
+            $table->foreign('cod_cupom')->references('id')->on('Cupons');
+            $table->timestamps();
         });
     }
 
@@ -42,6 +43,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(table: 'Pedido');
+        Schema::dropIfExists(table: 'Pedidos');
     }
 };

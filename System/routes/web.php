@@ -1,7 +1,6 @@
 <?php
 
 /** @var \Laravel\Lumen\Routing\Router $router */
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,6 +12,7 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+$router->group(['prefix' => 'cliente'], function() use($router) {
+    $router->post('/cadastrar', 'ClienteController@store');
+    $router->post('/login', 'AuthClienteController@login');
 });

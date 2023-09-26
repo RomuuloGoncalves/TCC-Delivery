@@ -14,13 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('Grupo_variacoes', function (Blueprint $table) {
-            $table->id('cod_grupo_variacoes');
+            $table->id('id');
             $table->string('tipo');
             $table->integer('quantidade_variacoes');
             $table->unsignedBigInteger('cod_produto');
             $table->unsignedBigInteger('cod_variacao');
-            $table->foreign('cod_produto')->references('cod_produto')->on('Produto');
-            $table->foreign('cod_variacao')->references('cod_variacao')->on('Variacao');
+            $table->foreign('cod_produto')->references('id')->on('Produtos');
+            $table->foreign('cod_variacao')->references('id')->on('Variacoes');
+            $table->timestamps();
         });
     }
 
