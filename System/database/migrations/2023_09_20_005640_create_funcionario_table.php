@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Funcionario', function (Blueprint $table) {
-            $table->id('cod_funcionario');
+        Schema::create('Funcionarios', function (Blueprint $table) {
+            $table->id('id');
             $table->string('nome');
             $table->string('email')->unique();
+            $table->string('password');
             $table->enum('nivel_acesso', ['1', '2', '3'])->default('1');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(table: 'Funcionario');
+        Schema::dropIfExists(table: 'Funcionarios');
     }
 };

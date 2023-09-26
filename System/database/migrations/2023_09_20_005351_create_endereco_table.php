@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Endereco', function (Blueprint $table) {
-            $table->id('cod_endereco');
+        Schema::create('Enderecos', function (Blueprint $table) {
+            $table->id('id');
             $table->string('nome');
             $table->string('complemento')->nullable();
             $table->string('bairro');
@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string('rua');
             $table->char('cep', 8)->nullable();
             $table->unsignedBigInteger('cod_cliente');
-            $table->foreign('cod_cliente')->references('cod_cliente')->on('Cliente');
+            $table->foreign('cod_cliente')->references('id')->on('Clientes');
+            $table->timestamps();
         });
     }
 
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(table: 'Endereco');
+        Schema::dropIfExists(table: 'Enderecos');
     }
 };

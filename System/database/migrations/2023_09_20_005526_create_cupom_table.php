@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Cupom', function (Blueprint $table) {
-            $table->id('cod_cupom');
+        Schema::create('Cupons', function (Blueprint $table) {
+            $table->id('id');
             $table->string('nome');
             $table->unsignedDecimal('porcentagem_desconto', 5, 2)->nullable();
             $table->unsignedDecimal('valor_desconto', 9, 2)->nullable();
             $table->dateTime('data_validade')->nullable();
             $table->integer('quantidade')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(table: 'Cupom');
+        Schema::dropIfExists(table: 'Cupons');
     }
 };

@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Variacao', function (Blueprint $table) {
-            $table->id('cod_variacao');
+        Schema::create('Variacoes', function (Blueprint $table) {
+            $table->id('id');
             $table->string('nome');
             $table->unsignedDecimal('porcentagem_desconto', 5, 2)->nullable();
             $table->unsignedDecimal('valor_desconto', 9, 2)->nullable();
             $table->unsignedDecimal('valor_inicial', 9, 2)->default(0);
             $table->string('imagem');
             $table->string('descricao');
+            $table->timestamps();
         });
     }
 
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Variacao');
+        Schema::dropIfExists('Variacoes');
     }
 };
