@@ -24,10 +24,9 @@ class Pedido extends Model
     /**
      * Get all of the cupons for the PedidoModel
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function cupons(): HasMany
+    public function cupom(): BelongsTo
     {
-        return $this->hasMany(Cupom::class);
+        return $this->belongsTo(Cupom::class);
     }
 }
