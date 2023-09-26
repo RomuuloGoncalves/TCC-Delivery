@@ -8,14 +8,14 @@
       </ion-col>
       <ion-row>
         <ion-col>
-          <form action="">
+          <form action="" #loginForm="ngForm (ngSubmit)="this.login()">
             <ion-list>
               <ion-list>
                 <ion-item>
-                  <ion-input label="Usuario" type="text"></ion-input>
+                  <ion-input ngModel required label="Usuario" type="text"></ion-input>
                 </ion-item>
                 <ion-item>
-                  <ion-input label="Senha" type="password"></ion-input>
+                  <ion-input ngModel required label="Senha" type="password"></ion-input>
                 </ion-item>
               </ion-list>
             </ion-list>

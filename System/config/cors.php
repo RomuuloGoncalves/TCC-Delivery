@@ -8,4 +8,5 @@ return [
     'allowed_headers' => ['*'],
     'exposed_headers' => ['*'],
     'supports_credentials' => true,
+    'content_type' => ['application/json']
  ];

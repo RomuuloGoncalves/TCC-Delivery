@@ -13,10 +13,13 @@ export class ServerService {
 
   public post(path: string, data: any): Observable<any> {
     const token = this.Cookie.get('token');
-    if (token !== '') {
-      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-      return this.http.post(`${this.url}${path}`, JSON.stringify(data), { headers });
-    }
-    return this.http.post(`${this.url}${path}`, JSON.stringify(data), {});
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    if (token !== '') 
+      headers.set('Authorization', `Bearer ${token}`);
+    
+    return this.http.post(`${this.url}${path}`, JSON.stringify(data), { headers });
   }
 }

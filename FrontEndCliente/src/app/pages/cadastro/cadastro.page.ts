@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Cliente } from 'src/app/core/interfaces/cliente';
 import { ClienteService } from 'src/app/core/services/cliente.service';
 
 @Component({
@@ -13,11 +14,16 @@ export class CadastroPage implements OnInit {
 
   @ViewChild('cadastroForm') private cadastoForm!: NgForm;
 
+  erros: Cliente = {
+    'nome': ' ',
+    'email': ' ',
+    'telefone': ' ',
+    'password': ' '
+  };
   ngOnInit() {
   }
 
   public cadastrar() {
-    console.log(this.cadastoForm)
     const valores = this.cadastoForm.form.value;
     const cliente = {
       'nome': valores.nome,
@@ -28,11 +34,20 @@ export class CadastroPage implements OnInit {
 
     this.Cliente.cadastro(cliente).subscribe(
       (response: any) => {
-        console.log(response);
+        if (response.tipo === 'erro') {
+          this.erros = response.error.data;
+          console.log(this.erros)
+        } else {
+          alert('cadastrado')
+        }
       }, 
 
       (error) => {
-        console.error(error);
+        const valores = error.error.data;
+        this.erros.nome = (valores.nome) ? valores.nome[0] : ' ';
+        this.erros.email = (valores.email) ? valores.email[0] : ' ';
+        this.erros.telefone = (valores.telefone) ? valores.telefone[0] : ' ';
+        this.erros.password = (valores.password) ? valores.password[0] : ' ';
       }
     )
   }

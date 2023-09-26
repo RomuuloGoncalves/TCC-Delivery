@@ -10,20 +10,20 @@
         <ion-col>
           <form #cadastroForm="ngForm" (ngSubmit)="this.cadastrar()">
 
-            <ion-input ngModel helperText="Entre com um nome valido" errorText="Nome invalido" name="nome" label="Nome"
+            <ion-input ngModel helperText="{{ this.erros.nome}}" name="nome" label="Nome"
               type="text" required></ion-input>
 
-            <ion-input ngModel helperText="Entre com um email valido" errorText="Email invalido" name="email"
-              label="Email" type="email" required></ion-input>
+            <ion-input ngModel helperText="{{ this.erros.email }}" name="email"
+            label="Email" type="email" required></ion-input>
 
-            <ion-input ngModel helperText="Entre com um telefone valido" errorText="Telefone invalido" name="telefone"
+            <ion-input ngModel helperText="{{ this.erros.telefone }}" name="telefone"
               label="Telefone" type="text" required></ion-input>
 
-            <ion-input ngModel helperText="Entre com uma senha valido" errorText="Senha invalida" name="password"
+            <ion-input ngModel helperText="{{ this.erros.password }}" name="password"
               label="Senha" type="password" required></ion-input>
 
-            <ion-input ngModel helperText="Entre com uma senha valido" errorText="Senha invalida"
-              name="confirmarPassword" label="Confirmar Senha" type="password" required></ion-input>
+            <ion-input ngModel errorText="Senhas não conferem invalida"
+              name="confirmarPassword" label="Confirmar Senha" type="password" required  pattern="{{ this.cadastroForm.form.value.password }}"></ion-input>
 
             <ion-text>
               <p class="cadastro__esqueceu-senha">Já possui uma conta? <a routerLink="/login">clique aqui</a></p>
