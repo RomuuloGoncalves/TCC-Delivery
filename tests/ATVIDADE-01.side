@@ -2,78 +2,74 @@
   "id": "9db17138-ec93-4600-b671-517900a261a5",
   "version": "2.0",
   "name": "ATVIDADE-01",
-  "url": "http://localhost:8100/",
+  "url": "https://cuddly-funicular-jpv6ggxg59xc5vvg-4200.app.github.dev/cadastro",
   "tests": [{
-    "id": "cb457972-7d16-4e6f-9d3d-c9fe20cb3959",
-    "name": "LoginValido",
+    "id": "76563e85-f8ca-4b17-b023-b41bacfe2005",
+    "name": "loginValido",
     "commands": [{
-      "id": "4a8e179f-6854-405b-afed-246f63d153ad",
+      "id": "b437a472-d575-476d-aadc-8e50c03653b4",
       "comment": "",
       "command": "open",
-      "target": "/login",
+      "target": "https://cuddly-funicular-jpv6ggxg59xc5vvg-4200.app.github.dev/login",
       "targets": [],
       "value": ""
     }, {
-      "id": "40cf9995-7fd0-4274-87f5-c829fcf4bf9c",
+      "id": "aa4dea3f-ddb5-4849-baaf-73a6a5b2bfb4",
       "comment": "",
       "command": "setWindowSize",
-      "target": "1051x900",
+      "target": "1051x860",
       "targets": [],
       "value": ""
     }, {
-      "id": "32d43117-fa16-4315-a348-01455759bfeb",
+      "id": "1deecdfa-5860-449c-a2bf-083f91eac9d3",
       "comment": "",
       "command": "click",
       "target": "id=ion-input-0",
       "targets": [
         ["id=ion-input-0", "id"],
-        ["name=ion-input-0", "name"],
         ["css=#ion-input-0", "css:finder"],
         ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
         ["xpath=//input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "fa33056a-886a-4442-9b90-0479299923f9",
+      "id": "96f7aa61-feec-4f55-b49e-fd27369d5e1a",
       "comment": "",
       "command": "type",
       "target": "id=ion-input-0",
       "targets": [
         ["id=ion-input-0", "id"],
-        ["name=ion-input-0", "name"],
         ["css=#ion-input-0", "css:finder"],
         ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
         ["xpath=//input", "xpath:position"]
       ],
-      "value": "aaaa@bbbb.cccc"
+      "value": "email@email.com"
     }, {
-      "id": "ebf29da2-48da-43b9-85cb-84b4fff9ed94",
+      "id": "363fe6e4-aefc-4790-887a-450ae920fb3f",
       "comment": "",
       "command": "click",
       "target": "id=ion-input-1",
       "targets": [
         ["id=ion-input-1", "id"],
-        ["name=ion-input-1", "name"],
         ["css=#ion-input-1", "css:finder"],
         ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
-        ["xpath=//ion-item[2]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[2]/label/div[2]/input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "953526c5-381b-4af6-9869-3c8b569bbb3c",
+      "id": "a51db486-dd18-4de1-b281-ac081f8cc13b",
       "comment": "",
       "command": "type",
       "target": "id=ion-input-1",
       "targets": [
         ["id=ion-input-1", "id"],
-        ["name=ion-input-1", "name"],
         ["css=#ion-input-1", "css:finder"],
         ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
-        ["xpath=//ion-item[2]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[2]/label/div[2]/input", "xpath:position"]
       ],
-      "value": "1234"
+      "value": "senha123"
     }, {
-      "id": "64a35b14-0015-4912-964a-55a1d6014593",
+      "id": "22c70a35-4393-455b-b45a-915a44405879",
       "comment": "",
       "command": "click",
       "target": "css=.login__btn-entrar",
@@ -84,549 +80,308 @@
       "value": ""
     }]
   }, {
-    "id": "9c73823e-6f78-46a8-8932-be0362b9f1f7",
-    "name": "LoginInvalido",
+    "id": "4f8ee0c1-ff1b-458b-aeec-440674113732",
+    "name": "cadastroValido",
     "commands": [{
-      "id": "9a0aa5ff-1f13-4870-985b-56369b990bea",
+      "id": "c3af8012-ff82-425b-ba23-f8670424b972",
       "comment": "",
       "command": "open",
-      "target": "/login",
+      "target": "https://cuddly-funicular-jpv6ggxg59xc5vvg-4200.app.github.dev/cadastro",
       "targets": [],
       "value": ""
     }, {
-      "id": "0b90b8e2-ad20-475a-83c1-bd6f865ae758",
+      "id": "6660b728-5de9-4adb-872f-93d477001680",
       "comment": "",
       "command": "setWindowSize",
-      "target": "1050x964",
+      "target": "1050x840",
       "targets": [],
       "value": ""
     }, {
-      "id": "8ebb2d47-912d-4f1c-b212-26e001563551",
+      "id": "e686651e-3edb-4c7e-871a-69f5b37df681",
       "comment": "",
       "command": "click",
       "target": "id=ion-input-0",
       "targets": [
         ["id=ion-input-0", "id"],
-        ["name=ion-input-0", "name"],
         ["css=#ion-input-0", "css:finder"],
         ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
         ["xpath=//input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "18a69138-48b0-4f0d-b54d-3d32ca2e11f8",
+      "id": "2635db6a-5d29-43fd-867d-9d90230947bb",
       "comment": "",
       "command": "type",
       "target": "id=ion-input-0",
       "targets": [
         ["id=ion-input-0", "id"],
-        ["name=ion-input-0", "name"],
         ["css=#ion-input-0", "css:finder"],
         ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
         ["xpath=//input", "xpath:position"]
       ],
-      "value": "aaaaaaaaaaaaaaaaa"
+      "value": "Rômulo da Silva Gonçalves"
     }, {
-      "id": "25213194-f97a-4ece-959b-7a015e5e9d76",
+      "id": "461d96c3-00e1-4a6e-adca-36f4bc83ce39",
       "comment": "",
       "command": "click",
       "target": "id=ion-input-1",
       "targets": [
         ["id=ion-input-1", "id"],
-        ["name=ion-input-1", "name"],
         ["css=#ion-input-1", "css:finder"],
         ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
-        ["xpath=//ion-item[2]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[2]/label/div[2]/input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "ac1def69-abc6-448c-b9d8-73830ee33ca9",
+      "id": "2aea9827-1140-4e84-a513-0891d4315bdb",
       "comment": "",
       "command": "type",
       "target": "id=ion-input-1",
       "targets": [
         ["id=ion-input-1", "id"],
-        ["name=ion-input-1", "name"],
         ["css=#ion-input-1", "css:finder"],
         ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
-        ["xpath=//ion-item[2]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[2]/label/div[2]/input", "xpath:position"]
       ],
-      "value": "1234"
+      "value": "email@email.com"
     }, {
-      "id": "b3016d87-93af-4326-a3d2-b1300b4731c9",
-      "comment": "",
-      "command": "click",
-      "target": "css=.login__btn-entrar",
-      "targets": [
-        ["css=.login__btn-entrar", "css:finder"],
-        ["xpath=//ion-button", "xpath:position"]
-      ],
-      "value": ""
-    }]
-  }, {
-    "id": "bfafb877-d86e-4018-b39d-443eb395b005",
-    "name": "CadastroValido",
-    "commands": [{
-      "id": "34817a24-1ce3-49ff-8cdb-90a27bbf0a1e",
-      "comment": "",
-      "command": "open",
-      "target": "/cadastro",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "8c3c5e75-7eba-48c1-8c79-acd4b0adbe7e",
-      "comment": "",
-      "command": "setWindowSize",
-      "target": "1050x964",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "b81be8f0-0332-43f8-9ecf-d733c65610b6",
-      "comment": "",
-      "command": "click",
-      "target": "id=ion-input-0",
-      "targets": [
-        ["id=ion-input-0", "id"],
-        ["name=ion-input-0", "name"],
-        ["css=#ion-input-0", "css:finder"],
-        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "c1b7eec1-a299-4b0b-ad96-fc8919555e03",
-      "comment": "",
-      "command": "type",
-      "target": "id=ion-input-0",
-      "targets": [
-        ["id=ion-input-0", "id"],
-        ["name=ion-input-0", "name"],
-        ["css=#ion-input-0", "css:finder"],
-        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": "Da"
-    }, {
-      "id": "f5420387-50fa-43cc-942b-d295ac941322",
-      "comment": "",
-      "command": "sendKeys",
-      "target": "id=ion-input-0",
-      "targets": [
-        ["id=ion-input-0", "id"],
-        ["name=ion-input-0", "name"],
-        ["css=#ion-input-0", "css:finder"],
-        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": "${KEY_ENTER}"
-    }, {
-      "id": "e4d83a36-a60f-487e-99b8-24afa9ae04e7",
-      "comment": "",
-      "command": "click",
-      "target": "id=ion-input-0",
-      "targets": [
-        ["id=ion-input-0", "id"],
-        ["name=ion-input-0", "name"],
-        ["css=#ion-input-0", "css:finder"],
-        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "0018dab8-5a05-4986-9850-5b8cf79a8d9e",
-      "comment": "",
-      "command": "click",
-      "target": "id=ion-input-0",
-      "targets": [
-        ["id=ion-input-0", "id"],
-        ["name=ion-input-0", "name"],
-        ["css=#ion-input-0", "css:finder"],
-        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "5a3dddc6-b3a0-4f9f-86fb-1b111797d709",
-      "comment": "",
-      "command": "doubleClick",
-      "target": "id=ion-input-0",
-      "targets": [
-        ["id=ion-input-0", "id"],
-        ["name=ion-input-0", "name"],
-        ["css=#ion-input-0", "css:finder"],
-        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "b9b2e17c-f93f-405a-9b4d-4c686186ee3b",
-      "comment": "",
-      "command": "type",
-      "target": "id=ion-input-0",
-      "targets": [
-        ["id=ion-input-0", "id"],
-        ["name=ion-input-0", "name"],
-        ["css=#ion-input-0", "css:finder"],
-        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": "Daniel"
-    }, {
-      "id": "11acab3a-6aa0-4e1a-80dc-1f3401960375",
-      "comment": "",
-      "command": "click",
-      "target": "id=ion-input-1",
-      "targets": [
-        ["id=ion-input-1", "id"],
-        ["name=ion-input-1", "name"],
-        ["css=#ion-input-1", "css:finder"],
-        ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
-        ["xpath=//ion-item[2]/ion-input/label/div[2]/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "132b5a9d-3d91-4fdf-9c0b-e74783f03784",
-      "comment": "",
-      "command": "type",
-      "target": "id=ion-input-1",
-      "targets": [
-        ["id=ion-input-1", "id"],
-        ["name=ion-input-1", "name"],
-        ["css=#ion-input-1", "css:finder"],
-        ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
-        ["xpath=//ion-item[2]/ion-input/label/div[2]/input", "xpath:position"]
-      ],
-      "value": "Ferreira"
-    }, {
-      "id": "9f86783c-0fc8-4e78-9b15-8051d9ea3730",
+      "id": "341996f7-3669-40ac-9887-c8f06f0f173d",
       "comment": "",
       "command": "click",
       "target": "id=ion-input-2",
       "targets": [
         ["id=ion-input-2", "id"],
-        ["name=ion-input-2", "name"],
         ["css=#ion-input-2", "css:finder"],
         ["xpath=//input[@id='ion-input-2']", "xpath:attributes"],
-        ["xpath=//ion-item[3]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[3]/label/div[2]/input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "353eebc8-4fda-4d0b-807b-c45b39be2adc",
+      "id": "d2b80e26-521c-4832-846a-c5bcce02fd17",
       "comment": "",
       "command": "type",
       "target": "id=ion-input-2",
       "targets": [
         ["id=ion-input-2", "id"],
-        ["name=ion-input-2", "name"],
         ["css=#ion-input-2", "css:finder"],
         ["xpath=//input[@id='ion-input-2']", "xpath:attributes"],
-        ["xpath=//ion-item[3]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[3]/label/div[2]/input", "xpath:position"]
       ],
-      "value": "15999999999"
+      "value": "(15) 98104-5269"
     }, {
-      "id": "68dceacd-aea8-4399-9a88-92de59682cb2",
+      "id": "f24e8438-13d1-4fc8-a9ff-0ec200f3a886",
       "comment": "",
       "command": "click",
       "target": "id=ion-input-3",
       "targets": [
         ["id=ion-input-3", "id"],
-        ["name=ion-input-3", "name"],
         ["css=#ion-input-3", "css:finder"],
         ["xpath=//input[@id='ion-input-3']", "xpath:attributes"],
-        ["xpath=//ion-item[4]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[4]/label/div[2]/input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "f44c752f-c3e1-4a64-9b28-ac80a24c2ec8",
+      "id": "770c785f-9fb7-473b-9794-dea01a2579f6",
       "comment": "",
       "command": "type",
       "target": "id=ion-input-3",
       "targets": [
         ["id=ion-input-3", "id"],
-        ["name=ion-input-3", "name"],
         ["css=#ion-input-3", "css:finder"],
         ["xpath=//input[@id='ion-input-3']", "xpath:attributes"],
-        ["xpath=//ion-item[4]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[4]/label/div[2]/input", "xpath:position"]
       ],
-      "value": "aaa@aaa.aaa"
+      "value": "senha123"
     }, {
-      "id": "b832ce59-263f-4f06-936e-cc730dc860dc",
-      "comment": "",
-      "command": "mouseDown",
-      "target": "css=.has-focus > .input-wrapper",
-      "targets": [
-        ["css=.has-focus > .input-wrapper", "css:finder"],
-        ["xpath=//ion-item[6]/ion-input/label", "xpath:position"],
-        ["xpath=//label[contains(.,'Confirmar Senha')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "b12c5a9c-c925-45d3-bc75-b6354928c8e8",
-      "comment": "",
-      "command": "mouseUp",
-      "target": "css=.item:nth-child(6)",
-      "targets": [
-        ["css=.item:nth-child(6)", "css:finder"],
-        ["xpath=//ion-item[6]", "xpath:position"],
-        ["xpath=//ion-item[contains(.,'Confirmar Senha')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "6d1ed3f2-6c39-4ca4-ba57-cfbfdfd94b5d",
-      "comment": "",
-      "command": "click",
-      "target": "css=.item:nth-child(6)",
-      "targets": [
-        ["css=.item:nth-child(6)", "css:finder"],
-        ["xpath=//ion-item[6]", "xpath:position"],
-        ["xpath=//ion-item[contains(.,'Confirmar Senha')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "1799824b-fd2c-4cc9-a51b-5bbdf578ccae",
+      "id": "6f235949-aaff-46fc-b319-b0306434b76c",
       "comment": "",
       "command": "click",
       "target": "id=ion-input-4",
       "targets": [
         ["id=ion-input-4", "id"],
-        ["name=ion-input-4", "name"],
         ["css=#ion-input-4", "css:finder"],
         ["xpath=//input[@id='ion-input-4']", "xpath:attributes"],
-        ["xpath=//ion-item[5]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[5]/label/div[2]/input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "9de672f8-3bfd-484f-85d8-4743ee28b7f7",
+      "id": "f209601e-2000-4537-962b-97512296e678",
       "comment": "",
       "command": "type",
       "target": "id=ion-input-4",
       "targets": [
         ["id=ion-input-4", "id"],
-        ["name=ion-input-4", "name"],
         ["css=#ion-input-4", "css:finder"],
         ["xpath=//input[@id='ion-input-4']", "xpath:attributes"],
-        ["xpath=//ion-item[5]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[5]/label/div[2]/input", "xpath:position"]
       ],
-      "value": "1234"
+      "value": "senha123"
     }, {
-      "id": "129af906-8c25-4628-9da8-8c7c196e256f",
-      "comment": "",
-      "command": "click",
-      "target": "id=ion-input-5",
-      "targets": [
-        ["id=ion-input-5", "id"],
-        ["name=ion-input-5", "name"],
-        ["css=#ion-input-5", "css:finder"],
-        ["xpath=//input[@id='ion-input-5']", "xpath:attributes"],
-        ["xpath=//ion-item[6]/ion-input/label/div[2]/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "1f140327-f346-484f-b623-3fe76be276c5",
-      "comment": "",
-      "command": "type",
-      "target": "id=ion-input-5",
-      "targets": [
-        ["id=ion-input-5", "id"],
-        ["name=ion-input-5", "name"],
-        ["css=#ion-input-5", "css:finder"],
-        ["xpath=//input[@id='ion-input-5']", "xpath:attributes"],
-        ["xpath=//ion-item[6]/ion-input/label/div[2]/input", "xpath:position"]
-      ],
-      "value": "1234"
-    }, {
-      "id": "96378727-c466-4767-a466-1437b128c7c8",
+      "id": "1f3d7c0b-a761-4aa8-9a25-716ef6ef214a",
       "comment": "",
       "command": "click",
       "target": "css=.cadastro__btn-entrar",
       "targets": [
         ["css=.cadastro__btn-entrar", "css:finder"],
+        ["xpath=//ion-button[@type='submit']", "xpath:attributes"],
         ["xpath=//ion-button", "xpath:position"]
       ],
       "value": ""
     }]
   }, {
-    "id": "f6b5c189-af49-4d41-b5f2-bad48a7634a6",
-    "name": "CadastroInvalido",
+    "id": "fbbc9194-9dd3-4843-8895-e3cfae5645a0",
+    "name": "cadastro2",
     "commands": [{
-      "id": "c8d98d5f-96d8-4cee-9dea-fa9fc7cab440",
+      "id": "c9e8ccb6-a51f-423a-b869-8a7403658f7c",
       "comment": "",
       "command": "open",
-      "target": "/cadastro",
+      "target": "https://cuddly-funicular-jpv6ggxg59xc5vvg-4200.app.github.dev/cadastro",
       "targets": [],
       "value": ""
     }, {
-      "id": "5504dc79-376a-436e-8948-d6816f6d3ffa",
+      "id": "a11b8f08-601c-453a-a27a-85122b8eb2d3",
       "comment": "",
       "command": "setWindowSize",
-      "target": "1050x964",
+      "target": "1050x840",
       "targets": [],
       "value": ""
     }, {
-      "id": "ce4382e0-77d4-4703-ba54-26ab680fe39e",
+      "id": "2b89a807-d9c4-4bd8-a7ab-c9a2dc008933",
       "comment": "",
       "command": "click",
       "target": "id=ion-input-0",
       "targets": [
         ["id=ion-input-0", "id"],
-        ["name=ion-input-0", "name"],
         ["css=#ion-input-0", "css:finder"],
         ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
         ["xpath=//input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "679fa762-2ce8-4c68-90a6-bb4545ec6640",
+      "id": "3e202f49-654c-4461-bfcc-c7456760aead",
       "comment": "",
       "command": "type",
       "target": "id=ion-input-0",
       "targets": [
         ["id=ion-input-0", "id"],
-        ["name=ion-input-0", "name"],
         ["css=#ion-input-0", "css:finder"],
         ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
         ["xpath=//input", "xpath:position"]
       ],
-      "value": "111111111"
+      "value": "Rômulo"
     }, {
-      "id": "662f7170-3155-4d0c-8e67-31c3aba5474f",
+      "id": "00d50d40-4e25-455a-a467-f49c3d57ee88",
       "comment": "",
       "command": "click",
       "target": "id=ion-input-1",
       "targets": [
         ["id=ion-input-1", "id"],
-        ["name=ion-input-1", "name"],
         ["css=#ion-input-1", "css:finder"],
         ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
-        ["xpath=//ion-item[2]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[2]/label/div[2]/input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "1c5cea78-4ac3-42f0-96d8-af7ee44af87f",
+      "id": "978ec971-4019-427e-a87b-25cb0b3cb6ac",
       "comment": "",
       "command": "type",
       "target": "id=ion-input-1",
       "targets": [
         ["id=ion-input-1", "id"],
-        ["name=ion-input-1", "name"],
         ["css=#ion-input-1", "css:finder"],
         ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
-        ["xpath=//ion-item[2]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[2]/label/div[2]/input", "xpath:position"]
       ],
-      "value": "2222222"
+      "value": "romulo@gmail.com"
     }, {
-      "id": "800bf41d-3c6c-4305-ae2b-cf7e0623a849",
+      "id": "77baffe2-ecb1-4807-8e26-003ccb3803eb",
       "comment": "",
       "command": "click",
       "target": "id=ion-input-2",
       "targets": [
         ["id=ion-input-2", "id"],
-        ["name=ion-input-2", "name"],
         ["css=#ion-input-2", "css:finder"],
         ["xpath=//input[@id='ion-input-2']", "xpath:attributes"],
-        ["xpath=//ion-item[3]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[3]/label/div[2]/input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "9e7313e0-a982-44f6-94f8-0e2309fe3a71",
+      "id": "e971f498-92c9-4df0-b69e-61f28011657a",
       "comment": "",
       "command": "type",
       "target": "id=ion-input-2",
       "targets": [
         ["id=ion-input-2", "id"],
-        ["name=ion-input-2", "name"],
         ["css=#ion-input-2", "css:finder"],
         ["xpath=//input[@id='ion-input-2']", "xpath:attributes"],
-        ["xpath=//ion-item[3]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[3]/label/div[2]/input", "xpath:position"]
       ],
-      "value": "abc"
+      "value": "15981045288"
     }, {
-      "id": "086bbbb5-78ad-403e-94a8-611ccb49e4a9",
+      "id": "83669ffc-fb69-4298-a10a-3128511c3a20",
       "comment": "",
       "command": "click",
       "target": "id=ion-input-3",
       "targets": [
         ["id=ion-input-3", "id"],
-        ["name=ion-input-3", "name"],
         ["css=#ion-input-3", "css:finder"],
         ["xpath=//input[@id='ion-input-3']", "xpath:attributes"],
-        ["xpath=//ion-item[4]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[4]/label/div[2]/input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "2781d796-61ed-407e-8714-7588b99b8308",
+      "id": "d63ac2a9-4886-4472-8432-84f18c4407bd",
       "comment": "",
       "command": "type",
       "target": "id=ion-input-3",
       "targets": [
         ["id=ion-input-3", "id"],
-        ["name=ion-input-3", "name"],
         ["css=#ion-input-3", "css:finder"],
         ["xpath=//input[@id='ion-input-3']", "xpath:attributes"],
-        ["xpath=//ion-item[4]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[4]/label/div[2]/input", "xpath:position"]
       ],
-      "value": "______"
+      "value": "senha123"
     }, {
-      "id": "c692d6d2-d1b6-4a8b-8627-c70037591ff9",
+      "id": "1f35d50c-0516-4971-9e1c-92704645307c",
       "comment": "",
       "command": "click",
       "target": "id=ion-input-4",
       "targets": [
         ["id=ion-input-4", "id"],
-        ["name=ion-input-4", "name"],
         ["css=#ion-input-4", "css:finder"],
         ["xpath=//input[@id='ion-input-4']", "xpath:attributes"],
-        ["xpath=//ion-item[5]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[5]/label/div[2]/input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "dfea6aae-562d-4629-b4ee-750d9faef599",
+      "id": "15dbabb3-4676-409f-bbef-072bf1c586a8",
       "comment": "",
       "command": "type",
       "target": "id=ion-input-4",
       "targets": [
         ["id=ion-input-4", "id"],
-        ["name=ion-input-4", "name"],
         ["css=#ion-input-4", "css:finder"],
         ["xpath=//input[@id='ion-input-4']", "xpath:attributes"],
-        ["xpath=//ion-item[5]/ion-input/label/div[2]/input", "xpath:position"]
+        ["xpath=//ion-input[5]/label/div[2]/input", "xpath:position"]
       ],
-      "value": "123456"
+      "value": "senha123"
     }, {
-      "id": "96821fe3-eb29-47c3-a288-5d6331800acf",
-      "comment": "",
-      "command": "click",
-      "target": "id=ion-input-5",
-      "targets": [
-        ["id=ion-input-5", "id"],
-        ["name=ion-input-5", "name"],
-        ["css=#ion-input-5", "css:finder"],
-        ["xpath=//input[@id='ion-input-5']", "xpath:attributes"],
-        ["xpath=//ion-item[6]/ion-input/label/div[2]/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "00c22ae4-3b5e-4cfd-962e-b5768b5e536a",
-      "comment": "",
-      "command": "type",
-      "target": "id=ion-input-5",
-      "targets": [
-        ["id=ion-input-5", "id"],
-        ["name=ion-input-5", "name"],
-        ["css=#ion-input-5", "css:finder"],
-        ["xpath=//input[@id='ion-input-5']", "xpath:attributes"],
-        ["xpath=//ion-item[6]/ion-input/label/div[2]/input", "xpath:position"]
-      ],
-      "value": "654321"
-    }, {
-      "id": "5f08f468-2acf-40a6-baa0-5292e275b91f",
+      "id": "ff45cdac-5a34-459c-abc8-ba0c94e8b308",
       "comment": "",
       "command": "click",
       "target": "css=.cadastro__btn-entrar",
       "targets": [
         ["css=.cadastro__btn-entrar", "css:finder"],
+        ["xpath=//ion-button[@type='submit']", "xpath:attributes"],
         ["xpath=//ion-button", "xpath:position"]
       ],
+      "value": ""
+    }, {
+      "id": "ef6783e2-b429-43f0-afce-5e47cd09956e",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "cadastrado",
+      "targets": [],
       "value": ""
     }]
   }],
@@ -636,8 +391,8 @@
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["cb457972-7d16-4e6f-9d3d-c9fe20cb3959"]
+    "tests": []
   }],
-  "urls": ["http://localhost:8100/"],
+  "urls": ["http://localhost:8100/", "https://cuddly-funicular-jpv6ggxg59xc5vvg-4200.app.github.dev/cadastro", "https://cuddly-funicular-jpv6ggxg59xc5vvg-4200.app.github.dev/login"],
   "plugins": []
 }
