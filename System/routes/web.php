@@ -13,6 +13,6 @@
 */
 
 $router->group(['prefix' => 'cliente'], function() use($router) {
-    $router->get('/', 'ClienteController@index');
     $router->post('/cadastrar', 'ClienteController@store');
+    $router->post('/login', 'AuthClienteController@login');
 });

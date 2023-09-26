@@ -24,7 +24,7 @@ class ClienteController extends Controller
         $regras = [
             'nome' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:Clientes'],
-            'senha' => ['required', 'string', 'max:255', 'min:8'],
+            'password' => ['required', 'string', 'max:255', 'min:8'],
             'telefone' => ['required', 'string', 'size:11', 'unique:Clientes'],
         ];
 
@@ -36,7 +36,7 @@ class ClienteController extends Controller
         $cliente = Cliente::create([
             'nome' => $request->input('nome'),
             'email' => $request->input('email'),
-            'senha' => password_hash($request->input('senha'), PASSWORD_DEFAULT),
+            'password' => password_hash($request->input('password'), PASSWORD_DEFAULT),
             'telefone' => $request->input('telefone'),
         ]);
 
