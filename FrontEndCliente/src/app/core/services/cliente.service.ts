@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
+import { ServerService } from './server.service';
+import { Cliente } from '../interfaces/cliente';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
 
-  constructor() { }
+  constructor(private Server: ServerService) { }
 
-  url: string = "https://opulent-enigma-566x5577w6rh4rg7-8000.app.github.dev/cliente/login"
-
-  
+  public cadastro (cliente: Cliente) {
+    return this.Server.post('cliente/cadastrar', cliente);
+  }
 
 }

@@ -8,30 +8,30 @@
       </ion-col>
       <ion-row>
         <ion-col>
-          <form action="">
+          <form #cadastroForm="ngForm">
             <ion-list>
               <ion-list>
                 <ion-item>
-                  <ion-input label="Nome" type="email"></ion-input>
+                  <ion-input NgModel required name="nome" label="Nome" type="text"></ion-input>
                 </ion-item>
                 <ion-item>
-                  <ion-input label="Sobrenome" type="email"></ion-input>
+                  <ion-input NgModel required name="email" label="Email" type="email"></ion-input>
                 </ion-item>
                 <ion-item>
-                  <ion-input label="Telefone" type="email"></ion-input>
+                  <ion-input NgModel required name="telefone" label="Telefone" type="text"></ion-input>
                 </ion-item>
                 <ion-item>
-                  <ion-input label="E-mail" type="email"></ion-input>
+                  <ion-input NgModel required name="email" label="E-mail" type="email"></ion-input>
                 </ion-item>
                 <ion-item>
-                  <ion-input label="Senha" type="password"></ion-input>
+                  <ion-input NgModel required name="password" label="Senha" type="password"></ion-input>
                 </ion-item>
                 <ion-item>
-                  <ion-input label="Confirmar Senha" type="password"></ion-input>
+                  <ion-input NgModel required label="Confirmar Senha" type="password"></ion-input>
                 </ion-item>
               </ion-list>
             </ion-list>
-            <ion-text>
+            <ion-text> 
               <p class="cadastro__esqueceu-senha">Já possui uma conta? <a routerLink="/login">clique aqui</a></p>
             </ion-text>
             <ion-row class="ion-justify-content-center ion-padding">
