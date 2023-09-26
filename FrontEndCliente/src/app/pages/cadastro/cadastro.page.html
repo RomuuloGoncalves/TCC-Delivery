@@ -9,26 +9,23 @@
       <ion-row>
         <ion-col>
           <form #cadastroForm="ngForm" (ngSubmit)="this.cadastrar()">
-            <ion-list>
-              <ion-list>
-              <ion-item>
-                  <ion-input NgModel required name="nome" label="Nome" type="text"></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-input NgModel required name="email" label="Email" type="email"></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-input NgModel required name="telefone" label="Telefone" type="text"></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-input NgModel required name="password" label="Senha" type="password"></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-input NgModel required label="Confirmar Senha" type="password"></ion-input>
-                </ion-item>
-              </ion-list>
-            </ion-list>
-            <ion-text> 
+
+            <ion-input ngModel helperText="Entre com um nome valido" errorText="Nome invalido" name="nome" label="Nome"
+              type="text" required></ion-input>
+
+            <ion-input ngModel helperText="Entre com um email valido" errorText="Email invalido" name="email"
+              label="Email" type="email" required></ion-input>
+
+            <ion-input ngModel helperText="Entre com um telefone valido" errorText="Telefone invalido" name="telefone"
+              label="Telefone" type="text" required></ion-input>
+
+            <ion-input ngModel helperText="Entre com uma senha valido" errorText="Senha invalida" name="password"
+              label="Senha" type="password" required></ion-input>
+
+            <ion-input ngModel helperText="Entre com uma senha valido" errorText="Senha invalida"
+              name="confirmarPassword" label="Confirmar Senha" type="password" required></ion-input>
+
+            <ion-text>
               <p class="cadastro__esqueceu-senha">Já possui uma conta? <a routerLink="/login">clique aqui</a></p>
             </ion-text>
             <ion-row class="ion-justify-content-center ion-padding">

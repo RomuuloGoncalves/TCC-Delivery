@@ -9,17 +9,12 @@
       <ion-row>
         <ion-col>
           <form action="" #formularioLogin="ngForm">
-            <ion-list>
-              <ion-list>
-                <ion-item>
-                  <ion-input ngModel value="email" label="E-mail" type="email"></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-input ngModel value="senha" label="Senha" type="password"></ion-input>
-                </ion-item>
-              </ion-list>
-            </ion-list>
-            <ion-text >
+            <ion-input ngModel helperText="Entre com um email valido" errorText="Email invalido" name="email"
+              label="Email" type="email" required></ion-input>
+
+            <ion-input ngModel helperText="Entre com uma senha valida" errorText="Senha invalida" name="senha"
+              label="Senha" type="password" required></ion-input>
+            <ion-text>
               <p class="login__esqueceu-senha">Não possui uma conta? <a routerLink="/cadastro">clique aqui</a></p>
             </ion-text>
             <ion-row class="ion-justify-content-center ion-padding">
@@ -58,5 +53,6 @@
       </ion-row>
     </ion-col>
   </ion-row>
+
   <app-footer></app-footer>
 </ion-content>
