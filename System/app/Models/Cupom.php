@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Cumpom extends Model
+class Cupom extends Model
 {
+    protected $table = "Cupons";
     use HasFactory;
 
     /**

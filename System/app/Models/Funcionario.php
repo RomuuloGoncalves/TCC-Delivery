@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Lumen\Auth\Authorizable;
 
-class Cliente extends Model implements AuthenticatableContract, AuthorizableContract
+class Funcionario extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, HasFactory;
 
@@ -29,7 +29,7 @@ class Cliente extends Model implements AuthenticatableContract, AuthorizableCont
      * @var string[]
      */
     protected $hidden = [
-        'senha',
+        'password',
     ];
 
     /**
