@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClienteService } from 'src/app/core/services/cliente.service';
 
 @Component({
   selector: 'app-login',
@@ -10,12 +11,6 @@ export class LoginPage implements OnInit {
   constructor(private clienteService: ClienteService) { }
 
   ngOnInit() {
-  }
-
-  formularioLogin(e: any){
-    let dadosLogin
-
-    this.clienteService.cadastro(dadosLogin)
   }
 
 }
