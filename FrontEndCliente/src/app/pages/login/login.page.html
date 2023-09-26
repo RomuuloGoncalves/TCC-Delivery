@@ -8,14 +8,14 @@
       </ion-col>
       <ion-row>
         <ion-col>
-          <form action="">
+          <form action="" #formularioLogin="ngForm" (ngSubmit)="formularioLogin(formularioLogin.value)">
             <ion-list>
               <ion-list>
                 <ion-item>
-                  <ion-input label="E-mail" type="email"></ion-input>
+                  <ion-input ngModel value="email" label="E-mail" type="email"></ion-input>
                 </ion-item>
                 <ion-item>
-                  <ion-input label="Senha" type="password"></ion-input>
+                  <ion-input ngModel value="senha" label="Senha" type="password"></ion-input>
                 </ion-item>
               </ion-list>
             </ion-list>

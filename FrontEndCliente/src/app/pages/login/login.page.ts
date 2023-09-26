@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  constructor(private clienteService: ClienteService) { }
 
   ngOnInit() {
+  }
+
+  formularioLogin(e: any){
+    let dadosLogin
+
+    this.clienteService.cadastro(dadosLogin)
   }
 
 }
