@@ -6,10 +6,13 @@
     "type": "project",
     "require": {
         "php": "^8.0",
-        "laravel/lumen-framework": "^9.0"
+        "fakerphp/faker": "^1.23",
+        "flipbox/lumen-generator": "^9.2",
+        "laravel/lumen-framework": "^9.0",
+        "laravel/tinker": "^2.8",
+        "tymon/jwt-auth": "^2.0"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.4",
         "phpunit/phpunit": "^9.5.10"
     },
