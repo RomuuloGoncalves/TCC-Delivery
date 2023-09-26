@@ -60,6 +60,7 @@ $app->singleton(
 */
 
 $app->configure('auth');
+$app->configure('cors');
 
 /*
 |--------------------------------------------------------------------------
@@ -72,9 +73,10 @@ $app->configure('auth');
 |
 */
 
-// $app->middleware([
-//     App\Http\Middleware\ExampleMiddleware::class
-// ]);
+$app->middleware([
+    Fruitcake\Cors\HandleCors::class,
+    App\Http\Middleware\ExampleMiddleware::class
+]);
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
@@ -97,7 +99,7 @@ $app->register(App\Providers\EventServiceProvider::class);
 $app->register(\Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 $app->register(Laravel\Tinker\TinkerServiceProvider::class);
 
-
+$app->register(Fruitcake\Cors\CorsServiceProvider::class);
 // Add this line
 
 /*
