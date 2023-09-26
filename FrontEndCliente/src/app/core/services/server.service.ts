@@ -15,8 +15,8 @@ export class ServerService {
     const token = this.Cookie.get('token');
     if (token !== '') {
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-      return this.http.post(this.url, JSON.stringify(data), { headers });
+      return this.http.post(`${this.url}${path}`, JSON.stringify(data), { headers });
     }
-    return this.http.post(this.url, JSON.stringify(data));
+    return this.http.post(`${this.url}${path}`, JSON.stringify(data), {});
   }
 }

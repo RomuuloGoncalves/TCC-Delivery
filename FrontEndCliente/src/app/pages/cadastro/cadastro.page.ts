@@ -14,10 +14,10 @@ export class CadastroPage implements OnInit {
   @ViewChild('cadastroForm') private cadastoForm!: NgForm;
 
   ngOnInit() {
-    this.cadastrar();
   }
 
   public cadastrar() {
+    console.log(this.cadastoForm)
     const valores = this.cadastoForm.form.value;
     const cliente = {
       'nome': valores.nome,
