@@ -13,4 +13,8 @@ export class ClienteService {
     return this.Server.post('cliente/cadastrar', cliente);
   }
 
+  public login (cliente: Cliente) {
+    return this.Server.post('cliente/login', cliente);
+  }
+
 }

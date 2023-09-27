@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class ServerService {
   constructor(private http: HttpClient, private Cookie: CookieService) {}
 
-  private url: string = 'https://cautious-meme-w6w999p5693gpgq-8000.app.github.dev/';
+  private url: string = 'http://localhost:8000/';
 
   public post(path: string, data: any): Observable<any> {
     const token = this.Cookie.get('token');
@@ -17,9 +17,9 @@ export class ServerService {
       'Content-Type': 'application/json'
     });
 
-    if (token !== '') 
+    if (token !== '')
       headers.set('Authorization', `Bearer ${token}`);
-    
+
     return this.http.post(`${this.url}${path}`, JSON.stringify(data), { headers });
   }
 }
