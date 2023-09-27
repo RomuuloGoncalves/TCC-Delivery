@@ -13,7 +13,7 @@ class CupomSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        for($i =1;$i <= 10;$i++) {
+        for ($i = 1; $i <= 10; $i++) {
             DB::table('Cupons')->insert([
                 'nome' => $faker->word(),
                 'porcentagem_desconto' => $faker->randomFloat(2, 1, 100),

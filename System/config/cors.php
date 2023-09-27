@@ -1,6 +1,6 @@
 <?php
 
-return [    
+return [
     'paths' => ['*'],
     'allowed_methods' => ['*'],
     'allowed_origins' => ['*'],
@@ -9,4 +9,4 @@ return [
     'exposed_headers' => ['*'],
     'supports_credentials' => true,
     'content_type' => ['application/json']
- ];
+];

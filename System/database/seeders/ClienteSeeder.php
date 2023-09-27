@@ -14,14 +14,14 @@ class ClienteSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        for($i =1;$i <= 10;$i++) {
+        for ($i = 1; $i <= 10; $i++) {
             DB::table('Clientes')->insert([
                 'nome' => $faker->name(),
                 'email' => $faker->email(),
                 'password' => Hash::make('none'),
                 'telefone' => $faker->numerify('1599#######'),
                 'image' => $faker->imageUrl(640, 480, 'animals', true)
-                
+
             ]);
         }
     }

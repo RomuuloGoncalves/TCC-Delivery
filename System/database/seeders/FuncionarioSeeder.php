@@ -14,7 +14,7 @@ class FuncionarioSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        for($i =1;$i <= 10;$i++) {
+        for ($i = 1; $i <= 10; $i++) {
             DB::table('Funcionarios')->insert([
                 'nome' => $faker->name(),
                 'email' => $faker->email(),

@@ -14,5 +14,5 @@
 
 $router->group(['prefix' => 'cliente'], function() use($router) {
     $router->post('/cadastrar', 'ClienteController@store');
-    $router->post('/login', 'AuthClienteController@login');
+    $router->post('/login', 'ClienteController@login');
 });

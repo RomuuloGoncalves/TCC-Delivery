@@ -21,7 +21,7 @@ class PedidoSeeder extends Seeder
         $enderecos = Endereco::all()->pluck('id')->toArray();
         $cupons = Cupom::all()->pluck('id')->toArray();
 
-        for($i =1;$i <= 10;$i++) {
+        for ($i = 1; $i <= 10; $i++) {
             DB::table('Pedidos')->insert([
                 'valor_total' => $faker->randomFloat(2, 1, 100000),
                 'valor_com_desconto' => $faker->randomFloat(2, 1, 100000),
