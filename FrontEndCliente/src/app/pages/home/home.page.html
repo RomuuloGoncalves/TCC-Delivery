@@ -18,7 +18,7 @@
       <ion-row class="ion-justify-content-around">
 
         <ion-col size=12>
-          <swiper-container #swiper [pagination]="true" [loop]="true" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints" [initialSlide]="2">
+          <swiper-container #swiper [autoplay]="true" [pagination]="true" [loop]="true" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints" [initialSlide]="2">
 
             <swiper-slide>
               <app-atalho-home [routerLink]="['listagem/marmitas']" [nomeAtalho]="'Marmitas'" [iconeAtalho]="'../../../assets/imgs/home-icons/garfo_faca_outline.png'"></app-atalho-home>

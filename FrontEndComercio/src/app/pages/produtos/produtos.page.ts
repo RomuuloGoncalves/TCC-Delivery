@@ -63,6 +63,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 19.50,
         descricao: 'Batata muito boa tipo muito muito boa mesmo',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -75,6 +76,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 25.00,
         descricao: 'Peito de frango grelhado com temperos especiais',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -87,6 +89,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 12.50,
         descricao: 'Mix de folhas frescas com vegetais diversos',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -99,6 +102,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 32.00,
         descricao: 'Lasanha tradicional com carne bolonhesa',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -111,6 +115,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 45.00,
         descricao: 'Combinação variada de sushis e sashimis',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -123,6 +128,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 18.50,
         descricao: 'Hambúrguer com carne suculenta e molhos especiais',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -135,6 +141,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 26.00,
         descricao: 'Pizza com molho de tomate, queijo e manjericão',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -147,6 +154,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 21.50,
         descricao: 'Massa com molho pesto e pinhões',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -159,6 +167,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 16.00,
         descricao: 'Taco recheado com carne, feijão e vegetais',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -171,6 +180,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 28.00,
         descricao: 'Filé de peixe grelhado com temperos leves',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     }
   ]
@@ -186,6 +196,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 7.00,
         descricao: 'Refrigerante Coca-Cola gelado',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -198,6 +209,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 9.00,
         descricao: 'Suco natural de laranja fresca',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -210,6 +222,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 3.50,
         descricao: 'Garrafa de água mineral 500ml',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -222,6 +235,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 4.50,
         descricao: 'Café espresso quente e encorpado',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -234,6 +248,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 5.50,
         descricao: 'Chá de camomila calmante e reconfortante',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     }
   ]
@@ -249,6 +264,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 35.00,
         descricao: 'Combo com marmita, refrigerante e sobremesa',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -261,6 +277,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 28.00,
         descricao: 'Combo com salada, suco e fruta',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -273,6 +290,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 24.00,
         descricao: 'Combo com pipoca, refrigerante e doce',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     }
   ]
@@ -288,6 +306,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 7.00,
         descricao: 'Porção de batata frita crocante',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -300,6 +319,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 9.00,
         descricao: 'Mix de legumes frescos salteados na manteiga',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     },
     {
@@ -312,6 +332,7 @@ export class ProdutosPage implements OnInit {
         valor_inicial: 5.00,
         descricao: 'Porção de arroz branco soltinho',
         valor_final: 23.00,
+        imagem:"../../../assets/imgs/default/cards-produtos.png"
       }
     }
   ]

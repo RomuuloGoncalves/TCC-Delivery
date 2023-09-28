@@ -5,7 +5,7 @@
     <ion-col size="11.9">
       <ion-row class="pedido" class="ion-justify-content-between ion-align-items-center">
         <ion-col size="12" sizeMd="auto">
-          <ion-icon [routerLink]="['/historico']" name="arrow-back-outline"></ion-icon>
+          <ion-icon [routerLink]="['/historico']"  routerDirection="back" name="arrow-back-outline"></ion-icon>
         </ion-col>
         <ion-col size="12" sizeMd="auto">
           <ion-row class="ion-justify-between ion-align-items-center">
@@ -23,7 +23,7 @@
           <th>Itens</th>
           <th>Quantidades</th>
         </tr>
-        <tr *ngFor="let produtos of pedido.produtos" [routerLink]="['/pedido']">
+        <tr *ngFor="let produtos of pedido.produtos" [routerLink]="['/pedido']"  routerDirection="back">
           <td>
             <ion-row class="ion-align-items-center">
               <ion-col size="3">
@@ -40,13 +40,29 @@
         </tr>
       </table>
     </ion-col>
-    <ion-col size="12" sizeMd="4">
+    <ion-col size="11.9" sizeMd="10" sizeLg="5">
       <ion-row class="ion-justify-content-center">
-        <ion-col size="12" sizeMd="6" class="informacoes">
-          <ion-row>Cliente: {{ pedido.cliente!.nome }}</ion-row>
-          <ion-row>CEP: {{pedido.endereco_pedido}}</ion-row>
-          <ion-row>Pagamento: {{pedido.forma_pagamento}}</ion-row>
-          <ion-row>Status: {{pedido.status}}</ion-row>
+        <ion-col size="12" sizeMd="6" class="informacoes ion-padding">
+          <ion-row>
+            <ion-text>
+              <p>Cliente: {{pedido.cliente!.nome}}</p>
+            </ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text>
+              <p>CEP: {{pedido.endereco_pedido}}</p>
+            </ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text>
+              <p>Pagamento: {{pedido.forma_pagamento}}</p>
+            </ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text>
+              <p>Status: {{pedido.status}}</p>
+            </ion-text>
+          </ion-row>
         </ion-col>
       </ion-row>
     </ion-col>

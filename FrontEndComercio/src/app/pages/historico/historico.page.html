@@ -12,11 +12,11 @@
             <ion-col size="12">
               <ion-list>
                 <ion-item>
-                  <ion-select interface="popover" mode="ios" placeholder="Filtrar" [multiple]="true">
-                    <ion-select-option value="" Default="true">...</ion-select-option>
-                    <ion-select-option value="">...</ion-select-option>
-                    <ion-select-option value="">...</ion-select-option>
-                    <ion-select-option value="">...</ion-select-option>
+                  <ion-select interface="popover" mode="ios" placeholder="Ordenar por" [multiple]="true">
+                    <ion-select-option value="id" Default="true">ID</ion-select-option>
+                    <ion-select-option value="status">Status</ion-select-option>
+                    <ion-select-option value="quantidade">Quantidade</ion-select-option>
+                    <ion-select-option value="data">Data</ion-select-option>
                   </ion-select>
                 </ion-item>
               </ion-list>
@@ -36,7 +36,7 @@
           <th>Quantidade</th>
           <th>Data</th>
         </tr>
-        <tr *ngFor="let pedido of pedidos" [routerLink]="['/detalhe-pedido']">
+        <tr *ngFor="let pedido of pedidos" [routerLink]="['/detalhe-pedido']" routerDirection="back">
           <td>{{pedido.id_pedido}}</td>
           <td>{{pedido.status}}</td>
           <td>{{pedido.produtos.length}}</td>

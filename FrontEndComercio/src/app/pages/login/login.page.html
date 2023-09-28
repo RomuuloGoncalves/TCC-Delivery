@@ -3,12 +3,12 @@
     <ion-col size="10" sizeMd="8" sizeLg="5">
       <ion-col size="12" sizeMd="4">
         <ion-row class="ion-justify-content-center ion-text-md-ion-justify-content-start">
-          <h1 class="login__logo"><a class="login__link" routerLink="/">Divina Refeição</a></h1>
+          <h1 class="login__logo"><a class="login__link" [routerLink]="['/']"  routerDirection="back">Divina Refeição</a></h1>
         </ion-row>
       </ion-col>
       <ion-row>
         <ion-col>
-          <form action="" #loginForm="ngForm (ngSubmit)="this.login()">
+          <form action="" #loginForm="ngForm" (ngSubmit)="this.login()">
             <ion-list>
               <ion-list>
                 <ion-item>

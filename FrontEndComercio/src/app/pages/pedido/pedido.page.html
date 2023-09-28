@@ -23,7 +23,7 @@
           <th>Itens</th>
           <th>Quantidades</th>
         </tr>
-        <tr *ngFor="let produtos of pedido.produtos" [routerLink]="['/pedido']">
+        <tr *ngFor="let produtos of pedido.produtos" [routerLink]="['/pedido']"  routerDirection="back">
           <td>
             <ion-row class="ion-align-items-center">
               <ion-col size="3">
@@ -45,7 +45,7 @@
         </ion-col>
       </ion-row>
     </ion-col>
-    <ion-col size="11.9" sizeMd="10" sizeLg="6">
+    <ion-col size="11.9" sizeMd="10" sizeLg="5">
       <ion-row class="ion-justify-content-center">
         <ion-col size="12" sizeMd="6" class="informacoes ion-padding">
           <ion-row>
