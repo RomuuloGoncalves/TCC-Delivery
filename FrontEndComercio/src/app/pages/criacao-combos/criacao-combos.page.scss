@@ -36,3 +36,16 @@ ion-radio-group {
   flex-direction: column;
   gap: 30px;
 }
+
+.itens-combo {
+  display: grid;
+  grid-template-columns: repeat(3, 0.5fr);
+}
+
+.item-combo {
+  overflow-x: auto;
+}
+
+.borda {
+  outline: 1px solid black;
+}

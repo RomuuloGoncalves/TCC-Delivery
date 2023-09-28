@@ -35,13 +35,13 @@
 
       <form action="">
         <ion-row>
-          <ion-col size="12">
+          <ion-col size="12" class="itens-combo">
             <ng-container *ngFor="let grupos of dadoFinal">
               <ng-container *ngFor="let categorias of grupos[1]">
                 <ng-container *ngFor="let produtos of produtoSelecionado">
                   <ng-container *ngFor="let produto of produtos[1]">
-                    <div class="inputs" *ngIf="produto && produto  == categorias[0]">
-                      <ion-row>
+                    <div class="inputs" *ngIf="produto && produto === categorias[0]">
+                      <ion-row class="item-combo">
                         <ion-col size="12">
                           <ion-label class="variacao"> {{categorias[0]}}
                           </ion-label>
@@ -49,7 +49,7 @@
                         <ion-col size="12">
                           <ion-radio-group value="custom-checked">
                             <ion-radio mode="md" *ngFor="let categoria of categorias[1]" value="{{categoria.nome}}"
-                              labelPlacement="end" justify="start" aria-label="Custom checkbox">{{categoria.nome}}
+                              labelPlacement="end" justify="start" aria-label="Custom checkbox" class="ion-text-capitalize">{{categoria.nome}}
                             </ion-radio>
                           </ion-radio-group>
                         </ion-col>
