@@ -42,3 +42,11 @@
   background: #565656;
   border-radius: 10px;
 }
+
+ion-toast.sucesso {
+  --background: var(--ion-color-success);
+}
+
+ion-toast.erro {
+  --background: var(--ion-color-danger);
+}

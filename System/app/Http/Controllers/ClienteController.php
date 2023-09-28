@@ -30,7 +30,7 @@ class ClienteController extends Controller
         $validacao = Validator::make($request->all(), $regras);
 
         if ($validacao->fails())
-            return response()->json(['tipo' => 'erro', 'data' => $validacao->errors()], 422);
+            return response()->json($validacao->errors(), 422);
 
         $cliente = Cliente::create([
             'nome' => $request->input('nome'),
@@ -39,7 +39,7 @@ class ClienteController extends Controller
             'telefone' => $request->input('telefone'),
         ]);
 
-        return response()->json($cliente);
+        return response()->json($cliente, 201);
     }
 
     public function login(Request $request)
@@ -52,12 +52,12 @@ class ClienteController extends Controller
         $validacao = Validator::make($request->all(), $regras);
 
         if ($validacao->fails())
-            return response()->json(['tipo' => 'erro', 'data' => $validacao->errors()], 422);
+            return response()->json($validacao->errors(), 422);
 
         $credenciais = $request->only('email', 'password');
 
         if (!$token = auth()->attempt($credenciais))
-            return response()->json(['tipo' => 'erro', 'data' => ['server' => 'Credenciais inválidas']], 401);
+            return response()->json(['login' => 'Credenciais inválidas'], 401);
 
         return $this->responderComToken($token);
     }
