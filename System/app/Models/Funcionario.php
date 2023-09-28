@@ -20,7 +20,9 @@ class Funcionario extends Model implements AuthenticatableContract, Authorizable
      * @var string[]
      */
     protected $fillable = [
-        'nome', 'email', 'telefone'
+        'nome', 
+        'email', 
+        'telefone'
     ];
 
     /**
@@ -31,12 +33,6 @@ class Funcionario extends Model implements AuthenticatableContract, Authorizable
     protected $hidden = [
         'password',
     ];
-
-    /**
-     * Get all of the pedidos for the ClienteModel
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function pedidos(): HasMany
     {
         return $this->hasMany(Pedido::class);

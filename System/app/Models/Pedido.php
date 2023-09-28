@@ -11,20 +11,35 @@ class Pedido extends Model
 {
     use HasFactory;
 
-    /**
-     * Get the clientes that owns the PedidoModel
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+    protected $fillable = [
+        'valor_total',
+        'valor_com_desconto',
+        'data_pedido',
+        'data_entrega', 
+        'data_pagamento',
+        'status_pedido', 
+        'forma_pagamento',
+        'cod_cliente', 
+        'cod_funcionario',
+        'cod_endereco',
+        'cod_cupom'
+    ];
+
     public function cliente(): BelongsTo
     {
         return $this->belongsTo(cliente::class);
     }
 
-    /**
-     * Get all of the cupons for the PedidoModel
-     *
-     */
+    public function funcionario(): BelongsTo
+    {
+        return $this->belongsTo(Funcionario::class);
+    }
+
+    public function endereco(): BelongsTo
+    {
+        return $this->belongsTo(Endereco::class);
+    }
+
     public function cupom(): BelongsTo
     {
         return $this->belongsTo(Cupom::class);

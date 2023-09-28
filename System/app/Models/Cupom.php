@@ -10,12 +10,14 @@ class Cupom extends Model
 {
     protected $table = "Cupons";
     use HasFactory;
+    protected $fillable = [
+        'nome',
+        'porcentagem_desconto',
+        'valor_desconto',
+        'data_validade', 
+        'quantidade'
+    ];
 
-    /**
-     * Get the pedido that owns the CupomModel
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function pedido(): BelongsTo
     {
         return $this->belongsTo(Pedido::class);

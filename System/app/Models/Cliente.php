@@ -15,20 +15,13 @@ class Cliente extends Model implements AuthenticatableContract, AuthorizableCont
 {
     use Authenticatable, Authorizable, HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
     protected $fillable = [
-        'nome', 'email', 'telefone', 'password'
+        'nome', 
+        'email', 
+        'telefone', 
+        'password'
     ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var string[]
-     */
     protected $hidden = [
         'password',
     ];
@@ -43,21 +36,11 @@ class Cliente extends Model implements AuthenticatableContract, AuthorizableCont
         return [];
     }
 
-    /**
-     * Get all of the endereco for the ClienteModel
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function enderecos(): HasMany
     {
         return $this->hasMany(Endereco::class);
     }
 
-    /**
-     * Get all of the pedido for the ClienteModel
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function pedidos(): HasMany
     {
         return $this->hasMany(Pedido::class);

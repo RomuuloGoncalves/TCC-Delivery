@@ -9,12 +9,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Endereco extends Model
 {
     use HasFactory;
-
-    /**
-     * Get the enderecos that owns the EnderecoModel
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+    protected $fillable = [
+        'nome',
+        'complemento',
+        'bairro', 
+        'numero',
+        'rua', 
+        'cep',
+        'cod_cliente'
+    ];
     public function cliente(): BelongsTo
     {
         return $this->belongsTo(cliente::class);
