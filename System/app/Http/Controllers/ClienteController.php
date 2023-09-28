@@ -57,7 +57,7 @@ class ClienteController extends Controller
         $credenciais = $request->only('email', 'password');
 
         if (!$token = auth()->attempt($credenciais))
-            return response()->json(['tipo' => 'erro', 'mensagem' => 'Credenciais inválidas'], 401);
+            return response()->json(['tipo' => 'erro', 'data' => ['server' => 'Credenciais inválidas']], 401);
 
         return $this->responderComToken($token);
     }
