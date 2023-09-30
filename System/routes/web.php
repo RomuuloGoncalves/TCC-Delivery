@@ -17,6 +17,11 @@ $router->group(['prefix' => 'cliente'], function() use($router) {
     $router->post('/login', 'ClienteController@login');
 });
 
+$router->group(['prefix' => 'funcionario'], function() use($router) {
+    $router->post('/cadastrar', 'FuncionarioController@store');
+    $router->post('/login', 'FuncionarioController@login');
+});
+
 $router->group(['prefix' => 'cupom'], function() use($router) {
     $router->post('/cadastrar', 'CupomController@store');
     $router->get('/usar', 'CupomController@usar');

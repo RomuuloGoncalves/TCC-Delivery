@@ -14,25 +14,26 @@ class Funcionario extends Model implements AuthenticatableContract, Authorizable
 {
     use Authenticatable, Authorizable, HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
     protected $fillable = [
         'nome', 
         'email', 
-        'telefone'
+        'nivel_acesso'
     ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var string[]
-     */
     protected $hidden = [
         'password',
     ];
+    
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+    
     public function pedidos(): HasMany
     {
         return $this->hasMany(Pedido::class);
