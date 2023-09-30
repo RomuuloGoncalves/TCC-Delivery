@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class ServerService {
   constructor(private http: HttpClient, private Cookie: CookieService) {}
 
-  private url: string = 'localhost:4200/';
+  private url: string = 'http://127.0.0.1:8000';
 
   public post(path: string, data: any): Observable<any> {
     const token = this.Cookie.get('token');
@@ -22,4 +22,18 @@ export class ServerService {
 
     return this.http.post(`${this.url}${path}`, JSON.stringify(data), { headers });
   }
+
+  public get(path: string): Observable<any> {
+    const token = this.Cookie.get('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+  
+    if (token !== '') {
+      headers.set('Authorization', `Bearer ${token}`);
+    }
+  
+    return this.http.get(`${this.url}${path}`, { headers });
+  }
+  
 }

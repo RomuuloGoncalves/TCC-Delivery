@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cupom } from 'src/app/core/interfaces/cupom';
-import { AdminService } from 'src/app/services/admin.service';
+import { AdminService } from 'src/app/core/services/admin.service';
 
 @Component({
   selector: 'app-cupons',
