@@ -30,9 +30,20 @@
 
     <ion-col size="11">
       <ion-row class="ion-justify-content-center">
+        <ion-col>
+          <ion-label>Validos:</ion-label>
+        </ion-col>
         <ion-col size="11.9" class="grid">
           <ng-container *ngFor="let cupom of this.cupons">
-            <app-cards-cupons [cupom]="cupom"></app-cards-cupons>
+            <app-cards-cupons *ngIf="cupom.status" [cupom]="cupom"></app-cards-cupons>
+          </ng-container>
+        </ion-col>
+        <ion-col>
+          <ion-label>Invalidos:</ion-label>
+        </ion-col>
+        <ion-col size="11.9" class="grid">
+          <ng-container *ngFor="let cupom of this.cupons">
+            <app-cards-cupons *ngIf="!cupom.status" [cupom]="cupom"></app-cards-cupons>
           </ng-container>
         </ion-col>
         <ng-container *ngIf="this.cupons == null">

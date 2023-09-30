@@ -7,8 +7,9 @@ div[slot='content'] {
 }
 
 #titulo {
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ion-color-primary);
 }
 
 ion-icon {
@@ -25,6 +26,10 @@ ion-icon {
   grid-template-columns: repeat(5, 1fr);
   place-items: center center;
   gap: 20px;
+}
+
+ion-label{
+  font-size: 1.5rem;
 }
 
 @media(max-width: 1490px) {

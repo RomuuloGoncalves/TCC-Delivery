@@ -4,8 +4,9 @@ div[slot="content"] {
 }
 
 #titulo {
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ion-color-primary);
 }
 
 ion-icon {
@@ -68,7 +69,9 @@ table {
 }
 
 @media (max-width: 400px) {
-  tr, th, td {
+  tr,
+  th,
+  td {
     font-size: 1rem !important;
   }
 }
