@@ -25,4 +25,5 @@ $router->group(['prefix' => 'funcionario'], function() use($router) {
 $router->group(['prefix' => 'cupom'], function() use($router) {
     $router->post('/cadastrar', 'CupomController@store');
     $router->post('/usar', 'CupomController@usar');
+    $router->get('/listar', 'CupomController@listar');
 });

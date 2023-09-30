@@ -61,4 +61,13 @@ class CupomController extends Controller
             
         return response()->json($cupom, 201);
     }
+
+
+    public function listar() {
+
+        $cupom = Cupom::all();
+
+
+        return response()->json($cupom, 201);
+    }
 }
