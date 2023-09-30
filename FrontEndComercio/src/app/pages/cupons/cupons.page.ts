@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cupom } from 'src/app/core/interfaces/cupom';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-cupons',
@@ -7,25 +8,23 @@ import { Cupom } from 'src/app/core/interfaces/cupom';
   styleUrls: ['./cupons.page.scss'],
 })
 export class CuponsPage implements OnInit {
-
-  constructor() { }
+  constructor(private Admin: AdminService,) { }
 
   cupons!: Cupom[]
-  url = 'http://127.0.0.1:8000/cupom/listar'
 
   ngOnInit() {
-    console.log(this.cupons)
-    this.recuperarCupons()
+    this.recuperarTodosCupons()
   }
 
-  recuperarCupons() {
-    fetch(this.url)
-      .then(response => response.json())
-      .then(response => this.cupons = response)
-      .catch(_ => console.log(_))
-      .finally(() => {
-        console.log("CUPONS:")
-        console.log(this.cupons)
-      })
+  recuperarTodosCupons() {
+    this.Admin.pegarCupons().subscribe(
+      (response) => {
+        this.cupons = response
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
+
 }
