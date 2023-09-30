@@ -22,7 +22,7 @@ class CupomController extends Controller
     {
         $regras = [
             'nome' => ['required', 'string', 'max:255'],
-            'porcentagem_desconto' => ['nullable', 'decimal:2' , 'max:5'],
+            'porcentagem_desconto' => ['nullable', 'decimal:2', 'max:5'],
             'valor_desconto' => ['nullable', 'decimal', 'max:9', 'min:9'],
             'data_validade' => ['nullable', 'after:now'],
             'quantidade' => ['nullable', 'integer', 'max:30'],
@@ -32,7 +32,7 @@ class CupomController extends Controller
 
         if ($validacao->fails())
             return response()->json($validacao->errors(), 422);
-        
+
         $cupom = Cupom::create([
             'nome' => $request->input('nome'),
             'porcentagem_desconto' => $request->input('email'),
@@ -43,24 +43,23 @@ class CupomController extends Controller
         return response()->json($cupom, 201);
     }
 
-    public function usar($id) 
+    public function usar($id)
     {
         $cupom = Cupom::find($id);
 
-        if(!$cupom) 
+        if (!$cupom)
             return response()->json($cupom, 404);
 
-            
-        if($cupom->quantidade > 0)
+
+        if ($cupom->quantidade > 0)
             $cupom->quantidade = $cupom->quantidade - 1;
-            
+
         return response()->json($cupom, 201);
     }
 
-    public function listar() 
+    public function listar()
     {
         $cupom = Cupom::all();
-
         return response()->json($cupom, 201);
     }
 }
