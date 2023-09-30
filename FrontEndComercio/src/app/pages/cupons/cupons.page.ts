@@ -10,58 +10,22 @@ export class CuponsPage implements OnInit {
 
   constructor() { }
 
-  public cupons: Cupom[] = [
-    {
-      id_cupom: 1,
-      nome: 'Feijuca',
-      quantidade: 45,
-      porcentagem_desconto: 15,
-      data_validade: '2023-12-12',
-      status: true
-    },
-    {
-      id_cupom: 1,
-      nome: 'Feijuca',
-      quantidade: 45,
-      porcentagem_desconto: 15,
-      data_validade: '2023-12-12',
-      status: true
-    },
-    {
-      id_cupom: 1,
-      nome: 'Feijuca',
-      quantidade: 45,
-      porcentagem_desconto: 15,
-      data_validade: '2023-12-12',
-      status: true
-    },
-    {
-      id_cupom: 1,
-      nome: 'Feijuca',
-      quantidade: 45,
-      porcentagem_desconto: 15,
-      data_validade: '2023-12-12',
-      status: true
-    },
-    {
-      id_cupom: 1,
-      nome: 'Feijuca',
-      quantidade: 45,
-      porcentagem_desconto: 15,
-      data_validade: '2023-12-12',
-      status: true
-    },
-    {
-      id_cupom: 1,
-      nome: 'Feijuca',
-      quantidade: 45,
-      porcentagem_desconto: 15,
-      data_validade: '2023-12-12',
-      status: false
-    },
-  ];
+  cupons!: Cupom[]
+  url = 'http://127.0.0.1:8000/cupom/listar'
 
   ngOnInit() {
     console.log(this.cupons)
+    this.recuperarCupons()
+  }
+
+  recuperarCupons() {
+    fetch(this.url)
+      .then(response => response.json())
+      .then(response => this.cupons = response)
+      .catch(_ => console.log(_))
+      .finally(() => {
+        console.log("CUPONS:")
+        console.log(this.cupons)
+      })
   }
 }

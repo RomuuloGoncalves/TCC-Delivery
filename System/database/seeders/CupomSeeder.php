@@ -19,7 +19,8 @@ class CupomSeeder extends Seeder
                 'porcentagem_desconto' => $faker->randomFloat(2, 1, 100),
                 'valor_desconto' => $faker->randomFloat(2, 1, 100000),
                 'data_validade' => $faker->dateTime(),
-                'quantidade' => $faker->randomNumber()
+                'quantidade' => $faker->randomNumber(),
+                'status' => $faker->boolean()
             ]);
         }
     }

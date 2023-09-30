@@ -33,7 +33,7 @@ class CupomController extends Controller
 
         if ($validacao->fails())
             return response()->json($validacao->errors(), 422);
-        
+
         $cupom = Cupom::create([
             'nome' => $request->input('nome'),
             'porcentagem_desconto' => $request->input('email'),
@@ -45,11 +45,11 @@ class CupomController extends Controller
     }
 
     public function usar(Request $request) 
+
     {
         $id = $request->input('id');
 
         $cupom = Cupom::find($id);
-
 
         if(!$cupom) 
             return response()->json(['mensage' => 'deu barba'], 404);

@@ -12,17 +12,15 @@
             <ion-col size="11">
               <ion-list>
                 <ion-item>
-                  <ion-select interface="popover" mode="ios" placeholder="Select" [multiple]="true">
-                    <ion-select-option value="" Default="true">...</ion-select-option>
-                    <ion-select-option value="">...</ion-select-option>
-                    <ion-select-option value="">...</ion-select-option>
-                    <ion-select-option value="">...</ion-select-option>
+                  <ion-select interface="popover" mode="ios" placeholder="Select">
+                    <ion-select-option value="valido" Default="true">Valido</ion-select-option>
+                    <ion-select-option value="invalido">Invalido</ion-select-option>
                   </ion-select>
                 </ion-item>
               </ion-list>
             </ion-col>
 
-            <ion-col id="open-custom-dialog" [routerLink]="['/criacao-cupons']"  routerDirection="back" size="1">
+            <ion-col id="open-custom-dialog" [routerLink]="['/criacao-cupons']" routerDirection="back" size="1">
               <ion-icon name="add-outline"></ion-icon>
             </ion-col>
           </ion-row>
@@ -37,6 +35,9 @@
             <app-cards-cupons [cupom]="cupom"></app-cards-cupons>
           </ng-container>
         </ion-col>
+        <ng-container *ngIf="this.cupons == null">
+          Não há cupons
+        </ng-container>
       </ion-row>
     </ion-col>
   </ion-row>
