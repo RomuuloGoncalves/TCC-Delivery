@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-endereco',
@@ -9,6 +10,12 @@ export class EnderecoComponent  implements OnInit {
 
   constructor() { }
 
+  @ViewChild('cadastrarForm') private cadastrarForm!: NgForm;
+
   ngOnInit() {}
+
+  public cadastrar() {
+
+  }
 
 }
