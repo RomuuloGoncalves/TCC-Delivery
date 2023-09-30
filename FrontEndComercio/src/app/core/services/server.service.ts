@@ -1,9 +1,25 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ServerService {
+  constructor(private http: HttpClient, private Cookie: CookieService) {}
 
-  constructor() { }
+  private url: string = 'localhost:4200/';
+
+  public post(path: string, data: any): Observable<any> {
+    const token = this.Cookie.get('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    if (token !== '')
+      headers.set('Authorization', `Bearer ${token}`);
+
+    return this.http.post(`${this.url}${path}`, JSON.stringify(data), { headers });
+  }
 }
