@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedDecimal('valor_desconto', 9, 2)->nullable();
             $table->dateTime('data_validade')->nullable();
             $table->integer('quantidade')->nullable();
+            $table->boolean('status');
             $table->timestamps();
         });
     }

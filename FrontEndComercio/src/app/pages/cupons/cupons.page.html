@@ -20,7 +20,7 @@
               </ion-list>
             </ion-col>
 
-            <ion-col id="open-custom-dialog" [routerLink]="['/criacao-cupons']"  routerDirection="back" size="1">
+            <ion-col id="open-custom-dialog" [routerLink]="['/criacao-cupons']" routerDirection="back" size="1">
               <ion-icon name="add-outline"></ion-icon>
             </ion-col>
           </ion-row>
@@ -35,6 +35,9 @@
             <app-cards-cupons [cupom]="cupom"></app-cards-cupons>
           </ng-container>
         </ion-col>
+        <ng-container *ngIf="this.cupons == null">
+          Não há cupons
+        </ng-container>
       </ion-row>
     </ion-col>
   </ion-row>
