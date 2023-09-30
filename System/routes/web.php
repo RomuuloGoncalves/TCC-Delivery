@@ -16,3 +16,9 @@ $router->group(['prefix' => 'cliente'], function() use($router) {
     $router->post('/cadastrar', 'ClienteController@store');
     $router->post('/login', 'ClienteController@login');
 });
+
+$router->group(['prefix' => 'cupom'], function() use($router) {
+    $router->post('/cadastrar', 'CupomController@store');
+    $router->get('/usar', 'CupomController@usar');
+
+});
