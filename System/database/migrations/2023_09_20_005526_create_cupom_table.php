@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('Cupons', function (Blueprint $table) {
             $table->id('id');
-            $table->string('nome');
+            $table->string('nome')->unique();
             $table->unsignedDecimal('porcentagem_desconto', 5, 2)->nullable();
             $table->unsignedDecimal('valor_desconto', 9, 2)->nullable();
             $table->dateTime('data_validade')->nullable();
