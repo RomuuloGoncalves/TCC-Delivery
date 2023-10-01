@@ -27,3 +27,10 @@ $router->group(['prefix' => 'cupom'], function() use($router) {
     $router->post('/usar', 'CupomController@usar');
     $router->get('/listar', 'CupomController@listar');
 });
+
+$router->group(['prefix' => 'endereco'], function() use($router) {
+    $router->post('/cadastrar', 'EnderecoController@store');
+    $router->post('/editar', 'EnderecoController@update');
+    $router->post('/listar', 'EnderecoController@listar');
+    $router->post('/excluir', 'EnderecoController@delete');
+});

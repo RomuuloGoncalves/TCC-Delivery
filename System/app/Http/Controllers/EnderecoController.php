@@ -22,9 +22,12 @@ class EnderecoController extends Controller
     {
         $regras = [
             'nome' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:Clientes'],
-            'password' => ['required', 'string', 'max:255', 'min:8'],
-            'telefone' => ['required', 'string', 'size:11', 'unique:Clientes'],
+            'complemento' => ['nullable', 'string', 'max:255'],
+            'bairro' => ['required', 'string', 'max:255'],
+            'numero' => ['required', 'string', 'max:255'],
+            'rua' => ['required', 'string', 'max:255'],
+            'cep' => ['nullable', 'string', 'size:8'],
+            'cod_cliente' => ['required', 'integer', 'max:30'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -32,10 +35,66 @@ class EnderecoController extends Controller
         if ($validacao->fails())
             return response()->json($validacao->errors(), 422);
 
-        $cliente = Endereco::create([
-
+        $endereco = Endereco::create([
+            'nome' => $request->input('nome'),
+            'complemento' => $request->input('complemento'),
+            'bairro' => $request->input('bairro'),
+            'numero' => $request->input('numero'),
+            'rua' => $request->input('rua'),
+            'cep' => $request->input('cep'),
+            'cod_cliente' => $request->input('cod_cliente')
         ]);
 
-        return response()->json($cliente, 201);
+        return response()->json($endereco, 201);
+    }
+
+    public function update(Request $request)
+    {    
+        $regras = [
+            'id' => ['required', 'integer', 'max:30'],
+            'nome' => ['nullable', 'string', 'max:255'],
+            'complemento' => ['nullable', 'string', 'max:255'],
+            'bairro' => ['nullable', 'string', 'max:255'],
+            'numero' => ['nullable', 'string', 'max:255'],
+            'rua' => ['nullable', 'string', 'max:255'],
+            'cep' => ['nullable', 'string', 'size:8']
+        ];
+        
+        $validacao = Validator::make($request->all(), $regras);
+        
+        if ($validacao->fails())
+            return response()->json($validacao->errors(), 422);
+
+        $id = $request->input('id');
+        $endereco = Endereco::where('id' ,$id)->first();
+
+        $endereco->update([
+            'nome' => $request->input('nome'),
+            'complemento' => $request->input('complemento'),
+            'bairro' => $request->input('bairro'),
+            'numero' => $request->input('numero'),
+            'rua' => $request->input('rua'),
+            'cep' => $request->input('cep')
+        ]);
+
+        return response()->json($endereco, 202);
+    }
+
+    public function listar(Request $request) {
+        $cod_cliente = $request->input('cod_cliente'); 
+        $endereco = Endereco::all()->where('cod_cliente', $cod_cliente);
+
+        return response()->json($endereco, 202);
+    }
+
+    public function delete(Request $request) {
+        $id = $request->input('id');
+        $endereco = Endereco::find($id);
+        
+        if(!$endereco)
+            return response()->json(['message' => 'Endereço inválido'], 422);
+        else
+            Endereco::find($id)->delete();
+            return response()->json(['message' => 'Endereço deletado com sucesso'], 202);
     }
 }
