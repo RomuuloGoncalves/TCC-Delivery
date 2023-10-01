@@ -14,14 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('Pedidos', function (Blueprint $table) {
-            $table->id('id');
+            $table->id('id_pedido');
             $table->float('valor_total');
             $table->float('valor_com_desconto')->nullable();
             $table->dateTime('data_pedido');
             $table->dateTime('data_entrega');
             $table->dateTime('data_pagamento');
-            $table->string('endereco');
-            $table->enum('status_pedido', ['Pronto', 'Em Entrega', 'Cancelado', 'Em Espera']);
+            $table->string('endereco_pedido');
+            $table->enum('status', ['Pronto', 'Em Entrega', 'Cancelado', 'Em Espera']);
             $table->enum('forma_pagamento', ['Crédito', 'Dinheiro', 'Pix', 'Débito']);
             $table->unsignedBigInteger('cod_cliente');
             $table->unsignedBigInteger('cod_funcionario');
