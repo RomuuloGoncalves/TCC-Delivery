@@ -16,10 +16,10 @@ class PedidoSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
-        $clientes = Cliente::all()->pluck('id')->toArray();
-        $funcionarios = Funcionario::all()->pluck('id')->toArray();
-        $enderecos = Endereco::all()->pluck('id')->toArray();
-        $cupons = Cupom::all()->pluck('id')->toArray();
+        $clientes = DB::table('Clientes')->pluck('id')->toArray();
+        $funcionarios = DB::table('Funcionarios')->pluck('id')->toArray();
+        $enderecos = DB::table('Enderecos')->pluck('id')->toArray();
+        $cupons = DB::table('Cupons')->pluck('id')->toArray();
 
         for ($i = 1; $i <= 10; $i++) {
             DB::table('Pedidos')->insert([

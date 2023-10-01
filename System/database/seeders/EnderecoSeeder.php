@@ -13,7 +13,7 @@ class EnderecoSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
-        $clientes = Cliente::all()->pluck('id')->toArray();
+        $clientes = DB::table('Clientes')->pluck('id')->toArray();
 
         for($i =1;$i <= 10;$i++) {
             DB::table('Enderecos')->insert([
