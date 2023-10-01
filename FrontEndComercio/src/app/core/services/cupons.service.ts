@@ -4,8 +4,7 @@ import { ServerService } from './server.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminService {
-
+export class CuponsService {
   constructor(private Server: ServerService) { }
 
   public pegarCupons () {

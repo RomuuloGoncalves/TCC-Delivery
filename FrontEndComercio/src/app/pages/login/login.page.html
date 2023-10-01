@@ -1,24 +1,18 @@
 <ion-content [fullscreen]="true">
-  <ion-row class="ion-justify-content-center ion-align-items-center main" >
+  <ion-row class="ion-justify-content-center ion-align-items-center main">
     <ion-col size="10" sizeMd="8" sizeLg="5">
       <ion-col size="12" sizeMd="4">
         <ion-row class="ion-justify-content-center ion-text-md-ion-justify-content-start">
-          <h1 class="login__logo"><a class="login__link" [routerLink]="['/']"  routerDirection="back">Divina Refeição</a></h1>
+          <h1 class="login__logo"><a class="login__link" [routerLink]="['/']" routerDirection="back">Divina Refeição</a>
+          </h1>
         </ion-row>
       </ion-col>
       <ion-row>
         <ion-col>
           <form action="" #loginForm="ngForm" (ngSubmit)="this.login()">
-            <ion-list>
-              <ion-list>
-                <ion-item>
-                  <ion-input ngModel required label="Usuario" type="text"></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-input ngModel required label="Senha" type="password"></ion-input>
-                </ion-item>
-              </ion-list>
-            </ion-list>
+            <ion-input ngModel required helperText="" name="usuario" label="Usuario" type="text"></ion-input>
+            <ion-input ngModel required helperText="" name="password" label="Senha" type="password"></ion-input>
+
             <ion-row class="ion-justify-content-center ion-padding">
               <ion-col size="auto">
                 <ion-button class="login__btn-entrar">Entrar</ion-button>

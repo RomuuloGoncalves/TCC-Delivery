@@ -1,0 +1,59 @@
+.main {
+    min-height: 100vh;
+  }
+  
+  .cadastro_wrapper-redes {
+    max-width: 250px;
+  }
+  
+  .btn-redes {
+    width: 55px;
+    height: 55px;
+    --border-radius: 100%;
+  }
+  
+  .cadastro__logo {
+    font-family: 'mrDafoe';
+    color: var(--ion-color-primary);
+    font-size: 4rem;
+  }
+  
+  .cadastro__link {
+    text-decoration: none;
+  }
+  
+  .cadastro__esqueceu-senha {
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-left: 15px;
+  }
+  
+  .cadastro__btn-entrar {
+    --padding-top: 25px;
+    --padding-bottom: 25px;
+    --padding-end: 75px;
+    --padding-start: 75px;
+  }
+  
+  .cadastro__entrar-com {
+  
+    &::after,
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 12vw;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-bottom: 4px;
+      height: 1px;
+      background-color: var(--ion-color-primary);
+    }
+  }
+  
+  .input-container {
+    min-height: 80px;
+  
+    .erro {
+      font-size: .8em;
+    }
+  }

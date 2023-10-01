@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cupom } from 'src/app/core/interfaces/cupom';
-import { AdminService } from 'src/app/core/services/admin.service';
+import { CuponsService } from 'src/app/core/services/cupons.service';
 
 @Component({
   selector: 'app-cupons',
@@ -8,7 +8,7 @@ import { AdminService } from 'src/app/core/services/admin.service';
   styleUrls: ['./cupons.page.scss'],
 })
 export class CuponsPage implements OnInit {
-  constructor(private Admin: AdminService,) { }
+  constructor(private Cupom: CuponsService,) { }
 
   cupons!: Cupom[]
 
@@ -17,7 +17,7 @@ export class CuponsPage implements OnInit {
   }
 
   recuperarTodosCupons() {
-    this.Admin.pegarCupons().subscribe(
+    this.Cupom.pegarCupons().subscribe(
       (response) => {
         this.cupons = response
       },

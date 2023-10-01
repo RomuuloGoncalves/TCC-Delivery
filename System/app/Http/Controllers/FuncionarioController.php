@@ -36,7 +36,7 @@ class FuncionarioController extends Controller
             'nome' => $request->input('nome'),
             'email' => $request->input('email'),
             'password' => password_hash($request->input('password'), PASSWORD_DEFAULT),
-            'telefone' => $request->input('telefone'),
+            'nivel_acesso' => $request->input('nivel_acesso'),
         ]);
 
         return response()->json($funcionario, 201);

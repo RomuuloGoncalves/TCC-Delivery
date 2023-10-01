@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/cadastro/cadastro.module').then( m => m.CadastroPageModule)
   },
   {
     path: 'login',
@@ -58,6 +58,10 @@ const routes: Routes = [
   {
     path: 'pedido',
     loadChildren: () => import('./pages/pedido/pedido.module').then( m => m.PedidoPageModule)
+  },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./pages/cadastro/cadastro.module').then( m => m.CadastroPageModule)
   },
 ];
 

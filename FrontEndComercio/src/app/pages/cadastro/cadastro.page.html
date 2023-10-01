@@ -1,0 +1,57 @@
+<ion-content [fullscreen]="true">
+  <ion-row class="ion-justify-content-center ion-align-items-center main">
+    <ion-col size="10" sizeMd="8" sizeLg="5">
+      <ion-col size="12" sizeMd="4">
+        <ion-row class="ion-justify-content-center ion-text-md-ion-justify-content-start">
+          <h1 class="cadastro__logo"><a class="cadastro__link" routerLink="/">Divina Refeição</a></h1>
+        </ion-row>
+      </ion-col>
+      <ion-row>
+        <ion-col>
+          <form #cadastroForm="ngForm" (ngSubmit)="this.cadastrar()">
+            <ion-row class="input-container">
+              <ion-input ngModel name="nome" label="Nome" errorText="Nome é obrigatório" type="text"
+                required></ion-input>
+              <ion-text class="erro" color="danger">{{ this.erros.nome }}</ion-text>
+            </ion-row>
+
+            <ion-row class="input-container">
+              <ion-input ngModel name="email" errorText="Email é obrigatório" label="Email" type="email"
+                required></ion-input>
+              <ion-text class="erro" color="danger">{{ this.erros.email }}</ion-text>
+            </ion-row>
+
+            <ion-row class="input-container">
+              <ion-input ngModel name="password" errorText="Deve ser maior que 8 caracteres" minlength="8" label="Senha"
+                type="password" required></ion-input>
+              <ion-text class="erro" color="danger">{{ this.erros.password }}</ion-text>
+            </ion-row>
+
+            <ion-row class="input-container">
+              <ion-input ngModel errorText="Senhas não conferem invalida" name="confirmarPassword"
+                label="Confirmar Senha" type="password" required
+                pattern="{{ this.cadastroForm.form.value.password }}"></ion-input>
+            </ion-row>
+
+            <ion-row class="input-container">
+              <ion-select mode="md" ngModel aria-label="Variacao" name="nivel_acesso"
+                label="Nível de acesso" required placeholder="Nível de acesso">
+                <ion-select-option value="1">1</ion-select-option>
+                <ion-select-option value="2">2</ion-select-option>
+                <ion-select-option value="3">3</ion-select-option>
+              </ion-select>
+              <ion-text class="erro" color="danger">{{ this.erros.telefone }}</ion-text>
+            </ion-row>
+
+            <ion-row class="ion-justify-content-center ion-padding">
+              <ion-col size="auto">
+                <ion-button [disabled]="!this.cadastroForm.valid" type="submit"
+                  class="cadastro__btn-entrar">Cadastrar</ion-button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>
