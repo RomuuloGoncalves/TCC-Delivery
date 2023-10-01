@@ -25,12 +25,18 @@ $router->group(['prefix' => 'funcionario'], function() use($router) {
 $router->group(['prefix' => 'cupom'], function() use($router) {
     $router->post('/cadastrar', 'CupomController@store');
     $router->post('/usar', 'CupomController@usar');
-    $router->get('/listar', 'CupomController@listar');
+    $router->get('/listar', 'CupomController@list');
+    $router->post('/editar', 'CupomController@update');
+    $router->post('/excluir', 'CupomController@delete');
 });
 
 $router->group(['prefix' => 'endereco'], function() use($router) {
     $router->post('/cadastrar', 'EnderecoController@store');
     $router->post('/editar', 'EnderecoController@update');
-    $router->post('/listar', 'EnderecoController@listar');
+    $router->post('/listar', 'EnderecoController@list');
     $router->post('/excluir', 'EnderecoController@delete');
+});
+
+$router->group(['prefix' => 'pedido'], function() use($router) {
+    $router->post('/listar', 'PedidoController@list');
 });
