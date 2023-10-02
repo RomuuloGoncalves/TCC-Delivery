@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pedido } from 'src/app/core/interfaces/pedido';
+import { PedidosService } from 'src/app/core/services/pedidos.service';
+
 
 @Component({
   selector: 'app-historico',
@@ -8,84 +10,25 @@ import { Pedido } from 'src/app/core/interfaces/pedido';
 })
 export class HistoricoPage implements OnInit {
 
-  constructor() { }
+  constructor(private Pedidos: PedidosService,) { }
+
 
   ngOnInit() {
+    this.recuperarHistoricoPedidos()
   }
 
-  pedidos: Pedido[] = [
-    {
-      id_pedido: 2,
-      valor_com_desconto: 100,
-      data_pedido: "24/09/2023",
-      data_entrega: "25/09/2023",
-      data_pagamento: "25/09/2023",
-      endereco_pedido: "Rua Exemplo, 123",
-      forma_pagamento: "Cartão de Crédito",
-      status: "Aguardando Pagamento",
-      produtos: [{
-        id_produto: 11,
-        nome: 'Refrigerante',
-        variacao: {
-          id_variacao: 1,
-          nome: 'Coca-Cola',
-          valor_desconto: 5.00,
-          valor_inicial: 7.00,
-          descricao: 'Refrigerante Coca-Cola gelado',
-          valor_final: 23.00,
-          imagem: '../../../assets/imgs/default/cards-produtos.png'
-        }
-      },
-    ]
-    },
-    {
-      id_pedido: 2,
-      valor_com_desconto: 100,
-      data_pedido: "24/09/2023",
-      data_entrega: "25/09/2023",
-      data_pagamento: "25/09/2023",
-      endereco_pedido: "Rua Exemplo, 123",
-      forma_pagamento: "Cartão de Crédito",
-      status: "Aguardando Pagamento",
-      produtos: [{
-        id_produto: 11,
-        nome: 'Refrigerante',
-        variacao: {
-          id_variacao: 1,
-          nome: 'Coca-Cola',
-          valor_desconto: 5.00,
-          valor_inicial: 7.00,
-          descricao: 'Refrigerante Coca-Cola gelado',
-          valor_final: 23.00,
-          imagem: '../../../assets/imgs/default/cards-produtos.png'
-        }
-      },
-    ]
-    },
-    {
-      id_pedido: 2,
-      valor_com_desconto: 100,
-      data_pedido: "24/09/2023",
-      data_entrega: "25/09/2023",
-      data_pagamento: "25/09/2023",
-      endereco_pedido: "Rua Exemplo, 123",
-      forma_pagamento: "Cartão de Crédito",
-      status: "Aguardando Pagamento",
-      produtos: [{
-        id_produto: 11,
-        nome: 'Refrigerante',
-        variacao: {
-          id_variacao: 1,
-          nome: 'Coca-Cola',
-          valor_desconto: 5.00,
-          valor_inicial: 7.00,
-          descricao: 'Refrigerante Coca-Cola gelado',
-          valor_final: 23.00,
-          imagem: '../../../assets/imgs/default/cards-produtos.png'
-        }
-      },
-    ]
-    },
-  ]
+  pedidos!: Pedido[]
 
+  recuperarHistoricoPedidos() {
+    this.Pedidos.pegarPedidos().subscribe(
+      (response) => {
+        console.log(response)
+        this.pedidos = response
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 }
+

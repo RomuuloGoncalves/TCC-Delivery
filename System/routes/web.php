@@ -33,10 +33,10 @@ $router->group(['prefix' => 'cupom'], function() use($router) {
 $router->group(['prefix' => 'endereco'], function() use($router) {
     $router->post('/cadastrar', 'EnderecoController@store');
     $router->post('/editar', 'EnderecoController@update');
-    $router->post('/listar', 'EnderecoController@list');
+    $router->get('/listar', 'EnderecoController@list');
     $router->post('/excluir', 'EnderecoController@delete');
 });
 
 $router->group(['prefix' => 'pedido'], function() use($router) {
-    $router->post('/listar', 'PedidoController@list');
+    $router->get('/listar', 'PedidoController@list');
 });
