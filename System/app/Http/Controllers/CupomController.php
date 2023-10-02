@@ -85,9 +85,12 @@ class CupomController extends Controller {
         return response()->json($cupom, 202);
     }
 
-    public function list() {
-        $cupom = Cupom::all();
-
+    public function list(int $id) {
+        $cupom = Cupom::find($id);
+        
+        if(!$cupom) 
+            return response()->json(['mensage' => 'Cupom não encontrado'], 404);
+          
         return response()->json($cupom, 201);
     }
 
