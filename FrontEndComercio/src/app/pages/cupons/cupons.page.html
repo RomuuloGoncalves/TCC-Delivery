@@ -30,6 +30,7 @@
 
     <ion-col size="11">
       <ion-row class="ion-justify-content-center">
+
         <ion-col *ngIf="this.cupons != null">
           <ion-label>Válidos:</ion-label>
         </ion-col>
@@ -46,9 +47,40 @@
             <app-cards-cupons *ngIf="!cupom.status" [cupom]="cupom"></app-cards-cupons>
           </ng-container>
         </ion-col>
-        <ng-container *ngIf="this.cupons == null">
-          Não há cupons
-        </ng-container>
+
+
+        <ion-row>
+          <ion-col>
+            <ion-list *ngIf="!loaded">
+              <ion-list-header>
+                <ion-skeleton-text [animated]="true" style="width: 80px"></ion-skeleton-text>
+              </ion-list-header>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                </ion-thumbnail>
+                <ion-label>
+                  <h3>
+                    <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+                  </h3>
+                  <p>
+                    <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+                  </p>
+                  <p>
+                    <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+                  </p>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col>
+            <ng-container *ngIf="this.cupons == null">
+              Não há cupons
+            </ng-container>
+
+          </ion-col>
+        </ion-row>
+
       </ion-row>
     </ion-col>
   </ion-row>

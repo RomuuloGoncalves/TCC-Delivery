@@ -11,6 +11,7 @@ export class CuponsPage implements OnInit {
   constructor(private Cupom: CuponsService,) { }
 
   cupons!: Cupom[]
+  loaded: boolean = false
 
   ngOnInit() {
     this.recuperarTodosCupons()
@@ -21,6 +22,7 @@ export class CuponsPage implements OnInit {
       (response) => {
         this.cupons = response
         console.log(this.cupons)
+        this.loaded = true
       },
       (error) => {
         console.error(error);
