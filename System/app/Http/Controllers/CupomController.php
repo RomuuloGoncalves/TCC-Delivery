@@ -10,6 +10,12 @@ class CupomController extends Controller {
 
     public function __construct() {}
 
+    public function index() {
+        $cupom = Cupom::all();
+
+        return response()->json($cupom, 200);
+    }
+
     public function store(Request $request) {
         $regras = [
             'nome' => ['required', 'string', 'max:255', 'unique:Cupons'],
@@ -75,14 +81,13 @@ class CupomController extends Controller {
         $atributos = ['nome', 'porcentagem_desconto', 'valor_desconto', 'data_validade', 'quantidade', 'status'];
 
         foreach($atributos as $atributo) {
-            $request->input($atributo) !== null?
-                $cupom->$atributo = $request->input($atributo):
-                null;
-            
+            $request->input($atributo) !== null
+                ? $cupom->$atributo = $request->input($atributo)
+                : null;
         }
         $cupom->save();
 
-        return response()->json($cupom, 202);
+        return response()->json($cupom, 200);
     }
 
     public function list(int $id) {
@@ -90,18 +95,18 @@ class CupomController extends Controller {
         
         if(!$cupom) 
             return response()->json(['mensage' => 'Cupom não encontrado'], 404);
-          
-        return response()->json($cupom, 201);
+        
+        return response()->json($cupom, 200);
     }
 
-    public function delete(Request $request) {
+    public function destroy(Request $request) {
         $id = $request->input('id');
         $cupom = Cupom::find($id);
         
         if(!$cupom)
             return response()->json(['message' => 'Cupom inválido'], 422);
-        else
-            $cupom::find($id)->delete();
-            return response()->json(['message' => 'Cupom deletado com sucesso'], 202);
+        
+        $cupom::find($id)->delete();
+        return response()->json(['message' => 'Cupom deletado com sucesso'], 204);
     }
 }

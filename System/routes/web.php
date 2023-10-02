@@ -24,11 +24,12 @@ $router->group(['prefix' => 'funcionario'], function() use($router) {
 });
 
 $router->group(['prefix' => 'cupom'], function() use($router) {
+    $router->get('/', 'CupomController@index');
+    $router->get('/{id}', 'CupomController@list');
+    $router->delete('/excluir/{id}', 'CupomController@delete');
     $router->post('/cadastrar', 'CupomController@store');
     $router->post('/usar', 'CupomController@usar');
-    $router->get('/{id}', 'CupomController@list');
     $router->put('/editar', 'CupomController@update');
-    $router->delete('/excluir', 'CupomController@delete');
 });
 
 $router->group(['prefix' => 'endereco'], function() use($router) {
