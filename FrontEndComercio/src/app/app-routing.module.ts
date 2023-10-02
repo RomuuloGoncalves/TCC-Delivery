@@ -24,7 +24,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/cupons/cupons.module').then( m => m.CuponsPageModule)
   },
   {
-    path: 'detalhe-pedido',
+    path: 'detalhe-pedido/:id_pedido/:cod_cliente',
     loadChildren: () => import('./pages/detalhe-pedido/detalhe-pedido.module').then( m => m.DetalhePedidoPageModule)
   },
   {

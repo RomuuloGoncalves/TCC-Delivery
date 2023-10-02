@@ -5,11 +5,11 @@
     <ion-col size="11.9">
       <ion-row class="pedido" class="ion-justify-content-between ion-align-items-center">
         <ion-col size="12" sizeMd="auto">
-          <ion-icon [routerLink]="['/historico']"  routerDirection="back" name="arrow-back-outline"></ion-icon>
+          <ion-icon [routerLink]="['/pedidos']" name="arrow-back-outline"></ion-icon>
         </ion-col>
         <ion-col size="12" sizeMd="auto">
           <ion-row class="ion-justify-between ion-align-items-center">
-            <ion-label>Pedido #{{this.pedido.id_pedido}}</ion-label>
+            <ion-label>Pedido #{{this.id_pedido}}</ion-label>
           </ion-row>
         </ion-col>
       </ion-row>
@@ -17,21 +17,21 @@
   </ion-row>
 
   <ion-row class="ion-padding ion-justify-content-center">
-    <ion-col size="12" sizeMd="6">
+    <ion-col size="12" sizeLg="6">
       <table>
         <tr>
           <th>Itens</th>
           <th>Quantidades</th>
         </tr>
-        <tr *ngFor="let produtos of pedido.produtos" [routerLink]="['/pedido']"  routerDirection="back">
+        <tr *ngFor="let produtos of pedidoCliente" [routerLink]="['/pedido']"  routerDirection="back">
           <td>
             <ion-row class="ion-align-items-center">
               <ion-col size="3">
-                <img src="{{produtos.variacao!.imagem}}" alt="{{produtos.nome}}">
+                <!-- <img src="{{produtos.variacao!.imagem}}" alt="{{produtos.nome}}"> -->
               </ion-col>
               <ion-col>
                 <ion-row>
-                  {{produtos.nome}}
+                  <!-- {{produtos.nome}} -->
                 </ion-row>
               </ion-col>
             </ion-row>
@@ -45,22 +45,22 @@
         <ion-col size="12" sizeMd="6" class="informacoes ion-padding">
           <ion-row>
             <ion-text>
-              <p>Cliente: {{pedido.cliente!.nome}}</p>
+              <p>Cliente: {{this.cliente?.nome}}</p>
             </ion-text>
           </ion-row>
           <ion-row>
             <ion-text>
-              <p>CEP: {{pedido.endereco_pedido}}</p>
+              <p>CEP: {{pedidoCliente && pedidoCliente.length > 0 ? pedidoCliente[0].endereco_pedido : 'N/A'}}</p>
             </ion-text>
           </ion-row>
           <ion-row>
             <ion-text>
-              <p>Pagamento: {{pedido.forma_pagamento}}</p>
+              <p>Pagamento: {{pedidoCliente && pedidoCliente[0]?.forma_pagamento}}</p>
             </ion-text>
           </ion-row>
           <ion-row>
             <ion-text>
-              <p>Status: {{pedido.status}}</p>
+              <p>Status: {{pedidoCliente && pedidoCliente[0]?.status ? pedidoCliente[0]?.status : 'N/A'}}</p>
             </ion-text>
           </ion-row>
         </ion-col>
