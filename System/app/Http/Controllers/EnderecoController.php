@@ -68,7 +68,7 @@ class EnderecoController extends Controller {
         return response()->json($endereco, 202);
     }
 
-    public function listar(Request $request) {
+    public function list(Request $request) {
         $cod_cliente = $request->input('cod_cliente'); 
         $endereco = Endereco::all()->where('cod_cliente', $cod_cliente);
 
