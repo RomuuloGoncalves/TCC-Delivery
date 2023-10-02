@@ -8,6 +8,10 @@ export class CuponsService {
   constructor(private Server: ServerService) { }
 
   public pegarCupons () {
-    return this.Server.get('/cupom/listar');
+    return this.Server.get('/cupom/');
+  }
+
+  public pegarCupomID (id_cupom:Number) {
+    return this.Server.get(`/cupom/${id_cupom}`);
   }
 }

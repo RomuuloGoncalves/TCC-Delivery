@@ -8,6 +8,6 @@ export class ClienteService {
   constructor(private Server: ServerService) { }
 
   public pegarCliente (id_cliente:any) {
-    return this.Server.get(`/cliente/listar?id_cliente=${id_cliente}`);
+    return this.Server.get(`/cliente/${id_cliente}`);
   }
 }

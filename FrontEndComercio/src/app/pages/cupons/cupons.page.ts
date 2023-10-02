@@ -20,6 +20,7 @@ export class CuponsPage implements OnInit {
     this.Cupom.pegarCupons().subscribe(
       (response) => {
         this.cupons = response
+        console.log(this.cupons)
       },
       (error) => {
         console.error(error);

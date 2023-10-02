@@ -1,5 +1,5 @@
 export interface Cupom {
-  id_cupom?: number,
+  id?: number,
   nome: String,
   porcentagem_desconto?: Number,
   valor_desconto?: number,

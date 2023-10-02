@@ -1,0 +1,106 @@
+
+<ion-modal id="example-modal" #modal trigger="open-modal-{{this.cupom!.nome}}-{{ this.cupom!.data_validade }}">
+  <ng-template>
+    <ion-content>
+    <div class="wrapper">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>{{this.cupom!.nome}}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="modal.dismiss()">Fechar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-row class="">
+        <ion-col size="12">
+          <ion-row class="ion-justify-content-around ion-align-items-center">
+            <ion-col size="6">
+              <ion-row class="ion-justify-content-center ion-align-items-center">
+                <ion-col size="11.9">
+                  <img [class.desativado]="!this.cupom!.status" src="../../../../assets/imgs/cupons/cupom.png"
+                  alt="Imagem cupom">
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size="6">
+              <ion-row class="ion-justify-content-center ion-align-items-center">
+
+                <ng-container *ngIf="this.cupom!.status">
+                  <ion-col>
+                    <ion-row class="ion-justify-content-center">
+                      <ion-icon name="checkmark-circle-outline"></ion-icon>
+                    </ion-row>
+                    <ion-row class="ion-justify-content-center">
+                      <ion-label>Válido</ion-label>
+                    </ion-row>
+                  </ion-col>
+                </ng-container>
+
+                <ng-container *ngIf="!this.cupom!.status">
+                  <ion-col>
+                    <ion-row class="ion-justify-content-center">
+                      <ion-icon name="close-circle-outline"></ion-icon>
+                    </ion-row>
+                    <ion-row class="ion-justify-content-center">
+                      <ion-label>Inválido</ion-label>
+                    </ion-row>
+                  </ion-col>
+                </ng-container>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+
+            <ion-col size="12">
+              <ion-list lines="full">
+                <ion-item>
+                  <ion-label>Nome: {{this.cupom!.nome}}</ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Quantia restante: {{this.cupom!.quantidade}}</ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Validade: {{this.cupom!.data_validade}}</ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Desconto: {{this.cupom!.porcentagem_desconto}}%</ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ng-container *ngIf="this.cupom!.status">
+            <ion-row>
+              <ion-col size="6">
+                <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]" routerDirection="back" (click)="modal.dismiss()">Editar</ion-button>
+              </ion-col>
+              <ion-col size="6">
+                <ion-button expand="block" size="large" mode="md">Exluir</ion-button>
+              </ion-col>
+            </ion-row>
+            <ion-button expand="block" size="large" mode="md">Desativar</ion-button>
+          </ng-container>
+          
+          <ng-container *ngIf="!this.cupom!.status">
+            <ion-row>
+              <ion-col size="6">
+                <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]" routerDirection="back" (click)="modal.dismiss()">Editar</ion-button>
+              </ion-col>
+              <ion-col size="6">
+                <ion-button expand="block" size="large" mode="md">Exluir</ion-button>
+              </ion-col>
+            </ion-row>
+            
+            <ion-button expand="block" size="large" mode="md">Reativar</ion-button>
+          </ng-container>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-content>
+  </ng-template>
+</ion-modal>

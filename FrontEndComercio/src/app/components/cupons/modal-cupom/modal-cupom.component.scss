@@ -1,0 +1,51 @@
+.img-cupom {
+    background-image: url("../../../../assets/imgs/cupons/cupom.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    height: 170px;
+    width: 260px;
+  
+    .informacoes {
+      color: #fff;
+      width: 100%;
+      margin-left: 85px;
+    }
+  
+    ion-label {
+      font-size: 1.3rem;
+    }
+    ion-text {
+      font-size: 0.9rem;
+      width: 160px;
+    }
+  }
+  
+  .desativado {
+    opacity: 0.5;
+  }
+  
+  ion-modal {
+    
+    img {
+      width: 20rem;
+    }
+  
+    ion-title {
+      font-size: 2rem;
+    }
+  
+    ion-list {
+      ion-label {
+        font-size: 1.5rem;
+      }
+    }
+  
+    ion-icon{
+      font-size: 10rem;
+    }
+  
+    ion-label{
+      font-size: 1.5rem;
+    }
+  }
