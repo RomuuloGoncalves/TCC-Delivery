@@ -15,6 +15,7 @@
 $router->group(['prefix' => 'cliente'], function() use($router) {
     $router->post('/cadastrar', 'ClienteController@store');
     $router->post('/login', 'ClienteController@login');
+    $router->get('/listar', 'ClienteController@list');
 });
 
 $router->group(['prefix' => 'funcionario'], function() use($router) {
@@ -39,4 +40,6 @@ $router->group(['prefix' => 'endereco'], function() use($router) {
 
 $router->group(['prefix' => 'pedido'], function() use($router) {
     $router->get('/listar', 'PedidoController@list');
+    $router->get('/pedidoCliente', 'PedidoController@pedCliente');
+    $router->get('/pedidoID', 'PedidoController@pedID');
 });

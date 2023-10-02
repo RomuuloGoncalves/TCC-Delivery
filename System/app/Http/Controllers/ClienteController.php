@@ -62,6 +62,23 @@ class ClienteController extends Controller
         return $this->responderComToken($token);
     }
 
+    public function list(Request $request)
+    {
+        $id = $request->input('id_cliente');
+
+        $cliente = Cliente::find($id);
+
+        if(!$cliente) 
+            return response()->json(['mensage' => 'deu barba'], 404);
+            
+        if($cliente->quantidade != null) {
+            $cliente->quantidade = $cliente->quantidade - 1;
+            $cliente->quantidade == 0 ? $cliente->delete() : $cliente->save();
+        }
+            
+        return response()->json($cliente, 201);
+    }
+
     public function responderComToken(string $token)
     {
         return response()->json([

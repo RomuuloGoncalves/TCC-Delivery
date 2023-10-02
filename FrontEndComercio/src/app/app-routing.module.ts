@@ -56,7 +56,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/criacao-combos/criacao-combos.module').then( m => m.CriacaoCombosPageModule)
   },
   {
-    path: 'pedido',
+    path: 'pedido/:id_pedido/:cod_cliente',
     loadChildren: () => import('./pages/pedido/pedido.module').then( m => m.PedidoPageModule)
   },
   {

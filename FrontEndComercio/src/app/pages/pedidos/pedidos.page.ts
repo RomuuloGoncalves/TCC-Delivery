@@ -9,7 +9,7 @@ import { PedidosService } from 'src/app/core/services/pedidos.service';
 })
 export class PedidosPage implements OnInit {
 
-  constructor(private Pedidos: PedidosService,) { }
+  constructor(private Pedidos: PedidosService) { }
 
 
   ngOnInit() {
