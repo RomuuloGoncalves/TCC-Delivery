@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class ServerService {
   constructor(private http: HttpClient, private Cookie: CookieService) {}
 
-  private url: string = 'http://127.0.0.1:8000/';
+  private url: string = 'https://cautious-meme-w6w999p5693gpgq-8000.app.github.dev/';
 
   public post(path: string, data: any): Observable<any> {
     const token = this.Cookie.get('token');
