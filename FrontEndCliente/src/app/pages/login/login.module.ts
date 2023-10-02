@@ -8,6 +8,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
 import { FooterModule } from 'src/app/components/common/footer/footer.module';
+import { BtnLoadingModule } from 'src/app/components/common/btn-loading/btn-loading.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { FooterModule } from 'src/app/components/common/footer/footer.module';
     IonicModule,
     LoginPageRoutingModule,
     FooterModule,
+    BtnLoadingModule
   ],
   declarations: [LoginPage],
 })

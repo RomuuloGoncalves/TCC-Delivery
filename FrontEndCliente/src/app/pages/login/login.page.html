@@ -8,17 +8,21 @@
       </ion-col>
       <ion-row>
         <ion-col>
-          <form #loginForm="ngForm" (ngSubmit)="this.login()">
-            <ion-input ngModel required helperText="{{ this.erros.email }}" name="email"
-              label="Email" type="email"></ion-input>
-
-            <ion-input ngModel required helperText="{{ this.erros.password }}" name="password" label="Senha" type="password"></ion-input>
+          <form #loginForm="ngForm" class="login" (ngSubmit)="this.login()">
+            <ion-row class="input-container">
+              <ion-input ngModel required name="email" helperText=" " label="Email" type="email"></ion-input>
+              <ion-text class="erro" color="danger">{{ this.erros.email }}</ion-text>
+            </ion-row>
+            <ion-row class="input-container">
+              <ion-input ngModel required name="password" helperText=" " label="Senha" type="password" errorText="Deve ser maior que 8 caracteres" minlength="8" ></ion-input>
+              <ion-text class="erro" color="danger">{{ this.erros.password }}</ion-text>
+            </ion-row>
             <ion-text>
               <p class="login__esqueceu-senha">Não possui uma conta? <a routerLink="/cadastro">clique aqui</a></p>
             </ion-text>
             <ion-row class="ion-justify-content-center ion-padding">
               <ion-col size="auto">
-                <ion-button type="submit" class="login__btn-entrar">Entrar</ion-button>
+                <app-btn-loading btnNome="Entrar" [loading]="this.loading" [disabled]="!this.loginForm.valid"></app-btn-loading>
               </ion-col>
             </ion-row>
           </form>

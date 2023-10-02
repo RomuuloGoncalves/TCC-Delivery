@@ -22,30 +22,32 @@
   font-size: 4rem;
 }
 
-.login__esqueceu-senha {
-  font-size: 0.9em;
-  font-weight: bold;
-  margin-left: 15px;
-}
+.login {
+  &__esqueceu-senha {
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-left: 15px;
+  }
 
-.login__btn-entrar {
-  --padding-top: 25px;
-  --padding-bottom: 25px;
-  --padding-end: 75px;
-  --padding-start: 75px;
-}
+  .input-container {
+    min-height: 80px;
+  
+    .erro {
+      font-size: .8em;
+    }
+  }
 
-.login__entrar-com {
-
-  &::after,
-  &::before {
-    content: '';
-    display: inline-block;
-    width: 12vw;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 4px;
-    height: 1px;
-    background-color: var(--ion-color-primary);
+  &__entrar-com {
+    &::after,
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 12vw;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-bottom: 4px;
+      height: 1px;
+      background-color: var(--ion-color-primary);
+    }
   }
 }
