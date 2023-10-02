@@ -6,20 +6,10 @@ use App\Models\Endereco;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class EnderecoController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
+class EnderecoController extends Controller {
+    public function __construct() {}
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $regras = [
             'nome' => ['required', 'string', 'max:255'],
             'complemento' => ['nullable', 'string', 'max:255'],
@@ -48,8 +38,7 @@ class EnderecoController extends Controller
         return response()->json($endereco, 201);
     }
 
-    public function update(Request $request)
-    {    
+    public function update(Request $request) {    
         $regras = [
             'id' => ['required', 'integer', 'max:30'],
             'nome' => ['nullable', 'string', 'max:255'],
@@ -67,15 +56,14 @@ class EnderecoController extends Controller
 
         $id = $request->input('id');
         $endereco = Endereco::where('id' ,$id)->first();
+        $atributos = ['nome', 'complemento', 'bairro', 'numero', 'rua', 'cep'];
 
-        $endereco->update([
-            'nome' => $request->input('nome'),
-            'complemento' => $request->input('complemento'),
-            'bairro' => $request->input('bairro'),
-            'numero' => $request->input('numero'),
-            'rua' => $request->input('rua'),
-            'cep' => $request->input('cep')
-        ]);
+        foreach($atributos as $atributo) {
+            if($request->input($atributo) !== null) {
+                $endereco->$atributo = $request->input($atributo);
+            }
+        }
+        $endereco->save();
 
         return response()->json($endereco, 202);
     }

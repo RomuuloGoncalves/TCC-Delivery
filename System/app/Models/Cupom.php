@@ -15,7 +15,8 @@ class Cupom extends Model
         'porcentagem_desconto',
         'valor_desconto',
         'data_validade', 
-        'quantidade'
+        'quantidade',
+        'status'
     ];
 
     public function pedido(): BelongsTo
