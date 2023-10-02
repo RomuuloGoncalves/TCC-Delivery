@@ -9,6 +9,7 @@ import { CadastroPageRoutingModule } from './cadastro-routing.module';
 import { CadastroPage } from './cadastro.page';
 import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
+import { BtnLoadingModule } from 'src/app/components/common/btn-loading/btn-loading.module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     CadastroPageRoutingModule,
     FooterModule,
     HeaderModule,
+    BtnLoadingModule
   ],
   declarations: [CadastroPage],
 })
