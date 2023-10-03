@@ -63,7 +63,7 @@ class CupomController extends Controller {
     public function update(Request $request) {    
         $regras = [
             'id' => ['required', 'integer', 'max:30'],
-            'nome' => ['nullable', 'string', 'max:255', 'unique:Cupons'],
+            'nome' => ['required', 'string', 'max:255', 'unique:Cupons'],
             'porcentagem_desconto' => ['nullable', 'numeric', 'min:0.1', 'max:100'],
             'valor_desconto' => ['nullable', 'numeric', 'min:1', 'max:999999999'],
             'data_validade' => ['nullable', 'after:now'],
@@ -77,6 +77,8 @@ class CupomController extends Controller {
             return response()->json($validacao->errors(), 422);
 
         $cupom = Cupom::find($request->input('id'));
+        if (!$cupom)
+            return response()->json(['error' => '"cupom" not found'], 404);
 
         $atributos = ['nome', 'porcentagem_desconto', 'valor_desconto', 'data_validade', 'quantidade', 'status'];
 

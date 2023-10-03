@@ -37,4 +37,9 @@ export class EditarCupomPage implements OnInit {
       }
     );
   }
+
+  editar(e:any){
+    const cupomEditar = e.detail.value
+      console.log(cupomEditar)
+  }
 }
