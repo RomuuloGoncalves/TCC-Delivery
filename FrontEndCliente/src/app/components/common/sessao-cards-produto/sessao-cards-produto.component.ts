@@ -1,7 +1,8 @@
-
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { EventEmitter } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { ModalMarmitaComponent } from '../modal-marmita/modal-marmita.component';
 
 @Component({
   selector: 'app-sessao-cards-produto',
@@ -10,7 +11,7 @@ import { EventEmitter } from '@angular/core';
 })
 export class SessaoCardsProdutoComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private modalController: ModalController) { }
 
   ngOnInit() {}  
   
@@ -18,10 +19,21 @@ export class SessaoCardsProdutoComponent  implements OnInit {
   @Input() produto?: Produto;
   @Input() cardMontagem: boolean = false;
 
-  @Output() produtoEmitido: any = new EventEmitter
-
-  emitirEvento(produtoEmitido: Produto) {
-    this.produtoEmitido.emit(produtoEmitido)
+  produtoModal?: Produto
+  definirProdutoModal(produto: Produto) {
+    this.produtoModal = produto
+    this.abrirModal(this.produtoModal)
   }
 
+  async abrirModal(produto: any) {
+    const modal = await this.modalController.create({
+      component: ModalMarmitaComponent, // Substitua pelo seu modal
+      componentProps: {
+        produto: produto // Passe os dados como propriedades para o modal
+      }
+    });
+
+    return await modal.present()
+
+  }
 }
