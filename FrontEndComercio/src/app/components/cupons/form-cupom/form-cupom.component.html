@@ -21,11 +21,13 @@
     <ion-input ngModel name="quantidade" type="number" label="Quantidade de cupons" label-placement="floating" fill="outline"
       placeholder="Digite a quantidade de cupons" value="{{this.cupom?.quantidade}}"></ion-input>
   </ion-row>
-  <ion-row>
-    <ion-input ngModel name="status" type="number" label="Status de cupons" label-placement="floating" fill="outline"
-      placeholder="Digite o status do cupons (0 ou 1)" value="{{this.cupom?.status}}"></ion-input>
-  </ion-row>
 
+  <ion-row class="input-container">
+    <ion-select mode="md" ngModel name="status" label="Status cupom" required placeholder="Status" label-placement="floating" fill="outline" value="{{this.cupom?.status}}">
+      <ion-select-option value="1">Válido</ion-select-option>
+      <ion-select-option value="0">Inválido</ion-select-option>
+    </ion-select>
+  </ion-row>
 
   <ion-row>
     <ion-col size=6>
