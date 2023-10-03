@@ -21,6 +21,7 @@ export class ModalCupomComponent  implements OnInit {
     this.Cupom.excluirCupom(id_cupom).subscribe(
       (response) => {
         console.log(response)
+        window.location.reload()
       },
       (error) => {
         console.error(error);

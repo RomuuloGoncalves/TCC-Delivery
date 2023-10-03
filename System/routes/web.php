@@ -26,7 +26,7 @@ $router->group(['prefix' => 'funcionario'], function() use($router) {
 $router->group(['prefix' => 'cupom'], function() use($router) {
     $router->get('/', 'CupomController@index');
     $router->get('/{id}', 'CupomController@list');
-    $router->delete('/excluir/{id}', 'CupomController@delete');
+    $router->delete('/excluir/{id}', 'CupomController@destroy');
     $router->post('/cadastrar', 'CupomController@store');
     $router->post('/usar', 'CupomController@usar');
     $router->put('/editar', 'CupomController@update');

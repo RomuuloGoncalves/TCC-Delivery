@@ -99,8 +99,7 @@ class CupomController extends Controller {
         return response()->json($cupom, 200);
     }
 
-    public function destroy(Request $request) {
-        $id = $request->input('id');
+    public function destroy(int $id) {
         $cupom = Cupom::find($id);
         
         if(!$cupom)
