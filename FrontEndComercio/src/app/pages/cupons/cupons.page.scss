@@ -32,6 +32,17 @@ ion-label{
   font-size: 1.5rem;
 }
 
+
+.skeleton {
+  position: relative;
+
+  ion-list {
+    position: absolute;
+    width: 100%;
+  }
+
+}
+
 @media(max-width: 1490px) {
   .grid {
     grid-template-columns: repeat(4, 1fr);
