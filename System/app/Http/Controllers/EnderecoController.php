@@ -75,14 +75,13 @@ class EnderecoController extends Controller {
         return response()->json($endereco, 202);
     }
 
-    public function delete(Request $request) {
-        $id = $request->input('id');
+    public function destroy(int $id) {
         $endereco = Endereco::find($id);
         
         if(!$endereco)
             return response()->json(['message' => 'Endereço inválido'], 422);
         else
             Endereco::find($id)->delete();
-            return response()->json(['message' => 'Endereço deletado com sucesso'], 202);
+            return response()->json(['message' => 'Endereço deletado com sucesso'], 204);
     }
 }

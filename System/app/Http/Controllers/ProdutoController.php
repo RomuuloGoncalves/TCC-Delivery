@@ -19,8 +19,8 @@ class ProdutoController extends Controller {
     public function store(Request $request) {
         $regras = [
             'nome' => ['required', 'string', 'max:255'],
-            'descricao' => ['required', 'string', 'min:1', 'max:500'],
-            'categoria' => ['required', 'string', 'min:1', 'max:255']
+            'descricao' => ['required', 'string', 'max:500'],
+            'categoria' => ['required', 'string', 'max:255']
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -42,7 +42,7 @@ class ProdutoController extends Controller {
             'id' => ['required', 'integer', 'max_digits:30'],
             'nome' => ['nullable', 'string', 'max:255'],
             'descricao' => ['nullable', 'string', 'min:1', 'max:500'],
-            'categoria' => ['required', 'string', 'min:1', 'max:255']
+            'categoria' => ['nullable', 'string', 'min:1', 'max:255']
         ];
         
         $validacao = Validator::make($request->all(), $regras);
@@ -73,8 +73,7 @@ class ProdutoController extends Controller {
         return response()->json($produto, 200);
     }
 
-    public function destroy(Request $request) {
-        $id = $request->input('id');
+    public function destroy(int $id) {
         $produto = Produto::find($id);
         
         if(!$produto)

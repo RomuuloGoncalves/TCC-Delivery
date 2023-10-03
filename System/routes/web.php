@@ -36,7 +36,7 @@ $router->group(['prefix' => 'endereco'], function() use($router) {
     $router->post('/cadastrar', 'EnderecoController@store');
     $router->put('/editar', 'EnderecoController@update');
     $router->get('/listar', 'EnderecoController@list');
-    $router->delete('/excluir', 'EnderecoController@delete');
+    $router->delete('/excluir/{id}', 'EnderecoController@destroy');
 });
 
 $router->group(['prefix' => 'pedido'], function() use($router) {
@@ -47,7 +47,7 @@ $router->group(['prefix' => 'pedido'], function() use($router) {
 
 $router->group(['prefix' => 'produto'], function() use($router) {
     $router->get('/', 'ProdutoController@index');
-    $router->delete('/excluir/{id}', 'ProdutoController@delete');
+    $router->delete('/excluir/{id}', 'ProdutoController@destroy');
     $router->post('/cadastrar', 'ProdutoController@store');
     $router->put('/editar', 'ProdutoController@update');
 });
