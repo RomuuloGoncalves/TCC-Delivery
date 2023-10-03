@@ -17,11 +17,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ClienteSeeder::class,
             CupomSeeder::class,
-            EnderecoSeeder::class,
             FuncionarioSeeder::class,
-            PedidoSeeder::class,
-            ProdutoSeeder::class,
             VariacaoSeeder::class,
+            ProdutoSeeder::class,
+            EnderecoSeeder::class,
+            PedidoSeeder::class,
             GrupoVariacaoSeeder::class,
             PedidoProdutoSeeder::class,
             PedidoProdutoGrupoVariacaoSeeder::class
