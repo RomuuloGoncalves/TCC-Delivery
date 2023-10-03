@@ -19,7 +19,11 @@ export class CuponsService {
     return this.Server.delete(`/cupom/excluir/${id_cupom}`);
   }
 
-  public editarCupom(id_cupom:Number) {
-    return this.Server.post('/cupom/editar', id_cupom);
+  public editarCupom(data:any) {
+    return this.Server.put('/cupom/editar', data);
+  }
+
+  public adicionarCupom(data:any) {
+    return this.Server.post('/cupom/cadastrar', data);
   }
 }

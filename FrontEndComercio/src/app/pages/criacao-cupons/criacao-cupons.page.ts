@@ -14,10 +14,6 @@ export class CriacaoCuponsPage implements OnInit {
   ngOnInit() {
   }
 
-
-  console(e: any) {
-    console.log(e)
-    alert("felicidade")
-  }
-
+  metodo = 'post'
+  acao = 'Criar'
 }

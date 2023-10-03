@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nome');
             $table->unsignedDecimal('porcentagem_desconto', 5, 2)->nullable();
             $table->unsignedDecimal('valor_desconto', 9, 2)->nullable();
-            $table->dateTime('data_validade')->nullable();
+            $table->date('data_validade')->nullable();
             $table->integer('quantidade')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();

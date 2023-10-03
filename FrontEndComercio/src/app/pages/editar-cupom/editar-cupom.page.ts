@@ -21,6 +21,9 @@ export class EditarCupomPage implements OnInit {
     this.pegarCupom(Number(this.id_cupom))
   }
 
+  metodo = 'put'
+  acao = 'editar'
+
   cupom!: Cupom
   data!: any
   
@@ -37,16 +40,4 @@ export class EditarCupomPage implements OnInit {
       }
     )
   }
-
-  editar(e:any){
-    const cupomEditar = e.detail.value
-      console.log(cupomEditar)
-  }
-
-
-  console(e: any) {
-    console.log("bbbbbbbbbbbbbbbbbbbb")
-    console.log(e)
-  }
-
 }
