@@ -17,7 +17,7 @@ class EnderecoController extends Controller {
             'numero' => ['required', 'string', 'max:255'],
             'rua' => ['required', 'string', 'max:255'],
             'cep' => ['nullable', 'string', 'size:8'],
-            'cod_cliente' => ['required', 'integer', 'max:30'],
+            'cod_cliente' => ['required', 'integer', 'max_digits:30'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -40,7 +40,7 @@ class EnderecoController extends Controller {
 
     public function update(Request $request) {    
         $regras = [
-            'id' => ['required', 'integer', 'max:30'],
+            'id' => ['required', 'integer', 'max_digits:30'],
             'nome' => ['nullable', 'string', 'max:255'],
             'complemento' => ['nullable', 'string', 'max:255'],
             'bairro' => ['nullable', 'string', 'max:255'],

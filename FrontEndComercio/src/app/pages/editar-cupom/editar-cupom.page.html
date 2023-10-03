@@ -25,7 +25,7 @@
         </ion-row>
         <ion-row>
           <ion-input ngModel name="data_validade" type="date" label="Validade do cupom" label-placement="floating" fill="outline"
-            placeholder="Enter text" value="{{this.data[0]}}-{{this.data[1]}}-{{this.data[2]}}"></ion-input>
+            placeholder="Enter text"></ion-input>
         </ion-row>
         <ion-row>
           <ion-input ngModel name="quantidade" type="number" label="Quantidade de cupons" label-placement="floating" fill="outline"
@@ -41,6 +41,7 @@
           </ion-col>
         </ion-row>
       </form>
+      <app-form-cupom [cupom]='this.cupom'></app-form-cupom>
     </ion-col>
   </ion-row>
 </ion-content>

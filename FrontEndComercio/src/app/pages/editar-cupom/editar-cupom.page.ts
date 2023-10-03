@@ -11,7 +11,7 @@ import { CuponsService } from 'src/app/core/services/cupons.service';
 export class EditarCupomPage implements OnInit {
 
   constructor( private Cupom: CuponsService, private route: ActivatedRoute) { }
-  id_cupom!: any
+  id_cupom!: Number
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -35,7 +35,7 @@ export class EditarCupomPage implements OnInit {
       (error) => {
         console.error(error);
       }
-    );
+    )
   }
 
   editar(e:any){
