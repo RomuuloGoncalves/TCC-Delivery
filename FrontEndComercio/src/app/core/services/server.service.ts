@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class ServerService {
   constructor(private http: HttpClient, private Cookie: CookieService) {}
 
-  private url: string = 'http://127.0.0.1:8000';
+  private url: string = 'https://cuddly-funicular-jpv6ggxg59xc5vvg-8000.app.github.dev';
 
   public post(path: string, data: any): Observable<any> {
     const token = this.Cookie.get('token');
@@ -47,6 +47,18 @@ export class ServerService {
     }
 
     return this.http.delete(`${this.url}${path}`, { headers });
+  }
+
+  public put(path: string, data: any): Observable<any> {
+    const token = this.Cookie.get('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    if (token !== '')
+      headers.set('Authorization', `Bearer ${token}`);
+
+    return this.http.put(`${this.url}${path}`, JSON.stringify(data), { headers });
   }
   
 }
