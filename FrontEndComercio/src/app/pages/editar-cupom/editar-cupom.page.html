@@ -5,7 +5,7 @@
       <ion-row class="ion-justify-content-center">
         <h1>CRIAR CUPOM</h1>
       </ion-row>
-      <form #editarForm="ngForm" (ngSubmit)="this.editar($event)">
+      <!-- <form #editarForm="ngForm" (ngSubmit)="this.editar($event)">
           <ion-input ngModel name="nome" label="Nome do cupom" label-placement="floating" fill="outline"
             placeholder="Digite o nome do cupom" value="{{this.cupom?.nome}}" type="hidden"></ion-input>
 
@@ -40,8 +40,17 @@
             <ion-button size="large" type="submit" expand="block">Editar</ion-button>
           </ion-col>
         </ion-row>
-      </form>
-      <app-form-cupom [cupom]='this.cupom'></app-form-cupom>
+      </form> -->
+
+      <hr>
+
+
+
+      <app-form-cupom [cupom]='this.cupom' (emitirCupom)="console($event)"></app-form-cupom>
+
+
+
     </ion-col>
   </ion-row>
+
 </ion-content>

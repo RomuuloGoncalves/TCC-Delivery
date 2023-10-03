@@ -5,7 +5,8 @@
       <ion-row class="ion-justify-content-center">
         <h1>CRIAR CUPOM</h1>
       </ion-row>
-      <form action="" method="post">
+
+      <!-- <form action="" method="post">
         <ion-row>
           <ion-input label="Nome do cupom" label-placement="floating" fill="outline"
             placeholder="Digite o nome do cupom"></ion-input>
@@ -30,7 +31,10 @@
             <ion-button size="large" type="submit" expand="block">Criar</ion-button>
           </ion-col>
         </ion-row>
-      </form>
+      </form> -->
+
+      <app-form-cupom [cupom]='this.cupom' (emitirCupom)="console($event)"></app-form-cupom>
+
     </ion-col>
   </ion-row>
 </ion-content>

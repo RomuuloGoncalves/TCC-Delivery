@@ -9,7 +9,15 @@ export class CriacaoCuponsPage implements OnInit {
 
   constructor() { }
 
+  cupom = undefined
+
   ngOnInit() {
+  }
+
+
+  console(e: any) {
+    console.log(e)
+    alert("felicidade")
   }
 
 }

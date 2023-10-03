@@ -1,11 +1,11 @@
-<form action="" method="">
+<form #editarCupomForm="ngForm" (ngSubmit)="editarCupom($event)" method="post">
   <ion-row>
     <ion-input label="Nome do cupom" label-placement="floating" fill="outline"
-      placeholder="Digite o nome do cupom" value="{{this.cupom!.nome}}"></ion-input>
+      placeholder="Digite o nome do cupom" value="{{this.cupom?.nome}}"></ion-input>
   </ion-row>
   <ion-row>
     <ion-input label="Valor do cupom" label-placement="floating" fill="outline"
-      placeholder="Digite o valor do cupom" value="{{this.cupom!.valor_desconto}}"></ion-input>
+      placeholder="Digite o valor do cupom" value="{{this.cupom?.valor_desconto}}"></ion-input>
   </ion-row>
   <ion-row>
       <ion-input type="date" label="Validade do cupom" label-placement="floating" fill="outline"
@@ -13,7 +13,7 @@
   </ion-row>
   <ion-row>
     <ion-input type="number" label="Quantidade de cupons" label-placement="floating" fill="outline"
-      placeholder="Digite a quantidade de cupons" value="{{this.cupom!.quantidade}}"></ion-input>
+      placeholder="Digite a quantidade de cupons" value="{{this.cupom?.quantidade}}"></ion-input>
   </ion-row>
 
   <ion-row>
@@ -21,7 +21,7 @@
       <ion-button size="large" type="submit" [routerLink]="['/cupons']" routerDirection="back" expand="block">Voltar</ion-button>
     </ion-col>
     <ion-col size=6>
-      <ion-button size="large" type="submit" expand="block" (click)="emitirEventoCupom(cupom)">Editar</ion-button>
+      <ion-button size="large" type="submit" expand="block" (click)="emitirEventoCupom(this.cupomEditado)">Editar</ion-button>
     </ion-col>
   </ion-row>
 </form>
