@@ -14,4 +14,8 @@ export class CuponsService {
   public pegarCupomID (id_cupom:Number) {
     return this.Server.get(`/cupom/${id_cupom}`);
   }
+
+  public excluirCupom(id_cupom:Number) {
+    return this.Server.delete(`/cupom/excluir/${id_cupom}`);
+  }
 }

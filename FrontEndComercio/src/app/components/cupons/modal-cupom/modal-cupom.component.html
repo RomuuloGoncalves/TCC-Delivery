@@ -80,7 +80,7 @@
                 <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]" routerDirection="back" (click)="modal.dismiss()">Editar</ion-button>
               </ion-col>
               <ion-col size="6">
-                <ion-button expand="block" size="large" mode="md">Exluir</ion-button>
+                <ion-button expand="block" size="large" mode="md" (click)="excluirCupom(this.cupom!.id)">Exluir</ion-button>
               </ion-col>
             </ion-row>
             <ion-button expand="block" size="large" mode="md">Desativar</ion-button>
@@ -92,7 +92,7 @@
                 <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]" routerDirection="back" (click)="modal.dismiss()">Editar</ion-button>
               </ion-col>
               <ion-col size="6">
-                <ion-button expand="block" size="large" mode="md">Exluir</ion-button>
+                <ion-button expand="block" size="large" mode="md" (click)="excluirCupom(this.cupom!.id)">Exluir</ion-button>
               </ion-col>
             </ion-row>
             

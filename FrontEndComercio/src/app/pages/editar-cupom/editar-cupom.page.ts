@@ -22,12 +22,15 @@ export class EditarCupomPage implements OnInit {
   }
 
   cupom!: Cupom
-
+  data!: any
+  
   pegarCupom(id_cupom: Number) {
     this.Cupom.pegarCupomID(id_cupom).subscribe(
       (response) => {
         console.log(response)
         this.cupom = response
+        this.data = this.cupom.data_validade.split(" ")[0].split("-")
+        console.log(this.data)
       },
       (error) => {
         console.error(error);
