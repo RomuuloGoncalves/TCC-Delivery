@@ -17,7 +17,7 @@ class ProdutoSeeder extends Seeder
             DB::table('Produtos')->insert([
                 'nome' => $faker->word(),
                 'descricao' => $faker->sentence(),
-                'categoria' => $faker->randomElement(['Marmita Pronta', 'Bebida', 'Sobremesa', 'Combos']),
+                'categoria' => $faker->randomElement(['Marmita Pronta', 'Bebida', 'Sobremesa', 'Combos', 'Acompanhamento']),
             ]);
         }
     }

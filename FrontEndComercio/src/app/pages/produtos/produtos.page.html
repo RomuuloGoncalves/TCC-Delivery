@@ -16,6 +16,7 @@
                     [multiple]="true" [(ngModel)]="selectedOptions">
                     <ion-select-option value="marmita" Default="true">Marmitas</ion-select-option>
                     <ion-select-option value="bebida">Bebidas</ion-select-option>
+                    <ion-select-option value="sobremesa">Sobremesas</ion-select-option>
                     <ion-select-option value="combo">Combo</ion-select-option>
                     <ion-select-option value="acompanhamento">Acompanhamento</ion-select-option>
                   </ion-select>
@@ -28,20 +29,24 @@
             </ion-col>
 
 
-            <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" side="bottom" alignment="start" mode="ios">
+            <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" side="bottom" alignment="start"
+              mode="ios">
               <ng-template ngIf="{{popover}}">
                 <ion-content class="ion-padding">
                   <ion-row class="ion-justify-content-center">
-                    <ion-col size="10"><ion-button expand="block" [routerLink]="['/criacao-comidas']" >Comidas</ion-button></ion-col>
-                    <ion-col size="10"><ion-button expand="block" [routerLink]="['/criacao-bebidas']" >Bebidas</ion-button></ion-col>
-                    <ion-col size="10"><ion-button expand="block" [routerLink]="['/criacao-combos']" >Combos</ion-button></ion-col>
+                    <ion-col size="10"><ion-button expand="block"
+                        [routerLink]="['/criacao-comidas']">Comidas</ion-button></ion-col>
+                    <ion-col size="10"><ion-button expand="block"
+                        [routerLink]="['/criacao-bebidas']">Bebidas</ion-button></ion-col>
+                    <ion-col size="10"><ion-button expand="block"
+                        [routerLink]="['/criacao-combos']">Combos</ion-button></ion-col>
                   </ion-row>
                 </ion-content>
               </ng-template>
             </ion-popover>
 
-    
-      
+
+
           </ion-row>
         </ion-col>
       </ion-row>
@@ -55,6 +60,9 @@
               [produtos]="this.marmitas"></app-accordion>
             <app-accordion *ngIf="this.filtrar['bebida']" [tituloSessao]="'Bebidas'"
               [produtos]="this.bebidas"></app-accordion>
+            <app-accordion *ngIf="this.filtrar['sobremesa']" [tituloSessao]="'Sobremesas'"
+              [produtos]="this.sobremesas"></app-accordion>
+
             <app-accordion *ngIf="this.filtrar['combo']" [tituloSessao]="'Combos'"
               [produtos]="this.combos"></app-accordion>
             <app-accordion *ngIf="this.filtrar['acompanhamento']" [tituloSessao]="'Acompanhamentos'"
@@ -62,7 +70,6 @@
           </ion-accordion-group>
         </ion-col>
       </ion-row>
-
     </ion-col>
   </ion-row>
 </ion-content>
