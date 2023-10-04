@@ -41,6 +41,7 @@ export class FormCupomComponent  implements OnInit {
   }
 
   adicionar(data:any){
+    data.porcentagem_desconto = Number(data.porcentagem_desconto).toFixed(2)
     this.Cupom.adicionarCupom(data).subscribe(
       (response: any) => {
         if (response.created_at) {
