@@ -19,11 +19,14 @@ export class HistoricoPage implements OnInit {
 
   pedidos!: Pedido[]
 
+  loading: boolean = true
+
   recuperarHistoricoPedidos() {
     this.Pedidos.pegarPedidos().subscribe(
       (response) => {
         console.log(response)
         this.pedidos = response
+        this.loading = false
       },
       (error) => {
         console.error(error);

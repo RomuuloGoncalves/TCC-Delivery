@@ -28,22 +28,25 @@
   </ion-row>
 
   <ion-row class=" ion-justify-content-center">
-    <ion-col size="10" sizeMd="9">
-      <table>
-        <tr>
-          <th>ID</th>
-          <th>Status</th>
-          <th>Quantidade</th>
-          <th>Data</th>
-        </tr>
-        <tr *ngFor="let pedido of pedidos" [routerLink]="['/pedido', pedido.id, pedido.cod_cliente]"  routerDirection="back">
-          <td>{{pedido.id}}</td>
-          <td>{{pedido.status}}</td>
-          <!-- <td>{{pedido.produtos.length}}</td> -->
-          <td>3</td>
-          <td>{{pedido.data_pedido}}</td>
-        </tr>
-      </table>
-    </ion-col>
+    <ng-container *ngIf="!this.loading">
+      <ion-col size="10" sizeMd="9">
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Status</th>
+            <th>Quantidade</th>
+            <th>Data</th>
+          </tr>
+          <tr *ngFor="let pedido of pedidos" [routerLink]="['/pedido', pedido.id, pedido.cod_cliente]"  routerDirection="back">
+            <td>{{pedido.id}}</td>
+            <td>{{pedido.status}}</td>
+            <!-- <td>{{pedido.produtos.length}}</td> -->
+            <td>3</td>
+            <td>{{pedido.data_pedido}}</td>
+          </tr>
+        </table>
+      </ion-col>
+    </ng-container>
+    <app-loading [loading]="this.loading"></app-loading>
   </ion-row>
 </ion-content>

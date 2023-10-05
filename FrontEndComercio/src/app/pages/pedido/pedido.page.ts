@@ -12,10 +12,12 @@ import { ClienteService } from 'src/app/core/services/cliente.service';
   styleUrls: ['./pedido.page.scss'],
 })
 export class PedidoPage implements OnInit {
-
+  
   constructor(private Pedidos: PedidosService, private Cliente: ClienteService, private route: ActivatedRoute) { }
   id_pedido!: any
   cod_cliente!: any
+
+  loading: boolean = true
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -37,6 +39,7 @@ export class PedidoPage implements OnInit {
       (response) => {
         console.log(response)
         this.pedidoCliente = response
+        this.loading = false
       },
       (error) => {
         console.error(error);

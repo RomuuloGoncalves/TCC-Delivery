@@ -1,0 +1,11 @@
+<ng-container *ngIf="this.loading">
+  <ion-row class="wrapper ion-justify-content-center ion-align-items-center">
+    <ion-col size="auto">
+      <ion-spinner
+        [style]="'scale: '+ this.scale + ';'"
+        [color]="this.color"
+        name="dots"
+      ></ion-spinner>
+    </ion-col>
+  </ion-row>
+</ng-container>

@@ -53,23 +53,26 @@
     </ion-col>
 
     <ion-col size="11">
-      <ion-row class="ion-justify-content-center">
-        <ion-col size="11.9">
-          <ion-accordion-group [multiple]="true" [value]="['Marmitas']">
-            <app-accordion *ngIf="this.filtrar['marmita']" [tituloSessao]="'Marmitas'"
-              [produtos]="this.marmitas"></app-accordion>
-            <app-accordion *ngIf="this.filtrar['bebida']" [tituloSessao]="'Bebidas'"
-              [produtos]="this.bebidas"></app-accordion>
-            <app-accordion *ngIf="this.filtrar['sobremesa']" [tituloSessao]="'Sobremesas'"
-              [produtos]="this.sobremesas"></app-accordion>
-
-            <app-accordion *ngIf="this.filtrar['combo']" [tituloSessao]="'Combos'"
-              [produtos]="this.combos"></app-accordion>
-            <app-accordion *ngIf="this.filtrar['acompanhamento']" [tituloSessao]="'Acompanhamentos'"
-              [produtos]="this.acompanhamentos"></app-accordion>
-          </ion-accordion-group>
-        </ion-col>
-      </ion-row>
+      <ng-container *ngIf="!this.loading">
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="11.9">
+            <ion-accordion-group [multiple]="true" [value]="['Marmitas']">
+              <app-accordion *ngIf="this.filtrar['marmita']" [tituloSessao]="'Marmitas'"
+                [produtos]="this.marmitas"></app-accordion>
+              <app-accordion *ngIf="this.filtrar['bebida']" [tituloSessao]="'Bebidas'"
+                [produtos]="this.bebidas"></app-accordion>
+              <app-accordion *ngIf="this.filtrar['sobremesa']" [tituloSessao]="'Sobremesas'"
+                [produtos]="this.sobremesas"></app-accordion>
+  
+              <app-accordion *ngIf="this.filtrar['combo']" [tituloSessao]="'Combos'"
+                [produtos]="this.combos"></app-accordion>
+              <app-accordion *ngIf="this.filtrar['acompanhamento']" [tituloSessao]="'Acompanhamentos'"
+                [produtos]="this.acompanhamentos"></app-accordion>
+            </ion-accordion-group>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+      <app-loading [loading]="this.loading"></app-loading>
     </ion-col>
   </ion-row>
 </ion-content>

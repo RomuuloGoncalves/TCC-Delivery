@@ -23,46 +23,60 @@
           <th>Itens</th>
           <th>Quantidades</th>
         </tr>
-        <tr *ngFor="let produtos of pedidoCliente" [routerLink]="['/pedido']"  routerDirection="back">
-          <td>
-            <ion-row class="ion-align-items-center">
-              <ion-col size="3">
-                <!-- <img src="{{produtos.variacao!.imagem}}" alt="{{produtos.nome}}"> -->
-              </ion-col>
-              <ion-col>
-                <ion-row>
-                  <!-- {{produtos.nome}} -->
-                </ion-row>
-              </ion-col>
-            </ion-row>
-          </td>
-          <td>3</td>
-        </tr>
+        <ng-container *ngIf="!this.loading">
+          <!-- <tr *ngFor="let produtos of pedidoCliente" [routerLink]="['/pedido']"  routerDirection="back"> -->
+          <tr [routerLink]="['/pedido']"  routerDirection="back">
+            <td>
+              <ion-row class="ion-align-items-center">
+                <ion-col size="3">
+                  <!-- <img src="{{produtos.variacao!.imagem}}" alt="{{produtos.nome}}"> -->
+                </ion-col>
+                <ion-col>
+                  <ion-row>
+                    <!-- {{produtos.nome}} -->
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </td>
+            <td>3</td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="this.loading">
+          <tr>
+            <td colspan="2">
+              <app-loading [loading]="this.loading"></app-loading>
+            </td>
+          </tr>
+        </ng-container>
+
       </table>
     </ion-col>
     <ion-col size="11.9" sizeMd="10" sizeLg="5">
       <ion-row class="ion-justify-content-center">
         <ion-col size="12" sizeMd="6" class="informacoes ion-padding">
-          <ion-row>
-            <ion-text>
-              <p>Cliente: {{this.cliente!.nome}}</p>
-            </ion-text>
-          </ion-row>
-          <ion-row>
-            <ion-text>
-              <p>CEP: {{pedidoCliente && pedidoCliente.length > 0 ? pedidoCliente[0].endereco_pedido : 'N/A'}}</p>
-            </ion-text>
-          </ion-row>
-          <ion-row>
-            <ion-text>
-              <p>Pagamento: {{pedidoCliente && pedidoCliente[0]!.forma_pagamento}}</p>
-            </ion-text>
-          </ion-row>
-          <ion-row>
-            <ion-text>
-              <p>Status: {{pedidoCliente && pedidoCliente[0]!.status ? pedidoCliente[0]!.status : 'N/A'}}</p>
-            </ion-text>
-          </ion-row>
+          <ng-container *ngIf="!this.loading">
+            <ion-row>
+              <ion-text>
+                <p>Cliente: {{this.cliente!.nome}}</p>
+              </ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text>
+                <p>CEP: {{ pedidoCliente.endereco_pedido}}</p>
+              </ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text>
+                <p>Pagamento: {{ pedidoCliente!.forma_pagamento }}</p>
+              </ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text>
+                <p>Status: {{ pedidoCliente.status }}</p>
+              </ion-text>
+            </ion-row>
+          </ng-container>
+          <app-loading [loading]="this.loading" color="light"></app-loading>
         </ion-col>
       </ion-row>
     </ion-col>

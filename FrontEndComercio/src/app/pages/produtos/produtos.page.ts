@@ -17,6 +17,8 @@ export class ProdutosPage implements OnInit {
     this.recuperarTodosProdutos()
   }
 
+  loading: boolean = true
+
   marmitas:Produto[] = []
   bebidas:Produto[] = []
   sobremesas:Produto[] = []
@@ -68,6 +70,7 @@ export class ProdutosPage implements OnInit {
         this.todosProdutos = response
         console.log(this.todosProdutos)
         this.organizarProdutos()
+        this.loading = false
       },
       (error) => {
         console.error(error);

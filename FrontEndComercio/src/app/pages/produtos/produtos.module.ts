@@ -7,6 +7,7 @@ import { ProdutosPage } from './produtos.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 import { AccordionComponent } from 'src/app/components/produtos/accordion/accordion.component';
 import { CardsComponent } from 'src/app/components/produtos/cards/cards.component';
+import { LoadingModule } from 'src/app/components/common/loading/loading.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { CardsComponent } from 'src/app/components/produtos/cards/cards.componen
     IonicModule,
     ProdutosPageRoutingModule,
     HeaderModule,
-
+    LoadingModule
     
   ],
   declarations: [ProdutosPage, AccordionComponent, CardsComponent]

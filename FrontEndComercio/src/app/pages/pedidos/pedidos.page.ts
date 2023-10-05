@@ -11,6 +11,7 @@ export class PedidosPage implements OnInit {
 
   constructor(private Pedidos: PedidosService) { }
 
+  loading: boolean = true
 
   ngOnInit() {
     this.recuperarTodosPedidos()
@@ -23,6 +24,7 @@ export class PedidosPage implements OnInit {
       (response) => {
         console.log(response)
         this.pedidos = response
+        this.loading = false
       },
       (error) => {
         console.error(error);

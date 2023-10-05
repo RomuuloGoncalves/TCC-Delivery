@@ -8,6 +8,7 @@ import { PedidoPageRoutingModule } from './pedido-routing.module';
 
 import { PedidoPage } from './pedido.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
+import { LoadingModule } from 'src/app/components/common/loading/loading.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     FormsModule,
     IonicModule,
     PedidoPageRoutingModule,
-    HeaderModule
+    HeaderModule,
+    LoadingModule
   ],
   declarations: [PedidoPage]
 })

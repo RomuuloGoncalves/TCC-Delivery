@@ -10,19 +10,20 @@ import { CuponsService } from 'src/app/core/services/cupons.service';
 export class CuponsPage implements OnInit {
   constructor(private Cupom: CuponsService,) { }
 
-  cupons!: Cupom[]
-  loaded: boolean = false
+  cupons!: Cupom[];
+  loading: boolean = true;
 
   ngOnInit() {
-    this.recuperarTodosCupons()
+    this.carregarPagina();
   }
 
-  recuperarTodosCupons() {
+  carregarPagina() {
+    this.loading = true;
     this.Cupom.pegarCupons().subscribe(
       (response) => {
-        this.cupons = response
-        console.log(this.cupons)
-        this.loaded = true
+        this.cupons = response;
+        console.log(this.cupons);
+        this.loading = false;
       },
       (error) => {
         console.error(error);

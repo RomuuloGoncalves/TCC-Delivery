@@ -8,6 +8,7 @@ import { HistoricoPageRoutingModule } from './historico-routing.module';
 
 import { HistoricoPage } from './historico.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
+import { LoadingModule } from 'src/app/components/common/loading/loading.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     FormsModule,
     IonicModule,
     HistoricoPageRoutingModule,
-    HeaderModule
+    HeaderModule,
+    LoadingModule
   ],
   declarations: [HistoricoPage]
 })

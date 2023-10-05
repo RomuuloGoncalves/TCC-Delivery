@@ -16,6 +16,8 @@ export class DetalhePedidoPage implements OnInit {
   id_pedido!: any
   cod_cliente!: any
 
+  loading: boolean = true
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id_pedido = params['id_pedido'];
@@ -28,7 +30,7 @@ export class DetalhePedidoPage implements OnInit {
     console.log(this.cod_cliente)
 
   }
-  pedidoCliente!: Pedido[]
+  pedidoCliente!: Pedido
   cliente!: Cliente
 
 
@@ -37,6 +39,7 @@ export class DetalhePedidoPage implements OnInit {
       (response) => {
         console.log(response)
         this.pedidoCliente = response
+        this.loading = false
       },
       (error) => {
         console.error(error);

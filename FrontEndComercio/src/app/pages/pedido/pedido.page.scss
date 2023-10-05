@@ -9,6 +9,7 @@ ion-icon {
   border-radius: $arredondamento-borda;
   color: #ffff;
   font-size: 1.2rem;
+  min-height: 12rem;
 }
 
 table {
@@ -57,4 +58,8 @@ table {
   table {
     font-size: 1rem;
   }
+}
+
+.borda {
+  outline: 1px solid black;
 }
