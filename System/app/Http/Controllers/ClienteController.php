@@ -15,7 +15,7 @@ class ClienteController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('cliente:auth', ['except' => ['login']]);
+        // $this->middleware('cliente:auth', ['except' => ['login']]);
     }
 
      /**
