@@ -2,7 +2,7 @@ import { Cliente } from "./cliente";
 import { Produto } from "./produto";
 
 export interface Pedido {
-  id_pedido?: number;
+  id?: number;
   cod_cliente?: number;
   valor_total?: number;
   valor_com_desconto: number;

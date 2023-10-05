@@ -40,9 +40,8 @@ $router->group(['prefix' => 'endereco'], function() use($router) {
 });
 
 $router->group(['prefix' => 'pedido'], function() use($router) {
-    $router->get('/listar', 'PedidoController@list');
-    $router->get('/pedidoCliente', 'PedidoController@pedCliente');
-    $router->get('/pedidoID', 'PedidoController@pedID');
+    $router->get('/', 'PedidoController@list');
+    $router->get('/{id}', 'PedidoController@pedID');
 });
 
 $router->group(['prefix' => 'produto'], function() use($router) {

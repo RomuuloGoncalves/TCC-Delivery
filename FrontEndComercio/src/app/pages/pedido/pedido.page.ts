@@ -25,11 +25,10 @@ export class PedidoPage implements OnInit {
 
     this.pegarPedido(Number(this.id_pedido))
     this.pegarCliente(Number(this.cod_cliente))
-    console.log(this.id_pedido)
-    console.log(this.cod_cliente)
+
 
   }
-  pedidoCliente!: Pedido[]
+  pedidoCliente!: Pedido
   cliente!: Cliente
 
 

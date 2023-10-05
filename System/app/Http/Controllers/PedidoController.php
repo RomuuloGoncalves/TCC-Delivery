@@ -16,10 +16,9 @@ class PedidoController extends Controller {
         return response()->json($pedido, 202);
     }
 
-    public function pedID(Request $request)
+    public function pedID(int $id)
     {
-        $id = $request->input('id_pedido');
-        $pedido = Pedido::all()->where('id_pedido', $id);
+        $pedido = Pedido::find($id);
             
         return response()->json($pedido, 201);
     }

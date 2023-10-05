@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('Pedidos', function (Blueprint $table) {
-            $table->id('id_pedido');
+            $table->id('id');
             $table->float('valor_total');
             $table->float('valor_com_desconto')->nullable();
             $table->dateTime('data_pedido');
