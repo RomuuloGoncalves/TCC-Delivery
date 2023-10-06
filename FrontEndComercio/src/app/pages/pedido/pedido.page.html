@@ -63,22 +63,22 @@
           <ng-container *ngIf="!this.loading">
             <ion-row>
               <ion-text>
-                <p>Cliente: {{this.cliente?.nome}}</p>
+                <p>Cliente: {{this.cliente!.nome}}</p>
               </ion-text>
             </ion-row>
             <ion-row>
               <ion-text>
-                <!-- <p>CEP: {{pedidoCliente && pedidoCliente.length > 0 ? pedidoCliente[0].endereco_pedido : 'N/A'}}</p> -->
+                <p>CEP: {{this.pedidoCliente!.endereco_pedido}}</p>
               </ion-text>
             </ion-row>
             <ion-row>
               <ion-text>
-                <p>Pagamento: {{this.pedidoCliente?.forma_pagamento}}</p>
+                <p>Pagamento: {{this.pedidoCliente!.forma_pagamento}}</p>
               </ion-text>
             </ion-row>
             <ion-row>
               <ion-text>
-                <p>Status: {{pedidoCliente?.status}}</p>
+                <p>Status: {{this.pedidoCliente!.status}}</p>
               </ion-text>
             </ion-row>
           </ng-container>

@@ -37,7 +37,6 @@ export class PedidoPage implements OnInit {
   pegarPedido(cod_pedido: any) {
     this.Pedidos.pegarPedidoID(cod_pedido).subscribe(
       (response) => {
-        console.log(response)
         this.pedidoCliente = response
         this.loading = false
       },
@@ -51,7 +50,6 @@ export class PedidoPage implements OnInit {
     this.Cliente.pegarCliente(cod_cliente).subscribe(
       (response) => {
         this.cliente = response
-        console.log(this.cliente)
       },
       (error) => {
         console.error(error);
