@@ -15,11 +15,11 @@ class Pedido extends Model
         'valor_total',
         'valor_com_desconto',
         'data_pedido',
-        'data_entrega', 
+        'data_entrega',
         'data_pagamento',
-        'status_pedido', 
+        'status_pedido',
         'forma_pagamento',
-        'cod_cliente', 
+        'cod_cliente',
         'cod_funcionario',
         'cod_endereco',
         'cod_cupom'
@@ -43,5 +43,10 @@ class Pedido extends Model
     public function cupom(): BelongsTo
     {
         return $this->belongsTo(Cupom::class);
+    }
+
+    public function pedido_produtos(): HasMany
+    {
+        return $this->hasMany(PedidoProduto::class);
     }
 }
