@@ -2,10 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Cliente;
-use App\Models\Cupom;
-use App\Models\Endereco;
-use App\Models\Funcionario;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
