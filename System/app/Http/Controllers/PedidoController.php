@@ -21,7 +21,7 @@ class PedidoController extends Controller {
     public function pedID(int $id)
     {
         $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom'])->find($id);    
-        $pedido->pedido_produto = PedidoProduto::with('produto')->where('cod_pedido', $id)->get();
+        $pedido->pedido_produtos = PedidoProduto::with('produto')->where('cod_pedido', $id)->get();
 
         return response()->json($pedido, 201);
     }

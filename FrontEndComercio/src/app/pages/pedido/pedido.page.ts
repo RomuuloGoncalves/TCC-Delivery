@@ -47,6 +47,7 @@ export class PedidoPage implements OnInit {
   pegarPedido(cod_pedido: any) {
     this.Pedidos.pegarPedidoID(cod_pedido).subscribe(
       (response) => {
+        console.log("pedido", response)
         this.pedidoCliente = response
         this.produtos = this.pedidoCliente.pedido_produtos
         console.log(this.produtos)

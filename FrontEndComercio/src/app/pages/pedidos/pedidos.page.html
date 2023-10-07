@@ -35,13 +35,13 @@
             <th>ID</th>
             <th>Status</th>
             <th>Quantidade</th>
-            <th>Data</th>
+            <th>Data - Hora</th>
           </tr>
           <tr *ngFor="let pedido of pedidos" [routerLink]="['/pedido', pedido.id, pedido.cod_cliente]"  routerDirection="back">
             <td>{{pedido.id}}</td>
             <td>{{pedido.status}}</td>
             <td>{{pedido.pedido_produtos.length}}</td>
-            <td>{{pedido.data_pedido}}</td>
+            <td>{{pedido.data_pedido |  date:'dd/MM/yyyy - HH:mm'}}</td>
           </tr>
         </table>
       </ion-col>

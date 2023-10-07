@@ -17,7 +17,8 @@
               <ng-container *ngFor="let produtos of pedido">
                 <ng-container *ngIf="produtos[1].length > 0">
                   <h1>
-                    {{produtos[0]}}
+                    {{ produtos[0] | uppercase }}
+                    
                   </h1>
                 <ng-container *ngFor="let produto of produtos[1]">
                   <ion-item>
@@ -27,7 +28,7 @@
                       </ion-col>
                       <ion-col size=9>
                         <ion-label>
-                          <h1>{{produto.produto.nome}}</h1>
+                          <h1>{{produto.produto.nome | titlecase}}</h1>
                         </ion-label>
                       </ion-col>
                     </ion-row>
