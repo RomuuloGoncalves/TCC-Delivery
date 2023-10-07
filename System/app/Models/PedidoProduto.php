@@ -15,16 +15,16 @@ class PedidoProduto extends Model
     
     public function pedido(): BelongsTo
     {
-        return $this->belongsTo(Pedido::class);
+        return $this->belongsTo(Pedido::class, 'cod_pedido');
     }
 
     public function produto(): BelongsTo
     {
-        return $this->belongsTo(Produto::class);
+        return $this->belongsTo(Produto::class, 'cod_produto');
     }  
 
-    public function pedido_produto_grupo_variacao(): BelongsTo
+    public function pedido_produto_grupo_variacao(): HasMany
     {
-        return $this->belongsTo(PedidoProdutoGrupoVariacao::class);
+        return $this->hasMany(PedidoProdutoGrupoVariacao::class, 'cod_pedido_produto');
     } 
 }

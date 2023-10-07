@@ -15,7 +15,7 @@ class PedidoProdutoSeeder extends Seeder
         $pedidos = DB::table('Pedidos')->pluck('id')->toArray();
         $produtos = DB::table('Produtos')->pluck('id')->toArray();
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 25; $i++) {
             DB::table('Pedido_produtos')->insert([
                 'cod_pedido' => $faker->randomElement($pedidos),
                 'cod_produto' => $faker->randomElement($produtos),

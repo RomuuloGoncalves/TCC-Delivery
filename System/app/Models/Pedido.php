@@ -25,28 +25,29 @@ class Pedido extends Model
         'cod_cupom'
     ];
 
+    //
     public function cliente(): BelongsTo
     {
-        return $this->belongsTo(cliente::class);
+        return $this->belongsTo(Cliente::class, 'cod_cliente');
     }
 
     public function funcionario(): BelongsTo
     {
-        return $this->belongsTo(Funcionario::class);
+        return $this->belongsTo(Funcionario::class, 'cod_funcionario');
     }
 
     public function endereco(): BelongsTo
     {
-        return $this->belongsTo(Endereco::class);
+        return $this->belongsTo(Endereco::class, 'cod_endereco');
     }
 
     public function cupom(): BelongsTo
     {
-        return $this->belongsTo(Cupom::class);
+        return $this->belongsTo(Cupom::class, 'cod_cupom');
     }
 
     public function pedido_produtos(): HasMany
     {
-        return $this->hasMany(PedidoProduto::class);
+        return $this->hasMany(PedidoProduto::class, 'cod_pedido');
     }
 }
