@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
 use App\Models\Pedido;
+use App\Models\PedidoProduto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -18,14 +20,14 @@ class PedidoController extends Controller {
 
     public function pedID(int $id)
     {
-        $pedido = Pedido::find($id);
-            
+        $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom'])->find($id);    
+        $pedido->pedido_produto = PedidoProduto::with('produto')->where('cod_pedido', $id)->get();
+
         return response()->json($pedido, 201);
     }
 
     public function list() {
-        $pedido = Pedido::all();
-    
+        $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom'])->get();
         return response()->json($pedido, 201);
     }
 }
