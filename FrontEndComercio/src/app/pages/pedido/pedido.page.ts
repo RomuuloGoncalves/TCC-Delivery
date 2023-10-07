@@ -4,6 +4,7 @@ import { Cliente } from 'src/app/core/interfaces/cliente';
 import { ActivatedRoute } from '@angular/router';
 import { PedidosService } from 'src/app/core/services/pedidos.service';
 import { ClienteService } from 'src/app/core/services/cliente.service';
+import { Produto } from 'src/app/core/interfaces/produto';
 
 
 @Component({
@@ -32,13 +33,24 @@ export class PedidoPage implements OnInit {
   }
   pedidoCliente!: Pedido
   cliente!: Cliente
+  produtos!: any
+  marmitas:Produto[] = []
+  bebidas:Produto[] = []
+  sobremesas:Produto[] = []
+  acompanhamentos:Produto[] = []
+  combos:Produto[] = []
 
+ tabela!:any
+ infoTabela!: any
 
   pegarPedido(cod_pedido: any) {
     this.Pedidos.pegarPedidoID(cod_pedido).subscribe(
       (response) => {
         this.pedidoCliente = response
+        this.produtos = this.pedidoCliente.pedido_produto
+        console.log(this.produtos)
         this.loading = false
+        this.organizarProdutos()
       },
       (error) => {
         console.error(error);
@@ -55,5 +67,33 @@ export class PedidoPage implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  organizarProdutos() {
+    this.produtos.forEach((elemento:any) => {
+      console.log(elemento)
+      if(elemento.imagem == null || elemento.imagem == '')
+        elemento.produto.imagem = '../../../assets/imgs/default/cards-produtos.png'
+      
+      elemento.produto.categoria == 'Marmita Pronta' ? this.marmitas.push(elemento) : 1
+      elemento.produto.categoria == 'Combos' ? this.combos.push(elemento) : 1
+      elemento.produto.categoria == 'Bebida' ? this.bebidas.push(elemento) : 1
+      elemento.produto.categoria == 'Sobremesa' ? this.sobremesas.push(elemento) : 1
+      elemento.produto.categoria == 'Acompanhamento' ? this.acompanhamentos.push(elemento) : 1
+    })
+
+    this.tabela = {
+      marmitas: this.marmitas,
+      bebidas: this.bebidas,
+      sobremesas: this.sobremesas,
+      acompanhamento: this.acompanhamentos,
+      combos: this.combos,
+    }
+
+    this.infoTabela = Object.entries(this.tabela)
+    
+    this.informacaoModal(){
+      
+    }
   }
 }

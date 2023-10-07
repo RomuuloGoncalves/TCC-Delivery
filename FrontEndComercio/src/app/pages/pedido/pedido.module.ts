@@ -9,6 +9,7 @@ import { PedidoPageRoutingModule } from './pedido-routing.module';
 import { PedidoPage } from './pedido.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 import { LoadingModule } from 'src/app/components/common/loading/loading.module';
+import { ModalPedidoComponent } from 'src/app/components/pedido/modal-pedido/modal-pedido.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { LoadingModule } from 'src/app/components/common/loading/loading.module'
     HeaderModule,
     LoadingModule
   ],
-  declarations: [PedidoPage]
+  declarations: [PedidoPage, ModalPedidoComponent]
 })
 export class PedidoPageModule {}
