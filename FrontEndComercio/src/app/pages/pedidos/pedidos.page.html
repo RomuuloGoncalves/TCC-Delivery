@@ -40,8 +40,7 @@
           <tr *ngFor="let pedido of pedidos" [routerLink]="['/pedido', pedido.id, pedido.cod_cliente]"  routerDirection="back">
             <td>{{pedido.id}}</td>
             <td>{{pedido.status}}</td>
-            <!-- <td>{{pedido.produtos.length}}</td> -->
-            <td>3</td>
+            <td>{{pedido.pedido_produtos.length}}</td>
             <td>{{pedido.data_pedido}}</td>
           </tr>
         </table>

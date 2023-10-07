@@ -27,7 +27,7 @@ class PedidoController extends Controller {
     }
 
     public function list() {
-        $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom'])->get();
+        $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom', "Pedido_produtos"])->get();
         return response()->json($pedido, 201);
     }
 }

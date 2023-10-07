@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Produto } from 'src/app/core/interfaces/produto';
 
 @Component({
   selector: 'app-modal-pedido',
@@ -7,8 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ModalPedidoComponent  implements OnInit {
   @Input() public pedido!: any;
+
+  ngOnInit() { }
+
   constructor() { }
-
-  ngOnInit() {}
-
 }

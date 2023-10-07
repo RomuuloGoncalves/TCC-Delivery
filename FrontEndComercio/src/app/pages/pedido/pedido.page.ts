@@ -42,12 +42,13 @@ export class PedidoPage implements OnInit {
 
  tabela!:any
  infoTabela!: any
+ infoModal:any = [] 
 
   pegarPedido(cod_pedido: any) {
     this.Pedidos.pegarPedidoID(cod_pedido).subscribe(
       (response) => {
         this.pedidoCliente = response
-        this.produtos = this.pedidoCliente.pedido_produto
+        this.produtos = this.pedidoCliente.pedido_produtos
         console.log(this.produtos)
         this.loading = false
         this.organizarProdutos()
@@ -92,8 +93,5 @@ export class PedidoPage implements OnInit {
 
     this.infoTabela = Object.entries(this.tabela)
     
-    this.informacaoModal(){
-      
-    }
   }
 }

@@ -13,5 +13,5 @@ export interface Pedido {
   forma_pagamento: string;
   status: string;
   cliente?: Cliente;
-  pedido_produto: Produto[];
+  pedido_produtos: Produto[];
 }

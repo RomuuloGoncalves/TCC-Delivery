@@ -25,46 +25,23 @@
         </tr>
         <ng-container *ngIf="!this.loading">
           <ng-container *ngFor="let produto of infoTabela">
-            <tr  [routerLink]="['/pedido']" routerDirection="back">
+            <tr [routerLink]="['/pedido']" routerDirection="back">
               <ng-container *ngIf="produto[1].length > 0">
                 <td>
                   <ion-row class="ion-align-items-center">
-                  <!-- <ion-col size="3">
-                    <img src="../../../assets/imgs/default/cards-produtos.png" alt="">
-                  </ion-col> -->
-                  <ion-col>
-                    <ion-row>
-                      {{produto[0]}}
-                    </ion-row>
-                  </ion-col>
-                </ion-row>
-              </td>
-              <td>
-                {{produto[1].length}}
-              </td>
-            </ng-container>
-            </tr>
-
-          </ng-container>
-
-
-          <!-- <tr *ngFor="let produto of produtos" [routerLink]="['/pedido']" routerDirection="back">
-            <td>
-              <ion-row class="ion-align-items-center">
-                <ion-col size="3">
-                  <img src="{{produto.produto.imagem}}" alt="{{produto.produto.nome}}">
-                </ion-col>
-                <ion-col>
-                  <ion-row>
-                    Marmitas
+                    <ion-col>
+                      <ion-row>
+                        {{produto[0]}}
+                      </ion-row>
+                    </ion-col>
                   </ion-row>
-                </ion-col>
-              </ion-row>
-            </td>
-            <td>{{this.marmitas.length}}</td>
-          </tr> -->
-
-
+                </td>
+                <td>
+                  {{produto[1].length}}
+                </td>
+              </ng-container>
+            </tr>
+          </ng-container>
         </ng-container>
         <ng-container *ngIf="this.loading">
           <tr>
