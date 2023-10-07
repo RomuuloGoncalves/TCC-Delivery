@@ -93,6 +93,6 @@ export class PedidoPage implements OnInit {
     }
 
     this.infoTabela = Object.entries(this.tabela)
-    
+    console.log(this.infoTabela)
   }
 }

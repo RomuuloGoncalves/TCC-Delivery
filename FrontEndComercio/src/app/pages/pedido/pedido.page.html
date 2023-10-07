@@ -53,7 +53,7 @@
       </table>
       <ion-row class="ion-justify-content-center ion-margin">
         <ion-col size="12" sizeMd="6">
-          <ion-button size="large" expand="block" id="open-modal-pedido">Ver produtos</ion-button>
+          <ion-button size="large" expand="block" id="open-modal-pedido-{{this.id_pedido}}">Ver produtos</ion-button>
         </ion-col>
         <ion-col size="12" sizeMd="6">
           <ion-button size="large" expand="block">Finalizar</ion-button>
@@ -91,5 +91,5 @@
     </ion-col>
   </ion-row>
 
-  <app-modal-pedido [pedido]="this.infoTabela"></app-modal-pedido>
+  <app-modal-pedido [pedido]="this.infoTabela" [id]="this.id_pedido"></app-modal-pedido>
 </ion-content>
