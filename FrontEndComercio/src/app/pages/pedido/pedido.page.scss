@@ -19,11 +19,6 @@ table {
   box-shadow: 2px 2px 20px var(--ion-color-primary);
   border-radius: $arredondamento-borda;
 
-  tr:hover {
-    cursor: pointer;
-    background-color: var(--ion-color-tertiary);
-  }
-
   th {
     &:nth-child(1) {
       border-top-left-radius: $arredondamento-borda;

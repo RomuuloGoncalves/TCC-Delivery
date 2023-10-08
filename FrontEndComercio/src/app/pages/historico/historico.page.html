@@ -4,15 +4,15 @@
   <ion-row class="ion-padding ion-justify-content-center ion-align-items-center">
     <ion-col size="11.9">
       <ion-row class="ion-justify-content-between ion-align-items-center">
-        <ion-col size="12" sizeMd="auto">
+        <ion-col size="6" sizeMd="auto">
           <ion-label id="titulo">Histórico</ion-label>
         </ion-col>
-        <ion-col size="12" sizeMd="auto">
+        <ion-col size="6" sizeMd="auto">
           <ion-row class="ion-justify-between ion-align-items-center">
             <ion-col size="12">
               <ion-list>
                 <ion-item>
-                  <ion-select interface="popover" mode="ios" placeholder="Ordenar por" [multiple]="true">
+                  <ion-select interface="popover" (ionChange)="ordenar($event)" mode="ios" placeholder="Ordenar por">
                     <ion-select-option value="id" Default="true">ID</ion-select-option>
                     <ion-select-option value="status">Status</ion-select-option>
                     <ion-select-option value="quantidade">Quantidade</ion-select-option>
@@ -28,24 +28,25 @@
   </ion-row>
 
   <ion-row class="ion-padding-bottom ion-justify-content-center">
-      <ng-container *ngIf="!this.loading">
-        <ion-col size="10" sizeMd="9">
-          <table>
-            <tr>
-              <th>ID</th>
-              <th>Status</th>
-              <th>Quantidade</th>
-              <th>Data - Hora</th>
-            </tr>
-            <tr *ngFor="let pedido of pedidos" [routerLink]="['/pedido', pedido.id, pedido.cod_cliente]"  routerDirection="back">
-              <td>{{pedido.id}}</td>
-              <td>{{pedido.status}}</td>
-              <td>{{pedido.pedido_produtos.length}}</td>
-              <td>{{pedido.data_pedido |  date:'dd/MM/yyyy - HH:mm'}}</td>
-            </tr>
-          </table>
-        </ion-col>
-      </ng-container>
-        <app-loading [loading]="this.loading"></app-loading>
+    <ng-container *ngIf="!this.loading">
+      <ion-col size="10" sizeMd="9">
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Status</th>
+            <th>Quantidade</th>
+            <th>Data - Hora</th>
+          </tr>
+          <tr *ngFor="let pedido of pedidos" [routerLink]="['/pedido', pedido.id, pedido.cod_cliente]"
+            routerDirection="back">
+            <td>{{pedido.id}}</td>
+            <td>{{pedido.status}}</td>
+            <td>{{pedido.pedido_produtos.length}}</td>
+            <td>{{pedido.data_pedido | date:'dd/MM/yyyy - HH:mm'}}</td>
+          </tr>
+        </table>
+      </ion-col>
+    </ng-container>
+    <app-loading [loading]="this.loading"></app-loading>
   </ion-row>
 </ion-content>

@@ -14,4 +14,8 @@ export class CardsCuponsComponent  implements OnInit {
 
   ngOnInit() {}
 
+  converterData(dateString: any): Date {
+    return new Date(dateString);
+  }
+
 }

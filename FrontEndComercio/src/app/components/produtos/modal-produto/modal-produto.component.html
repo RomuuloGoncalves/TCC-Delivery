@@ -1,0 +1,47 @@
+<ion-modal id="example-modal" #modal trigger="open-modal-produto-{{this.produto.id}}">
+  <ng-template>
+    <ion-content>
+      <div class="wrapper">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>{{this.produto.nome}}</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="modal.dismiss()">Fechar</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-row class="ion-align-items-center ion-padding-horizontal">
+          <ion-col>
+            <img src="{{this.produto.imagem}}" alt="{{this.produto.nome}}">
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-list lines="full">
+              <ion-item>
+                <ion-label>Nome: {{this.produto.nome}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Categoria: {{this.produto.categoria}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Descrição: {{this.produto.descricao}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-row>
+              <ion-col size="6">
+                <ion-button expand="block" size="large">Excluir</ion-button>
+              </ion-col>
+              <ion-col size="6">
+                <ion-button expand="block" size="large">Editar</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

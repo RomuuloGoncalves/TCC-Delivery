@@ -14,17 +14,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            ClienteSeeder::class,
-            CupomSeeder::class,
-            FuncionarioSeeder::class,
-            VariacaoSeeder::class,
-            ProdutoSeeder::class,
-            EnderecoSeeder::class,
-            PedidoSeeder::class,
-            GrupoVariacaoSeeder::class,
-            PedidoProdutoSeeder::class,
-            PedidoProdutoGrupoVariacaoSeeder::class
-        ]);
+        $quantidadel_inserts = 50;
+        for ($i = 0; $i < $quantidadel_inserts; $i++) {
+            $this->call([
+                ClienteSeeder::class,
+                CupomSeeder::class,
+                FuncionarioSeeder::class,
+                VariacaoSeeder::class,
+                ProdutoSeeder::class,
+                EnderecoSeeder::class,
+                PedidoSeeder::class,
+                GrupoVariacaoSeeder::class,
+                PedidoProdutoSeeder::class,
+                PedidoProdutoGrupoVariacaoSeeder::class
+            ]);
+        }
     }
 }
