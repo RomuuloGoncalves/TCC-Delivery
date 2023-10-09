@@ -67,6 +67,10 @@ const routes: Routes = [
     path: 'editar-cupom/:id_cupom',
     loadChildren: () => import('./pages/editar-cupom/editar-cupom.module').then( m => m.EditarCupomPageModule)
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin/home/home.module').then( m => m.HomePageModule)
+  },
 ];
 
 @NgModule({
