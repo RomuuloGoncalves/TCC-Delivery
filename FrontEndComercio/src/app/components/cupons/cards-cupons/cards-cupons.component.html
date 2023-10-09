@@ -1,4 +1,4 @@
-<ion-row [class.desativado]="!this.cupom!.status" class="img-cupom"
+<ion-row [class.desativado]="!status(cupom!.status)" class="img-cupom"
   id="open-modal-{{this.cupom!.nome}}-{{ this.cupom!.data_validade }}">
   <ion-col size="12">
     <ion-row class="ion-justify-content-start">

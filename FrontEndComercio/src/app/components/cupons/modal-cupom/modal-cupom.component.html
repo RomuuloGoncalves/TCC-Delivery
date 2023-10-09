@@ -18,7 +18,7 @@
             <ion-col size="6">
               <ion-row class="ion-justify-content-center ion-align-items-center">
                 <ion-col size="11.9">
-                  <img [class.desativado]="!this.cupom!.status" src="../../../../assets/imgs/cupons/cupom.png"
+                  <img [class.desativado]="!status(cupom!.status)" src="../../../../assets/imgs/cupons/cupom.png"
                   alt="Imagem cupom">
                 </ion-col>
               </ion-row>
@@ -26,7 +26,7 @@
             <ion-col size="6">
               <ion-row class="ion-justify-content-center ion-align-items-center">
 
-                <ng-container *ngIf="this.cupom!.status">
+                <ng-container *ngIf="status(cupom!.status)">
                   <ion-col>
                     <ion-row class="ion-justify-content-center">
                       <ion-icon name="checkmark-circle-outline"></ion-icon>
@@ -37,7 +37,7 @@
                   </ion-col>
                 </ng-container>
 
-                <ng-container *ngIf="!this.cupom!.status">
+                <ng-container *ngIf="!status(cupom!.status)">
                   <ion-col>
                     <ion-row class="ion-justify-content-center">
                       <ion-icon name="close-circle-outline"></ion-icon>
@@ -74,7 +74,7 @@
 
       <ion-row>
         <ion-col size="12">
-          <ng-container *ngIf="this.cupom!.status">
+          <ng-container *ngIf="status(cupom!.status)">
             <ion-row>
               <ion-col size="6">
                 <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]" routerDirection="back" (click)="modal.dismiss()">Editar</ion-button>
@@ -86,7 +86,7 @@
             <ion-button expand="block" size="large" mode="md">Desativar</ion-button>
           </ng-container>
           
-          <ng-container *ngIf="!this.cupom!.status">
+          <ng-container *ngIf="!status(cupom!.status)">
             <ion-row>
               <ion-col size="6">
                 <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]" routerDirection="back" (click)="modal.dismiss()">Editar</ion-button>

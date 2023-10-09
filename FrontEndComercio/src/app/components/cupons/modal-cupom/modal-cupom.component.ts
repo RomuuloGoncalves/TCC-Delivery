@@ -28,4 +28,9 @@ export class ModalCupomComponent  implements OnInit {
       }
     );
   }
+
+  status(cupom:any){
+    const status = Number(cupom) == 1 ? true : false
+    return status
+  }
 }

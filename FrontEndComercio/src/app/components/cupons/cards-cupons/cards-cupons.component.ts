@@ -18,4 +18,8 @@ export class CardsCuponsComponent  implements OnInit {
     return new Date(dateString);
   }
 
+  status(cupom:any){
+    const status = Number(cupom) == 1 ? true : false
+    return status
+  }
 }

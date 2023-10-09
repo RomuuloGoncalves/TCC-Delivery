@@ -41,22 +41,16 @@
 
         <ng-container *ngIf="!this.loading">
           <ng-container *ngIf="this.filtrar['valido']">
-            <ion-col *ngIf="this.cupons !== null">
-              <ion-label>Válidos:</ion-label>
-            </ion-col>
             <ion-col size="11.9" class="grid">
               <ng-container *ngFor="let cupom of this.cupons">
-                <app-cards-cupons *ngIf="cupom.status" [cupom]="cupom"></app-cards-cupons>
+                <app-cards-cupons *ngIf="status(cupom.status)" [cupom]="cupom"></app-cards-cupons>
               </ng-container>
             </ion-col>
           </ng-container>
           <ng-container *ngIf="this.filtrar['invalido']">
-            <ion-col *ngIf="this.cupons !== null">
-              <ion-label>Inválidos:</ion-label>
-            </ion-col>
             <ion-col size="11.9" class="grid">
               <ng-container *ngFor="let cupom of this.cupons">
-                <app-cards-cupons *ngIf="!cupom.status" [cupom]="cupom"></app-cards-cupons>
+                <app-cards-cupons *ngIf="!status(cupom.status)" [cupom]="cupom"></app-cards-cupons>
               </ng-container>
             </ion-col>
           </ng-container>
