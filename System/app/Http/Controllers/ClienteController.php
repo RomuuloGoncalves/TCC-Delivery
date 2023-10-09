@@ -21,7 +21,7 @@ class ClienteController extends Controller
      /**
      * Store
      *
-     * @return void
+     * @return Cliente
      */
     public function store(Request $request)
     {
@@ -52,6 +52,7 @@ class ClienteController extends Controller
      *
      * @return void
      */
+
     public function login(Request $request)
     {
         $regras = [
@@ -73,11 +74,12 @@ class ClienteController extends Controller
     }
 
      /**
-     * list
+     * show
      *
-     * @return void
+     * @return Cliente
      */
-    public function list(int $id)
+
+    public function show(int $id)
     {
         $cliente = Cliente::find($id);
         
@@ -92,6 +94,7 @@ class ClienteController extends Controller
      *
      * @return void
      */
+
     public function responderComToken(string $token)
     {
         return response()->json([

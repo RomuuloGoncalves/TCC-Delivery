@@ -75,14 +75,19 @@ $app->configure('cors');
 |
 */
 
+
 $app->middleware([
     Fruitcake\Cors\HandleCors::class,
-    App\Http\Middleware\ExampleMiddleware::class
+    App\Http\Middleware\ExampleMiddleware::class,
+    Tymon\JWTAuth\Http\Middleware\Authenticate::class,
 ]);
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
 ]);
+
+$app->alias('jwt.auth', Tymon\JWTAuth\JWTAuth::class);
+$app->alias('jwt.factory', Tymon\JWTAuth\Factory::class);
 
 /*
 |--------------------------------------------------------------------------

@@ -10,11 +10,23 @@ class ProdutoController extends Controller {
 
     public function __construct() {}
 
+    /**
+     * index
+     *
+     * @return Produto[]
+     */
+
     public function index() {
         $produto = Produto::all();
 
         return response()->json($produto, 200);
     }
+
+    /**
+     * store
+     *
+     * @return Produto
+     */
 
     public function store(Request $request) {
         $regras = [
@@ -36,6 +48,12 @@ class ProdutoController extends Controller {
 
         return response()->json($cupom, 201);
     }
+
+    /**
+     * update
+     *
+     * @return Produto
+     */
 
     public function update(Request $request) {    
         $regras = [
@@ -64,7 +82,13 @@ class ProdutoController extends Controller {
         return response()->json($produto, 200);
     }
 
-    public function list(int $id) {
+    /**
+     * show
+     *
+     * @return Produto
+     */
+
+    public function show(int $id) {
         $produto = Produto::find($id);
         
         if(!$produto) 
@@ -72,6 +96,12 @@ class ProdutoController extends Controller {
         
         return response()->json($produto, 200);
     }
+
+    /**
+     * destroy
+     *
+     * @return void
+     */
 
     public function destroy(int $id) {
         $produto = Produto::find($id);

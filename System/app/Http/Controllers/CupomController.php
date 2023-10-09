@@ -16,6 +16,12 @@ class CupomController extends Controller {
         return response()->json($cupom, 200);
     }
 
+     /**
+     * Store
+     *
+     * @return void
+     */
+
     public function store(Request $request) {
         $regras = [
             'nome' => ['required', 'string', 'max:255', 'unique:Cupons'],
@@ -43,6 +49,12 @@ class CupomController extends Controller {
         return response()->json($cupom, 201);
     }
 
+     /**
+     * usar
+     *
+     * @return Cupom
+     */
+    
     public function usar(Request $request) {
         $id = $request->input('id');
 
@@ -52,13 +64,19 @@ class CupomController extends Controller {
             return response()->json(['mensage' => 'Cupom Inválido'], 404);
             
         if($cupom->quantidade !== null) {
-            $cupom->quantidade == 0 ? 
-                $cupom->status = 0:
-                $cupom->quantidade = $cupom->quantidade - 1;   
+            $cupom->quantidade === 0
+                ? $cupom->status = 0
+                : $cupom->quantidade = $cupom->quantidade - 1;   
             $cupom->save();
         }
         return response()->json($cupom, 201);
     }
+
+     /**
+     * update
+     *
+     * @return Cupom
+     */
 
     public function update(Request $request) {    
         $regras = [
@@ -92,7 +110,13 @@ class CupomController extends Controller {
         return response()->json($cupom, 200);
     }
 
-    public function list(int $id) {
+     /**
+     * show
+     *
+     * @return Cupom
+     */
+
+    public function show(int $id) {
         $cupom = Cupom::find($id);
         
         if(!$cupom) 
