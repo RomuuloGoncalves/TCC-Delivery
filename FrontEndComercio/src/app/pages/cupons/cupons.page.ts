@@ -38,7 +38,7 @@ export class CuponsPage implements OnInit {
     console.log(option.detail.value)
     console.log(this.cupons)
     if (option.detail.value == 'valor')
-      this.cupons = this.ordenarCupons.sort((a: any, b: any) => a.valor_desconto - b.valor_desconto)
+      this.cupons = this.ordenarCupons.sort((a: any, b: any) => Number(a.porcentagem_desconto) - Number(b.porcentagem_desconto))
     if (option.detail.value == 'nome')
       this.cupons.sort((a, b) => a.nome.localeCompare(String(b.nome)))
     if (option.detail.value == 'quantidade')
@@ -68,4 +68,8 @@ export class CuponsPage implements OnInit {
     });
   }
 
+  status(cupom:any){
+    const status = Number(cupom) == 1 ? true : false
+    return status
+  }
 }
