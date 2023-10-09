@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 class EnderecoController extends Controller {
     public function __construct() {}
 
+     /**
+     * store
+     *
+     * @return Endereco
+     */
+    
     public function store(Request $request) {
         $regras = [
             'nome' => ['required', 'string', 'max:255'],
@@ -37,6 +43,12 @@ class EnderecoController extends Controller {
 
         return response()->json($endereco, 201);
     }
+
+     /**
+     * update
+     *
+     * @return Endereco
+     */
 
     public function update(Request $request) {    
         $regras = [
@@ -68,12 +80,24 @@ class EnderecoController extends Controller {
         return response()->json($endereco, 202);
     }
 
-    public function list(Request $request) {
+    /**
+     * show
+     *
+     * @return Endereco
+     */
+
+    public function show(Request $request) {
         $cod_cliente = $request->input('cod_cliente'); 
         $endereco = Endereco::all()->where('cod_cliente', $cod_cliente);
 
         return response()->json($endereco, 202);
     }
+
+    /**
+     * show
+     *
+     * @return void
+     */
 
     public function destroy(int $id) {
         $endereco = Endereco::find($id);

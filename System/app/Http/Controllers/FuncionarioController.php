@@ -18,6 +18,12 @@ class FuncionarioController extends Controller
         //
     }
 
+    /**
+     * store
+     *
+     * @return Funcionario
+     */
+
     public function store(Request $request)
     {
         $regras = [
@@ -42,6 +48,12 @@ class FuncionarioController extends Controller
         return response()->json($funcionario, 201);
     }
 
+    /**
+     * login
+     *
+     * @return void
+     */
+
     public function login(Request $request)
     {
         $regras = [
@@ -61,6 +73,12 @@ class FuncionarioController extends Controller
 
         return $this->responderComToken($token);
     }
+
+    /**
+     * responderComToken
+     *
+     * @return void
+     */
 
     public function responderComToken(string $token)
     {
