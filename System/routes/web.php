@@ -15,7 +15,10 @@
 $router->group(['prefix' => 'cliente'], function() use($router) {
     $router->post('/cadastrar', 'ClienteController@store');
     $router->post('/login', 'ClienteController@login');
-    $router->get('/{id}', 'ClienteController@show');
+});
+
+$router->group(['prefix' => 'cliente', 'middleware' => 'auth'], function() use($router) {
+    $router->get('/', 'ClienteController@index');
 });
 
 $router->group(['prefix' => 'funcionario'], function() use($router) {
