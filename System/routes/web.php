@@ -17,13 +17,20 @@ $router->group(['prefix' => 'cliente'], function() use($router) {
     $router->post('/login', 'ClienteController@login');
 });
 
-$router->group(['prefix' => 'cliente', 'middleware' => 'auth'], function() use($router) {
-    $router->get('/', 'ClienteController@index');
+$router->group(['middleware' => 'authCliente'], function() use($router) {
+    $router->group(['prefix' => 'cliente'], function() use($router) {
+        $router->get('/', 'ClienteController@index');
+    });
 });
 
 $router->group(['prefix' => 'funcionario'], function() use($router) {
-    $router->post('/cadastrar', 'FuncionarioController@store');
     $router->post('/login', 'FuncionarioController@login');
+});
+
+$router->group(['middleware' => 'authFuncionario'], function() use($router) {
+    $router->group(['prefix' => 'funcionario'], function() use($router) {
+        $router->post('/cadastrar', 'FuncionarioController@store');
+    });
 });
 
 $router->group(['prefix' => 'cupom'], function() use($router) {

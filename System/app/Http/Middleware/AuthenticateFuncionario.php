@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Authenticate
+class AuthenticateFuncionario
 {
     /**
      * The authentication guard factory instance.
@@ -37,8 +37,11 @@ class Authenticate
     {
 
         if (!$user = Auth::user())
-            return response('Não autorizado', 401);
+            return response('Não esta logado', 401);
         
+        if (get_class($user) !== 'App\Models\Funcionario')
+            return response('Não autorizado', 403);
+
         return response()->json($user);
     }  
 }
