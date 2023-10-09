@@ -1,0 +1,49 @@
+<form #form="ngForm" (ngSubmit)="enviarProduto()" method="post">
+  <ion-row>
+    <ion-col size="6">
+      <ion-select ngModel mode="md" name="categoria" (ionChange)="produtoSelecionadoSelect($event)" aria-label="Variacao" label="Selecione o produto"
+        label-placement="floating" fill="outline" placeholder="Selecione o produto">
+        <ng-container *ngFor="let obj of criarFormularoProduto">
+          <ion-select-option value="{{obj.nome}}">{{ obj.nome }}</ion-select-option>
+        </ng-container>
+      </ion-select>
+    </ion-col>
+    <ion-col size="6">
+      <ion-select ngModel mode="md" name="sub_categoria" (ionChange)="grupoVariacaoSelecionada($event)" aria-label="Variacao"label="Selecione a variação"
+      label-placement="floating" fill="outline" placeholder="Selecione a variação">
+        <ng-container *ngFor="let obj of criarFormularoProduto">
+          <div *ngIf="this.produtoSelecionado == obj.nome">
+            <ion-select-option *ngFor="let variacao of obj.grupo_variacoes" value="{{variacao.tipo}}">{{
+              variacao.tipo }}</ion-select-option>
+          </div>
+        </ng-container>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-row>
+      </ion-row>
+      <ion-row>
+        <ion-input ngModel name="nome" mode="md" label="Nome" label-placement="floating" fill="outline" placeholder="Digite o nome"></ion-input>
+      </ion-row>
+      <ion-row>
+        <ion-input ngModel name="desconto" mode="md" type="number" label="Valor do desconto" label-placement="floating" fill="outline"
+          placeholder="Digite o Valor do desconto"></ion-input>
+      </ion-row>
+      <ion-row>
+        <ion-textarea ngModel name="descricao" mode="md" label="Descrição" label-placement="floating" fill="outline"
+          placeholder="Insira uma descrição"></ion-textarea>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size=6>
+      <ion-button size="large" type="submit" [routerLink]="['/produtos']" routerDirection="back" expand="block">Voltar</ion-button>
+    </ion-col>
+    <ion-col size=6>
+      <ion-button size="large" type="submit" expand="block">Novo Produto</ion-button>
+    </ion-col>
+  </ion-row>
+</form>

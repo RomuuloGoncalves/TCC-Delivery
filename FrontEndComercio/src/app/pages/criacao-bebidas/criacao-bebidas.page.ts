@@ -13,7 +13,9 @@ export class CriacaoBebidasPage implements OnInit {
   ngOnInit() {
   }
 
-  produtoSelecionado: string = 'Marmita';
+  metodo:string = 'post'
+
+  produtoSelecionado: string = 'Refrigerante';
   grupoVariacao: string = '';
 
   produtoSelecionadoSelect(e: any) {
@@ -23,100 +25,6 @@ export class CriacaoBebidasPage implements OnInit {
     this.grupoVariacao = e.detail.value;
   }
 
-  criarFormularoProduto: Produto[] = [
-    // Bebidas
-    {
-      nome: 'Refrigerante',
-      grupo_variacoes: [
-        {
-          tipo: 'Coca-cola',
-          variacoes: [
-            {
-              nome: 'Coca cola sem açucar',
-              descricao: 'sem açucar mesmo',
-              valor_desconto: 5,
-              valor_inicial: 10,
-              valor_final: 5,
-              imagem: '../../..',
-            },
-          ],
-        },
-        {
-          tipo: 'Fanta',
-          variacoes: [
-            {
-              nome: 'Fanta Laranja',
-              descricao: 'Tem gosto de laranja mesmo',
-              valor_desconto: 2,
-              valor_inicial: 6,
-              valor_final: 4,
-              imagem: '../../../../../',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      nome: 'Suco',
-      grupo_variacoes: [
-        {
-          tipo: 'Del vale',
-          variacoes: [
-            {
-              nome: 'Laranja',
-              descricao: 'sem açucar mesmo',
-              valor_desconto: 5,
-              valor_inicial: 10,
-              valor_final: 5,
-              imagem: '../../..',
-            },
-          ],
-        },
-        {
-          tipo: 'Suquito',
-          variacoes: [
-            {
-              nome: 'Fanta Laranja',
-              descricao: 'Tem gosto de laranja mesmo',
-              valor_desconto: 2,
-              valor_inicial: 6,
-              valor_final: 4,
-              imagem: '../../../../../',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      nome: 'Cerveja',
-      grupo_variacoes: [
-        {
-          tipo: 'Iscol',
-          variacoes: [
-            {
-              nome: 'Sem alcool',
-              descricao: 'sem açucar mesmo',
-              valor_desconto: 5,
-              valor_inicial: 10,
-              valor_final: 5,
-              imagem: '../../..',
-            },
-          ],
-        },
-        {
-          tipo: 'Rainiquem',
-          variacoes: [
-            {
-              nome: 'Não beba',
-              descricao: 'Tem gosto de laranja mesmo',
-              valor_desconto: 2,
-              valor_inicial: 6,
-              valor_final: 4,
-              imagem: '../../../../../',
-            },
-          ],
-        },
-      ],
-    },
-  ];
+
+
 }

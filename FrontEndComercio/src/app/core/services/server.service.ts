@@ -9,7 +9,10 @@ import { CookieService } from 'ngx-cookie-service';
 export class ServerService {
   constructor(private http: HttpClient, private Cookie: CookieService) {}
 
-  private url: string = 'https://cuddly-funicular-jpv6ggxg59xc5vvg-8000.app.github.dev';
+  //ro
+  // private url: string = 'https://cuddly-funicular-jpv6ggxg59xc5vvg-8000.app.github.dev';
+  // dani
+  private url: string = 'https://opulent-enigma-566x5577w6rh4rg7-8000.app.github.dev';
   // private url: string = 'http://127.0.0.1:8000';
 
   public post(path: string, data: any): Observable<any> {
