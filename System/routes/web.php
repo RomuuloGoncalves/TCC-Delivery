@@ -23,8 +23,12 @@ $router->group(['middleware' => 'authCliente'], function() use($router) {
     });
 });
 
+// -----------------------
+
 $router->group(['prefix' => 'funcionario'], function() use($router) {
     $router->post('/login', 'FuncionarioController@login');
+    $router->post('/cadastrar', 'FuncionarioController@store');
+    $router->get('/', 'FuncionarioController@index');
 });
 
 $router->group(['middleware' => 'authFuncionario'], function() use($router) {

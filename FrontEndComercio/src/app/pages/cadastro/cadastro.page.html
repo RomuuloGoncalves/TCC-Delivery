@@ -8,7 +8,8 @@
       </ion-col>
       <ion-row>
         <ion-col>
-          <form #cadastroForm="ngForm" (ngSubmit)="this.cadastrar()">
+
+          <form #cadastroForm="ngForm" (ngSubmit)="this.cadastrar()" method="post">
             <ion-row class="input-container">
               <ion-input ngModel name="nome" label="Nome" errorText="Nome é obrigatório" type="text"
                 required></ion-input>
@@ -36,9 +37,8 @@
             <ion-row class="input-container">
               <ion-select mode="md" ngModel aria-label="Variacao" name="nivel_acesso"
                 label="Nível de acesso" required placeholder="Nível de acesso">
-                <ion-select-option value="1">1</ion-select-option>
-                <ion-select-option value="2">2</ion-select-option>
-                <ion-select-option value="3">3</ion-select-option>
+                <ion-select-option value="2">Funcionário</ion-select-option>
+                <ion-select-option value="3">Administrador</ion-select-option>
               </ion-select>
               <ion-text class="erro" color="danger">{{ this.erros.telefone }}</ion-text>
             </ion-row>

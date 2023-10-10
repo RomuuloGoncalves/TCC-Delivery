@@ -12,7 +12,7 @@ import { FuncionarioService } from 'src/app/core/services/funcionario.service';
 })
 export class CadastroPage implements OnInit {
 
-  constructor(private Funcionario: FuncionarioService, ) { }
+  constructor(private funcionarioService: FuncionarioService, ) { }
 
   @ViewChild('cadastroForm') private cadastoForm!: NgForm;
 
@@ -23,7 +23,7 @@ export class CadastroPage implements OnInit {
   public cadastrar() {
     const funcionario = this.cadastoForm.form.value;
     console.log(funcionario)
-    this.Funcionario.cadastro(funcionario).subscribe(
+    this.funcionarioService.cadastro(funcionario).subscribe(
       (response: any) => {
         this.erros = {};
         if (response.created_at) {
