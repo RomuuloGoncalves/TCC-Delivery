@@ -18,9 +18,7 @@ return new class extends Migration
             $table->string('tipo');
             $table->integer('quantidade_variacoes');
             $table->unsignedBigInteger('cod_produto');
-            $table->unsignedBigInteger('cod_variacao');
             $table->foreign('cod_produto')->references('id')->on('Produtos');
-            $table->foreign('cod_variacao')->references('id')->on('Variacoes');
             $table->timestamps();
         });
     }
