@@ -17,7 +17,7 @@ class ProdutoController extends Controller {
      */
 
     public function index() {
-        $produto = Produto::all();
+        $produto = Produto::with('categoria')->get();
 
         return response()->json($produto, 200);
     }
@@ -32,7 +32,7 @@ class ProdutoController extends Controller {
         $regras = [
             'nome' => ['required', 'string', 'max:255'],
             'descricao' => ['required', 'string', 'max:500'],
-            'categoria' => ['required', 'string', 'max:255']
+            'cod_categoria' => ['required', 'integer', 'max_digits:30'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -43,7 +43,7 @@ class ProdutoController extends Controller {
         $cupom = Produto::create([
             'nome' => $request->input('nome'),
             'descricao' => $request->input('descricao'),
-            'categoria' => $request->input('categoria'),
+            'cod_categoria' => $request->input('cod_categoria'),
         ]);
 
         return response()->json($cupom, 201);
@@ -55,22 +55,22 @@ class ProdutoController extends Controller {
      * @return Produto
      */
 
-    public function update(Request $request) {    
+    public function update(Request $request) {
         $regras = [
             'id' => ['required', 'integer', 'max_digits:30'],
             'nome' => ['nullable', 'string', 'max:255'],
             'descricao' => ['nullable', 'string', 'min:1', 'max:500'],
-            'categoria' => ['nullable', 'string', 'min:1', 'max:255']
+            'cod_categoria' => ['nullable', 'integer', 'max_digits:30']
         ];
-        
+
         $validacao = Validator::make($request->all(), $regras);
-        
+
         if ($validacao->fails())
             return response()->json($validacao->errors(), 422);
 
         $produto = Produto::find($request->input('id'));
 
-        $atributos = ['nome', 'descricao', 'categoria'];
+        $atributos = ['nome', 'descricao', 'cod_categoria'];
 
         foreach($atributos as $atributo) {
             $request->input($atributo) !== null
@@ -89,11 +89,11 @@ class ProdutoController extends Controller {
      */
 
     public function show(int $id) {
-        $produto = Produto::find($id);
-        
-        if(!$produto) 
+        $produto = Produto::with('categoria')->where('id', $id)->first();
+
+        if(!$produto)
             return response()->json(['mensage' => 'Produto não encontrado'], 404);
-        
+
         return response()->json($produto, 200);
     }
 
@@ -105,10 +105,10 @@ class ProdutoController extends Controller {
 
     public function destroy(int $id) {
         $produto = Produto::find($id);
-        
+
         if(!$produto)
             return response()->json(['message' => 'Produto inválido'], 422);
-        
+
         $produto::find($id)->delete();
         return response()->json(['message' => 'Produto deletado com sucesso'], 204);
     }

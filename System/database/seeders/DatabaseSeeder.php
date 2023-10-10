@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
                 ClienteSeeder::class,
                 CupomSeeder::class,
                 FuncionarioSeeder::class,
+                CategoriaSeeder::class,
                 ProdutoSeeder::class,
                 EnderecoSeeder::class,
                 PedidoSeeder::class,

@@ -12,12 +12,13 @@ class ProdutoSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
+        $categorias = DB::table('Categorias')->pluck('id')->toArray();
 
         for ($i = 1; $i <= 10; $i++) {
             DB::table('Produtos')->insert([
                 'nome' => $faker->word(),
                 'descricao' => $faker->sentence(),
-                'categoria' => $faker->randomElement(['Marmita Pronta', 'Bebida', 'Sobremesa', 'Combos', 'Acompanhamento']),
+                'cod_categoria' => $faker->randomElement($categorias),
             ]);
         }
     }
