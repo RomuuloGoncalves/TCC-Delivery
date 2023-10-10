@@ -45,8 +45,7 @@ class AuthenticateCliente
 
             if (get_class($cliente) !== 'App\Models\Cliente')
                 return response('Não autorizado', 403);
-
-            return response()->json($user);
+            return $next($request);
         } catch (TokenExpiredException $e) {
             return response()->json([
                 'error' => 'Token expirado!',
