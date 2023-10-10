@@ -16,9 +16,9 @@ class Cliente extends Model implements AuthenticatableContract, AuthorizableCont
     use Authenticatable, Authorizable, HasFactory;
 
     protected $fillable = [
-        'nome', 
-        'email', 
-        'telefone', 
+        'nome',
+        'email',
+        'telefone',
         'password'
     ];
 
@@ -38,7 +38,7 @@ class Cliente extends Model implements AuthenticatableContract, AuthorizableCont
 
     public function enderecos(): HasMany
     {
-        return $this->hasMany(Endereco::class);
+        return $this->hasMany(Endereco::class, 'cod_cliente');
     }
 
     public function pedidos(): HasMany

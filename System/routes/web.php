@@ -12,6 +12,7 @@
 |
 */
 
+
 /*
 |--------------------------------------------------------------------------
 | Cliente Routes
@@ -53,12 +54,17 @@ $router->group(['middleware' => 'authFuncionario'], function() use($router) {
 */
 
 $router->group(['prefix' => 'cupom'], function() use($router) {
-    $router->get('/', 'CupomController@index');
-    $router->get('/{id}', 'CupomController@show');
-    $router->delete('/excluir/{id}', 'CupomController@destroy');
-    $router->post('/cadastrar', 'CupomController@store');
-    $router->post('/usar', 'CupomController@usar');
-    $router->put('/editar', 'CupomController@update');
+    $router->group(['middleware' => 'authCliente'], function() use($router) {
+        $router->post('/usar', 'CupomController@usar');
+    });
+
+    $router->group(['middleware' => 'authFuncionario'], function() use($router) {
+        $router->get('/', 'CupomController@index');
+        $router->get('/{id}', 'CupomController@show');
+        $router->delete('/excluir/{id}', 'CupomController@destroy');
+        $router->post('/cadastrar', 'CupomController@store');
+        $router->put('/editar', 'CupomController@update');
+    });
 });
 
 /*
@@ -67,11 +73,13 @@ $router->group(['prefix' => 'cupom'], function() use($router) {
 |--------------------------------------------------------------------------
 */
 
-$router->group(['prefix' => 'endereco'], function() use($router) {
-    $router->post('/cadastrar', 'EnderecoController@store');
-    $router->put('/editar', 'EnderecoController@update');
-    $router->get('/showar', 'EnderecoController@show');
-    $router->delete('/excluir/{id}', 'EnderecoController@destroy');
+$router->group(['middleware' => 'authCliente'], function() use($router) {
+    $router->group(['prefix' => 'cliente/endereco'], function() use($router) {
+        $router->post('/cadastrar', 'EnderecoController@store');
+        $router->put('/editar', 'EnderecoController@update');
+        $router->get('/', 'EnderecoController@index');
+        $router->delete('/excluir/{id}', 'EnderecoController@destroy');
+    });
 });
 
 /*

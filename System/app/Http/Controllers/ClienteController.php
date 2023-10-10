@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -20,6 +21,18 @@ class ClienteController extends Controller
      */
     public function __construct()
     {
+    }
+
+
+    /**
+     * Store
+     *
+     * @return Cliente
+     */
+    static function getAuthCliente()
+    {
+        $token = JWTAuth::getToken();
+        return JWTAuth::parseToken()->authenticate();
     }
 
      /**
@@ -88,7 +101,7 @@ class ClienteController extends Controller
         $cliente = Cliente::find($id);
 
         if(!$cliente)
-            return response()->json(['mensage' => 'Cliente não encontrado'], 404);
+            return response()->json(['message' => 'Cliente não encontrado'], 404);
 
         return response()->json($cliente, 201);
     }
@@ -114,21 +127,20 @@ class ClienteController extends Controller
      */
     public function index() {
         try {
-            $token = JWTAuth::getToken();
-            $cliente = JWTAuth::parseToken()->authenticate();
+            $cliente = $this->getAuthCliente();
 
             return response()->json($cliente);
         } catch (TokenExpiredException $e) {
             return response()->json([
-                'error' => 'Token expirado!',
+                'message' => 'Token expirado!',
             ], 401);
         } catch (TokenInvalidException $e) {
             return response()->json([
-                'error' => 'Token inválido!',
+                'message' => 'Token inválido!',
             ], 401);
         } catch (JWTException $e) {
             return response()->json([
-                'error' => 'Não foi possivel processar o token!',
+                'message' => 'Não foi possivel processar o token!',
             ], 500);
         }
     }

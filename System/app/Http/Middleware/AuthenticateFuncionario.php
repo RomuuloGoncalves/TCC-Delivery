@@ -46,7 +46,7 @@ class AuthenticateFuncionario
             if (get_class($user) !== 'App\Models\Funcionario')
                 return response('Não autorizado', 403);
 
-            return response()->json($user);
+            return $next($request);
         } catch (TokenExpiredException $e) {
             return response()->json([
                 'error' => 'Token expirado!',
