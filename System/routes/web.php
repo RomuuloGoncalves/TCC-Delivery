@@ -12,18 +12,27 @@
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| Cliente Routes
+|--------------------------------------------------------------------------
+*/
+
+
 $router->group(['prefix' => 'cliente'], function() use($router) {
     $router->post('/cadastrar', 'ClienteController@store');
     $router->post('/login', 'ClienteController@login');
-});
 
-$router->group(['middleware' => 'authCliente'], function() use($router) {
-    $router->group(['prefix' => 'cliente'], function() use($router) {
+    $router->group(['middleware' => 'authCliente'], function() use($router) {
         $router->get('/', 'ClienteController@index');
     });
 });
 
-// -----------------------
+/*
+|--------------------------------------------------------------------------
+| Funcionario Routes
+|--------------------------------------------------------------------------
+*/
 
 $router->group(['prefix' => 'funcionario'], function() use($router) {
     $router->post('/login', 'FuncionarioController@login');
@@ -37,6 +46,12 @@ $router->group(['middleware' => 'authFuncionario'], function() use($router) {
     });
 });
 
+/*
+|--------------------------------------------------------------------------
+| Cupom Routes
+|--------------------------------------------------------------------------
+*/
+
 $router->group(['prefix' => 'cupom'], function() use($router) {
     $router->get('/', 'CupomController@index');
     $router->get('/{id}', 'CupomController@show');
@@ -46,6 +61,12 @@ $router->group(['prefix' => 'cupom'], function() use($router) {
     $router->put('/editar', 'CupomController@update');
 });
 
+/*
+|--------------------------------------------------------------------------
+| Endereco Routes
+|--------------------------------------------------------------------------
+*/
+
 $router->group(['prefix' => 'endereco'], function() use($router) {
     $router->post('/cadastrar', 'EnderecoController@store');
     $router->put('/editar', 'EnderecoController@update');
@@ -53,10 +74,22 @@ $router->group(['prefix' => 'endereco'], function() use($router) {
     $router->delete('/excluir/{id}', 'EnderecoController@destroy');
 });
 
+/*
+|--------------------------------------------------------------------------
+| Pedido Routes
+|--------------------------------------------------------------------------
+*/
+
 $router->group(['prefix' => 'pedido'], function() use($router) {
     $router->get('/', 'PedidoController@index');
     $router->get('/{id}', 'PedidoController@show');
 });
+
+/*
+|--------------------------------------------------------------------------
+| Produto Routes
+|--------------------------------------------------------------------------
+*/
 
 $router->group(['prefix' => 'produto'], function() use($router) {
     $router->get('/', 'ProdutoController@index');
@@ -65,6 +98,12 @@ $router->group(['prefix' => 'produto'], function() use($router) {
     $router->put('/editar', 'ProdutoController@update');
 });
 
+/*
+|--------------------------------------------------------------------------
+| Variacao Routes
+|--------------------------------------------------------------------------
+*/
+
 $router->group(['prefix' => 'variacao'], function() use($router) {
     $router->get('/', 'VariacaoController@index');
     $router->delete('/excluir/{id}', 'VariacaoController@destroy');
@@ -72,7 +111,13 @@ $router->group(['prefix' => 'variacao'], function() use($router) {
     $router->put('/editar', 'VariacaoController@update');
 });
 
-$router->group(['prefix' => 'grupo_variacao'], function() use($router) {
+/*
+|--------------------------------------------------------------------------
+| Grupo Variacao Routes
+|--------------------------------------------------------------------------
+*/
+
+$router->group(['prefix' => 'grupo-variacao'], function() use($router) {
     $router->get('/', 'GrupoVariacaoController@index');
     $router->get('/{cod_produto}', 'GrupoVariacaoController@show');
     $router->delete('/excluir/{id}', 'GrupoVariacaoController@destroy');
