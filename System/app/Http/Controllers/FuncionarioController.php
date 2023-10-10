@@ -28,22 +28,6 @@ class FuncionarioController extends Controller
      * @return Funcionario
      */
 
-    public function index()
-    {
-        $funcionarios = Funcionario::all();
-
-        if(!$funcionarios)
-            return response()->json(['mensagem' => 'Não há funcionários'], 404);
-        
-        return response()->json($funcionarios, 200);
-    }
-
-    /**
-     * login
-     *
-     * @return void
-     */
-
     public function store(Request $request)
     {
         $regras = [
