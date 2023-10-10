@@ -15,7 +15,7 @@ class PedidoProdutoGrupoVariacao extends Model
     ];
     public function pedido_produto(): BelongsTo
     {
-        return $this->belongsTo(PedidoProduto::class);
+        return $this->belongsTo(PedidoProduto::class, 'cod_pedido_produto');
     }
 
     public function grupo_variacao(): HasMany
