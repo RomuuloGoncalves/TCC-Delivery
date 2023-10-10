@@ -8,22 +8,21 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Variacao extends Model
 {
+    protected $table = "Variacoes";
+    
     protected $fillable = [
         'nome',
         'porcentagem_desconto',
         'valor_desconto',
         'valor_inicial',
         'imagem',
-        'descricao'
+        'descricao',
+        'cod_grupo_variacoes'
     ];
 
-    public function variacao(): HasMany
-    {
-        return $this->hasMany(Variacao::class);
-    }
 
     public function grupo_variacao(): BelongsTo
     {
-        return $this->belongsTo(GrupoVariacao::class);
+        return $this->belongsTo(GrupoVariacao::class, 'cod_grupo_variacoes');
     }
 }

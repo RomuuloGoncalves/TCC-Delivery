@@ -60,3 +60,18 @@ $router->group(['prefix' => 'produto'], function() use($router) {
     $router->post('/cadastrar', 'ProdutoController@store');
     $router->put('/editar', 'ProdutoController@update');
 });
+
+$router->group(['prefix' => 'variacao'], function() use($router) {
+    $router->get('/', 'VariacaoController@index');
+    $router->delete('/excluir/{id}', 'VariacaoController@destroy');
+    $router->post('/cadastrar', 'VariacaoController@store');
+    $router->put('/editar', 'VariacaoController@update');
+});
+
+$router->group(['prefix' => 'grupo_variacao'], function() use($router) {
+    $router->get('/', 'GrupoVariacaoController@index');
+    $router->get('/{cod_produto}', 'GrupoVariacaoController@show');
+    $router->delete('/excluir/{id}', 'GrupoVariacaoController@destroy');
+    $router->post('/cadastrar', 'GrupoVariacaoController@store');
+    $router->put('/editar', 'GrupoVariacaoController@update');
+});
