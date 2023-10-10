@@ -13,6 +13,8 @@ class VariacaoSeeder extends Seeder
     {
         $faker = Factory::create();
 
+        $grupo_variacoes = DB::table('Grupo_variacoes')->pluck('id')->toArray();
+        
         for ($i = 1; $i <= 10; $i++) {
             DB::table('Variacoes')->insert([
                 'nome' => $faker->word(),
@@ -21,6 +23,7 @@ class VariacaoSeeder extends Seeder
                 'valor_inicial' => $faker->randomFloat(2, 1, 100000),
                 'imagem' => $faker->imageUrl(640, 480,),
                 'descricao' => $faker->sentence(),
+                'cod_grupo_variacoes' => $faker->randomElement($grupo_variacoes),
             ]);
         }
     }

@@ -20,11 +20,11 @@ class DatabaseSeeder extends Seeder
                 ClienteSeeder::class,
                 CupomSeeder::class,
                 FuncionarioSeeder::class,
-                VariacaoSeeder::class,
                 ProdutoSeeder::class,
                 EnderecoSeeder::class,
                 PedidoSeeder::class,
                 GrupoVariacaoSeeder::class,
+                VariacaoSeeder::class,
                 PedidoProdutoSeeder::class,
                 PedidoProdutoGrupoVariacaoSeeder::class
             ]);

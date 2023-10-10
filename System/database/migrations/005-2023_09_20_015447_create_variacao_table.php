@@ -19,8 +19,10 @@ return new class extends Migration
             $table->unsignedDecimal('porcentagem_desconto', 5, 2)->nullable();
             $table->unsignedDecimal('valor_desconto', 9, 2)->nullable();
             $table->unsignedDecimal('valor_inicial', 9, 2)->default(0);
-            $table->string('imagem');
+            $table->string('imagem')->nullable();
             $table->string('descricao');
+            $table->unsignedBigInteger('cod_grupo_variacoes');
+            $table->foreign('cod_grupo_variacoes')->references('id')->on('Grupo_variacoes');
             $table->timestamps();
         });
     }
