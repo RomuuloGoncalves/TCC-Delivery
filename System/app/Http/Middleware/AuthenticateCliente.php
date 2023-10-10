@@ -4,6 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthenticateCliente
 {
@@ -35,13 +39,26 @@ class AuthenticateCliente
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        try {
+            $token = JWTAuth::getToken();
+            $cliente = JWTAuth::parseToken()->authenticate();
 
-        if (!$user = Auth::user())
-            return response('Não esta logado', 401);
-        
-        if (get_class($user) !== 'App\Models\Cliente')
-            return response('Não autorizado', 403);
+            if (get_class($cliente) !== 'App\Models\Cliente')
+                return response('Não autorizado', 403);
 
-        return response()->json($user);
-    }  
+            return response()->json($user);
+        } catch (TokenExpiredException $e) {
+            return response()->json([
+                'error' => 'Token expirado!',
+            ], 401);
+        } catch (TokenInvalidException $e) {
+            return response()->json([
+                'error' => 'Token inválido!',
+            ], 401);
+        } catch (JWTException $e) {
+            return response()->json([
+                'error' => 'Não foi possivel processar o token!',
+            ], 500);
+        }
+    }
 }

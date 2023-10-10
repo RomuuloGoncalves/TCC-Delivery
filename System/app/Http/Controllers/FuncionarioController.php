@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Funcionario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class FuncionarioController extends Controller
 {
@@ -86,5 +90,31 @@ class FuncionarioController extends Controller
             'token' => $token,
             'tipo_token' => 'bearer',
         ]);
+    }
+
+    /**
+     * index
+     *
+     * @return Funcionario
+     */
+    public function index() {
+        try {
+            $token = JWTAuth::getToken();
+            $funcionario = JWTAuth::parseToken()->authenticate();
+
+            return response()->json($funcionario);
+        } catch (TokenExpiredException $e) {
+            return response()->json([
+                'error' => 'Token expirado!',
+            ], 401);
+        } catch (TokenInvalidException $e) {
+            return response()->json([
+                'error' => 'Token inválido!',
+            ], 401);
+        } catch (JWTException $e) {
+            return response()->json([
+                'error' => 'Não foi possivel processar o token!',
+            ], 500);
+        }
     }
 }
