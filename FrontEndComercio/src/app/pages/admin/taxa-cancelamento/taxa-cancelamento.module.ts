@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { TaxaCancelamentoPageRoutingModule } from './taxa-cancelamento-routing.module';
 
-import { HomePage } from './home.page';
+import { TaxaCancelamentoPage } from './taxa-cancelamento.page';
 import { HeaderAdminModule } from 'src/app/components/admin/common/header-admin/header-admin.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { HeaderAdminModule } from 'src/app/components/admin/common/header-admin/
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
+    TaxaCancelamentoPageRoutingModule,
     HeaderAdminModule
   ],
-  declarations: [HomePage]
+  declarations: [TaxaCancelamentoPage]
 })
-export class HomePageModule {}
+export class TaxaCancelamentoPageModule {}

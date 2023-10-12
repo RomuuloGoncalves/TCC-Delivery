@@ -71,6 +71,22 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./pages/admin/home/home.module').then( m => m.HomePageModule)
   },
+  {
+    path: 'formas-pagamento',
+    loadChildren: () => import('./pages/admin/formas-pagamento/formas-pagamento.module').then( m => m.FormasPagamentoPageModule)
+  },
+  {
+    path: 'taxa-cancelamento',
+    loadChildren: () => import('./pages/admin/taxa-cancelamento/taxa-cancelamento.module').then( m => m.TaxaCancelamentoPageModule)
+  },
+  {
+    path: 'financeiro',
+    loadChildren: () => import('./pages/admin/financeiro/financeiro.module').then( m => m.FinanceiroPageModule)
+  },
+  {
+    path: 'informacoes-vendas',
+    loadChildren: () => import('./pages/admin/informacoes-vendas/informacoes-vendas.module').then( m => m.InformacoesVendasPageModule)
+  },
 ];
 
 @NgModule({
