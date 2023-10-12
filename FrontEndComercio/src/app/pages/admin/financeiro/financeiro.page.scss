@@ -1,7 +1,7 @@
 .card {
   border-left: 5px solid #4bb43f;
   border-radius: 5px;
-  height: 100px;
+  min-height: 100px;
   box-shadow: 2px 2px 20px rgba(140, 139, 139, 0.681);
   ion-row {
     height: 100%;
@@ -25,7 +25,7 @@
   border-left: 5px solid #cf1d1d;
 }
 
-.algo {
+.bruto {
     border-left: 5px solid #321dcf;
   }
 

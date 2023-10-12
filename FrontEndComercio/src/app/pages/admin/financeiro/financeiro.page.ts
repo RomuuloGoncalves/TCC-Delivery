@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
+import { Pedido } from 'src/app/core/interfaces/pedido';
+import { PedidosService } from 'src/app/core/services/pedidos.service';
 Chart.register(...registerables);
 
 @Component({
@@ -9,11 +11,41 @@ Chart.register(...registerables);
 })
 export class FinanceiroPage implements OnInit {
 
-  constructor() { }
+  constructor(private Pedidos: PedidosService) { }
 
   ngOnInit() {
-    this.gerarGrafico()
+    this.recuperarTodosPedidos().then(() => {
+      this.gerarGrafico();
+      this.calculoRendimentoBruto()
+    });  }
+
+  rendimentoBruto: number = 0
+  despesas: number = 0
+  lucro: number = 0
+  pedidos!: Pedido[]
+
+  recuperarTodosPedidos(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this.Pedidos.pegarPedidos().subscribe(
+        (response) => {
+          this.pedidos = response;
+          console.log(this.pedidos);
+          resolve(); // Resolve the promise when the data is retrieved and processed.
+        },
+        (error) => {
+          console.error(error);
+          reject(error); // Reject the promise if an error occurs.
+        }
+      );
+    });
   }
+
+  calculoRendimentoBruto(){
+    this.pedidos.forEach((pedido:any)=>{
+      this.rendimentoBruto += Number(pedido.valor_total)
+    })
+  }
+
 
   gerarGrafico() {
     var myChart = new Chart("financeiro", {
