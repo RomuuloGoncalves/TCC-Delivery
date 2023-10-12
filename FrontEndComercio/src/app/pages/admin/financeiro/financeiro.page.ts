@@ -16,7 +16,7 @@ export class FinanceiroPage implements OnInit {
   }
 
   gerarGrafico() {
-    var myChart = new Chart("myChart", {
+    var myChart = new Chart("financeiro", {
       type: 'line',
       data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],

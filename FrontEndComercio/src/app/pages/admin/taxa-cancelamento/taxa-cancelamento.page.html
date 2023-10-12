@@ -1,8 +1,53 @@
 <ion-content [fullscreen]="true">
   <app-header-admin></app-header-admin>
+  <ion-row class="ion-justify-content-center ion-margin">
+    <ion-col size="11">
+      <ion-row class="ion-justify-content-around">
+        <ion-col size="3.5" class="card todos">
+          <ion-row class="ion-align-items-center">
+            <ion-col size="12">
+              <ion-row>
+                <ion-col size="12" class="titulo">Total de pedidos</ion-col>
+                <ion-col size="12" class="Valor">{{this.pedidos?.length}}</ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+        <ion-col size="3.5" class="card entregues">
+          <ion-row class="ion-align-items-center">
+            <ion-col size="12">
+              <ion-row>
+                <ion-col size="12" class="titulo">Pedidos Entregues</ion-col>
+                <ion-col size="12" class="Valor">{{this.pedidosEntregues?.length}}</ion-col>
+              </ion-row>
+            </ion-col>
+
+          </ion-row>
+        </ion-col>
+
+        <ion-col size="3.5" class="card cancelados">
+          <ion-row class="ion-align-items-center">
+            <ion-col size="12">
+              <ion-row>
+                <ion-col size="12" class="titulo">Pedidos Cancelados</ion-col>
+                <ion-col size="12" class="Valor">{{this.pedidosCancelados?.length}}</ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+
   <ion-row class="ion-justify-content-center">
-    <ion-col size="5">
-      <canvas id="myChart"></canvas>
+    <ion-col size="12" sizeMd="9" class="ion-margin-vertical">
+      <ion-row class="ion-justify-content-center ion-align-items-center">
+        <ion-col size="11" class="grafico ion-padding">
+          <canvas id="taxaCancelamento"></canvas>
+        </ion-col>
+      </ion-row>
     </ion-col>
   </ion-row>
 </ion-content>
