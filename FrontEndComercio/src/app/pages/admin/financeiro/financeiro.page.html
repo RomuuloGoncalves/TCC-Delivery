@@ -1,3 +1,67 @@
 <ion-content [fullscreen]="true">
   <app-header-admin></app-header-admin>
+
+  <ion-row class="ion-justify-content-center ion-margin">
+    <ion-col size="11">
+      <ion-row class="ion-justify-content-around">
+        <ion-col size="3.5" class="card lucro">
+          <ion-row class="ion-align-items-center">
+            <ion-col size="8">
+              <ion-row>
+                <ion-col size="12" class="titulo">Lucro</ion-col>
+                <ion-col size="12" class="Valor">$ 999.99</ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size="4">
+              <ion-row class="ion-align-items-center ion-justify-content-center">
+                <ion-icon name="cash-outline"></ion-icon>
+                <ion-icon name="arrow-up-outline"></ion-icon>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+        <ion-col size="3.5" class="card despesa">
+          <ion-row class="ion-align-items-center">
+            <ion-col size="8">
+              <ion-row>
+                <ion-col size="12" class="titulo">Despesas</ion-col>
+                <ion-col size="12" class="Valor">$ 999.99</ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size="4">
+              <ion-row class="ion-align-items-center ion-justify-content-center">
+                <ion-icon name="cash-outline"></ion-icon>
+                <ion-icon name="arrow-down-outline"></ion-icon>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+        <ion-col size="3.5" class="card algo">
+          <ion-row class="ion-align-items-center">
+            <ion-col size="8">
+              <ion-row>
+                <ion-col size="12" class="titulo">Algo</ion-col>
+                <ion-col size="12" class="Valor">$ 999.99</ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size="4">
+              <ion-row class="ion-align-items-center ion-justify-content-center">
+                <ion-icon name="cash-outline"></ion-icon>
+                <ion-icon name="arrow-down-outline"></ion-icon>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="8">
+      <canvas id="myChart"></canvas>
+    </ion-col>
+  </ion-row>
 </ion-content>
