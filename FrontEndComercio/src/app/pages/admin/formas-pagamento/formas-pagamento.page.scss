@@ -1,0 +1,32 @@
+.card {
+    border-left: 5px solid #4bb43f;
+    border-radius: 5px;
+    height: 100px;
+    box-shadow: 2px 2px 20px rgba(140, 139, 139, 0.681);
+    ion-row {
+      height: 100%;
+    }
+  
+    .titulo {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+  }
+  
+  .entregues {
+    border-left: 5px solid #4bb43f;
+  }
+  
+  .cancelados {
+    border-left: 5px solid #cf1d1d;
+  }
+  
+  .todos {
+    border-left: 5px solid #321dcf;
+  }
+  
+  .grafico {
+    border-radius: 5px;
+    box-shadow: 2px 2px 20px rgba(102, 102, 102, 0.681);
+  }
+  

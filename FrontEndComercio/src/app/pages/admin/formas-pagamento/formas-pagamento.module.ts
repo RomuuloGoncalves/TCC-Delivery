@@ -15,7 +15,7 @@ import { HeaderAdminModule } from 'src/app/components/admin/common/header-admin/
     FormsModule,
     IonicModule,
     FormasPagamentoPageRoutingModule,
-    HeaderAdminModule
+    HeaderAdminModule,
   ],
   declarations: [FormasPagamentoPage]
 })
