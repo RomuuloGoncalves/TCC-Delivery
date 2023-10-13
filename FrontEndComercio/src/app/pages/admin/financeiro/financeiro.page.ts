@@ -17,9 +17,10 @@ export class FinanceiroPage implements OnInit {
     this.recuperarTodosPedidos().then(() => {
       this.gerarGrafico();
       this.calculoRendimentoBruto()
-    });  }
+    });
+  }
 
-  rendimentoBruto: number = 0
+  rendimentoBruto: any = 0
   despesas: number = 0
   lucro: number = 0
   pedidos!: Pedido[]
@@ -40,39 +41,106 @@ export class FinanceiroPage implements OnInit {
     });
   }
 
-  calculoRendimentoBruto(){
-    this.pedidos.forEach((pedido:any)=>{
+  calculoRendimentoBruto() {
+    this.pedidos.forEach((pedido: any) => {
       this.rendimentoBruto += Number(pedido.valor_total)
     })
+
+    this.rendimentoBruto = Number(this.rendimentoBruto).toFixed(2)
   }
 
 
+  calcularRendimentoSemanal() {
+    const rendimentoSemanal: any = {}; // Objeto para armazenar o rendimento por semana
+
+    this.pedidos.forEach((pedido: any) => {
+      const dataPedido = new Date(pedido.data_pedido);
+      const semana = this.getWeekNumber(dataPedido); // Função para obter o número da semana
+      rendimentoSemanal[semana] = (rendimentoSemanal[semana] || 0) + Number(pedido.valor_total);
+    });
+
+    return Object.values(rendimentoSemanal); // Retorna os rendimentos por semana
+  }
+
+  calcularRendimentoSemanalAtual(){
+    const currentDate = new Date();
+    const semanaAtual = this.getWeekNumber(currentDate);
+  
+    let rendimentoSemanaAtual = 0;
+  
+    this.pedidos.forEach((pedido: any) => {
+      const dataPedido = new Date(pedido.data_pedido);
+      const semanaPedido = this.getWeekNumber(dataPedido);
+  
+      if (semanaPedido === semanaAtual) {
+        rendimentoSemanaAtual += Number(pedido.valor_total);
+      }
+    });
+  
+    return rendimentoSemanaAtual;
+  }
+
+  getWeekNumber(date: Date) {
+    const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+    const pastDaysOfYear = (date.valueOf() - firstDayOfYear.valueOf()) / 86400000;
+    return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+  }
+
+
+  borderWidth: number = 3
+
+
   gerarGrafico() {
-    var myChart = new Chart("financeiro", {
+    this.graficoTotal()
+    this.graficoSemanal()
+    
+  }
+
+  graficoSemanal(){
+      const rendimentoSemanaAtual = this.calcularRendimentoSemanalAtual();
+    
+      const myChart = new Chart("financeiroSemanal", {
+        type: 'line',
+        data: {
+          labels: ['Rendimento Bruto Semana Atual'],
+          datasets: [
+            {
+              label: 'Rendimento Bruto Semanal',
+              data: [rendimentoSemanaAtual],
+              backgroundColor: '#321dcf',
+              borderColor: '#321dcf',
+              borderWidth: this.borderWidth
+            }
+          ]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    
+    
+  }
+
+  graficoTotal(){
+    const rendimentoSemanal = this.calcularRendimentoSemanal();
+
+    const myChart = new Chart("financeiroTotal", {
       type: 'line',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-        }]
+        labels: rendimentoSemanal.map((_, index) => `Semana ${index + 1}`),
+        datasets: [
+          {
+            label: 'Rendimento Bruto Semanal',
+            data: rendimentoSemanal,
+            backgroundColor: '#321dcf',
+            borderColor: '#321dcf',
+            borderWidth: this.borderWidth
+          }
+        ]
       },
       options: {
         scales: {
@@ -83,4 +151,5 @@ export class FinanceiroPage implements OnInit {
       }
     });
   }
+
 }
