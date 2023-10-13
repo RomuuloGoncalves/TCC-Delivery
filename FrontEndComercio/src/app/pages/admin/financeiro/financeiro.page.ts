@@ -62,23 +62,25 @@ export class FinanceiroPage implements OnInit {
     return Object.values(rendimentoSemanal); // Retorna os rendimentos por semana
   }
 
-  calcularRendimentoSemanalAtual(){
+  calcularRendimentoDiario(): number[] {
     const currentDate = new Date();
     const semanaAtual = this.getWeekNumber(currentDate);
-  
-    let rendimentoSemanaAtual = 0;
-  
+
+    const rendimentoPorDia: number[] = Array(7).fill(0); // Inicializa um array com 7 posições para cada dia da semana
+
     this.pedidos.forEach((pedido: any) => {
       const dataPedido = new Date(pedido.data_pedido);
       const semanaPedido = this.getWeekNumber(dataPedido);
-  
+
       if (semanaPedido === semanaAtual) {
-        rendimentoSemanaAtual += Number(pedido.valor_total);
+        const diaDaSemana = dataPedido.getDay(); // 0 (Domingo) a 6 (Sábado)
+        rendimentoPorDia[diaDaSemana] += Number(pedido.valor_total);
       }
     });
-  
-    return rendimentoSemanaAtual;
+
+    return rendimentoPorDia;
   }
+
 
   getWeekNumber(date: Date) {
     const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
@@ -93,39 +95,39 @@ export class FinanceiroPage implements OnInit {
   gerarGrafico() {
     this.graficoTotal()
     this.graficoSemanal()
-    
+
   }
 
-  graficoSemanal(){
-      const rendimentoSemanaAtual = this.calcularRendimentoSemanalAtual();
-    
-      const myChart = new Chart("financeiroSemanal", {
-        type: 'line',
-        data: {
-          labels: ['Rendimento Bruto Semana Atual'],
-          datasets: [
-            {
-              label: 'Rendimento Bruto Semanal',
-              data: [rendimentoSemanaAtual],
-              backgroundColor: '#321dcf',
-              borderColor: '#321dcf',
-              borderWidth: this.borderWidth
-            }
-          ]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
-            }
+  graficoSemanal() {
+    const rendimentoPorDia = this.calcularRendimentoDiario();
+    const diasDaSemana = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+
+    const myChart = new Chart("financeiroSemanal", {
+      type: 'line',
+      data: {
+        labels: diasDaSemana,
+        datasets: [
+          {
+            label: 'Rendimento Bruto por Dia (Semana Atual)',
+            data: rendimentoPorDia,
+            backgroundColor: '#321dcf',
+            borderColor: '#321dcf',
+            borderWidth: this.borderWidth
+          }
+        ]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
           }
         }
-      });
-    
-    
+      }
+    });
+
   }
 
-  graficoTotal(){
+  graficoTotal() {
     const rendimentoSemanal = this.calcularRendimentoSemanal();
 
     const myChart = new Chart("financeiroTotal", {
