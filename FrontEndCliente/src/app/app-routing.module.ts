@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LogedInGuard } from './core/auths/loged-in.guard';
 
 const routes: Routes = [
   {
@@ -21,15 +22,18 @@ const routes: Routes = [
   },
   {
     path: 'carrinho',
-    loadChildren: () => import('./pages/carrinho/carrinho.module').then( m => m.CarrinhoPageModule)
+    loadChildren: () => import('./pages/carrinho/carrinho.module').then( m => m.CarrinhoPageModule),
+    canActivate: [LogedInGuard]
   },
   {
     path: 'montagem-marmita',
-    loadChildren: () => import('./pages/montagem-marmita/montagem-marmita.module').then( m => m.MontagemMarmitaPageModule)
+    loadChildren: () => import('./pages/montagem-marmita/montagem-marmita.module').then( m => m.MontagemMarmitaPageModule),
+    canActivate: [LogedInGuard]
   },
   {
     path: 'perfil',
-    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule),
+    canActivate: [LogedInGuard]
   },
   {
     path: 'privacidade',
@@ -45,7 +49,8 @@ const routes: Routes = [
   },
   {
     path: 'listagem/:produto',
-    loadChildren: () => import('./pages/listagem/listagem.module').then( m => m.ListagemPageModule)
+    loadChildren: () => import('./pages/listagem/listagem.module').then( m => m.ListagemPageModule),
+    canActivate: [LogedInGuard]
   },
 
 ];

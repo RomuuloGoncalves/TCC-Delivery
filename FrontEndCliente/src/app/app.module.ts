@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterModule } from './components/common/footer/footer.module';
+import { LogedInGuard } from './core/auths/loged-in.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +19,10 @@ import { FooterModule } from './components/common/footer/footer.module';
     HttpClientModule,
     FooterModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    LogedInGuard
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

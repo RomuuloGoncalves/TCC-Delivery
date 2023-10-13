@@ -24,7 +24,7 @@
         </ion-col>
       </ion-row>
 
-      <ion-row *ngIf="this.login" class="menu__perfil ion-justify-content-center">
+      <ion-row *ngIf="this.logedIn" class="menu__perfil ion-justify-content-center">
         <ion-col size="12">
 
           <ion-row class="ion-align-items-center ion-justify-content-center">
@@ -62,7 +62,7 @@
         </ion-col>
       </ion-row>
 
-      <ion-row *ngIf="!this.login" class="menu__btn-acesso ion-justify-content-center">
+      <ion-row *ngIf="!this.logedIn" class="menu__btn-acesso ion-justify-content-center">
         <ion-col size="6">
           <ion-row class="ion-align-items-center ion-justify-content-center">
             <ion-button class="menu__btn-acesso__entrar" [routerLink]="['/login']" fill="clear">Entrar</ion-button>
@@ -110,7 +110,7 @@
       <ion-col size-sm="4" size-md="3">
         <ion-row class="ion-align-items-center ion-justify-content-end">
           <!-- Botões de login -->
-          <ion-col *ngIf="!this.login" class="header__btn-acesso" size="auto">
+          <ion-col *ngIf="!this.logedIn" class="header__btn-acesso" size="auto">
             <ion-row>
               <ion-button class="header__btn-acesso__entrar" [routerLink]="['/login']" fill="clear">Entrar</ion-button>
               <ion-button class="header__btn-acesso__cadastrar" [routerLink]="['/cadastro']" fill="clear">Cadastrar-se</ion-button>
@@ -119,7 +119,7 @@
           <!-- Menu hamburguer -->
           <ion-menu-button class="header__btn-menu" color="light"></ion-menu-button>
           <!-- Icone Avatar -->
-          <ion-col (click)="presentPopover($event)" *ngIf="this.login" class="header__btn-avatar ativar-popover" size="auto">
+          <ion-col (click)="presentPopover($event)" *ngIf="this.logedIn" class="header__btn-avatar ativar-popover" size="auto">
             <ion-row class="ion-align-items-center">
               <img id="click-trigger" class="ativar-popover ion-justify-content-end" alt="Avatar perfil"
               src="../../../../assets/imgs/header-icons/user.png" />
