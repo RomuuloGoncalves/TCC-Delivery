@@ -1,0 +1,42 @@
+<ion-row class="ion-justify-content-center">
+  <ion-col size="10" sizeMd="9">
+    <table>
+      <thead>
+        <th class="ion-padding">Data</th>
+        <th>Horário</th>
+        <th>Status</th>
+        <th>Quantidade</th>
+      </thead>
+      <tr *ngFor="let pedido of this.pedidos" [routerLink]="['/pedido', pedido.id]" routerDirection="back">
+        <td class="pedido__data">
+          <ion-text class="ion-text-center">
+            <p>
+              {{pedido.data_pedido | date:'dd/MM/yyyy'}}
+            </p>
+          </ion-text>
+        </td>
+        <td class="pedido__horario">
+          <ion-text class="ion-text-center">
+            <p>
+              {{pedido.data_pedido | date:'HH:mm'}}
+            </p>
+          </ion-text>
+        </td>
+        <td class="pedido__status" >
+          <ion-text class="ion-text-center">
+            <p>
+              {{pedido.status}}
+            </p>
+          </ion-text>
+        </td>
+        <td class="pedido__quantidade">
+          <ion-text class="ion-text-center">
+            <p>
+              {{pedido.pedido_produtos.length}}
+            </p>
+          </ion-text>
+        </td>
+      </tr>
+    </table>
+  </ion-col>
+</ion-row>

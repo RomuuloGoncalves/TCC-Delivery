@@ -24,7 +24,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/cupons/cupons.module').then( m => m.CuponsPageModule)
   },
   {
-    path: 'detalhe-pedido/:id_pedido/:cod_cliente',
+    path: 'detalhe-pedido/:id_pedido',
     loadChildren: () => import('./pages/detalhe-pedido/detalhe-pedido.module').then( m => m.DetalhePedidoPageModule)
   },
   {
@@ -56,7 +56,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/criacao-combos/criacao-combos.module').then( m => m.CriacaoCombosPageModule)
   },
   {
-    path: 'pedido/:id_pedido/:cod_cliente',
+    path: 'pedido/:id_pedido',
     loadChildren: () => import('./pages/pedido/pedido.module').then( m => m.PedidoPageModule)
   },
   {
