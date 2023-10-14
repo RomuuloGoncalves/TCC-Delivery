@@ -1,28 +1,22 @@
-.main {
-  min-height: 100vh;
-}
-
-.login_wrapper-redes {
-  max-width: 250px;
-}
-
-.btn-redes {
-  width: 55px;
-  height: 55px;
-  --border-radius: 100%;
-}
-
-.login__link {
-  text-decoration: none;
-}
-
-.login__logo {
-  font-family: 'mrDafoe';
-  color: var(--ion-color-primary);
-  font-size: 4rem;
-}
-
 .login {
+  min-height: 100vh;
+
+  &__wrapper-redes {
+    max-width: 250px;
+
+    .btn-redes {
+      width: 55px;
+      height: 55px;
+      --border-radius: 100%;
+    }
+  }
+
+  &__logo {
+    text-decoration: none;
+    font-family: 'mrDafoe';
+    color: var(--ion-color-primary);
+    font-size: 4rem;
+  }
   &__esqueceu-senha {
     font-size: 0.9em;
     font-weight: bold;
@@ -31,7 +25,7 @@
 
   .input-container {
     min-height: 80px;
-  
+
     .erro {
       font-size: .8em;
     }

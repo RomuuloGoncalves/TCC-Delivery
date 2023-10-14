@@ -8,8 +8,11 @@ use App\Models\PedidoProduto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class PedidoController extends Controller {
-    public function __construct() {}
+class PedidoController extends Controller
+{
+    public function __construct()
+    {
+    }
 
     /**
      * showIdCliente
@@ -17,25 +20,26 @@ class PedidoController extends Controller {
      * @return Pedido
      */
 
-    public function showIdCliente(Request $request) {
-        $cod_cliente = $request->input('cod_cliente'); 
+    public function showIdCliente(Request $request)
+    {
+        $cod_cliente = $request->input('cod_cliente');
         $pedido = Pedido::all()->where('cod_cliente', $cod_cliente);
-    
-        return response()->json($pedido, 202);
+
+        return response()->json($pedido, 200);
     }
 
     /**
      * show
      *
-     * @return Cliente
+     * @return Pedido
      */
 
     public function show(int $id)
     {
-        $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom'])->find($id);    
+        $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom'])->find($id);
         $pedido->pedido_produtos = PedidoProduto::with('produto')->where('cod_pedido', $id)->get();
 
-        return response()->json($pedido, 201);
+        return response()->json($pedido, 200);
     }
 
     /**
@@ -44,8 +48,21 @@ class PedidoController extends Controller {
      * @return Pedido[]
      */
 
-    public function index() {
-        $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom', "Pedido_produtos"])->get();
-        return response()->json($pedido, 201);
+    public function index()
+    {
+        $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom', 'Pedido_produtos'])->whereIn('status', ['Em Espera', 'Em Entrega'])->get();
+        return response()->json($pedido, 200);
+    }
+
+    /**
+     * historico
+     *
+     * @return Pedido[]
+     */
+
+    public function historico()
+    {
+        $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom', 'Pedido_produtos'])->whereIn('status', ['Cancelado', 'Pronto'])->get();
+        return response()->json($pedido, 200);
     }
 }
