@@ -1,4 +1,4 @@
-<form #form="ngForm" (ngSubmit)="enviarProduto()" method="post">
+<form #formBebida="ngForm" (ngSubmit)="enviarBebida()" method="post">
   <ion-row>
     <ion-col size="6">
       <ion-select ngModel mode="md" name="categoria" (ionChange)="produtoSelecionadoSelect($event)" aria-label="Variacao" label="Selecione o produto"
@@ -43,7 +43,7 @@
       <ion-button size="large" type="submit" [routerLink]="['/produtos']" routerDirection="back" expand="block">Voltar</ion-button>
     </ion-col>
     <ion-col size=6>
-      <ion-button size="large" type="submit" expand="block">Novo Produto</ion-button>
+      <ion-button size="large" type="submit" expand="block">{{this.mensagem}}</ion-button>
     </ion-col>
   </ion-row>
 </form>

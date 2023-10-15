@@ -83,6 +83,11 @@ const routes: Routes = [
     path: 'informacoes-vendas',
     loadChildren: () => import('./pages/admin/informacoes-vendas/informacoes-vendas.module').then( m => m.InformacoesVendasPageModule)
   },
+  {
+    path: 'editar-bebida/:id',
+    loadChildren: () => import('./pages/editar-bebida/editar-bebida.module').then( m => m.EditarBebidaPageModule)
+  },
+
 ];
 
 @NgModule({
