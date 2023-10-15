@@ -6,7 +6,7 @@
         <h1>CRIAR BEBIDA</h1>
       </ion-row>
 
-      <app-form-bebida [produtoSelecionado]="this.produtoSelecionado" [metodo]="metodo"></app-form-bebida>
+      <app-form-bebida [produtoSelecionado]="this.produtoSelecionado" [mensagem]="'Criar produto'" (emitirBebida)="criarBebida($event)"></app-form-bebida>
 
     </ion-col>
   </ion-row>

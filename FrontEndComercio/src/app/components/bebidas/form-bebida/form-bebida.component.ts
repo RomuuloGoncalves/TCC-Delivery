@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { NgForm } from '@angular/forms';
 
@@ -10,25 +10,24 @@ import { NgForm } from '@angular/forms';
 export class FormBebidaComponent implements OnInit {
 
   @Input() produtoSelecionado!: string
-  @ViewChild('form') private form!: NgForm;
-  @Input() metodo?: any
+  @Input() mensagem!: string
+  @ViewChild('formBebida') private form!: NgForm;
+  @Output() emitirBebida = new EventEmitter
+
 
   constructor() { }
 
   ngOnInit() { }
 
-  enviarProduto() {
+  enviarBebida() {
     const data = this.form.form.value;
-    console.log(data)
-    this.metodo == 'put' ? this.atualizar() : this.adicionar(data)
+    this.emitirBebida.emit(data)
+    // this.metodo == 'put' ? this.atualizar() : this.adicionar(data)
   }
 
-  atualizar() {
+  // atualizar() {
 
-  }
-
-  adicionar(data: any) {
-  }
+  // }
 
   criarFormularoProduto: Produto[] = [
     // Bebidas

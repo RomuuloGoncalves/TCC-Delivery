@@ -1,0 +1,16 @@
+<ion-content [fullscreen]="true">
+  <app-header></app-header>
+
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="6">
+      <ion-row>
+        <ion-col class="ion-justify-content-center">
+          <h1>EDITAR BEBIDA</h1>
+        </ion-col>
+      </ion-row>
+    
+      <app-form-bebida [mensagem]="'Editar produto'" (emitirBebida)="editarBebida($event)"></app-form-bebida>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
