@@ -26,7 +26,12 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 @font-face {
-    font-family: mrDafoe;
-    src: url(./assets/font/MrDafoe-Regular.ttf);
-  }
-  
+  font-family: mrDafoe;
+  src: url(./assets/font/MrDafoe-Regular.ttf);
+}
+
+.titulo-pagina {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ion-color-primary);
+}

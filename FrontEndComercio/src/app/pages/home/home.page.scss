@@ -1,22 +1,17 @@
 ion-icon {
-    &:hover {
-        cursor: pointer;
-    }
-
-    font-size: 2rem;
-    font-weight: 600;
+  &:hover {
+    cursor: pointer;
+  }
+  font-size: 2rem;
+  font-weight: 600;
 }
 
-ion-label{
-    color: var(--ion-color-primary);
+.opcoes {
+  ion-button {
+    height: 25vh;
     font-size: 2rem;
-}
-.opcoes{
-    ion-button{
-        height: 25vh;
-        font-size: 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

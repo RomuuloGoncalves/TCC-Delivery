@@ -56,13 +56,11 @@ $router->group(['prefix' => 'cupom'], function () use ($router) {
         $router->post('/usar', 'CupomController@usar');
     });
 
-    $router->group(['middleware' => 'authFuncionario'], function () use ($router) {
-        $router->get('/', 'CupomController@index');
-        $router->get('/{id}', 'CupomController@show');
-        $router->delete('/excluir/{id}', 'CupomController@destroy');
-        $router->post('/cadastrar', 'CupomController@store');
-        $router->put('/editar', 'CupomController@update');
-    });
+    $router->get('/', 'CupomController@index');
+    $router->get('/{id}', 'CupomController@show');
+    $router->delete('/excluir/{id}', 'CupomController@destroy');
+    $router->post('/cadastrar', 'CupomController@store');
+    $router->put('/editar', 'CupomController@update');
 });
 
 /*

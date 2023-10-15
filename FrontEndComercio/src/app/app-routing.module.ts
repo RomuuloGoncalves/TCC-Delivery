@@ -24,10 +24,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/cupons/cupons.module').then( m => m.CuponsPageModule)
   },
   {
-    path: 'detalhe-pedido/:id_pedido',
-    loadChildren: () => import('./pages/detalhe-pedido/detalhe-pedido.module').then( m => m.DetalhePedidoPageModule)
-  },
-  {
     path: 'historico',
     loadChildren: () => import('./pages/historico/historico.module').then( m => m.HistoricoPageModule)
   },
