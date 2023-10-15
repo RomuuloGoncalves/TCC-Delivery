@@ -39,26 +39,20 @@ export class LoginPage implements OnInit {
           });
 
           this.loginForm.reset();
-          this.router.navigate(['/']);
-
-          const tipo = 'sucesso';
-          const mensagem =  'Login realizado com sucesso';
-          this.Toast.mostrarToast(tipo, mensagem);
-          
+          this.Toast.mostrarToast('sucesso', 'Login realizado com sucesso');
         }
+
         this.loading = false;
       },
 
       (badReponse: HttpErrorResponse) => {
-        if (badReponse.status === 401) {
-          const tipo = 'erro';
-          const mensagem =  'Credenciais erradas';
-          this.Toast.mostrarToast(tipo, mensagem);
-        }
+        if (badReponse.status === 401) this.Toast.mostrarToast('erro', 'Credenciais erradas');
+
         const error = Object.entries(badReponse.error);
         this.erros = {};
 
-        for (const [chave, valor] of error) this.erros[chave] = valor; 
+        for (const [chave, valor] of error) this.erros[chave] = valor;
+        
         this.loading = false;
       }
     )

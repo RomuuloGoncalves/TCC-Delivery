@@ -9,6 +9,7 @@ import { PedidosPageRoutingModule } from './pedidos-routing.module';
 import { PedidosPage } from './pedidos.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 import { LoadingModule } from 'src/app/components/common/loading/loading.module';
+import { TabelaPedidosModule } from 'src/app/components/common/tabela-pedidos/tabela-pedidos.module';
 
 
 
@@ -19,7 +20,8 @@ import { LoadingModule } from 'src/app/components/common/loading/loading.module'
     IonicModule,
     PedidosPageRoutingModule,
     HeaderModule,
-    LoadingModule
+    LoadingModule,
+    TabelaPedidosModule
   ],
   declarations: [PedidosPage]
 })

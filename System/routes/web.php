@@ -20,11 +20,11 @@
 */
 
 
-$router->group(['prefix' => 'cliente'], function() use($router) {
+$router->group(['prefix' => 'cliente'], function () use ($router) {
     $router->post('/cadastrar', 'ClienteController@store');
     $router->post('/login', 'ClienteController@login');
 
-    $router->group(['middleware' => 'authCliente'], function() use($router) {
+    $router->group(['middleware' => 'authCliente'], function () use ($router) {
         $router->get('/', 'ClienteController@index');
     });
 });
@@ -36,7 +36,7 @@ $router->group(['prefix' => 'cliente'], function() use($router) {
 */
 
 
-$router->group(['prefix' => 'funcionario'], function() use($router) {
+$router->group(['prefix' => 'funcionario'], function () use ($router) {
     $router->post('/login', 'FuncionarioController@login');
     $router->post('/cadastrar', 'FuncionarioController@store');
     $router->get('/', 'FuncionarioController@index');
@@ -51,12 +51,12 @@ $router->group(['prefix' => 'funcionario'], function() use($router) {
 |--------------------------------------------------------------------------
 */
 
-$router->group(['prefix' => 'cupom'], function() use($router) {
-    $router->group(['middleware' => 'authCliente'], function() use($router) {
+$router->group(['prefix' => 'cupom'], function () use ($router) {
+    $router->group(['middleware' => 'authCliente'], function () use ($router) {
         $router->post('/usar', 'CupomController@usar');
     });
 
-    $router->group(['middleware' => 'authFuncionario'], function() use($router) {
+    $router->group(['middleware' => 'authFuncionario'], function () use ($router) {
         $router->get('/', 'CupomController@index');
         $router->get('/{id}', 'CupomController@show');
         $router->delete('/excluir/{id}', 'CupomController@destroy');
@@ -71,8 +71,8 @@ $router->group(['prefix' => 'cupom'], function() use($router) {
 |--------------------------------------------------------------------------
 */
 
-$router->group(['middleware' => 'authCliente'], function() use($router) {
-    $router->group(['prefix' => 'cliente/endereco'], function() use($router) {
+$router->group(['middleware' => 'authCliente'], function () use ($router) {
+    $router->group(['prefix' => 'cliente/endereco'], function () use ($router) {
         $router->post('/cadastrar', 'EnderecoController@store');
         $router->put('/editar', 'EnderecoController@update');
         $router->get('/', 'EnderecoController@index');
@@ -86,8 +86,9 @@ $router->group(['middleware' => 'authCliente'], function() use($router) {
 |--------------------------------------------------------------------------
 */
 
-$router->group(['prefix' => 'pedido'], function() use($router) {
+$router->group(['prefix' => 'pedido'], function () use ($router) {
     $router->get('/', 'PedidoController@index');
+    $router->get('/historico', 'PedidoController@historico');
     $router->get('/{id}', 'PedidoController@show');
 });
 
@@ -97,7 +98,7 @@ $router->group(['prefix' => 'pedido'], function() use($router) {
 |--------------------------------------------------------------------------
 */
 
-$router->group(['prefix' => 'produto'], function() use($router) {
+$router->group(['prefix' => 'produto'], function () use ($router) {
     $router->get('/', 'ProdutoController@index');
     $router->delete('/excluir/{id}', 'ProdutoController@destroy');
     $router->post('/cadastrar', 'ProdutoController@store');
@@ -110,7 +111,7 @@ $router->group(['prefix' => 'produto'], function() use($router) {
 |--------------------------------------------------------------------------
 */
 
-$router->group(['prefix' => 'variacao'], function() use($router) {
+$router->group(['prefix' => 'variacao'], function () use ($router) {
     $router->get('/', 'VariacaoController@index');
     $router->delete('/excluir/{id}', 'VariacaoController@destroy');
     $router->post('/cadastrar', 'VariacaoController@store');
@@ -123,7 +124,7 @@ $router->group(['prefix' => 'variacao'], function() use($router) {
 |--------------------------------------------------------------------------
 */
 
-$router->group(['prefix' => 'grupo-variacao'], function() use($router) {
+$router->group(['prefix' => 'grupo-variacao'], function () use ($router) {
     $router->get('/', 'GrupoVariacaoController@index');
     $router->get('/{cod_produto}', 'GrupoVariacaoController@show');
     $router->delete('/excluir/{id}', 'GrupoVariacaoController@destroy');

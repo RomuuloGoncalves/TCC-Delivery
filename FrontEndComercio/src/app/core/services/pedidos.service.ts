@@ -10,7 +10,11 @@ export class PedidosService {
   public pegarPedidos () {
     return this.Server.get('/pedido');
   }
-  
+
+  public pegarHistoricoPedidos() {
+    return this.Server.get('/pedido/historico');
+  }
+
   public pegarPedidoID (id_pedido:number) {
     return this.Server.get(`/pedido/${id_pedido}`);
   }

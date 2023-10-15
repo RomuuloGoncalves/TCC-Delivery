@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 
 
@@ -10,16 +10,9 @@ import { MenuController } from '@ionic/angular';
 export class HeaderComponent implements OnInit {
   @ViewChild('popover') popover:any
 
-  ngOnInit() { 
-    this.isOpen = false
-  }
+  ngOnInit() {}
 
-  login: Boolean = true
-
-  // redirection(router: string) {
-  //   window.location.href = `./${router}`
-  // }
-  
+  @Input() logedIn: Boolean = true
   isOpen = false;
 
   presentPopover(e: Event) {

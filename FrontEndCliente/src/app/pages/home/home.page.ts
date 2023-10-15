@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { Variacao } from 'src/app/core/interfaces/variacao';
+import { ClienteService } from 'src/app/core/services/cliente.service';
 
 import Swiper from 'swiper';
 
@@ -14,9 +15,17 @@ export class HomePage implements OnInit {
   swiperRef: ElementRef | undefined;
   swiper?: Swiper;
 
-  constructor() {}
+  constructor(private Cliente: ClienteService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.carregarPagina();
+  }
+
+  private carregarPagina() {
+
+  }
+
+  logedIn = !!this.Cliente.token;
 
   breakpoints = {
     975: {

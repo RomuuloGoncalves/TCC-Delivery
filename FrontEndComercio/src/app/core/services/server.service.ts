@@ -9,10 +9,6 @@ import { CookieService } from 'ngx-cookie-service';
 export class ServerService {
   constructor(private http: HttpClient, private Cookie: CookieService) {}
 
-  //ro
-  // private url: string = 'https://cuddly-funicular-jpv6ggxg59xc5vvg-8000.app.github.dev';
-  // dani
-  // private url: string = 'https://opulent-enigma-566x5577w6rh4rg7-8000.app.github.dev';
   private url: string = 'http://127.0.0.1:8000';
 
   public post(path: string, data: any): Observable<any> {
@@ -32,11 +28,11 @@ export class ServerService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-  
+
     if (token !== '') {
       headers.set('Authorization', `Bearer ${token}`);
     }
-  
+
     return this.http.get(`${this.url}${path}`, { headers });
   }
 
@@ -64,5 +60,5 @@ export class ServerService {
 
     return this.http.put(`${this.url}${path}`, JSON.stringify(data), { headers });
   }
-  
+
 }

@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <ion-row class="ion-justify-content-center ion-align-items-center main">
+  <ion-row class="ion-justify-content-center ion-align-items-center login">
     <ion-col size="10" sizeMd="8" sizeLg="5">
       <ion-col size="12" sizeMd="4">
         <ion-row class="ion-justify-content-center ion-text-md-ion-justify-content-start">
@@ -8,7 +8,7 @@
       </ion-col>
       <ion-row>
         <ion-col>
-          <form #loginForm="ngForm" class="login" (ngSubmit)="this.login()">
+          <form #loginForm="ngForm" (ngSubmit)="this.login()">
             <ion-row class="input-container">
               <ion-input ngModel required name="email" helperText=" " label="Email" type="email"></ion-input>
               <ion-text class="erro" color="danger">{{ this.erros.email }}</ion-text>
@@ -34,7 +34,7 @@
         </ion-col>
       </ion-row>
       <ion-row class="ion-justify-content-center">
-        <ion-col class="login_wrapper-redes">
+        <ion-col class="login__wrapper-redes">
           <ion-row class="ion-justify-content-between ion-align-items-center">
             <ion-col size="auto">
               <ion-button class="btn-redes" color="tertiary">
