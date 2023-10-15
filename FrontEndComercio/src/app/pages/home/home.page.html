@@ -7,52 +7,16 @@
       </ion-row>
       <ion-row class="opcoes">
         <ion-col size=12 sizeMd="6" sizeLg="3">
-          <ion-button [routerLink]="['/pedidos']"  routerDirection="back" expand="block">
-            <ion-row>
-              <ion-col size="12">
-                <ion-icon name="mail-unread-outline"></ion-icon>
-              </ion-col>
-              <ion-col size="12">
-                Pedidos
-              </ion-col>
-            </ion-row>
-          </ion-button>
+          <app-opcoes titulo="Pedidos" [pagina]="['pedidos']" icone="mail-unread-outline"></app-opcoes>
         </ion-col>
         <ion-col size=12 sizeMd="6" sizeLg="3">
-          <ion-button [routerLink]="['/historico']"  routerDirection="back" expand="block">
-            <ion-row>
-              <ion-col size="12">
-                <ion-icon name="reload-outline"></ion-icon>
-              </ion-col>
-              <ion-col size="12">
-                Histórico
-              </ion-col>
-            </ion-row>
-          </ion-button>
+          <app-opcoes titulo="Histórico" [pagina]="['historico']" icone="reload-outline"></app-opcoes>
         </ion-col>
         <ion-col size=12 sizeMd="6" sizeLg="3">
-          <ion-button [routerLink]="['/produtos']" routerDirection="back" expand="block">
-            <ion-row>
-              <ion-col size="12">
-                <ion-icon name="basket-outline"></ion-icon>
-              </ion-col>
-              <ion-col size="12">
-                produtos
-              </ion-col>
-            </ion-row>
-          </ion-button>
+          <app-opcoes titulo="Produtos" [pagina]="['produtos']" icone="basket-outline"></app-opcoes>
         </ion-col>
         <ion-col size=12 sizeMd="6" sizeLg="3">
-          <ion-button [routerLink]="['/cupons']" routerDirection="back" expand="block">
-            <ion-row>
-              <ion-col size="12">
-                <ion-icon name="documents-outline"></ion-icon>
-              </ion-col>
-              <ion-col size="12">
-                cupons
-              </ion-col>
-            </ion-row>
-          </ion-button>
+          <app-opcoes titulo="Cupons" [pagina]="['cupons']" icone="documents-outline"></app-opcoes>
         </ion-col>
       </ion-row>
     </ion-col>
@@ -63,65 +27,19 @@
       </ion-row>
       <ion-row class="opcoes">
         <ion-col size=12 sizeMd="6" sizeLg="3">
-          <ion-button [routerLink]="['/criacao-comidas']" routerDirection="back" expand="block">
-            <ion-row>
-              <ion-col size="12">
-                <ion-icon name="restaurant-outline"></ion-icon>
-              </ion-col>
-              <ion-col size="12">
-                Comidas
-              </ion-col>
-            </ion-row>
-          </ion-button>
+          <app-opcoes titulo="Comidas" [pagina]="['/criacao-comidas']" icone="restaurant-outline"></app-opcoes>
         </ion-col>
         <ion-col size=12 sizeMd="6" sizeLg="3">
-          <ion-button [routerLink]="['/criacao-bebidas']" routerDirection="back" expand="block">
-            <ion-row>
-              <ion-col size="12">
-                <ion-icon name="beer-outline"></ion-icon>
-              </ion-col>
-              <ion-col size="12">
-                Bebidas
-              </ion-col>
-            </ion-row>
-          </ion-button>
+          <app-opcoes titulo="Bebidas" [pagina]="['/criacao-bebidas']" icone="beer-outline"></app-opcoes>
         </ion-col>
         <ion-col size=12 sizeMd="6" sizeLg="3">
-          <ion-button [routerLink]="['/criacao-combos']" routerDirection="back" expand="block">
-            <ion-row>
-              <ion-col size="12">
-                <ion-icon name="restaurant-outline"></ion-icon>
-                <ion-icon name="beer-outline"></ion-icon>
-              </ion-col>
-              <ion-col size="12">
-                Combos
-              </ion-col>
-            </ion-row>
-          </ion-button>
+          <app-opcoes titulo="Combos" [pagina]="['/criacao-combos']" icone="restaurant-outline"></app-opcoes>
         </ion-col>
         <ion-col size=12 sizeMd="6" sizeLg="3">
-          <ion-button [routerLink]="['/criacao-variacoes']" routerDirection="back" expand="block">
-            <ion-row>
-              <ion-col size="12">
-                <ion-icon name="create-outline"></ion-icon>
-              </ion-col>
-              <ion-col size="12">
-                variação
-              </ion-col>
-            </ion-row>
-          </ion-button>
+          <app-opcoes titulo="variação" [pagina]="['/criacao-variacoes']" icone="create-outline"></app-opcoes>
         </ion-col>
         <ion-col size=12 sizeMd="6" sizeLg="3">
-          <ion-button [routerLink]="['/criacao-cupons']" routerDirection="back" expand="block">
-            <ion-row>
-              <ion-col size="12">
-                <ion-icon name="documents-outline"></ion-icon>
-              </ion-col>
-              <ion-col size="12">
-                cupom
-              </ion-col>
-            </ion-row>
-          </ion-button>
+          <app-opcoes titulo="Cupom" [pagina]="['/criacao-cupons']" icone="documents-outline"></app-opcoes>
         </ion-col>
       </ion-row>
     </ion-col>

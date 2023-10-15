@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
+import { OpcoesComponent } from 'src/app/components/home/opcoes/opcoes.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     HomePageRoutingModule,
     HeaderModule,
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, OpcoesComponent]
 })
 export class HomePageModule {}

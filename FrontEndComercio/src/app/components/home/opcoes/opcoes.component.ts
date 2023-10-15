@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-opcoes',
@@ -8,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class OpcoesComponent  implements OnInit {
 
   constructor() { }
+
+  @Input() titulo!: string;
+  @Input() icone!: string;
+  @Input() pagina!: string[];
+
 
   ngOnInit() {}
 
