@@ -17,6 +17,9 @@ export class CuponsPage implements OnInit {
 
   loading: boolean = true;
 
+  selectedOptionOrdenar: string = 'nome';
+  selectedOptionFiltragem: string = 'todos';
+
   ngOnInit() {
     this.carregarPagina();
   }
@@ -35,15 +38,26 @@ export class CuponsPage implements OnInit {
     );
   }
 
-  filtrarCupons(event: any) {
-    const value: string = event.detail.value;
-    if (value === 'valor')
-      this.cuponsFiltrados = this.cupons.sort((a: Cupom, b: Cupom) => Number(a.porcentagem_desconto) - Number(b.porcentagem_desconto))
-    else if (value === 'nome')
-      this.cuponsFiltrados = this.cupons.sort((a: Cupom, b: Cupom) => a.nome.localeCompare(String(b.nome)))
-    else if (value === 'quantidade')
-      this.cuponsFiltrados = this.cupons.sort((a: Cupom, b: Cupom) => Number(a.quantidade) - Number(b.quantidade))
-    else if (value === 'data')
-      this.cuponsFiltrados =  this.cuponsFiltrados.sort((a: Cupom, b: Cupom) => Number(new Date(a.data_validade)) - Number(new Date(b.data_validade)))
+  ordenarCupons() {
+    this.filtrarCupons();
+
+    if (this.selectedOptionOrdenar === 'valor')
+      this.cuponsFiltrados = this.cuponsFiltrados.sort((a: Cupom, b: Cupom) => Number(a.porcentagem_desconto) - Number(b.porcentagem_desconto));
+    else if (this.selectedOptionOrdenar === 'nome')
+      this.cuponsFiltrados = this.cuponsFiltrados.sort((a: Cupom, b: Cupom) => a.nome.localeCompare(String(b.nome)));
+    else if (this.selectedOptionOrdenar === 'quantidade')
+      this.cuponsFiltrados = this.cuponsFiltrados.sort((a: Cupom, b: Cupom) => Number(a.quantidade) - Number(b.quantidade));
+    else if (this.selectedOptionOrdenar === 'data')
+      this.cuponsFiltrados =  this.cuponsFiltrados.sort((a: Cupom, b: Cupom) => Number(new Date(a.data_validade)) - Number(new Date(b.data_validade)));
+  }
+
+  filtrarCupons() {
+    if (this.selectedOptionFiltragem === 'todos')
+      this.cuponsFiltrados = this.cupons;
+    else if (this.selectedOptionFiltragem === 'valido')
+      this.cuponsFiltrados = this.cupons.filter((cupom: Cupom) => !!Number(cupom.status));
+    else if (this.selectedOptionFiltragem === 'invalido')
+      this.cuponsFiltrados = this.cupons.filter((cupom: Cupom) => !Number(cupom.status));
+    console.log(this.selectedOptionFiltragem);
   }
 }

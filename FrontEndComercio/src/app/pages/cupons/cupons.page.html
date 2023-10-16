@@ -10,7 +10,7 @@
           <ion-row class="ion-justify-between ion-align-items-center">
             <ion-col size="6">
               <ion-item>
-                <ion-select interface="popover" (ionChange)="this.filtrarCupons($event)" mode="ios"
+                <ion-select interface="popover" (ionChange)="this.filtrarCupons()" mode="ios" [(ngModel)]="this.selectedOptionFiltragem"
                   placeholder="Filtrar">
                   <ion-select-option value="todos" Default="true">Todos</ion-select-option>
                   <ion-select-option value="valido">Válidos</ion-select-option>
@@ -20,7 +20,7 @@
             </ion-col>
             <ion-col size="5">
               <ion-item>
-                <ion-select interface="popover" (ionChange)="this.filtrarCupons($event)" mode="ios" placeholder="Ordenar por">
+                <ion-select interface="popover" (ionChange)="this.ordenarCupons()" mode="ios" placeholder="Ordenar por" [(ngModel)]="this.selectedOptionOrdenar">
                   <ion-select-option value="nome" Default="true">Nome</ion-select-option>
                   <ion-select-option value="valor">Valor</ion-select-option>
                   <ion-select-option value="quantidade">Quantidade</ion-select-option>

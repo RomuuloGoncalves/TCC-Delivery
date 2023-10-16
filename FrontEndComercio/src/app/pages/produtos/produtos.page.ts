@@ -82,7 +82,7 @@ export class ProdutosPage implements OnInit {
     this.todosProdutos.forEach((elemento) => {
       if(elemento.imagem == null || elemento.imagem == '')
         elemento.imagem = '../../../assets/imgs/default/cards-produtos.png'
-      
+
       elemento.categoria == 'Marmita Pronta' ? this.marmitas.push(elemento) : 1
       elemento.categoria == 'Combos' ? this.combos.push(elemento) : 1
       elemento.categoria == 'Bebida' ? this.bebidas.push(elemento) : 1
