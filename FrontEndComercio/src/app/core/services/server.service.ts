@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class ServerService {
   constructor(private http: HttpClient, private Cookie: CookieService) {}
 
-  private url: string = 'http://127.0.0.1:8000';
+  private url: string = 'https://cautious-meme-w6w999p5693gpgq-8000.app.github.dev';
 
   public post(path: string, data: any): Observable<any> {
     const token = this.Cookie.get('token');
@@ -17,8 +17,7 @@ export class ServerService {
       'Content-Type': 'application/json'
     });
 
-    if (token !== '')
-      headers.set('Authorization', `Bearer ${token}`);
+    if (!token) headers.set('Authorization', `Bearer ${token}`);
 
     return this.http.post(`${this.url}${path}`, JSON.stringify(data), { headers });
   }
@@ -29,9 +28,7 @@ export class ServerService {
       'Content-Type': 'application/json'
     });
 
-    if (token !== '') {
-      headers.set('Authorization', `Bearer ${token}`);
-    }
+    if (!token) headers.set('Authorization', `Bearer ${token}`);
 
     return this.http.get(`${this.url}${path}`, { headers });
   }
@@ -42,9 +39,8 @@ export class ServerService {
       'Content-Type': 'application/json'
     });
 
-    if (token !== '') {
-      headers.set('Authorization', `Bearer ${token}`);
-    }
+    if (!token) headers.set('Authorization', `Bearer ${token}`);
+
 
     return this.http.delete(`${this.url}${path}`, { headers });
   }
@@ -55,8 +51,7 @@ export class ServerService {
       'Content-Type': 'application/json'
     });
 
-    if (token !== '')
-      headers.set('Authorization', `Bearer ${token}`);
+    if (!token) headers.set('Authorization', `Bearer ${token}`);
 
     return this.http.put(`${this.url}${path}`, JSON.stringify(data), { headers });
   }

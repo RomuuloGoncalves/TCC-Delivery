@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { Cupom } from 'src/app/core/interfaces/cupom';
@@ -12,6 +13,8 @@ export class CuponsPage implements OnInit {
   constructor(private Cupom: CuponsService,) { }
 
   cupons!: Cupom[];
+  cuponsFiltrados!: Cupom[];
+
   loading: boolean = true;
 
   ngOnInit() {
@@ -21,55 +24,26 @@ export class CuponsPage implements OnInit {
   carregarPagina() {
     this.loading = true;
     this.Cupom.pegarCupons().subscribe(
-      (response) => {
+      (response: Cupom[]) => {
         this.cupons = response;
-        this.ordenarCupons = this.cupons
-        console.log(this.cupons);
+        this.cuponsFiltrados = this.cupons;
         this.loading = false;
       },
-      (error) => {
+      (error: HttpErrorResponse) => {
         console.error(error);
       }
     );
   }
 
-  ordenarCupons!: any
-  ordenar(option: any) {
-    console.log(option.detail.value)
-    console.log(this.cupons)
-    if (option.detail.value == 'valor')
-      this.cupons = this.ordenarCupons.sort((a: any, b: any) => Number(a.porcentagem_desconto) - Number(b.porcentagem_desconto))
-    if (option.detail.value == 'nome')
-      this.cupons.sort((a, b) => a.nome.localeCompare(String(b.nome)))
-    if (option.detail.value == 'quantidade')
-      this.cupons = this.cupons.sort((a, b) => Number(a.quantidade) - Number(b.quantidade))
-    if (option.detail.value == 'data')
-      this.cupons = this.ordenarCupons.sort((a: any, b: any) => Number(new Date(a.data_validade)) - Number(new Date(b.data_validade)))
-  }
-
-  filtrar: { [chave: string]: boolean } = {
-    "valido": true,
-    "invalido": true,
-  }
-
-  selectedOptions: string[] = ["valido", "invalido"]
-
-  filtrarCupons(e: any) {
-    console.log(e.detail.value);
-    console.log(this.filtrar[e.detail.value])
-    for (const [chave, valor] of Object.entries(this.filtrar)) {
-      this.filtrar[chave] = false
-    }
-
-    e.detail.value.forEach((chave: any) => {
-      if (this.filtrar.hasOwnProperty(chave)) {
-        this.filtrar[chave] = true; // Definir o valor booleano como true se a chave existir no objeto
-      }
-    });
-  }
-
-  status(cupom:any){
-    const status = Number(cupom) == 1 ? true : false
-    return status
+  filtrarCupons(event: any) {
+    const value: string = event.detail.value;
+    if (value === 'valor')
+      this.cuponsFiltrados = this.cupons.sort((a: Cupom, b: Cupom) => Number(a.porcentagem_desconto) - Number(b.porcentagem_desconto))
+    else if (value === 'nome')
+      this.cuponsFiltrados = this.cupons.sort((a: Cupom, b: Cupom) => a.nome.localeCompare(String(b.nome)))
+    else if (value === 'quantidade')
+      this.cuponsFiltrados = this.cupons.sort((a: Cupom, b: Cupom) => Number(a.quantidade) - Number(b.quantidade))
+    else if (value === 'data')
+      this.cuponsFiltrados =  this.cuponsFiltrados.sort((a: Cupom, b: Cupom) => Number(new Date(a.data_validade)) - Number(new Date(b.data_validade)))
   }
 }

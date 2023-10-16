@@ -10,16 +10,17 @@
           <ion-row class="ion-justify-between ion-align-items-center">
             <ion-col size="6">
               <ion-item>
-                <ion-select interface="popover" (ionChange)="filtrarCupons($event)" [multiple]="true" mode="ios"
-                  placeholder="Filtrar" [(ngModel)]="selectedOptions">
-                  <ion-select-option value="valido" Default="true">Válido</ion-select-option>
+                <ion-select interface="popover" (ionChange)="this.filtrarCupons($event)" mode="ios"
+                  placeholder="Filtrar">
+                  <ion-select-option value="todos" Default="true">Todos</ion-select-option>
+                  <ion-select-option value="valido">Válidos</ion-select-option>
                   <ion-select-option value="invalido">Inválido</ion-select-option>
                 </ion-select>
               </ion-item>
             </ion-col>
             <ion-col size="5">
               <ion-item>
-                <ion-select interface="popover" (ionChange)="ordenar($event)" mode="ios" placeholder="Ordenar por">
+                <ion-select interface="popover" (ionChange)="this.filtrarCupons($event)" mode="ios" placeholder="Ordenar por">
                   <ion-select-option value="nome" Default="true">Nome</ion-select-option>
                   <ion-select-option value="valor">Valor</ion-select-option>
                   <ion-select-option value="quantidade">Quantidade</ion-select-option>
@@ -38,27 +39,15 @@
 
     <ion-col size="11">
       <ion-row class="ion-justify-content-center">
-
         <ng-container *ngIf="!this.loading">
-          <ng-container *ngIf="this.filtrar['valido']">
-            <ion-col size="11.9" class="grid">
-              <ng-container *ngFor="let cupom of this.cupons">
-                <app-cards-cupons *ngIf="status(cupom.status)" [cupom]="cupom"></app-cards-cupons>
+            <ion-col size="12" class="grid">
+              <ng-container *ngFor="let cupom of this.cuponsFiltrados">
+                <app-cards-cupons [cupom]="cupom"></app-cards-cupons>
               </ng-container>
             </ion-col>
-          </ng-container>
-          <ng-container *ngIf="this.filtrar['invalido']">
-            <ion-col size="11.9" class="grid">
-              <ng-container *ngFor="let cupom of this.cupons">
-                <app-cards-cupons *ngIf="!status(cupom.status)" [cupom]="cupom"></app-cards-cupons>
-              </ng-container>
-            </ion-col>
-          </ng-container>
         </ng-container>
-
         <app-loading [loading]="this.loading"></app-loading>
       </ion-row>
     </ion-col>
   </ion-row>
-
 </ion-content>
