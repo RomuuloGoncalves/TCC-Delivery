@@ -14,10 +14,6 @@ export class CardsCuponsComponent  implements OnInit {
 
   ngOnInit() {}
 
-  converterData(dateString: any): Date {
-    return new Date(dateString);
-  }
-
   status(cupom:any){
     const status = Number(cupom) == 1 ? true : false
     return status

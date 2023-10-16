@@ -1,50 +1,35 @@
-.img-cupom {
+.cupom {
+  width: 260px;
+  height: 170px;
   background-image: url("../../../../assets/imgs/cupons/cupom.png");
   background-size: cover;
   background-repeat: no-repeat;
+  transition: .2s ease all;
   cursor: pointer;
-  height: 170px;
-  width: 260px;
 
-  .informacoes {
-    color: #fff;
-    width: 100%;
+  &__infos {
     margin-left: 85px;
   }
 
-  ion-label {
-    font-size: 1.4rem;
-    font-weight: 600;
-  }
-  ion-text {
-    font-size: 0.9rem;
-  }
-}
-
-.desativado {
-  opacity: 0.5;
-}
-
-ion-modal {
-  img {
-    width: 20rem;
+  &__nome {
+    font-weight: bolder;
+    font-size: 1.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  ion-title {
-    font-size: 2rem;
+  &__info {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 3px;
   }
 
-  ion-list {
-    ion-label {
-      font-size: 1.5rem;
-    }
+  &:hover {
+    filter: brightness(1.3);
   }
 
-  ion-icon {
-    font-size: 10rem;
-  }
-
-  ion-label {
-    font-size: 1.5rem;
+  &__desativado {
+    opacity: .6;
   }
 }

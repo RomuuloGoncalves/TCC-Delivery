@@ -1,27 +1,26 @@
-<ion-row [class.desativado]="!status(cupom!.status)" class="img-cupom"
+<ion-row [class.cupom__desativado]="!status(cupom!.status)" class="cupom ion-align-items-center"
   id="open-modal-{{this.cupom!.nome}}-{{ this.cupom!.data_validade }}">
   <ion-col size="12">
-    <ion-row class="ion-justify-content-start">
-      <ion-col size="8" class="">
-        <ion-row class="informacoes">
-          <ion-col size="12">
-            <ion-label>{{ this.cupom!.nome }}</ion-label>
-          </ion-col>
-          <ion-col size="12">
-            <ion-row>
-              <ion-text>Restam: {{ this.cupom!.quantidade}}</ion-text>
-            </ion-row>
-            <ion-row>
-              <ion-text>Validade: {{ converterData(this.cupom!.data_validade) | date: 'dd/MM/yyyy' }}</ion-text>
-            </ion-row>
-            <ion-row>
-              <ion-text>Desconto: {{ this.cupom!.porcentagem_desconto }}%</ion-text>
-            </ion-row>
-          </ion-col>
+    <ion-row class="cupom__infos">
+      <ion-col size="12">
+        <ion-text color="light" >
+          <p class="cupom__nome ion-no-margin">
+            {{ this.cupom!.nome.toUpperCase() }}
+          </p>
+        </ion-text>
+      </ion-col>
+      <ion-col size="12">
+        <ion-row>
+          <ion-text color="light" class="cupom__info">
+            Até: {{ this.cupom!.data_validade | date: 'dd/MM/yyyy' }}
+          </ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-text color="light" class="cupom__info">
+            Desconto: -{{ (this.cupom!.porcentagem_desconto!).toFixed(2).toString().replace('.', ',') }}%
+          </ion-text>
         </ion-row>
       </ion-col>
     </ion-row>
   </ion-col>
 </ion-row>
-
-<app-modal-cupom [cupom]="cupom"></app-modal-cupom>
