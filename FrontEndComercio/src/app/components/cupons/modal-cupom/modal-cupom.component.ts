@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cupom } from 'src/app/core/interfaces/cupom';
 import { CuponsService } from 'src/app/core/services/cupons.service';
 
@@ -13,6 +14,8 @@ export class ModalCupomComponent  implements OnInit {
   @Input() public cupom!: Cupom;
   @Input() public isOpen: boolean = false;
   @Output() public fechar: EventEmitter<any> = new EventEmitter();
+  @Output() public editar: EventEmitter<any> = new EventEmitter();
+
 
   constructor( private Cupom: CuponsService) { }
 
@@ -30,7 +33,7 @@ export class ModalCupomComponent  implements OnInit {
     );
   }
 
-  ehValido (status: any){
+  ehValido(status: any){
     return !!Number(status)
   }
 }

@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Cupom } from 'src/app/core/interfaces/cupom';
 import { CuponsService } from 'src/app/core/services/cupons.service';
 
@@ -10,7 +10,7 @@ import { CuponsService } from 'src/app/core/services/cupons.service';
   styleUrls: ['./cupons.page.scss'],
 })
 export class CuponsPage implements OnInit {
-  constructor(private Cupom: CuponsService,) { }
+  constructor(private Cupom: CuponsService, private router: Router) { }
 
   cupons!: Cupom[];
   cuponsFiltrados!: Cupom[];
@@ -71,5 +71,12 @@ export class CuponsPage implements OnInit {
   fecharModalCupom() {
     this.cupomSelecionado = undefined;
     this.isModalCupomOpen = false;
+  }
+
+  editarCupom() {
+    this.isModalCupomOpen = false;
+    setTimeout(() => {
+      this.router.navigate(['/editar-cupom', this.cupomSelecionado?.id]);
+    }, 100);
   }
 }

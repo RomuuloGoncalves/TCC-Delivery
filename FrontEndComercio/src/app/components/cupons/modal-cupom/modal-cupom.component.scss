@@ -5,11 +5,16 @@
   background-size: cover;
   background-repeat: no-repeat;
   transition: .2s ease all;
-  margin: 36px auto 16px auto;
+  margin: 24px auto 16px auto;
   cursor: pointer;
 
   &__infos {
-    margin-left: 140px;
+    margin-left: 125px;
+
+    ion-icon {
+      font-size: 6rem;
+      color: var(--ion-color-light);
+    }
   }
 
 
@@ -22,6 +27,3 @@ b {
   font-size: 1.1rem;
 }
 
-  ion-icon {
-    font-size: 3rem;
-  }

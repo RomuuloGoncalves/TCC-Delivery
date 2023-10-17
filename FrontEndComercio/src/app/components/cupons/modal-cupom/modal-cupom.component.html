@@ -5,10 +5,11 @@
         <ion-header>
           <ion-toolbar>
             <ion-title>
-              <b>{{this.cupom!.nome.toUpperCase()}}</b>
+              <b>{{ this.cupom!.nome.toUpperCase() }}</b>
             </ion-title>
             <ion-buttons slot="end">
-              <ion-button (click)="this.fechar.emit()"><ion-icon name="close-outline" size="large"></ion-icon></ion-button>
+              <ion-button (click)="this.fechar.emit()"><ion-icon name="close-outline"
+                  size="large"></ion-icon></ion-button>
             </ion-buttons>
           </ion-toolbar>
         </ion-header>
@@ -16,12 +17,25 @@
         <ion-row [class.cupom__desativado]="!ehValido(cupom!.status)" class="cupom ion-align-items-center">
           <ion-col size="12">
             <ion-row class="cupom__infos">
-             <ng-container *ngIf="!ehValido(cupom!.status)"><ion-icon name="close-circle-outline" size="large"></ion-icon></ng-container>
-             <ng-container *ngIf="ehValido(cupom!.status)"><ion-icon name="checkmark-circle-outline" size="large"></ion-icon></ng-container>
+              <ng-container *ngIf="!ehValido(cupom!.status)">
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </ng-container>
+              <ng-container *ngIf="ehValido(cupom!.status)">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </ng-container>
             </ion-row>
           </ion-col>
         </ion-row>
-
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="5">
+            <ng-container *ngIf="ehValido(cupom!.status)">
+              <ion-button fill="outline" expand="block" size="large" mode="md">Desativar</ion-button>
+            </ng-container>
+            <ng-container *ngIf="!ehValido(cupom!.status)">
+              <ion-button fill="outline" expand="block" size="large" mode="md">Reativar</ion-button>
+            </ng-container>
+          </ion-col>
+        </ion-row>
         <ion-row>
           <ion-col size="12">
             <ion-list lines="full">
@@ -32,42 +46,20 @@
                 <ion-label><b>Validade:</b> {{this.cupom!.data_validade | date: 'dd/MM/yyyy'}}</ion-label>
               </ion-item>
               <ion-item>
-                <ion-label><b>Desconto:</b> -{{this.cupom!.porcentagem_desconto!.toFixed(2).toString().replace('.', ',')}}%</ion-label>
+                <ion-label><b>Desconto:</b> -{{this.cupom!.porcentagem_desconto!.toFixed(2).toString().replace('.',
+                  ',')}}%</ion-label>
               </ion-item>
             </ion-list>
           </ion-col>
         </ion-row>
 
-        <ion-row>
-          <ion-col size="12">
-            <ng-container *ngIf="ehValido(cupom!.status)">
-              <ion-row>
-                <ion-col size="6">
-                  <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]"
-                    routerDirection="back" (click)="this.fechar.emit()">Editar</ion-button>
-                </ion-col>
-                <ion-col size="6">
-                  <ion-button expand="block" size="large" mode="md"
-                    (click)="excluirCupom(this.cupom!.id!)">Exluir</ion-button>
-                </ion-col>
-              </ion-row>
-              <ion-button expand="block" size="large" mode="md">Desativar</ion-button>
-            </ng-container>
-
-            <ng-container *ngIf="!ehValido(cupom!.status)">
-              <ion-row>
-                <ion-col size="6">
-                  <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]"
-                    routerDirection="back" (click)="this.fechar.emit()">Editar</ion-button>
-                </ion-col>
-                <ion-col size="6">
-                  <ion-button expand="block" size="large" mode="md"
-                    (click)="excluirCupom(this.cupom!.id!)">Excluir</ion-button>
-                </ion-col>
-              </ion-row>
-
-              <ion-button expand="block" size="large" mode="md">Reativar</ion-button>
-            </ng-container>
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="4">
+            <ion-button expand="block" size="large" mode="md" (click)="this.editar.emit()">Editar</ion-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button fill="outline" expand="block" size="large" mode="md"
+              (click)="excluirCupom(this.cupom!.id!)">Excluir</ion-button>
           </ion-col>
         </ion-row>
       </div>
