@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class ServerService {
   constructor(private http: HttpClient, private Cookie: CookieService) {}
 
-  private url: string = 'http://localhost:8000';
+  private url: string = 'http://127.0.0.1:8000';
 
   public post(path: string, data: any): Observable<any> {
     const token = this.Cookie.get('token');
