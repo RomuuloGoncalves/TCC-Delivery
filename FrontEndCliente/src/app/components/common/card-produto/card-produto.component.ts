@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-import { Variacao } from 'src/app/core/interfaces/variacao';
+import { Produto } from 'src/app/core/interfaces/produto';
 
 @Component({
   selector: 'app-card-produto',
@@ -12,7 +11,7 @@ export class CardProdutoComponent  implements OnInit {
   constructor() { 
   }
 
-  @Input() variacao!: Variacao;
+  @Input() produto!: Produto;
   
   ngOnInit() { }
 

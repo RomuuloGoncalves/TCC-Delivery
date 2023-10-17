@@ -16,7 +16,7 @@ export class SessaoCardsProdutoComponent  implements OnInit {
   ngOnInit() {}  
   
   @Input() tituloSessao?: string;
-  @Input() produto?: Produto;
+  @Input() produto!: Produto[];
   @Input() cardMontagem: boolean = false;
 
   produtoModal?: Produto
@@ -27,13 +27,14 @@ export class SessaoCardsProdutoComponent  implements OnInit {
 
   async abrirModal(produto: any) {
     const modal = await this.modalController.create({
-      component: ModalMarmitaComponent, // Substitua pelo seu modal
+      component: ModalMarmitaComponent,
       componentProps: {
-        produto: produto // Passe os dados como propriedades para o modal
+        produto: produto
       }
     });
 
     return await modal.present()
 
   }
+
 }

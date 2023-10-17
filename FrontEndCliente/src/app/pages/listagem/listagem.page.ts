@@ -1,7 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { Variacao } from 'src/app/core/interfaces/variacao';
+import { ProdutoService } from 'src/app/core/services/produto.service';
 
 @Component({
   selector: 'app-listagem',
@@ -9,17 +11,20 @@ import { Variacao } from 'src/app/core/interfaces/variacao';
   styleUrls: ['./listagem.page.scss'],
 })
 export class ListagemPage implements OnInit {
-  constructor(private route: ActivatedRoute, private Router: Router) {}
+  constructor(private route: ActivatedRoute, private Router: Router, private produtoService: ProdutoService) {}
 
   nomeProduto!: any;
 
   ngOnInit() {
     this.nomeProduto = this.route.snapshot.paramMap.get('produto');
 
-    if (!this.ehStringValida(this.nomeProduto)) this.Router.navigate(['..']);
+    if (!this.eStringValida(this.nomeProduto)) this.Router.navigate(['..']);
 
     this.nomeProduto =
       this.nomeProduto[0].toUpperCase() + this.nomeProduto.slice(1);
+
+    this.carregarProdutos()
+    
   }
 
   filtrar: { [chave: string]: boolean } = {
@@ -32,70 +37,26 @@ export class ListagemPage implements OnInit {
   selectedOptions: string = 'nenhum';
 
   loading: boolean = false;
-  produto: Produto = {
-    id_produto: 1,
-    nome: 'Doces',
-    variacoes: [
-      {
-        id_variacao: 1,
-        nome: 'Pudim',
-        valor_desconto: 15.0,
-        valor_inicial: 19.5,
-        valor_final: 33,
-        descricao: 'Bata muito boa tipo muito muito boa mesmo',
-        imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
-      },
-      {
-        id_variacao: 1,
-        nome: 'Arroz Doce',
-        valor_desconto: 15.0,
-        valor_inicial: 19.5,
-        valor_final: 33,
-        descricao: 'Bata muito boa tipo muito muito boa mesmo',
-        imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
-      },
-      {
-        id_variacao: 1,
-        nome: 'Angu',
-        valor_desconto: 15.0,
-        valor_inicial: 19.5,
-        valor_final: 33,
-        descricao: 'Bata muito boa tipo muito muito boa mesmo',
-        imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
-      },
-      {
-        id_variacao: 1,
-        nome: 'Angu',
-        valor_desconto: 15.0,
-        valor_inicial: 19.5,
-        valor_final: 33,
-        descricao: 'Bata muito boa tipo muito muito boa mesmo',
-        imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
-      },
-      {
-        id_variacao: 1,
-        nome: 'Angu',
-        valor_desconto: 15.0,
-        valor_inicial: 19.5,
-        valor_final: 33,
-        descricao: 'Bata muito boa tipo muito muito boa mesmo',
-        imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
-      },
-      {
-        id_variacao: 1,
-        nome: 'Angu',
-        valor_desconto: 15.0,
-        valor_inicial: 19.5,
-        valor_final: 33,
-        descricao: 'Bata muito boa tipo muito muito boa mesmo',
-        imagem: '../../../assets/imgs/home-icons/garfo_faca_outline.png',
-      },
-    ],
-  };
+  produto!: Produto[]
 
-  produtoFiltrado: Produto = this.produto;
+  produtoFiltrado?: Produto[]
+  // produtoFiltrado: Produto[] = this.produto;
 
-  ehStringValida(str: string) {
+  carregarProdutos() {
+    this.loading = true;
+    this.produtoService.listagem().subscribe(
+      (response: Produto[]) => {
+        this.produto = response;
+        // this.produtoFiltrado = this.produto;
+        this.loading = false;
+      },
+      (error: HttpErrorResponse) => {
+        console.error(error);
+      }
+    );
+  }
+
+  eStringValida(str: string) {
     const regexString: RegExp = /^[A-Za-z]+$/;
     return regexString.test(str);
   }
@@ -112,40 +73,22 @@ export class ListagemPage implements OnInit {
     });
   }
 
+  // filtragem  
   filtrarPesquisa(event: any) {
-    const pesquisa: string = event.detail.value.toLowerCase().trim();
+    // const pesquisa: string = event.detail.value.toLowerCase().trim();
 
-    this.produtoFiltrado = {
-      id_produto: this.produto.id_produto,
-      nome: this.produto.nome,
-      variacoes: [
-        ...this.produto.variacoes!.filter((variacao: Variacao) => {
-          const nomeVariacao: string = variacao.nome.toLowerCase().trim();
-          return (
-            nomeVariacao.startsWith(pesquisa) || nomeVariacao.endsWith(pesquisa)
-          );
-        }),
-      ],
-    };
+    // this.produtoFiltrado = {
+    //   id_produto: this.produto.id_produto,
+    //   nome: this.produto.nome,
+    //   variacoes: [
+    //     ...this.produto.variacoes!.filter((variacao: Variacao) => {
+    //       const nomeVariacao: string = variacao.nome.toLowerCase().trim();
+    //       return (
+    //         nomeVariacao.startsWith(pesquisa) || nomeVariacao.endsWith(pesquisa)
+    //       );
+    //     }),
+    //   ],
+    // };
   }
-
-
-  // produtoModal?: Produto
-  // definirProdutoModal(produto: Produto) {
-  //   this.produtoModal = produto
-  //   this.abrirModal(this.produtoModal)
-  // }
-
-  // async abrirModal(produto: any) {
-  //   const modal = await this.modalController.create({
-  //     component: ModalMarmitaComponent, // Substitua pelo seu modal
-  //     componentProps: {
-  //       produto: produto // Passe os dados como propriedades para o modal
-  //     }
-  //   });
-
-  //   return await modal.present()
-
-  // }
 
 }
