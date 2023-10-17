@@ -42,7 +42,7 @@
         <ng-container *ngIf="!this.loading">
             <ion-col size="12" class="grid">
               <ng-container *ngFor="let cupom of this.cuponsFiltrados">
-                <app-cards-cupons [cupom]="cupom"></app-cards-cupons>
+                <app-cards-cupons [cupom]="cupom" (click)="this.abrirModalCupom(cupom)"></app-cards-cupons>
               </ng-container>
             </ion-col>
         </ng-container>
@@ -51,3 +51,9 @@
     </ion-col>
   </ion-row>
 </ion-content>
+
+<app-modal-cupom
+  [cupom]="this.cupomSelecionado!"
+  [isOpen]="this.isModalCupomOpen"
+  (fechar)="this.fecharModalCupom()"
+></app-modal-cupom>

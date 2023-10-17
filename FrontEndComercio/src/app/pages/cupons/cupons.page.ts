@@ -14,8 +14,10 @@ export class CuponsPage implements OnInit {
 
   cupons!: Cupom[];
   cuponsFiltrados!: Cupom[];
+  cupomSelecionado?: Cupom;
 
   loading: boolean = true;
+  isModalCupomOpen: boolean = false;
 
   selectedOptionOrdenar: string = 'nome';
   selectedOptionFiltragem: string = 'todos';
@@ -59,5 +61,15 @@ export class CuponsPage implements OnInit {
     else if (this.selectedOptionFiltragem === 'invalido')
       this.cuponsFiltrados = this.cupons.filter((cupom: Cupom) => !Number(cupom.status));
     console.log(this.selectedOptionFiltragem);
+  }
+
+  abrirModalCupom(cupom: Cupom) {
+    this.cupomSelecionado = cupom;
+    this.isModalCupomOpen = true;
+  }
+
+  fecharModalCupom() {
+    this.cupomSelecionado = undefined;
+    this.isModalCupomOpen = false;
   }
 }

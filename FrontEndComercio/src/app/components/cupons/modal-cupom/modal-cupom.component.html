@@ -1,5 +1,4 @@
-
-<ion-modal id="example-modal" #modal trigger="open-modal-{{this.cupom!.nome}}-{{ this.cupom!.data_validade }}">
+<ion-modal backdropDismiss="false" [isOpen]="this.isOpen">
   <ng-template>
     <ion-content>
     <div class="wrapper">
@@ -7,7 +6,7 @@
         <ion-toolbar>
           <ion-title>{{this.cupom!.nome}}</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="modal.dismiss()">Fechar</ion-button>
+            <ion-button (click)="this.fechar.emit()">Fechar</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
@@ -17,15 +16,15 @@
           <ion-row class="ion-justify-content-around ion-align-items-center">
             <ion-col size="6">
               <ion-row class="ion-justify-content-center ion-align-items-center">
-                <ion-col size="11.9">
-                  <img [class.desativado]="!status(cupom!.status)" src="../../../../assets/imgs/cupons/cupom.png"
+                <ion-col size="12">
+                  <img [class.desativado]="!ehValido(cupom!.status)" src="../../../../assets/imgs/cupons/cupom.png"
                   alt="Imagem cupom">
                 </ion-col>
               </ion-row>
             </ion-col>
             <ion-col size="6">
               <ion-row class="ion-justify-content-center ion-align-items-center">
-                <ng-container *ngIf="status(cupom!.status)">
+                <ng-container *ngIf="ehValido(cupom!.status)">
                   <ion-col>
                     <ion-row class="ion-justify-content-center">
                       <ion-icon name="checkmark-circle-outline"></ion-icon>
@@ -36,7 +35,7 @@
                   </ion-col>
                 </ng-container>
 
-                <ng-container *ngIf="!status(cupom!.status)">
+                <ng-container *ngIf="!ehValido(cupom!.status)">
                   <ion-col>
                     <ion-row class="ion-justify-content-center">
                       <ion-icon name="close-circle-outline"></ion-icon>
@@ -73,25 +72,25 @@
 
       <ion-row>
         <ion-col size="12">
-          <ng-container *ngIf="status(cupom!.status)">
+          <ng-container *ngIf="ehValido(cupom!.status)">
             <ion-row>
               <ion-col size="6">
-                <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]" routerDirection="back" (click)="modal.dismiss()">Editar</ion-button>
+                <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]" routerDirection="back" (click)="this.fechar.emit()">Editar</ion-button>
               </ion-col>
               <ion-col size="6">
-                <ion-button expand="block" size="large" mode="md" (click)="excluirCupom(this.cupom!.id)">Exluir</ion-button>
+                <ion-button expand="block" size="large" mode="md" (click)="excluirCupom(this.cupom!.id!)">Exluir</ion-button>
               </ion-col>
             </ion-row>
             <ion-button expand="block" size="large" mode="md">Desativar</ion-button>
           </ng-container>
 
-          <ng-container *ngIf="!status(cupom!.status)">
+          <ng-container *ngIf="!ehValido(cupom!.status)">
             <ion-row>
               <ion-col size="6">
-                <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]" routerDirection="back" (click)="modal.dismiss()">Editar</ion-button>
+                <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]" routerDirection="back" (click)="this.fechar.emit()">Editar</ion-button>
               </ion-col>
               <ion-col size="6">
-                <ion-button expand="block" size="large" mode="md" (click)="excluirCupom(this.cupom!.id)">Exluir</ion-button>
+                <ion-button expand="block" size="large" mode="md" (click)="excluirCupom(this.cupom!.id!)">Exluir</ion-button>
               </ion-col>
             </ion-row>
 

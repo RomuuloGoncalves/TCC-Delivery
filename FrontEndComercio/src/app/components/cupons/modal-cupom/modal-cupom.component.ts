@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Cupom } from 'src/app/core/interfaces/cupom';
 import { CuponsService } from 'src/app/core/services/cupons.service';
 
@@ -10,14 +10,15 @@ import { CuponsService } from 'src/app/core/services/cupons.service';
 })
 export class ModalCupomComponent  implements OnInit {
 
-  @Input() public cupom?: Cupom;
+  @Input() public cupom!: Cupom;
+  @Input() public isOpen: boolean = false;
+  @Output() public fechar: EventEmitter<any> = new EventEmitter();
 
   constructor( private Cupom: CuponsService) { }
 
   ngOnInit() {}
 
-  excluirCupom(id_cupom:any){
-    console.log(id_cupom)
+  excluirCupom(id_cupom: number){
     this.Cupom.excluirCupom(id_cupom).subscribe(
       (response) => {
         console.log(response)
@@ -29,8 +30,7 @@ export class ModalCupomComponent  implements OnInit {
     );
   }
 
-  status(cupom:any){
-    const status = Number(cupom) == 1 ? true : false
-    return status
+  ehValido (status: any){
+    return !!Number(status)
   }
 }
