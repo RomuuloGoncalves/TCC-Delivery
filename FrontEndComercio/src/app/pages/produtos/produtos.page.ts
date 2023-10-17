@@ -19,11 +19,11 @@ export class ProdutosPage implements OnInit {
 
   loading: boolean = true
 
-  marmitas:Produto[] = []
-  bebidas:Produto[] = []
-  sobremesas:Produto[] = []
-  acompanhamentos:Produto[] = []
-  combos:Produto[] = []
+  marmitas: Produto[] = []
+  bebidas: Produto[] = []
+  sobremesas: Produto[] = []
+  acompanhamentos: Produto[] = []
+  combos: Produto[] = []
 
   isOpen = false;
 
@@ -49,8 +49,6 @@ export class ProdutosPage implements OnInit {
   selectedOptions: string[] = ["marmita", "bebida", "combo", "acompanhamento", "sobremesa"]
 
   filtrarSelecao(e: any) {
-    console.log(e.detail.value);
-    console.log(this.filtrar[e.detail.value])
     for (const [chave, valor] of Object.entries(this.filtrar)) {
       this.filtrar[chave] = false
     }
@@ -62,13 +60,12 @@ export class ProdutosPage implements OnInit {
     });
   }
 
-  todosProdutos!: Produto[]
+  produtos!: Produto[]
 
   recuperarTodosProdutos() {
     this.Produto.pegarProdutos().subscribe(
       (response) => {
-        this.todosProdutos = response
-        console.log(this.todosProdutos)
+        this.produtos = response
         this.organizarProdutos()
         this.loading = false
       },
@@ -79,8 +76,8 @@ export class ProdutosPage implements OnInit {
   }
 
   organizarProdutos() {
-    this.todosProdutos.forEach((elemento) => {
-      console.log(this.todosProdutos)
+    this.produtos.forEach((elemento) => {
+      console.log(this.produtos)
       if(elemento.imagem == null || elemento.imagem == '')
         elemento.imagem = '../../../assets/imgs/default/cards-produtos.png'
 

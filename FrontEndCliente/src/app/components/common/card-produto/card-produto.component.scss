@@ -1,29 +1,29 @@
 .card {
-    cursor: pointer;
-    height: 180px;
-    
-    &__wrapper-content {
-      gap: 5px;
-    }
-  
-    &__desc {
-      width: 100%;
-      min-height: 65px;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-  
-    &__preco {
-      font-weight: bolder;
-    }
+  cursor: pointer;
+  height: 180px;
+
+  &__wrapper-content {
+    gap: 5px;
   }
-  
-  .text {
+
+  &__desc {
     width: 100%;
+    min-height: 65px;
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  &__preco {
+    font-weight: bolder;
+  }
+}
+
+.text {
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

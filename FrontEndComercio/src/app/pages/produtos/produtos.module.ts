@@ -6,9 +6,9 @@ import { ProdutosPageRoutingModule } from './produtos-routing.module';
 import { ProdutosPage } from './produtos.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 import { AccordionComponent } from 'src/app/components/produtos/accordion/accordion.component';
-import { CardsComponent } from 'src/app/components/produtos/cards/cards.component';
 import { LoadingModule } from 'src/app/components/common/loading/loading.module';
 import { ModalProdutoComponent } from 'src/app/components/produtos/modal-produto/modal-produto.component';
+import { CardProdutoComponent } from 'src/app/components/produtos/card-produto/card-produto.component';
 
 @NgModule({
   imports: [
@@ -18,8 +18,8 @@ import { ModalProdutoComponent } from 'src/app/components/produtos/modal-produto
     ProdutosPageRoutingModule,
     HeaderModule,
     LoadingModule
-    
+
   ],
-  declarations: [ProdutosPage, AccordionComponent, CardsComponent, ModalProdutoComponent]
+  declarations: [ProdutosPage, AccordionComponent, CardProdutoComponent, ModalProdutoComponent]
 })
 export class ProdutosPageModule {}

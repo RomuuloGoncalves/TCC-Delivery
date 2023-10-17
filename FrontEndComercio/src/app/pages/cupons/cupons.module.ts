@@ -8,7 +8,6 @@ import { CuponsPageRoutingModule } from './cupons-routing.module';
 
 import { CuponsPage } from './cupons.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
-import { CardsComponent } from 'src/app/components/produtos/cards/cards.component';
 import { CardsCuponsComponent } from 'src/app/components/cupons/cards-cupons/cards-cupons.component';
 import { ModalCupomComponent } from 'src/app/components/cupons/modal-cupom/modal-cupom.component';
 import { LoadingModule } from 'src/app/components/common/loading/loading.module';

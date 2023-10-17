@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccordionComponent } from './accordion.component';
-import { CardsModule } from '../cards/cards.module';
+import { CardsModule } from '../card-produto/cards-produto.module';
 
 
 
