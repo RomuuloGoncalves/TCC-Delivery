@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Variacao extends Model
 {
     protected $table = "Variacoes";
-    
+
     protected $fillable = [
         'nome',
         'porcentagem_desconto',
@@ -24,5 +24,10 @@ class Variacao extends Model
     public function grupo_variacao(): BelongsTo
     {
         return $this->belongsTo(GrupoVariacao::class, 'cod_grupo_variacoes');
+    }
+
+    public function variacoes_selecionadas(): HasMany
+    {
+        return $this->hasMany(VariacaoSelecionada::class, 'cod_variacao');
     }
 }

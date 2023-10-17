@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
                 GrupoVariacaoSeeder::class,
                 VariacaoSeeder::class,
                 PedidoProdutoSeeder::class,
-                PedidoProdutoGrupoVariacaoSeeder::class
+                PedidoProdutoGrupoVariacaoSeeder::class,
+                VariacaoSelecionadaSeeder::class
             ]);
         }
     }
