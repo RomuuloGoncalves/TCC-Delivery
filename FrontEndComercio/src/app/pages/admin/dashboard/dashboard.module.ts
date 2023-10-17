@@ -8,6 +8,9 @@ import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
 import { HeaderAdminModule } from 'src/app/components/admin/common/header-admin/header-admin.module';
+import { FormasPagamentosComponent } from 'src/app/components/admin/dashboard/graficos/formas-pagamentos/formas-pagamentos.component';
+import { TaxaCancelamentoComponent } from 'src/app/components/admin/dashboard/graficos/taxa-cancelamento/taxa-cancelamento.component';
+import { RendimentoComponent } from 'src/app/components/admin/dashboard/graficos/rendimento/rendimento.component';
 
 @NgModule({
   imports: [
@@ -17,6 +20,11 @@ import { HeaderAdminModule } from 'src/app/components/admin/common/header-admin/
     DashboardPageRoutingModule,
     HeaderAdminModule
   ],
-  declarations: [DashboardPage]
+  declarations: [
+    DashboardPage,
+    FormasPagamentosComponent,
+    TaxaCancelamentoComponent,
+    RendimentoComponent
+  ]
 })
 export class DashboardPageModule {}

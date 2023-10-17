@@ -11,6 +11,10 @@ export class PedidosService {
     return this.Server.get('/pedido');
   }
 
+  public pegarPedidosHistorico () {
+    return this.Server.get('/pedido/historico');
+  }
+
   public pegarHistoricoPedidos() {
     return this.Server.get('/pedido/historico');
   }
