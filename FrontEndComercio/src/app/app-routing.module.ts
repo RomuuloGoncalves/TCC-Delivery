@@ -87,6 +87,10 @@ const routes: Routes = [
     path: 'editar-bebida/:id',
     loadChildren: () => import('./pages/editar-bebida/editar-bebida.module').then( m => m.EditarBebidaPageModule)
   },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./pages/admin/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
 
 ];
 

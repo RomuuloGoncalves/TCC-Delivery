@@ -3,16 +3,17 @@
     <ion-row class="ion-align-items-center ion-justify-content-around">
       <ion-col size="6">
         <ion-row class="card__wrapper-content ion-align-items-center">
-          <ion-card-title class="text">{{ this.variacao.nome }}</ion-card-title>
-          <ion-text class="card__desc">{{ this.variacao.descricao }} </ion-text>
+          <ion-card-title class="text">{{ this.produto.nome }}</ion-card-title>
+          <!-- <ion-text class="card__desc">{{ this.variacao.descricao }} </ion-text> -->
           <ion-text>
-            <p class="card__preco text">R$ {{ this.variacao.valor_final!.toFixed(2).replace('.', ',') }}</p>
+            <p>Ainda temos {{ this.produto.quantidade }} unidades desse produto</p>
+            <p class="card__preco text">R$ {{ this.produto.subtotal!.toFixed(2).replace('.', ',') }}</p>
           </ion-text>
         </ion-row>
       </ion-col>
       <ion-col size="5">
         <ion-row>
-          <img class="img-marmita" src="{{ (this.variacao.imagem) ? this.variacao.imagem : '../../../assets/imgs/home-icons/garfo_faca_outline.png'}}" alt="Imagem de {{ this.variacao.nome }}" />
+          <img class="img-marmita" src="{{ this.variacao.imagem || '../../../assets/imgs/home-icons/garfo_faca_outline.png'}}" alt="Imagem de {{ this.variacao.nome }}" />
         </ion-row>
       </ion-col>
     </ion-row>

@@ -129,3 +129,8 @@ $router->group(['prefix' => 'grupo-variacao'], function () use ($router) {
     $router->post('/cadastrar', 'GrupoVariacaoController@store');
     $router->put('/editar', 'GrupoVariacaoController@update');
 });
+
+$router->group(['prefix' => 'ped-prod-grupo-var'], function () use ($router) {
+    $router->get('/', 'PedidoProdutoGrupoVariacaoController@index');
+    $router->get('/{id}', 'PedidoProdutoGrupoVariacaoController@show');
+});

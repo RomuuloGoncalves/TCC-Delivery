@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PedidoProdutoGrupoVariacao extends Model
 {
+    protected $table = "Pedido_produto_grupo_variacoes";
+
     protected $fillable = [
         'cod_pedido_produto',
         'cod_grupo_variacoes',
@@ -18,8 +20,13 @@ class PedidoProdutoGrupoVariacao extends Model
         return $this->belongsTo(PedidoProduto::class, 'cod_pedido_produto');
     }
 
-    public function grupo_variacao(): HasMany
+    public function grupo_variacoes(): HasMany
     {
         return $this->hasMany(GrupoVariacao::class);
+    }
+
+    public function variacoes_selecionadas(): HasMany
+    {
+        return $this->hasMany(Variacao_selecionadas::class, 'cod_pedido_produto_grupo_variacoes');
     }
 }

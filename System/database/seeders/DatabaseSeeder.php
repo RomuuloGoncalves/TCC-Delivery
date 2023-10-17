@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $quantidadel_inserts = 1;
+        $quantidadel_inserts = 3;
         for ($i = 0; $i < $quantidadel_inserts; $i++) {
             $this->call([
                 ClienteSeeder::class,
@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
                 GrupoVariacaoSeeder::class,
                 VariacaoSeeder::class,
                 PedidoProdutoSeeder::class,
-                PedidoProdutoGrupoVariacaoSeeder::class
+                PedidoProdutoGrupoVariacaoSeeder::class,
+                VariacaoSelecionadaSeeder::class
             ]);
         }
     }
