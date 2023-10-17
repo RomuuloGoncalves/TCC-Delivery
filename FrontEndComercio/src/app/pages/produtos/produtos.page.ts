@@ -80,14 +80,15 @@ export class ProdutosPage implements OnInit {
 
   organizarProdutos() {
     this.todosProdutos.forEach((elemento) => {
+      console.log(this.todosProdutos)
       if(elemento.imagem == null || elemento.imagem == '')
         elemento.imagem = '../../../assets/imgs/default/cards-produtos.png'
 
-      elemento.categoria == 'Marmita Pronta' ? this.marmitas.push(elemento) : 1
-      elemento.categoria == 'Combos' ? this.combos.push(elemento) : 1
-      elemento.categoria == 'Bebida' ? this.bebidas.push(elemento) : 1
-      elemento.categoria == 'Sobremesa' ? this.sobremesas.push(elemento) : 1
-      elemento.categoria == 'Acompanhamento' ? this.acompanhamentos.push(elemento) : 1
+      elemento.categoria!.nome == 'Marmita Pronta' ? this.marmitas.push(elemento) : 1
+      elemento.categoria!.nome == 'Combos' ? this.combos.push(elemento) : 1
+      elemento.categoria!.nome == 'Bebida' ? this.bebidas.push(elemento) : 1
+      elemento.categoria!.nome == 'Sobremesa' ? this.sobremesas.push(elemento) : 1
+      elemento.categoria!.nome == 'Acompanhamento' ? this.acompanhamentos.push(elemento) : 1
     })
   }
 

@@ -1,104 +1,76 @@
 <ion-modal backdropDismiss="false" [isOpen]="this.isOpen">
   <ng-template>
     <ion-content>
-    <div class="wrapper">
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>{{this.cupom!.nome}}</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="this.fechar.emit()">Fechar</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
+      <div class="wrapper">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>
+              <b>{{this.cupom!.nome.toUpperCase()}}</b>
+            </ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="this.fechar.emit()"><ion-icon name="close-outline" size="large"></ion-icon></ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
 
-      <ion-row class="">
-        <ion-col size="12">
-          <ion-row class="ion-justify-content-around ion-align-items-center">
-            <ion-col size="6">
-              <ion-row class="ion-justify-content-center ion-align-items-center">
-                <ion-col size="12">
-                  <img [class.desativado]="!ehValido(cupom!.status)" src="../../../../assets/imgs/cupons/cupom.png"
-                  alt="Imagem cupom">
+        <ion-row [class.cupom__desativado]="!ehValido(cupom!.status)" class="cupom ion-align-items-center">
+          <ion-col size="12">
+            <ion-row class="cupom__infos">
+             <ng-container *ngIf="!ehValido(cupom!.status)"><ion-icon name="close-circle-outline" size="large"></ion-icon></ng-container>
+             <ng-container *ngIf="ehValido(cupom!.status)"><ion-icon name="checkmark-circle-outline" size="large"></ion-icon></ng-container>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-list lines="full">
+              <ion-item>
+                <ion-label><b>Quantia restante:</b> {{this.cupom!.quantidade}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label><b>Validade:</b> {{this.cupom!.data_validade | date: 'dd/MM/yyyy'}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label><b>Desconto:</b> -{{this.cupom!.porcentagem_desconto!.toFixed(2).toString().replace('.', ',')}}%</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <ng-container *ngIf="ehValido(cupom!.status)">
+              <ion-row>
+                <ion-col size="6">
+                  <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]"
+                    routerDirection="back" (click)="this.fechar.emit()">Editar</ion-button>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-button expand="block" size="large" mode="md"
+                    (click)="excluirCupom(this.cupom!.id!)">Exluir</ion-button>
                 </ion-col>
               </ion-row>
-            </ion-col>
-            <ion-col size="6">
-              <ion-row class="ion-justify-content-center ion-align-items-center">
-                <ng-container *ngIf="ehValido(cupom!.status)">
-                  <ion-col>
-                    <ion-row class="ion-justify-content-center">
-                      <ion-icon name="checkmark-circle-outline"></ion-icon>
-                    </ion-row>
-                    <ion-row class="ion-justify-content-center">
-                      <ion-label>Válido</ion-label>
-                    </ion-row>
-                  </ion-col>
-                </ng-container>
+              <ion-button expand="block" size="large" mode="md">Desativar</ion-button>
+            </ng-container>
 
-                <ng-container *ngIf="!ehValido(cupom!.status)">
-                  <ion-col>
-                    <ion-row class="ion-justify-content-center">
-                      <ion-icon name="close-circle-outline"></ion-icon>
-                    </ion-row>
-                    <ion-row class="ion-justify-content-center">
-                      <ion-label>Inválido</ion-label>
-                    </ion-row>
-                  </ion-col>
-                </ng-container>
+            <ng-container *ngIf="!ehValido(cupom!.status)">
+              <ion-row>
+                <ion-col size="6">
+                  <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]"
+                    routerDirection="back" (click)="this.fechar.emit()">Editar</ion-button>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-button expand="block" size="large" mode="md"
+                    (click)="excluirCupom(this.cupom!.id!)">Excluir</ion-button>
+                </ion-col>
               </ion-row>
-            </ion-col>
-          </ion-row>
-          <ion-row>
 
-            <ion-col size="12">
-              <ion-list lines="full">
-                <ion-item>
-                  <ion-label>Nome: {{this.cupom!.nome}}</ion-label>
-                </ion-item>
-                <ion-item>
-                  <ion-label>Quantia restante: {{this.cupom!.quantidade}}</ion-label>
-                </ion-item>
-                <ion-item>
-                  <ion-label>Validade: {{this.cupom!.data_validade}}</ion-label>
-                </ion-item>
-                <ion-item>
-                  <ion-label>Desconto: {{this.cupom!.porcentagem_desconto}}%</ion-label>
-                </ion-item>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col size="12">
-          <ng-container *ngIf="ehValido(cupom!.status)">
-            <ion-row>
-              <ion-col size="6">
-                <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]" routerDirection="back" (click)="this.fechar.emit()">Editar</ion-button>
-              </ion-col>
-              <ion-col size="6">
-                <ion-button expand="block" size="large" mode="md" (click)="excluirCupom(this.cupom!.id!)">Exluir</ion-button>
-              </ion-col>
-            </ion-row>
-            <ion-button expand="block" size="large" mode="md">Desativar</ion-button>
-          </ng-container>
-
-          <ng-container *ngIf="!ehValido(cupom!.status)">
-            <ion-row>
-              <ion-col size="6">
-                <ion-button expand="block" size="large" mode="md" [routerLink]="['/editar-cupom', this.cupom?.id]" routerDirection="back" (click)="this.fechar.emit()">Editar</ion-button>
-              </ion-col>
-              <ion-col size="6">
-                <ion-button expand="block" size="large" mode="md" (click)="excluirCupom(this.cupom!.id!)">Exluir</ion-button>
-              </ion-col>
-            </ion-row>
-
-            <ion-button expand="block" size="large" mode="md">Reativar</ion-button>
-          </ng-container>
-        </ion-col>
-      </ion-row>
-    </div>
-  </ion-content>
+              <ion-button expand="block" size="large" mode="md">Reativar</ion-button>
+            </ng-container>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-content>
   </ng-template>
 </ion-modal>
