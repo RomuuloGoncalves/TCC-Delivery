@@ -10,7 +10,6 @@ export class FuncionarioService {
   constructor(private Server: ServerService) { }
 
   public cadastro(funcionario: Funcionario) {
-    console.log("service: " , funcionario)
     return this.Server.post('/funcionario/cadastrar', funcionario);
   }
 

@@ -12,16 +12,18 @@
         <ion-col>
           <form #loginForm="ngForm" (ngSubmit)="this.login()">
             <ion-row class="input-container">
-              <ion-input ngModel required name="usuario" helperText=" " label="Usuário" type="text"></ion-input>
-              <ion-text class="erro" color="danger">{{ this.erros.usuario }}</ion-text>
+              <ion-input ngModel required name="login" helperText=" " label="Usuário" type="text"></ion-input>
+              <ion-text class="erro" color="danger">{{ this.erros.login }}</ion-text>
             </ion-row>
             <ion-row class="input-container">
-              <ion-input ngModel required name="password" helperText=" " label="Senha" type="password" errorText="Deve ser maior que 8 caracteres" minlength="8" ></ion-input>
+              <ion-input ngModel required name="password" helperText=" " label="Senha" type="password"
+                errorText="Deve ser maior que 8 caracteres" minlength="8"></ion-input>
               <ion-text class="erro" color="danger">{{ this.erros.password }}</ion-text>
             </ion-row>
             <ion-row class="ion-justify-content-center ion-padding">
               <ion-col size="auto">
-                <app-btn-loading btnNome="Entrar" [loading]="this.loading" [disabled]="!this.loginForm.valid"></app-btn-loading>
+                <app-btn-loading (click)="this.login()" btnNome="Entrar" [loading]="this.loading"
+                  [disabled]="!this.loginForm.valid"></app-btn-loading>
               </ion-col>
             </ion-row>
           </form>

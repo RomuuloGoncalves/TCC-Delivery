@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('Funcionarios', function (Blueprint $table) {
             $table->id('id');
             $table->string('nome');
-            $table->string('email')->unique();
+            $table->string('login')->unique();
             $table->string('password');
             $table->enum('nivel_acesso', ['1', '2', '3'])->default('1');
             $table->timestamps();

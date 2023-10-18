@@ -61,7 +61,7 @@ class FuncionarioController extends Controller
     public function login(Request $request)
     {
         $regras = [
-            'email' => ['required', 'string', 'email', 'max:255', 'exists:Funcionarios'],
+            'login' => ['required', 'string', 'max:255', 'exists:Funcionarios'],
             'password' => ['required', 'string', 'max:255', 'min:8'],
         ];
 
@@ -97,7 +97,8 @@ class FuncionarioController extends Controller
      *
      * @return Funcionario
      */
-    public function index() {
+    public function index()
+    {
         try {
             $token = JWTAuth::getToken();
             $funcionario = JWTAuth::parseToken()->authenticate();

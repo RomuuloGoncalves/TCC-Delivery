@@ -17,7 +17,7 @@ class FuncionarioSeeder extends Seeder
         for ($i = 1; $i <= 10; $i++) {
             DB::table('Funcionarios')->insert([
                 'nome' => $faker->name(),
-                'email' => $faker->email(),
+                'login' => $faker->word() . $i,
                 'password' => Hash::make('none'),
                 'nivel_acesso' => $faker->randomElement(['1', '2', '3'])
             ]);

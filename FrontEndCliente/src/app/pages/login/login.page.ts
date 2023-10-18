@@ -14,7 +14,12 @@ import { ClienteService } from 'src/app/core/services/cliente.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private Cliente: ClienteService, private Toast: ToastService, private router: Router, private Cookie: CookieService) { }
+  constructor(
+    private Cliente: ClienteService,
+    private Toast: ToastService,
+    private router: Router,
+    private Cookie: CookieService
+  ) { }
 
   @ViewChild('loginForm') private loginForm!: NgForm;
 
@@ -39,6 +44,7 @@ export class LoginPage implements OnInit {
           });
 
           this.loginForm.reset();
+          this.router.navigate(['/']);
           this.Toast.mostrarToast('sucesso', 'Login realizado com sucesso');
         }
 
@@ -52,7 +58,7 @@ export class LoginPage implements OnInit {
         this.erros = {};
 
         for (const [chave, valor] of error) this.erros[chave] = valor;
-        
+
         this.loading = false;
       }
     )
