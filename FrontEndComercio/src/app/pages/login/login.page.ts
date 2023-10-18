@@ -60,7 +60,6 @@ export class LoginPage implements OnInit {
 
         for (const [chave, valor] of error) this.erros[chave] = valor;
 
-        console.log(this.erros);
         this.loading = false;
       }
     );

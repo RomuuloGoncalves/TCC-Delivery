@@ -15,15 +15,16 @@ class Funcionario extends Model implements AuthenticatableContract, Authorizable
     use Authenticatable, Authorizable, HasFactory;
 
     protected $fillable = [
-        'nome', 
-        'email', 
-        'nivel_acesso'
+        'nome',
+        'login',
+        'nivel_acesso',
+        'password'
     ];
 
     protected $hidden = [
         'password',
     ];
-    
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -33,7 +34,7 @@ class Funcionario extends Model implements AuthenticatableContract, Authorizable
     {
         return [];
     }
-    
+
     public function pedidos(): HasMany
     {
         return $this->hasMany(Pedido::class);

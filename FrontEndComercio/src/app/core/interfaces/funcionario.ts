@@ -1,7 +1,7 @@
 export interface Funcionario{
-    cod_funcinario?: number;
+    id?: number;
     nome: string;
     login: string;
-    senha: string;
+    password: string;
     nivel_acesso: number;
 }

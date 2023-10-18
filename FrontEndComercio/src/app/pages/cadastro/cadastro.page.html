@@ -9,7 +9,7 @@
       <ion-row>
         <ion-col>
 
-          <form #cadastroForm="ngForm" (ngSubmit)="this.cadastrar()" method="post">
+          <form #cadastroForm="ngForm" (ngSubmit)="this.cadastrar()">
             <ion-row class="input-container">
               <ion-input ngModel name="nome" label="Nome" errorText="Nome é obrigatório" type="text"
                 required></ion-input>
@@ -17,7 +17,7 @@
             </ion-row>
 
             <ion-row class="input-container">
-              <ion-input ngModel name="email" errorText="Email é obrigatório" label="Email" type="email"
+              <ion-input ngModel name="login" errorText="Usuário é obrigatório" label="Usuário" type="text"
                 required></ion-input>
               <ion-text class="erro" color="danger">{{ this.erros.email }}</ion-text>
             </ion-row>
@@ -29,14 +29,14 @@
             </ion-row>
 
             <ion-row class="input-container">
-              <ion-input ngModel errorText="Senhas não conferem invalida" name="confirmarPassword"
-                label="Confirmar Senha" type="password" required
+              <ion-input ngModel errorText="Senhas não conferem invalida" label="Confirmar Senha"
+                name="confirmar_password" type="password" required
                 pattern="{{ this.cadastroForm.form.value.password }}"></ion-input>
             </ion-row>
 
             <ion-row class="input-container">
-              <ion-select mode="md" ngModel aria-label="Variacao" name="nivel_acesso"
-                label="Nível de acesso" required placeholder="Nível de acesso">
+              <ion-select mode="md" ngModel aria-label="Variacao" name="nivel_acesso" label="Nível de acesso" required
+                placeholder="Nível de acesso">
                 <ion-select-option value="1">Funcionário básico</ion-select-option>
                 <ion-select-option value="2">Funcionário</ion-select-option>
                 <ion-select-option value="3">Administrador</ion-select-option>

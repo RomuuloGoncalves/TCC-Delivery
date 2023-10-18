@@ -35,7 +35,7 @@ class ClienteController extends Controller
         return JWTAuth::parseToken()->authenticate();
     }
 
-     /**
+    /**
      * Store
      *
      * @return Cliente
@@ -55,7 +55,7 @@ class ClienteController extends Controller
             return response()->json($validacao->errors(), 422);
 
         $cliente = Cliente::create([
-            'nome' => $request->input('nome'),
+            'nome' => ucwords($request->input('nome')),
             'email' => $request->input('email'),
             'password' => password_hash($request->input('password'), PASSWORD_DEFAULT),
             'telefone' => $request->input('telefone'),
@@ -64,7 +64,7 @@ class ClienteController extends Controller
         return response()->json($cliente, 201);
     }
 
-     /**
+    /**
      * Login
      *
      * @return void
@@ -90,7 +90,7 @@ class ClienteController extends Controller
         return $this->responderComToken($token);
     }
 
-     /**
+    /**
      * show
      *
      * @return Cliente
@@ -100,13 +100,13 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($id);
 
-        if(!$cliente)
+        if (!$cliente)
             return response()->json(['message' => 'Cliente não encontrado'], 404);
 
         return response()->json($cliente, 201);
     }
 
-     /**
+    /**
      * responderComToken
      *
      * @return void
@@ -120,12 +120,13 @@ class ClienteController extends Controller
         ]);
     }
 
-     /**
+    /**
      * index
      *
      * @return Cliente
      */
-    public function index() {
+    public function index()
+    {
         try {
             $cliente = $this->getAuthCliente();
 

@@ -32,7 +32,7 @@ class FuncionarioController extends Controller
     {
         $regras = [
             'nome' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:Funcionarios'],
+            'login' => ['required', 'string', 'string', 'max:255', 'unique:Funcionarios'],
             'password' => ['required', 'string', 'max:255', 'min:8'],
             'nivel_acesso' => ['required'],
         ];
@@ -43,8 +43,8 @@ class FuncionarioController extends Controller
             return response()->json($validacao->errors(), 422);
 
         $funcionario = Funcionario::create([
-            'nome' => $request->input('nome'),
-            'email' => $request->input('email'),
+            'nome' => ucwords($request->input('nome')),
+            'login' => $request->input('login'),
             'password' => password_hash($request->input('password'), PASSWORD_DEFAULT),
             'nivel_acesso' => $request->input('nivel_acesso'),
         ]);
