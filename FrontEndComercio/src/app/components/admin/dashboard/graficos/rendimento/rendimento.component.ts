@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { Pedido } from 'src/app/core/interfaces/pedido';
+import { PedProdGrupoVarService } from 'src/app/core/services/ped-prod-grupo-var.service';
 import { PedidosService } from 'src/app/core/services/pedidos.service';
 Chart.register(...registerables);
 
@@ -9,16 +10,18 @@ Chart.register(...registerables);
   templateUrl: './rendimento.component.html',
   styleUrls: ['./rendimento.component.scss'],
 })
-export class RendimentoComponent  implements OnInit {
+export class RendimentoComponent implements OnInit {
 
 
-  constructor(private Pedidos: PedidosService) { }
+  constructor(private Pedidos: PedidosService, private pedProdGrupo: PedProdGrupoVarService) { }
 
   ngOnInit() {
     this.recuperarTodosPedidos().then(() => {
       this.gerarGrafico();
       this.calculoRendimentoBruto()
     });
+
+    this.pedProd()
   }
 
   rendimentoBruto: any = 0
@@ -31,15 +34,26 @@ export class RendimentoComponent  implements OnInit {
       this.Pedidos.pegarPedidos().subscribe(
         (response) => {
           this.pedidos = response;
-          console.log(this.pedidos);
-          resolve(); // Resolve the promise when the data is retrieved and processed.
+          resolve(); 
         },
         (error) => {
           console.error(error);
-          reject(error); // Reject the promise if an error occurs.
+          reject(error); 
         }
       );
     });
+  }
+
+  pedProd() {
+    this.pedProdGrupo.pegarPedProd().subscribe(
+      (response) => {
+        console.log("pedido produto grupo var", response)
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+
   }
 
   calculoRendimentoBruto() {

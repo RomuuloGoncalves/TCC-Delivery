@@ -64,18 +64,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/editar-cupom/editar-cupom.module').then( m => m.EditarCupomPageModule)
   },
   {
-    path: 'admin',
-    loadChildren: () => import('./pages/admin/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'formas-pagamento',
-    loadChildren: () => import('./pages/admin/formas-pagamento/formas-pagamento.module').then( m => m.FormasPagamentoPageModule)
-  },
-  {
-    path: 'taxa-cancelamento',
-    loadChildren: () => import('./pages/admin/taxa-cancelamento/taxa-cancelamento.module').then( m => m.TaxaCancelamentoPageModule)
-  },
-  {
     path: 'financeiro',
     loadChildren: () => import('./pages/admin/financeiro/financeiro.module').then( m => m.FinanceiroPageModule)
   },
