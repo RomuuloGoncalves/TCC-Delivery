@@ -13,8 +13,13 @@ Chart.register(...registerables);
 export class DashboardPage implements OnInit {
   constructor(private Pedidos: PedidosService) { }
 
-
+  intervalo: any = 'semanalmente'
   ngOnInit() {
+  }
+
+  selecionarIntervalo(e: any) {
+    this.intervalo = e.detail.value
+    console.log("Intervalo", this.intervalo)
   }
 
 }

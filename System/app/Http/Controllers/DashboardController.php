@@ -86,70 +86,158 @@ class DashboardController extends Controller
 
     public function rendimento_mensal()
     {
-        $currentDate = Carbon::now();
-        $firstDayOfMonth = $currentDate->copy()->startOfMonth();
-        $lastDayOfMonth = $currentDate->copy()->endOfMonth();
-        $currentWeek = $firstDayOfMonth->copy()->startOfWeek();
+        $startDate = Carbon::now()->startOfMonth();
+        $endDate = Carbon::now()->endOfMonth();
+
+        $pedidos = Pedido::whereBetween('created_at', [$startDate, $endDate])->get();
 
         $rendimentoPorSemana = [];
+        $rendimentoTotalMesAtual = 0;
 
-        while ($currentWeek <= $lastDayOfMonth) {
-            $weekStartDate = $currentWeek->copy();
-            $weekEndDate = $currentWeek->copy()->endOfWeek();
+        foreach ($pedidos as $pedido) {
+            $dataPedido = Carbon::parse($pedido->created_at);
+            $weekOfMonth = $dataPedido->weekOfMonth - 1; // Subtrai 1 para começar com a primeira semana como '0'
+            $weekKey = $weekOfMonth;
 
-            $pedidos = Pedido::whereBetween('created_at', [
-                $weekStartDate,
-                $weekEndDate
-            ])->get();
-
-            $rendimentoSemana = 0;
-
-            foreach ($pedidos as $pedido) {
-                foreach ($pedido->pedido_produtos as $produto) {
-                    $rendimentoSemana += floatval($produto->produto->valor_total);
-                }
+            if (!isset($rendimentoPorSemana[$weekKey])) {
+                $rendimentoPorSemana[$weekKey] = 0;
             }
 
-            $rendimentoPorSemana[$currentWeek->format('Y-m-d')] = $rendimentoSemana;
-
-            // Avança para a próxima semana
-            $currentWeek->addWeek();
+            $rendimentoPorSemana[$weekKey] += floatval($pedido->valor_total);
+            $rendimentoTotalMesAtual += floatval($pedido->valor_total);
         }
 
-        return response()->json($rendimentoPorSemana, 200);
+        // Preencher semanas com valor zero
+        for ($week = 0; $week <= $endDate->weekOfMonth - 1; $week++) {
+            $weekKey = $week;
+            if (!isset($rendimentoPorSemana[$weekKey])) {
+                $rendimentoPorSemana[$weekKey] = 0;
+            }
+        }
+
+        // Rendimento mês passado
+        $lastMonthStartDate = $startDate->copy()->subMonth();
+        $lastMonthEndDate = $lastMonthStartDate->copy()->endOfMonth();
+
+        $pedidosLastMonth = Pedido::whereBetween('created_at', [$lastMonthStartDate, $lastMonthEndDate])->get();
+
+        $rendimentoPorSemanaLastMonth = [];
+        $rendimentoTotalMesPassado = 0;
+
+        foreach ($pedidosLastMonth as $pedido) {
+            $dataPedido = Carbon::parse($pedido->created_at);
+            $weekOfMonth = $dataPedido->weekOfMonth - 1; // Subtrai 1 para começar com a primeira semana como '0'
+            $weekKey = $weekOfMonth;
+
+            if (!isset($rendimentoPorSemanaLastMonth[$weekKey])) {
+                $rendimentoPorSemanaLastMonth[$weekKey] = 0;
+            }
+
+            $rendimentoPorSemanaLastMonth[$weekKey] += floatval($pedido->valor_total);
+            $rendimentoTotalMesPassado += floatval($pedido->valor_total);
+        }
+
+        // Preencher semanas do mês passado com valor zero
+        for ($week = 0; $week <= $lastMonthEndDate->weekOfMonth - 1; $week++) {
+            $weekKey = $week;
+            if (!isset($rendimentoPorSemanaLastMonth[$weekKey])) {
+                $rendimentoPorSemanaLastMonth[$weekKey] = 0;
+            }
+        }
+
+        // Calcula o lucro comparando os rendimentos do mês atual e do mês passado
+        $lucro = 0;
+        foreach ($rendimentoPorSemana as $weekKey => $rendimento) {
+            if (isset($rendimentoPorSemanaLastMonth[$weekKey])) {
+                $lucro += $rendimento - $rendimentoPorSemanaLastMonth[$weekKey];
+            }
+        }
+
+        return response()->json([
+            'pedidos' => $pedidos,
+            'semanas' => $rendimentoPorSemana,
+            'rendimento_total_mes_atual' => $rendimentoTotalMesAtual,
+            'semanas_mes_passado' => $rendimentoPorSemanaLastMonth,
+            'rendimento_total_mes_passado' => $rendimentoTotalMesPassado,
+            'mesPassado_vs_mesAtual' => $lucro,
+        ], 200);
     }
+
 
     public function rendimento_anual()
     {
         $startDate = Carbon::now()->startOfYear();
         $endDate = Carbon::now()->endOfYear();
-
+    
         $pedidos = Pedido::whereBetween('created_at', [$startDate, $endDate])->get();
-
+    
         $rendimentoPorMes = [];
-
-        // Inicializa o array com todos os meses com valor 0
-        $allMonths = [
-            'January', 'February', 'March', 'April', 'May', 'June', 'July',
-            'August', 'September', 'October', 'November', 'December'
-        ];
-
-        foreach ($allMonths as $mes) {
-            $rendimentoPorMes[$mes] = 0;
-        }
-
+        $rendimentoTotalAnoAtual = 0;
+    
         foreach ($pedidos as $pedido) {
-            foreach ($pedido->pedido_produtos as $produto) {
-                $dataPedido = Carbon::parse($pedido->created_at);
-                $mes = $dataPedido->format('F'); // Obtenha o nome do mês
-
-                // Apenas atualize se houver rendimento
-                if (isset($rendimentoPorMes[$mes])) {
-                    $rendimentoPorMes[$mes] += floatval($produto->produto->valor_total);
-                }
+            $dataPedido = Carbon::parse($pedido->created_at);
+            $month = $dataPedido->month;
+    
+            if (!isset($rendimentoPorMes[$month])) {
+                $rendimentoPorMes[$month] = 0;
+            }
+    
+            $rendimentoPorMes[$month] += floatval($pedido->valor_total);
+            $rendimentoTotalAnoAtual += floatval($pedido->valor_total);
+        }
+    
+        // Preencher meses com valor zero
+        for ($month = 1; $month <= 12; $month++) {
+            if (!isset($rendimentoPorMes[$month])) {
+                $rendimentoPorMes[$month] = 0;
             }
         }
-
-        return response()->json($rendimentoPorMes, 200);
+    
+        // Calcula o lucro comparando os rendimentos do ano atual com o ano passado
+        $lastYearStartDate = $startDate->copy()->subYear();
+        $lastYearEndDate = $lastYearStartDate->copy()->endOfYear();
+    
+        $pedidosLastYear = Pedido::whereBetween('created_at', [$lastYearStartDate, $lastYearEndDate])->get();
+    
+        $rendimentoPorMesLastYear = [];
+        $rendimentoTotalAnoPassado = 0;
+    
+        foreach ($pedidosLastYear as $pedido) {
+            $dataPedido = Carbon::parse($pedido->created_at);
+            $month = $dataPedido->month;
+    
+            if (!isset($rendimentoPorMesLastYear[$month])) {
+                $rendimentoPorMesLastYear[$month] = 0;
+            }
+    
+            $rendimentoPorMesLastYear[$month] += floatval($pedido->valor_total);
+            $rendimentoTotalAnoPassado += floatval($pedido->valor_total);
+        }
+    
+        // Preencher meses do ano passado com valor zero
+        for ($month = 1; $month <= 12; $month++) {
+            if (!isset($rendimentoPorMesLastYear[$month])) {
+                $rendimentoPorMesLastYear[$month] = 0;
+            }
+        }
+    
+        // Calcula o lucro comparando os rendimentos do ano atual com o ano passado
+        $lucro = 0;
+        foreach ($rendimentoPorMes as $month => $rendimento) {
+            if (isset($rendimentoPorMesLastYear[$month])) {
+                $lucro += $rendimento - $rendimentoPorMesLastYear[$month];
+            }
+        }
+    
+        return response()->json([
+            'pedidos' => $pedidos,
+            'meses' => $rendimentoPorMes,
+            'rendimento_total_ano_atual' => $rendimentoTotalAnoAtual,
+            'meses_ano_passado' => $rendimentoPorMesLastYear,
+            'rendimento_total_ano_passado' => $rendimentoTotalAnoPassado,
+            'anoPassado_vs_anoAtual' => $lucro,
+        ], 200);
     }
+    
+    
 }
