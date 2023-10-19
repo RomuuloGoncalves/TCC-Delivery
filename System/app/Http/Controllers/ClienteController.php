@@ -25,20 +25,21 @@ class ClienteController extends Controller
 
 
     /**
-     * Store
+     * getAuthCliente
      *
      * @return Cliente
      */
-    static function getAuthCliente()
+    public static function getAuthCliente()
     {
-        $token = JWTAuth::getToken();
-        return JWTAuth::parseToken()->authenticate();
+        if (!$cliente = auth('cliente')->user())
+            return response()->json(['status'=> 'error', 'message'=> 'Sem autorização'], 401);
+        return $cliente;
     }
 
     /**
      * Store
      *
-     * @return Cliente
+     * @return void
      */
     public function store(Request $request)
     {
@@ -84,7 +85,7 @@ class ClienteController extends Controller
 
         $credenciais = $request->only('email', 'password');
 
-        if (!$token = auth()->attempt($credenciais))
+        if (!$token = auth('cliente')->attempt($credenciais))
             return response()->json(['login' => 'Credenciais inválidas'], 401);
 
         return $this->responderComToken($token);
@@ -129,8 +130,8 @@ class ClienteController extends Controller
     {
         try {
             $cliente = $this->getAuthCliente();
-
             return response()->json($cliente);
+
         } catch (TokenExpiredException $e) {
             return response()->json([
                 'message' => 'Token expirado!',

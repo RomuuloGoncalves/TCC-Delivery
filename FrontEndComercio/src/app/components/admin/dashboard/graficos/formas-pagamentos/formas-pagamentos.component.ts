@@ -15,7 +15,6 @@ export class FormasPagamentosComponent  implements OnInit {
 
   ngOnInit() {
     this.recuperarTodosPedidos().then(() => {
-      console.log(this.cartao.length, this.pix.length, this.dinheiro.length)
       this.gerarGraficos();
     });
   }
@@ -30,7 +29,6 @@ export class FormasPagamentosComponent  implements OnInit {
       this.Pedidos.pegarPedidos().subscribe(
         (response) => {
           this.pedidos = response;
-          console.log(this.pedidos);
           this.organizarPedidos(this.pedidos);
           resolve(); // Resolve the promise when the data is retrieved and processed.
         },

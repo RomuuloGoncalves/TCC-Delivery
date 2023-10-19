@@ -27,9 +27,7 @@ export class TaxaCancelamentoComponent  implements OnInit {
     return new Promise<void>((resolve, reject) => {
       this.Pedidos.pegarPedidosHistorico().subscribe(
         (response) => {
-          console.log(response)
           this.pedidos = response;
-          console.log(this.pedidos);
           this.organizarPedidos(this.pedidos);
           resolve(); // Resolve the promise when the data is retrieved and processed.
         },

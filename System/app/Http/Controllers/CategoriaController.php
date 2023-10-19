@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\GrupoVariacao;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -25,6 +27,19 @@ class CategoriaController extends Controller {
         ]);
 
         return response()->json($categoria, 201);
+    }
+
+    public function index() {
+        $categoria = Categoria::with('produto')->get();
+        foreach($categoria->produto as $produto) {
+            $produto = Produto::with('grupo_variacao')->get();
+            foreach($produto->grupo_variacao as $grupo_variacao) {
+                $grupo_variacao = GrupoVariacao::with('variacoes')->get();
+            }
+        }
+
+
+        return response()->json($categoria, 200);
     }
 
     public function destroy(int $id) {

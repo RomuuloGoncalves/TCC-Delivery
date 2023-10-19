@@ -40,11 +40,8 @@ class AuthenticateFuncionario
     public function handle($request, Closure $next, $guard = null)
     {
         try {
-            $token = JWTAuth::getToken();
-            $user = JWTAuth::parseToken()->authenticate();
-
-            if (get_class($user) !== 'App\Models\Funcionario')
-                return response('Não autorizado', 403);
+            if(auth('funcionario')->attempt())
+                return response()->json(['status'=> 'error', 'message'=> 'Token inválido!'], 500);
 
             return $next($request);
         } catch (TokenExpiredException $e) {

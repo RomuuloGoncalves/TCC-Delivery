@@ -92,6 +92,18 @@ $router->group(['prefix' => 'pedido'], function () use ($router) {
 
 /*
 |--------------------------------------------------------------------------
+| Cliente Routes
+|--------------------------------------------------------------------------
+*/
+
+$router->group(['prefix' => 'categoria'], function () use ($router) {
+    $router->get('/', 'CategoriaController@index');
+    $router->delete('/excluir/{id}', 'CategoriaController@destroy');
+    $router->post('/cadastrar', 'CategoriaController@store');
+});
+
+/*
+|--------------------------------------------------------------------------
 | Produto Routes
 |--------------------------------------------------------------------------
 */
