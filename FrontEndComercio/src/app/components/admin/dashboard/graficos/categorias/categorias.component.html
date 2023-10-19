@@ -1,0 +1,9 @@
+<ion-col class="ion-margin-vertical">
+  <ion-row class="ion-justify-content-center ion-align-items-center">
+    <ion-col class="grafico ion-padding">
+      <canvas *ngIf="this.id == 'semanalmente'" id="categoriaSemanalmente"></canvas>
+      <canvas *ngIf="this.id == 'mensalmente'" id="categoriaMensalmente"></canvas>
+      <canvas *ngIf="this.id == 'anualmente'" id="categoriaAnualmente"></canvas>
+    </ion-col>
+  </ion-row>
+</ion-col>
