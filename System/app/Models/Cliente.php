@@ -43,6 +43,6 @@ class Cliente extends Model implements AuthenticatableContract, AuthorizableCont
 
     public function pedidos(): HasMany
     {
-        return $this->hasMany(Pedido::class);
+        return $this->hasMany(Pedido::class, 'cod_pedido');
     }
 }

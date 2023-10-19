@@ -44,7 +44,6 @@ export class VendasComponent implements OnInit {
   pedProd() {
     this.pedProdGrupo.pegarPedProd().subscribe(
       (response) => {
-        console.log("pedido produto grupo var", response)
       },
       (error) => {
         console.error(error);

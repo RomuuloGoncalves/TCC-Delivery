@@ -30,16 +30,12 @@ class CategoriaController extends Controller {
     }
 
     public function index() {
-        $categoria = Categoria::with('produto')->get();
-        foreach($categoria->produto as $produto) {
-            $produto = Produto::with('grupo_variacao')->get();
-            foreach($produto->grupo_variacao as $grupo_variacao) {
-                $grupo_variacao = GrupoVariacao::with('variacoes')->get();
-            }
-        }
+        $categorias =
+            Categoria::with(['produtos' => function ($query) {
+                $query->select('id', 'nome', 'descricao');
+            }])->get();
 
-
-        return response()->json($categoria, 200);
+        return response()->json($categorias, 200);
     }
 
     public function destroy(int $id) {

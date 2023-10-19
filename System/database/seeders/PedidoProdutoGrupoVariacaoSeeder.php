@@ -20,6 +20,7 @@ class PedidoProdutoGrupoVariacaoSeeder extends Seeder
             DB::table('Pedido_produto_grupo_variacoes')->insert([
                 'cod_pedido_produto' => $faker->randomElement($pedido_produtos),
                 'cod_grupo_variacoes' => $faker->randomElement($grupo_variacoes),
+                'created_at' => $faker->dateTimeThisMonth()
             ]);
         }
     }

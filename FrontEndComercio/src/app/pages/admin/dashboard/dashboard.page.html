@@ -3,7 +3,16 @@
   <ion-row class="ion-justify-content-around ion-padding">
     <ion-col size="11" class="grafico ">
       <ion-row class="ion-justify-content-center">
-        <ion-label class="titulo__grafico">Rendimento</ion-label>
+        <ion-col size="4">
+          <ion-label class="titulo__grafico">Rendimento</ion-label>
+        </ion-col>
+        <ion-col size="4">
+          <ion-select aria-label="Fruit" interface="popover" placeholder="Select fruit">
+            <ion-select-option value="apples">Apples</ion-select-option>
+            <ion-select-option value="oranges">Oranges</ion-select-option>
+            <ion-select-option value="bananas">Bananas</ion-select-option>
+          </ion-select>
+        </ion-col>
       </ion-row>
       <app-rendimento></app-rendimento>
     </ion-col>
