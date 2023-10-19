@@ -13,7 +13,7 @@ export class EnderecoService {
     return this.Server.post('endereco/cadastrar', endereco);
   }
 
-  public listagem (cod_cliente:number) {
+  public listagem (cod_cliente: number) {
     return this.Server.get(`endereco/listagem?cod_cliente=${cod_cliente}`,);
   }
 

@@ -4,7 +4,7 @@
       <ion-row class="ion-justify-content-between ion-align-items-center">
         <ion-col size="8" class="itens-borda-superior">
           <ion-label class="ion-padding">
-            <h2 class="titulo">{{produto.nome}}</h2>
+            <h2 class="titulo">{{ this.produto.nome }}</h2>
           </ion-label>
         </ion-col>
         <ion-col size="1" class="itens-borda-superior">
@@ -18,7 +18,7 @@
       <ion-col size="10">
           <ion-row>
             <ion-col class="imagem-container ion-justify-content-center">
-              <ion-img class="imagem" src="{{produto.imagem}}"></ion-img>
+              <ion-img class="imagem" src="{{ this.produto.imagem }}"></ion-img>
             </ion-col>
           </ion-row>
           <ion-row>
@@ -36,17 +36,17 @@
           <ion-row>
             <ion-col>
               <ion-accordion-group multiple="true">
-                <ion-accordion value="{{produto.nome}}">
+                <ion-accordion value="{{ this.produto.nome }}">
                   <ion-item slot="header" color="light">
                     <ion-label>Nome</ion-label>
                   </ion-item>
-                  <div class="ion-padding" slot="content">{{produto.nome}}</div>
+                  <div class="ion-padding" slot="content">{{ this.produto.nome }}</div>
                 </ion-accordion>
-                <ion-accordion value="{{produto.descricao}}">
+                <ion-accordion value="{{ this.produto.descricao }}">
                   <ion-item slot="header" color="light">
                     <ion-label>Descrição</ion-label>
                   </ion-item>
-                  <div class="ion-padding" slot="content">{{produto.descricao}}</div>
+                  <div class="ion-padding" slot="content">{{ this.produto.descricao }}</div>
                 </ion-accordion>
                 <ion-accordion value="preco">
                   <ion-item slot="header" color="light">
@@ -54,8 +54,8 @@
                   </ion-item>
                   <div class="ion-padding ion-justify-content-between" slot="content">
                     <p>Preço: </p>
-                    <span class="valor-inicial">R${{produto.valor_inicial.toFixed(2).replace('.', ',')}}</span>
-                    <span class="valor-final">R${{produto.valor_final.toFixed(2).replace('.', ',')}}</span>
+                    <span class="valor-inicial">R${{ this.produto.valor_inicial.toFixed(2).replace('.', ',') }}</span>
+                    <span class="valor-final">R${{ this.produto.valor_final.toFixed(2).replace('.', ',') }}</span>
                   </div>
                 </ion-accordion>
               </ion-accordion-group>

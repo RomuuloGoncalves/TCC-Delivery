@@ -8,10 +8,12 @@ export class ProdutoService {
 
   constructor(private Server: ServerService) { }
 
-  // pegando por id de categoria 👍
-  // public listagem(categoria: number) {
   public listagem() {
-    return this.Server.get('produto')
+    return this.Server.get('/produto')
+  }
+
+  public pegarProduto(id: number) {
+    return this.Server.get(`/produto/${id}`,);
   }
 
 }

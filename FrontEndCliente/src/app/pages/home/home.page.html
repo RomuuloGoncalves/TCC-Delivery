@@ -45,10 +45,10 @@
 
   <!-- <ng-container *ngFor="let produto of this.produtosFiltrados"> -->
   <ng-container *ngFor="let categoria of this.categorias">
-    <app-sessao-cards-produto [tituloSessao]="categoria.nome" [cardMontagem]="true" [produtos]="categoria.produto"></app-sessao-cards-produto>
+    <app-sessao-cards-produto [tituloSessao]="categoria.nome" [cardMontagem]="true" [produtos]="categoria.produtos"></app-sessao-cards-produto>
   </ng-container>
   <!-- <ng-container *ngIf="!this.produtosFiltrados.length"> -->
-  <ng-container *ngIf="!this.produto">
+  <ng-container *ngIf="!this.produto">s
     <ion-text class="ion-text-center">
       <h3>Não há produtos!</h3>
     </ion-text>

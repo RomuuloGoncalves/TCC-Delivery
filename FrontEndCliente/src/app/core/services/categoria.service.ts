@@ -9,6 +9,6 @@ export class CategoriaService {
   constructor(private Server: ServerService) { }
 
   public listagem() {
-    return this.Server.get('categoria')
+    return this.Server.get('/categoria')
   }
 }

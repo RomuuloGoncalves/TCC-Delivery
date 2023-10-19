@@ -31,9 +31,7 @@ class CategoriaController extends Controller {
 
     public function index() {
         $categorias =
-            Categoria::with(['produtos' => function ($query) {
-                $query->select('id', 'nome', 'descricao');
-            }])->get();
+            Categoria::with('produtos')->get();
 
         return response()->json($categorias, 200);
     }

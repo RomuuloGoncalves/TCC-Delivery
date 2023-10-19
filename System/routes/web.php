@@ -113,6 +113,7 @@ $router->group(['prefix' => 'produto'], function () use ($router) {
     $router->delete('/excluir/{id}', 'ProdutoController@destroy');
     $router->post('/cadastrar', 'ProdutoController@store');
     $router->put('/editar', 'ProdutoController@update');
+    $router->get('/{id}', 'ProdutoController@show');
 });
 
 /*

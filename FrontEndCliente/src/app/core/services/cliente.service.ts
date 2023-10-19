@@ -13,14 +13,14 @@ export class ClienteService {
   public readonly token = this.Cookie.get('token');
 
   public cadastro (cliente: Cliente) {
-    return this.Server.post('cliente/cadastrar', cliente);
+    return this.Server.post('/cliente/cadastrar', cliente);
   }
 
   public login (cliente: Cliente) {
-    return this.Server.post('cliente/login', cliente);
+    return this.Server.post('/cliente/login', cliente);
   }
 
   public infos () {
-    return this.Server.get('cliente');
+    return this.Server.get('/cliente');
   }
 }
