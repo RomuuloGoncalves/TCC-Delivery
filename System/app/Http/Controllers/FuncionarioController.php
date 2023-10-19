@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Funcionario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
@@ -34,7 +35,7 @@ class FuncionarioController extends Controller
             'nome' => ['required', 'string', 'max:255'],
             'login' => ['required', 'string', 'string', 'max:255', 'unique:Funcionarios'],
             'password' => ['required', 'string', 'max:255', 'min:8'],
-            'nivel_acesso' => ['required'],
+            'nivel_acesso' => ['required', Rule::in(['1', '2', '3'])],
         ];
 
         $validacao = Validator::make($request->all(), $regras);

@@ -22,18 +22,21 @@
             </ion-row>
 
             <ion-row class="input-container">
-              <ion-input ngModel required name="telefone" errorText="Telefone inválido" label="Telefone" type="text" maxlength="11" minlength="11"></ion-input>
+              <ion-input ngModel required name="telefone" errorText="Telefone inválido" label="Telefone" type="text"
+                maxlength="11" minlength="11"></ion-input>
               <ion-text class="erro" color="danger">{{ this.erros.telefone }}</ion-text>
             </ion-row>
 
             <ion-row class="input-container">
-              <ion-input ngModel name="password" errorText="Deve ser maior que 8 caracteres" minlength="8" label="Senha" type="password" required></ion-input>
+              <ion-input ngModel name="password" errorText="Deve ser maior que 8 caracteres" minlength="8" label="Senha"
+                type="password" required></ion-input>
               <ion-text class="erro" color="danger">{{ this.erros.password }}</ion-text>
             </ion-row>
 
             <ion-row class="input-container">
-              <ion-input ngModel errorText="Senhas não conferem invalida" name="confirmarPassword" label="Confirmar Senha"
-                type="password" required pattern="{{ this.cadastroForm.form.value.password }}"></ion-input>
+              <ion-input ngModel errorText="Senhas não conferem invalida" name="confirmarPassword"
+                label="Confirmar Senha" type="password" required
+                pattern="{{ this.cadastroForm.form.value.password }}"></ion-input>
             </ion-row>
 
             <ion-text>
@@ -41,7 +44,8 @@
             </ion-text>
             <ion-row class="ion-justify-content-center ion-padding">
               <ion-col size="auto">
-                <app-btn-loading btnNome="Cadastrar" [loading]="this.loading" [disabled]="!this.cadastroForm.valid"></app-btn-loading>
+                <app-btn-loading btnNome="Cadastrar" [loading]="this.loading"
+                  [disabled]="!this.cadastroForm.valid"></app-btn-loading>
               </ion-col>
             </ion-row>
           </form>

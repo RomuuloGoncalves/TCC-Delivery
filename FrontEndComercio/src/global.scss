@@ -35,3 +35,11 @@
   font-weight: 700;
   color: var(--ion-color-primary);
 }
+
+ion-toast.sucesso {
+  --background: var(--ion-color-success);
+}
+
+ion-toast.erro {
+  --background: var(--ion-color-danger);
+}

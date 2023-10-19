@@ -19,7 +19,7 @@
             <ion-row class="input-container">
               <ion-input ngModel name="login" errorText="Usuário é obrigatório" label="Usuário" type="text"
                 required></ion-input>
-              <ion-text class="erro" color="danger">{{ this.erros.email }}</ion-text>
+              <ion-text class="erro" color="danger">{{ this.erros.login }}</ion-text>
             </ion-row>
 
             <ion-row class="input-container">
@@ -41,7 +41,7 @@
                 <ion-select-option value="2">Funcionário</ion-select-option>
                 <ion-select-option value="3">Administrador</ion-select-option>
               </ion-select>
-              <ion-text class="erro" color="danger">{{ this.erros.telefone }}</ion-text>
+              <ion-text class="erro" color="danger">{{ this.erros.nivel_acesso }}</ion-text>
             </ion-row>
 
             <ion-row class="ion-justify-content-center ion-padding">
