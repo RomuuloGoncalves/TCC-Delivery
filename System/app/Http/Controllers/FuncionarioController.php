@@ -24,6 +24,18 @@ class FuncionarioController extends Controller
     }
 
     /**
+     * getAuthFuncionario
+     *
+     * @return Funcionario
+     */
+    public static function getAuthFuncionario()
+    {
+        if (!$funcionario = auth('funcionario')->user())
+            return response()->json(['status'=> 'error', 'message'=> 'Sem autorização'], 401);
+        return $funcionario;
+    }
+
+    /**
      * store
      *
      * @return Funcionario
@@ -59,25 +71,25 @@ class FuncionarioController extends Controller
      * @return void
      */
 
-    public function login(Request $request)
-    {
-        $regras = [
-            'login' => ['required', 'string', 'max:255', 'exists:Funcionarios'],
-            'password' => ['required', 'string', 'max:255', 'min:8'],
-        ];
+     public function login(Request $request)
+     {
+         $regras = [
+             'login' => ['required', 'string', 'max:255', 'exists:Funcionarios'],
+             'password' => ['required', 'string', 'max:255', 'min:8'],
+         ];
 
-        $validacao = Validator::make($request->all(), $regras);
+         $validacao = Validator::make($request->all(), $regras);
 
-        if ($validacao->fails())
-            return response()->json($validacao->errors(), 422);
+         if ($validacao->fails())
+             return response()->json($validacao->errors(), 422);
 
-        $credenciais = $request->only('email', 'password');
+         $credenciais = $request->only('login', 'password');
 
-        if (!$token = auth()->attempt($credenciais))
-            return response()->json(['login' => 'Credenciais inválidas'], 401);
+         if (!$token = auth('funcionario')->attempt($credenciais))
+             return response()->json(['login' => 'Credenciais inválidas'], 401);
 
-        return $this->responderComToken($token);
-    }
+         return $this->responderComToken($token);
+     }
 
     /**
      * responderComToken
@@ -101,10 +113,9 @@ class FuncionarioController extends Controller
     public function index()
     {
         try {
-            $token = JWTAuth::getToken();
-            $funcionario = JWTAuth::parseToken()->authenticate();
-
+            $funcionario = $this->getAuthFuncionario();
             return response()->json($funcionario);
+
         } catch (TokenExpiredException $e) {
             return response()->json([
                 'error' => 'Token expirado!',

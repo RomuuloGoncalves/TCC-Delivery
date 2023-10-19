@@ -2,20 +2,27 @@
 
 return [
     'defaults' => [
-        'guard' => 'api',
-        'senha' => 'clientes'
+        'password_field' => 'password',
     ],
     'guards' => [
-        'api' => [
+        'cliente' => [
             'driver' => 'jwt',
             'provider' => 'clientes'
         ],
+        'funcionario' => [
+            'driver' => 'jwt',
+            'provider'=> 'funcionarios'
+        ]
     ],
 
     'providers' => [
         'clientes' => [
             'driver' => 'eloquent',
-            'model' => \App\Models\Cliente::class
+            'model' => \App\Models\Cliente::class,
+        ],
+        'funcionarios' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Funcionario::class,
         ]
     ]
 ];

@@ -40,12 +40,10 @@ class AuthenticateCliente
     public function handle($request, Closure $next, $guard = null)
     {
         try {
-            $token = JWTAuth::getToken();
-            $cliente = JWTAuth::parseToken()->authenticate();
-
-            if (get_class($cliente) !== 'App\Models\Cliente')
-                return response('Não autorizado', 403);
+            if (!auth('cliente')->user())
+                return response()->json(['status'=> 'error', 'message'=> 'Token inválido!'], 500);
             return $next($request);
+
         } catch (TokenExpiredException $e) {
             return response()->json([
                 'error' => 'Token expirado!',
