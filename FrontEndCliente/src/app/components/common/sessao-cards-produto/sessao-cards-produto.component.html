@@ -7,8 +7,8 @@
 
   <ion-col size="12">
     <ion-row class="grid ion-justify-content-start">
-      <ng-container *ngFor="let produto of this.produto!">
-        <app-card-produto [produto]="this.produto" (click)="definirProdutoModal(produto)" class="cards"></app-card-produto>
+      <ng-container *ngFor="let produto of this.produtos">
+        <app-card-produto [produto]="produto" (click)="definirProdutoModal(produto)" class="cards"></app-card-produto>
       </ng-container>
     </ion-row>
   </ion-col>

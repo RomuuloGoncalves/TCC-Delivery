@@ -27,6 +27,12 @@ class CategoriaController extends Controller {
         return response()->json($categoria, 201);
     }
 
+    public function index() {
+        $produto = Categoria::with('produto')->get();
+
+        return response()->json($produto, 200);
+    }
+
     public function destroy(int $id) {
         $categoria = Categoria::find($id);
 
