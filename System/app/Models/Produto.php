@@ -22,7 +22,7 @@ class Produto extends Model
 
     public function grupo_variacao(): HasMany
     {
-        return $this->hasMany(GrupoVariacao::class);
+        return $this->hasMany(GrupoVariacao::class, 'cod_produto');
     }
 
     public function categoria(): BelongsTo
