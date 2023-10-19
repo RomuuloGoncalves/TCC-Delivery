@@ -24,7 +24,7 @@ class VariacaoSelecionadaSeeder extends Seeder
             DB::table('Variacao_selecionadas')->insert([
                 'cod_pedido_produto_grupo_variacoes' => $faker->randomElement($pedido_produto_grupo_variacoes),
                 'cod_variacao' => $faker->randomElement($variacoes),
-                'created_at' => $faker->dateTimeThisMonth()
+                'created_at' => $faker->dateTimeThisYear()
             ]);
         }
     }

@@ -19,7 +19,7 @@ class PedidoProdutoSeeder extends Seeder
             DB::table('Pedido_produtos')->insert([
                 'cod_pedido' => $faker->randomElement($pedidos),
                 'cod_produto' => $faker->randomElement($produtos),
-                'created_at' => $faker->dateTimeThisMonth()
+                'created_at' => $faker->dateTimeThisYear()
             ]);
         }
     }
