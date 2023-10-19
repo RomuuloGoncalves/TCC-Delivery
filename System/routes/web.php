@@ -165,4 +165,8 @@ $router->group(['prefix' => 'dashboard'], function () use ($router) {
     $router->get('/rendimento/semanal', 'DashboardController@rendimento_semanal');
     $router->get('/rendimento/mensal', 'DashboardController@rendimento_mensal');
     $router->get('/rendimento/anual', 'DashboardController@rendimento_anual');
+
+    $router->get('/vendas/semanais', 'DashboardController@vendas_semanais');
+    $router->get('/vendas/mensais', 'DashboardController@vendas_mensais');
+    $router->get('/vendas/anual', 'DashboardController@vendas_anuais');
 });

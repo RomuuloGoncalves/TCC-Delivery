@@ -78,11 +78,6 @@ const routes: Routes = [
     canActivate: [LogedInGuard]
   },
   {
-    path: 'financeiro',
-    loadChildren: () => import('./pages/admin/financeiro/financeiro.module').then( m => m.FinanceiroPageModule),
-    canActivate: [LogedInGuard]
-  },
-  {
     path: 'informacoes-vendas',
     loadChildren: () => import('./pages/admin/informacoes-vendas/informacoes-vendas.module').then( m => m.InformacoesVendasPageModule),
     canActivate: [LogedInGuard]

@@ -19,4 +19,16 @@ export class DashboardService {
   public rendimentoAnual() {
     return this.Server.get('/dashboard/rendimento/anual');
   }
+
+  public vendasSemanais() {
+    return this.Server.get('/dashboard/vendas/semanais');
+  }
+
+  public vendasMensais() {
+    return this.Server.get('/dashboard/vendas/mensais');
+  }
+
+  public vendasAnuais() {
+    return this.Server.get('/dashboard/vendas/anual');
+  }
 }

@@ -31,7 +31,7 @@ class PedidoSeeder extends Seeder
                 'cod_funcionario' => $faker->randomElement($funcionarios),
                 'cod_endereco' => $faker->randomElement($enderecos),
                 'cod_cupom' => $faker->randomElement($cupons),
-                'created_at' => $faker->dateTimeThisMonth()
+                'created_at' => $faker->dateTimeThisYear()
             ]);
         }
     }
