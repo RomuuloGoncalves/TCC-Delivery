@@ -130,7 +130,26 @@ $router->group(['prefix' => 'grupo-variacao'], function () use ($router) {
     $router->put('/editar', 'GrupoVariacaoController@update');
 });
 
+/*
+|--------------------------------------------------------------------------
+| ped-prod-grupo-var
+|--------------------------------------------------------------------------
+*/
+
 $router->group(['prefix' => 'ped-prod-grupo-var'], function () use ($router) {
     $router->get('/', 'PedidoProdutoGrupoVariacaoController@index');
     $router->get('/{id}', 'PedidoProdutoGrupoVariacaoController@show');
+});
+
+/*
+|--------------------------------------------------------------------------
+| DashBoard
+|--------------------------------------------------------------------------
+*/
+
+$router->group(['prefix' => 'dashboard'], function () use ($router) {
+    $router->get('/rendimento/help', 'DashboardController@help');
+    $router->get('/rendimento/semanal', 'DashboardController@rendimento_semanal');
+    $router->get('/rendimento/mensal', 'DashboardController@rendimento_mensal');
+    $router->get('/rendimento/anual', 'DashboardController@rendimento_anual');
 });

@@ -20,10 +20,11 @@ class VariacaoSelecionadaSeeder extends Seeder
         $pedido_produto_grupo_variacoes = DB::table('Pedido_produto_grupo_variacoes')->pluck('id')->toArray();
         $variacoes = DB::table('Variacoes')->pluck('id')->toArray();
 
-        for ($i = 1; $i <= 20; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             DB::table('Variacao_selecionadas')->insert([
                 'cod_pedido_produto_grupo_variacoes' => $faker->randomElement($pedido_produto_grupo_variacoes),
                 'cod_variacao' => $faker->randomElement($variacoes),
+                'created_at' => $faker->dateTimeThisMonth()
             ]);
         }
     }
