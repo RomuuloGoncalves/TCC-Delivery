@@ -44,8 +44,8 @@
   </ion-row>
 
   <!-- <ng-container *ngFor="let produto of this.produtosFiltrados"> -->
-  <ng-container *ngFor="let produto of this.produto">
-    <app-sessao-cards-produto [tituloSessao]="produto.nome" [cardMontagem]="true" [produto]="produto"></app-sessao-cards-produto>
+  <ng-container *ngFor="let categoria of this.categorias">
+    <app-sessao-cards-produto [tituloSessao]="categoria.nome" [cardMontagem]="true" [produtos]="categoria.produto"></app-sessao-cards-produto>
   </ng-container>
   <!-- <ng-container *ngIf="!this.produtosFiltrados.length"> -->
   <ng-container *ngIf="!this.produto">
