@@ -5,6 +5,11 @@
         <ion-row class="card__wrapper-content ion-align-items-center">
           <ion-card-title class="text">{{ this.produto.nome }}</ion-card-title>
           <ion-text>
+            <p class="card__desc">
+              {{ this.produto.descricao }}
+            </p>
+          </ion-text>
+          <ion-text>
             <p>Ainda temos {{ this.produto.quantidade }} unidades desse produto</p>
             <p class="card__preco text">R$ {{ this.produto.subtotal!.toFixed(2).replace('.', ',') }}</p>
           </ion-text>
@@ -13,8 +18,8 @@
       <ion-col size="5">
         <ion-row>
           <img class="img-marmita"
-            src="{{ this.variacao.imagem || '../../../assets/imgs/home-icons/garfo_faca_outline.png'}}"
-            alt="Imagem de {{ this.variacao.nome }}" />
+            src="{{ this.produto.imagem || '../../../assets/imgs/home-icons/garfo_faca_outline.png'}}"
+            alt="Imagem de {{ this.produto.nome }}" />
         </ion-row>
       </ion-col>
     </ion-row>

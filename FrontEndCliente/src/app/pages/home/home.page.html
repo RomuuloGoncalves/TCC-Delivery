@@ -43,10 +43,12 @@
     </ion-col>
   </ion-row>
 
-  <ng-container *ngFor="let produto of this.produtosFiltrados">
+  <!-- <ng-container *ngFor="let produto of this.produtosFiltrados"> -->
+  <ng-container *ngFor="let produto of this.produto">
     <app-sessao-cards-produto [tituloSessao]="produto.nome" [cardMontagem]="true" [produto]="produto"></app-sessao-cards-produto>
   </ng-container>
-  <ng-container *ngIf="!this.produtosFiltrados.length">
+  <!-- <ng-container *ngIf="!this.produtosFiltrados.length"> -->
+  <ng-container *ngIf="!this.produto">
     <ion-text class="ion-text-center">
       <h3>Não há produtos!</h3>
     </ion-text>

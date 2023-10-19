@@ -1,4 +1,4 @@
-<ion-row class="ion-margin">
+<ion-row class="ion-margin borda" (click)="mostrar()">
   <ion-col size="12" *ngIf="this.tituloSessao">
     <ion-row class="titulo-sessao">
       <ion-label>{{ this.tituloSessao }}</ion-label>
@@ -8,7 +8,7 @@
   <ion-col size="12">
     <ion-row class="grid ion-justify-content-start">
       <ng-container *ngFor="let produto of this.produto!">
-        <app-card-produto [produto]="produto" (click)="definirProdutoModal(produto)" class="cards"></app-card-produto>
+        <app-card-produto [produto]="this.produto" (click)="definirProdutoModal(produto)" class="cards"></app-card-produto>
       </ng-container>
     </ion-row>
   </ion-col>

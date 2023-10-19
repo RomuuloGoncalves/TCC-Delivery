@@ -13,10 +13,11 @@ export class SessaoCardsProdutoComponent  implements OnInit {
 
   constructor(private modalController: ModalController) { }
 
-  ngOnInit() {}  
+  ngOnInit() { }  
   
   @Input() tituloSessao?: string;
-  @Input() produto!: Produto[];
+  // trocar de any pra produto tava com erro
+  @Input() produto!: any;
   @Input() cardMontagem: boolean = false;
 
   produtoModal?: Produto
@@ -35,6 +36,10 @@ export class SessaoCardsProdutoComponent  implements OnInit {
 
     return await modal.present()
 
+  }
+
+  mostrar() {
+    console.log("sessao cards",this.produto)
   }
 
 }

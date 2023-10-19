@@ -39,7 +39,8 @@ export class ListagemPage implements OnInit {
   loading: boolean = false;
   produto!: Produto[]
 
-  produtoFiltrado?: Produto[]
+  produtoFiltrado?: any
+  // produtoFiltrado?: Produto[]
   // produtoFiltrado: Produto[] = this.produto;
 
   carregarProdutos() {
