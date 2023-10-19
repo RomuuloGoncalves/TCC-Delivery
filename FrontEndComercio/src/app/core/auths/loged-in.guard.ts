@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { catchError, map } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
-import { CookieService } from 'ngx-cookie-service';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable, catchError, map, of } from 'rxjs';
 import { ServerService } from '../services/server.service';
 import { ToastService } from '../controller/toast.service';
+import { CookieService } from 'ngx-cookie-service';
 import { HttpErrorResponse } from '@angular/common/http';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LogedInGuard implements CanActivate {
   constructor(
     private Server: ServerService,
@@ -17,7 +18,7 @@ export class LogedInGuard implements CanActivate {
   ) {}
 
   canActivate(): Observable<boolean> {
-    return this.Server.get('/cliente').pipe(
+    return this.Server.get('/funcionario').pipe(
       map(
         (response: any) => {
           if (!response.error) return true;
@@ -35,6 +36,6 @@ export class LogedInGuard implements CanActivate {
   private handleError() {
     this.Toast.mostrarToast('erro', 'Para acessar o recurso, deve estar logado!')
     this.router.navigate(['/login']);
-    this.Cookie.deleteAll();
+    // this.Cookie.deleteAll();
   }
 }

@@ -39,9 +39,9 @@ $router->group(['prefix' => 'cliente'], function () use ($router) {
 $router->group(['prefix' => 'funcionario'], function () use ($router) {
     $router->post('/login', 'FuncionarioController@login');
     $router->post('/cadastrar', 'FuncionarioController@store');
-    $router->get('/', 'FuncionarioController@index');
-    // $router->group(['middleware' => 'authFuncionario'], function() use($router) {
-    // });
+    $router->group(['middleware' => 'authFuncionario'], function() use($router) {
+        $router->get('/', 'FuncionarioController@index');
+    });
 });
 
 

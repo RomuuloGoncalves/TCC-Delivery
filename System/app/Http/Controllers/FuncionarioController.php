@@ -30,9 +30,7 @@ class FuncionarioController extends Controller
      */
     public static function getAuthFuncionario()
     {
-        if (!$funcionario = auth('funcionario')->user())
-            return response()->json(['status'=> 'error', 'message'=> 'Sem autorização'], 401);
-        return $funcionario;
+        return auth('funcionario')->user();
     }
 
     /**
@@ -112,22 +110,7 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        try {
-            $funcionario = $this->getAuthFuncionario();
-            return response()->json($funcionario);
-
-        } catch (TokenExpiredException $e) {
-            return response()->json([
-                'error' => 'Token expirado!',
-            ], 401);
-        } catch (TokenInvalidException $e) {
-            return response()->json([
-                'error' => 'Token inválido!',
-            ], 401);
-        } catch (JWTException $e) {
-            return response()->json([
-                'error' => 'Não foi possivel processar o token!',
-            ], 500);
-        }
+        $funcionario = $this->getAuthFuncionario();
+        return response()->json($funcionario);
     }
 }

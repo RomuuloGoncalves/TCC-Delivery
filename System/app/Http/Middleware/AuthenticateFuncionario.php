@@ -40,22 +40,15 @@ class AuthenticateFuncionario
     public function handle($request, Closure $next, $guard = null)
     {
         try {
-            if(auth('funcionario')->attempt())
-                return response()->json(['status'=> 'error', 'message'=> 'Token inválido!'], 500);
-
+            if(!auth('funcionario')->user())
+                return response('Token inválido', 401);
             return $next($request);
         } catch (TokenExpiredException $e) {
-            return response()->json([
-                'error' => 'Token expirado!',
-            ], 401);
+            return response('Token inválido!', 401);
         } catch (TokenInvalidException $e) {
-            return response()->json([
-                'error' => 'Token inválido!',
-            ], 401);
+            return response('Token inválido!', 401);
         } catch (JWTException $e) {
-            return response()->json([
-                'error' => 'Não foi possivel processar o token!',
-            ], 500);
+            return response('Não foi possivel processar o token!', 500);
         }
     }
 }

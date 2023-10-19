@@ -31,9 +31,7 @@ class ClienteController extends Controller
      */
     public static function getAuthCliente()
     {
-        if (!$cliente = auth('cliente')->user())
-            return response()->json(['status'=> 'error', 'message'=> 'Sem autorização'], 401);
-        return $cliente;
+        return auth('cliente')->user();
     }
 
     /**
@@ -128,22 +126,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        try {
-            $cliente = $this->getAuthCliente();
-            return response()->json($cliente);
-
-        } catch (TokenExpiredException $e) {
-            return response()->json([
-                'message' => 'Token expirado!',
-            ], 401);
-        } catch (TokenInvalidException $e) {
-            return response()->json([
-                'message' => 'Token inválido!',
-            ], 401);
-        } catch (JWTException $e) {
-            return response()->json([
-                'message' => 'Não foi possivel processar o token!',
-            ], 500);
-        }
+        $cliente = $this->getAuthCliente();
+        return response()->json($cliente);
     }
 }
