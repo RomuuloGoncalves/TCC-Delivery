@@ -40,13 +40,13 @@ class ProdutoController extends Controller {
         if ($validacao->fails())
             return response()->json($validacao->errors(), 422);
 
-        $cupom = Produto::create([
+        $produto = Produto::create([
             'nome' => $request->input('nome'),
             'descricao' => $request->input('descricao'),
             'cod_categoria' => $request->input('cod_categoria'),
         ]);
 
-        return response()->json($cupom, 201);
+        return response()->json($produto, 201);
     }
 
     /**
@@ -69,7 +69,6 @@ class ProdutoController extends Controller {
             return response()->json($validacao->errors(), 422);
 
         $produto = Produto::find($request->input('id'));
-
         $atributos = ['nome', 'descricao', 'cod_categoria'];
 
         foreach($atributos as $atributo) {
@@ -77,6 +76,7 @@ class ProdutoController extends Controller {
                 ? $produto->$atributo = $request->input($atributo)
                 : null;
         }
+
         $produto->save();
 
         return response()->json($produto, 200);

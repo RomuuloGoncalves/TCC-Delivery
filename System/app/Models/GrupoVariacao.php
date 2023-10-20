@@ -25,9 +25,4 @@ class GrupoVariacao extends Model
     {
         return $this->hasMany(Variacao::class, 'cod_grupo_variacoes');
     }
-
-    public function pedido_produto_grupo_variacao(): BelongsTo
-    {
-        return $this->belongsTo(PedidoProdutoGrupoVariacao::class);
-    }
 }

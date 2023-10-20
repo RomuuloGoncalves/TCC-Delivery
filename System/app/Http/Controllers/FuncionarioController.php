@@ -11,25 +11,17 @@ use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
-class FuncionarioController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
+class FuncionarioController extends Controller {
+
+    public function __construct() {}
 
     /**
      * getAuthFuncionario
      *
      * @return Funcionario
      */
-    public static function getAuthFuncionario()
-    {
+
+    public static function getAuthFuncionario() {
         return auth('funcionario')->user();
     }
 
@@ -39,8 +31,7 @@ class FuncionarioController extends Controller
      * @return Funcionario
      */
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $regras = [
             'nome' => ['required', 'string', 'max:255'],
             'login' => ['required', 'string', 'string', 'max:255', 'unique:Funcionarios'],
@@ -69,25 +60,24 @@ class FuncionarioController extends Controller
      * @return void
      */
 
-     public function login(Request $request)
-     {
-         $regras = [
-             'login' => ['required', 'string', 'max:255', 'exists:Funcionarios'],
-             'password' => ['required', 'string', 'max:255', 'min:8'],
-         ];
+    public function login(Request $request) {
+        $regras = [
+            'login' => ['required', 'string', 'max:255', 'exists:Funcionarios'],
+            'password' => ['required', 'string', 'max:255', 'min:8'],
+        ];
 
-         $validacao = Validator::make($request->all(), $regras);
+        $validacao = Validator::make($request->all(), $regras);
 
-         if ($validacao->fails())
-             return response()->json($validacao->errors(), 422);
+        if ($validacao->fails())
+            return response()->json($validacao->errors(), 422);
 
-         $credenciais = $request->only('login', 'password');
+        $credenciais = $request->only('login', 'password');
 
-         if (!$token = auth('funcionario')->attempt($credenciais))
-             return response()->json(['login' => 'Credenciais inválidas'], 401);
+        if (!$token = auth('funcionario')->attempt($credenciais))
+            return response()->json(['login' => 'Credenciais inválidas'], 401);
 
-         return $this->responderComToken($token);
-     }
+        return $this->responderComToken($token);
+    }
 
     /**
      * responderComToken
@@ -95,8 +85,7 @@ class FuncionarioController extends Controller
      * @return void
      */
 
-    public function responderComToken(string $token)
-    {
+    public function responderComToken(string $token) {
         return response()->json([
             'token' => $token,
             'tipo_token' => 'bearer',
@@ -108,8 +97,8 @@ class FuncionarioController extends Controller
      *
      * @return Funcionario
      */
-    public function index()
-    {
+
+    public function index() {
         $funcionario = $this->getAuthFuncionario();
         return response()->json($funcionario);
     }
