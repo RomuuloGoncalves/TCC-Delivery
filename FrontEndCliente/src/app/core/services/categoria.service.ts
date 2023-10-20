@@ -11,4 +11,9 @@ export class CategoriaService {
   public listagem() {
     return this.Server.get('/categoria')
   }
+  
+  public pegarCategoriaNome(nome: string){
+    return this.Server.get(`/categoria/${nome}`,);
+  }
+
 }

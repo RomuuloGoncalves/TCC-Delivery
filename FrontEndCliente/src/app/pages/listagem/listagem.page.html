@@ -26,9 +26,13 @@
 
   <!-- <app-sessao-cards-produto (produtoEmitido)="definirProdutoModal($event)" [produto]="this.produtoFiltrado"></app-sessao-cards-produto> -->
   <!-- <app-sessao-cards-produto [produto]="this.produtoFiltrado"></app-sessao-cards-produto> -->
-  <app-sessao-cards-produto [produtos]="this.produto"></app-sessao-cards-produto>
+
+  <ng-container *ngFor="let categoria of this.categorias">
+    <app-sessao-cards-produto [tituloSessao]="categoria.nome" [cardMontagem]="true" [produtos]="categoria.produtos"></app-sessao-cards-produto>
+  </ng-container>
+
   
-  <ng-container *ngIf="!this.produtoFiltrado.variacoes?.length">
+  <ng-container *ngIf="!this.categorias">
     <ion-text class="ion-text-center">
       <h3>Não há produtos!</h3>
     </ion-text>

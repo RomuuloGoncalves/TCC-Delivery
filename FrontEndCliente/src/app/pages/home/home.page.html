@@ -23,10 +23,10 @@
           <swiper-container #swiper [autoplay]="true" [pagination]="true" [loop]="true" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints" [initialSlide]="2">
 
             <swiper-slide>
-              <app-atalho-home [routerLink]="['listagem/marmitas']" [nomeAtalho]="'Marmitas'" [iconeAtalho]="'../../../assets/imgs/home-icons/garfo_faca_outline.png'"></app-atalho-home>
+              <app-atalho-home [routerLink]="['listagem/marmitas']" [nomeAtalho]="'Marmita Pronta'" [iconeAtalho]="'../../../assets/imgs/home-icons/garfo_faca_outline.png'"></app-atalho-home>
             </swiper-slide>
             <swiper-slide>
-              <app-atalho-home [routerLink]="['listagem/bebidas']" [nomeAtalho]="'Bebidas'" [iconeAtalho]="'../../../assets/imgs/home-icons/bebidas_outline.png'"></app-atalho-home>
+              <app-atalho-home [routerLink]="['listagem/bebidas']" [nomeAtalho]="'Bebida'" [iconeAtalho]="'../../../assets/imgs/home-icons/bebidas_outline.png'"></app-atalho-home>
             </swiper-slide>
             <swiper-slide>
               <app-atalho-home [routerLink]="['listagem/combos']" [nomeAtalho]="'Combos'" [iconeAtalho]="'../../../assets/imgs/home-icons/combos_outline.png'"></app-atalho-home>
@@ -48,7 +48,7 @@
     <app-sessao-cards-produto [tituloSessao]="categoria.nome" [cardMontagem]="true" [produtos]="categoria.produtos"></app-sessao-cards-produto>
   </ng-container>
   <!-- <ng-container *ngIf="!this.produtosFiltrados.length"> -->
-  <ng-container *ngIf="!this.produto">s
+  <ng-container *ngIf="!this.categorias">
     <ion-text class="ion-text-center">
       <h3>Não há produtos!</h3>
     </ion-text>

@@ -21,7 +21,6 @@ export class ModalMarmitaComponent  implements OnInit {
   produtoModal = this.navParams.get('produto')
 
   fecharModal() {
-    console.log(this.produto)
     this.modalController.dismiss();
   }
 

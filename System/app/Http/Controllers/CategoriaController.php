@@ -45,4 +45,9 @@ class CategoriaController extends Controller {
         $categoria::find($id)->delete();
         return response()->json(['message' => 'Categoria deletada com sucesso'], 204);
     }
+
+    public function pegarCategoriaNome(string $nome) {
+        $categoria = Categoria::where('nome', $nome)->with('produtos')->get();
+        return response()->json($categoria);
+    }
 }

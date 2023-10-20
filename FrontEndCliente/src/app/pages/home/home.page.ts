@@ -27,7 +27,8 @@ export class HomePage implements OnInit {
 
   private carregarCategorias() {
     this.categoriaService.listagem().subscribe(
-      (response) => {
+      (response: Categoria[]) => {
+        console.log("responseeee",response)
         this.categorias = response
       },
       (error) => {
@@ -42,7 +43,6 @@ export class HomePage implements OnInit {
   loading: boolean = false;
 
   categorias!: Categoria[];
-  produto!: Produto[];
 
   produtos: Produto[] = [];
 

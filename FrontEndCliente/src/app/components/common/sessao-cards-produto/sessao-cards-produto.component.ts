@@ -14,14 +14,15 @@ export class SessaoCardsProdutoComponent implements OnInit {
 
   constructor(private modalController: ModalController, private produtoService: ProdutoService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    console.log(this.tituloSessao)
+  }
 
   @Input() tituloSessao?: string;
   // trocar de any pra produto tava com erro
   @Input() produtos!: any;
   @Input() cardMontagem: boolean = false;
 
-  // naoaoooooooooooooooooo esquecerrrrrrrrrrrrrrr bct
 
   async definirProdutoModal(id: number) {
     const produto = await this.pegarProduto(id)
@@ -50,5 +51,4 @@ export class SessaoCardsProdutoComponent implements OnInit {
       );
     });
   }
-
 }
