@@ -10,6 +10,12 @@ class VariacaoController extends Controller
 {
     public function __construct() {}
 
+    /**
+     * store
+     *
+     * @return Variacao
+     */
+
     public function store(Request $request) {
         $regras = [
             'nome' => ['required', 'string', 'max:255'],
@@ -38,6 +44,12 @@ class VariacaoController extends Controller
 
         return response()->json($variacao, 201);
     }
+
+    /**
+     * update
+     *
+     * @return Variacao
+     */
 
     public function update(Request $request) {    
         $regras = [
@@ -70,12 +82,26 @@ class VariacaoController extends Controller
         return response()->json($variacao, 200);
     }
 
+    /**
+     * index
+     *
+     * @return Variacao[]
+     */
+
     public function index() {
-        $variacao = Variacao::all();
+        $variacao = Variacao::with(['grupo_variacao' => function($query) {
+            $query->select('id', 'tipo');
+        }])->get();
         
         return response()->json($variacao, 200);
     }
     
+    /**
+     * destroy
+     *
+     * @return void
+     */
+
     public function destroy(int $id) {
         $variacao = Variacao::find($id);
         

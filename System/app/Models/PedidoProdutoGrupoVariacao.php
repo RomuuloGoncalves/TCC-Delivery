@@ -12,17 +12,11 @@ class PedidoProdutoGrupoVariacao extends Model
 
     protected $fillable = [
         'cod_pedido_produto',
-        'cod_grupo_variacoes',
         'cod_variacao'
     ];
     public function pedido_produto(): BelongsTo
     {
         return $this->belongsTo(PedidoProduto::class, 'cod_pedido_produto');
-    }
-
-    public function grupo_variacoes(): HasMany
-    {
-        return $this->hasMany(GrupoVariacao::class);
     }
 
     public function variacoes_selecionadas(): HasMany

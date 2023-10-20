@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
-use App\Models\GrupoVariacao;
-use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class CategoriaController extends Controller {
-
+    
     public function __construct() {}
+
+    /**
+     * store
+     *
+     * @return Categoria
+     */
 
     public function store(Request $request) {
         $regras = [
@@ -29,14 +33,23 @@ class CategoriaController extends Controller {
         return response()->json($categoria, 201);
     }
 
+    /**
+     * index
+     *
+     * @return Categoria[]
+     */
+    
     public function index() {
-        $categorias =
-            Categoria::with(['produtos' => function ($query) {
-                $query->select('id', 'nome', 'descricao');
-            }])->get();
+        $categorias = Categoria::with(['produtos'])->get();
 
         return response()->json($categorias, 200);
     }
+
+    /**
+     * index
+     *
+     * @return destroy[]
+     */
 
     public function destroy(int $id) {
         $categoria = Categoria::find($id);

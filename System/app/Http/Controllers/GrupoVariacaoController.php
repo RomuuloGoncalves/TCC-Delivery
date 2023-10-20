@@ -66,7 +66,9 @@ class GrupoVariacaoController extends Controller
     }
 
     public function show(int $cod_produto) {
-        $grupo_variacao = GrupoVariacao::with('variacao')->where('cod_produto', $cod_produto)->get();
+        $grupo_variacao = GrupoVariacao::with('variacao')
+            ->where('cod_produto', $cod_produto)
+            ->get();
         
         return response()->json($grupo_variacao, 200);
     }

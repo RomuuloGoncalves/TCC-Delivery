@@ -10,14 +10,20 @@ class CupomController extends Controller {
 
     public function __construct() {}
 
+    /**
+     * index
+     *
+     * @return Cupom
+     */
+
     public function index() {
         $cupom = Cupom::all();
 
         return response()->json($cupom, 200);
     }
 
-     /**
-     * Store
+    /**
+     * store
      *
      * @return void
      */
@@ -49,16 +55,14 @@ class CupomController extends Controller {
         return response()->json($cupom, 201);
     }
 
-     /**
+    /**
      * usar
      *
      * @return Cupom
      */
     
     public function usar(Request $request) {
-        $id = $request->input('id');
-
-        $cupom = Cupom::find($id);
+        $cupom = Cupom::find($request->input('id'));
 
         if($cupom == null or $cupom->status == 0) 
             return response()->json(['mensage' => 'Cupom Inválido'], 404);
@@ -72,13 +76,13 @@ class CupomController extends Controller {
         return response()->json($cupom, 201);
     }
 
-     /**
+    /**
      * update
      *
      * @return Cupom
      */
 
-    public function update(Request $request) {    
+    public function update(Request $request) {
         $regras = [
             'id' => ['required', 'integer', 'max_digits:30'],
             'nome' => ['required', 'string', 'max:255', 'unique:Cupons'],
@@ -110,7 +114,7 @@ class CupomController extends Controller {
         return response()->json($cupom, 200);
     }
 
-     /**
+    /**
      * show
      *
      * @return Cupom
@@ -125,6 +129,12 @@ class CupomController extends Controller {
         return response()->json($cupom, 200);
     }
 
+    /**
+     * destroy
+     *
+     * @return void
+     */
+    
     public function destroy(int $id) {
         $cupom = Cupom::find($id);
         

@@ -12,35 +12,27 @@ use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 
-class ClienteController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-    }
+class ClienteController extends Controller {  
 
+    public function __construct() {}
 
     /**
      * getAuthCliente
      *
      * @return Cliente
      */
-    public static function getAuthCliente()
-    {
+
+    public static function getAuthCliente() {
         return auth('cliente')->user();
     }
 
     /**
-     * Store
+     * store
      *
      * @return void
      */
-    public function store(Request $request)
-    {
+
+    public function store(Request $request) {
         $regras = [
             'nome' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:Clientes'],
@@ -64,13 +56,12 @@ class ClienteController extends Controller
     }
 
     /**
-     * Login
+     * login
      *
      * @return void
      */
 
-    public function login(Request $request)
-    {
+    public function login(Request $request) {
         $regras = [
             'email' => ['required', 'string', 'email', 'max:255', 'exists:Clientes'],
             'password' => ['required', 'string', 'max:255', 'min:8'],
@@ -95,8 +86,7 @@ class ClienteController extends Controller
      * @return Cliente
      */
 
-    public function show(int $id)
-    {
+    public function show(int $id) {
         $cliente = Cliente::find($id);
 
         if (!$cliente)
@@ -111,8 +101,7 @@ class ClienteController extends Controller
      * @return void
      */
 
-    public function responderComToken(string $token)
-    {
+    public function responderComToken(string $token) {
         return response()->json([
             'token' => $token,
             'tipo_token' => 'bearer',
@@ -124,8 +113,8 @@ class ClienteController extends Controller
      *
      * @return Cliente
      */
-    public function index()
-    {
+
+    public function index() {
         $cliente = $this->getAuthCliente();
         return response()->json($cliente);
     }

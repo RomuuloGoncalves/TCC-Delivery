@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ClienteController;
 
 class EnderecoController extends Controller {
+    
     public function __construct() {}
 
-     /**
+    /**
      * store
      *
      * @return Endereco
@@ -45,7 +46,7 @@ class EnderecoController extends Controller {
         return response()->json($endereco, 201);
     }
 
-     /**
+    /**
      * update
      *
      * @return Endereco
@@ -67,11 +68,11 @@ class EnderecoController extends Controller {
         if ($validacao->fails())
             return response()->json($validacao->errors(), 422);
 
-        $id = $request->input('id');
         $endereco = Endereco::
-            where('id', $id)
+            where('id', $request->input('id'))
             ->where('cod_cliente',  ClienteController::getAuthCliente()->id)
             ->first();
+
         $atributos = ['nome', 'complemento', 'bairro', 'numero', 'rua', 'cep'];
 
         foreach($atributos as $atributo) {
@@ -87,7 +88,7 @@ class EnderecoController extends Controller {
     /**
      * index
      *
-     * @return Endereco
+     * @return Endereco[]
      */
 
     public function index() {
@@ -105,10 +106,11 @@ class EnderecoController extends Controller {
     public function destroy(int $id) {
         $endereco = Endereco::find($id);
 
-        if(!$endereco)
+        if(!$endereco) {
             return response()->json(['message' => 'Endereço inválido'], 422);
-        else
+        } else {
             Endereco::find($id)->delete();
             return response()->json(['message' => 'Endereço deletado com sucesso'], 204);
+        }
     }
 }
