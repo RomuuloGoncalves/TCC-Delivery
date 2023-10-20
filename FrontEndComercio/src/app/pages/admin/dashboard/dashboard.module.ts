@@ -12,6 +12,7 @@ import { FormasPagamentosComponent } from 'src/app/components/admin/dashboard/gr
 import { TaxaCancelamentoComponent } from 'src/app/components/admin/dashboard/graficos/taxa-cancelamento/taxa-cancelamento.component';
 import { RendimentoComponent } from 'src/app/components/admin/dashboard/graficos/rendimento/rendimento.component';
 import { VendasComponent } from 'src/app/components/admin/dashboard/graficos/vendas/vendas.component';
+import { CategoriasComponent } from 'src/app/components/admin/dashboard/graficos/categorias/categorias.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { VendasComponent } from 'src/app/components/admin/dashboard/graficos/ven
     FormasPagamentosComponent,
     TaxaCancelamentoComponent,
     RendimentoComponent,
-    VendasComponent
+    VendasComponent,
+    CategoriasComponent
   ]
 })
 export class DashboardPageModule {}

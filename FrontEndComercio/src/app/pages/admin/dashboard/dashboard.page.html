@@ -19,11 +19,18 @@
   </ion-row>
 
   <ion-row class="ion-justify-content-around ion-padding">
-    <ion-col size="11" class="grafico ">
+    <ion-col size="8" class="grafico ">
       <ion-row class="ion-justify-content-center">
         <ion-label class="titulo__grafico">Vendas</ion-label>
       </ion-row>
       <app-vendas [intervalo]="this.intervalo"></app-vendas>
+    </ion-col>
+
+    <ion-col size="3" class="grafico ">
+      <ion-row class="ion-justify-content-center">
+        <ion-label class="titulo__grafico">Vendas</ion-label>
+      </ion-row>
+      <app-categorias [intervalo]="this.intervalo"></app-categorias>
     </ion-col>
   </ion-row>
 

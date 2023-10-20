@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Chart, registerables } from 'chart.js';
 import { Pedido } from 'src/app/core/interfaces/pedido';
 import { PedidosService } from 'src/app/core/services/pedidos.service';
+Chart.register(...registerables);
 
 @Component({
   selector: 'app-formas-pagamentos',

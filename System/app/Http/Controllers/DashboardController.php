@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Funcionario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -20,9 +21,9 @@ class DashboardController extends Controller
     {
         $pedidos = Pedido::all();
 
-        // foreach ($pedidos as $pedido) {
-        //     $pedido->pedido_produtos = PedidoProduto::with('produto')->where('cod_pedido', $pedido->id)->get();
-        // }
+        foreach ($pedidos as $pedido) {
+            $pedido->pedido_produtos = PedidoProduto::with(['produto', 'produto.categoria'])->where('cod_pedido', $pedido->id)->get();
+        }
 
         return response()->json($pedidos, 200);
     }
@@ -444,5 +445,10 @@ class DashboardController extends Controller
             'quantidade_total_ano_passado' => $quantidadeTotalAnoPassado,
             'anoPassado_vs_anoAtual' => $diferenca,
         ], 200);
+    }
+
+
+    public function categoria_semanal(){
+      
     }
 }

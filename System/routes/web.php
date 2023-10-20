@@ -113,6 +113,7 @@ $router->group(['prefix' => 'produto'], function () use ($router) {
     $router->delete('/excluir/{id}', 'ProdutoController@destroy');
     $router->post('/cadastrar', 'ProdutoController@store');
     $router->put('/editar', 'ProdutoController@update');
+    $router->get('/{id}', 'ProdutoController@show');
 });
 
 /*
@@ -168,4 +169,7 @@ $router->group(['prefix' => 'dashboard'], function () use ($router) {
     $router->get('/vendas/semanais', 'DashboardController@vendas_semanais');
     $router->get('/vendas/mensais', 'DashboardController@vendas_mensais');
     $router->get('/vendas/anual', 'DashboardController@vendas_anuais');
+
+    $router->get('/categoria/semanal', 'DashboardController@categoria_semanal');
+
 });

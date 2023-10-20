@@ -4,7 +4,6 @@ import { Produto } from 'src/app/core/interfaces/produto';
 import { Variacao } from 'src/app/core/interfaces/variacao';
 import { CategoriaService } from 'src/app/core/services/categoria.service';
 import { ClienteService } from 'src/app/core/services/cliente.service';
-import { ProdutoService } from 'src/app/core/services/produto.service';
 
 import Swiper from 'swiper';
 
@@ -18,7 +17,9 @@ export class HomePage implements OnInit {
   swiperRef: ElementRef | undefined;
   swiper?: Swiper;
 
-  constructor(private Cliente: ClienteService, private produtoService: ProdutoService, private categoriaService: CategoriaService) { }
+  constructor(
+    private Cliente: ClienteService,
+    private categoriaService: CategoriaService) { }
 
   ngOnInit() {
     this.carregarCategorias();
@@ -27,9 +28,7 @@ export class HomePage implements OnInit {
   private carregarCategorias() {
     this.categoriaService.listagem().subscribe(
       (response) => {
-        console.log("home", response)
         this.categorias = response
-        console.log("categoria home", this.categorias)
       },
       (error) => {
         console.error(error);
