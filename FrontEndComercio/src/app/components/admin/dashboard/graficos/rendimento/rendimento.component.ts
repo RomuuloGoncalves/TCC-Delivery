@@ -136,7 +136,13 @@ export class RendimentoComponent implements OnInit, OnChanges {
           {
             label: 'Rendimento Bruto por Dia (Semana Atual)',
             data: [
-              ...this.dados!
+              this.dados!.dias[0],
+              this.dados!.dias[1],
+              this.dados!.dias[2],
+              this.dados!.dias[3],
+              this.dados!.dias[4],
+              this.dados!.dias[5],
+              this.dados!.dias[6]
             ],
             backgroundColor: '#321dcf',
             borderColor: '#321dcf',
@@ -146,7 +152,13 @@ export class RendimentoComponent implements OnInit, OnChanges {
           {
             label: 'Rendimento Bruto por Dia (Semana Passada)',
             data: [
-              ...this.dados!.semanaPassada
+              this.dados!.semanaPassada[0],
+              this.dados!.semanaPassada[1],
+              this.dados!.semanaPassada[2],
+              this.dados!.semanaPassada[3],
+              this.dados!.semanaPassada[4],
+              this.dados!.semanaPassada[5],
+              this.dados!.semanaPassada[6]
             ],
             backgroundColor: '#4bb43f',
             borderColor: '#4bb43f',
@@ -181,7 +193,12 @@ export class RendimentoComponent implements OnInit, OnChanges {
           {
             label: 'Rendimento Bruto por Mês (Semana Atual)',
             data: [
-              ...this.dados!.semanas
+              this.dados!.semanas[0],
+              this.dados!.semanas[1],
+              this.dados!.semanas[2],
+              this.dados!.semanas[3],
+              this.dados!.semanas[4],
+
             ],
             backgroundColor: '#321dcf',
             borderColor: '#321dcf',
@@ -191,7 +208,11 @@ export class RendimentoComponent implements OnInit, OnChanges {
           {
             label: 'Rendimento Bruto por Mês (Semana Passada)',
             data: [
-              ...this.dados!.semanas_mes_passado
+              this.dados!.semanas_mes_passado[0],
+              this.dados!.semanas_mes_passado[1],
+              this.dados!.semanas_mes_passado[2],
+              this.dados!.semanas_mes_passado[3],
+              this.dados!.semanas_mes_passado[4],
             ],
             backgroundColor: '#4bb43f',
             borderColor: '#4bb43f',
@@ -226,7 +247,18 @@ export class RendimentoComponent implements OnInit, OnChanges {
           {
             label: 'Rendimento Bruto por Mês (Semana Atual)',
             data: [
-              ...this.dados!.meses
+              this.dados!.meses[1],
+              this.dados!.meses[2],
+              this.dados!.meses[3],
+              this.dados!.meses[4],
+              this.dados!.meses[5],
+              this.dados!.meses[6],
+              this.dados!.meses[7],
+              this.dados!.meses[8],
+              this.dados!.meses[9],
+              this.dados!.meses[10],
+              this.dados!.meses[11],
+              this.dados!.meses[12],
             ],
             backgroundColor: '#321dcf',
             borderColor: '#321dcf',
@@ -236,7 +268,18 @@ export class RendimentoComponent implements OnInit, OnChanges {
           {
             label: 'Rendimento Bruto por Mês (Semana Passada)',
             data: [
-             ...this.dados!.meses_ano_passado
+              this.dados!.meses_ano_passado[1],
+              this.dados!.meses_ano_passado[2],
+              this.dados!.meses_ano_passado[3],
+              this.dados!.meses_ano_passado[4],
+              this.dados!.meses_ano_passado[5],
+              this.dados!.meses_ano_passado[6],
+              this.dados!.meses_ano_passado[7],
+              this.dados!.meses_ano_passado[8],
+              this.dados!.meses_ano_passado[9],
+              this.dados!.meses_ano_passado[10],
+              this.dados!.meses_ano_passado[11],
+              this.dados!.meses_ano_passado[12],
             ],
             backgroundColor: '#4bb43f',
             borderColor: '#4bb43f',
