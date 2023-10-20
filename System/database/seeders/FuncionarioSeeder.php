@@ -12,15 +12,12 @@ class FuncionarioSeeder extends Seeder
 {
     public function run()
     {
-        $faker = Factory::create();
 
-        for ($i = 1; $i <= 10; $i++) {
-            DB::table('Funcionarios')->insert([
-                'nome' => $faker->name(),
-                'login' => $faker->word() . $i,
-                'password' => Hash::make('none'),
-                'nivel_acesso' => $faker->randomElement(['1', '2', '3'])
-            ]);
-        }
+        DB::table('Funcionarios')->insert([
+            'nome' => 'Admin',
+            'login' => 'admin',
+            'password' => Hash::make('asdasdasd'),
+            'nivel_acesso' => '3'
+        ]);
     }
 }

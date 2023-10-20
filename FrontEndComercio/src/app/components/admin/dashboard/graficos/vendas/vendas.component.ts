@@ -131,13 +131,7 @@ export class VendasComponent implements OnInit {
           {
             label: 'Vendas por Dia (Semana Atual)',
             data: [
-              this.dados!.quantidade_pedidos[0],
-              this.dados!.quantidade_pedidos[1],
-              this.dados!.quantidade_pedidos[2],
-              this.dados!.quantidade_pedidos[3],
-              this.dados!.quantidade_pedidos[4],
-              this.dados!.quantidade_pedidos[5],
-              this.dados!.quantidade_pedidos[6],
+              ...this.dados!.quantidade_pedidos
             ],
             backgroundColor: '#321dcf',
             borderColor: '#321dcf',
@@ -147,13 +141,7 @@ export class VendasComponent implements OnInit {
           {
             label: 'Vendas por Dia (Semana Passada)',
             data: [
-              this.dados!.quantidade_pedidos_semana_passada[0],
-              this.dados!.quantidade_pedidos_semana_passada[1],
-              this.dados!.quantidade_pedidos_semana_passada[2],
-              this.dados!.quantidade_pedidos_semana_passada[3],
-              this.dados!.quantidade_pedidos_semana_passada[4],
-              this.dados!.quantidade_pedidos_semana_passada[5],
-              this.dados!.quantidade_pedidos_semana_passada[6]
+              ...this.dados!.quantidade_pedidos_semana_passada
             ],
             backgroundColor: '#4bb43f',
             borderColor: '#4bb43f',
@@ -188,12 +176,7 @@ export class VendasComponent implements OnInit {
           {
             label: 'Vendas por Semana (Mês Atual)',
             data: [
-              this.dados!.semanas[0],
-              this.dados!.semanas[1],
-              this.dados!.semanas[2],
-              this.dados!.semanas[3],
-              this.dados!.semanas[4],
-
+              ...this.dados!.semanas
             ],
             backgroundColor: '#321dcf',
             borderColor: '#321dcf',
@@ -203,11 +186,7 @@ export class VendasComponent implements OnInit {
           {
             label: 'Vendas por Semana (Mês Passada)',
             data: [
-              this.dados!.semanas_mes_passado[0],
-              this.dados!.semanas_mes_passado[1],
-              this.dados!.semanas_mes_passado[2],
-              this.dados!.semanas_mes_passado[3],
-              this.dados!.semanas_mes_passado[4],
+              ...this.dados!.semanas_mes_passado
             ],
             backgroundColor: '#4bb43f',
             borderColor: '#4bb43f',
@@ -242,18 +221,7 @@ export class VendasComponent implements OnInit {
           {
             label: 'Vendas por Mes (Ano Atual)',
             data: [
-              this.dados!.meses[1],
-              this.dados!.meses[2],
-              this.dados!.meses[3],
-              this.dados!.meses[4],
-              this.dados!.meses[5],
-              this.dados!.meses[6],
-              this.dados!.meses[7],
-              this.dados!.meses[8],
-              this.dados!.meses[9],
-              this.dados!.meses[10],
-              this.dados!.meses[11],
-              this.dados!.meses[12],
+              ...this.dados!.meses
             ],
             backgroundColor: '#321dcf',
             borderColor: '#321dcf',
@@ -263,18 +231,7 @@ export class VendasComponent implements OnInit {
           {
             label: 'Vendas por Mes (Ano Passada)',
             data: [
-              this.dados!.meses_ano_passado[1],
-              this.dados!.meses_ano_passado[2],
-              this.dados!.meses_ano_passado[3],
-              this.dados!.meses_ano_passado[4],
-              this.dados!.meses_ano_passado[5],
-              this.dados!.meses_ano_passado[6],
-              this.dados!.meses_ano_passado[7],
-              this.dados!.meses_ano_passado[8],
-              this.dados!.meses_ano_passado[9],
-              this.dados!.meses_ano_passado[10],
-              this.dados!.meses_ano_passado[11],
-              this.dados!.meses_ano_passado[12],
+              ...this.dados!.meses_ano_passado
             ],
             backgroundColor: '#4bb43f',
             borderColor: '#4bb43f',
