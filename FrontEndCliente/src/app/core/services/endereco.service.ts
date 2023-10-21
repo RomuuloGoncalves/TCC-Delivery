@@ -14,14 +14,14 @@ export class EnderecoService {
   }
 
   public listagem (cod_cliente: number) {
-    return this.Server.get(`endereco/listagem?cod_cliente=${cod_cliente}`,);
+    return this.Server.get(`/endereco/listagem?cod_cliente=${cod_cliente}`,);
   }
 
   public editar (endereco: Endereco) { 
-    return this.Server.post('endereco/editar', endereco);
+    return this.Server.post('/endereco/editar', endereco);
   }
 
   public excluir (endereco: Endereco) {
-    return this.Server.post('endereco/excluir', endereco);
+    return this.Server.post('/endereco/excluir', endereco);
   }
 }
