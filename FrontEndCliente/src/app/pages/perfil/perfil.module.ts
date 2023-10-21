@@ -9,11 +9,8 @@ import { PerfilPageRoutingModule } from './perfil-routing.module';
 import { PerfilPage } from './perfil.page';
 import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
-import { EnderecoModule } from 'src/app/components/perfil/endereco/endereco.module';
-import { PerfilConfigModule } from 'src/app/components/perfil/perfil-config/perfil-config.module';
-import { PagamentosModule } from 'src/app/components/perfil/pagamentos/pagamentos.module';
-import { CuponsModule } from 'src/app/components/perfil/cupons/cupons.module';
-import { DadosModule } from 'src/app/components/perfil/dados/dados.module';
+import { EnderecoComponent } from 'src/app/components/perfil/endereco/endereco.component';
+import { PerfilConfigComponent } from 'src/app/components/perfil/perfil-config/perfil-config.component';
 
 @NgModule({
   imports: [
@@ -23,13 +20,8 @@ import { DadosModule } from 'src/app/components/perfil/dados/dados.module';
     PerfilPageRoutingModule,
     FooterModule,
     HeaderModule,
-    EnderecoModule,
-    PerfilConfigModule,
-    PagamentosModule,
-    CuponsModule,
-    DadosModule
 
   ],
-  declarations: [PerfilPage]
+  declarations: [PerfilPage, EnderecoComponent, PerfilConfigComponent]
 })
 export class PerfilPageModule {}

@@ -27,13 +27,14 @@ ion-col{
     &__title {
       color: var(--ion-color-primary-variation);
       font-size: 1.6rem;
+      text-align: center;
     }
   }
 
   &__options {
     width: 225px;
     margin: 0 auto;
-    
+
       .item {
       margin-top: 10px;
       font-size: 1.2rem;
@@ -72,7 +73,7 @@ ion-col{
         color: var(--ion-color-primary-variation);
         cursor: pointer;
         transition: 0.25s;
-        
+
         &::after {
           background-color: var(--ion-color-primary-variation);
           transition: 0.25s ease-out;
@@ -84,9 +85,9 @@ ion-col{
           transform-origin: 0% 100%;
         }
       }
-      }  
+      }
   }
-  
+
   &__back {
     margin-top: 15vh;
     color: var(--ion-color-primary-variation);

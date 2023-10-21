@@ -10,14 +10,14 @@ export class EnderecoService {
   constructor(private Server: ServerService) { }
 
   public cadastro (endereco: Endereco) {
-    return this.Server.post('endereco/cadastrar', endereco);
+    return this.Server.post('/cliente/endereco/cadastrar', endereco);
   }
 
-  public listagem (cod_cliente: number) {
-    return this.Server.get(`/endereco/listagem?cod_cliente=${cod_cliente}`,);
+  public listagem () {
+    return this.Server.get(`/cliente/endereco`,);
   }
 
-  public editar (endereco: Endereco) { 
+  public editar (endereco: Endereco) {
     return this.Server.post('/endereco/editar', endereco);
   }
 

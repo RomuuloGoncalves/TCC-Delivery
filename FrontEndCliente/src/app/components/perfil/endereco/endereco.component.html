@@ -2,37 +2,28 @@
   <ion-col>
     <ion-row class="page__header ion-justify-content-between">
       <ion-col size="auto" class="page__header__title">
-          <ion-label>Endereço</ion-label>
+        <ion-label>Endereço</ion-label>
       </ion-col>
       <ion-col size="auto">
         <img class="page__header__edit" src="../../../../assets/imgs/perfil-icons/edit.svg" alt="editar">
       </ion-col>
     </ion-row>
-    
+
     <ion-row class="page_container ion-justify-content-between">
-      <!-- <ion-col size="11">
-        <ion-item>
-          <ion-label>
-    
-          </ion-label>
-        </ion-item>
-      </ion-col> -->
       <ion-col size="11">
-        <form #cadastarForm="ngForm" (ngSubmit)="this.cadastrar()">
-          <ion-input name="nome" label="nome" type="text"></ion-input>
-          <ion-input name="complemento" label="complemento" type="text"></ion-input>
-          <ion-input name="bairro" label="bairro" type="text"></ion-input>
-          <ion-input name="numero" label="numero" type="text"></ion-input>
-          <ion-input name="rua" label="rua" type="text"></ion-input>
-          <ion-input name="cep" label="cep" type="text"></ion-input>
-  
-  
+        <form #cadastrarForm="ngForm" (ngSubmit)="this.cadastrar()">
+          <ion-input name="nome" label="Nome" type="text"></ion-input>
+          <ion-input name="complemento" label="Complemento" type="text"></ion-input>
+          <ion-input name="bairro" label="Bairro" type="text"></ion-input>
+          <ion-input name="numero" label="Número" type="text"></ion-input>
+          <ion-input name="rua" label="Rua" type="text"></ion-input>
+          <ion-input name="cep" label="Cep" type="text"></ion-input>
+
           <ion-row class="ion-justify-content-center ion-padding">
             <ion-col size="auto">
-              <ion-button type="submit" class="login__btn-entrar">Entrar</ion-button>
+              <ion-button type="submit" class="cadastrar__btn ion-padding">Cadastrar</ion-button>
             </ion-col>
           </ion-row>
-  
         </form>
       </ion-col>
     </ion-row>

@@ -2,10 +2,19 @@
   <ion-col>
     <ion-row class="page__header ion-justify-content-between">
       <ion-col size="auto" class="page__header__title">
-          <ion-label>Perfil</ion-label>
+        <ion-label>Perfil</ion-label>
       </ion-col>
       <ion-col size="auto">
         <img class="page__header__edit" src="../../../../assets/imgs/perfil-icons/edit.svg" alt="editar">
+      </ion-col>
+    </ion-row>
+    <ion-row class="page_container ion-justify-content-between">
+      <ion-col size="11">
+        <form #editarForm="ngForm">
+          <ion-input [(ngModel)]="this.cliente.nome" name="nome" label="Nome" type="text"></ion-input>
+          <ion-input [(ngModel)]="this.cliente.email" name="email" label="Email" type="email"></ion-input>
+          <ion-input [(ngModel)]="this.cliente.telefone" name="telefone" label="Telefone" type="text"></ion-input>
+        </form>
       </ion-col>
     </ion-row>
   </ion-col>

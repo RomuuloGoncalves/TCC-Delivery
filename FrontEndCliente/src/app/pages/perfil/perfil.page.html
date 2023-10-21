@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <div class="content">
+  <div class="content" *ngIf="!this.loading">
     <ion-row>
       <ion-col size="auto" class="ion-align-items-center ">
         <ion-row class="sidebar">
@@ -8,33 +8,22 @@
               <ion-row class="ion-justify-content-center ion-align-items-center">
                 <img class="sidebar__welcome__avatar" src="../../../assets/imgs/default/avatar_default.svg" alt="avatar">
               </ion-row>
-        
+
               <ion-row class="ion-justify-content-center">
-                <h1 class="sidebar__welcome__title">Olá, Usuario X 👋</h1>
+                <h1 class="sidebar__welcome__title">Olá, {{ this.cliente.nome }} 👋</h1>
               </ion-row>
             </ion-row>
 
             <ion-row class="sidebar__options ion-align-item-center ion-justify-content-center">
               <ion-col size="12">
                   <ion-row class="item ion-align-items-center ion-justify-content-center">
-                    <ion-label>Perfil</ion-label> 
+                    <ion-label>Perfil</ion-label>
                   </ion-row>
-          
+
                   <ion-row class="item ion-align-items-center ion-justify-content-center">
                     <ion-label>Endereço</ion-label>
                   </ion-row>
-          
-                  <ion-row class="item ion-align-items-center ion-justify-content-center">
-                    <ion-label>Cupons</ion-label>
-                  </ion-row>
-        
-                  <ion-row class="item ion-align-items-center ion-justify-content-center">
-                    <ion-label>Pagamentos</ion-label>
-                  </ion-row>
-        
-                  <ion-row class="item ion-align-items-center ion-justify-content-center">
-                    <ion-label>Dados</ion-label>
-                  </ion-row>
+
               </ion-col>
             </ion-row>
 
@@ -47,13 +36,12 @@
           </ion-col>
         </ion-row>
       </ion-col>
-    
+
       <ion-col class="pages">
+        <app-perfil-config
+          [cliente]="this.cliente"
+        ></app-perfil-config>
         <app-endereco></app-endereco>
-        <app-perfil-config></app-perfil-config>
-        <app-cupons></app-cupons>
-        <app-pagamentos></app-pagamentos>
-        <app-dados></app-dados>
       </ion-col>
     </ion-row>
   </div>
