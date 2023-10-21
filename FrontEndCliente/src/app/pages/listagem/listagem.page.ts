@@ -1,9 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { Produto } from 'src/app/core/interfaces/produto';
-import { Variacao } from 'src/app/core/interfaces/variacao';
-import { ProdutoService } from 'src/app/core/services/produto.service';
+import { Categoria } from 'src/app/core/interfaces/categoria';
+import { CategoriaService } from 'src/app/core/services/categoria.service';
 
 @Component({
   selector: 'app-listagem',
@@ -11,19 +10,28 @@ import { ProdutoService } from 'src/app/core/services/produto.service';
   styleUrls: ['./listagem.page.scss'],
 })
 export class ListagemPage implements OnInit {
-  constructor(private route: ActivatedRoute, private Router: Router, private produtoService: ProdutoService) {}
+  constructor(private route: ActivatedRoute, private Router: Router, private categoriaService: CategoriaService) {}
 
   nomeProduto!: any;
 
   ngOnInit() {
-    this.nomeProduto = this.route.snapshot.paramMap.get('produto');
 
     if (!this.eStringValida(this.nomeProduto)) this.Router.navigate(['..']);
+    this.nomeProduto = this.route.snapshot.paramMap.get('produto');
+    console.log(this.nomeProduto)
+    
+    // this.nomeProduto = this.nomeProduto[0].toUpperCase() + this.nomeProduto.slice(1);
 
-    this.nomeProduto =
-      this.nomeProduto[0].toUpperCase() + this.nomeProduto.slice(1);
+    // marmitas
+    // bebidas
+    // combos
 
-    this.carregarProdutos()
+    this.nomeProduto == 'marmitas' ? this.nomeProduto = 'Marmita Pronta' : null
+    this.nomeProduto == 'bebidas' ? this.nomeProduto = 'Bebida' : null
+    this.nomeProduto == 'combos' ? this.nomeProduto = 'Combos' : null
+
+
+    this.carregarCategorias(this.nomeProduto)
     
   }
 
@@ -33,28 +41,25 @@ export class ListagemPage implements OnInit {
     combo: true,
     acompanhamento: true,
   };
-
   selectedOptions: string = 'nenhum';
 
-  loading: boolean = false;
-  produto!: Produto[]
+  loading: boolean = true;
+  categorias!: Categoria[]
 
   produtoFiltrado?: any
   // produtoFiltrado?: Produto[]
   // produtoFiltrado: Produto[] = this.produto;
 
-  carregarProdutos() {
-    this.loading = true;
-    this.produtoService.listagem().subscribe(
-      (response: Produto[]) => {
-        this.produto = response;
-        // this.produtoFiltrado = this.produto;
-        this.loading = false;
+  private carregarCategorias(nome: string) {
+    this.categoriaService.pegarCategoriaNome(nome).subscribe(
+      (response: Categoria[]) => {
+        this.categorias = response
       },
-      (error: HttpErrorResponse) => {
+      (error) => {
         console.error(error);
       }
-    );
+    )
+    this.loading = false
   }
 
   eStringValida(str: string) {
