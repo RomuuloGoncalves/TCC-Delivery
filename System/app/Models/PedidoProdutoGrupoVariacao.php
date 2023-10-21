@@ -21,6 +21,6 @@ class PedidoProdutoGrupoVariacao extends Model
 
     public function variacoes_selecionadas(): HasMany
     {
-        return $this->hasMany(Variacao_selecionadas::class, 'cod_pedido_produto_grupo_variacoes');
+        return $this->hasMany(VariacaoSelecionada::class, 'cod_pedido_produto_grupo_variacoes');
     }
 }
