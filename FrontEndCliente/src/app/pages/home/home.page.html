@@ -1,58 +1,65 @@
 <ion-content [fullscreen]="true">
-  <app-header
-    [logedIn]="this.logedIn"
-  ></app-header>
+  <ng-container *ngIf="!this.loading">
+    <app-header [logedIn]="this.logedIn"></app-header>
 
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="12">
-      <ion-row class="ion-justify-content-center">
-        <h1 id="titulo__pesquisa">Encontre que está procurando</h1>
-      </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12">
+        <ion-row class="ion-justify-content-center">
+          <h1 id="titulo__pesquisa">Encontre que está procurando</h1>
+        </ion-row>
 
-      <ion-row class="ion-justify-content-center">
-        <ion-col size="12" sizeMd="8">
-          <ion-searchbar show-cancel-button="never" placeholder="Pesquisar" (ionInput)="this.filtrarPesquisa($event)" debounce="250"></ion-searchbar>
-        </ion-col>
-      </ion-row>
-    </ion-col>
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="12" sizeMd="8">
+            <ion-searchbar show-cancel-button="never" placeholder="Pesquisar" (ionInput)="this.filtrarPesquisa($event)"
+              debounce="250"></ion-searchbar>
+          </ion-col>
+        </ion-row>
+      </ion-col>
 
-    <ion-col size="12" sizeMd="8">
-      <ion-row class="ion-justify-content-around">
+      <ion-col size="12" sizeMd="8">
+        <ion-row class="ion-justify-content-around">
 
-        <ion-col size=12>
-          <swiper-container #swiper [autoplay]="true" [pagination]="true" [loop]="true" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints" [initialSlide]="2">
+          <ion-col size=12>
+            <swiper-container #swiper [autoplay]="true" [pagination]="true" [loop]="true"
+              [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints"
+              [initialSlide]="2">
 
-            <swiper-slide>
-              <app-atalho-home [routerLink]="['listagem/marmitas']" [nomeAtalho]="'Marmita Pronta'" [iconeAtalho]="'../../../assets/imgs/home-icons/garfo_faca_outline.png'"></app-atalho-home>
-            </swiper-slide>
-            <swiper-slide>
-              <app-atalho-home [routerLink]="['listagem/bebidas']" [nomeAtalho]="'Bebida'" [iconeAtalho]="'../../../assets/imgs/home-icons/bebidas_outline.png'"></app-atalho-home>
-            </swiper-slide>
-            <swiper-slide>
-              <app-atalho-home [routerLink]="['listagem/combos']" [nomeAtalho]="'Combos'" [iconeAtalho]="'../../../assets/imgs/home-icons/combos_outline.png'"></app-atalho-home>
-            </swiper-slide>
-          </swiper-container>
-        </ion-col>
-      </ion-row>
-    </ion-col>
-  </ion-row>
+              <swiper-slide>
+                <app-atalho-home [routerLink]="['listagem/marmitas']" [nomeAtalho]="'Marmita Pronta'"
+                  [iconeAtalho]="'../../../assets/imgs/home-icons/garfo_faca_outline.png'"></app-atalho-home>
+              </swiper-slide>
+              <swiper-slide>
+                <app-atalho-home [routerLink]="['listagem/bebidas']" [nomeAtalho]="'Bebida'"
+                  [iconeAtalho]="'../../../assets/imgs/home-icons/bebidas_outline.png'"></app-atalho-home>
+              </swiper-slide>
+              <swiper-slide>
+                <app-atalho-home [routerLink]="['listagem/combos']" [nomeAtalho]="'Combos'"
+                  [iconeAtalho]="'../../../assets/imgs/home-icons/combos_outline.png'"></app-atalho-home>
+              </swiper-slide>
+            </swiper-container>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
 
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="11">
-      <ion-row id="divisoria"></ion-row>
-    </ion-col>
-  </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="11">
+        <ion-row id="divisoria"></ion-row>
+      </ion-col>
+    </ion-row>
 
-  <!-- <ng-container *ngFor="let produto of this.produtosFiltrados"> -->
-  <ng-container *ngFor="let categoria of this.categorias">
-    <app-sessao-cards-produto [tituloSessao]="categoria.nome" [cardMontagem]="true" [produtos]="categoria.produtos"></app-sessao-cards-produto>
+    <ng-container *ngFor="let categoria of this.categorias">
+      <app-sessao-cards-produto [tituloSessao]="categoria.nome" [cardMontagem]="true"
+        [produtos]="categoria.produtos"></app-sessao-cards-produto>
+    </ng-container>
+
+    <ng-container *ngIf="!this.categorias">
+      <ion-text class="ion-text-center">
+        <h3>Não há produtos!</h3>
+      </ion-text>
+    </ng-container>
+
+    <app-footer></app-footer>
   </ng-container>
-  <!-- <ng-container *ngIf="!this.produtosFiltrados.length"> -->
-  <ng-container *ngIf="!this.categorias">
-    <ion-text class="ion-text-center">
-      <h3>Não há produtos!</h3>
-    </ion-text>
-  </ng-container>
-
-  <app-footer></app-footer>
+  <app-loading [loading]="this.loading"></app-loading>
 </ion-content>

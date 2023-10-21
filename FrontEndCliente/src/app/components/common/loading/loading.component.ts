@@ -10,7 +10,7 @@ export class LoadingComponent  implements OnInit {
   constructor() { }
 
   @Input() public loading: boolean = false;
-  @Input() public scale: number = 1;
+  @Input() public scale: number = 2.5;
   @Input() public color: string = 'primary';
 
 

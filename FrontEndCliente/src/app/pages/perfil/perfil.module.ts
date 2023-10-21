@@ -11,6 +11,7 @@ import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 import { EnderecoComponent } from 'src/app/components/perfil/endereco/endereco.component';
 import { PerfilConfigComponent } from 'src/app/components/perfil/perfil-config/perfil-config.component';
+import { LoadingModule } from 'src/app/components/common/loading/loading.module';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import { PerfilConfigComponent } from 'src/app/components/perfil/perfil-config/p
     PerfilPageRoutingModule,
     FooterModule,
     HeaderModule,
-
+    LoadingModule
   ],
   declarations: [PerfilPage, EnderecoComponent, PerfilConfigComponent]
 })

@@ -4,18 +4,20 @@
       <ion-col size="auto" class="ion-align-items-center ">
         <ion-row class="sidebar">
           <ion-col>
-            <ion-row class="sidebar__welcome ion-justify-content-center">
-              <ion-row class="ion-justify-content-center ion-align-items-center">
-                <img class="sidebar__welcome__avatar" src="../../../assets/imgs/default/avatar_default.svg" alt="avatar">
+            <ng-container *ngIf="!this.loading">
+              <ion-row class="sidebar__welcome ion-justify-content-center">
+                <ion-row class="ion-justify-content-center ion-align-items-center">
+                  <img class="sidebar__welcome__avatar" src="../../../assets/imgs/default/avatar_default.svg"
+                    alt="avatar">
+                </ion-row>
+
+                <ion-row class="ion-justify-content-center">
+                  <h1 class="sidebar__welcome__title">Olá, {{ this.cliente.nome }} 👋</h1>
+                </ion-row>
               </ion-row>
 
-              <ion-row class="ion-justify-content-center">
-                <h1 class="sidebar__welcome__title">Olá, {{ this.cliente.nome }} 👋</h1>
-              </ion-row>
-            </ion-row>
-
-            <ion-row class="sidebar__options ion-align-item-center ion-justify-content-center">
-              <ion-col size="12">
+              <ion-row class="sidebar__options ion-align-item-center ion-justify-content-center">
+                <ion-col size="12">
                   <ion-row class="item ion-align-items-center ion-justify-content-center">
                     <ion-label>Perfil</ion-label>
                   </ion-row>
@@ -24,25 +26,31 @@
                     <ion-label>Endereço</ion-label>
                   </ion-row>
 
-              </ion-col>
-            </ion-row>
+                </ion-col>
+              </ion-row>
 
-            <ion-row class="ion-justify-content-center">
-              <ion-button [routerLink]="['/']" class="sidebar__back" fill="clear">
-                <ion-label>Voltar</ion-label>
-                <img class="sidebar__back__icon" src="../../../assets/imgs/perfil-icons/back.svg" alt="voltar">
-              </ion-button>
-            </ion-row>
+              <ion-row class="ion-justify-content-center">
+                <ion-button [routerLink]="['/']" class="sidebar__back" fill="clear">
+                  <ion-label>Voltar</ion-label>
+                  <img class="sidebar__back__icon" src="../../../assets/imgs/perfil-icons/back.svg" alt="voltar">
+                </ion-button>
+              </ion-row>
+            </ng-container>
+            <app-loading [loading]="this.loading"></app-loading>
           </ion-col>
         </ion-row>
       </ion-col>
 
       <ion-col class="pages">
-        <app-perfil-config
-          [cliente]="this.cliente"
-        ></app-perfil-config>
-        <app-endereco></app-endereco>
+        <ng-container *ngIf="!this.loading">
+          <app-perfil-config [cliente]="this.cliente"></app-perfil-config>
+          <app-endereco></app-endereco>
+        </ng-container>
+        <app-loading
+          [loading]="this.loading"
+        ></app-loading>
       </ion-col>
     </ion-row>
   </div>
+  <app-loading [loading]="this.loading"></app-loading>
 </ion-content>

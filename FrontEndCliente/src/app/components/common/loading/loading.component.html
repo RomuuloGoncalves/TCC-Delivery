@@ -1,5 +1,12 @@
-<ion-spinner name="dots"
+
+<ion-row
   *ngIf="this.loading"
-  [style]="'scale:'+this.scale"
-  [color]="this.color"
-></ion-spinner>
+  class="ion-justify-content-center ion-align-items-center"
+>
+  <ion-col size="auto">
+    <ion-spinner name="dots"
+      [style]="'scale:'+this.scale"
+      [color]="this.color"
+    ></ion-spinner>
+  </ion-col>
+</ion-row>
