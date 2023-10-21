@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $quantidadel_inserts = 1;
+        $quantidadel_inserts = 5;
         for ($i = 0; $i < $quantidadel_inserts; $i++) {
             $this->call([
                 ClienteSeeder::class,

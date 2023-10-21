@@ -8,7 +8,7 @@ Chart.register(...registerables);
   templateUrl: './categorias.component.html',
   styleUrls: ['./categorias.component.scss'],
 })
-export class CategoriasComponent  implements OnInit {
+export class CategoriasComponent implements OnInit {
 
 
   @Input() intervalo: string = 'semanalmente'
@@ -20,9 +20,19 @@ export class CategoriasComponent  implements OnInit {
     this.recuperarDadosSemanais().then(() => {
       this.gerarGrafico();
     });
-    // testando kkkkkkkk
   }
-
+  arrayCores: string[] = [
+    '#FAD02E', '#C7E4E9',
+    '#FFDAC1', '#A2D2FF',
+    '#FBE7C6', '#B9D4DB',
+    '#EFD3E3', '#C6FFC1',
+    '#FFD700', '#B6BAA4',
+    '#FFD07E', '#BFD6C1',
+    '#F8D577', '#C3E2E2',
+    '#F9C5E0', '#C7E1C4',
+    '#FFD573', '#B9D2A6',
+    '#F8D67F', '#C5E1DE']
+    
   rendimentoBrutoAtual: any = 0
   rendimentoBrutoPassado: any = 0
   despesas: number = 0
@@ -31,7 +41,7 @@ export class CategoriasComponent  implements OnInit {
 
   recuperarDadosSemanais(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-      this.DashBoard.rendimentoSemanal().subscribe(
+      this.DashBoard.categoriasSemanais().subscribe(
         (response) => {
           console.log("rendomento", response)
           this.dados = response;
@@ -48,7 +58,7 @@ export class CategoriasComponent  implements OnInit {
 
   recuperarDadosMensais(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-      this.DashBoard.rendimentoMensal().subscribe(
+      this.DashBoard.categoriasMensais().subscribe(
         (response) => {
           console.log("mensal", response)
           this.dados = response;
@@ -65,7 +75,7 @@ export class CategoriasComponent  implements OnInit {
 
   recuperarDadosAnuais(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-      this.DashBoard.rendimentoAnual().subscribe(
+      this.DashBoard.categoriasAnuais().subscribe(
         (response) => {
           console.log("mensal", response)
           this.dados = response;
@@ -123,30 +133,16 @@ export class CategoriasComponent  implements OnInit {
   graficoSemanal() {
     this.destruirGraficos()
 
-    this.lucro = this.dados?.semanaPassada_vs_semanaAtual?.toFixed() || 0;
-    this.rendimentoBrutoAtual = this.dados?.rendimentoAtual?.toFixed() || 0;
-    this.rendimentoBrutoPassado = this.dados?.rendimentoPassado?.toFixed() || 0;
-
-    const diasDaSemana = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
-
     const semanalmente = new Chart('categoriaSemanalmente', {
       type: 'pie',
       data: {
-        labels: diasDaSemana,
+        labels: Object.keys(this.dados!.contagem_categorias),
         datasets: [
           {
-            label: 'Rendimento Bruto por Dia (Semana Atual)',
-            data: [...this.dados!.dias],
-            backgroundColor: '#321dcf',
-            borderColor: '#321dcf',
-            borderWidth: this.borderWidth
-          },
-
-          {
-            label: 'Rendimento Bruto por Dia (Semana Passada)',
-            data: [...this.dados!.semanaPassada],
-            backgroundColor: '#4bb43f',
-            borderColor: '#4bb43f',
+            label: 'Categorias mais vendidas',
+            data: Object.values(this.dados!.contagem_categorias),
+            backgroundColor: this.arrayCores,
+            borderColor: this.arrayCores,
             borderWidth: this.borderWidth
           }
         ]
@@ -165,33 +161,19 @@ export class CategoriasComponent  implements OnInit {
   graficoMensal() {
     this.destruirGraficos()
 
-    this.lucro = this.dados!.mesPassado_vs_mesAtual.toFixed()
-    this.rendimentoBrutoAtual = this.dados!.rendimento_total_mes_atual.toFixed()
-    this.rendimentoBrutoPassado = this.dados!.rendimento_total_mes_passado.toFixed()
-    const semanasMes = ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4', 'Semana 5'];
 
     const mensalmente = new Chart('categoriaMensalmente', {
       type: 'pie',
       data: {
-        labels: semanasMes,
+        labels: Object.keys(this.dados!.contagem_categorias),
         datasets: [
           {
-            label: 'Rendimento Bruto por Mês (Semana Atual)',
-            data: [...this.dados!.semanas],
-            backgroundColor: '#321dcf',
-            borderColor: '#321dcf',
+            label: 'Categorias mais vendidas',
+            data: Object.values(this.dados.contagem_categorias),
+            backgroundColor: this.arrayCores,
+            borderColor: this.arrayCores,
             borderWidth: this.borderWidth
           },
-
-          {
-            label: 'Rendimento Bruto por Mês (Semana Passada)',
-            data: [
-              ...this.dados!.semanas_mes_passado
-            ],
-            backgroundColor: '#4bb43f',
-            borderColor: '#4bb43f',
-            borderWidth: this.borderWidth
-          }
         ]
       },
       options: {
@@ -208,31 +190,18 @@ export class CategoriasComponent  implements OnInit {
   graficoAnual() {
     this.destruirGraficos()
 
-    this.lucro = this.dados!.anoPassado_vs_anoAtual.toFixed()
-    this.rendimentoBrutoAtual = this.dados!.rendimento_total_ano_atual.toFixed()
-    this.rendimentoBrutoPassado = this.dados!.rendimento_total_ano_passado.toFixed()
-    const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-
     const anualmente = new Chart('categoriaAnualmente', {
       type: 'pie',
       data: {
-        labels: meses,
+        labels: Object.keys(this.dados!.contagem_categorias),
         datasets: [
           {
-            label: 'Rendimento Bruto por Mês (Semana Atual)',
-            data: [...this.dados!.meses],
-            backgroundColor: '#321dcf',
-            borderColor: '#321dcf',
+            label: 'Categorias mais vendidas',
+            data: Object.values(this.dados!.contagem_categorias),
+            backgroundColor: this.arrayCores,
+            borderColor: this.arrayCores,
             borderWidth: this.borderWidth
           },
-
-          {
-            label: 'Rendimento Bruto por Mês (Semana Passada)',
-            data: [...this.dados!.meses_ano_passado],
-            backgroundColor: '#4bb43f',
-            borderColor: '#4bb43f',
-            borderWidth: this.borderWidth
-          }
         ]
       },
       options: {

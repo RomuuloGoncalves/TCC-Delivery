@@ -172,5 +172,7 @@ $router->group(['prefix' => 'dashboard'], function () use ($router) {
     $router->get('/vendas/anual', 'DashboardController@vendas_anuais');
 
     $router->get('/categoria/semanal', 'DashboardController@categoria_semanal');
+    $router->get('/categoria/mensal', 'DashboardController@categoria_mensal');
+    $router->get('/categoria/anual', 'DashboardController@categoria_anual');
 
 });

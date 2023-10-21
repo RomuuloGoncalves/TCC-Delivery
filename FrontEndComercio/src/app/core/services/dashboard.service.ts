@@ -31,4 +31,16 @@ export class DashboardService {
   public vendasAnuais() {
     return this.Server.get('/dashboard/vendas/anual');
   }
+
+  public categoriasSemanais() {
+    return this.Server.get('/dashboard/categoria/semanal');
+  }
+
+  public categoriasMensais() {
+    return this.Server.get('/dashboard/categoria/mensal');
+  }
+
+  public categoriasAnuais() {
+    return this.Server.get('/dashboard/categoria/anual');
+  }
 }
