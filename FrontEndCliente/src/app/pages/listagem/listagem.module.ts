@@ -11,6 +11,7 @@ import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 import { SessaoCardsProdutoModule } from 'src/app/components/common/sessao-cards-produto/sessao-cards-produto.module';
 import { ModalMarmitaModule } from 'src/app/components/common/modal-marmita/modal-marmita.module';
+import { PesquisaProdutoModule } from 'src/app/components/common/pesquisa-produto/pesquisa-produto.module';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { ModalMarmitaModule } from 'src/app/components/common/modal-marmita/moda
     FooterModule,
     HeaderModule,
     SessaoCardsProdutoModule,
-    ModalMarmitaModule
+    ModalMarmitaModule,
+    PesquisaProdutoModule
   ],
   declarations: [ListagemPage]
 })

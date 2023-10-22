@@ -1,38 +1,15 @@
 <ion-content [fullscreen]="true">
   <app-header></app-header>
 
-  <ion-row class="barra-superior ion-justify-content-center ion-padding-top">
-    <ion-col size="11">
-      <ion-text color="primary" class="ion-text-center">
-        <h1 class="barra-superior__titulo">{{ this.nomeProduto }}</h1>
-      </ion-text>
-    </ion-col>
-  </ion-row>
-  <ion-row class="ion-justify-content-center ion-align-items-center">
-    <ion-col size="10" sizeMd="8">
-      <ion-searchbar show-cancel-button="never" (ionInput)="this.filtrarPesquisa($event)" placeholder="Pesquisar" debounce="250"></ion-searchbar>
-      <ion-row class="barra-superior__filtro ion-justify-content-end ion-align-items-center">
-        <ion-col size="auto">
-          <ion-select (ionChange)="filtrarSelecao($event)" [multiple]="true" interface="popover" mode="ios" placeholder="Filtros"
-            [(ngModel)]="selectedOptions">
-            <ion-select-option value="relevancia">Relevância</ion-select-option>
-            <ion-select-option value="menorPreco">Menor Preço</ion-select-option>
-            <ion-select-option value="maiorPreco">Maior Preço</ion-select-option>
-          </ion-select>
-        </ion-col>
-      </ion-row>
-    </ion-col>
-  </ion-row>
+  <app-pesquisa-produto [categorias]="this.categorias"
+      (filtragem)="this.categoriasFiltradas = $event"></app-pesquisa-produto>
 
-  <!-- <app-sessao-cards-produto (produtoEmitido)="definirProdutoModal($event)" [produto]="this.produtoFiltrado"></app-sessao-cards-produto> -->
-  <!-- <app-sessao-cards-produto [produto]="this.produtoFiltrado"></app-sessao-cards-produto> -->
-
-  <ng-container *ngFor="let categoria of this.categorias">
-    <app-sessao-cards-produto [tituloSessao]="categoria.nome" [cardMontagem]="true" [produtos]="categoria.produtos"></app-sessao-cards-produto>
+  <ng-container *ngFor="let categoria of this.categoriasFiltradas">
+    <app-sessao-cards-produto [cardMontagem]="true" [produtos]="categoria.produtos"></app-sessao-cards-produto>
   </ng-container>
 
-  
-  <ng-container *ngIf="!this.categorias">
+
+  <ng-container *ngIf="!this.categoriasFiltradas.length">
     <ion-text class="ion-text-center">
       <h3>Não há produtos!</h3>
     </ion-text>

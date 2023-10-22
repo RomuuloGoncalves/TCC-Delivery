@@ -33,7 +33,9 @@ class Cliente extends Model implements AuthenticatableContract, AuthorizableCont
 
     public function getJWTCustomClaims()
     {
-        return [];
+        return [
+            'nome'
+        ];
     }
 
     public function enderecos(): HasMany

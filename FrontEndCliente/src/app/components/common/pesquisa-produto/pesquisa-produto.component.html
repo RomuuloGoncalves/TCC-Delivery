@@ -1,0 +1,13 @@
+<ion-row class="ion-justify-content-center">
+  <ion-col size="12">
+    <ion-row class="ion-justify-content-center">
+      <h1 id="titulo__pesquisa">Encontre que está procurando</h1>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" sizeMd="8">
+        <ion-searchbar show-cancel-button="never" placeholder="Pesquisar" (ionInput)="this.filtrarProdutos($event)"
+          debounce="250"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-col>
