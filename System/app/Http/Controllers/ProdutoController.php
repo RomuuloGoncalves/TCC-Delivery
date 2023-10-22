@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GrupoVariacao;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -89,7 +90,7 @@ class ProdutoController extends Controller {
      */
 
     public function show(int $id) {
-        $produto = Produto::with('categoria')->where('id', $id)->first();
+        $produto = Produto::with(['categoria', 'grupo_variacao.variacao'])->where('id', $id)->find($id);
 
         if(!$produto)
             return response()->json(['mensage' => 'Produto não encontrado'], 404);
