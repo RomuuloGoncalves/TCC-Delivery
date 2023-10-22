@@ -12,12 +12,15 @@ class Endereco extends Model
     protected $fillable = [
         'nome',
         'complemento',
-        'bairro', 
+        'bairro',
         'numero',
-        'rua', 
+        'rua',
         'cep',
         'cod_cliente'
     ];
+
+    public $timestamps = false;
+    
     public function cliente(): BelongsTo
     {
         return $this->belongsTo(Cliente::class, 'cod_cliente');

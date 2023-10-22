@@ -18,7 +18,6 @@ class PedidoProdutoGrupoVariacaoSeeder extends Seeder
         for ($i = 1; $i <= 10; $i++) {
             DB::table('Pedido_produto_grupo_variacoes')->insert([
                 'cod_pedido_produto' => $faker->randomElement($pedido_produtos),
-                'created_at' => $faker->dateTimeThisYear()
             ]);
         }
     }

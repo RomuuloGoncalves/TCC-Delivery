@@ -20,7 +20,8 @@ class Variacao extends Model
         'cod_grupo_variacoes'
     ];
 
-
+    public $timestamps = false;
+    
     public function grupo_variacao(): BelongsTo
     {
         return $this->belongsTo(GrupoVariacao::class, 'cod_grupo_variacoes');

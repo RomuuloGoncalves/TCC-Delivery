@@ -12,7 +12,9 @@ class PedidoProduto extends Model
         'cod_pedido',
         'cod_produto'
     ];
-    
+
+    public $timestamps = false;
+
     public function pedido(): BelongsTo
     {
         return $this->belongsTo(Pedido::class, 'cod_pedido');
@@ -21,10 +23,10 @@ class PedidoProduto extends Model
     public function produto(): BelongsTo
     {
         return $this->belongsTo(Produto::class, 'cod_produto');
-    }  
+    }
 
     public function pedido_produto_grupo_variacao(): HasMany
     {
         return $this->hasMany(PedidoProdutoGrupoVariacao::class, 'cod_pedido_produto');
-    } 
+    }
 }

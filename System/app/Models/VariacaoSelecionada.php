@@ -12,6 +12,8 @@ class VariacaoSelecionada extends Model
         'cod_variacao'
     ];
 
+    public $timestamps = false;
+
     public function pedido_produto_grupo_variacao(): BelongsTo
     {
         return $this->belongsTo(PedidoProdutoGrupoVariacao::class, 'cod_pedido_produto_grupo_variacoes');
