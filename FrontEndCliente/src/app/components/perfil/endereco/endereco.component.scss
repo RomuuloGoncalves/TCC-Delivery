@@ -82,6 +82,8 @@
         --background-activated: var(--ion-color-primary-variation);
         --background-focused: var(--ion-color-primary-variation);
         height: 56px;
+        margin: 0 0 0 5px;
+
         &__seach {
           height: 30px;
         }

@@ -70,7 +70,7 @@ export class EnderecoComponent  implements OnInit{
           console.log(badResponde);
         }
       );
-    }, 1000)
+    }, 500)
   }
 
   public cadastrar() {
@@ -101,12 +101,27 @@ export class EnderecoComponent  implements OnInit{
   }
 
   public procurarCep(cep: string) {
-    const url = `viacep.com.br/ws/${cep}/json/`;
+    this.erros = {}
+    const url = `https://viacep.com.br/ws/${Number(cep)}/json/`;
 
     fetch(url)
-      .then((response) => response.json)
-      .then((dados) => { console.log(dados) })
-      .catch((_ => this.erros.cep = _))
-  }
+      .then((response) => response.json())
+      .then((data) => { 
+        if(data.erro) {
+          this.erros["cep"] = 'O campo cep inválido';
+        } else {
+          this.dados = {
+            nome: '',
+            cep: cep,
+            rua: data.logradouro,
+            bairro: data.bairro,
+            numero: '',
+            complemento: data.complemento
+          };
+        }
+        console.log(this.dados);
+      })
+      .catch((_) => this.erros["cep"] = 'O campo cep inválido');
+    }
 }
 
