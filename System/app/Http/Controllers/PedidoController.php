@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Cliente;
 use App\Models\Pedido;
 use App\Models\PedidoProduto;
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class PedidoController extends Controller {
-    
+
     public function __construct() {}
 
     /**
@@ -36,6 +37,10 @@ class PedidoController extends Controller {
         $pedido->pedido_produtos = PedidoProduto::with('produto')
             ->where('cod_pedido', $id)
             ->get();
+
+        foreach($pedido->pedido_produtos as $pedido_produto) {
+            $pedido_produto->produto->categoria = Categoria::where("id", $pedido_produto->produto->cod_categoria)->first();
+        }
 
         return response()->json($pedido, 200);
     }

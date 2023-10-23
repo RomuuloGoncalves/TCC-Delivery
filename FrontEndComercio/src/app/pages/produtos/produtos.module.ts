@@ -18,7 +18,6 @@ import { CardProdutoComponent } from 'src/app/components/produtos/card-produto/c
     ProdutosPageRoutingModule,
     HeaderModule,
     LoadingModule
-
   ],
   declarations: [ProdutosPage, AccordionComponent, CardProdutoComponent, ModalProdutoComponent]
 })

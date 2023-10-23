@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { Observable, catchError, map, of } from 'rxjs';
 import { ServerService } from '../services/server.service';
 import { ToastService } from '../controller/toast.service';
@@ -34,8 +34,8 @@ export class LogedInGuard implements CanActivate {
   }
 
   private handleError() {
+    this.Cookie.delete('token');
     this.Toast.mostrarToast('erro', 'Para acessar o recurso, deve estar logado!')
-    this.router.navigate(['/login']);
-    // this.Cookie.deleteAll();
+    this.router.navigate(['login']);
   }
 }

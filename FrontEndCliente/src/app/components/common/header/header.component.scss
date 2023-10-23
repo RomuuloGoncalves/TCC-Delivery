@@ -146,7 +146,11 @@
 
 ion-popover {
   --width: 250px;
-
+  .saudacao {
+    font-size: 1.2rem;
+    color: var(--ion-color-primary-variation);
+    margin-bottom: 20px;
+  }
   ion-label {
     cursor: pointer;
   }

@@ -36,7 +36,7 @@ class DashboardController extends Controller
         $lastWeekStartDate = $startDate->copy()->subWeek()->startOfWeek();
         $lastWeekEndDate = $startDate->copy()->subWeek()->endOfWeek();
 
-        $pedidos = Pedido::whereBetween('created_at', [$startDate, $endDate])->get();
+        $pedidos = Pedido::whereBetween('data_entrega', [$startDate, $endDate])->get();
 
         $rendimentoPorDia = [];
         $rendimentoTotalSemanaAtual = 0;
@@ -46,13 +46,13 @@ class DashboardController extends Controller
         }
 
         foreach ($pedidos as $pedido) {
-            $dataPedido = Carbon::parse($pedido->created_at);
+            $dataPedido = Carbon::parse($pedido->data_entrega);
             $dayOfWeek = $dataPedido->dayOfWeek;
             $rendimentoPorDia[$dayOfWeek] += floatval($pedido->valor_total);
             $rendimentoTotalSemanaAtual += floatval($pedido->valor_total);
         }
 
-        $pedidosLastWeek = Pedido::whereBetween('created_at', [$lastWeekStartDate, $lastWeekEndDate])->get();
+        $pedidosLastWeek = Pedido::whereBetween('data_entrega', [$lastWeekStartDate, $lastWeekEndDate])->get();
 
         $rendimentoPorDiaLastWeek = [];
         $rendimentoTotalSemanaPassada = 0;
@@ -62,7 +62,7 @@ class DashboardController extends Controller
         }
 
         foreach ($pedidosLastWeek as $pedido) {
-            $dataPedido = Carbon::parse($pedido->created_at);
+            $dataPedido = Carbon::parse($pedido->data_entrega);
             $dayOfWeek = $dataPedido->dayOfWeek;
             $rendimentoPorDiaLastWeek[$dayOfWeek] += floatval($pedido->valor_total);
             $rendimentoTotalSemanaPassada += floatval($pedido->valor_total);
@@ -88,13 +88,13 @@ class DashboardController extends Controller
         $startDate = Carbon::now()->startOfMonth();
         $endDate = Carbon::now()->endOfMonth();
 
-        $pedidos = Pedido::whereBetween('created_at', [$startDate, $endDate])->get();
+        $pedidos = Pedido::whereBetween('data_entrega', [$startDate, $endDate])->get();
 
         $rendimentoPorSemana = [];
         $rendimentoTotalMesAtual = 0;
 
         foreach ($pedidos as $pedido) {
-            $dataPedido = Carbon::parse($pedido->created_at);
+            $dataPedido = Carbon::parse($pedido->data_entrega);
             $weekOfMonth = $dataPedido->weekOfMonth - 1;
             $weekKey = $weekOfMonth;
 
@@ -116,13 +116,13 @@ class DashboardController extends Controller
         $lastMonthStartDate = $startDate->copy()->subMonth();
         $lastMonthEndDate = $lastMonthStartDate->copy()->endOfMonth();
 
-        $pedidosLastMonth = Pedido::whereBetween('created_at', [$lastMonthStartDate, $lastMonthEndDate])->get();
+        $pedidosLastMonth = Pedido::whereBetween('data_entrega', [$lastMonthStartDate, $lastMonthEndDate])->get();
 
         $rendimentoPorSemanaLastMonth = [];
         $rendimentoTotalMesPassado = 0;
 
         foreach ($pedidosLastMonth as $pedido) {
-            $dataPedido = Carbon::parse($pedido->created_at);
+            $dataPedido = Carbon::parse($pedido->data_entrega);
             $weekOfMonth = $dataPedido->weekOfMonth - 1;
             $weekKey = $weekOfMonth;
 
@@ -164,13 +164,13 @@ class DashboardController extends Controller
         $startDate = Carbon::now()->startOfYear();
         $endDate = Carbon::now()->endOfYear();
 
-        $pedidos = Pedido::whereBetween('created_at', [$startDate, $endDate])->get();
+        $pedidos = Pedido::whereBetween('data_entrega', [$startDate, $endDate])->get();
 
         $rendimentoPorMes = [];
         $rendimentoTotalAnoAtual = 0;
 
         foreach ($pedidos as $pedido) {
-            $dataPedido = Carbon::parse($pedido->created_at);
+            $dataPedido = Carbon::parse($pedido->data_entrega);
             $month = $dataPedido->month;
 
             if (!isset($rendimentoPorMes[$month])) {
@@ -190,13 +190,13 @@ class DashboardController extends Controller
         $lastYearStartDate = $startDate->copy()->subYear();
         $lastYearEndDate = $lastYearStartDate->copy()->endOfYear();
 
-        $pedidosLastYear = Pedido::whereBetween('created_at', [$lastYearStartDate, $lastYearEndDate])->get();
+        $pedidosLastYear = Pedido::whereBetween('data_entrega', [$lastYearStartDate, $lastYearEndDate])->get();
 
         $rendimentoPorMesLastYear = [];
         $rendimentoTotalAnoPassado = 0;
 
         foreach ($pedidosLastYear as $pedido) {
-            $dataPedido = Carbon::parse($pedido->created_at);
+            $dataPedido = Carbon::parse($pedido->data_entrega);
             $month = $dataPedido->month;
 
             if (!isset($rendimentoPorMesLastYear[$month])) {
@@ -238,7 +238,7 @@ class DashboardController extends Controller
         $lastWeekStartDate = $startDate->copy()->subWeek()->startOfWeek();
         $lastWeekEndDate = $startDate->copy()->subWeek()->endOfWeek();
 
-        $pedidos = Pedido::whereBetween('created_at', [$startDate, $endDate])->get();
+        $pedidos = Pedido::whereBetween('data_entrega', [$startDate, $endDate])->get();
 
         $quantidadePedidosPorDia = [];
 
@@ -247,12 +247,12 @@ class DashboardController extends Controller
         }
 
         foreach ($pedidos as $pedido) {
-            $dataPedido = Carbon::parse($pedido->created_at);
+            $dataPedido = Carbon::parse($pedido->data_entrega);
             $dayOfWeek = $dataPedido->dayOfWeek;
             $quantidadePedidosPorDia[$dayOfWeek]++;
         }
 
-        $pedidosLastWeek = Pedido::whereBetween('created_at', [$lastWeekStartDate, $lastWeekEndDate])->get();
+        $pedidosLastWeek = Pedido::whereBetween('data_entrega', [$lastWeekStartDate, $lastWeekEndDate])->get();
 
         $quantidadePedidosPorDiaLastWeek = [];
 
@@ -261,7 +261,7 @@ class DashboardController extends Controller
         }
 
         foreach ($pedidosLastWeek as $pedido) {
-            $dataPedido = Carbon::parse($pedido->created_at);
+            $dataPedido = Carbon::parse($pedido->data_entrega);
             $dayOfWeek = $dataPedido->dayOfWeek;
             $quantidadePedidosPorDiaLastWeek[$dayOfWeek]++;
         }
@@ -289,14 +289,14 @@ class DashboardController extends Controller
         $lastMonthStartDate = $currentMonthStartDate->copy()->subMonth();
         $lastMonthEndDate = $lastMonthStartDate->copy()->endOfMonth();
 
-        $pedidosCurrentMonth = Pedido::whereBetween('created_at', [$currentMonthStartDate, $currentMonthEndDate])->get();
-        $pedidosLastMonth = Pedido::whereBetween('created_at', [$lastMonthStartDate, $lastMonthEndDate])->get();
+        $pedidosCurrentMonth = Pedido::whereBetween('data_entrega', [$currentMonthStartDate, $currentMonthEndDate])->get();
+        $pedidosLastMonth = Pedido::whereBetween('data_entrega', [$lastMonthStartDate, $lastMonthEndDate])->get();
 
         $quantidadePedidosCurrentMonth = [];
         $quantidadePedidosLastMonth = [];
 
         foreach ($pedidosCurrentMonth as $pedido) {
-            $dataPedido = Carbon::parse($pedido->created_at);
+            $dataPedido = Carbon::parse($pedido->data_entrega);
             $weekOfMonth = $dataPedido->weekOfMonth - 1;
             $weekKey = $weekOfMonth;
 
@@ -308,7 +308,7 @@ class DashboardController extends Controller
         }
 
         foreach ($pedidosLastMonth as $pedido) {
-            $dataPedido = Carbon::parse($pedido->created_at);
+            $dataPedido = Carbon::parse($pedido->data_entrega);
             $weekOfMonth = $dataPedido->weekOfMonth - 1;
             $weekKey = $weekOfMonth;
 
@@ -362,13 +362,13 @@ class DashboardController extends Controller
         $startDate = Carbon::now()->startOfYear();
         $endDate = Carbon::now()->endOfYear();
 
-        $pedidos = Pedido::whereBetween('created_at', [$startDate, $endDate])->get();
+        $pedidos = Pedido::whereBetween('data_entrega', [$startDate, $endDate])->get();
 
         $quantidadePorMes = [];
         $quantidadeTotalAnoAtual = 0;
 
         foreach ($pedidos as $pedido) {
-            $dataPedido = Carbon::parse($pedido->created_at);
+            $dataPedido = Carbon::parse($pedido->data_entrega);
             $month = $dataPedido->month;
 
             if (!isset($quantidadePorMes[$month])) {
@@ -388,13 +388,13 @@ class DashboardController extends Controller
         $lastYearStartDate = $startDate->copy()->subYear();
         $lastYearEndDate = $lastYearStartDate->copy()->endOfYear();
 
-        $pedidosLastYear = Pedido::whereBetween('created_at', [$lastYearStartDate, $lastYearEndDate])->get();
+        $pedidosLastYear = Pedido::whereBetween('data_entrega', [$lastYearStartDate, $lastYearEndDate])->get();
 
         $quantidadePorMesLastYear = [];
         $quantidadeTotalAnoPassado = 0;
 
         foreach ($pedidosLastYear as $pedido) {
-            $dataPedido = Carbon::parse($pedido->created_at);
+            $dataPedido = Carbon::parse($pedido->data_entrega);
             $month = $dataPedido->month;
 
             if (!isset($quantidadePorMesLastYear[$month])) {
@@ -433,7 +433,7 @@ class DashboardController extends Controller
         $currentWeekStartDate = Carbon::now()->startOfWeek();
         $currentWeekEndDate = Carbon::now()->endOfWeek();
 
-        $pedidosCurrentWeek = Pedido::whereBetween('created_at', [$currentWeekStartDate, $currentWeekEndDate])->get();
+        $pedidosCurrentWeek = Pedido::whereBetween('data_entrega', [$currentWeekStartDate, $currentWeekEndDate])->get();
 
         $contagemCategorias = [];
 
@@ -462,7 +462,7 @@ class DashboardController extends Controller
         $currentMonthStartDate = Carbon::now()->startOfMonth();
         $currentMonthEndDate = Carbon::now()->endOfMonth();
 
-        $pedidosCurrentMonth = Pedido::whereBetween('created_at', [$currentMonthStartDate, $currentMonthEndDate])->get();
+        $pedidosCurrentMonth = Pedido::whereBetween('data_entrega', [$currentMonthStartDate, $currentMonthEndDate])->get();
         $contagemCategorias = [];
 
         foreach ($pedidosCurrentMonth as $pedido) {
@@ -488,7 +488,7 @@ class DashboardController extends Controller
     {
         $currentYearStartDate = Carbon::now()->startOfYear();
         $currentYearEndDate = Carbon::now()->endOfYear();
-        $pedidosCurrentYear = Pedido::whereBetween('created_at', [$currentYearStartDate, $currentYearEndDate])->get();
+        $pedidosCurrentYear = Pedido::whereBetween('data_entrega', [$currentYearStartDate, $currentYearEndDate])->get();
 
         $contagemCategorias = [];
 

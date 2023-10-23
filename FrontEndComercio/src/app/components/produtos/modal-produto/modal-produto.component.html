@@ -1,4 +1,4 @@
-<ion-modal id="example-modal" #modal trigger="open-modal-produto-{{this.produto.id}}">
+<ion-modal backdropDismiss="false" [isOpen]="this.isOpen">
   <ng-template>
     <ion-content>
       <div class="wrapper">
@@ -6,7 +6,8 @@
           <ion-toolbar>
             <ion-title>{{this.produto.nome}}</ion-title>
             <ion-buttons slot="end">
-              <ion-button (click)="modal.dismiss()">Fechar</ion-button>
+              <ion-button (click)="this.fechar.emit()"><ion-icon name="close-outline"
+                size="large"></ion-icon></ion-button>
             </ion-buttons>
           </ion-toolbar>
         </ion-header>
@@ -22,10 +23,10 @@
                 <ion-label><b>Nome:</b> {{ this.produto.nome }}</ion-label>
               </ion-item>
               <ion-item>
-                <ion-label><b>Categoria:</b> {{ this.produto.categoria.nome }}</ion-label>
+                <ion-label><b>Categoria:</b> {{ this.produto!.categoria!.nome }}</ion-label>
               </ion-item>
               <ion-item>
-                <ion-label><b>Descrição:</b> {{ this.produto.descricao }}</ion-label>
+                <ion-label><b>Descrição:</b> {{ this.produto }</ion-label>
               </ion-item>
             </ion-list>
           </ion-col>
