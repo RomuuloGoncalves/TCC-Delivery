@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(FuncionarioSeeder::class);
-        
+
         $quantidadel_inserts = 5;
         for ($i = 0; $i < $quantidadel_inserts; $i++) {
             $this->call([
