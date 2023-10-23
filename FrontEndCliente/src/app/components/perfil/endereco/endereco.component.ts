@@ -11,17 +11,21 @@ import { EnderecoService } from 'src/app/core/services/endereco.service';
   templateUrl: './endereco.component.html',
   styleUrls: ['./endereco.component.scss'],
 })
-export class EnderecoComponent  implements OnInit {
+export class EnderecoComponent  implements OnInit{
 
   constructor(private Endereco: EnderecoService, private Cliente: ClienteService) { }
-  
+
   @ViewChild('cadastrarForm') private cadastrarForm!: NgForm;
+
   @Input() public enderecos!: Endereco[];
   @Input() public cliente!: Cliente;
 
-  ngOnInit() { 
-    this.btnChange('list');
+  ngOnInit() {
+    this.btnChange('list');;
   }
+
+
+
 
   erros: any = {};
   displayAdd = 'listview';
@@ -66,13 +70,13 @@ export class EnderecoComponent  implements OnInit {
           console.log(badResponde);
         }
       );
-    }, 1000)
+    }, 500)
   }
 
   public cadastrar() {
     const endereco = this.dados;
     console.log(endereco);
-    
+
     this.Endereco.cadastro(this.dados).subscribe(
       (response: Endereco) => {
         this.erros = {};
@@ -87,7 +91,7 @@ export class EnderecoComponent  implements OnInit {
             console.log(badResponde);
           }
         )
-      }, 
+      },
       (badReponse: HttpErrorResponse) => {
         const error = Object.entries(badReponse.error);
         this.erros = {};
@@ -95,5 +99,29 @@ export class EnderecoComponent  implements OnInit {
       }
     )
   }
+
+  public procurarCep(cep: string) {
+    this.erros = {}
+    const url = `https://viacep.com.br/ws/${Number(cep)}/json/`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => { 
+        if(data.erro) {
+          this.erros["cep"] = 'O campo cep inválido';
+        } else {
+          this.dados = {
+            nome: '',
+            cep: cep,
+            rua: data.logradouro,
+            bairro: data.bairro,
+            numero: '',
+            complemento: data.complemento
+          };
+        }
+        console.log(this.dados);
+      })
+      .catch((_) => this.erros["cep"] = 'O campo cep inválido');
+    }
 }
 

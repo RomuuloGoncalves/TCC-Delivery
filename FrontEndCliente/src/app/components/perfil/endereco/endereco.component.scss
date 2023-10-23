@@ -48,7 +48,7 @@
       ion-item {
         --ripple-color: #eaeaea;
       }
-      
+
       ion-item::part(native) {
         background: white;
         color: var(--ion-color-primary-variation);
@@ -71,6 +71,24 @@
       ion-input {
         --color:  var(--ion-color-primary-variation);
       }
+
+      ion-col#cep{
+        padding: 0;
+      }
+
+      .btn_procurar {
+        --background: var(--ion-color-primary-variation);
+        --background-hover: var(--ion-color-primary-variation);
+        --background-activated: var(--ion-color-primary-variation);
+        --background-focused: var(--ion-color-primary-variation);
+        height: 56px;
+        margin: 0 0 0 5px;
+
+        &__seach {
+          height: 30px;
+        }
+      }
+
       .btn_cadastrar {
         --background: var(--ion-color-primary-variation);
         --background-hover: var(--ion-color-primary-variation);
