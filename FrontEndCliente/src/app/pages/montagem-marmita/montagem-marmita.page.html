@@ -73,7 +73,7 @@
   <ion-row class="ion-justify-content-center todos-ingredientes">
     <ion-col size="11" sizeMd="9" class="container-cards-ingredientes">
       <swiper-container #swiper [pagination]="true" [loop]="true" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints">
-          <ng-container *ngFor="let ingrediente of this.ingredientes; let idIngrediente = index">
+          <ng-container *ngFor="let ingrediente of this.marmitaPersonalizavel.grupo_variacao; let idIngrediente = index">
             <swiper-slide>
               <ion-card class="selecionar-ingredientes">
                 <ion-card-header>
@@ -88,7 +88,7 @@
 
                 <ion-card-content>
                   <ion-list>
-                    <ion-item *ngFor="let variacao of this.ingrediente.variacoes; let idVariacao = index">
+                    <ion-item *ngFor="let variacao of this.ingrediente.variacao; let idVariacao = index">
                       <ion-checkbox
                       [disabled]="ingrediente.qtdd_max !== undefined
                       && this.marmita[idIngrediente].variacoes!.length >= ingrediente.qtdd_max
