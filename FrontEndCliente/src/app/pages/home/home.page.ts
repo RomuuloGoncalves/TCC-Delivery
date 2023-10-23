@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
 
   constructor(private Categoria: CategoriaService) { }
 
-  loading: boolean = false;
+  loading: boolean = true;
 
   categorias: Categoria[] = [];
   categoriasFiltradas: Categoria[] = [];
@@ -41,6 +41,7 @@ export class HomePage implements OnInit {
       (response: Categoria[]) => {
         this.categorias = [...response];
         this.categoriasFiltradas = [...response];
+        this.loading = false
       },
       (error) => {
         console.error(error);

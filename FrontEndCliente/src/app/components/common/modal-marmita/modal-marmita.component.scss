@@ -49,7 +49,7 @@ ion-content {
     }
     
     .subtitulo {
-        margin-top: .7rem;
+        margin: 3% ;
         font-size: 1.5rem;
         font-weight: 500;
         color: var(--ion-color-primary);
@@ -94,8 +94,6 @@ ion-content {
 
 .titulo-radio-group {
     margin-top: 1.5rem;
-}
-
-.borda  {
-    outline: 1px solid black;
+    font-size: 1.1rem;
+    color: var(--ion-color-primary);
 }

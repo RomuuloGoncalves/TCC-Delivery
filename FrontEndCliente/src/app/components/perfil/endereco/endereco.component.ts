@@ -22,9 +22,6 @@ export class EnderecoComponent  implements OnInit {
   ngOnInit() { 
     this.btnChange('list');
   }
-  
-  
-
 
   erros: any = {};
   displayAdd = 'listview';
@@ -37,14 +34,6 @@ export class EnderecoComponent  implements OnInit {
     numero: '',
     complemento: ''
   };
-
-  public height() {
-    const x = document.querySelector('.page__content__list');
-    const y = document.querySelector('.endereco');
-    const z = document.querySelector('.headerHeight');
-
-    console.log(x);
-  }
 
   public btnChange(tipo: string){
     if (tipo == 'add') {

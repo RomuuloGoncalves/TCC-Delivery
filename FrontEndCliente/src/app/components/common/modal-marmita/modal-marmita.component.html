@@ -18,11 +18,10 @@
         <ion-col size-lg="10" size="">
           <ion-row>
             <ion-col class="imagem-container ion-justify-content-center">
-              <ion-img class="imagem" src="{{ this.produto.imagem ||  'https://via.placeholder.com/640x480.png/0033dd?text=esse'}}"></ion-img>
+              <ion-img class="imagem" src="{{ this.produto.imagem ||  '../../../../assets/imgs/home-icons/garfo_faca_outline.png'}}"></ion-img>
             </ion-col>
           </ion-row>
           <ion-row>
-
           </ion-row>
 
           <ion-col class="detalhes">
@@ -80,7 +79,7 @@
               </ion-col>
             </ion-row>
 
-            <ion-row>
+            <ion-row *ngIf="this.produto.categoria.id !== 1">
               <ion-col>
                 <!-- diferente radio group para diferentes grupos variacoes -->
                 <ng-container *ngFor="let grupoVariacao of this.produto.grupo_variacao">

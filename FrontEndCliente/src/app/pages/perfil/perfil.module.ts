@@ -9,7 +9,7 @@ import { PerfilPageRoutingModule } from './perfil-routing.module';
 import { PerfilPage } from './perfil.page';
 import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
-import { EnderecoComponent } from 'src/app/components/perfil/endereco/EnderecoComponent';
+import { EnderecoComponent } from 'src/app/components/perfil/endereco/endereco.component';
 import { PerfilConfigComponent } from 'src/app/components/perfil/perfil-config/perfil-config.component';
 import { LoadingModule } from 'src/app/components/common/loading/loading.module';
 
@@ -21,6 +21,7 @@ import { LoadingModule } from 'src/app/components/common/loading/loading.module'
     PerfilPageRoutingModule,
     FooterModule,
     HeaderModule,
+    LoadingModule,
     LoadingModule
   ],
   declarations: [PerfilPage, EnderecoComponent, PerfilConfigComponent]
