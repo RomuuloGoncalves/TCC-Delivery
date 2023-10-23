@@ -33,9 +33,9 @@
                 </ion-label>
               </ion-col>
             </ion-row>
-            <ion-row class="">
+            <ion-row>
               <ion-col>
-                <ion-title>
+                <ion-title class="subtitulo">
                   Informações do produto:
                 </ion-title>
                 <ion-accordion-group multiple="true">
@@ -63,16 +63,16 @@
                   </ion-accordion> -->
                 </ion-accordion-group>
 
-                <ion-title *ngIf="this.variacoesSelecionadas.length">
+                <ion-title *ngIf="this.variacoesSelecionadas.length" class="subtitulo">
                   Informações da(s) variação(ões):
                 </ion-title>
                 <ion-accordion-group multiple="true">
                   <ng-container *ngFor="let variacao of this.variacoesSelecionadas">
-                    <ion-accordion value="{{ variacao.variacao }}">
+                    <ion-accordion value="{{ variacao.variacao.nome }}">
                       <ion-item slot="header" color="light">
-                        <ion-label>{{ variacao.grupo_variacao }}</ion-label>
+                        <ion-label>{{ variacao.grupo_variacao.tipo }}</ion-label>
                       </ion-item>
-                      <div class="ion-padding" slot="content">{{ variacao.variacao }}</div>
+                      <div class="ion-padding" slot="content">{{ variacao.variacao.nome }}</div>
                     </ion-accordion>
                   </ng-container>
 
@@ -91,7 +91,7 @@
                     <ng-container *ngFor="let variacao of grupoVariacao.variacao">
                       <ion-item>
                         <ion-label>{{ variacao.nome }}</ion-label>
-                        <ion-radio slot="end" value="{{ [grupoVariacao.tipo, variacao.nome] }}"></ion-radio>
+                        <ion-radio slot="end" value="{{ [grupoVariacao.tipo, grupoVariacao.id, variacao.nome, variacao.id] }}"></ion-radio>
                       </ion-item>
                     </ng-container>
                   </ion-radio-group>

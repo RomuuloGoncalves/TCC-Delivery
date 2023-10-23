@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { EnderecoComponent } from './endereco.component';
+import { EnderecoComponent } from './EnderecoComponent';
 
 describe('EnderecoComponent', () => {
   let component: EnderecoComponent;

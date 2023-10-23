@@ -1,6 +1,6 @@
-<ion-row class="page">
+<ion-row class="page endereco" (change)="height()">
   <ion-col size="12">
-    <ion-row class="page__header ion-justify-content-between">
+    <ion-row class="page__header ion-justify-content-between headerHeight">
       <ion-col size="auto" class="page__header__title">
         <ion-label>Endereço</ion-label>
       </ion-col>
@@ -103,3 +103,9 @@
     </ion-row>
   </ion-col>
 </ion-row>
+
+<script>
+  const x = document.querySelector('.page__content__list');
+  const y = document.querySelector('.endereco');
+  const z = document.querySelector('.headerHeight');
+</script>

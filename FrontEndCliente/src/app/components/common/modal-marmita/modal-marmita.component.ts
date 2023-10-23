@@ -43,8 +43,14 @@ export class ModalMarmitaComponent  implements OnInit {
 
     !repetiu ? (this.variacoesSelecionadas.push(
       {
-        "grupo_variacao": variacoes[0],
-        "variacao": variacoes[1],
+        grupo_variacao: {
+          id: variacoes[1],
+          tipo: variacoes[0]
+        },
+        variacao: {
+          id: variacoes[3],
+          nome: variacoes[2]
+        },
       }
     )) : null 
     console.log(this.variacoesSelecionadas)

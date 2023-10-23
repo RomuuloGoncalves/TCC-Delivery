@@ -69,14 +69,14 @@ $router->group(['prefix' => 'cupom'], function () use ($router) {
 |--------------------------------------------------------------------------
 */
 
-$router->group(['middleware' => 'authCliente'], function () use ($router) {
+// $router->group(['middleware' => 'authCliente'], function () use ($router) {
     $router->group(['prefix' => 'cliente/endereco'], function () use ($router) {
         $router->post('/cadastrar', 'EnderecoController@store');
         $router->put('/editar', 'EnderecoController@update');
         $router->get('/', 'EnderecoController@index');
         $router->delete('/excluir/{id}', 'EnderecoController@destroy');
     });
-});
+// });
 
 /*
 |--------------------------------------------------------------------------
