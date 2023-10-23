@@ -56,24 +56,23 @@ export class PedidoPage implements OnInit {
   }
 
   organizarProdutos() {
-    this.produtos.forEach((el:any) => {
-      el.produto.imagem = el.produto.imagem || '../../../assets/imgs/default/cards-produtos.png';
+    const categorias: { [categoria: string]: Produto[] } = {};
+  
+    this.pedidoCliente.pedido_produtos.forEach((el: any) => {
 
-      el.produto.categoria == 'Marmita Pronta' ? this.marmitas.push(el) : 1;
-      el.produto.categoria == 'Combos' ? this.combos.push(el) : 1;
-      el.produto.categoria == 'Bebida' ? this.bebidas.push(el) : 1;
-      el.produto.categoria == 'Sobremesa' ? this.sobremesas.push(el) : 1;
-      el.produto.categoria == 'Acompanhamento' ? this.acompanhamentos.push(el) : 1;
-    })
-
-    this.tabela = {
-      marmitas: this.marmitas,
-      bebidas: this.bebidas,
-      sobremesas: this.sobremesas,
-      acompanhamento: this.acompanhamentos,
-      combos: this.combos,
-    };
-
+        console.log(el.produto)
+        el.produto.imagem = el.produto.imagem || '../../../assets/imgs/default/cards-produtos.png';
+        
+        if (!categorias[el.produto.categoria.nome]) {
+          categorias[el.produto.categoria.nome] = [];
+        }
+        
+        categorias[el.produto.categoria.nome].push(el);
+    });
+  
+    this.tabela = categorias;
     this.infoTabela = Object.entries(this.tabela);
+    console.log(this.infoTabela)
   }
+  
 }
