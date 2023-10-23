@@ -21,9 +21,9 @@ class PedidoSeeder extends Seeder
             DB::table('Pedidos')->insert([
                 'valor_total' => $faker->randomFloat(2, 1, 100000),
                 'valor_com_desconto' => $faker->randomFloat(2, 1, 100000),
-                'data_pedido' => $faker->dateTime(),
-                'data_entrega' => $faker->dateTime(),
-                'data_pagamento' => $faker->dateTime(),
+                'data_pedido' => $faker->dateTimeThisYear(),
+                'data_entrega' => $faker->dateTimeThisYear(),
+                'data_pagamento' => $faker->dateTimeThisYear(),
                 'endereco_pedido' => $faker->sentence(3),
                 'status' => $faker->randomElement(['Pronto', 'Em Entrega', 'Cancelado', 'Em Espera']),
                 'forma_pagamento' => $faker->randomElement( ['Crédito', 'Dinheiro', 'Pix', 'Débito']),
