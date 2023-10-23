@@ -1,4 +1,6 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Cliente } from 'src/app/core/interfaces/cliente';
 import { ClienteService } from 'src/app/core/services/cliente.service';
 
 
@@ -12,11 +14,25 @@ export class HeaderComponent implements OnInit {
 
   constructor(private Cliente: ClienteService) {}
 
+  cliente!: Cliente;
+
   ngOnInit() {
+    this.carregarCliente();
   }
 
-
+  private carregarCliente() {
+    this.Cliente.infos().subscribe(
+      (response: Cliente) => {
+        this.cliente = response;
+        console.log(response);
+      },
+      (badResponde: HttpErrorResponse) => {
+        console.log(badResponde);
+      }
+    );
+  }
   logedIn: Boolean = this.Cliente.logedIn;
+
 
   isOpen = false;
 

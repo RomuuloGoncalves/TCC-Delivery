@@ -11,17 +11,21 @@ import { EnderecoService } from 'src/app/core/services/endereco.service';
   templateUrl: './endereco.component.html',
   styleUrls: ['./endereco.component.scss'],
 })
-export class EnderecoComponent  implements OnInit {
+export class EnderecoComponent  implements OnInit{
 
   constructor(private Endereco: EnderecoService, private Cliente: ClienteService) { }
-  
+
   @ViewChild('cadastrarForm') private cadastrarForm!: NgForm;
+
   @Input() public enderecos!: Endereco[];
   @Input() public cliente!: Cliente;
 
-  ngOnInit() { 
-    this.btnChange('list');
+  ngOnInit() {
+    this.btnChange('list');;
   }
+
+
+
 
   erros: any = {};
   displayAdd = 'listview';
@@ -72,7 +76,7 @@ export class EnderecoComponent  implements OnInit {
   public cadastrar() {
     const endereco = this.dados;
     console.log(endereco);
-    
+
     this.Endereco.cadastro(this.dados).subscribe(
       (response: Endereco) => {
         this.erros = {};
@@ -87,13 +91,22 @@ export class EnderecoComponent  implements OnInit {
             console.log(badResponde);
           }
         )
-      }, 
+      },
       (badReponse: HttpErrorResponse) => {
         const error = Object.entries(badReponse.error);
         this.erros = {};
         for (const [chave, valor] of error) this.erros[chave] = valor;
       }
     )
+  }
+
+  public procurarCep(cep: string) {
+    const url = `viacep.com.br/ws/${cep}/json/`;
+
+    fetch(url)
+      .then((response) => response.json)
+      .then((dados) => { console.log(dados) })
+      .catch((_ => this.erros.cep = _))
   }
 }
 

@@ -22,18 +22,18 @@
                 <ion-accordion value="{{ endereco.id }}">
                   <ion-item slot="header">
                     <ion-label>{{ endereco.nome }}</ion-label>
-                    <img (click)="deletarEndereco(endereco.id)" class="page__content__list__delete" src="../../../../assets/imgs/perfil-icons/delete.svg" alt="delete" >
                   </ion-item>
                   <div class="ion-padding" slot="content">
                     <ion-row>
                       <ion-col size="4">
-                        <ion-label>Cep: {{ endereco.cep }}</ion-label>
+                        <ion-label>Cep: {{ endereco.cep }} </ion-label>
+
                       </ion-col>
                       <ion-col size="8">
                         <ion-label>Rua: {{ endereco.rua }}</ion-label>
                       </ion-col>
                     </ion-row>
-      
+
                     <ion-row>
                       <ion-col size="4">
                         <ion-label>Bairro: {{ endereco.bairro }}</ion-label>
@@ -42,7 +42,7 @@
                         <ion-label>Número: {{ endereco.numero }}</ion-label>
                       </ion-col>
                       <ion-col size="5">
-                        <ion-label>Complemento: {{ endereco.complemento }}</ion-label>                  
+                        <ion-label>Complemento: {{ endereco.complemento }}</ion-label>
                       </ion-col>
                     </ion-row>
                   </div>
@@ -68,11 +68,20 @@
               </ion-col>
             </ion-row>
             <ion-row>
-              <ion-col size="4">
-                <ion-input fill='outline' [(ngModel)]="dados.cep" name="cep" label="CEP:" type="text"></ion-input>
-                <ion-text class="erro" color="danger">{{ this.erros.cep }}</ion-text>
+              <ion-col size="5">
+                <ion-row class="ion-align-items-center ion-justify-content-center">
+                  <ion-col id="cep" size="8">
+                    <ion-input fill='outline' [(ngModel)]="dados.cep" name="cep" label="CEP:" type="text"></ion-input>
+                    <ion-text class="erro" color="danger">{{ this.erros.cep }}</ion-text>
+                  </ion-col>
+                  <ion-col size="4">
+                    <ion-button class="btn_procurar">
+                      <img (click)="procurarCep(dados.cep)" class="btn_procurar__seach" src="../../../../assets/imgs/perfil-icons/search.svg" alt="procurar">
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
               </ion-col>
-              <ion-col size="8">
+              <ion-col size="7">
                 <ion-input fill='outline' [(ngModel)]="dados.rua" name="rua" label="Rua:" type="text" required></ion-input>
                 <ion-text class="erro" color="danger">{{ this.erros.rua }}</ion-text>
               </ion-col>
@@ -91,7 +100,7 @@
                 <ion-text class="erro" color="danger">{{ this.erros.complemento }}</ion-text>
               </ion-col>
             </ion-row>
-            
+
             <ion-row class="ion-justify-content-center ion-padding">
               <ion-col size="auto">
                 <ion-button type="submit" class="btn_cadastrar ion-padding">Cadastrar</ion-button>
