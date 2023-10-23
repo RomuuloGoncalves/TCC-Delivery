@@ -25,7 +25,7 @@ class Pedido extends Model
         'cod_cupom'
     ];
 
-    //
+
     public function cliente(): BelongsTo
     {
         return $this->belongsTo(Cliente::class, 'cod_cliente');

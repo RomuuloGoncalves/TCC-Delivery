@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('descricao');
             $table->unsignedBigInteger('cod_categoria');
             $table->foreign('cod_categoria')->references('id')->on('Categorias');
-            $table->timestamps();
         });
     }
 

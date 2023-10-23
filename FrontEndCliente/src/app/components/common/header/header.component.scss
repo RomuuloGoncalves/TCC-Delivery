@@ -5,7 +5,7 @@
 
   background-color: var(--ion-color-primary);
   padding: 16px 20px;
-  
+
   &__logo {
     width: 220px;
     cursor: pointer;
@@ -20,12 +20,12 @@
   &__bookmaker {
     font-size: 1.2rem;
     color: #ffff;
-    
+
     img {
       margin-right: 10px;
       height: 30px;
     }
-    
+
     .item {
       &:nth-child(-n+2) {
         margin-right: 20px;
@@ -34,20 +34,20 @@
       &::after {
         content: " ";
         display: block;
-        
+
         height: 3px;
         width: 100%;
         border-radius: 10px;
         background-color: #ffff;
-        
+
         transform: scaleX(0);
         transform-origin: center;
         transition: transform 0.25s ease-out;
       }
-      
+
       &:hover {
         cursor: pointer;
-        
+
         &::after {
           margin-top: 10px;
           transform: scaleX(1);
@@ -78,17 +78,18 @@
       --color: var(--ion-color-primary);
     }
   }
-  
+
   &__btn-menu {
     display: none;
   }
 
-  
-  
-  .ativar-popover ion-row:nth-child(1){
-    &:hover{
+
+
+  .ativar-popover ion-row:nth-child(1) {
+    &:hover {
       cursor: pointer;
     }
+
     gap: 20px;
   }
 
@@ -109,13 +110,13 @@
       font-size: 1rem;
     }
 
-    &__btn-acesso { 
+    &__btn-acesso {
       &__entrar {
         font-size: 0.6rem;
         width: 45px;
         margin-right: 3px;
       }
-  
+
       &__cadastrar {
         font-size: 0.6rem;
         width: 117px;
@@ -127,7 +128,7 @@
     &__logo {
       width: 182px;
     }
-  
+
     &__bookmaker {
       display: none;
     }
@@ -143,8 +144,9 @@
   }
 }
 
-ion-popover { 
+ion-popover {
   --width: 250px;
+
   ion-label {
     cursor: pointer;
   }
@@ -154,7 +156,7 @@ ion-popover {
   ion-col {
     padding: 0;
   }
-  
+
   position: fixed;
   --background: #ffff;
   --width: 100%;
@@ -170,20 +172,21 @@ ion-popover {
       color: var(--ion-color-primary-variation);
       cursor: pointer;
     }
+
     &__btn-close {
       width: 24px;
       cursor: pointer;
     }
   }
-  
+
   &__divisoria {
     background-color: var(--ion-color-primary-variation);
-  
+
     height: 3px;
     width: 100%;
     border-radius: 30px;
   }
-  
+
   &__bookmaker {
     font-size: 1.1rem;
     font-weight: bold;
@@ -193,26 +196,26 @@ ion-popover {
     width: 200px;
     margin: 0 auto;
     padding-block: 50px;
-    
+
     .item {
       padding-block: 7px;
 
       &::after {
         content: " ";
         display: block;
-        
+
         height: 3px;
         width: 100%;
         margin-top: 10px;
 
         border-radius: 10px;
         background-color: var(--ion-color-primary-variation);
-        
+
         transform: scaleX(0);
         transform-origin: center;
         transition: transform 0.1s ease-out;
       }
-      
+
       &:active {
         cursor: pointer;
 
@@ -278,7 +281,7 @@ ion-popover {
       --background-activated: var(--ion-color-primary);
       --background-focused: var(--ion-color-primary);
       --color: #ffff;
-      
+
       &__icon {
         margin-left: 50px;
         height: 20px;

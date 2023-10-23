@@ -13,6 +13,7 @@ import { AtalhoHomeComponent } from 'src/app/components/home/atalho-home/atalho-
 import { SessaoCardsProdutoModule } from 'src/app/components/common/sessao-cards-produto/sessao-cards-produto.module';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { LoadingModule } from 'src/app/components/common/loading/loading.module';
+import { PesquisaProdutoModule } from 'src/app/components/common/pesquisa-produto/pesquisa-produto.module';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { LoadingModule } from 'src/app/components/common/loading/loading.module'
     FooterModule,
     HeaderModule,
     SessaoCardsProdutoModule,
-    LoadingModule
+    LoadingModule,
+    PesquisaProdutoModule
   ],
   declarations: [HomePage, AtalhoHomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

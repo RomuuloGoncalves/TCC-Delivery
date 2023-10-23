@@ -14,12 +14,10 @@ export class SessaoCardsProdutoComponent implements OnInit {
 
   constructor(private modalController: ModalController, private produtoService: ProdutoService) { }
 
-  ngOnInit() { 
-    console.log(this.tituloSessao)
+  ngOnInit() {
   }
 
   @Input() tituloSessao?: string;
-  // trocar de any pra produto tava com erro
   @Input() produtos!: any;
   @Input() cardMontagem: boolean = false;
 
@@ -38,7 +36,7 @@ export class SessaoCardsProdutoComponent implements OnInit {
     });
     return await modal.present()
   }
-  
+
   pegarProduto(id: number): Promise<any> {
     return new Promise((resolve, reject) => {
       this.produtoService.pegarProduto(id).subscribe(

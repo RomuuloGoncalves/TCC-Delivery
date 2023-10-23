@@ -16,6 +16,8 @@ class GrupoVariacao extends Model
         'cod_produto',
     ];
 
+    public $timestamps = false;
+
     public function produto(): BelongsTo
     {
         return $this->belongsTo(Produto::class, 'cod_produto');

@@ -15,6 +15,8 @@ class Produto extends Model
         'cod_categoria',
     ];
 
+    public $timestamps = false;
+
     public function pedido_produto(): HasMany
     {
         return $this->hasMany(PedidoProduto::class);

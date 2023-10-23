@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { ClienteService } from 'src/app/core/services/cliente.service';
 
 
 @Component({
@@ -8,11 +8,16 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  @ViewChild('popover') popover:any
+  @ViewChild('popover') popover: any
 
-  ngOnInit() {}
+  constructor(private Cliente: ClienteService) {}
 
-  @Input() logedIn: Boolean = true
+  ngOnInit() {
+  }
+
+
+  logedIn: Boolean = this.Cliente.logedIn;
+
   isOpen = false;
 
   presentPopover(e: Event) {

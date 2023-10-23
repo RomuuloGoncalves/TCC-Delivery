@@ -26,6 +26,8 @@ class Funcionario extends Model implements AuthenticatableContract, Authorizable
         'password',
     ];
 
+    public $timestamps = false;
+
     public function getJWTIdentifier()
     {
         return $this->getKey();

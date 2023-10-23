@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('descricao');
             $table->unsignedBigInteger('cod_grupo_variacoes');
             $table->foreign('cod_grupo_variacoes')->references('id')->on('Grupo_variacoes');
-            $table->timestamps();
         });
     }
 

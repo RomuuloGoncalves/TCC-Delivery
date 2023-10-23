@@ -10,14 +10,10 @@ export class HeaderComponent implements OnInit {
   @ViewChild('popover') popover:any
 
   menuType: string = 'overlay';
-  // redirection(router:string){
-  //   window.location.href=`./${router}`
-  // }
 
-  ngOnInit() { 
-    this.isOpen = false
+  ngOnInit() {
   }
-  
+
   isOpen = false;
 
   presentPopover(e: Event) {

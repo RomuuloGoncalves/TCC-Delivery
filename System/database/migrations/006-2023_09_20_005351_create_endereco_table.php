@@ -23,7 +23,6 @@ return new class extends Migration
             $table->char('cep', 8)->nullable();
             $table->unsignedBigInteger('cod_cliente');
             $table->foreign('cod_cliente')->references('id')->on('Clientes');
-            $table->timestamps();
         });
     }
 
