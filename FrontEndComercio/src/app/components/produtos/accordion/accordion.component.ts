@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Produto } from 'src/app/core/interfaces/produto';
 
 @Component({
@@ -10,7 +10,8 @@ export class AccordionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
+
   @Input() produtos?: Produto[];
   @Input() tituloSessao?: string;
-
+  @Output() clickCard: EventEmitter<Produto> = new EventEmitter();
 }
