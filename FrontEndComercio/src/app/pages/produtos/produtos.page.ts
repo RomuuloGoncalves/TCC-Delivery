@@ -17,6 +17,9 @@ export class ProdutosPage implements OnInit {
     this.recuperarTodosProdutos()
   }
 
+  produtoSelecionado!: Produto;
+  isOpen: boolean = false;
+
   loading: boolean = true
 
   marmitas: Produto[] = []
@@ -24,8 +27,6 @@ export class ProdutosPage implements OnInit {
   sobremesas: Produto[] = []
   acompanhamentos: Produto[] = []
   combos: Produto[] = []
-
-  isOpen = false;
 
   formularioPopover(e: Event) {
     this.popover.event = e;

@@ -1,8 +1,6 @@
-<ion-card id="open-modal-produto-{{this.produto?.id}}">
+<ion-card>
   <img alt="Silhouette of mountains" src="{{this.produto?.imagem}}" />
   <ion-card-header>
     <ion-card-title class="ion-text-center">{{this.produto?.nome}}</ion-card-title>
   </ion-card-header>
 </ion-card>
-
-<app-modal-produto [produto]="this.produto"></app-modal-produto>

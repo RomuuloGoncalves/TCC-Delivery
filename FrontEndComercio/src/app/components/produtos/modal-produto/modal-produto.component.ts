@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Produto } from 'src/app/core/interfaces/produto';
+import { ProdutosService } from 'src/app/core/services/produtos.service';
 
 @Component({
   selector: 'app-modal-produto',
@@ -6,10 +8,26 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./modal-produto.component.scss'],
 })
 export class ModalProdutoComponent implements OnInit {
-  @Input() public produto!: any;
 
-  constructor() { }
+  @Input() public produto!: Produto;
+  @Input() public isOpen: boolean = false;
+  @Output() public fechar: EventEmitter<any> = new EventEmitter();
+  @Output() public editar: EventEmitter<any> = new EventEmitter();
 
-  ngOnInit() { }
 
+  constructor( private Produto: ProdutosService ) { }
+
+  ngOnInit() {}
+
+  excluirProduto(id: number){
+    this.Produto.excluirProduto(id).subscribe(
+      (response) => {
+        console.log(response);
+        window.location.reload();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 }

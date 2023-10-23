@@ -16,7 +16,7 @@ export class RedirectGuard implements CanActivate {
   canActivate() {
     if (!this.Funcionario.logedIn) return true;
 
-    this.router.navigate(['/home'])
+    this.router.navigate([''])
     return false;
   }
 }

@@ -14,11 +14,11 @@
                 <ion-item>
                   <ion-select (ionChange)="filtrarSelecao($event)" interface="popover" mode="ios" placeholder="Select"
                     [multiple]="true" [(ngModel)]="selectedOptions">
-                    <ion-select-option *ngIf="this.marmitas.length > 0" value="marmita" Default="true">Marmitas</ion-select-option>
-                    <ion-select-option *ngIf="this.bebidas.length > 0" value="bebida">Bebidas</ion-select-option>
-                    <ion-select-option *ngIf="this.sobremesas.length > 0" value="sobremesa">Sobremesas</ion-select-option>
-                    <ion-select-option *ngIf="this.combos.length > 0" value="combo">Combo</ion-select-option>
-                    <ion-select-option *ngIf="this.acompanhamentos.length > 0" value="acompanhamento">Acompanhamento</ion-select-option>
+                    <ion-select-option *ngIf="this.marmitas.length" value="marmita" Default="true">Marmitas</ion-select-option>
+                    <ion-select-option *ngIf="this.bebidas.length" value="bebida">Bebidas</ion-select-option>
+                    <ion-select-option *ngIf="this.sobremesas.length" value="sobremesa">Sobremesas</ion-select-option>
+                    <ion-select-option *ngIf="this.combos.length" value="combo">Combo</ion-select-option>
+                    <ion-select-option *ngIf="this.acompanhamentos.length" value="acompanhamento">Acompanhamento</ion-select-option>
                   </ion-select>
                 </ion-item>
               </ion-list>
@@ -35,18 +35,15 @@
                 <ion-content class="ion-padding">
                   <ion-row class="ion-justify-content-center">
                     <ion-col size="10"><ion-button expand="block"
-                        [routerLink]="['/criacao-comidas']">Comidas</ion-button></ion-col>
+                        [routerLink]="['/criacao/comidas']">Comidas</ion-button></ion-col>
                     <ion-col size="10"><ion-button expand="block"
-                        [routerLink]="['/criacao-bebidas']">Bebidas</ion-button></ion-col>
+                        [routerLink]="['/criacao/bebidas']">Bebidas</ion-button></ion-col>
                     <ion-col size="10"><ion-button expand="block"
                         [routerLink]="['/criacao-combos']">Combos</ion-button></ion-col>
                   </ion-row>
                 </ion-content>
               </ng-template>
             </ion-popover>
-
-
-
           </ion-row>
         </ion-col>
       </ion-row>
@@ -57,15 +54,15 @@
         <ion-row class="ion-justify-content-center">
           <ion-col size="11.9">
             <ion-accordion-group [multiple]="true" [value]="['Marmitas']">
-              <app-accordion *ngIf="this.filtrar['marmita'] && this.marmitas.length > 0" [tituloSessao]="'Marmitas'"
+              <app-accordion *ngIf="this.filtrar['marmita'] && this.marmitas.length" [tituloSessao]="'Marmitas'"
                 [produtos]="this.marmitas"></app-accordion>
-              <app-accordion *ngIf="this.filtrar['bebida'] && this.bebidas.length > 0" [tituloSessao]="'Bebidas'"
+              <app-accordion *ngIf="this.filtrar['bebida'] && this.bebidas.length" [tituloSessao]="'Bebidas'"
                 [produtos]="this.bebidas"></app-accordion>
-              <app-accordion *ngIf="this.filtrar['sobremesa'] && this.sobremesas.length > 0" [tituloSessao]="'Sobremesas'"
+              <app-accordion *ngIf="this.filtrar['sobremesa'] && this.sobremesas.length" [tituloSessao]="'Sobremesas'"
                 [produtos]="this.sobremesas"></app-accordion>
-              <app-accordion *ngIf="this.filtrar['combo'] && this.combos.length > 0" [tituloSessao]="'Combos'"
+              <app-accordion *ngIf="this.filtrar['combo'] && this.combos.length" [tituloSessao]="'Combos'"
                 [produtos]="this.combos"></app-accordion>
-              <app-accordion *ngIf="this.filtrar['acompanhamento'] && this.acompanhamentos.length > 0" [tituloSessao]="'Acompanhamentos'"
+              <app-accordion *ngIf="this.filtrar['acompanhamento'] && this.acompanhamentos.length" [tituloSessao]="'Acompanhamentos'"
                 [produtos]="this.acompanhamentos"></app-accordion>
             </ion-accordion-group>
           </ion-col>
@@ -74,4 +71,8 @@
       <app-loading [loading]="this.loading"></app-loading>
     </ion-col>
   </ion-row>
+  <app-modal-produto
+    [isOpen]="this.isOpen"
+    [produto]="this.produtoSelecionado"
+  ></app-modal-produto>
 </ion-content>

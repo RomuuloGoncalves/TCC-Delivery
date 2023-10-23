@@ -45,6 +45,7 @@ export class PedidoPage implements OnInit {
         this.pedidoCliente = response;
         this.produtos = this.pedidoCliente.pedido_produtos;
         this.loading = false;
+        console.log(this.pedidoCliente)
         this.organizarProdutos();
       },
       (error) => {
