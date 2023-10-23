@@ -29,4 +29,27 @@ export class ServerService {
 
     return this.http.get(`${this.url}${path}`, { headers });
   }
+
+  public delete(path: string): Observable<any> {
+    const token = this.Cookie.get('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    if (!token) headers.set('Authorization', `Bearer ${token}`);
+
+
+    return this.http.delete(`${this.url}${path}`, { headers });
+  }
+
+  public put(path: string, data: any): Observable<any> {
+    const token = this.Cookie.get('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    if (!token) headers.set('Authorization', `Bearer ${token}`);
+
+    return this.http.put(`${this.url}${path}`, JSON.stringify(data), { headers });
+  }
 }

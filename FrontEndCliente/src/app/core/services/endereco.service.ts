@@ -18,10 +18,10 @@ export class EnderecoService {
   }
 
   public editar (endereco: Endereco) {
-    return this.Server.post('/endereco/editar', endereco);
+    return this.Server.post('/cliente/endereco/editar', endereco);
   }
 
-  public excluir (endereco: Endereco) {
-    return this.Server.post('/endereco/excluir', endereco);
+  public excluir (id: Number) {
+    return this.Server.delete(`/cliente/endereco/excluir/${id}`);
   }
 }

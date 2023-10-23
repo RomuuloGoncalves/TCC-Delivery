@@ -26,5 +26,17 @@ class EnderecoSeeder extends Seeder
                 'cod_cliente' => $faker->randomElement($clientes)
             ]);
         }
+
+        for($i =1;$i <= 10;$i++) {
+            DB::table('Enderecos')->insert([
+                'nome' => $faker->word(),
+                'complemento' => $faker->sentence(2),
+                'bairro' => $faker->sentence(2),
+                'numero' => $faker->numerify('##'),
+                'rua' => $faker->sentence('2'),
+                'cep' => $faker->numerify('########'),
+                'cod_cliente' => 1
+            ]);
+        }
     }
 }

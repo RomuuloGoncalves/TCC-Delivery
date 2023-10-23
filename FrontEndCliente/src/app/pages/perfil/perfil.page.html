@@ -44,7 +44,7 @@
       <ion-col class="pages">
         <ng-container *ngIf="!this.loading">
           <app-perfil-config [cliente]="this.cliente"></app-perfil-config>
-          <app-endereco></app-endereco>
+          <app-endereco [enderecos]="this.enderecos" [cliente]="this.cliente"></app-endereco>
         </ng-container>
         <app-loading
           [loading]="this.loading"
