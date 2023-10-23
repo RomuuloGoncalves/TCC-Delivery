@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { Produto } from 'src/app/core/interfaces/produto';
+import { Variacao } from 'src/app/core/interfaces/variacao';
 import { PassarMarmitaService } from 'src/app/core/services/passar-marmita.service';
 
 @Component({
@@ -14,9 +15,13 @@ export class ModalMarmitaComponent  implements OnInit {
               private modalController: ModalController,
               private passarMarmita: PassarMarmitaService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.produto)
+  }
   
   @Input() produto: any
+
+  variacoesSelecionadas: any[] = []
   
   produtoModal = this.navParams.get('produto')
 
@@ -26,5 +31,22 @@ export class ModalMarmitaComponent  implements OnInit {
 
   chamarDefinirMarmita(produto: Produto) {
     this.passarMarmita.definirMarmita(produto)
+  }
+
+  alterarVariacoesSelecionadas(e: any) {
+    let variacoes = e.detail.value.split(',')
+    let repetiu = false
+    this.variacoesSelecionadas.forEach(variacao => {
+      variacao.grupo_variacao == variacoes[0] ? (variacao.variacao = variacoes[1],
+        repetiu = true) : null
+    });
+
+    !repetiu ? (this.variacoesSelecionadas.push(
+      {
+        "grupo_variacao": variacoes[0],
+        "variacao": variacoes[1],
+      }
+    )) : null 
+    console.log(this.variacoesSelecionadas)
   }
 }
