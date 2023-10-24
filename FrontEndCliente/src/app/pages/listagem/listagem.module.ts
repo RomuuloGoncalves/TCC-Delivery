@@ -12,6 +12,7 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
 import { SessaoCardsProdutoModule } from 'src/app/components/common/sessao-cards-produto/sessao-cards-produto.module';
 import { ModalMarmitaModule } from 'src/app/components/common/modal-marmita/modal-marmita.module';
 import { PesquisaProdutoModule } from 'src/app/components/common/pesquisa-produto/pesquisa-produto.module';
+import { LoadingModule } from 'src/app/components/common/loading/loading.module';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { PesquisaProdutoModule } from 'src/app/components/common/pesquisa-produt
     HeaderModule,
     SessaoCardsProdutoModule,
     ModalMarmitaModule,
-    PesquisaProdutoModule
+    PesquisaProdutoModule,
+    LoadingModule
   ],
   declarations: [ListagemPage]
 })
