@@ -24,7 +24,6 @@ export class HeaderComponent implements OnInit {
     this.Cliente.infos().subscribe(
       (response: Cliente) => {
         this.cliente = response;
-        console.log(response);
       },
       (badResponde: HttpErrorResponse) => {
         console.log(badResponde);

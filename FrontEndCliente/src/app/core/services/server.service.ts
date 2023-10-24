@@ -10,7 +10,7 @@ import { ClienteService } from './cliente.service';
 export class ServerService {
   constructor(private http: HttpClient, private Cookie: CookieService) {}
 
-  private url: string = 'https://opulent-enigma-566x5577w6rh4rg7-8000.app.github.dev';
+  private url: string = 'http://localhost:8000';
 
   public post(path: string, data: any): Observable<any> {
     const headers = new HttpHeaders({
