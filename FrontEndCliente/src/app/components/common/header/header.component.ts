@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
 
         setTimeout(() => {
           location.reload();
-        }, 200);
+        }, 250);
       },
       (badResponse: HttpErrorResponse) => {
         console.error(badResponse);

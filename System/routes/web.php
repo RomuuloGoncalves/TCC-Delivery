@@ -24,7 +24,7 @@ $router->group(['prefix' => 'cliente'], function () use ($router) {
     $router->post('/cadastrar', 'ClienteController@store');
     $router->post('/login', 'ClienteController@login');
     $router->put('/editar', 'ClienteController@update');
-    
+
     $router->group(['middleware' => 'authCliente'], function () use ($router) {
         $router->get('/', 'ClienteController@index');
         $router->post('/logout', 'ClienteController@logout');
