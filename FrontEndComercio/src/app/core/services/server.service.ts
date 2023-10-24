@@ -12,7 +12,8 @@ export class ServerService {
   private url: string = 'https://bug-free-meme-jw7977wx94gc9qr-8000.app.github.dev';
   // private url: string = 'https://cuddly-funicular-jpv6ggxg59xc5vvg-8000.app.github.dev';
 
-  public post(path: string, data: any | null): Observable<any> {
+
+  public post(path: string, data: any): Observable<any> {
     const token = this.Cookie.get('token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'

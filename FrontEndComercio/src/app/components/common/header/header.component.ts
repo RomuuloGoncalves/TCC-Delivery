@@ -28,5 +28,8 @@ export class HeaderComponent implements OnInit {
     this.Funcionario.limparToken();
     this.Toast.mostrarToast('sucesso', 'Logout realizado com sucesso!');
     this.router.navigate(['login']);
+    setTimeout(() => {
+      location.reload();
+    }, 250  )
   }
 }

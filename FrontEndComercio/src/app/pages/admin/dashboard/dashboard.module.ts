@@ -7,12 +7,12 @@ import { IonicModule } from '@ionic/angular';
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
-import { HeaderAdminModule } from 'src/app/components/admin/common/header-admin/header-admin.module';
 import { FormasPagamentosComponent } from 'src/app/components/admin/dashboard/graficos/formas-pagamentos/formas-pagamentos.component';
 import { TaxaCancelamentoComponent } from 'src/app/components/admin/dashboard/graficos/taxa-cancelamento/taxa-cancelamento.component';
 import { RendimentoComponent } from 'src/app/components/admin/dashboard/graficos/rendimento/rendimento.component';
 import { VendasComponent } from 'src/app/components/admin/dashboard/graficos/vendas/vendas.component';
 import { CategoriasComponent } from 'src/app/components/admin/dashboard/graficos/categorias/categorias.component';
+import { HeaderModule } from 'src/app/components/common/header/header.module';
 
 @NgModule({
   imports: [
@@ -20,7 +20,7 @@ import { CategoriasComponent } from 'src/app/components/admin/dashboard/graficos
     FormsModule,
     IonicModule,
     DashboardPageRoutingModule,
-    HeaderAdminModule
+    HeaderModule
   ],
   declarations: [
     DashboardPage,

@@ -20,11 +20,10 @@ export class PesquisaProdutoComponent  implements OnInit {
   filtrarProdutos(event: any) {
     const pesquisa: string = event.detail.value.toLowerCase().trim();
 
-    // Clone de categorias vindo via parmetros
     const categorias = JSON.parse(JSON.stringify(this.categorias));
 
     const categoriasFiltradas: Categoria[] = categorias.filter((categoria: Categoria) => {
-        categoria.produtos = categoria.produtos!.filter((produto: Produto) => produto.nome.indexOf(pesquisa) !== -1);
+        categoria.produtos = categoria.produtos!.filter((produto: Produto) => produto.nome.toLowerCase().indexOf(pesquisa) !== -1);
         return categoria.produtos.length;
       });
     this.filtragem.emit(categoriasFiltradas);

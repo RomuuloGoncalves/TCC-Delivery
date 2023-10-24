@@ -34,7 +34,7 @@ export class LogedInGuard implements CanActivate {
 
   private handleError() {
     this.Toast.mostrarToast('erro', 'Para acessar o recurso, deve estar logado!')
-    this.router.navigate(['/login']);
-    this.Cookie.deleteAll();
+    this.router.navigate(['login']);
+    this.Cookie.delete('token');
   }
 }
