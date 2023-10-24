@@ -61,6 +61,46 @@ class ClienteController extends Controller
     }
 
     /**
+     * update
+     *
+     * @return Cliente
+     */
+
+    public function update(Request $request) {
+        $regras = [
+            'nome' => ['nullable', 'string', 'max:255'],
+            'email' => ['nullable', 'string', 'email', 'max:255', 'unique:Clientes'],
+            'password' => ['nullable', 'string', 'max:255', 'min:8'],
+            'telefone' => ['nullable', 'string', 'size:11', 'unique:Clientes'],
+        ];
+
+        $validacao = Validator::make($request->all(), $regras);
+
+        if ($validacao->fails())
+            return response()->json($validacao->errors(), 422);
+
+        $cliente = Cliente::find($request->input('id'));
+        if (!$cliente)
+            return response()->json(['error' => '"cliente" not found'], 404);
+
+        $atributos = ['nome', 'email', 'password', 'telefone'];
+
+        foreach($atributos as $atributo) {
+            if ($atributo === "password") {
+                $cliente->$atributo = password_hash($request->input($atributo), PASSWORD_DEFAULT);
+            } else {
+                $request->input($atributo) != ""
+                    ? $cliente->$atributo = $request->input($atributo)
+                    : null;
+            }
+        }
+
+        $cliente->save();
+        
+        return response()->json($cliente, 200);
+    }
+
+    /**
      * login
      *
      * @return void

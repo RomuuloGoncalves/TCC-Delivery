@@ -25,6 +25,10 @@ export class ClienteService {
     return this.Server.get('/cliente');
   }
 
+  public editar (cliente: Cliente) {
+    return this.Server.put('/cliente/editar', cliente);
+  }
+
   private getTokenInfos (): Cliente {
     const parts = this.token.split('.');
 
