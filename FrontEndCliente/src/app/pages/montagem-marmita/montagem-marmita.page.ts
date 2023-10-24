@@ -23,18 +23,20 @@ export class MontagemMarmitaPage implements OnInit {
   qtddMarmita: number = 1;
   total: number = 0.0;
 
-  ingredientes!: Produto
+  ingredientes!: Produto;
 
-  constructor(private passarMarmita: PassarMarmitaService, private produtoService: ProdutoService) {}
+  constructor(
+    private passarMarmita: PassarMarmitaService,
+    private produtoService: ProdutoService
+  ) {}
 
   ngOnInit() {
     this.atualizarMarmita();
-    this.carregarMarmita()
+    this.carregarMarmita();
   }
 
-
-  marmitaPersonalizavel!: Produto
-  loading: boolean = true
+  marmitaPersonalizavel!: Produto;
+  loading: boolean = true;
 
   private carregarMarmita() {
     // _______________________ trocar por 6 (SEIS) depois __________________________
@@ -42,25 +44,24 @@ export class MontagemMarmitaPage implements OnInit {
       (response: Produto) => {
         this.marmitaPersonalizavel = response;
         this.ingredientes = response;
-        console.log("marmita", this.ingredientes)
-        this.loading = false
+        console.log('marmita', this.ingredientes);
+        this.loading = false;
       },
       (error) => {
         console.error(error);
       }
-    )
+    );
   }
-
 
   selecionarIngrediente(idIngrediente: number, idVariacao: number, event: any) {
-    console.log(this.ingredientes.grupo_variacao)
+    console.log(this.ingredientes.grupo_variacao);
 
-  if (this.ingredientes && this.ingredientes.grupo_variacao) {
-    const grupo = this.ingredientes.grupo_variacao[idIngrediente];
-    if (grupo && grupo.variacao) {
-      grupo.variacao[idVariacao].selecionado = event.detail.checked;
+    if (this.ingredientes && this.ingredientes.grupo_variacao) {
+      const grupo = this.ingredientes.grupo_variacao[idIngrediente];
+      if (grupo && grupo.variacao) {
+        grupo.variacao[idVariacao].selecionado = event.detail.checked;
+      }
     }
-  }
 
     this.atualizarMarmita();
     // console.log(this.ingredientes)
@@ -69,19 +70,21 @@ export class MontagemMarmitaPage implements OnInit {
   private atualizarMarmita() {
     this.marmita = [];
     if (this.ingredientes && this.ingredientes.grupo_variacao) {
-      this.ingredientes.grupo_variacao.forEach((ingrediente: GrupoVariacoes) => {
-        const variacoesSelecionadas: Variacao[] = [];
-        ingrediente.variacao!.forEach((variacao: Variacao) => {
-          variacao.selecionado ? variacoesSelecionadas.push(variacao) : null;
-        });
-        this.marmita.push({
-          id_grupo_variacoes: ingrediente.id_grupo_variacoes,
-          tipo: ingrediente.tipo,
-          variacoes: variacoesSelecionadas,
-        });
-      });
+      this.ingredientes.grupo_variacao.forEach(
+        (ingrediente: GrupoVariacoes) => {
+          const variacoesSelecionadas: Variacao[] = [];
+          ingrediente.variacao!.forEach((variacao: Variacao) => {
+            variacao.selecionado ? variacoesSelecionadas.push(variacao) : null;
+          });
+          this.marmita.push({
+            id_grupo_variacoes: ingrediente.id_grupo_variacoes,
+            tipo: ingrediente.tipo,
+            variacoes: variacoesSelecionadas,
+          });
+        }
+      );
     }
-    console.log(this.marmita)
+    console.log(this.marmita);
   }
 
   calcPrecoMarmita() {
@@ -90,9 +93,14 @@ export class MontagemMarmitaPage implements OnInit {
         const totalVariacoes = ingredienteMarmita.variacoes?.reduce(
           (preco: number, variacaoMarmita: Variacao) => {
             return preco + variacaoMarmita.valor_final!;
-          }, 0);
-        return preco + totalVariacoes!;
-      } ,0);
+          },
+          0
+        );
+        if (preco > 0) return preco + totalVariacoes!;
+        else return 10.2;
+      },
+      0
+    );
     this.calcTotal();
   }
 
@@ -118,5 +126,4 @@ export class MontagemMarmitaPage implements OnInit {
   voltarCard() {
     this.swiper = this.swiperRef?.nativeElement.swiper.slidePrev();
   }
-
 }

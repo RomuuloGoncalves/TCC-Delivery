@@ -18,6 +18,10 @@ class PedidoProdutoSeeder extends Seeder
         for ($i = 1; $i <= 10; $i++) {
             DB::table('Pedido_produtos')->insert([
                 'cod_pedido' => $faker->randomElement($pedidos),
+
+
+
+                
                 'cod_produto' => $faker->randomElement($produtos),
             ]);
         }
