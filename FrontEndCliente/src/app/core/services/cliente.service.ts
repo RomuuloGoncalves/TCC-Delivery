@@ -11,7 +11,7 @@ export class ClienteService {
   constructor(private Cookie: CookieService, private Server: ServerService) { }
 
   private readonly token: string = this.Cookie.get('token');
-  public readonly logedIn: boolean = !!this.token;
+  public readonly logedIn: boolean = this.token !== '';
 
   public cadastro (cliente: Cliente) {
     return this.Server.post('/cliente/cadastrar', cliente);

@@ -11,7 +11,7 @@ export class ServerService {
 
   private url: string = 'http://127.0.0.1:8000';
 
-  public post(path: string, data: any): Observable<any> {
+  public post(path: string, data: any | null): Observable<any> {
     const token = this.Cookie.get('token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
