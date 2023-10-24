@@ -3,7 +3,7 @@
 
   <ion-row class="pedido" class="ion-justify-content-between ion-align-items-center ion-margin">
     <ion-col size="12" sizeMd="auto">
-      <ion-icon [routerLink]="['/pedidos']" size="large" name="arrow-back-outline"></ion-icon>
+      <ion-icon [routerLink]="['/pedidos']" routerDirection="back" size="large" name="arrow-back-outline"></ion-icon>
     </ion-col>
     <h2 class="ion-margin-horizontal">Pedido #{{this.id_pedido}}</h2>
   </ion-row>
@@ -46,22 +46,22 @@
       <ion-list [inset]="true">
         <ion-item>
           <ion-text>
-            <p><b>Cliente:</b> {{this.cliente!.nome}}</p>
+            <p><b>Cliente:</b> {{this.cliente?.nome}}</p>
           </ion-text>
         </ion-item>
         <ion-item>
           <ion-text>
-            <p><b>CEP:</b> {{this.pedidoCliente!.forma_pagamento}}</p>
+            <p><b>CEP:</b> {{this.pedidoCliente?.forma_pagamento}}</p>
           </ion-text>
         </ion-item>
         <ion-item>
           <ion-text>
-            <p><b>Pagamento:</b> {{this.pedidoCliente!.forma_pagamento}}</p>
+            <p><b>Pagamento:</b> {{this.pedidoCliente?.forma_pagamento}}</p>
           </ion-text>
         </ion-item>
         <ion-item>
           <ion-text>
-            <p><b>Status:</b> {{this.pedidoCliente!.status}}</p>
+            <p><b>Status:</b> {{this.pedidoCliente?.status}}</p>
           </ion-text>
         </ion-item>
       </ion-list>

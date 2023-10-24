@@ -29,11 +29,6 @@ export class PedidoPage implements OnInit {
   pedidoCliente!: Pedido;
   cliente!: Cliente;
   produtos!: any;
-  marmitas: Produto[] = [];
-  bebidas: Produto[] = [];
-  sobremesas: Produto[] = [];
-  acompanhamentos: Produto[] = [];
-  combos: Produto[] = [];
 
   tabela!:any;
   infoModal:any = [];
