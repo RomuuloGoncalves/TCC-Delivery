@@ -90,4 +90,8 @@ export class ProdutosPage implements OnInit {
     })
   }
 
+  selecionarProduto(produto: Produto) {
+    this.produtoSelecionado = produto;
+    this.isOpen = true;
+  }
 }

@@ -8,7 +8,6 @@ import { Produto } from 'src/app/core/interfaces/produto';
 })
 export class ModalPedidoComponent  implements OnInit {
   @Input() public pedido!: any;
-  @Input() public id: any;
 
   ngOnInit() { }
 

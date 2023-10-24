@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(FuncionarioSeeder::class);
 
-        $quantidadel_inserts = 2;
+        $quantidadel_inserts = 1;
         for ($i = 0; $i < $quantidadel_inserts; $i++) {
             $this->call([
                 ClienteSeeder::class,

@@ -126,7 +126,7 @@
             </ion-row>
           </ion-col>
 
-          <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" dismiss-on-select="true" side="bottom" alignment="end" mode="ios">
+          <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" arrow="false" dismiss-on-select="true" side="bottom" alignment="end" mode="ios">
             <ng-template ngIf="{{popover}}">
               <ion-content class="ion-padding">
                 <ion-row>
@@ -145,7 +145,7 @@
                         <ion-label [routerLink]="['/perfil']">Formas de pagamento</ion-label>
                       </ion-item>
                       <ion-item class="links">
-                        <ion-label [routerLink]="['/perfil']" class="ion-align-items-center">Sair</ion-label>
+                        <ion-label (click)="this.logout()"  class="ion-align-items-center">Sair</ion-label>
                         <ion-icon name="log-out-outline"></ion-icon>
                       </ion-item>
                     </ion-list>

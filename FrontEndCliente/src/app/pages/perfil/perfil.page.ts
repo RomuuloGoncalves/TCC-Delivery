@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  ElementRef, ViewChild } from '@angular/core';
 import { Cliente } from 'src/app/core/interfaces/cliente';
 import { Endereco } from 'src/app/core/interfaces/endereco';
 import { ClienteService } from 'src/app/core/services/cliente.service';
@@ -12,7 +12,7 @@ import { EnderecoService } from 'src/app/core/services/endereco.service';
 })
 export class PerfilPage implements OnInit {
 
-  constructor(private Cliente: ClienteService, private Endereco: EnderecoService) { }
+  constructor(private Cliente: ClienteService, private Endereco: EnderecoService, private el: ElementRef) { }
 
   loading: boolean = true;
   cliente!: Cliente;
@@ -20,6 +20,13 @@ export class PerfilPage implements OnInit {
 
   ngOnInit() {
     this.carregarPagina();
+  }
+
+  public direcionar (rota: string) {
+    const fragment = this.el.nativeElement.querySelector(rota);
+    if (fragment) {
+    fragment.scrollIntoView({ behavior: 'smooth' });
+  }
   }
 
   private carregarPagina() {

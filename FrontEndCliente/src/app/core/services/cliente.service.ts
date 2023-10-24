@@ -11,7 +11,7 @@ export class ClienteService {
   constructor(private Cookie: CookieService, private Server: ServerService) { }
 
   private readonly token: string = this.Cookie.get('token');
-  public readonly logedIn: boolean = !!this.token;
+  public readonly logedIn: boolean = this.token !== '';
 
   public cadastro (cliente: Cliente) {
     return this.Server.post('/cliente/cadastrar', cliente);
@@ -25,13 +25,15 @@ export class ClienteService {
     return this.Server.get('/cliente');
   }
 
-  private getTokenInfos (): Cliente {
-    const parts = this.token.split('.');
+  public editar (cliente: Cliente) {
+    return this.Server.put('/cliente/editar', cliente);
+  }
 
-    const encodedPayload = parts[1];
+  public limparToken() {
+    this.Cookie.delete('token');
+  }
 
-    const decodedPayload = atob(encodedPayload);
-
-    return JSON.parse(decodedPayload);
+  public logout() {
+    return this.Server.post('/cliente/logout', null);
   }
 }

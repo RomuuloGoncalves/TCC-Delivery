@@ -15,7 +15,7 @@ class CategoriaSeeder extends Seeder
      */
     public function run()
     {
-        $nomes = ['Marmita Pronta', 'Bebida', 'Sobremesa', 'Combos', 'Acompanhamento'];
+        $nomes = ['Marmita Pronta', 'Bebida', 'Sobremesa', 'Combos', 'Acompanhamento', 'Marmita Personalizada'];
         foreach ($nomes as $nome) {
             DB::table('Categorias')->insert([
                 'nome' => $nome,

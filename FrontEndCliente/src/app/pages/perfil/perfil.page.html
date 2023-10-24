@@ -18,11 +18,11 @@
 
               <ion-row class="sidebar__options ion-align-item-center ion-justify-content-center">
                 <ion-col size="12">
-                  <ion-row class="item ion-align-items-center ion-justify-content-center">
+                  <ion-row (click)="direcionar('#perfil-config')" class="item ion-align-items-center ion-justify-content-center">
                     <ion-label>Perfil</ion-label>
                   </ion-row>
 
-                  <ion-row class="item ion-align-items-center ion-justify-content-center">
+                  <ion-row (click)="direcionar('#endereco')" class="item ion-align-items-center ion-justify-content-center">
                     <ion-label>Endereço</ion-label>
                   </ion-row>
 
@@ -43,8 +43,8 @@
 
       <ion-col class="pages">
         <ng-container *ngIf="!this.loading">
-          <app-perfil-config [cliente]="this.cliente"></app-perfil-config>
-          <app-endereco [enderecos]="this.enderecos" [cliente]="this.cliente"></app-endereco>
+          <app-perfil-config id="perfil-config" [cliente]="this.cliente"></app-perfil-config>
+          <app-endereco id="endereco" [enderecos]="this.enderecos" [cliente]="this.cliente"></app-endereco>
         </ng-container>
         <app-loading
           [loading]="this.loading"

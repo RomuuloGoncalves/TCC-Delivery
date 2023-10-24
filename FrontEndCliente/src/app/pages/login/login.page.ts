@@ -45,6 +45,9 @@ export class LoginPage implements OnInit {
 
           this.loginForm.reset();
           this.router.navigate(['/']);
+          setTimeout(() => {
+            location.reload();
+          }, 200);
           this.Toast.mostrarToast('sucesso', 'Login realizado com sucesso');
         }
 

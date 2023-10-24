@@ -1,4 +1,7 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ToastService } from 'src/app/core/controller/toast.service';
+import { Cliente } from 'src/app/core/interfaces/cliente';
 import { ClienteService } from 'src/app/core/services/cliente.service';
 
 
@@ -10,13 +13,28 @@ import { ClienteService } from 'src/app/core/services/cliente.service';
 export class HeaderComponent implements OnInit {
   @ViewChild('popover') popover: any
 
-  constructor(private Cliente: ClienteService) {}
+  constructor(private Cliente: ClienteService, private Toast: ToastService) {}
+
+  logedIn: Boolean = this.Cliente.logedIn;
 
   ngOnInit() {
   }
 
+  logout() {
+    this.Cliente.logout().subscribe(
+      (response: any) => {
+        this.Cliente.limparToken();
+        this.Toast.mostrarToast('sucesso', response.message);
 
-  logedIn: Boolean = this.Cliente.logedIn;
+        setTimeout(() => {
+          location.reload();
+        }, 250);
+      },
+      (badResponse: HttpErrorResponse) => {
+        console.error(badResponse);
+      }
+    )
+  }
 
   isOpen = false;
 

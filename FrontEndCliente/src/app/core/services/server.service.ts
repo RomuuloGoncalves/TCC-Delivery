@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
-import { ClienteService } from './cliente.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +11,7 @@ export class ServerService {
 
   private url: string = 'https://bug-free-meme-jw7977wx94gc9qr-8000.app.github.dev';
 
-  public post(path: string, data: any): Observable<any> {
+  public post(path: string, data: any | null): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.Cookie.get('token')}`
