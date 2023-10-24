@@ -38,7 +38,7 @@ export class MontagemMarmitaPage implements OnInit {
 
   private carregarMarmita() {
     // _______________________ trocar por 6 (SEIS) depois __________________________
-    this.produtoService.pegarProduto(2).subscribe(
+    this.produtoService.pegarProduto(1).subscribe(
       (response: Produto) => {
         this.marmitaPersonalizavel = response;
         this.ingredientes = response;
@@ -110,7 +110,7 @@ export class MontagemMarmitaPage implements OnInit {
       spaceBetween: 20,
     },
   };
-  
+
   proximoCard() {
     this.swiper = this.swiperRef?.nativeElement.swiper.slideNext();
   }
