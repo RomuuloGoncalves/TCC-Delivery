@@ -21,35 +21,34 @@ class GrupoVariacaoSeeder extends Seeder
         //         'cod_produto' => $faker->randomElement($produtos),
         //     ]);
         // }
-
-        DB::table('Pedido_produtos')->insert([
-            'cod_pedido' => 1,
+        DB::table('Grupo_variacoes')->insert([
+            'tipo' => 'Tamanho',
+            'quantidade_variacoes' => 1,
             'cod_produto' => 1,
         ]);
 
-        DB::table('Pedido_produtos')->insert([
-            'cod_pedido' => 1,
-            'cod_produto' => 2,
+        DB::table('Grupo_variacoes')->insert([
+            'tipo' => 'Arroz',
+            'quantidade_variacoes' => 1,
+            'cod_produto' => 1,
         ]);
 
-        DB::table('Pedido_produtos')->insert([
-            'cod_pedido' => 2,
-            'cod_produto' => 3,
+        DB::table('Grupo_variacoes')->insert([
+            'tipo' => 'Feijão',
+            'quantidade_variacoes' => 1,
+            'cod_produto' => 1,
         ]);
 
-        DB::table('Pedido_produtos')->insert([
-            'cod_pedido' => 2,
-            'cod_produto' => 4,
+        DB::table('Grupo_variacoes')->insert([
+            'tipo' => 'Guarnição',
+            'quantidade_variacoes' => 2,
+            'cod_produto' => 1,
         ]);
 
-        DB::table('Pedido_produtos')->insert([
-            'cod_pedido' => 3,
-            'cod_produto' => 5,
-        ]);
-
-        DB::table('Pedido_produtos')->insert([
-            'cod_pedido' => 3,
-            'cod_produto' => 6,
+        DB::table('Grupo_variacoes')->insert([
+            'tipo' => 'Acompanhamento',
+            'quantidade_variacoes' => 1,
+            'cod_produto' => 1,
         ]);
     }
 }

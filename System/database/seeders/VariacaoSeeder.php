@@ -26,54 +26,68 @@ class VariacaoSeeder extends Seeder
         //             'cod_grupo_variacoes' => $faker->randomElement($grupo_variacoes),
         //         ]);
         //     }
+        // Variações Marmita Personalizada
+        //  Tamanho
+        DB::table('Variacoes')->insert([
+            'nome' => 'P',
+            'porcentagem_desconto' => 10.00,
+            'valor_desconto' => null,
+            'valor_inicial' => 20.00,
+            'descricao' => 'Marmita Pequena',
+            'cod_grupo_variacoes' => 1,
+        ]);
 
         DB::table('Variacoes')->insert([
-            'nome' => 'Variação 1',
+            'nome' => 'M',
             'porcentagem_desconto' => 10.00,
             'valor_desconto' => null,
             'valor_inicial' => 25.00,
-            'descricao' => 'Uma variação do produto',
+            'descricao' => 'Marmita Média',
             'cod_grupo_variacoes' => 1,
         ]);
 
         DB::table('Variacoes')->insert([
-            'nome' => 'Variação 2',
+            'nome' => 'G',
             'porcentagem_desconto' => null,
-            'valor_desconto' => 5.00,
+            'valor_desconto' => 2.00,
             'valor_inicial' => 30.00,
-            'descricao' => 'Outra variação do produto',
+            'descricao' => 'Marmita Grande',
             'cod_grupo_variacoes' => 1,
         ]);
 
-        DB::table('Variacoes')->insert([
-            'nome' => 'Variação 3',
-            'porcentagem_desconto' => 15.00,
-            'valor_desconto' => null,
-            'valor_inicial' => 40.00,
-            'descricao' => 'Uma terceira variação',
-            'cod_grupo_variacoes' => 2,
-        ]);
+        //  Arroz
 
         DB::table('Variacoes')->insert([
-            'nome' => 'Variação 4',
+            'nome' => 'Arroz Branco',
             'porcentagem_desconto' => null,
-            'valor_desconto' => 8.00,
-            'valor_inicial' => 50.00,
-            'descricao' => 'Mais uma variação',
+            'valor_desconto' => null,
+            'valor_inicial' => 0.00,
+            'descricao' => 'Arroz branco',
             'cod_grupo_variacoes' => 2,
         ]);
 
         DB::table('Variacoes')->insert([
-            'nome' => 'Variação 5',
-            'porcentagem_desconto' => 12.50,
+            'nome' => 'Arroz Integral',
+            'porcentagem_desconto' => null,
             'valor_desconto' => null,
-            'valor_inicial' => 60.00,
-            'descricao' => 'Outra variação interessante',
-            'cod_grupo_variacoes' => 3,
+            'valor_inicial' => 5.00,
+            'descricao' => 'Arroz integral',
+            'cod_grupo_variacoes' => 2,
         ]);
 
         DB::table('Variacoes')->insert([
-            'nome' => 'Variação 6',
+            'nome' => 'Arroz à Grega',
+            'porcentagem_desconto' => null,
+            'valor_desconto' => null,
+            'valor_inicial' => 10.00,
+            'descricao' => 'Arroz cozido com passas e legumes picados',
+            'cod_grupo_variacoes' => 2,
+        ]);
+
+        // Feijão
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Feijão Carioca',
             'porcentagem_desconto' => null,
             'valor_desconto' => 10.00,
             'valor_inicial' => 70.00,
@@ -82,21 +96,70 @@ class VariacaoSeeder extends Seeder
         ]);
 
         DB::table('Variacoes')->insert([
-            'nome' => 'Variação 7',
-            'porcentagem_desconto' => 8.00,
+            'nome' => 'Feijão Branco',
+            'porcentagem_desconto' => null,
+            'valor_desconto' => 10.00,
+            'valor_inicial' => 70.00,
+            'descricao' => 'Variação única',
+            'cod_grupo_variacoes' => 3,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Tutu de Feijão',
+            'porcentagem_desconto' => null,
+            'valor_desconto' => 10.00,
+            'valor_inicial' => 70.00,
+            'descricao' => 'Feijão cozido, refogado e engrossado com farinha',
+            'cod_grupo_variacoes' => 3,
+        ]);
+
+        // Guarnição
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Filé de Frango',
+            'porcentagem_desconto' => null,
             'valor_desconto' => null,
-            'valor_inicial' => 80.00,
-            'descricao' => 'Outra variação importante',
+            'valor_inicial' => 0.00,
+            'descricao' => 'Filé de frango grelhado',
             'cod_grupo_variacoes' => 4,
         ]);
 
         DB::table('Variacoes')->insert([
-            'nome' => 'Variação 8',
+            'nome' => 'Bife',
             'porcentagem_desconto' => null,
-            'valor_desconto' => 15.00,
-            'valor_inicial' => 90.00,
-            'descricao' => 'Variação versátil',
+            'valor_desconto' => null,
+            'valor_inicial' => 0.00,
+            'descricao' => 'Alcatra grelhada',
             'cod_grupo_variacoes' => 4,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Picanha',
+            'porcentagem_desconto' => null,
+            'valor_desconto' => 2.00,
+            'valor_inicial' => 10.00,
+            'descricao' => 'Picanha grelhada',
+            'cod_grupo_variacoes' => 4,
+        ]);
+
+        // Acompanhamento
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Farofa',
+            'porcentagem_desconto' => null,
+            'valor_desconto' => null,
+            'valor_inicial' => 0.00,
+            'descricao' => 'Farofa de mandioca',
+            'cod_grupo_variacoes' => 5,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Maionese',
+            'porcentagem_desconto' => null,
+            'valor_desconto' => null,
+            'valor_inicial' => 0.00,
+            'descricao' => 'Variação versátil',
+            'cod_grupo_variacoes' => 5,
         ]);
     }
 }

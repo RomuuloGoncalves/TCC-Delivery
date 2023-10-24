@@ -28,6 +28,13 @@ class ProdutoSeeder extends Seeder
         //     ]);
         // }
 
+        // Categoria 6: 'Marmita Personalizada'
+        DB::table('Produtos')->insert([
+            'nome' => 'Marmita Personalizada',
+            'descricao' => 'Marmita totalmente personalizável, aproveite.',
+            'cod_categoria' => 6,
+        ]);
+
         // Categoria 1: 'Marmita Pronta'
         DB::table('Produtos')->insert([
             'nome' => 'Marmita de Frango Grelhado',
@@ -181,37 +188,6 @@ class ProdutoSeeder extends Seeder
             'nome' => 'Legumes Grelhados',
             'descricao' => 'Legumes grelhados e temperados',
             'cod_categoria' => 5,
-        ]);
-
-        // Categoria 6: 'Marmita Personalizada'
-        DB::table('Produtos')->insert([
-            'nome' => 'Marmita do Chef',
-            'descricao' => 'Marmita personalizada pelo chef',
-            'cod_categoria' => 6,
-        ]);
-
-        DB::table('Produtos')->insert([
-            'nome' => 'Marmita Fitness Personalizada',
-            'descricao' => 'Marmita fitness de acordo com sua escolha',
-            'cod_categoria' => 6,
-        ]);
-
-        DB::table('Produtos')->insert([
-            'nome' => 'Marmita Vegetariana Personalizada',
-            'descricao' => 'Marmita vegetariana personalizada',
-            'cod_categoria' => 6,
-        ]);
-
-        DB::table('Produtos')->insert([
-            'nome' => 'Marmita Especial Personalizada',
-            'descricao' => 'Marmita especial de acordo com suas preferências',
-            'cod_categoria' => 6,
-        ]);
-
-        DB::table('Produtos')->insert([
-            'nome' => 'Marmita Infantil Personalizada',
-            'descricao' => 'Marmita infantil personalizada para as crianças',
-            'cod_categoria' => 6,
         ]);
     }
 }
