@@ -12,7 +12,7 @@ export class ServerService {
 
   private url: string = 'http://localhost:8000';
 
-  public post(path: string, data: any): Observable<any> {
+  public post(path: string, data: any | null): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.Cookie.get('token')}`

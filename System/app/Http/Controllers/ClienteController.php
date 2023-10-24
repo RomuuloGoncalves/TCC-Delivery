@@ -129,4 +129,15 @@ class ClienteController extends Controller
         $cliente = $this->getAuthCliente();
         return response()->json($cliente);
     }
+
+    /**
+     * logout
+     *
+     * @return void
+     */
+    public function logout()
+    {
+        auth('cliente')->logout();
+        return response()->json(['message'=> 'Logout realizado com sucesso!'], 200);
+    }
 }

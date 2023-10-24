@@ -14,24 +14,22 @@ export class HeaderComponent implements OnInit {
 
   constructor(private Cliente: ClienteService) {}
 
-  cliente!: Cliente;
-
-  ngOnInit() {
-    this.carregarCliente();
-  }
-
-  private carregarCliente() {
-    this.Cliente.infos().subscribe(
-      (response: Cliente) => {
-        this.cliente = response;
-      },
-      (badResponde: HttpErrorResponse) => {
-        console.log(badResponde);
-      }
-    );
-  }
   logedIn: Boolean = this.Cliente.logedIn;
 
+  ngOnInit() {
+  }
+
+
+  logout() {
+    this.Cliente.logout().subscribe(
+      (response: any) => {
+        location.reload();
+      },
+      (badResponse: HttpErrorResponse) => {
+        console.error(badResponse);
+      }
+    )
+  }
 
   isOpen = false;
 
