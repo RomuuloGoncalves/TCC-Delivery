@@ -1,7 +1,9 @@
 .container-menu {
+
   ion-row {
     height: 100%;
     background-color: var(--ion-color-primary);
+    color: var(--ion-color-light);
     flex-direction: column;
 
     ion-label {
@@ -10,7 +12,6 @@
       }
 
       font-size: 1.5rem;
-      color: #ffff;
     }
 
     span {
@@ -18,15 +19,15 @@
       width: 80%;
       margin: 30px 0;
     }
-
-    ion-menu-button {
-      color: #ffff;
-    }
   }
 }
 
-ion-popover {
+.popover {
   --width: 250px;
+
+  &__options {
+    cursor: pointer;
+  }
 }
 
 
@@ -49,10 +50,6 @@ ion-menu-button {
 #sino img {
   height: 100%;
 }
-
-@media(max-width:975px) {}
-
-@media(max-width:460px) {}
 
 
 @media(max-width:768px) {

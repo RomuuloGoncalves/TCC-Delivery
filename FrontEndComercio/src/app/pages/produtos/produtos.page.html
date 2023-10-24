@@ -54,15 +54,15 @@
         <ion-row class="ion-justify-content-center">
           <ion-col size="11.9">
             <ion-accordion-group [multiple]="true" [value]="['Marmitas']">
-              <app-accordion *ngIf="this.filtrar['marmita'] && this.marmitas.length" [tituloSessao]="'Marmitas'"
+              <app-accordion (clickCard)="this.selecionarProduto($event)" *ngIf="this.filtrar['marmita'] && this.marmitas.length" [tituloSessao]="'Marmitas'"
                 [produtos]="this.marmitas"></app-accordion>
-              <app-accordion *ngIf="this.filtrar['bebida'] && this.bebidas.length" [tituloSessao]="'Bebidas'"
+              <app-accordion (clickCard)="this.selecionarProduto($event)" *ngIf="this.filtrar['bebida'] && this.bebidas.length" [tituloSessao]="'Bebidas'"
                 [produtos]="this.bebidas"></app-accordion>
-              <app-accordion *ngIf="this.filtrar['sobremesa'] && this.sobremesas.length" [tituloSessao]="'Sobremesas'"
+              <app-accordion (clickCard)="this.selecionarProduto($event)" *ngIf="this.filtrar['sobremesa'] && this.sobremesas.length" [tituloSessao]="'Sobremesas'"
                 [produtos]="this.sobremesas"></app-accordion>
-              <app-accordion *ngIf="this.filtrar['combo'] && this.combos.length" [tituloSessao]="'Combos'"
+              <app-accordion (clickCard)="this.selecionarProduto($event)" *ngIf="this.filtrar['combo'] && this.combos.length" [tituloSessao]="'Combos'"
                 [produtos]="this.combos"></app-accordion>
-              <app-accordion *ngIf="this.filtrar['acompanhamento'] && this.acompanhamentos.length" [tituloSessao]="'Acompanhamentos'"
+              <app-accordion (clickCard)="this.selecionarProduto($event)" *ngIf="this.filtrar['acompanhamento'] && this.acompanhamentos.length" [tituloSessao]="'Acompanhamentos'"
                 [produtos]="this.acompanhamentos"></app-accordion>
             </ion-accordion-group>
           </ion-col>
@@ -73,6 +73,7 @@
   </ion-row>
   <app-modal-produto
     [isOpen]="this.isOpen"
+    (fechar)="this.isOpen = false"
     [produto]="this.produtoSelecionado"
   ></app-modal-produto>
 </ion-content>

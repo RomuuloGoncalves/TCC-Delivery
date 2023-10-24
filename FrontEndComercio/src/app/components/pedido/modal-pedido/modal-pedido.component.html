@@ -1,40 +1,35 @@
-<ion-modal id="example-modal" #modal trigger="open-modal-pedido-{{this.id}}">
+<ion-modal id="example-modal" #modal trigger="open-modal-pedido">
   <ng-template>
     <ion-content>
       <div class="wrapper">
         <ion-header>
           <ion-toolbar>
-            <ion-title>Produtos</ion-title>
+            <ion-title>
+              <b>Produtos</b>
+            </ion-title>
             <ion-buttons slot="end">
-              <ion-button (click)="modal.dismiss()">Fechar</ion-button>
+              <ion-button (click)="modal.dismiss()"><ion-icon name="close-outline" size="large"></ion-icon></ion-button>
             </ion-buttons>
           </ion-toolbar>
         </ion-header>
 
         <ion-row class="ion-align-items-center ion-padding-horizontal">
           <ion-col>
-            <ion-list>
-              <ng-container *ngFor="let produtos of pedido">
-                <ng-container *ngIf="produtos[1].length > 0">
-                  <h1>{{ produtos[0] | uppercase }}</h1>
-                  <ng-container *ngFor="let produto of produtos[1]">
-                    <ion-item>
-                      <ion-row class="ion-align-items-center">
-                        <ion-col size="3">
-                          <img src="{{produto.produto.imagem}}">
-                        </ion-col>
-                        <ion-col size=9>
-                          <ion-label>
-                            <h1>{{produto.produto.nome | titlecase}}</h1>
-                          </ion-label>
-                        </ion-col>
-                      </ion-row>
-                    </ion-item>
-                  </ng-container>
+            <ng-container *ngFor="let produtos of pedido">
+              <h4>{{produtos[0] | titlecase }}</h4>
+              <ion-row class="ion-justify-content-start">
+                <ng-container *ngFor="let p of produtos[1]">
+                  <ion-col size="8" sizeMd="5" class="ion-margin-horizontal ion-no-padding">
+                    <ion-card>
+                      <img alt="{{p.produto.nome | titlecase}}" src="{{p.produto.imagem}}" />
+                      <ion-card-header>
+                        <ion-card-title>{{p.produto.nome | titlecase}}</ion-card-title>
+                      </ion-card-header>
+                    </ion-card>
+                  </ion-col>
                 </ng-container>
-              </ng-container>
-            </ion-list>
-
+              </ion-row>
+            </ng-container>
           </ion-col>
         </ion-row>
       </div>
