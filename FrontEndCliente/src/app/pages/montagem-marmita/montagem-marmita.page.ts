@@ -29,7 +29,6 @@ export class MontagemMarmitaPage implements OnInit {
 
   ngOnInit() {
     this.atualizarMarmita();
-    console.log(this.passarMarmita.resgatarMarmita())
     this.carregarMarmita()
   }
 
@@ -39,11 +38,12 @@ export class MontagemMarmitaPage implements OnInit {
 
   private carregarMarmita() {
     // _______________________ trocar por 6 (SEIS) depois __________________________
-    this.produtoService.pegarProduto(5).subscribe(
+    this.produtoService.pegarProduto(2).subscribe(
       (response: Produto) => {
+        this.marmitaPersonalizavel = response;
         this.ingredientes = response;
+        console.log("marmita", this.ingredientes)
         this.loading = false
-        console.log("marmita",this.marmitaPersonalizavel)
       },
       (error) => {
         console.error(error);
@@ -51,35 +51,37 @@ export class MontagemMarmitaPage implements OnInit {
     )
   }
 
-  proximoCard() {
-    this.swiper = this.swiperRef?.nativeElement.swiper.slideNext();
-  }
-
-  voltarCard() {
-    this.swiper = this.swiperRef?.nativeElement.swiper.slidePrev();
-  }
 
   selecionarIngrediente(idIngrediente: number, idVariacao: number, event: any) {
-    console.log(event.detail.checked)
-    this.ingredientes.grupo_variacao?[idIngrediente].variacao[idVariacao].selecionado =
-      event.detail.checked;
+    console.log(this.ingredientes.grupo_variacao)
+
+  if (this.ingredientes && this.ingredientes.grupo_variacao) {
+    const grupo = this.ingredientes.grupo_variacao[idIngrediente];
+    if (grupo && grupo.variacao) {
+      grupo.variacao[idVariacao].selecionado = event.detail.checked;
+    }
+  }
+
     this.atualizarMarmita();
     // console.log(this.ingredientes)
   }
 
   private atualizarMarmita() {
     this.marmita = [];
-    this.ingredientes.forEach((ingrediente: GrupoVariacoes) => {
-      const variacoesSelecionadas: Variacao[] = [];
-      ingrediente.variacoes!.forEach((variacao: Variacao) => {
-        variacao.selecionado ? variacoesSelecionadas.push(variacao) : null;
+    if (this.ingredientes && this.ingredientes.grupo_variacao) {
+      this.ingredientes.grupo_variacao.forEach((ingrediente: GrupoVariacoes) => {
+        const variacoesSelecionadas: Variacao[] = [];
+        ingrediente.variacao!.forEach((variacao: Variacao) => {
+          variacao.selecionado ? variacoesSelecionadas.push(variacao) : null;
+        });
+        this.marmita.push({
+          id_grupo_variacoes: ingrediente.id_grupo_variacoes,
+          tipo: ingrediente.tipo,
+          variacoes: variacoesSelecionadas,
+        });
       });
-      this.marmita.push({
-        id_grupo_variacoes: ingrediente.id_grupo_variacoes,
-        tipo: ingrediente.tipo,
-        variacoes: variacoesSelecionadas,
-      });
-    });
+    }
+    console.log(this.marmita)
   }
 
   calcPrecoMarmita() {
@@ -108,5 +110,13 @@ export class MontagemMarmitaPage implements OnInit {
       spaceBetween: 20,
     },
   };
+  
+  proximoCard() {
+    this.swiper = this.swiperRef?.nativeElement.swiper.slideNext();
+  }
+
+  voltarCard() {
+    this.swiper = this.swiperRef?.nativeElement.swiper.slidePrev();
+  }
 
 }

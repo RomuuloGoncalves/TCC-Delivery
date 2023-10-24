@@ -29,14 +29,8 @@ export class PedidoPage implements OnInit {
   pedidoCliente!: Pedido;
   cliente!: Cliente;
   produtos!: any;
-  marmitas: Produto[] = [];
-  bebidas: Produto[] = [];
-  sobremesas: Produto[] = [];
-  acompanhamentos: Produto[] = [];
-  combos: Produto[] = [];
 
   tabela!:any;
-  infoTabela!: any;
   infoModal:any = [];
 
   pegarPedido(id_pedido: number) {
@@ -58,22 +52,16 @@ export class PedidoPage implements OnInit {
 
   organizarProdutos() {
     const categorias: { [categoria: string]: Produto[] } = {};
-  
-    this.pedidoCliente.pedido_produtos.forEach((el: any) => {
 
-        console.log(el.produto)
-        el.produto.imagem = el.produto.imagem || '../../../assets/imgs/default/cards-produtos.png';
-        
-        if (!categorias[el.produto.categoria.nome]) {
-          categorias[el.produto.categoria.nome] = [];
-        }
-        
-        categorias[el.produto.categoria.nome].push(el);
+    this.pedidoCliente.pedido_produtos.forEach((el: any) => {
+      el.produto.imagem = el.produto.imagem || '../../../assets/imgs/default/cards-produtos.png';
+
+      if (!categorias[el.produto.categoria.nome]) categorias[el.produto.categoria.nome] = [];
+
+      categorias[el.produto.categoria.nome].push(el);
     });
-  
-    this.tabela = categorias;
-    this.infoTabela = Object.entries(this.tabela);
-    console.log(this.infoTabela)
+
+    this.tabela = Object.entries(categorias);
   }
-  
+
 }

@@ -49,6 +49,7 @@ export class LoginPage implements OnInit {
         }
 
         this.loading = false;
+        location.reload();
       },
 
       (badReponse: HttpErrorResponse) => {

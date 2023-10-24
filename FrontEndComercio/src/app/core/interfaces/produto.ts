@@ -6,6 +6,7 @@ export interface Produto {
   id?: number;
   nome: string;
   imagem?: string;
+  descricao?: string;
   categoria?: Categoria;
   cod_categoria?: number;
   variacao?: Variacao;

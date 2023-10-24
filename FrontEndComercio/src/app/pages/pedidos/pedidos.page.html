@@ -19,9 +19,7 @@
   </ion-row>
 
   <ng-container *ngIf="!this.loading">
-    <app-tabela-pedidos
-      [pedidos]="this.pedidos"
-    ></app-tabela-pedidos>
+    <app-tabela-pedidos [pedidos]="this.pedidos"></app-tabela-pedidos>
   </ng-container>
   <app-loading [loading]="this.loading"></app-loading>
 </ion-content>

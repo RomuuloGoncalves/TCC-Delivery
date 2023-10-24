@@ -29,13 +29,11 @@ export class ClienteService {
     return this.Server.put('/cliente/editar', cliente);
   }
 
-  private getTokenInfos (): Cliente {
-    const parts = this.token.split('.');
+  public limparToken() {
+    this.Cookie.delete('token');
+  }
 
-    const encodedPayload = parts[1];
-
-    const decodedPayload = atob(encodedPayload);
-
-    return JSON.parse(decodedPayload);
+  public logout() {
+    return this.Server.post('/cliente/logout', null);
   }
 }

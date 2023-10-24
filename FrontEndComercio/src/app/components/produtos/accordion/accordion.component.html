@@ -2,7 +2,7 @@
   <ion-item slot="header" color="secondary">
     <ion-label>{{ tituloSessao }}</ion-label>
   </ion-item>
-  <div class="" slot="content">
-    <app-cards *ngFor="let produto of produtos" [produto]="produto"></app-cards>
+  <div slot="content">
+    <app-cards (click)="this.clickCard.emit(produto)" *ngFor="let produto of produtos" [produto]="produto"></app-cards>
   </div>
 </ion-accordion>

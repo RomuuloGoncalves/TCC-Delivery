@@ -27,6 +27,7 @@ $router->group(['prefix' => 'cliente'], function () use ($router) {
     
     $router->group(['middleware' => 'authCliente'], function () use ($router) {
         $router->get('/', 'ClienteController@index');
+        $router->post('/logout', 'ClienteController@logout');
     });
 });
 
@@ -40,8 +41,10 @@ $router->group(['prefix' => 'cliente'], function () use ($router) {
 $router->group(['prefix' => 'funcionario'], function () use ($router) {
     $router->post('/login', 'FuncionarioController@login');
     $router->post('/cadastrar', 'FuncionarioController@store');
+
     $router->group(['middleware' => 'authFuncionario'], function() use($router) {
         $router->get('/', 'FuncionarioController@index');
+        $router->post('/logout', 'FuncionarioController@logout');
     });
 });
 
@@ -70,14 +73,14 @@ $router->group(['prefix' => 'cupom'], function () use ($router) {
 |--------------------------------------------------------------------------
 */
 
-// $router->group(['middleware' => 'authCliente'], function () use ($router) {
+$router->group(['middleware' => 'authCliente'], function () use ($router) {
     $router->group(['prefix' => 'cliente/endereco'], function () use ($router) {
         $router->post('/cadastrar', 'EnderecoController@store');
         $router->put('/editar', 'EnderecoController@update');
         $router->get('/', 'EnderecoController@index');
         $router->delete('/excluir/{id}', 'EnderecoController@destroy');
     });
-// });
+});
 
 /*
 |--------------------------------------------------------------------------
