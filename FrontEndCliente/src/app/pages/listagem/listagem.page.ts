@@ -12,19 +12,20 @@ import { CategoriaService } from 'src/app/core/services/categoria.service';
 export class ListagemPage implements OnInit {
   constructor(private route: ActivatedRoute, private Router: Router, private categoriaService: CategoriaService) {}
 
-  nomeProduto!: any;
+  idProduto!: any;
   loading: boolean = true;
   categorias: Categoria[] = [];
   categoriasFiltradas: Categoria[] = [];
 
   ngOnInit() {
-    if (!this.ehStringValida(this.nomeProduto)) this.Router.navigate(['..']);
-    this.nomeProduto = this.route.snapshot.paramMap.get('produto');
+    if (!this.ehStringValida(this.idProduto)) this.Router.navigate(['..']);
+    this.idProduto = this.route.snapshot.paramMap.get('produto');
+    console.log(this.idProduto)
     this.carregarPagina();
   }
 
   private carregarPagina() {
-    this.categoriaService.pegarCategoriaNome(this.nomeProduto).subscribe(
+    this.categoriaService.pegarCategoria(Number(this.idProduto)).subscribe(
       (response: Categoria[]) => {
         this.categorias = response;
         this.categoriasFiltradas = response;

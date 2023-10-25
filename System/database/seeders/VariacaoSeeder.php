@@ -59,7 +59,7 @@ class VariacaoSeeder extends Seeder
             'nome' => 'Arroz Branco',
             'porcentagem_desconto' => null,
             'valor_desconto' => null,
-            'valor_inicial' => 0.00,
+            'valor_inicial' => 22.22,
             'descricao' => 'Arroz branco',
             'cod_grupo_variacoes' => 2,
         ]);
