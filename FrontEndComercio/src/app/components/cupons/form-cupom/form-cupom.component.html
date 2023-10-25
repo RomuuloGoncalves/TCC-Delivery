@@ -1,8 +1,8 @@
-<form #form="ngForm" (ngSubmit)="enviarCupom()" method="post">
-  <ng-container *ngIf="this.metodo === 'put'">
+<form #formCupom="ngForm" (ngSubmit)="this.enviarCupom()" method="post">
+  <ng-container *ngIf="this.editar">
     <ion-input ngModel name="id" type="hidden"></ion-input>
   </ng-container>
-  
+
   <ion-row>
     <ion-input ngModel name="nome" label="Nome do cupom" label-placement="floating" fill="outline"
       placeholder="Digite o nome do cupom" value="{{this.cupom?.nome}}"></ion-input>
@@ -34,7 +34,7 @@
       <ion-button size="large" type="submit" [routerLink]="['/cupons']" routerDirection="back" expand="block">Voltar</ion-button>
     </ion-col>
     <ion-col size=6>
-      <ion-button size="large" type="submit" expand="block">{{this.acao}}</ion-button>
+      <ion-button size="large" type="submit" expand="block">{{ (this.editar) ? 'Editar' : 'Cadastrar' }}</ion-button>
     </ion-col>
   </ion-row>
 </form>

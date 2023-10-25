@@ -21,7 +21,6 @@ export class ListagemPage implements OnInit {
     if (!this.ehStringValida(this.nomeProduto)) this.Router.navigate(['..']);
     this.nomeProduto = this.route.snapshot.paramMap.get('produto');
     this.carregarPagina();
-
   }
 
   private carregarPagina() {
@@ -29,13 +28,13 @@ export class ListagemPage implements OnInit {
       (response: Categoria[]) => {
         this.categorias = response;
         this.categoriasFiltradas = response;
-
+        this.loading = false;
       },
       (error) => {
         console.error(error);
+        this.loading = false;
       }
     )
-    this.loading = false;
   }
 
   ehStringValida(str: string) {

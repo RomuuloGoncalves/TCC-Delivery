@@ -65,7 +65,7 @@ const routes: Routes = [
     canActivate: [LogedInGuard]
   },
   {
-    path: 'pedido/:id_pedido',
+    path: 'pedido/:id',
     loadChildren: () => import('./pages/pedido/pedido.module').then( m => m.PedidoPageModule),
     canActivate: [LogedInGuard]
   },
@@ -75,7 +75,7 @@ const routes: Routes = [
     canActivate: [LogedInGuard]
   },
   {
-    path: 'editar-cupom/:id_cupom',
+    path: 'editar-cupom/:id',
     loadChildren: () => import('./pages/editar-cupom/editar-cupom.module').then( m => m.EditarCupomPageModule),
     canActivate: [LogedInGuard]
   },
