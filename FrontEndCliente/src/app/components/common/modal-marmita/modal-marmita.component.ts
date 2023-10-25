@@ -9,20 +9,20 @@ import { PassarMarmitaService } from 'src/app/core/services/passar-marmita.servi
   templateUrl: './modal-marmita.component.html',
   styleUrls: ['./modal-marmita.component.scss'],
 })
-export class ModalMarmitaComponent  implements OnInit {
+export class ModalMarmitaComponent implements OnInit {
 
   constructor(private navParams: NavParams,
-              private modalController: ModalController,
-              private passarMarmita: PassarMarmitaService) { }
+    private modalController: ModalController,
+    private passarMarmita: PassarMarmitaService) { }
 
   ngOnInit() {
     console.log(this.produto)
   }
-  
+
   @Input() produto: any
 
   variacoesSelecionadas: any[] = []
-  
+
   produtoModal = this.navParams.get('produto')
 
   fecharModal() {
@@ -34,6 +34,7 @@ export class ModalMarmitaComponent  implements OnInit {
   }
 
   alterarVariacoesSelecionadas(e: any) {
+    console.log("aa")
     let variacoes = e.detail.value.split(',')
     let repetiu = false
     this.variacoesSelecionadas.forEach(variacao => {
@@ -41,18 +42,22 @@ export class ModalMarmitaComponent  implements OnInit {
         repetiu = true) : null
     });
 
-    !repetiu ? (this.variacoesSelecionadas.push(
-      {
-        grupo_variacao: {
-          id: variacoes[1],
-          tipo: variacoes[0]
-        },
-        variacao: {
-          id: variacoes[3],
-          nome: variacoes[2]
-        },
-      }
-    )) : null 
+    !repetiu ? (
+
+      this.variacoesSelecionadas = [],
+      this.variacoesSelecionadas.push(
+
+        {
+          grupo_variacao: {
+            id: variacoes[1],
+            tipo: variacoes[0]
+          },
+          variacao: {
+            id: variacoes[3],
+            nome: variacoes[2]
+          },
+        }
+      )) : null
     console.log(this.variacoesSelecionadas)
   }
 }
