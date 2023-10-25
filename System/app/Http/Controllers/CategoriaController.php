@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class CategoriaController extends Controller {
-    
+
     public function __construct() {}
 
     /**
@@ -38,7 +38,7 @@ class CategoriaController extends Controller {
      *
      * @return Categoria[]
      */
-    
+
     public function index() {
         $categorias = Categoria::with(['produtos'])->get();
 
@@ -46,9 +46,9 @@ class CategoriaController extends Controller {
     }
 
     /**
-     * index
+     * destroy
      *
-     * @return destroy[]
+     * @return void
      */
 
     public function destroy(int $id) {

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 class PedidoProdutoGrupoVariacaoController extends Controller
 {
     public function __construct() {}
-    
+
     /**
      * store
      *
@@ -56,7 +56,7 @@ class PedidoProdutoGrupoVariacaoController extends Controller
             'cod_variacao' => $request->input('cod_variacao')
         ]);
 
-        return response()->json($ped_prod_grupo_var, 201);
+        return response()->json($variacao_selecionada, 201);
     }
 
     /**
@@ -66,11 +66,11 @@ class PedidoProdutoGrupoVariacaoController extends Controller
      */
 
     public function index() {
-        $ped_prod_grupo_vars = PedidoProdutoGrupoVariacao::with(['variacoes_selecionadas.variacao.grupo_variacao' => 
+        $ped_prod_grupo_vars = PedidoProdutoGrupoVariacao::with(['variacoes_selecionadas.variacao.grupo_variacao' =>
             function($query) {
             $query->select('id', 'tipo');
         }])->get();
-        
+
         return response()->json($ped_prod_grupo_vars, 200);
     }
 
@@ -81,11 +81,11 @@ class PedidoProdutoGrupoVariacaoController extends Controller
      */
 
     public function show(int $id) {
-        $ped_prod_grupo_var = PedidoProdutoGrupoVariacao::with(['variacoes_selecionadas.variacao.grupo_variacao' => 
+        $ped_prod_grupo_var = PedidoProdutoGrupoVariacao::with(['variacoes_selecionadas.variacao.grupo_variacao' =>
             function($query) {
             $query->select('id', 'tipo');
         }])->where('id', $id)->get();
-        
+
         return response()->json($ped_prod_grupo_var, 200);
     }
 }
