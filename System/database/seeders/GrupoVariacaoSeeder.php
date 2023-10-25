@@ -12,7 +12,7 @@ class GrupoVariacaoSeeder extends Seeder
     public function run()
     {
         // $faker = Factory::create();
-        // $produtos = DB::table('Produtos')->pluck('id')->toArray();
+        $marmitas_bebidas = DB::table('Produtos')->where('cod_categoria', 1)->orWhere('cod_categoria', 2)->get()->pluck('id')->toArray();
 
         // for ($i = 1; $i <= 10; $i++) {
         //     DB::table('Grupo_variacoes')->insert([
@@ -50,5 +50,13 @@ class GrupoVariacaoSeeder extends Seeder
             'quantidade_variacoes' => 1,
             'cod_produto' => 1,
         ]);
+
+        foreach($marmitas_bebidas as $id) {
+            DB::table('Grupo_variacoes')->insert([
+                'tipo' => 'Tamanho',
+                'quantidade_variacoes' => 1,
+                'cod_produto' => $id,
+            ]);
+        }
     }
 }

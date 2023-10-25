@@ -13,8 +13,6 @@ class VariacaoSeeder extends Seeder
     {
         //     $faker = Factory::create();
 
-        //     $grupo_variacoes = DB::table('Grupo_variacoes')->pluck('id')->toArray();
-
         //     for ($i = 1; $i <= 10; $i++) {
         //         DB::table('Variacoes')->insert([
         //             'nome' => $faker->word(),
@@ -161,5 +159,63 @@ class VariacaoSeeder extends Seeder
             'descricao' => 'Variação versátil',
             'cod_grupo_variacoes' => 5,
         ]);
+
+        for ($i=6 ;$i < 15; $i++) {
+            if($i < 10) {
+                DB::table('Variacoes')->insert([
+                    'nome' => 'P',
+                    'porcentagem_desconto' => null,
+                    'valor_desconto' => null,
+                    'valor_inicial' => 20.00,
+                    'descricao' => 'Marmita Pequena',
+                    'cod_grupo_variacoes' => $i,
+                ]);
+        
+                DB::table('Variacoes')->insert([
+                    'nome' => 'M',
+                    'porcentagem_desconto' => null,
+                    'valor_desconto' => null,
+                    'valor_inicial' => 25.00,
+                    'descricao' => 'Marmita Média',
+                    'cod_grupo_variacoes' => $i,
+                ]);
+        
+                DB::table('Variacoes')->insert([
+                    'nome' => 'G',
+                    'porcentagem_desconto' => null,
+                    'valor_desconto' => null,
+                    'valor_inicial' => 30.00,
+                    'descricao' => 'Marmita Grande',
+                    'cod_grupo_variacoes' => $i,
+                ]);
+            } else {
+                DB::table('Variacoes')->insert([
+                    'nome' => '300ml',
+                    'porcentagem_desconto' => null,
+                    'valor_desconto' => null,
+                    'valor_inicial' => 5.00,
+                    'descricao' => 'Bebida Pequena',
+                    'cod_grupo_variacoes' => $i,
+                ]);
+        
+                DB::table('Variacoes')->insert([
+                    'nome' => '400ml',
+                    'porcentagem_desconto' => null,
+                    'valor_desconto' => null,
+                    'valor_inicial' => 7.50,
+                    'descricao' => 'Bebida Média',
+                    'cod_grupo_variacoes' => $i,
+                ]);
+        
+                DB::table('Variacoes')->insert([
+                    'nome' => '500ml',
+                    'porcentagem_desconto' => null,
+                    'valor_desconto' => null,
+                    'valor_inicial' => 10.00,
+                    'descricao' => 'Bebida Grande',
+                    'cod_grupo_variacoes' => $i,
+                ]);
+            }
+        }
     }
 }

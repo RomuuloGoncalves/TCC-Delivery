@@ -61,8 +61,8 @@ class CategoriaController extends Controller {
         return response()->json(['message' => 'Categoria deletada com sucesso'], 204);
     }
 
-    public function pegarCategoriaNome(string $nome) {
-        $categoria = Categoria::where('nome', $nome)->with('produtos')->get();
+    public function show(int $id) {
+        $categoria = Categoria::where('id', $id)->with('produtos.grupo_variacao.variacao')->get();
         return response()->json($categoria);
     }
 }

@@ -45,6 +45,7 @@ class EnderecoSeeder extends Seeder
             'bairro' => 'Bairro A',
             'numero' => '123',
             'rua' => 'Rua Principal',
+            'cep' => '18000000',
             'cod_cliente' => 1,
         ]);
 
@@ -54,6 +55,7 @@ class EnderecoSeeder extends Seeder
             'bairro' => 'Bairro B',
             'numero' => '456',
             'rua' => 'Avenida Secundária',
+            'cep' => '18000001',
             'cod_cliente' => 1,
         ]);
 
@@ -63,7 +65,8 @@ class EnderecoSeeder extends Seeder
             'bairro' => 'Bairro C',
             'numero' => '789',
             'rua' => 'Rua da Praia',
-            'cod_cliente' => 2,
+            'cep' => '18000002',
+            'cod_cliente' => 1,
         ]);
 
         DB::table('Enderecos')->insert([
@@ -72,6 +75,7 @@ class EnderecoSeeder extends Seeder
             'bairro' => 'Bairro D',
             'numero' => '101',
             'rua' => 'Avenida Principal',
+            'cep' => '18000003',
             'cod_cliente' => 2,
         ]);
 
@@ -81,15 +85,47 @@ class EnderecoSeeder extends Seeder
             'bairro' => 'Bairro E',
             'numero' => '222',
             'rua' => 'Rua da Esquina',
-            'cod_cliente' => 3,
+            'cep' => '18000004',
+            'cod_cliente' => 2,
+        ]);
+
+        DB::table('Enderecos')->insert([
+            'nome' => 'Academia',
+            'complemento' => null,
+            'bairro' => 'Bairro F',
+            'numero' => '333',
+            'rua' => 'Avenida da Academia',
+            'cep' => '18000005',
+            'cod_cliente' => 2,
         ]);
 
         DB::table('Enderecos')->insert([
             'nome' => 'Trabalho',
+            'complemento' => 'Sala 4',
+            'bairro' => 'Bairro F',
+            'numero' => '333',
+            'rua' => 'Rua do Trabalho',
+            'cep' => '18000006',
+            'cod_cliente' => 3,
+        ]);
+
+        DB::table('Enderecos')->insert([
+            'nome' => 'Restaurante',
+            'complemento' => null,
+            'bairro' => 'Bairro F',
+            'numero' => '333',
+            'rua' => 'Avenida do Restaurante',
+            'cep' => '18000007',
+            'cod_cliente' => 3,
+        ]);
+
+        DB::table('Enderecos')->insert([
+            'nome' => 'Casa',
             'complemento' => 'Sala 102',
             'bairro' => 'Bairro F',
             'numero' => '333',
-            'rua' => 'Avenida do Trabalho',
+            'rua' => 'Pista da Casa',
+            'cep' => '18000008',
             'cod_cliente' => 3,
         ]);
     }
