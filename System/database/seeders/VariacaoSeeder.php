@@ -28,7 +28,7 @@ class VariacaoSeeder extends Seeder
         //  Tamanho
         DB::table('Variacoes')->insert([
             'nome' => 'P',
-            'porcentagem_desconto' => 10.00,
+            'porcentagem_desconto' => null,
             'valor_desconto' => null,
             'valor_inicial' => 20.00,
             'descricao' => 'Marmita Pequena',
@@ -37,7 +37,7 @@ class VariacaoSeeder extends Seeder
 
         DB::table('Variacoes')->insert([
             'nome' => 'M',
-            'porcentagem_desconto' => 10.00,
+            'porcentagem_desconto' => null,
             'valor_desconto' => null,
             'valor_inicial' => 25.00,
             'descricao' => 'Marmita Média',
@@ -47,7 +47,7 @@ class VariacaoSeeder extends Seeder
         DB::table('Variacoes')->insert([
             'nome' => 'G',
             'porcentagem_desconto' => null,
-            'valor_desconto' => 2.00,
+            'valor_desconto' => null,
             'valor_inicial' => 30.00,
             'descricao' => 'Marmita Grande',
             'cod_grupo_variacoes' => 1,
@@ -59,7 +59,7 @@ class VariacaoSeeder extends Seeder
             'nome' => 'Arroz Branco',
             'porcentagem_desconto' => null,
             'valor_desconto' => null,
-            'valor_inicial' => 22.22,
+            'valor_inicial' => 0.00,
             'descricao' => 'Arroz branco',
             'cod_grupo_variacoes' => 2,
         ]);
@@ -87,8 +87,8 @@ class VariacaoSeeder extends Seeder
         DB::table('Variacoes')->insert([
             'nome' => 'Feijão Carioca',
             'porcentagem_desconto' => null,
-            'valor_desconto' => 10.00,
-            'valor_inicial' => 70.00,
+            'valor_desconto' => null,
+            'valor_inicial' => 0.00,
             'descricao' => 'Variação única',
             'cod_grupo_variacoes' => 3,
         ]);
@@ -96,8 +96,8 @@ class VariacaoSeeder extends Seeder
         DB::table('Variacoes')->insert([
             'nome' => 'Feijão Branco',
             'porcentagem_desconto' => null,
-            'valor_desconto' => 10.00,
-            'valor_inicial' => 70.00,
+            'valor_desconto' => null,
+            'valor_inicial' => 5.00,
             'descricao' => 'Variação única',
             'cod_grupo_variacoes' => 3,
         ]);
@@ -105,8 +105,8 @@ class VariacaoSeeder extends Seeder
         DB::table('Variacoes')->insert([
             'nome' => 'Tutu de Feijão',
             'porcentagem_desconto' => null,
-            'valor_desconto' => 10.00,
-            'valor_inicial' => 70.00,
+            'valor_desconto' => null,
+            'valor_inicial' => 5.00,
             'descricao' => 'Feijão cozido, refogado e engrossado com farinha',
             'cod_grupo_variacoes' => 3,
         ]);
@@ -146,7 +146,7 @@ class VariacaoSeeder extends Seeder
             'nome' => 'Farofa',
             'porcentagem_desconto' => null,
             'valor_desconto' => null,
-            'valor_inicial' => 0.00,
+            'valor_inicial' => 5.00,
             'descricao' => 'Farofa de mandioca',
             'cod_grupo_variacoes' => 5,
         ]);
@@ -155,7 +155,7 @@ class VariacaoSeeder extends Seeder
             'nome' => 'Maionese',
             'porcentagem_desconto' => null,
             'valor_desconto' => null,
-            'valor_inicial' => 0.00,
+            'valor_inicial' => 5.00,
             'descricao' => 'Variação versátil',
             'cod_grupo_variacoes' => 5,
         ]);
@@ -170,7 +170,7 @@ class VariacaoSeeder extends Seeder
                     'descricao' => 'Marmita Pequena',
                     'cod_grupo_variacoes' => $i,
                 ]);
-        
+
                 DB::table('Variacoes')->insert([
                     'nome' => 'M',
                     'porcentagem_desconto' => null,
@@ -179,7 +179,7 @@ class VariacaoSeeder extends Seeder
                     'descricao' => 'Marmita Média',
                     'cod_grupo_variacoes' => $i,
                 ]);
-        
+
                 DB::table('Variacoes')->insert([
                     'nome' => 'G',
                     'porcentagem_desconto' => null,
@@ -197,7 +197,7 @@ class VariacaoSeeder extends Seeder
                     'descricao' => 'Bebida Pequena',
                     'cod_grupo_variacoes' => $i,
                 ]);
-        
+
                 DB::table('Variacoes')->insert([
                     'nome' => '400ml',
                     'porcentagem_desconto' => null,
@@ -206,7 +206,7 @@ class VariacaoSeeder extends Seeder
                     'descricao' => 'Bebida Média',
                     'cod_grupo_variacoes' => $i,
                 ]);
-        
+
                 DB::table('Variacoes')->insert([
                     'nome' => '500ml',
                     'porcentagem_desconto' => null,
