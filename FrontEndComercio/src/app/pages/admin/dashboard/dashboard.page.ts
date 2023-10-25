@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
-import { Pedido } from 'src/app/core/interfaces/pedido';
-import { PedidosService } from 'src/app/core/services/pedidos.service';
 Chart.register(...registerables);
 
 @Component({
@@ -11,15 +9,15 @@ Chart.register(...registerables);
 })
 
 export class DashboardPage implements OnInit {
-  constructor(private Pedidos: PedidosService) { }
+  constructor() { }
 
-  intervalo: any = 'semanalmente'
+  intervalo: any = 'anualmente';
+
   ngOnInit() {
   }
 
   selecionarIntervalo(e: any) {
     this.intervalo = e.detail.value
-    console.log("Intervalo", this.intervalo)
   }
 
 }
