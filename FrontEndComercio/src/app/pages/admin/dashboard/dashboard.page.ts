@@ -12,6 +12,7 @@ export class DashboardPage implements OnInit {
   constructor() { }
 
   intervalo: any = 'anualmente';
+  selectedOptions: string= 'anualmente'
 
   ngOnInit() {
   }
