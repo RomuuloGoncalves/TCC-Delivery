@@ -44,7 +44,6 @@ export class MontagemMarmitaPage implements OnInit {
       (response: Produto) => {
         this.marmitaPersonalizavel = response;
         this.ingredientes = response;
-        console.log('marmita', this.ingredientes);
         this.loading = false;
       },
       (error) => {
@@ -54,7 +53,6 @@ export class MontagemMarmitaPage implements OnInit {
   }
 
   selecionarIngrediente(idIngrediente: number, idVariacao: number, event: any) {
-    console.log(this.ingredientes.grupo_variacao);
 
     if (this.ingredientes && this.ingredientes.grupo_variacao) {
       const grupo = this.ingredientes.grupo_variacao[idIngrediente];
@@ -64,7 +62,6 @@ export class MontagemMarmitaPage implements OnInit {
     }
 
     this.atualizarMarmita();
-    // console.log(this.ingredientes)
   }
 
   private atualizarMarmita() {
@@ -84,7 +81,7 @@ export class MontagemMarmitaPage implements OnInit {
         }
       );
     }
-    console.log(this.marmita);
+    console.log("marmita",this.marmita);
   }
 
   calcPrecoMarmita() {
@@ -101,16 +98,16 @@ export class MontagemMarmitaPage implements OnInit {
     //   },
     //   0
     // );
-
     this.precoMarmita = 0
     this.marmita.forEach(grupoVariacao => {
-      grupoVariacao.variacao?.forEach(variacao => {
+      console.log(grupoVariacao)
+      grupoVariacao.variacoes?.forEach(variacao => {
         if (variacao.valor_inicial)
           this.precoMarmita += variacao.valor_inicial
+        console.log("valor",variacao.valor_inicial)
       });
     });
 
-    console.log(this.precoMarmita)
 
     this.calcTotal();
   }
