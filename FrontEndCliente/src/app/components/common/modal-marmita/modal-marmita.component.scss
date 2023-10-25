@@ -51,10 +51,10 @@ ion-content {
     }
 
     .subtitulo {
-        margin: 3%;
         font-size: 1.5rem;
         font-weight: 500;
         color: var(--ion-color-primary);
+        padding: 0;
     }
 
     .icone-fechar-modal {
@@ -70,6 +70,15 @@ ion-content {
         font-size: 3rem;
         color: var(--ion-color-primary);
         cursor: pointer;
+    }
+
+    .informacoes {
+        background-color: #eaeaea;
+        border-radius: 20px;
+        padding: 20px;
+    }
+    ion-accordion-group {
+        margin-block: 30px;
     }
 
     ion-accordion {

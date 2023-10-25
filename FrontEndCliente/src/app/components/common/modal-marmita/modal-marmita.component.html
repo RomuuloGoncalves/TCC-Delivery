@@ -32,11 +32,13 @@
                 </ion-label>
               </ion-col>
             </ion-row>
-            <ion-row>
+            <ion-row class="informacoes">
               <ion-col>
-                <ion-title class="subtitulo">
-                  Informações do produto:
-                </ion-title>
+                <ion-row class="ion-justify-content-start">
+                  <ion-title class="subtitulo">
+                    Informações do Produto:
+                  </ion-title>
+                </ion-row>
                 <ion-accordion-group multiple="true">
                   <ion-accordion value="{{ this.produto.nome }}">
                     <ion-item slot="header" color="light">
@@ -63,7 +65,7 @@
                 </ion-accordion-group>
 
                 <ion-title *ngIf="this.variacoesSelecionadas.length" class="subtitulo">
-                  Informações da(s) variação(ões):
+                  Informações das Variações:
                 </ion-title>
                 <ion-accordion-group multiple="true">
                   <ng-container *ngFor="let variacao of this.variacoesSelecionadas">
@@ -85,7 +87,7 @@
                 <!-- diferente radio group para diferentes grupos variacoes -->
                 <ng-container *ngFor="let grupoVariacao of this.produto.grupo_variacao">
                   <ion-title class="ion-text-capitalize titulo-radio-group">{{ grupoVariacao.tipo }}</ion-title>
-                  <ion-radio-group value="strawberries" (ionChange)="alterarVariacoesSelecionadas($event)">
+                  <ion-radio-group (ionChange)="alterarVariacoesSelecionadas($event)">
                   <!-- <ion-radio-group value="strawberries" (ngModel)="this.variacoesSelecionadas" (ionChange)="mostrar($event)"> -->
                     <!-- lista as variacoes (opcoes) de cada grupo variacao -->
                     <ng-container *ngFor="let variacao of grupoVariacao.variacao">
