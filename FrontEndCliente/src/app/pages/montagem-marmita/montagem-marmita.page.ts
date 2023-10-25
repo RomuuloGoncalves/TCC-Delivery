@@ -28,7 +28,7 @@ export class MontagemMarmitaPage implements OnInit {
   constructor(
     private passarMarmita: PassarMarmitaService,
     private produtoService: ProdutoService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.atualizarMarmita();
@@ -88,19 +88,30 @@ export class MontagemMarmitaPage implements OnInit {
   }
 
   calcPrecoMarmita() {
-    this.precoMarmita = this.marmita.reduce(
-      (preco: number, ingredienteMarmita: GrupoVariacoes) => {
-        const totalVariacoes = ingredienteMarmita.variacoes?.reduce(
-          (preco: number, variacaoMarmita: Variacao) => {
-            return preco + variacaoMarmita.valor_final!;
-          },
-          0
-        );
-        if (preco > 0) return preco + totalVariacoes!;
-        else return 10.2;
-      },
-      0
-    );
+    // this.precoMarmita = this.marmita.reduce(
+    //   (preco: number, ingredienteMarmita: GrupoVariacoes) => {
+    //     const totalVariacoes = ingredienteMarmita.variacoes?.reduce(
+    //       (preco: number, variacaoMarmita: Variacao) => {
+    //         return preco + variacaoMarmita.valor_final!;
+    //       },
+    //       0
+    //     );
+    //     if (preco > 0) return preco + totalVariacoes!;
+    //     else return 10.2;
+    //   },
+    //   0
+    // );
+
+    this.precoMarmita = 0
+    this.marmita.forEach(grupoVariacao => {
+      grupoVariacao.variacao?.forEach(variacao => {
+        if (variacao.valor_inicial)
+          this.precoMarmita += variacao.valor_inicial
+      });
+    });
+
+    console.log(this.precoMarmita)
+
     this.calcTotal();
   }
 
