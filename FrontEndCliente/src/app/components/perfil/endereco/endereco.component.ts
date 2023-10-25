@@ -21,11 +21,8 @@ export class EnderecoComponent  implements OnInit{
   @Input() public cliente!: Cliente;
 
   ngOnInit() {
-    this.btnChange('list');;
+    this.btnChange('list');
   }
-
-
-
 
   erros: any = {};
   displayAdd = 'listview';
@@ -74,8 +71,7 @@ export class EnderecoComponent  implements OnInit{
   }
 
   public cadastrar() {
-    const endereco = this.dados;
-    console.log(endereco);
+    console.log(this.dados);
 
     this.Endereco.cadastro(this.dados).subscribe(
       (response: Endereco) => {
@@ -101,8 +97,8 @@ export class EnderecoComponent  implements OnInit{
   }
 
   public procurarCep(cep: string) {
-    this.erros = {}
-    const url = `https://viacep.com.br/ws/${Number(cep)}/json/`;
+    this.erros = {};
+    const url = `https://viacep.com.br/ws/${cep}/json/`;
 
     fetch(url)
       .then((response) => response.json())
@@ -110,14 +106,18 @@ export class EnderecoComponent  implements OnInit{
         if(data.erro) {
           this.erros["cep"] = 'O campo cep inválido';
         } else {
-          this.dados = {
-            nome: '',
-            cep: cep,
-            rua: data.logradouro,
-            bairro: data.bairro,
-            numero: '',
-            complemento: data.complemento
-          };
+          if(data.localidade != 'Tatuí' || data.localidade == '') {
+            this.erros["cep"] = 'O cep precisa ser de Tatuí';
+          } else {
+            this.dados = {
+              nome: '',
+              cep: cep,
+              rua: data.logradouro,
+              bairro: data.bairro,
+              numero: '',
+              complemento: data.complemento
+            };
+          }
         }
         console.log(this.dados);
       })

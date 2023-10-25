@@ -18,6 +18,9 @@
         <ion-row [ngStyle]="{'display': displayAdd}" class="page__content__list ion-justify-content-center ion-align-items-start">
           <ion-col size="11">
             <ion-accordion-group>
+              <ion-text *ngIf="this.enderecos.length === 0" color="danger">
+                <h1>Não há endereço cadastrados</h1>
+              </ion-text>
               <ng-container *ngFor="let endereco of this.enderecos">
                 <ion-accordion value="{{ endereco.id }}">
                   <ion-item slot="header">
