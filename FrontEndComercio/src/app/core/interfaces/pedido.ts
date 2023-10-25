@@ -1,4 +1,5 @@
 import { Cliente } from "./cliente";
+import { Endereco } from "./endereco";
 import { Produto } from "./produto";
 
 export interface Pedido {
@@ -9,7 +10,7 @@ export interface Pedido {
   data_pedido: string;
   data_entrega: string;
   data_pagamento: string;
-  endereco_pedido: string;
+  endereco?: Endereco;
   forma_pagamento: string;
   status: string;
   cliente?: Cliente;

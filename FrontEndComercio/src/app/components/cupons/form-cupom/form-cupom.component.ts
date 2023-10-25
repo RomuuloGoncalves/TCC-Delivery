@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Cupom } from 'src/app/core/interfaces/cupom';
 import { CuponsService } from 'src/app/core/services/cupons.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ToastService } from 'src/app/core/controller/toast.service';
 
 @Component({
   selector: 'app-form-cupom',
@@ -11,33 +12,32 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class FormCupomComponent  implements OnInit {
 
-  @Input() cupom?: any
-  @Input() metodo?: any
-  @Input() acao?: any
+  @Input() cupom?: any;
+  @Input() editar?: boolean;
 
   @Output() emitirCupom: any = new EventEmitter
 
-  @ViewChild('form') private form!: NgForm;
+  @ViewChild('formCupom') private formCupom!: NgForm;
 
 
-  cupomEditado = "alegria" 
-
-  constructor( private Cupom: CuponsService) { }
+  constructor( private Cupom: CuponsService, private Toast: ToastService) { }
 
   ngOnInit() {
-    console.log(this.cupom)
   }
+
   erros: any = {};
   loading: boolean = false;
 
   enviarCupom() {
-    const data = this.form.form.value;
-    console.log(data)
-    this.metodo == 'put' ? this.atualizar() : this.adicionar(data)
+    const data = this.formCupom.form.value;
+
+    this.editar
+      ? this.atualizar()
+      : this.adicionar(data);
   }
 
   atualizar(){
-    
+
   }
 
   adicionar(data:any){
@@ -45,17 +45,18 @@ export class FormCupomComponent  implements OnInit {
     this.Cupom.adicionarCupom(data).subscribe(
       (response: any) => {
         if (response.created_at) {
-  
           const tipo = 'sucesso';
           const mensagem =  'Cadastro realizado com sucesso';
+
+          this.Toast.mostrarToast(tipo, mensagem);
         }
         this.loading = false;
-      }, 
+      },
       (badReponse: HttpErrorResponse) => {
         const error = Object.entries(badReponse.error);
         this.erros = {};
 
-        for (const [chave, valor] of error) this.erros[chave] = valor; 
+        for (const [chave, valor] of error) this.erros[chave] = valor;
         this.loading = false;
       }
     )

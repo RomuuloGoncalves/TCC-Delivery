@@ -1,72 +1,75 @@
 <ion-content [fullscreen]="true">
-  <app-header></app-header>
+  <ng-container *ngIf="!this.loading">
+    <app-header></app-header>
 
-  <ion-row class="pedido" class="ion-justify-content-between ion-align-items-center ion-margin">
-    <ion-col size="12" sizeMd="auto">
-      <ion-icon [routerLink]="['/pedidos']" routerDirection="back" size="large" name="arrow-back-outline"></ion-icon>
-    </ion-col>
-    <h2 class="ion-margin-horizontal">Pedido #{{this.id_pedido}}</h2>
-  </ion-row>
-  <ion-row class="ion-margin-horizontal ion-justify-content-center">
-    <ion-col size="11" sizeLg="7" class="ion-no-padding ion-margin-horizontal">
-      <table>
-        <thead>
-          <th class="ion-padding">Itens</th>
-          <th class="ion-padding">Quantidades</th>
-        </thead>
-        <ng-container *ngFor="let produto of tabela">
-          <tr [routerLink]="['/pedido']" routerDirection="back">
-            <td class="ion-padding-horizontal">
-              <ion-text>
-                <p>
-                  {{ produto[0] | titlecase }}
-                </p>
-              </ion-text>
-            </td>
-            <td>
-              <ion-text class="ion-text-center">
-                <p>
-                  {{produto[1].length}}
-                </p>
-              </ion-text>
-            </td>
-          </tr>
-        </ng-container>
-      </table>
-      <ion-row class="ion-justify-content-center ion-margin-top">
-        <ion-col size="12" sizeMd="5" class="ion-no-padding ion-margin-horizontal">
-          <ion-button size="large" fill="outline" expand="block" id="open-modal-pedido">Ver produtos</ion-button>
-        </ion-col>
-        <ion-col size="12" sizeMd="5" class="ion-no-padding ion-margin-horizontal">
-          <ion-button size="large" color="tertiary" expand="block">Finalizar</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-col>
-    <ion-col size="11" sizeLg="4" class="informacoes ion-padding ion-margin-horizontal">
-      <ion-list [inset]="true">
-        <ion-item>
-          <ion-text>
-            <p><b>Cliente:</b> {{this.cliente!.nome}}</p>
-          </ion-text>
-        </ion-item>
-        <ion-item>
-          <ion-text>
-            <p><b>CEP:</b> {{this.pedidoCliente!.forma_pagamento}}</p>
-          </ion-text>
-        </ion-item>
-        <ion-item>
-          <ion-text>
-            <p><b>Pagamento:</b> {{this.pedidoCliente!.forma_pagamento}}</p>
-          </ion-text>
-        </ion-item>
-        <ion-item>
-          <ion-text>
-            <p><b>Status:</b> {{this.pedidoCliente!.status}}</p>
-          </ion-text>
-        </ion-item>
-      </ion-list>
-    </ion-col>
-  </ion-row>
+    <ion-row class="pedido" class="ion-justify-content-between ion-align-items-center ion-margin">
+      <ion-col size="12" sizeMd="auto">
+        <ion-button fill="clear" [routerLink]="['/pedidos']" routerDirection="back"><ion-icon size="large" name="arrow-back-outline"></ion-icon></ion-button>
+      </ion-col>
+      <h2 class="ion-margin-horizontal">Pedido #{{this.idPedido}}</h2>
+    </ion-row>
+    <ion-row class="ion-margin-horizontal ion-justify-content-center">
+      <ion-col size="11" sizeLg="7" class="ion-no-padding ion-margin-horizontal">
+        <table>
+          <thead>
+            <th class="ion-padding">Itens</th>
+            <th class="ion-padding">Quantidades</th>
+          </thead>
+          <ng-container *ngFor="let produto of tabela">
+            <tr [routerLink]="['/pedido']" routerDirection="back">
+              <td class="ion-padding-horizontal">
+                <ion-text>
+                  <p>
+                    {{ produto[0] | titlecase }}
+                  </p>
+                </ion-text>
+              </td>
+              <td>
+                <ion-text class="ion-text-center">
+                  <p>
+                    {{produto[1].length}}
+                  </p>
+                </ion-text>
+              </td>
+            </tr>
+          </ng-container>
+        </table>
+        <ion-row class="ion-justify-content-center ion-margin-vertical">
+          <ion-col size="12" sizeMd="5" class="ion-no-padding ion-margin-horizontal">
+            <ion-button size="large" fill="outline" expand="block" id="open-modal-pedido">Ver produtos</ion-button>
+          </ion-col>
+          <ion-col size="12" sizeMd="5" class="ion-no-padding ion-margin-horizontal">
+            <ion-button size="large" color="tertiary" expand="block">Finalizar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col size="11" sizeLg="4" class="informacoes ion-padding ion-margin-horizontal">
+        <ion-list [inset]="true">
+          <ion-item>
+            <ion-text>
+              <p><b>Cliente:</b> {{this.cliente!.nome}}</p>
+            </ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-text>
+              <p><b>CEP:</b> {{this.pedidoCliente!.endereco?.cep}}</p>
+            </ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-text>
+              <p><b>Pagamento:</b> {{this.pedidoCliente!.forma_pagamento}}</p>
+            </ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-text>
+              <p><b>Status:</b> {{this.pedidoCliente!.status}}</p>
+            </ion-text>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
 
-  <app-modal-pedido [pedido]="this.tabela"></app-modal-pedido>
+    <app-modal-pedido [pedido]="this.tabela"></app-modal-pedido>
+  </ng-container>
+  <app-loading [loading]="this.loading"></app-loading>
 </ion-content>

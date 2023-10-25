@@ -11,29 +11,23 @@ import { CuponsService } from 'src/app/core/services/cupons.service';
 export class EditarCupomPage implements OnInit {
 
   constructor( private Cupom: CuponsService, private route: ActivatedRoute) { }
-  id_cupom!: Number
+  idCupom!: Number;
+  cupom!: Cupom;
+  data!: any;
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.id_cupom = params['id_cupom'];
+      this.idCupom = params['id'];
     });
-    console.log(this.id_cupom)
-    this.pegarCupom(Number(this.id_cupom))
+    console.log(this.idCupom)
+    this.pegarCupom(Number(this.idCupom))
   }
 
-  metodo = 'put'
-  acao = 'editar'
-
-  cupom!: Cupom
-  data!: any
-  
-  pegarCupom(id_cupom: Number) {
-    this.Cupom.pegarCupomID(id_cupom).subscribe(
+  pegarCupom(idCupom: Number) {
+    this.Cupom.pegarCupomID(idCupom).subscribe(
       (response) => {
-        console.log(response)
         this.cupom = response
         this.data = this.cupom.data_validade.split(" ")[0].split("-")
-        console.log(this.data)
       },
       (error) => {
         console.error(error);

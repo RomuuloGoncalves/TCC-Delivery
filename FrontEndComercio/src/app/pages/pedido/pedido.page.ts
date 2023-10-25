@@ -15,33 +15,32 @@ import { Produto } from 'src/app/core/interfaces/produto';
 export class PedidoPage implements OnInit {
 
   constructor(private Pedidos: PedidosService, private Cliente: ClienteService, private route: ActivatedRoute) { }
-  id_pedido!: number;
+  idPedido!: number;
 
-  loading: boolean = true
+  loading: boolean = true;
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.id_pedido = params['id_pedido'];
+      this.idPedido = params['id'];
     });
 
-    this.pegarPedido(Number(this.id_pedido))
+    this.carregarPagina(Number(this.idPedido))
   }
   pedidoCliente!: Pedido;
   cliente!: Cliente;
   produtos!: any;
 
-  tabela!:any;
-  infoModal:any = [];
+  tabela!: any;
+  infoModal: any = [];
 
-  pegarPedido(id_pedido: number) {
-    this.Pedidos.pegarPedidoID(id_pedido).subscribe(
+  carregarPagina(idPedido: number) {
+    this.loading = true;
+    this.Pedidos.pegarPedidoID(idPedido).subscribe(
       (response) => {
-        console.log(response)
         this.cliente = response.cliente;
         this.pedidoCliente = response;
         this.produtos = this.pedidoCliente.pedido_produtos;
         this.loading = false;
-        console.log(this.pedidoCliente)
         this.organizarProdutos();
       },
       (error) => {
