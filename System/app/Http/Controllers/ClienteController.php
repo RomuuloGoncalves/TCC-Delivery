@@ -42,7 +42,7 @@ class ClienteController extends Controller
             'nome' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:Clientes'],
             'password' => ['required', 'string', 'max:255', 'min:8'],
-            'telefone' => ['required', 'string', 'size:11', 'unique:Clientes'],
+            'telefone' => ['required', 'string', 'size:17', 'unique:Clientes'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);

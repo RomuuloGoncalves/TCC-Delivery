@@ -1,9 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MaskService } from 'src/app/core/controller/mask.service';
+import { ToastService } from 'src/app/core/controller/toast.service';
+import { Cep } from 'src/app/core/interfaces/cep';
 import { Cliente } from 'src/app/core/interfaces/cliente';
 import { Endereco } from 'src/app/core/interfaces/endereco';
-import { ClienteService } from 'src/app/core/services/cliente.service';
+import { CepService } from 'src/app/core/services/cep.service';
 import { EnderecoService } from 'src/app/core/services/endereco.service';
 
 @Component({
@@ -13,20 +16,27 @@ import { EnderecoService } from 'src/app/core/services/endereco.service';
 })
 export class EnderecoComponent  implements OnInit{
 
-  constructor(private Endereco: EnderecoService, private Cliente: ClienteService) { }
+  constructor(
+    private Endereco: EnderecoService,
+    public Mask: MaskService,
+    private Toast: ToastService,
+    private Cep: CepService
+  ) { }
 
   @ViewChild('cadastrarForm') private cadastrarForm!: NgForm;
 
   @Input() public enderecos!: Endereco[];
   @Input() public cliente!: Cliente;
 
+
   ngOnInit() {
-    this.btnChange('list');
   }
 
+  loadingCadEndereco: boolean = false;
+  estaCadEndereco: boolean = false;
+
   erros: any = {};
-  displayAdd = 'listview';
-  displayList = 'listview';
+
   dados = {
     nome: '',
     cep: '',
@@ -36,57 +46,30 @@ export class EnderecoComponent  implements OnInit{
     complemento: ''
   };
 
-  public btnChange(tipo: string){
-    if (tipo == 'add') {
-      this.displayAdd='none';
-      this.displayList='flex';
-    } else {
-      this.displayAdd='flex';
-      this.displayList='none';
-    }
-  }
-  listagem() {
-    this.Endereco.listagem().subscribe(
-      (response: Endereco[]) => {
-        this.enderecos = response;
+  public deletarEndereco(endereco: Endereco) {
+    this.Endereco.excluir(endereco.id!).subscribe(
+      (response: any) => {
+        const id = this.enderecos.indexOf(endereco);
+        this.enderecos.splice(id, 1);
       },
       (badResponde: HttpErrorResponse) => {
         console.log(badResponde);
       }
-    )
+    );
   }
 
-  public deletarEndereco(id: any) {
-    setTimeout(() => {
-      this.Endereco.excluir(id).subscribe(
-        (response: Endereco) => {
-          console.log(response);
-          this.listagem();
-        },
-        (badResponde: HttpErrorResponse) => {
-          console.log(badResponde);
-        }
-      );
-    }, 500)
-  }
-
-  public cadastrar() {
-    console.log(this.dados);
-
+  public cadEndereco () {
+    this.loadingCadEndereco = true;
     this.Endereco.cadastro(this.dados).subscribe(
       (response: Endereco) => {
         this.erros = {};
-        console.log(response)
-        this.Endereco.listagem().subscribe(
-          (response: Endereco[]) => {
-            this.enderecos = response;
-            this.cadastrarForm.resetForm();
-            this.btnChange('list');
-          },
-          (badResponde: HttpErrorResponse) => {
-            console.log(badResponde);
-          }
-        )
+        const tipo = 'sucesso';
+        const mensagem = 'Endereço cadastrado com sucesso!';
+        this.enderecos.push(response);
+        this.Toast.mostrarToast(tipo, mensagem);
+        this.cadastrarForm.reset();
+        this.limparDados();
+        this.loadingCadEndereco = false;
       },
       (badReponse: HttpErrorResponse) => {
         const error = Object.entries(badReponse.error);
@@ -98,30 +81,39 @@ export class EnderecoComponent  implements OnInit{
 
   public procurarCep(cep: string) {
     this.erros = {};
-    const url = `https://viacep.com.br/ws/${cep}/json/`;
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => { 
-        if(data.erro) {
-          this.erros["cep"] = 'O campo cep inválido';
-        } else {
-          if(data.localidade != 'Tatuí' || data.localidade == '') {
-            this.erros["cep"] = 'O cep precisa ser de Tatuí';
-          } else {
-            this.dados = {
-              nome: '',
-              cep: cep,
-              rua: data.logradouro,
-              bairro: data.bairro,
-              numero: '',
-              complemento: data.complemento
-            };
-          }
+    this.Cep.infos(cep).subscribe(
+      (response: Cep) => {
+        if (response.erro) this.erros.cep = 'Cep inválido';
+        else if (response.localidade !== 'Tatuí') this.erros.cep = 'Cep precisa ser de Tatuí';
+        else {
+          this.dados = {
+            nome: this.dados.nome,
+            cep: response.cep,
+            rua: response.logradouro,
+            bairro: response.bairro,
+            numero: this.dados.numero,
+            complemento: response.complemento
+          };
         }
-        console.log(this.dados);
-      })
-      .catch((_) => this.erros["cep"] = 'O campo cep inválido');
-    }
+      },
+      (badResponse: HttpErrorResponse) => {
+        console.error(badResponse);
+        const tipo = 'erro';
+        const mensagem = badResponse.name;
+        this.Toast.mostrarToast(tipo, mensagem);
+      }
+    )
+  }
+
+  public limparDados() {
+    this.dados = {
+      nome: '',
+      cep: '',
+      rua: '',
+      bairro: '',
+      numero: '',
+      complemento: ''
+    };
+  }
 }
 

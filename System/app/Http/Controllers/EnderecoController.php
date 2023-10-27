@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ClienteController;
 
 class EnderecoController extends Controller {
-    
+
     public function __construct() {}
 
     /**
@@ -25,7 +25,7 @@ class EnderecoController extends Controller {
             'bairro' => ['required', 'string', 'max:255'],
             'numero' => ['required', 'string', 'max:255'],
             'rua' => ['required', 'string', 'max:255'],
-            'cep' => ['nullable', 'string', 'size:8'],
+            'cep' => ['required', 'string', 'size:9'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -60,7 +60,7 @@ class EnderecoController extends Controller {
             'bairro' => ['nullable', 'string', 'max:255'],
             'numero' => ['nullable', 'string', 'max:255'],
             'rua' => ['nullable', 'string', 'max:255'],
-            'cep' => ['nullable', 'string', 'size:8']
+            'cep' => ['nullable', 'string', 'size:9']
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -104,13 +104,10 @@ class EnderecoController extends Controller {
      */
 
     public function destroy(int $id) {
-        $endereco = Endereco::find($id);
-
-        if(!$endereco) {
+        if (!$endereco = Endereco::find($id))
             return response()->json(['message' => 'Endereço inválido'], 422);
-        } else {
-            Endereco::find($id)->delete();
-            return response()->json(['message' => 'Endereço deletado com sucesso'], 204);
-        }
+
+        $endereco->delete();
+        return response()->json(['message' => 'Endereço deletado com sucesso'], 200);
     }
 }

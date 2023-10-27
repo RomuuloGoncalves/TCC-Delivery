@@ -8,11 +8,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ContadorComponent implements OnInit {
   constructor() {}
 
-  @Input() public contador: number = 0;
-  @Output() public change: any = new EventEmitter<number>();
-  @Input() public min?: number;
+  @Input() public min: number = 1;
   @Input() public max?: number;
   @Input() public gap: number = 1;
+  @Input() public contador: number = this.min;
+  @Output() public change: any = new EventEmitter<number>();
 
   ngOnInit() {}
 

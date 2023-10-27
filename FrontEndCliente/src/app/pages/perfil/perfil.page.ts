@@ -24,16 +24,13 @@ export class PerfilPage implements OnInit {
 
   public direcionar (rota: string) {
     const fragment = this.el.nativeElement.querySelector(rota);
-    if (fragment) {
-    fragment.scrollIntoView({ behavior: 'smooth' });
-  }
+    if (fragment) fragment.scrollIntoView({ behavior: 'smooth' });
   }
 
   private carregarPagina() {
     this.Cliente.infos().subscribe(
       (response: Cliente) => {
         this.cliente = response;
-        console.log(response);
 
         this.Endereco.listagem().subscribe(
           (response: Endereco[]) => {

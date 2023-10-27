@@ -19,5 +19,13 @@ export class MaskService {
     ]
   };
 
+  readonly cep: MaskitoOptions = {
+    mask: [
+      ...Array(5).fill(/\d/),
+      '-',
+      ...Array(3).fill(/\d/)
+    ]
+  };
+
   readonly maskPredicate: MaskitoElementPredicateAsync = async (el) => (el as HTMLIonInputElement).getInputElement();
 }

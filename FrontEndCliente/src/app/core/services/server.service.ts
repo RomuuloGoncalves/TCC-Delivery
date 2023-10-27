@@ -10,9 +10,8 @@ export class ServerService {
   constructor(private http: HttpClient, private Cookie: CookieService) {}
 
   private url: string = 'http://127.0.0.1:8000';
-  // private url: string = 'http://127.0.0.1:8000';
 
-  public post(path: string, data: any | null): Observable<any> {
+  public post(path: string, data: any | null, url: string = this.url): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.Cookie.get('token')}`
@@ -21,16 +20,16 @@ export class ServerService {
     return this.http.post(`${this.url}${path}`, JSON.stringify(data), { headers });
   }
 
-  public get(path: string): Observable<any> {
+  public get(path: string, url: string = this.url): Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.Cookie.get('token')}`
     });
 
-    return this.http.get(`${this.url}${path}`, { headers });
+    return this.http.get(`${url}${path}`, { headers });
   }
 
-  public delete(path: string): Observable<any> {
+  public delete(path: string, url: string = this.url): Observable<any> {
     const token = this.Cookie.get('token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
@@ -42,7 +41,7 @@ export class ServerService {
     return this.http.delete(`${this.url}${path}`, { headers });
   }
 
-  public put(path: string, data: any): Observable<any> {
+  public put(path: string, data: any, url: string = this.url): Observable<any> {
     const token = this.Cookie.get('token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
