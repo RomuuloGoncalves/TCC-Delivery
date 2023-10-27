@@ -46,11 +46,38 @@ export class EnderecoComponent  implements OnInit{
     complemento: ''
   };
 
-  public deletarEndereco(endereco: Endereco) {
-    this.Endereco.excluir(endereco.id!).subscribe(
+  enderecoEscolhido?: Endereco;
+  alertDeletarEndereco: boolean = false;
+
+  public alertButtons = [
+    {
+      text: 'Não',
+      role: 'cancel',
+      handler: () => {
+        this.alertDeletarEndereco = false;
+      }
+    },
+    {
+      text: 'Sim',
+      role: 'confirm',
+      handler: () => {
+        this.deletarEndereco();
+      },
+    },
+  ];
+
+  public clickDeletarEndereco(endereco: Endereco) {
+    this.enderecoEscolhido = endereco;
+    this.alertDeletarEndereco = true;
+  }
+
+  public deletarEndereco() {
+    this.Endereco.excluir(this.enderecoEscolhido!.id!).subscribe(
       (response: any) => {
-        const id = this.enderecos.indexOf(endereco);
+        const id = this.enderecos.indexOf(this.enderecoEscolhido!);
         this.enderecos.splice(id, 1);
+        this.enderecoEscolhido = undefined;
+        this.alertDeletarEndereco = false;
       },
       (badResponde: HttpErrorResponse) => {
         console.log(badResponde);

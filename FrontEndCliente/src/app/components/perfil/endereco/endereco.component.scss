@@ -31,7 +31,6 @@
       &__delete {
         width: 30px;
         transition: 0.2s;
-        z-index: 999;
 
         &:hover {
           transform: scale(1.2);
@@ -61,15 +60,15 @@
           color: #000;
           font-weight: normal;
         }
-      }
 
-      ion-item::part(native) {
-        background: #FFF;
-        color: var(--ion-color-primary-variation);
-        font-weight: bold;
-        text-transform: capitalize;
-        border-radius: 20px;
-        height: 50px;
+        &::part(native) {
+          background: #FFF;
+          color: var(--ion-color-primary-variation);
+          font-weight: bold;
+          text-transform: capitalize;
+          border-radius: 20px;
+          height: 50px;
+        }
       }
     }
 

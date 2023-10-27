@@ -26,7 +26,7 @@
                 <ion-accordion value="{{ endereco.id }}">
                   <ion-item slot="header">
                     <ion-label>{{ endereco.nome }}</ion-label>
-                    <img (click)="deletarEndereco(endereco)" class="page__content__list__delete"
+                    <img (click)="this.clickDeletarEndereco(endereco)" class="page__content__list__delete"
                       src="../../../../assets/imgs/perfil-icons/delete.svg" alt="delete">
                   </ion-item>
                   <div class="ion-padding" slot="content">
@@ -55,6 +55,13 @@
             </ion-accordion-group>
           </ion-col>
         </ion-row>
+        <ion-alert
+          mode="md"
+          [isOpen]="this.alertDeletarEndereco"
+          header="Alerta!"
+          subHeader="Você tem certeza que gostaria de cancelar sua reserva?"
+          [buttons]="this.alertButtons"
+        ></ion-alert>
       </ion-col>
 
       <ion-row [class.ion-hide]="!this.estaCadEndereco" class="page__content__form ion-justify-content-center">
