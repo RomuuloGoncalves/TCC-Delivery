@@ -76,7 +76,7 @@ export class MontagemMarmitaPage implements OnInit {
           this.marmita.push({
             id_grupo_variacoes: ingrediente.id_grupo_variacoes,
             tipo: ingrediente.tipo,
-            variacoes: variacoesSelecionadas,
+            variacao: variacoesSelecionadas,
           });
         }
       );
@@ -85,23 +85,10 @@ export class MontagemMarmitaPage implements OnInit {
   }
 
   calcPrecoMarmita() {
-    // this.precoMarmita = this.marmita.reduce(
-    //   (preco: number, ingredienteMarmita: GrupoVariacoes) => {
-    //     const totalVariacoes = ingredienteMarmita.variacoes?.reduce(
-    //       (preco: number, variacaoMarmita: Variacao) => {
-    //         return preco + variacaoMarmita.valor_final!;
-    //       },
-    //       0
-    //     );
-    //     if (preco > 0) return preco + totalVariacoes!;
-    //     else return 10.2;
-    //   },
-    //   0
-    // );
     this.precoMarmita = 0
     this.marmita.forEach(grupoVariacao => {
       console.log(grupoVariacao)
-      grupoVariacao.variacoes?.forEach(variacao => {
+      grupoVariacao.variacao?.forEach(variacao => {
         if (variacao.valor_inicial)
           this.precoMarmita += variacao.valor_inicial
         console.log("valor",variacao.valor_inicial)

@@ -1,154 +1,159 @@
 <ion-content [fullscreen]="true">
-  <app-header></app-header>
+  <ng-container *ngIf="!this.loading">
+    <app-header></app-header>
 
-  <ion-row class="ion-justify-content-center ingredientes ion-padding">
-    <ion-col size="11" sizeMd="4">
-      <ion-row color="primary" class="card-image ion-justify-content-center ion-align-items-center ion-padding">
-        <img src="../../../assets/imgs/montagem-marmita/marmita.jfif" />
-      </ion-row>
-    </ion-col>
+    <ion-row class="ion-justify-content-center ingredientes ion-padding">
+      <ion-col size="11" sizeMd="4">
+        <ion-row color="primary" class="card-image ion-justify-content-center ion-align-items-center ion-padding">
+          <img src="../../../assets/imgs/montagem-marmita/marmita.jfif" />
+        </ion-row>
+      </ion-col>
 
-    <ion-col size="12" sizeMd="5">
-      <ion-row class="card">
-        <ion-col>
-          <ion-label class="card__titulo">Ingredientes</ion-label>
-          <ion-card class="card__marmita-atual">
-            <ion-card-content>
-              <ion-text class="card__mensagem ion-text-center" *ngIf="this.marmita.length === 0">
-                <h2>Não há ingredientes selecionados</h2>
-              </ion-text>
-              <ion-accordion-group>
-                <ng-container *ngFor="let ingrediente of this.marmita">
-                  <ion-accordion *ngIf="ingrediente.variacoes?.length" value="{{ ingrediente.tipo }}">
-                    <ion-item slot="header" color="light">
-                      <ion-text>
-                        <b>{{ ingrediente.tipo }}</b>
-                      </ion-text>
-                    </ion-item>
-                    <div class="ion-padding" slot="content">
-                      <ion-list>
-                        <ng-container *ngFor="let variacao of ingrediente.variacoes">
-                          <ion-item>
-                            <ion-row class="ion-justify-content-between">
-                              <ion-col size="auto">
-                                <ion-text color="primary">
-                                  <b>Variação:</b>
-                                </ion-text>
-                              </ion-col>
-                              <ion-col size="auto">
-                                <ion-text>
-                                  <b>{{ variacao.nome }}</b>
-                                </ion-text>
-                              </ion-col>
-                            </ion-row>
-                          </ion-item>
-                          <ion-item>
-                            <ion-row class="ion-justify-content-between">
-                              <ion-col size="auto">
-                                <ion-text color="primary">
-                                  <b>Descrição:</b>
-                                </ion-text>
-                              </ion-col>
-                              <ion-col size="auto">
-                                <ion-text>
-                                  <b>{{ variacao.descricao }}</b>
-                                </ion-text>
-                              </ion-col>
-                            </ion-row>
-                          </ion-item>
-                        </ng-container>
-                      </ion-list>
-                    </div>
-                  </ion-accordion>
-                </ng-container>
-              </ion-accordion-group>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-col>
-  </ion-row>
-
-  <!-- categorias de ingredientes para seleção -->
-  <ion-row class="ion-justify-content-center todos-ingredientes">
-    <ion-col size="11" sizeMd="9" class="container-cards-ingredientes">
-      <swiper-container #swiper [loop]="false" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints">
-          <ng-container *ngFor="let ingrediente of this.ingredientes.grupo_variacao; let idIngrediente = index">
-            <ng-container *ngIf="ingrediente.variacao && ingrediente.variacao.length !== 0">
-              <swiper-slide>
-                <ion-card class="selecionar-ingredientes">
-                  <ion-card-header>
-                    <ion-card-title class="ion-text-capitalize">{{ ingrediente.tipo }}</ion-card-title>
-                    <ion-card-subtitle>Selecione o tipo de {{ ingrediente.tipo.toLocaleLowerCase()}} desejado</ion-card-subtitle>
-                    <ion-card-subtitle *ngIf="this.ingrediente.qtdd_max">
-                      <ion-text color="danger">
-                        Máximo de {{ ingrediente.qtdd_max }} opções!
-                      </ion-text>
-                    </ion-card-subtitle>
-                  </ion-card-header>
-
-                  <ion-card-content>
-                    <ion-list>
-                      <ion-item *ngFor="let variacao of this.ingrediente.variacao; let idVariacao = index">
-                        <ion-checkbox
-                        [disabled]="ingrediente.qtdd_max !== undefined
-                        && this.marmita[idIngrediente].variacoes!.length >= ingrediente.qtdd_max
-                        && !this.ingrediente.variacoes![idVariacao]!.selecionado"
-                        (ionChange)="selecionarIngrediente(idIngrediente, idVariacao, $event); this.calcPrecoMarmita()">{{ variacao.nome }}</ion-checkbox>
+      <ion-col size="12" sizeMd="5">
+        <ion-row class="card">
+          <ion-col>
+            <ion-label class="card__titulo">Ingredientes</ion-label>
+            <ion-card class="card__marmita-atual">
+              <ion-card-content>
+                <ion-text class="card__mensagem ion-text-center" *ngIf="this.marmita.length === 0">
+                  <h2>Não há ingredientes selecionados</h2>
+                </ion-text>
+                <ion-accordion-group>
+                  <ng-container *ngFor="let ingrediente of this.marmita">
+                    <ion-accordion *ngIf="ingrediente.variacao?.length" value="{{ ingrediente.tipo }}">
+                      <ion-item slot="header" color="light">
+                        <ion-text>
+                          <b>{{ ingrediente.tipo }}</b>
+                        </ion-text>
                       </ion-item>
-                    </ion-list>
-                  </ion-card-content>
-                </ion-card>
-              </swiper-slide>
+                      <div class="ion-padding" slot="content">
+                        <ion-list>
+                          <ng-container *ngFor="let variacao of ingrediente.variacao">
+                            <ion-item>
+                              <ion-row class="ion-justify-content-between">
+                                <ion-col size="auto">
+                                  <ion-text color="primary">
+                                    <b>Variação:</b>
+                                  </ion-text>
+                                </ion-col>
+                                <ion-col size="auto">
+                                  <ion-text>
+                                    <b>{{ variacao.nome }}</b>
+                                  </ion-text>
+                                </ion-col>
+                              </ion-row>
+                            </ion-item>
+                            <ion-item>
+                              <ion-row class="ion-justify-content-between">
+                                <ion-col size="auto">
+                                  <ion-text color="primary">
+                                    <b>Descrição:</b>
+                                  </ion-text>
+                                </ion-col>
+                                <ion-col size="auto">
+                                  <ion-text>
+                                    <b>{{ variacao.descricao }}</b>
+                                  </ion-text>
+                                </ion-col>
+                              </ion-row>
+                            </ion-item>
+                          </ng-container>
+                        </ion-list>
+                      </div>
+                    </ion-accordion>
+                  </ng-container>
+                </ion-accordion-group>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <!-- categorias de ingredientes para seleção -->
+    <ion-row class="ion-justify-content-center todos-ingredientes">
+      <ion-col size="11" sizeMd="9" class="container-cards-ingredientes">
+        <swiper-container #swiper [loop]="false" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints">
+            <ng-container *ngFor="let ingrediente of this.ingredientes.grupo_variacao; let idIngrediente = index">
+              <ng-container *ngIf="ingrediente.variacao && ingrediente.variacao.length !== 0">
+                <swiper-slide>
+                  <ion-card class="selecionar-ingredientes">
+                    <ion-card-header>
+                      <ion-card-title class="ion-text-capitalize">{{ ingrediente.tipo }}</ion-card-title>
+                      <ion-card-subtitle>Selecione o tipo de {{ ingrediente.tipo.toLocaleLowerCase()}} desejado</ion-card-subtitle>
+                      <ion-card-subtitle *ngIf="this.ingrediente.qtdd_max">
+                        <ion-text color="danger">
+                          Máximo de {{ ingrediente.qtdd_max }} opções!
+                        </ion-text>
+                      </ion-card-subtitle>
+                    </ion-card-header>
+
+                    <ion-card-content>
+                      <ion-list>
+                        <ion-item *ngFor="let variacao of this.ingrediente.variacao; let idVariacao = index">
+                          <ion-checkbox
+                          [disabled]="ingrediente.qtdd_max !== undefined
+                          && this.marmita[idIngrediente].variacao!.length >= ingrediente.qtdd_max
+                          && !this.ingrediente.variacao![idVariacao]!.selecionado"
+                          (ionChange)="selecionarIngrediente(idIngrediente, idVariacao, $event); this.calcPrecoMarmita()">{{ variacao.nome }}</ion-checkbox>
+                        </ion-item>
+                      </ion-list>
+                    </ion-card-content>
+                  </ion-card>
+                </swiper-slide>
+              </ng-container>
             </ng-container>
-          </ng-container>
-        </swiper-container>
+          </swiper-container>
 
-        <ion-button (click)="this.proximoCard()" class="trocar-card-ingrediente prox-card">
-          <ion-icon name="triangle" class="prox-card__triangulo"></ion-icon>
-        </ion-button>
-        <ion-button (click)="this.voltarCard()" class="trocar-card-ingrediente volt-card">
-          <ion-icon name="triangle" class="volt-card__triangulo"></ion-icon>
-        </ion-button>
-    </ion-col>
-  </ion-row>
+          <ion-button (click)="this.proximoCard()" class="trocar-card-ingrediente prox-card">
+            <ion-icon name="triangle" class="prox-card__triangulo"></ion-icon>
+          </ion-button>
+          <ion-button (click)="this.voltarCard()" class="trocar-card-ingrediente volt-card">
+            <ion-icon name="triangle" class="volt-card__triangulo"></ion-icon>
+          </ion-button>
+      </ion-col>
+    </ion-row>
 
 
-  <ion-row class="ion-justify-content-center ion-align-items-center ion-padding-top">
-    <ion-col size="11" sizeMd="9">
-      <ion-row class="ion-justify-content-between ion-align-items-center">
-        <ion-col size="12" sizeLg="6">
-          <app-observacoes></app-observacoes>
-        </ion-col>
-        <ion-col size="12" sizeLg="4">
-          <ion-row class="sessao-total ion-justify-content-between ion-margin-right">
-            <ion-text class="sessao-total__preco">
-              <p>Preço</p>
-            </ion-text>
-            <ion-text class="sessao-total__info">
-              <p>{{ this.precoMarmita.toFixed(2).replace('.', ',') }}</p>
-            </ion-text>
-          </ion-row>
-          <ion-row class="sessao-total ion-justify-content-between">
-            <ion-text class="sessao-total__preco">
-              <p>Total</p>
-            </ion-text>
-            <ion-text class="sessao-total__info">
-              <p>{{ this.total.toFixed(2).replace('.', ',') }}</p>
-            </ion-text>
-          </ion-row>
-          <ion-row class="sessao-total ion-justify-content-between">
-            <app-contador
-              [contador]="this.qtddMarmita"
-              (change)="this.qtddMarmita = $event; this.calcTotal()"
-              [min]="1"></app-contador>
-            <ion-button>
-              Adicionar
-            </ion-button>
-          </ion-row>
-        </ion-col>
-      </ion-row>
-    </ion-col>
-  </ion-row>
-  <app-footer></app-footer>
+    <ion-row class="ion-justify-content-center ion-align-items-center ion-padding-top">
+      <ion-col size="11" sizeMd="9">
+        <ion-row class="ion-justify-content-between ion-align-items-center">
+          <ion-col size="12" sizeLg="6">
+            <app-observacoes></app-observacoes>
+          </ion-col>
+          <ion-col size="12" sizeLg="4">
+            <ion-row class="sessao-total ion-justify-content-between ion-margin-right">
+              <ion-text class="sessao-total__preco">
+                <p>Preço</p>
+              </ion-text>
+              <ion-text class="sessao-total__info">
+                <p>{{ this.precoMarmita.toFixed(2).replace('.', ',') }}</p>
+              </ion-text>
+            </ion-row>
+            <ion-row class="sessao-total ion-justify-content-between">
+              <ion-text class="sessao-total__preco">
+                <p>Total</p>
+              </ion-text>
+              <ion-text class="sessao-total__info">
+                <p>{{ this.total.toFixed(2).replace('.', ',') }}</p>
+              </ion-text>
+            </ion-row>
+            <ion-row class="sessao-total ion-justify-content-between">
+              <app-contador
+                [contador]="this.qtddMarmita"
+                (change)="this.qtddMarmita = $event; this.calcTotal()"
+                [min]="1"></app-contador>
+              <ion-button>
+                Adicionar
+              </ion-button>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <app-footer></app-footer>
+  </ng-container>
+  <app-loading
+    [loading]="this.loading"
+  ></app-loading>
 </ion-content>
