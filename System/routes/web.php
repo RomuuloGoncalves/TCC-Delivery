@@ -24,10 +24,10 @@ $router->group(['prefix' => 'cliente'], function () use ($router) {
     $router->post('/cadastrar', 'ClienteController@store');
     $router->post('/login', 'ClienteController@login');
     $router->put('/editar', 'ClienteController@update');
+    $router->post('/logout', 'ClienteController@logout');
 
     $router->group(['middleware' => 'authCliente'], function () use ($router) {
         $router->get('/', 'ClienteController@index');
-        $router->post('/logout', 'ClienteController@logout');
     });
 });
 
@@ -73,7 +73,7 @@ $router->group(['prefix' => 'cupom'], function () use ($router) {
 |--------------------------------------------------------------------------
 */
 
-// $router->group(['middleware' => 'authCliente'], function () use ($router) {
+//$router->group(['middleware' => 'authCliente'], function () use ($router) {
     $router->group(['prefix' => 'cliente/endereco'], function () use ($router) {
         $router->post('/cadastrar', 'EnderecoController@store');
         $router->put('/editar', 'EnderecoController@update');

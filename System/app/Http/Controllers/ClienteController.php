@@ -71,7 +71,7 @@ class ClienteController extends Controller
             'nome' => ['nullable', 'string', 'max:255'],
             'email' => ['nullable', 'string', 'email', 'max:255', 'unique:Clientes'],
             'password' => ['nullable', 'string', 'max:255', 'min:8'],
-            'telefone' => ['nullable', 'string', 'size:11', 'unique:Clientes'],
+            'telefone' => ['nullable', 'string', 'size:17', 'unique:Clientes'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -96,7 +96,7 @@ class ClienteController extends Controller
         }
 
         $cliente->save();
-        
+
         return response()->json($cliente, 200);
     }
 

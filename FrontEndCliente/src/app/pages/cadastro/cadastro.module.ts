@@ -10,6 +10,7 @@ import { CadastroPage } from './cadastro.page';
 import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 import { BtnLoadingModule } from 'src/app/components/common/btn-loading/btn-loading.module';
+import { MaskitoModule } from '@maskito/angular';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { BtnLoadingModule } from 'src/app/components/common/btn-loading/btn-load
     CadastroPageRoutingModule,
     FooterModule,
     HeaderModule,
-    BtnLoadingModule
+    BtnLoadingModule,
+    MaskitoModule
   ],
   declarations: [CadastroPage],
 })

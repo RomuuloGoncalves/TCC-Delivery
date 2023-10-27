@@ -3,10 +3,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { MaskService } from 'src/app/core/controller/mask.service';
 import { ToastService } from 'src/app/core/controller/toast.service';
-import { Cliente } from 'src/app/core/interfaces/cliente';
 import { ClienteService } from 'src/app/core/services/cliente.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -18,7 +17,7 @@ export class LoginPage implements OnInit {
     private Cliente: ClienteService,
     private Toast: ToastService,
     private router: Router,
-    private Cookie: CookieService
+    private Cookie: CookieService,
   ) { }
 
   @ViewChild('loginForm') private loginForm!: NgForm;

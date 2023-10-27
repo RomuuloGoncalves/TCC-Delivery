@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterModule } from './components/common/footer/footer.module';
 import { LogedInGuard } from './core/auths/loged-in.guard';
+import { RedirectGuard } from './core/auths/redirect.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,8 @@ import { LogedInGuard } from './core/auths/loged-in.guard';
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    LogedInGuard
+    LogedInGuard,
+    RedirectGuard,
   ],
   bootstrap: [AppComponent],
 })

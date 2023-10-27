@@ -22,8 +22,8 @@
             </ion-row>
 
             <ion-row class="input-container">
-              <ion-input ngModel required name="telefone" errorText="Telefone inválido" label="Telefone" type="text"
-                maxlength="11" minlength="11"></ion-input>
+              <ion-input ngModel [maskito]="this.Mask.telefone" [maskitoElement]="this.Mask.maskPredicate" required name="telefone" errorText="Telefone inválido" label="Telefone" type="text"
+                maxlength="17" minlength="17"></ion-input>
               <ion-text class="erro" color="danger">{{ this.erros.telefone }}</ion-text>
             </ion-row>
 
