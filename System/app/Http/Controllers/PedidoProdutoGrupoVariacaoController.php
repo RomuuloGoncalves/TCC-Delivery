@@ -21,9 +21,9 @@ class PedidoProdutoGrupoVariacaoController extends Controller
 
     public function store(Request $request) {
         $regras = [
-            'tipo' => ['required', 'integer', 'max_digits:30'],
-            'quantidade_variacoes' => ['required', 'integer', 'max_digits:30'],
-            'cod_produto' => ['required', 'integer', 'max_digits:30']
+            'quantidade' => ['nullable', 'integer', 'max_digits:30'],
+            'cod_pedido_produto' => ['required', 'integer', 'max_digits:30']
+
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -32,8 +32,8 @@ class PedidoProdutoGrupoVariacaoController extends Controller
             return response()->json($validacao->errors(), 422);
 
         $ped_prod_grupo_var = PedidoProdutoGrupoVariacao::create([
-            'tipo' => $request->input('tipo'),
-            'quantidade_variacoes' => $request->input('quantidade_variacoes'),
+            'quantidade' => $request->input('quantidade'),
+            'cod_pedido_produto' => $request->input('cod_pedido_produto'),
             'cod_produto' => $request->input('cod_produto')
         ]);
 

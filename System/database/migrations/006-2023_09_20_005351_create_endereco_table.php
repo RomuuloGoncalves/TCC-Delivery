@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('bairro');
             $table->string('numero', 5);
             $table->string('rua');
-            $table->char('cep', 8)->nullable();
+            $table->char('cep', 9)->nullable();
             $table->unsignedBigInteger('cod_cliente');
             $table->foreign('cod_cliente')->references('id')->on('Clientes');
         });

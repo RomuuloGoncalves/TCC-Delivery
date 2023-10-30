@@ -25,7 +25,7 @@ class EnderecoController extends Controller {
             'bairro' => ['required', 'string', 'max:255'],
             'numero' => ['required', 'string', 'max:255'],
             'rua' => ['required', 'string', 'max:255'],
-            'cep' => ['required', 'string', 'size:9'],
+            'cep' => ['nullable', 'string', 'size:9'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);

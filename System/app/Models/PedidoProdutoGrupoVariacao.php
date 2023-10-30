@@ -11,6 +11,7 @@ class PedidoProdutoGrupoVariacao extends Model
     protected $table = "Pedido_produto_grupo_variacoes";
 
     protected $fillable = [
+        'quantidade',
         'cod_pedido_produto',
         'cod_variacao'
     ];

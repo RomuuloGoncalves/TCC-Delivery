@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('Grupo_variacoes', function (Blueprint $table) {
             $table->id('id');
             $table->string('tipo');
-            $table->integer('quantidade_variacoes');
+            $table->integer('quantidade_variacoes_min')->default(1);
+            $table->integer('quantidade_variacoes_max')->nullable();
             $table->unsignedBigInteger('cod_produto');
             $table->foreign('cod_produto')->references('id')->on('Produtos');
         });

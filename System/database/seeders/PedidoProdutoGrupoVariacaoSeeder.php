@@ -22,6 +22,7 @@ class PedidoProdutoGrupoVariacaoSeeder extends Seeder
         // }
 
         DB::table('Pedido_produto_grupo_variacoes')->insert([
+            'quantidade' => 2,
             'cod_pedido_produto' => 1,
         ]);
 

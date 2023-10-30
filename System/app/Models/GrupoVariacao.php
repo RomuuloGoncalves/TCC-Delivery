@@ -12,7 +12,8 @@ class GrupoVariacao extends Model
 
     protected $fillable = [
         'tipo',
-        'quantidade_variacoes',
+        'quantidade_variacoes_min',
+        'quantidade_variacoes_max',
         'cod_produto',
     ];
 

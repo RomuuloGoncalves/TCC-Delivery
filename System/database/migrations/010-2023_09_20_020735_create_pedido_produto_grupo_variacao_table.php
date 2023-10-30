@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('Pedido_produto_grupo_variacoes', function (Blueprint $table) {
             $table->id('id');
+            $table->integer('quantidade')->default(1);
             $table->unsignedBigInteger('cod_pedido_produto');
             $table->foreign('cod_pedido_produto')->references('id')->on('Pedido_produtos');
         });
