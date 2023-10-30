@@ -3,6 +3,7 @@ import { ModalController, NavParams } from '@ionic/angular';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { Variacao } from 'src/app/core/interfaces/variacao';
 import { PassarMarmitaService } from 'src/app/core/services/passar-marmita.service';
+import { ProdutoService } from 'src/app/core/services/produto.service';
 
 @Component({
   selector: 'app-modal-marmita',
@@ -13,13 +14,30 @@ export class ModalMarmitaComponent implements OnInit {
 
   constructor(private navParams: NavParams,
     private modalController: ModalController,
-    private passarMarmita: PassarMarmitaService) { }
+    private passarMarmita: PassarMarmitaService,
+    private produtoService: ProdutoService) { }
 
   ngOnInit() {
-    console.log(this.produto)
+    console.log(this.id);
+    this.carregarProduto();
   }
 
-  @Input() produto: any
+  @Input() id: any;
+  produto!: Produto;
+  loading: boolean = true
+
+  carregarProduto() {
+    this.produtoService.pegarProduto(this.id).subscribe(
+      (response) => {
+        console.log("reponse", response)
+        this.produto = response;
+        this.loading = false
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  }
 
   variacoesSelecionadas: any[] = []
 
