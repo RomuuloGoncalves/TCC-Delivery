@@ -1,5 +1,5 @@
 export interface Variacao {
-  id_variacao?: number;
+  id?: number;
   nome: string;
   descricao?: string;
   porcentagem_desconto?: number;

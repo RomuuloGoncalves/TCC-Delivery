@@ -74,7 +74,7 @@ export class MontagemMarmitaPage implements OnInit {
             variacao.selecionado ? variacoesSelecionadas.push(variacao) : null;
           });
           this.marmita.push({
-            id_grupo_variacoes: ingrediente.id_grupo_variacoes,
+            id: ingrediente.id,
             tipo: ingrediente.tipo,
             variacao: variacoesSelecionadas,
           });

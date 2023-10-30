@@ -23,7 +23,7 @@ export class CarrinhoPage implements OnInit {
       nome: 'Porções',
       quantidade: 3,
       variacao: {
-        id_variacao: 1,
+        id: 1,
         nome: 'Batata Frita',
         valor_desconto: 4.0,
         valor_inicial: 19.5,
@@ -37,7 +37,7 @@ export class CarrinhoPage implements OnInit {
       nome: 'Doces',
       quantidade: 2,
       variacao: {
-        id_variacao: 1,
+        id: 1,
         nome: 'Pudim',
         valor_desconto: 4.0,
         valor_inicial: 12.5,

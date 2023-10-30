@@ -21,17 +21,11 @@ export class SessaoCardsProdutoComponent implements OnInit {
   @Input() produtos!: any;
   @Input() cardMontagem: boolean = false;
 
-
-  async definirProdutoModal(id: number) {
-    const produto = await this.pegarProduto(id)
-    this.abrirModal(produto)
-  }
-
-  async abrirModal(produto: any) {
+  async abrirModal(id: number) {
     const modal = await this.modalController.create({
       component: ModalMarmitaComponent,
       componentProps: {
-        produto: produto
+        id: id
       }
     });
     return await modal.present()
