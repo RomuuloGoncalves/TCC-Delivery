@@ -60,11 +60,11 @@ $router->group(['prefix' => 'cupom'], function () use ($router) {
         $router->post('/usar', 'CupomController@usar');
     });
 
+    $router->post('/cadastrar', 'CupomController@store');
     $router->get('/', 'CupomController@index');
     $router->get('/{id}', 'CupomController@show');
-    $router->delete('/excluir/{id}', 'CupomController@destroy');
-    $router->post('/cadastrar', 'CupomController@store');
     $router->put('/editar', 'CupomController@update');
+    $router->delete('/excluir/{id}', 'CupomController@destroy');
 });
 
 /*
@@ -76,11 +76,11 @@ $router->group(['prefix' => 'cupom'], function () use ($router) {
 //$router->group(['middleware' => 'authCliente'], function () use ($router) {
     $router->group(['prefix' => 'cliente/endereco'], function () use ($router) {
         $router->post('/cadastrar', 'EnderecoController@store');
-        $router->put('/editar', 'EnderecoController@update');
         $router->get('/', 'EnderecoController@index');
+        $router->put('/editar', 'EnderecoController@update');
         $router->delete('/excluir/{id}', 'EnderecoController@destroy');
     });
-// });
+//});
 
 /*
 |--------------------------------------------------------------------------
@@ -89,9 +89,11 @@ $router->group(['prefix' => 'cupom'], function () use ($router) {
 */
 
 $router->group(['prefix' => 'pedido'], function () use ($router) {
+    $router->post('/cadastrar', 'PedidoController@store');
     $router->get('/', 'PedidoController@index');
-    $router->get('/historico', 'PedidoController@historico');
     $router->get('/{id}', 'PedidoController@show');
+    $router->get('/historico', 'PedidoController@historico');
+    $router->post('/editar', 'PedidoController@update');
 });
 
 /*
@@ -101,10 +103,10 @@ $router->group(['prefix' => 'pedido'], function () use ($router) {
 */
 
 $router->group(['prefix' => 'categoria'], function () use ($router) {
+    $router->post('/cadastrar', 'CategoriaController@store');
     $router->get('/', 'CategoriaController@index');
     $router->get('/{id}', 'CategoriaController@show');
     $router->delete('/excluir/{id}', 'CategoriaController@destroy');
-    $router->post('/cadastrar', 'CategoriaController@store');
 });
 
 /*
@@ -114,11 +116,11 @@ $router->group(['prefix' => 'categoria'], function () use ($router) {
 */
 
 $router->group(['prefix' => 'produto'], function () use ($router) {
-    $router->get('/', 'ProdutoController@index');
-    $router->delete('/excluir/{id}', 'ProdutoController@destroy');
     $router->post('/cadastrar', 'ProdutoController@store');
-    $router->put('/editar', 'ProdutoController@update');
+    $router->get('/', 'ProdutoController@index');
     $router->get('/{id}', 'ProdutoController@show');
+    $router->put('/editar', 'ProdutoController@update');
+    $router->delete('/excluir/{id}', 'ProdutoController@destroy');
 });
 
 /*
@@ -128,10 +130,10 @@ $router->group(['prefix' => 'produto'], function () use ($router) {
 */
 
 $router->group(['prefix' => 'variacao'], function () use ($router) {
-    $router->get('/', 'VariacaoController@index');
-    $router->delete('/excluir/{id}', 'VariacaoController@destroy');
     $router->post('/cadastrar', 'VariacaoController@store');
+    $router->get('/', 'VariacaoController@index');
     $router->put('/editar', 'VariacaoController@update');
+    $router->delete('/excluir/{id}', 'VariacaoController@destroy');
 });
 
 /*
@@ -141,22 +143,47 @@ $router->group(['prefix' => 'variacao'], function () use ($router) {
 */
 
 $router->group(['prefix' => 'grupo-variacao'], function () use ($router) {
+    $router->post('/cadastrar', 'GrupoVariacaoController@store');
     $router->get('/', 'GrupoVariacaoController@index');
     $router->get('/{cod_produto}', 'GrupoVariacaoController@show');
-    $router->delete('/excluir/{id}', 'GrupoVariacaoController@destroy');
-    $router->post('/cadastrar', 'GrupoVariacaoController@store');
     $router->put('/editar', 'GrupoVariacaoController@update');
+    $router->delete('/excluir/{id}', 'GrupoVariacaoController@destroy');
 });
 
 /*
 |--------------------------------------------------------------------------
-| ped-prod-grupo-var
+| Pedido Produto Grupo Varicao Routes
 |--------------------------------------------------------------------------
 */
 
 $router->group(['prefix' => 'ped-prod-grupo-var'], function () use ($router) {
+    $router->post('/cadastrar', 'PedidoProdutoGrupoVariacaoController@store');
     $router->get('/', 'PedidoProdutoGrupoVariacaoController@index');
     $router->get('/{id}', 'PedidoProdutoGrupoVariacaoController@show');
+    $router->put('/editar', 'PedidoProdutoGrupoVariacaoController@update');
+
+/*
+|--------------------------------------------------------------------------
+| Variacao Selecionada Routes
+|--------------------------------------------------------------------------
+*/
+
+    $router->group(['prefix' => 'variacao-selecionada'], function () use ($router) {
+        $router->post('/cadastrar', 'PedidoProdutoGrupoVariacaoController@storeVariacaoSelecionada');
+        $router->put('/editar', 'PedidoProdutoGrupoVariacaoController@updateVariacaoSelecionada');
+        $router->delete('/excluir/{id}', 'PedidoProdutoGrupoVariacaoController@destroyVariacaoSelecionada');
+    });
+});
+
+/*
+|--------------------------------------------------------------------------
+| Pedido Produto Routes
+|--------------------------------------------------------------------------
+*/
+
+$router->group(['prefix' => 'pedido-produto'], function () use ($router) {
+    $router->post('/cadastrar', 'PedidoProdutoController@store');
+    $router->delete('/excluir/{id}', 'PedidoProdutoController@destroy');
 });
 
 /*

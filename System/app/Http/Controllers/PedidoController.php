@@ -14,14 +14,79 @@ class PedidoController extends Controller {
     public function __construct() {}
 
     /**
+     * store
+     *
+     * @return void
+     */
+
+    public function store(Request $request) {
+        $regras = [
+            'cod_cliente' => ['required', 'integer', 'max_digits:30'],
+        ];
+
+        $validacao = Validator::make($request->all(), $regras);
+
+        if ($validacao->fails())
+            return response()->json($validacao->errors(), 422);
+
+        $pedido = Pedido::create([
+            'cod_cliente' => $request->input('cod_cliente'),
+        ]);
+
+        return response()->json($pedido, 201);
+    }
+
+    /**
+     * update
+     *
+     * @return Pedido
+     */
+
+     public function update(Request $request) {
+        $regras = [
+            'id' => ['required', 'integer', 'max_digits:30'],
+            'valor_total' => ['nullable', 'decimal:2', 'min_digit:1', 'max_digits:999999999'],
+            'valor_com_desconto' => ['nullable', 'decimal:2', 'min_digit:1', 'max_digits:999999999'],
+            'data_pedido' => ['nullable', 'date'],
+            'data_entrega' => ['nullable', 'date'],
+            'data_pagamento' => ['nullable', 'date'],
+            'endereco_pedido' => ['nullable', 'json'],
+            'status' => ['nullable', new Enum(['Pronto', 'Em Entrega', 'Cancelado', 'Em Espera', 'Carrinho'])],
+            'forma_pagamento' => ['nullable', new Enum('Crédito', 'Dinheiro', 'Pix', 'Débito')],
+            'cod_funcionario' => ['nullable', 'integer', 'max_digits:30'],
+            'cod_endereco' => ['nullable', 'integer', 'max_digits:30'],
+            'cod_cupom' => ['nullable', 'integer', 'max_digits:30'],
+        ];
+
+        $validacao = Validator::make($request->all(), $regras);
+
+        if ($validacao->fails())
+            return response()->json($validacao->errors(), 422);
+
+        $pedido = Pedido::find($request->input('id'));
+        if (!$pedido)
+            return response()->json(['error' => '"Pedido" not found'], 404);
+
+        $atributos = ['valor_total', 'valor_com_desconto', 'data_pedido', 'data_entrega', 'data_pagamento', 'endereco_pedido', 'status', 'forma_pagamento', 'cod_funcionario', 'cod_endereco', 'cod_cupom'];
+
+        foreach($atributos as $atributo) {
+            $request->input($atributo) !== null
+                ? $pedido->$atributo = $request->input($atributo)
+                : null;
+        }
+        $pedido->save();
+
+        return response()->json($pedido, 200);
+    }
+
+    /**
      * showIdCliente
      *
      * @return Pedido
      */
 
-    public function showIdCliente(Request $request) {
-        $cod_cliente = $request->input('cod_cliente');
-        $pedido = Pedido::all()->where('cod_cliente', $cod_cliente);
+    public function showIdCliente(int $id) {
+        $pedido = Pedido::with(['Pedido_produtos'])->where('cod_cliente', $id)->where('status', 'Carrinho')->get();
 
         return response()->json($pedido, 200);
     }

@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('Pedidos', function (Blueprint $table) {
             $table->id('id');
-            $table->float('valor_total');
+            $table->float('valor_total')->nullable();
             $table->float('valor_com_desconto')->nullable();
             $table->dateTime('data_pedido')->nullable();
             $table->dateTime('data_entrega')->nullable();
             $table->dateTime('data_pagamento')->nullable();
             $table->string('endereco_pedido')->nullable();
             $table->enum('status', ['Pronto', 'Em Entrega', 'Cancelado', 'Em Espera', 'Carrinho'])->default('Carrinho');
-            $table->enum('forma_pagamento', ['Crédito', 'Dinheiro', 'Pix', 'Débito']);
+            $table->enum('forma_pagamento', ['Crédito', 'Dinheiro', 'Pix', 'Débito'])->nullable();
             $table->unsignedBigInteger('cod_cliente');
             $table->unsignedBigInteger('cod_funcionario')->nullable();
             $table->unsignedBigInteger('cod_endereco')->nullable();
