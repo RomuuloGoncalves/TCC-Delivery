@@ -25,6 +25,7 @@ export class ModalMarmitaComponent implements OnInit {
   @Input() id: any;
   produto!: Produto;
   loading: boolean = true
+  precoTotal!: number
 
   carregarProduto() {
     this.produtoService.pegarProduto(this.id).subscribe(
@@ -52,7 +53,6 @@ export class ModalMarmitaComponent implements OnInit {
   }
 
   alterarVariacoesSelecionadas(e: any) {
-    console.log("aa")
     let variacoes = e.detail.value.split(',')
     let repetiu = false
     this.variacoesSelecionadas.forEach(variacao => {
@@ -74,8 +74,20 @@ export class ModalMarmitaComponent implements OnInit {
             id: variacoes[3],
             nome: variacoes[2]
           },
+          valor: variacoes[4]
         }
       )) : null
-    console.log(this.variacoesSelecionadas)
+
+        this.precoTotal = this.calcPreco()
+
+  }
+
+  calcPreco() {
+    let preco: number = 0
+    this.variacoesSelecionadas.forEach(variacao => {
+      preco += Number(variacao.valor)
+    });
+    return preco
+
   }
 }

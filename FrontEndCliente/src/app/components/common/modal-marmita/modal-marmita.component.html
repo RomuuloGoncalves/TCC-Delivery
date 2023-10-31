@@ -42,12 +42,6 @@
                     </ion-title>
                   </ion-row>
                   <ion-accordion-group multiple="true">
-                    <ion-accordion value="{{ this.produto.nome }}">
-                      <ion-item slot="header" color="light">
-                        <ion-label>Nome</ion-label>
-                      </ion-item>
-                      <div class="ion-padding" slot="content">{{ this.produto.nome }}</div>
-                    </ion-accordion>
                     <ion-accordion value="{{ this.produto.descricao }}">
                       <ion-item slot="header" color="light">
                         <ion-label>Descrição</ion-label>
@@ -67,7 +61,7 @@
                   </ion-accordion-group>
   
                   <ion-title *ngIf="this.variacoesSelecionadas.length" class="subtitulo">
-                    Informações das Variações:
+                    Informações do Produto:
                   </ion-title>
                   <ion-accordion-group multiple="true">
                     <ng-container *ngFor="let variacao of this.variacoesSelecionadas">
@@ -75,7 +69,11 @@
                         <ion-item slot="header" color="light">
                           <ion-label>{{ variacao.grupo_variacao.tipo }}</ion-label>
                         </ion-item>
-                        <div class="ion-padding" slot="content">{{ variacao.variacao.nome }}</div>
+                        <div class="ion-padding" slot="content">
+                          <p>{{ variacao.variacao.nome }}</p>
+                          <!-- <p>Valor: R${{ variacao.variacao.valor_final || '0,00' }}</p> -->
+                          <p>Valor: R${{ variacao.valor || '0,00' }}</p>
+                        </div>
                       </ion-accordion>
                     </ng-container>
   
@@ -95,7 +93,8 @@
                       <ng-container *ngFor="let variacao of grupoVariacao.variacao">
                         <ion-item>
                           <ion-label>{{ variacao.nome }}</ion-label>
-                          <ion-radio slot="end" value="{{ [grupoVariacao.tipo, grupoVariacao.id, variacao.nome, variacao.id] }}"></ion-radio>
+                          <ion-radio slot="end" value="{{ [grupoVariacao.tipo, grupoVariacao.id, variacao.nome, variacao.id, variacao.valor_inicial ] }}"></ion-radio>
+                          <!-- <ion-radio slot="end" value="{{ [grupoVariacao.tipo, grupoVariacao.id, variacao.nome, variacao.id, variacao.valor_final ] }}"></ion-radio> -->
                         </ion-item>
                       </ng-container>
                     </ion-radio-group>
@@ -112,6 +111,12 @@
           </ion-col>
         </ion-row>
   
+        <ion-row>
+          <ion-col>
+              <p class="ion-text-bold">Valor total: R${{ this.precoTotal || '0,00' }}</p>
+          </ion-col>
+        </ion-row>
+
         <ion-row class="ion-justify-content-around">
           <ion-col size="auto">
             <app-contador [min]="1"></app-contador>
