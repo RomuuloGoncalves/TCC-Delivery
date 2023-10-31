@@ -26,5 +26,15 @@ class PedidoProdutoSeeder extends Seeder
                 'cod_produto' => $faker->randomElement($produtos),
             ]);
         }
+
+        DB::table('Pedido_produtos')->insert([
+            'cod_pedido' => 11,
+            'cod_produto' => 2,
+        ]);
+
+        DB::table('Pedido_produtos')->insert([
+            'cod_pedido' => 11,
+            'cod_produto' => 9,
+        ]);
     }
 }

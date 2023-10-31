@@ -26,7 +26,7 @@ class PedidoSeeder extends Seeder
                 'data_entrega' => $faker->dateTimeThisYear(),
                 'data_pagamento' => $faker->dateTimeThisYear(),
                 'endereco_pedido' => $faker->sentence(3),
-                'status' => $faker->randomElement(['Pronto', 'Em Entrega', 'Cancelado', 'Em Espera', 'Carrinho']),
+                'status' => $faker->randomElement(['Pronto', 'Em Entrega', 'Cancelado', 'Em Espera']),
                 'forma_pagamento' => $faker->randomElement( ['Crédito', 'Dinheiro', 'Pix', 'Débito']),
                 'cod_cliente' => $faker->randomElement($clientes),
                 'cod_funcionario' => $faker->randomElement($funcionarios),
@@ -35,5 +35,8 @@ class PedidoSeeder extends Seeder
             ]);
         }
 
+        DB::table('Pedidos')->insert([
+            'cod_cliente' => 20,
+        ]);
     }
 }
