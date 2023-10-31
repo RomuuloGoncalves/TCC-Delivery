@@ -113,7 +113,7 @@ class CupomController extends Controller {
         foreach($atributos as $atributo) {
             $request->input($atributo) !== null
                 ? $cupom->$atributo = $request->input($atributo)
-                : null;
+                : null; 
         }
         $cupom->save();
 
