@@ -60,17 +60,17 @@ class CupomController extends Controller {
      *
      * @return Cupom
      */
-    
+
     public function usar(Request $request) {
         $cupom = Cupom::find($request->input('id'));
 
-        if($cupom == null or $cupom->status == 0) 
+        if($cupom == null or $cupom->status == 0)
             return response()->json(['mensage' => 'Cupom Inválido'], 404);
-            
+
         if($cupom->quantidade !== null) {
             $cupom->quantidade === 0
                 ? $cupom->status = 0
-                : $cupom->quantidade = $cupom->quantidade - 1;   
+                : $cupom->quantidade = $cupom->quantidade - 1;
             $cupom->save();
         }
         return response()->json($cupom, 201);
@@ -92,9 +92,9 @@ class CupomController extends Controller {
             'quantidade' => ['nullable', 'integer', 'max_digits:30'],
             'status' => ['required', 'boolean']
         ];
-        
+
         $validacao = Validator::make($request->all(), $regras);
-        
+
         if ($validacao->fails())
             return response()->json($validacao->errors(), 422);
 
@@ -122,10 +122,10 @@ class CupomController extends Controller {
 
     public function show(int $id) {
         $cupom = Cupom::find($id);
-        
-        if(!$cupom) 
+
+        if(!$cupom)
             return response()->json(['mensage' => 'Cupom não encontrado'], 404);
-        
+
         return response()->json($cupom, 200);
     }
 
@@ -134,14 +134,12 @@ class CupomController extends Controller {
      *
      * @return void
      */
-    
+
     public function destroy(int $id) {
-        $cupom = Cupom::find($id);
-        
-        if(!$cupom)
+        if(!$cupom = Cupom::find($id))
             return response()->json(['message' => 'Cupom inválido'], 422);
-        
-        $cupom::find($id)->delete();
+
+        $cupom->delete();
         return response()->json(['message' => 'Cupom deletado com sucesso'], 204);
     }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Cupom } from 'src/app/core/interfaces/cupom';
 
 @Component({
   selector: 'app-criacao-cupons',
@@ -9,11 +10,8 @@ export class CriacaoCuponsPage implements OnInit {
 
   constructor() { }
 
-  cupom = undefined
+  cupom?: Cupom;
 
   ngOnInit() {
   }
-
-  metodo = 'post'
-  acao = 'Criar'
 }

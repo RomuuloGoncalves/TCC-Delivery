@@ -59,11 +59,10 @@ $router->group(['prefix' => 'cupom'], function () use ($router) {
     $router->group(['middleware' => 'authCliente'], function () use ($router) {
         $router->post('/usar', 'CupomController@usar');
     });
-
     $router->post('/cadastrar', 'CupomController@store');
     $router->get('/', 'CupomController@index');
-    $router->get('/{id}', 'CupomController@show');
     $router->put('/editar', 'CupomController@update');
+    $router->get('/{id}', 'CupomController@show');
     $router->delete('/excluir/{id}', 'CupomController@destroy');
 });
 
@@ -91,9 +90,9 @@ $router->group(['prefix' => 'cupom'], function () use ($router) {
 $router->group(['prefix' => 'pedido'], function () use ($router) {
     $router->post('/cadastrar', 'PedidoController@store');
     $router->get('/', 'PedidoController@index');
-    $router->get('/{id}', 'PedidoController@show');
     $router->get('/historico', 'PedidoController@historico');
     $router->post('/editar', 'PedidoController@update');
+    $router->get('/{id}', 'PedidoController@show');
 });
 
 /*
@@ -118,8 +117,8 @@ $router->group(['prefix' => 'categoria'], function () use ($router) {
 $router->group(['prefix' => 'produto'], function () use ($router) {
     $router->post('/cadastrar', 'ProdutoController@store');
     $router->get('/', 'ProdutoController@index');
-    $router->get('/{id}', 'ProdutoController@show');
     $router->put('/editar', 'ProdutoController@update');
+    $router->get('/{id}', 'ProdutoController@show');
     $router->delete('/excluir/{id}', 'ProdutoController@destroy');
 });
 

@@ -1,12 +1,11 @@
 <ion-content [fullscreen]="true">
-  <app-header></app-header>
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="6">
-      <ion-row class="ion-justify-content-center">
-        <h1>EDITAR CUPOM</h1>
-      </ion-row>
-      <app-form-cupom [cupom]='this.cupom' [editar]="true"></app-form-cupom>
-    </ion-col>
-  </ion-row>
-
+  <ng-container *ngIf="!this.loading">
+    <app-header></app-header>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="6">
+        <app-form-cupom [cupom]="this.cupom" [editar]="true"></app-form-cupom>
+      </ion-col>
+    </ion-row>
+  </ng-container>
+  <app-loading [loading]="this.loading"></app-loading>
 </ion-content>

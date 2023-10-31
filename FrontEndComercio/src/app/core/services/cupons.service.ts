@@ -11,12 +11,12 @@ export class CuponsService {
     return this.Server.get('/cupom/');
   }
 
-  public pegarCupomID (id_cupom:Number) {
-    return this.Server.get(`/cupom/${id_cupom}`);
+  public pegarCupomID (id: Number) {
+    return this.Server.get(`/cupom/${id}`);
   }
 
-  public excluirCupom(id_cupom:Number) {
-    return this.Server.delete(`/cupom/excluir/${id_cupom}`);
+  public excluirCupom(id: Number) {
+    return this.Server.delete(`/cupom/excluir/${id}`);
   }
 
   public editarCupom(data:any) {

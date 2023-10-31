@@ -9,32 +9,35 @@
   </ion-row>
 
   <ion-row>
-    <ion-input ngModel name="porcentagem_desconto" label="Porcentagem de desconto" label-placement="floating" fill="outline"
-      placeholder="Digite o valor do cupom" value="{{this.cupom?.porcentagem_desconto}}"></ion-input>
+    <ion-input ngModel name="porcentagem_desconto" label="Porcentagem de desconto" label-placement="floating"
+      fill="outline" placeholder="Digite o valor do cupom" value="{{this.cupom?.porcentagem_desconto}}"></ion-input>
   </ion-row>
 
   <ion-row>
-      <ion-input ngModel name="data_validade" type="date" label="Validade do cupom" label-placement="floating" fill="outline"
-      placeholder="Enter text"></ion-input>
+    <ion-input ngModel name="data_validade" type="date" label="Validade do cupom" label-placement="floating"
+      fill="outline" placeholder="Enter text"></ion-input>
   </ion-row>
   <ion-row>
-    <ion-input ngModel name="quantidade" type="number" label="Quantidade de cupons" label-placement="floating" fill="outline"
-      placeholder="Digite a quantidade de cupons" value="{{this.cupom?.quantidade}}"></ion-input>
+    <ion-input ngModel name="quantidade" type="number" label="Quantidade de cupons" label-placement="floating"
+      fill="outline" placeholder="Digite a quantidade de cupons" value="{{this.cupom?.quantidade}}"></ion-input>
   </ion-row>
 
   <ion-row class="input-container">
-    <ion-select mode="md" ngModel name="status" label="Status cupom" required placeholder="Status" label-placement="floating" fill="outline" value="{{this.cupom?.status}}">
+    <ion-select mode="md" ngModel name="status" label="Status cupom" required placeholder="Status"
+      label-placement="floating" fill="outline" value="{{this.cupom?.status}}">
       <ion-select-option value="1">Válido</ion-select-option>
       <ion-select-option value="0">Inválido</ion-select-option>
     </ion-select>
   </ion-row>
 
   <ion-row>
-    <ion-col size=6>
-      <ion-button size="large" type="submit" [routerLink]="['/cupons']" routerDirection="back" expand="block">Voltar</ion-button>
+    <ion-col class="ion-no-padding">
+      <ion-button size="large" type="submit" [routerLink]="['/cupons']" routerDirection="back"
+        expand="block">Voltar</ion-button>
     </ion-col>
-    <ion-col size=6>
-      <ion-button size="large" type="submit" expand="block">{{ (this.editar) ? 'Editar' : 'Cadastrar' }}</ion-button>
+    <ion-col class="ion-no-padding">
+      <ion-button fill="outline" size="large" type="submit" expand="block">{{ (this.editar) ? 'Editar' : 'Cadastrar'
+        }}</ion-button>
     </ion-col>
   </ion-row>
 </form>

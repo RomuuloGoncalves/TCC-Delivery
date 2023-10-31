@@ -12,10 +12,10 @@ import { ToastService } from 'src/app/core/controller/toast.service';
 })
 export class FormCupomComponent  implements OnInit {
 
-  @Input() cupom?: any;
-  @Input() editar?: boolean;
+  @Input() cupom?: Cupom;
+  @Input() editar!: boolean;
 
-  @Output() emitirCupom: any = new EventEmitter
+  @Output() emitirCupom: EventEmitter<Cupom> = new EventEmitter();
 
   @ViewChild('formCupom') private formCupom!: NgForm;
 

@@ -79,4 +79,10 @@ export class CuponsPage implements OnInit {
       this.router.navigate(['/editar-cupom', this.cupomSelecionado?.id]);
     }, 100);
   }
+
+  deleteCupom() {
+    const idCupom = this.cupons.indexOf(this.cupomSelecionado!);
+    this.cupons.splice(idCupom, 1);
+    this.fecharModalCupom();
+  }
 }

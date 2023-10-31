@@ -9,6 +9,7 @@ import { EditarCupomPageRoutingModule } from './editar-cupom-routing.module';
 import { EditarCupomPage } from './editar-cupom.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 import { FormCupomModule } from 'src/app/components/cupons/form-cupom/form-cupom.module';
+import { LoadingModule } from 'src/app/components/common/loading/loading.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { FormCupomModule } from 'src/app/components/cupons/form-cupom/form-cupom
     IonicModule,
     EditarCupomPageRoutingModule,
     HeaderModule,
-    FormCupomModule
+    FormCupomModule,
+    LoadingModule
   ],
   declarations: [EditarCupomPage]
 })

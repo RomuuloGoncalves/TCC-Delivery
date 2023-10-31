@@ -15,17 +15,37 @@ export class ModalCupomComponent  implements OnInit {
   @Input() public isOpen: boolean = false;
   @Output() public fechar: EventEmitter<any> = new EventEmitter();
   @Output() public editar: EventEmitter<any> = new EventEmitter();
+  @Output() public delete: EventEmitter<Cupom> = new EventEmitter();
 
 
   constructor( private Cupom: CuponsService) { }
 
+  public alertDeletarCupom = false;
+
+  public alertButtons = [
+    {
+      text: 'Não',
+      role: 'cancel',
+      handler: () => {
+        this.alertDeletarCupom = false;
+      }
+    },
+    {
+      text: 'Sim',
+      role: 'confirm',
+      handler: () => {
+        this.excluirCupom();
+      },
+    },
+  ];
+
   ngOnInit() {}
 
-  excluirCupom(id_cupom: number){
-    this.Cupom.excluirCupom(id_cupom).subscribe(
-      (response) => {
-        console.log(response)
-        window.location.reload()
+  excluirCupom(){
+    this.Cupom.excluirCupom(this.cupom.id!).subscribe(
+      () => {
+        this.alertDeletarCupom = false;
+        this.delete.emit();
       },
       (error) => {
         console.error(error);
@@ -33,7 +53,7 @@ export class ModalCupomComponent  implements OnInit {
     );
   }
 
-  ehValido(status: any){
-    return !!Number(status)
+  ehValido(status: any) {
+    return !!Number(status);
   }
 }

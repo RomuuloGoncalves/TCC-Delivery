@@ -11,23 +11,28 @@ import { CuponsService } from 'src/app/core/services/cupons.service';
 export class EditarCupomPage implements OnInit {
 
   constructor( private Cupom: CuponsService, private route: ActivatedRoute) { }
+  
   idCupom!: Number;
   cupom!: Cupom;
   data!: any;
+
+  loading: boolean = true;
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.idCupom = params['id'];
     });
-    console.log(this.idCupom)
     this.pegarCupom(Number(this.idCupom))
   }
 
   pegarCupom(idCupom: Number) {
+    this.loading = true;
     this.Cupom.pegarCupomID(idCupom).subscribe(
       (response) => {
-        this.cupom = response
-        this.data = this.cupom.data_validade.split(" ")[0].split("-")
+        this.cupom = response;
+        this.data = this.cupom.data_validade.split(" ")[0].split("-");
+        this.loading = false;
+
       },
       (error) => {
         console.error(error);
