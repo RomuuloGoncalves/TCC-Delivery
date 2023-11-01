@@ -19,11 +19,11 @@
       </ion-row>
     </ion-col>
 
-    <ion-col size="12" sizeMd="3">
+    <ion-col size="12" sizeMd="2">
       <ion-row class="ion-justify-content-center ion-align-items-center">
         <app-contador
           [contador]="this.produto!.quantidade!"
-          [min]="0"
+          [min]="1"
           (change)="this.produto!.quantidade = $event; this.calc.emit()"
           ></app-contador>
       </ion-row>
@@ -35,6 +35,10 @@
           <ion-text class="ion-text-center"><p>R$ {{ this.produto?.subtotal?.toFixed(2)?.replace('.', ',') }}</p></ion-text>
         </ion-col>
       </ion-row>
+    </ion-col>
+
+    <ion-col size="1">
+      <ion-icon name="trash-outline" color="primary" class="remover" (click)="removerProduto()"></ion-icon>
     </ion-col>
   </ion-row>
 </ion-item>

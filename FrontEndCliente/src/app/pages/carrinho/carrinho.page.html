@@ -24,7 +24,7 @@
               </ion-row>
             </ion-col>
 
-            <ion-col size="3">
+            <ion-col size="2">
               <ion-row
                 class="ion-justify-content-center ion-align-items-center"
               >
@@ -39,6 +39,14 @@
                 <ion-text><b>Subtotal</b></ion-text>
               </ion-row>
             </ion-col>
+
+            <ion-col size="1" class="remover">
+              <ion-row
+                class="ion-justify-content-center ion-align-items-center"
+              >
+                <ion-text><b>Remover</b></ion-text>
+              </ion-row>
+            </ion-col>
           </ion-row>
         </ion-item>
 
@@ -46,6 +54,7 @@
           <app-card-carrinho
             [produto]="produto"
             (calc)="this.calcTotal()"
+            (remover)="removerProduto($event)"
           ></app-card-carrinho>
         </ng-container>
       </ion-list>
@@ -73,13 +82,15 @@
                     alt="Cupom"
                   />
                 </ion-col>
-                <ion-col>
-                  <ion-input placeholder="Cupom"></ion-input>
-                </ion-col>
+                <form #formCupom="ngForm" (ngSubmit)="this.resgatarCupom()" method="post">
+                  <ion-col>
+                    <ion-input ngModel placeholder="Cupom" name="nomeCupom"></ion-input>
+                  </ion-col>
+                  <ion-col size="auto">
+                    <ion-button type="submit">Resgatar</ion-button>
+                  </ion-col>
+                </form>
               </ion-row>
-            </ion-col>
-            <ion-col size="auto">
-              <ion-button>Resgatar</ion-button>
             </ion-col>
           </ion-row>
         </ion-col>

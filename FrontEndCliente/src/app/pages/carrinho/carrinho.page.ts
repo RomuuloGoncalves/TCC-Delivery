@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModuleFactory, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Produto } from 'src/app/core/interfaces/produto';
+import { CarrinhoService } from 'src/app/core/services/carrinho.service';
+import { CupomService } from 'src/app/core/services/cupom.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -7,7 +10,7 @@ import { Produto } from 'src/app/core/interfaces/produto';
   styleUrls: ['./carrinho.page.scss'],
 })
 export class CarrinhoPage implements OnInit {
-  constructor() {}
+  constructor(private carrinhoService: CarrinhoService, private cupomService: CupomService) {}
 
   ngOnInit() {
     this.calcTotal();
@@ -19,7 +22,7 @@ export class CarrinhoPage implements OnInit {
 
   produtos: Produto[] = [
     {
-      id_produto: 1,
+      id_produto: 2,
       nome: 'Porções',
       quantidade: 3,
       variacao: {
@@ -57,4 +60,32 @@ export class CarrinhoPage implements OnInit {
 
     this.total = this.subtotal + this.frete;
   }
+
+  removerProduto(e: number) {
+    this.carrinhoService.removerProduto(e).subscribe()
+  }
+
+  @ViewChild('formCupom') private formCupom!: NgForm;
+  cupomNome?: string
+
+  resgatarCupom() {
+    let nome = this.formCupom.form.value.nomeCupom
+
+    this.cupomService.consultarNome(nome).subscribe(
+      // fazer voltar bool
+      (response: any) => {
+        response ? (
+        console.log("Cupom OK", response)
+        ) : (
+        console.log("Cupom não encontrado", response)
+        )
+      },
+      (error: any) => {
+        console.log("Erro", error)
+      }
+    )
+
+  }
+
+
 }
