@@ -129,7 +129,7 @@ class PedidoController extends Controller {
      */
 
     public function index() {
-        $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom', 'Pedido_produtos'])->whereIn('status', ['Em Espera', 'Em Entrega'])->get();
+        $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom', 'pedido_produtos'])->whereIn('status', ['Em Espera', 'Em Entrega'])->get();
         return response()->json($pedido, 200);
     }
 
@@ -140,7 +140,7 @@ class PedidoController extends Controller {
      */
 
     public function historico() {
-        $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom', 'Pedido_produtos'])->whereIn('status', ['Cancelado', 'Pronto'])->get();
+        $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom', 'pedido_produtos'])->whereIn('status', ['Cancelado', 'Pronto'])->get();
         return response()->json($pedido, 200);
     }
 }

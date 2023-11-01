@@ -42,7 +42,7 @@ class PedidoProdutoController extends Controller
         $pedido_produto = PedidoProduto::find($id);
 
         if(!$pedido_produto)
-            return response()->json(['message' => 'Pedido Produto inválida[p'], 422);
+            return response()->json(['message' => 'Pedido Produto inválido'], 422);
 
         $pedido_produto::find($id)->delete();
         return response()->json(['message' => 'Pedido Produto deletado com sucesso'], 204);
