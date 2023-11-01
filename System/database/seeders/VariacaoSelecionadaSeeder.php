@@ -26,5 +26,15 @@ class VariacaoSelecionadaSeeder extends Seeder
                 'cod_variacao' => $faker->randomElement($variacoes),
             ]);
         }
+
+        DB::table('Variacao_selecionadas')->insert([
+            'cod_pedido_produto_grupo_variacoes' => 3,
+            'cod_variacao' => 15,
+        ]);
+
+        DB::table('Variacao_selecionadas')->insert([
+            'cod_pedido_produto_grupo_variacoes' => 4,
+            'cod_variacao' => 37,
+        ]);
     }
 }

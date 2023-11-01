@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CepService } from './cep.service';
+import { CarrinhoService } from './carrinho.service';
 
-describe('CepService', () => {
-  let service: CepService;
+describe('CarrinhoService', () => {
+  let service: CarrinhoService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CepService);
+    service = TestBed.inject(CarrinhoService);
   });
 
   it('should be created', () => {
