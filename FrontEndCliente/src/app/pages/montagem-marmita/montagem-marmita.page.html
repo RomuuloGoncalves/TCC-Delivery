@@ -75,26 +75,26 @@
       <ion-col size="11" sizeMd="9" class="container-cards-ingredientes">
         <swiper-container #swiper [loop]="false" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints">
             <ng-container *ngFor="let ingrediente of this.ingredientes.grupo_variacao; let idIngrediente = index">
-              <ng-container *ngIf="ingrediente.variacao && ingrediente.variacao.length !== 0">
+              <ng-container *ngIf="ingrediente.variacao!.length">
                 <swiper-slide>
                   <ion-card class="selecionar-ingredientes">
                     <ion-card-header>
                       <ion-card-title class="ion-text-capitalize">{{ ingrediente.tipo }}</ion-card-title>
                       <ion-card-subtitle>Selecione o tipo de {{ ingrediente.tipo.toLocaleLowerCase()}} desejado</ion-card-subtitle>
-                      <ion-card-subtitle *ngIf="this.ingrediente.qtdd_max">
-                        <ion-text color="danger">
-                          Máximo de {{ ingrediente.qtdd_max }} opções!
-                        </ion-text>
-                      </ion-card-subtitle>
+                      <ion-text color="danger">
+                        Minímo de {{ ingrediente.quantidade_variacoes_min }}
+                        <ng-container *ngIf="this.ingrediente.quantidade_variacoes_max">
+                          e máximo de {{ ingrediente.quantidade_variacoes_max }}
+                        </ng-container>
+                        opcões!
+                      </ion-text>
                     </ion-card-header>
 
                     <ion-card-content>
                       <ion-list>
                         <ion-item *ngFor="let variacao of this.ingrediente.variacao; let idVariacao = index">
                           <ion-checkbox
-                          [disabled]="ingrediente.qtdd_max !== undefined
-                          && this.marmita[idIngrediente].variacao!.length >= ingrediente.qtdd_max
-                          && !this.ingrediente.variacao![idVariacao]!.selecionado"
+                          [disabled]="this.ehVariacaoDisabled(ingrediente, variacao)"
                           (ionChange)="selecionarIngrediente(idIngrediente, idVariacao, $event); this.calcPrecoMarmita()">{{ variacao.nome }}</ion-checkbox>
                         </ion-item>
                       </ion-list>

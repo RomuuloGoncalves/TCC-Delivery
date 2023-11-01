@@ -3,7 +3,6 @@ import { Variacao } from 'src/app/core/interfaces/variacao';
 import { GrupoVariacoes } from 'src/app/core/interfaces/grupo-variacoes';
 
 import Swiper from 'swiper';
-import { PassarMarmitaService } from 'src/app/core/services/passar-marmita.service';
 import { ProdutoService } from 'src/app/core/services/produto.service';
 import { Produto } from 'src/app/core/interfaces/produto';
 
@@ -25,10 +24,7 @@ export class MontagemMarmitaPage implements OnInit {
 
   ingredientes!: Produto;
 
-  constructor(
-    private passarMarmita: PassarMarmitaService,
-    private produtoService: ProdutoService
-  ) { }
+  constructor(private produtoService: ProdutoService) {}
 
   ngOnInit() {
     this.atualizarMarmita();
@@ -39,7 +35,6 @@ export class MontagemMarmitaPage implements OnInit {
   loading: boolean = true;
 
   private carregarMarmita() {
-    // _______________________ trocar por 6 (SEIS) depois __________________________
     this.produtoService.pegarProduto(1).subscribe(
       (response: Produto) => {
         this.marmitaPersonalizavel = response;
@@ -53,7 +48,6 @@ export class MontagemMarmitaPage implements OnInit {
   }
 
   selecionarIngrediente(idIngrediente: number, idVariacao: number, event: any) {
-
     if (this.ingredientes && this.ingredientes.grupo_variacao) {
       const grupo = this.ingredientes.grupo_variacao[idIngrediente];
       if (grupo && grupo.variacao) {
@@ -81,26 +75,41 @@ export class MontagemMarmitaPage implements OnInit {
         }
       );
     }
-    console.log("marmita",this.marmita);
   }
 
   calcPrecoMarmita() {
-    this.precoMarmita = 0
-    this.marmita.forEach(grupoVariacao => {
-      console.log(grupoVariacao)
-      grupoVariacao.variacao?.forEach(variacao => {
-        if (variacao.valor_inicial)
-          this.precoMarmita += variacao.valor_inicial
-        console.log("valor",variacao.valor_inicial)
+    this.precoMarmita = 0;
+    this.marmita.forEach((grupoVariacao) => {
+      grupoVariacao.variacao?.forEach((variacao) => {
+        if (variacao.valor_inicial) this.precoMarmita += variacao.valor_inicial;
       });
     });
-
 
     this.calcTotal();
   }
 
   calcTotal() {
     this.total = this.precoMarmita * this.qtddMarmita;
+  }
+
+  ehVariacaoDisabled(ingrediente: GrupoVariacoes, variacao: Variacao) {
+    if (!ingrediente.quantidade_variacoes_max) return false;
+
+    const idIngrediente = this.marmita.findIndex(
+      (ig: GrupoVariacoes) => ingrediente.id === ig.id
+    );
+
+    if (idIngrediente <= -1) return false;
+
+    const ingredienteMarmita = this.marmita[idIngrediente];
+
+    if (!ingredienteMarmita.variacao! || ingredienteMarmita.variacao!.indexOf(variacao) >= 0)
+      return false;
+
+    return (
+      ingredienteMarmita.variacao!.length >=
+      ingrediente.quantidade_variacoes_max
+    );
   }
 
   breakpoints = {
