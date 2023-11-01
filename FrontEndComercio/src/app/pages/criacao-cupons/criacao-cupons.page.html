@@ -1,11 +1,13 @@
 <ion-content [fullscreen]="true">
   <app-header></app-header>
+  <ion-row class="ion-justify-content-between ion-align-items-center ion-margin">
+    <ion-col size="12" sizeMd="auto">
+      <ion-button fill="clear" [routerLink]="['/cupons']" routerDirection="back"><ion-icon size="large" name="arrow-back-outline"></ion-icon></ion-button>
+    </ion-col>
+  </ion-row>
   <ion-row class="ion-justify-content-center">
     <ion-col size="6">
-      <ion-row class="ion-justify-content-center">
-        <h1>Criar Cupom</h1>
-      </ion-row>
-      <app-form-cupom [cupom]="this.cupom!" [editar]="false"></app-form-cupom>
+      <app-form-cupom [cupom]="this.cupom"></app-form-cupom>
     </ion-col>
   </ion-row>
 </ion-content>

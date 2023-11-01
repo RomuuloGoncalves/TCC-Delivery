@@ -6,6 +6,6 @@ export interface GrupoVariacoes {
   id_produto?: number;
   tipo: string;
   variacao?: Variacao[];
-  qtdd_min?: number;
-  qtdd_max?: number;
+  quantidade_variacoes_min?: number;
+  quantidade_variacoes_max?: number;
 }
