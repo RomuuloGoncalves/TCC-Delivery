@@ -95,7 +95,11 @@
                         <ion-item *ngFor="let variacao of this.ingrediente.variacao; let idVariacao = index">
                           <ion-checkbox
                           [disabled]="this.ehVariacaoDisabled(ingrediente, variacao)"
-                          (ionChange)="selecionarIngrediente(idIngrediente, idVariacao, $event); this.calcPrecoMarmita()">{{ variacao.nome }}</ion-checkbox>
+                          (ionChange)="selecionarIngrediente(idIngrediente, idVariacao, $event); this.calcPrecoMarmita()">
+
+                          <b>{{ variacao.nome }}</b> por R$
+                          {{ variacao.valor_inicial?.toFixed(2)?.replace('.', ',') }}
+                        </ion-checkbox>
                         </ion-item>
                       </ion-list>
                     </ion-card-content>

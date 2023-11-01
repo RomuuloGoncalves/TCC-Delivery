@@ -67,11 +67,12 @@ export class MontagemMarmitaPage implements OnInit {
           ingrediente.variacao!.forEach((variacao: Variacao) => {
             variacao.selecionado ? variacoesSelecionadas.push(variacao) : null;
           });
-          this.marmita.push({
-            id: ingrediente.id,
-            tipo: ingrediente.tipo,
-            variacao: variacoesSelecionadas,
-          });
+          if (variacoesSelecionadas.length)
+            this.marmita.push({
+              id: ingrediente.id,
+              tipo: ingrediente.tipo,
+              variacao: variacoesSelecionadas,
+            });
         }
       );
     }
@@ -96,15 +97,15 @@ export class MontagemMarmitaPage implements OnInit {
     if (!ingrediente.quantidade_variacoes_max) return false;
 
     const idIngrediente = this.marmita.findIndex(
-      (ig: GrupoVariacoes) => ingrediente.id === ig.id
+      (ingredienteMarmita: GrupoVariacoes) =>
+        ingrediente.id === ingredienteMarmita.id
     );
 
     if (idIngrediente <= -1) return false;
 
     const ingredienteMarmita = this.marmita[idIngrediente];
 
-    if (!ingredienteMarmita.variacao! || ingredienteMarmita.variacao!.indexOf(variacao) >= 0)
-      return false;
+    if (ingredienteMarmita.variacao!.indexOf(variacao) >= 0) return false;
 
     return (
       ingredienteMarmita.variacao!.length >=
