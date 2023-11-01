@@ -16,6 +16,7 @@ export class BtnLoadingComponent  implements OnInit {
   @Input() public color: string = 'light';
   @Input() public colorLoading: string = 'light';
   @Input() public height: number = 60;
+  @Input() public fill: string = 'solid'
 
   ngOnInit() {}
 
