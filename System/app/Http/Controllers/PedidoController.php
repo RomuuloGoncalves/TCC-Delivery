@@ -86,7 +86,7 @@ class PedidoController extends Controller {
      */
 
     public function showCarrinho(int $id) {
-        $pedido = Pedido::with(['pedido_produtos.pedido_produto_grupo_variacoes'])->where('cod_cliente', $id)->where('status', 'Carrinho')->get();
+        $pedido = Pedido::with(['pedido_produtos.variacoes_selecionadas'])->where('cod_cliente', $id)->where('status', 'Carrinho')->get();
 
         return response()->json($pedido, 200);
     }
@@ -97,8 +97,8 @@ class PedidoController extends Controller {
      * @return Pedido
      */
 
-     public function showPedidosCliente(int $id) {
-        $pedido = Pedido::with(['pedido_produtos.pedido_produto_grupo_variacoes', 'endereco'])->where('cod_cliente', $id)->where('status', ['Em Espera', 'Em Entrega', 'Cancelado', 'Pronto'])->get();
+    public function showPedidosCliente(int $id) {
+        $pedido = Pedido::with(['pedido_produtos.variacoes_selecionadas', 'endereco'])->where('cod_cliente', $id)->where('status', ['Em Espera', 'Em Entrega', 'Cancelado', 'Pronto'])->get();
 
         return response()->json($pedido, 200);
     }
