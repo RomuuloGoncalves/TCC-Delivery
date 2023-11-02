@@ -155,15 +155,17 @@ $router->group(['prefix' => 'grupo-variacao'], function () use ($router) {
 
 /*
 |--------------------------------------------------------------------------
-| Pedido Produto Grupo Varicao Routes
+| Pedido Produto Routes
 |--------------------------------------------------------------------------
 */
 
-$router->group(['prefix' => 'ped-prod-grupo-var'], function () use ($router) {
-    $router->post('/cadastrar', 'PedidoProdutoGrupoVariacaoController@store');
-    $router->get('/', 'PedidoProdutoGrupoVariacaoController@index');
-    $router->put('/editar', 'PedidoProdutoGrupoVariacaoController@update');
-    $router->get('/{id}', 'PedidoProdutoGrupoVariacaoController@show');
+$router->group(['prefix' => 'pedido-produto'], function () use ($router) {
+    $router->post('/cadastrar', 'PedidoProdutoController@store');
+    $router->get('/', 'PedidoProdutoController@index');
+    $router->put('/editar', 'PedidoProdutoController@update');
+    $router->get('/{id}', 'PedidoProdutoController@show');
+    $router->delete('/excluir/{id}', 'PedidoProdutoController@destroy');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -172,21 +174,10 @@ $router->group(['prefix' => 'ped-prod-grupo-var'], function () use ($router) {
 */
 
     $router->group(['prefix' => 'variacao-selecionada'], function () use ($router) {
-        $router->post('/cadastrar', 'PedidoProdutoGrupoVariacaoController@storeVariacaoSelecionada');
-        $router->put('/editar', 'PedidoProdutoGrupoVariacaoController@updateVariacaoSelecionada');
-        $router->delete('/excluir/{id}', 'PedidoProdutoGrupoVariacaoController@destroyVariacaoSelecionada');
+        $router->post('/cadastrar', 'PedidoProdutoController@storeVariacaoSelecionada');
+        $router->put('/editar', 'PedidoProdutoController@updateVariacaoSelecionada');
+        $router->delete('/excluir/{id}', 'PedidoProdutoController@destroyVariacaoSelecionada');
     });
-});
-
-/*
-|--------------------------------------------------------------------------
-| Pedido Produto Routes
-|--------------------------------------------------------------------------
-*/
-
-$router->group(['prefix' => 'pedido-produto'], function () use ($router) {
-    $router->post('/cadastrar', 'PedidoProdutoController@store');
-    $router->delete('/excluir/{id}', 'PedidoProdutoController@destroy');
 });
 
 /*

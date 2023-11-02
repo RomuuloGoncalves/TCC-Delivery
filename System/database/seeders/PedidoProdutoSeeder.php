@@ -13,7 +13,7 @@ class PedidoProdutoSeeder extends Seeder
     {
         $faker = Factory::create();
         // $pedidos = DB::table('Pedidos')->pluck('id')->toArray();
-        $produtos = DB::table('Produtos')->pluck('id')->toArray();
+        $produtos = DB::table('Produtos')->where('cod_categoria', 1)->orWhere('cod_categoria', 2)->get()->pluck('id')->toArray();
 
         for ($i = 1; $i <= 10; $i++) {
             DB::table('Pedido_produtos')->insert([
@@ -28,6 +28,7 @@ class PedidoProdutoSeeder extends Seeder
         }
 
         DB::table('Pedido_produtos')->insert([
+            'quantidade' => 2,
             'cod_pedido' => 11,
             'cod_produto' => 2,
         ]);

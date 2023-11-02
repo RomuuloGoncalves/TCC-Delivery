@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class VariacaoSelecionada extends Model
 {
     protected $fillable = [
-        'cod_pedido_produto_grupo_variacoes',
+        'cod_pedido_produto',
         'cod_variacao'
     ];
 
@@ -16,7 +16,7 @@ class VariacaoSelecionada extends Model
 
     public function pedido_produto_grupo_variacao(): BelongsTo
     {
-        return $this->belongsTo(PedidoProdutoGrupoVariacao::class, 'cod_pedido_produto_grupo_variacoes');
+        return $this->belongsTo(PedidoProduto::class, 'cod_pedido_produto');
     }
 
     public function variacao(): BelongsTo

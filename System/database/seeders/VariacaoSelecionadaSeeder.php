@@ -6,6 +6,7 @@ use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\PedidoProduto;
 
 class VariacaoSelecionadaSeeder extends Seeder
 {
@@ -17,23 +18,40 @@ class VariacaoSelecionadaSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
-        $pedido_produto_grupo_variacoes = DB::table('Pedido_produto_grupo_variacoes')->pluck('id')->toArray();
-        $variacoes = DB::table('Variacoes')->pluck('id')->toArray();
+        // $pedido_produto = DB::table('Pedido_produtos')->pluck('id')->toArray();
+
 
         for ($i = 1; $i <= 10; $i++) {
+            $pedidoProduto = PedidoProduto::with(['produto.grupo_variacao.variacao'])
+                ->where('id', $i)
+                ->first();
+
+            $id_variacoes = [];
+
+            foreach ($pedidoProduto->produto->grupo_variacao as $item) {
+                foreach ($item->variacao as $variacao) {
+                    $id_variacoes[] = $variacao->id;
+                }
+            }
+
             DB::table('Variacao_selecionadas')->insert([
-                'cod_pedido_produto_grupo_variacoes' => $faker->randomElement($pedido_produto_grupo_variacoes),
-                'cod_variacao' => $faker->randomElement($variacoes),
+                'cod_pedido_produto' => $i,
+                'cod_variacao' => $faker->randomElement($id_variacoes),
+            ]);
+
+            DB::table('Variacao_selecionadas')->insert([
+                'cod_pedido_produto' => $i,
+                'cod_variacao' => $faker->randomElement($id_variacoes),
             ]);
         }
 
         DB::table('Variacao_selecionadas')->insert([
-            'cod_pedido_produto_grupo_variacoes' => 3,
+            'cod_pedido_produto' => 21,
             'cod_variacao' => 15,
         ]);
 
         DB::table('Variacao_selecionadas')->insert([
-            'cod_pedido_produto_grupo_variacoes' => 4,
+            'cod_pedido_produto' => 22,
             'cod_variacao' => 37,
         ]);
     }

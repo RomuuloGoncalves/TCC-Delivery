@@ -145,7 +145,7 @@ class VariacaoSeeder extends Seeder
             'cod_grupo_variacoes' => 5,
         ]);
 
-        for ($i=6 ;$i < 15; $i++) {
+        for ($i=6 ;$i <= 15; $i++) {
             if($i < 10) {
                 DB::table('Variacoes')->insert([
                     'nome' => 'P',

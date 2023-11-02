@@ -1,12 +1,12 @@
+import { PedidoProduto } from "./pedido-produto";
 import { Variacao } from "./variacao";
-import { PedidoProdutoGrupoVariacoes } from "./ped-prod-grupo-var";
 
 
 export interface VariacaoSelecionada {
   id_variacao_selecionada: number;
-  id_pedido_produto_grupo_variacoes: number;
-  id_variacao: number;
+  cod_pedido_produto: number;
+  cod_variacao: number;
 
-  ped_prod_grupo_var?: PedidoProdutoGrupoVariacoes;
+  ped_prod_grupo_var?: PedidoProduto;
   variacao?: Variacao;
 }
