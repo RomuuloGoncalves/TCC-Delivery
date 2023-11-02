@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cupom;
+use App\Models\Pedido;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -62,10 +63,15 @@ class CupomController extends Controller {
      */
 
     public function usar(Request $request) {
-        $cupom = Cupom::find($request->input('id'));
+        $id = $request->input('id');
+        $cod_cliente = $request->input('cod_cliente');
+        $cupom = Cupom::find($id);
 
         if($cupom == null or $cupom->status == 0)
             return response()->json(['mensage' => 'Cupom Inválido'], 404);
+
+        if(Pedido::where('cod_cliente', $cod_cliente)->where('cod_cupom', $id)->get() == [])
+            return response()->json(['mensage' => 'Este Cupom já foi utilizado'], 404);
 
         if($cupom->quantidade !== null) {
             $cupom->quantidade === 0
@@ -107,7 +113,7 @@ class CupomController extends Controller {
         foreach($atributos as $atributo) {
             $request->input($atributo) !== null
                 ? $cupom->$atributo = $request->input($atributo)
-                : null;
+                : null; 
         }
         $cupom->save();
 
@@ -142,4 +148,14 @@ class CupomController extends Controller {
         $cupom->delete();
         return response()->json(['message' => 'Cupom deletado com sucesso'], 204);
     }
+
+    public function pegarCupomNome(string $nome) {
+
+        if(!$cupom = Cupom::find($nome))
+        return response()->json(['message' => 'Cupom não encontrado'], 404);
+
+        return $cupom;
+
+    }
+
 }

@@ -27,6 +27,8 @@ export class FormCupomComponent  implements OnInit {
 
   erros: any = {};
   loading: boolean = false;
+  loadingBtn: boolean = false;
+
 
   enviarCupom() {
     const data = this.formCupom.form.value;
@@ -41,16 +43,18 @@ export class FormCupomComponent  implements OnInit {
   }
 
   adicionar(data:any){
+    this.loadingBtn = true;
     data.porcentagem_desconto = Number(data.porcentagem_desconto).toFixed(2)
     this.Cupom.adicionarCupom(data).subscribe(
       (response: any) => {
         if (response.created_at) {
+          this.formCupom.form.reset();
           const tipo = 'sucesso';
           const mensagem =  'Cadastro realizado com sucesso';
 
           this.Toast.mostrarToast(tipo, mensagem);
         }
-        this.loading = false;
+        this.loadingBtn = false;
       },
       (badReponse: HttpErrorResponse) => {
         const error = Object.entries(badReponse.error);

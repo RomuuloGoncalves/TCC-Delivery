@@ -56,13 +56,14 @@ $router->group(['prefix' => 'funcionario'], function () use ($router) {
 */
 
 $router->group(['prefix' => 'cupom'], function () use ($router) {
-    $router->group(['middleware' => 'authCliente'], function () use ($router) {
+    // $router->group(['middleware' => 'authCliente'], function () use ($router) {
         $router->post('/usar', 'CupomController@usar');
-    });
+    // });
     $router->post('/cadastrar', 'CupomController@store');
     $router->get('/', 'CupomController@index');
     $router->put('/editar', 'CupomController@update');
     $router->get('/{id}', 'CupomController@show');
+    $router->get('/nome', 'CategoriaController@pegarCupomNome');
     $router->delete('/excluir/{id}', 'CupomController@destroy');
 });
 
@@ -93,6 +94,9 @@ $router->group(['prefix' => 'pedido'], function () use ($router) {
     $router->get('/historico', 'PedidoController@historico');
     $router->post('/editar', 'PedidoController@update');
     $router->get('/{id}', 'PedidoController@show');
+    $router->get('/carrinho/{id}', 'PedidoController@showCarrinho');
+    $router->get('/pedidos/{id}', 'PedidoController@showPedidosCliente');
+
 });
 
 /*
@@ -158,8 +162,8 @@ $router->group(['prefix' => 'grupo-variacao'], function () use ($router) {
 $router->group(['prefix' => 'ped-prod-grupo-var'], function () use ($router) {
     $router->post('/cadastrar', 'PedidoProdutoGrupoVariacaoController@store');
     $router->get('/', 'PedidoProdutoGrupoVariacaoController@index');
-    $router->get('/{id}', 'PedidoProdutoGrupoVariacaoController@show');
     $router->put('/editar', 'PedidoProdutoGrupoVariacaoController@update');
+    $router->get('/{id}', 'PedidoProdutoGrupoVariacaoController@show');
 
 /*
 |--------------------------------------------------------------------------

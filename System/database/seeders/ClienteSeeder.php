@@ -13,7 +13,7 @@ class ClienteSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
-        
+
 
         // for ($i = 1; $i <= 10; $i++) {
         //     DB::table('Clientes')->insert([
@@ -157,6 +157,13 @@ class ClienteSeeder extends Seeder
             'email' => 'eduardo.amaral@example.com',
             'password' => Hash::make('senhatrue'),
             'telefone' => '5556667777',
+        ]);
+
+        DB::table('Clientes')->insert([
+            'nome' => 'Teste',
+            'email' => 'teste@gmail.com',
+            'password' => Hash::make('12345678'),
+            'telefone' => '15996532805',
         ]);
     }
 }

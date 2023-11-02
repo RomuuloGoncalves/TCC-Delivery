@@ -9,7 +9,7 @@ export class CupomService {
   constructor(private Server: ServerService) { }
   
   consultarNome(nome: string) {
-    return this.Server.get(`/cupom/nome/${nome}`)
+    return this.Server.get('/cupom/nome', nome)
   }
 
 }
