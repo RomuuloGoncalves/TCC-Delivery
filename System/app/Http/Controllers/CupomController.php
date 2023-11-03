@@ -113,7 +113,7 @@ class CupomController extends Controller {
         foreach($atributos as $atributo) {
             $request->input($atributo) !== null
                 ? $cupom->$atributo = $request->input($atributo)
-                : null; 
+                : null;
         }
         $cupom->save();
 
@@ -149,13 +149,16 @@ class CupomController extends Controller {
         return response()->json(['message' => 'Cupom deletado com sucesso'], 204);
     }
 
-    public function pegarCupomNome(string $nome) {
+    public function pegarCupomNome(Request $request) {
+        $cod_cliente = $request->input('cod_cliente');
+        $cupom = Cupom::where('nome', $request->input('nome'))->first();
 
-        if(!$cupom = Cupom::find($nome))
-        return response()->json(['message' => 'Cupom não encontrado'], 404);
+        if($cupom == null or $cupom->status == 0)
+            return response()->json(['mensage' => 'Cupom Inválido'], 404);
+
+        if(Pedido::where('cod_cliente', $cod_cliente)->where('cod_cupom', $cupom->id)->get() == [])
+            return response()->json(['mensage' => 'Este Cupom já foi utilizado'], 404);
 
         return $cupom;
-
     }
-
 }

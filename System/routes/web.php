@@ -62,8 +62,8 @@ $router->group(['prefix' => 'cupom'], function () use ($router) {
     $router->post('/cadastrar', 'CupomController@store');
     $router->get('/', 'CupomController@index');
     $router->put('/editar', 'CupomController@update');
+    $router->post('/info', 'CupomController@pegarCupomNome');
     $router->get('/{id}', 'CupomController@show');
-    $router->get('/nome', 'CategoriaController@pegarCupomNome');
     $router->delete('/excluir/{id}', 'CupomController@destroy');
 });
 
@@ -165,7 +165,6 @@ $router->group(['prefix' => 'pedido-produto'], function () use ($router) {
     $router->put('/editar', 'PedidoProdutoController@update');
     $router->get('/{id}', 'PedidoProdutoController@show');
     $router->delete('/excluir/{id}', 'PedidoProdutoController@destroy');
-
 
 /*
 |--------------------------------------------------------------------------
