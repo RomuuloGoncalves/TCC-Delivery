@@ -34,9 +34,5 @@ class PedidoSeeder extends Seeder
                 'cod_cupom' => $faker->randomElement($cupons),
             ]);
         }
-
-        DB::table('Pedidos')->insert([
-            'cod_cliente' => 20,
-        ]);
     }
 }

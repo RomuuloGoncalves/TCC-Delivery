@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\PedidoProduto;
+use App\Models\VariacaoSelecionada;
+use App\Models\Pedido;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -25,9 +28,17 @@ class PedidoProdutoController extends Controller
         if ($validacao->fails())
             return response()->json($validacao->errors(), 422);
 
+        if (!$cliente = ClienteController::getAuthCliente()) {
+            return response()->json(["Cliente Inválido", 404]);
+        }
+
+        if(!$pedido = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Em Carrinho')->first()) {
+            $pedido = PedidoController::store();
+        }
+
         $pedido_produto = PedidoProduto::create([
             'quantidade' => $request->input('quantidade'),
-            'cod_pedido' => $request->input('cod_pedido'),
+            'cod_pedido' => $pedido->id,
             'cod_produto' => $request->input('cod_produto')
         ]);
 
@@ -95,13 +106,13 @@ class PedidoProdutoController extends Controller
      */
 
     public function destroy(int $id) {
-        $pedido_produto = VariacaoSelecionada::find($id);
+        $pedido_produto = PedidoProduto::find($id);
 
         if(!$pedido_produto)
-            return response()->json(['message' => 'Variação Selecionada inválida'], 422);
+            return response()->json(['message' => 'Pedido Produto inválido'], 422);
 
         $pedido_produto::delete();
-        return response()->json(['message' => 'Variacao Selecionada deletada com sucesso'], 204);
+        return response()->json(['message' => 'Pedido Produto deletado com sucesso'], 204);
     }
 
     /**

@@ -16,21 +16,16 @@ class PedidoController extends Controller {
     /**
      * store
      *
-     * @return void
+     * @return Pedido
      */
 
-    public function store(Request $request) {
-        $regras = [
-            'cod_cliente' => ['required', 'integer', 'max_digits:30'],
-        ];
-
-        $validacao = Validator::make($request->all(), $regras);
-
-        if ($validacao->fails())
-            return response()->json($validacao->errors(), 422);
+    static function store() {
+        if (!$cliente = ClienteController::getAuthCliente()) {
+            return response()->json(['Cliente Inválido'], 404);
+        }
 
         $pedido = Pedido::create([
-            'cod_cliente' => $request->input('cod_cliente'),
+            'cod_cliente' => $cliente->id,
         ]);
 
         return response()->json($pedido, 201);
@@ -42,7 +37,7 @@ class PedidoController extends Controller {
      * @return Pedido
      */
 
-     public function update(Request $request) {
+    public function update(Request $request) {
         $regras = [
             'id' => ['required', 'integer', 'max_digits:30'],
             'valor_total' => ['nullable', 'decimal:2', 'min_digit:1', 'max_digits:999999999'],
@@ -51,8 +46,8 @@ class PedidoController extends Controller {
             'data_entrega' => ['nullable', 'date'],
             'data_pagamento' => ['nullable', 'date'],
             'endereco_pedido' => ['nullable', 'json'],
-            'status' => ['nullable', new Enum(['Pronto', 'Em Entrega', 'Cancelado', 'Em Espera', 'Carrinho'])],
-            'forma_pagamento' => ['nullable', new Enum('Crédito', 'Dinheiro', 'Pix', 'Débito')],
+            'status' => ['nullable', 'in:Pronto, Em Entrega, Cancelado, Em Espera, Carrinho'],
+            'forma_pagamento' => ['nullable', 'in:Crédito, Dinheiro, Pix, Débito'],
             'cod_funcionario' => ['nullable', 'integer', 'max_digits:30'],
             'cod_endereco' => ['nullable', 'integer', 'max_digits:30'],
             'cod_cupom' => ['nullable', 'integer', 'max_digits:30'],
