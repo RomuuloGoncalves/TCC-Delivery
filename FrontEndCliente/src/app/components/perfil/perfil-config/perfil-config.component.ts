@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastService } from 'src/app/core/controller/toast.service';
 import { Cliente } from 'src/app/core/interfaces/cliente';
 import { ClienteService } from 'src/app/core/services/cliente.service';
 
@@ -9,69 +10,48 @@ import { ClienteService } from 'src/app/core/services/cliente.service';
   templateUrl: './perfil-config.component.html',
   styleUrls: ['./perfil-config.component.scss'],
 })
-export class PerfilConfigComponent  implements OnInit {
-
+export class PerfilConfigComponent implements OnInit {
   @ViewChild('editarForm') private editarForm!: NgForm;
 
-  @Input() public cliente!: any;
+  @Input() public cliente!: Cliente;
+  estaEditando: boolean = false;
 
-  constructor(private Cliente: ClienteService) { }
+  constructor(private Cliente: ClienteService, private Toast: ToastService) {}
 
-  ngOnInit() {
-    // this.btnChange('edit');
-    console.log(this.cliente);
-  }
+  ngOnInit() {}
 
   erros: any = {};
-  displayInfo = 'listview';
-  displayEdit = 'listview';
-
-  dados = {
-    nome: '',
-    email: '',
-    telefone: '',
-  };
-
-  // public btnChange(tipo: string){
-  //   if (tipo == 'edit') {
-  //     this.displayInfo='none';
-  //     this.displayEdit='flex';
-  //   } else {
-  //     this.displayInfo='flex';
-  //     this.displayEdit='none';
-  //   }
-  // }
+  loading: boolean = false;
 
   public editar() {
-    const cliente = this.dados;
-    console.log(cliente);
-    const data = {
-      id: this.cliente.id,
-      nome: this.dados.nome,
-      email: this.dados.email,
-      telefone: this.dados.telefone,
-    }
-
-    this.Cliente.editar(data).subscribe(
+    this.loading = true;
+    const cliente = this.editarForm.form.value;
+    this.Cliente.editar(cliente).subscribe(
       (response: Cliente) => {
         this.erros = {};
-        console.log(response)
-        this.Cliente.infos().subscribe(
-          (response: Cliente) => {
-            this.cliente = response;
-            this.editarForm.resetForm();
-            window.location.reload();
-          },
-          (badResponde: HttpErrorResponse) => {
-            console.log(badResponde);
-          }
-        )
+        this.Toast.mostrarToast('sucesso', 'Perfil editado com sucesso!');
+        this.cliente = response;
+        this.resetForm();
+        this.loading = false;
       },
       (badReponse: HttpErrorResponse) => {
         const error = Object.entries(badReponse.error);
         this.erros = {};
         for (const [chave, valor] of error) this.erros[chave] = valor;
+        this.loading = false;
       }
-    )
+    );
+  }
+
+  public changeEditar(e: boolean) {
+    if (!e) this.resetForm();
+    this.estaEditando = e;
+  }
+
+  public resetForm() {
+    this.erros = {};
+    this.editarForm.form.controls['nome'].setValue(this.cliente.nome);
+    this.editarForm.form.controls['telefone'].setValue(this.cliente.telefone);
+    this.editarForm.form.controls['email'].setValue(this.cliente.email);
   }
 }

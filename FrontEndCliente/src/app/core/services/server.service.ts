@@ -9,11 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class ServerService {
   constructor(private http: HttpClient, private Cookie: CookieService) {}
 
-<<<<<<< HEAD
-  private url: string = 'https://super-cod-9vvjwwggp66hpq6j-8000.app.github.dev/';
-=======
-  private url: string = 'https://cautious-meme-w6w999p5693gpgq-8000.app.github.dev';
->>>>>>> bd9ac706c186f5fee3985dd130b9be50fa0e5660
+  private url: string = 'http://127.0.0.1:8000';
 
   public post(path: string, data: any | null, url: string = this.url): Observable<any> {
     const headers = new HttpHeaders({

@@ -1,68 +1,55 @@
-
-
-<!-- <form #editarForm="ngForm">
-  <ion-input [(ngModel)]="this.cliente.nome" name="nome" label="Nome" type="text"></ion-input>
-  <ion-input [(ngModel)]="this.cliente.email" name="email" label="Email" type="email"></ion-input>
-  <ion-input [(ngModel)]="this.cliente.telefone" name="telefone" label="Telefone" type="text"></ion-input>
-  <ion-input [(ngModel)]="this.cliente.senha" name="telefone" label="Telefone" type="text"></ion-input>
-  <ion-input [(ngModel)]="this.cliente.senha" name="telefone" label="Telefone" type="text"></ion-input>
-</form> -->
-
 <ion-row class="page">
   <ion-col size="12">
     <ion-row class="page__header ion-justify-content-between">
       <ion-col size="auto" class="page__header__title">
         <ion-label>Perfil</ion-label>
       </ion-col>
-      <!-- <ion-col [ngStyle]="{'display': displayInfo}" (click)="btnChange('info')" size="auto">
-        <img class="page__header__icon" src="../../../../assets/imgs/perfil-icons/info.svg" alt="Informações">
-      </ion-col> -->
-      <!-- [ngStyle]="{'display': displayEdit}" (click)="btnChange('edit')"  -->
-      <ion-col size="auto">
-        <img class="page__header__icon" src="../../../../assets/imgs/perfil-icons/edit.svg" alt="editar">
+      <ion-col [class.ion-hide]="this.estaEditando" (click)="this.changeEditar(true)" size="auto">
+        <img class="page__header__icon" src="../../../../assets/imgs/perfil-icons/edit.svg" alt="listar">
+      </ion-col>
+
+      <ion-col [class.ion-hide]="!this.estaEditando" (click)="this.changeEditar(false)" size="auto">
+        <img class="page__header__icon" src="../../../../assets/imgs/perfil-icons/add.svg" alt="adicionar">
       </ion-col>
     </ion-row>
 
     <ion-row class="page_content ion-justify-content-center">
       <ion-col size="12">
-        <ion-row [ngStyle]="{'display': displayEdit}" class="page__content__info ion-justify-content-center ion-align-items-start">
-          <ion-col size="11">
-        
-          </ion-col>
-        </ion-row>
-      </ion-col>
-
-      <ion-row [ngStyle]="{'display': displayInfo}" class="page__content__form ion-justify-content-center">
-        <ion-col size="11">
-          <ion-row class="page__content__form__title">
-            <ion-label>
-              Editar
-            </ion-label>
-          </ion-row>
-          <ion-row class="page__content__form__description ion-margin">
-            <ion-text class="erro" color="warning">
-              <h6>*Caso não queira alterar o campo, deixe-o em branco no formulário.</h6>
-            </ion-text>
-          </ion-row>
-          <form #editarForm="ngForm" (ngSubmit)="this.editar()">
-            <ion-input fill='outline' [(ngModel)]="dados.nome" name="nome" label="Nome:" type="text"></ion-input>
+        <form #editarForm="ngForm" (ngSubmit)="this.editar()">
+          <ion-row class="input-container">
+            <ion-input [readonly]="!this.estaEditando" [ngModel]="this.cliente.nome" required name="nome" helperText=" "
+              label="Nome" type="text"></ion-input>
             <ion-text class="erro" color="danger">{{ this.erros.nome }}</ion-text>
-
-            <ion-input fill='outline' [(ngModel)]="dados.email" name="email" label="Email:" type="email"></ion-input>
+          </ion-row>
+          <ion-row class="input-container">
+            <ion-input [readonly]="!this.estaEditando" [ngModel]="this.cliente.email" required name="email"
+              helperText=" " label="Email" type="email"></ion-input>
             <ion-text class="erro" color="danger">{{ this.erros.email }}</ion-text>
-
-            <ion-input fill='outline' [(ngModel)]="dados.telefone" name="telefone" label="Telefone:" type="text"></ion-input>
+          </ion-row>
+          <ion-row class="input-container">
+            <ion-input [readonly]="!this.estaEditando" [ngModel]="this.cliente.telefone" required name="telefone"
+              helperText=" " label="Telefone" type="tel"></ion-input>
             <ion-text class="erro" color="danger">{{ this.erros.telefone }}</ion-text>
-
-            <ion-row class="ion-justify-content-center ion-padding">
-              <ion-col size="auto">
-                <ion-button type="submit" class="btn_editar ion-padding">Editar</ion-button>
-              </ion-col>
+          </ion-row>
+          <ng-container *ngIf="this.estaEditando">
+            <ion-row class="input-container">
+              <ion-input [readonly]="!this.estaEditando" [ngModel]="this.cliente.password" name="password"
+                helperText=" " label="Senha" type="pasword"></ion-input>
+              <ion-text class="erro" color="danger">{{ this.erros.password }}</ion-text>
             </ion-row>
-          </form>
-        </ion-col>
-      </ion-row>
+            <ion-row class="input-container">
+              <ion-input [readonly]="!this.estaEditando" ngModel errorText="Senhas não conferem invalida"
+                name="confirmarPassword" label="Confirmar Senha" type="password"
+                pattern="{{ this.editarForm.form.value.password }}"></ion-input>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+
+              <app-btn-loading btnNome="Editar" [loading]="this.loading"
+                [disabled]="!this.editarForm.valid || (this.editarForm.form.value.password && !this.editarForm.form.value.confirmarPassword)"></app-btn-loading>
+            </ion-row>
+          </ng-container>
+        </form>
+      </ion-col>
     </ion-row>
   </ion-col>
 </ion-row>
-
