@@ -8,6 +8,7 @@ import { PrivacidadePageRoutingModule } from './privacidade-routing.module';
 
 import { PrivacidadePage } from './privacidade.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
+import { FooterModule } from 'src/app/components/common/footer/footer.module';
 
 @NgModule({
   imports: [
@@ -15,8 +16,8 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     FormsModule,
     IonicModule,
     PrivacidadePageRoutingModule,
-    HeaderModule
-    
+    HeaderModule,
+    FooterModule
   ],
   declarations: [PrivacidadePage]
 })

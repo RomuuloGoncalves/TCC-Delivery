@@ -8,6 +8,7 @@ import { CookiesPageRoutingModule } from './cookies-routing.module';
 
 import { CookiesPage } from './cookies.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
+import { FooterModule } from 'src/app/components/common/footer/footer.module';
 
 @NgModule({
   imports: [
@@ -15,8 +16,9 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     FormsModule,
     IonicModule,
     CookiesPageRoutingModule,
-    HeaderModule
+    HeaderModule,
+    FooterModule,
   ],
-  declarations: [CookiesPage]
+  declarations: [CookiesPage],
 })
 export class CookiesPageModule {}
