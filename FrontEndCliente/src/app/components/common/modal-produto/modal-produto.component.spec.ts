@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ModalMarmitaComponent } from './modal-marmita.component';
+import { ModalProdutoComponent } from './modal-produto.component';
 
-describe('ModalMarmitaComponent', () => {
-  let component: ModalMarmitaComponent;
-  let fixture: ComponentFixture<ModalMarmitaComponent>;
+describe('ModalProdutoComponent', () => {
+  let component: ModalProdutoComponent;
+  let fixture: ComponentFixture<ModalProdutoComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalMarmitaComponent ],
+      declarations: [ ModalProdutoComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ModalMarmitaComponent);
+    fixture = TestBed.createComponent(ModalProdutoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

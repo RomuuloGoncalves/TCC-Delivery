@@ -1,9 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { Produto } from 'src/app/core/interfaces/produto';
-import { EventEmitter } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { ModalMarmitaComponent } from '../modal-marmita/modal-marmita.component';
 import { ProdutoService } from 'src/app/core/services/produto.service';
+import { ModalProdutoComponent } from '../modal-produto/modal-produto.component';
 
 @Component({
   selector: 'app-sessao-cards-produto',
@@ -23,7 +21,7 @@ export class SessaoCardsProdutoComponent implements OnInit {
 
   async abrirModal(id: number) {
     const modal = await this.modalController.create({
-      component: ModalMarmitaComponent,
+      component: ModalProdutoComponent,
       componentProps: {
         id: id
       }

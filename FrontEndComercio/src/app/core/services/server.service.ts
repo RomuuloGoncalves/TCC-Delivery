@@ -11,7 +11,11 @@ export class ServerService {
 
   private url: string = 'https://super-cod-9vvjwwggp66hpq6j-8000.app.github.dev/';
   // private url: string = 'https://bug-free-meme-jw7977wx94gc9qr-8000.app.github.dev';
+<<<<<<< HEAD
   // private url: string = 'http://127.0.0.1:8000';
+=======
+  private url: string = 'https://cautious-meme-w6w999p5693gpgq-8000.app.github.dev';
+>>>>>>> bd9ac706c186f5fee3985dd130b9be50fa0e5660
 
 
   public post(path: string, data: any): Observable<any> {
