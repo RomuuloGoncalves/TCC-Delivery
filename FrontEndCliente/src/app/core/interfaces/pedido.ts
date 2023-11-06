@@ -1,4 +1,5 @@
 import { Cliente } from "./cliente";
+import { Cupom } from "./cupom";
 import { Endereco } from "./endereco";
 import { PedidoProduto } from "./pedido-produto";
 
@@ -16,6 +17,6 @@ export interface Pedido {
   status: string;
   cliente?: Cliente;
   endereco?: Endereco;
-  cupom?: Endereco;
+  cupom?: Cupom;
   pedido_produtos?: PedidoProduto[];
 }

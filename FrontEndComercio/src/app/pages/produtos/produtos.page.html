@@ -24,12 +24,12 @@
               </ion-list>
             </ion-col>
 
-            <ion-col id="click-trigger" (click)="formularioPopover($event)" size="1">
+            <ion-col id="" (click)="formularioPopover($event)" size="1">
               <ion-icon name="add-outline"></ion-icon>
             </ion-col>
 
 
-            <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" side="bottom" alignment="start"
+            <ion-popover #popover [isOpen]="openPopover" (didDismiss)="openPopover = false" side="bottom" alignment="start"
               mode="ios">
               <ng-template ngIf="{{popover}}">
                 <ion-content class="ion-padding">

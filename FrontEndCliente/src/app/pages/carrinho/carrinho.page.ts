@@ -1,5 +1,6 @@
 import { Component, NgModuleFactory, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Cupom } from 'src/app/core/interfaces/cupom';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { CarrinhoService } from 'src/app/core/services/carrinho.service';
 import { CupomService } from 'src/app/core/services/cupom.service';
@@ -69,16 +70,11 @@ export class CarrinhoPage implements OnInit {
   cupomNome?: string
 
   resgatarCupom() {
-    let nome = this.formCupom.form.value.nomeCupom
-
-    this.cupomService.consultarNome(nome).subscribe(
+    let cupom: Cupom = this.formCupom.form.value
+    this.cupomService.consultarNome(cupom).subscribe(
       // fazer voltar bool
       (response: any) => {
-        response ? (
         console.log("Cupom OK", response)
-        ) : (
-        console.log("Cupom não encontrado", response)
-        )
       },
       (error: any) => {
         console.log("Erro", error)

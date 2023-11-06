@@ -16,7 +16,7 @@ class FuncionarioSeeder extends Seeder
         DB::table('Funcionarios')->insert([
             'nome' => 'Admin',
             'login' => 'admin',
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make('asdasdasd'),
             'nivel_acesso' => '3'
         ]);
     }

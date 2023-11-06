@@ -29,10 +29,10 @@
   </ion-row>
 
   <ion-row class="ion-justify-content-center">
-      <app-btn-loading
-        [btnNome]="(this.editar) ? 'Editar Cupom' : 'Criar Cupom'"
-        [loading]="this.loadingBtn"
-        [disabled]="!this.formCupom.form.valid"
-      ></app-btn-loading>
+    <app-btn-loading
+    [btnNome]="(this.editar) ? 'Editar Cupom' : 'Criar Cupom'"
+    [loading]="this.loadingBtn"
+    [disabled]="!this.formCupom.form.valid"
+    ></app-btn-loading>
   </ion-row>
 </form>

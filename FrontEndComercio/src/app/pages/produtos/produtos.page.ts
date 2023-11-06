@@ -18,6 +18,7 @@ export class ProdutosPage implements OnInit {
   }
 
   produtoSelecionado!: Produto;
+  openPopover: boolean = false;
   isOpen: boolean = false;
 
   loading: boolean = true
@@ -30,7 +31,7 @@ export class ProdutosPage implements OnInit {
 
   formularioPopover(e: Event) {
     this.popover.event = e;
-    this.isOpen = true;
+    this.openPopover = true;
   }
 
   isModalOpen = false;
