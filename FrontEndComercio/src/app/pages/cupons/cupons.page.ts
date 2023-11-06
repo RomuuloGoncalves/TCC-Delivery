@@ -83,6 +83,7 @@ export class CuponsPage implements OnInit {
   deleteCupom() {
     const idCupom = this.cupons.indexOf(this.cupomSelecionado!);
     this.cupons.splice(idCupom, 1);
+    this.filtrarCupons();
     this.fecharModalCupom();
   }
 }

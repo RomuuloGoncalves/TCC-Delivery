@@ -26,17 +26,7 @@
             </ion-row>
           </ion-col>
         </ion-row>
-        <ion-row class="ion-justify-content-center">
-          <ion-col size="5">
-            <ng-container *ngIf="ehValido(cupom!.status)">
-              <ion-button fill="outline" expand="block" size="large" mode="md">Desativar</ion-button>
-            </ng-container>
-            <ng-container *ngIf="!ehValido(cupom!.status)">
-              <ion-button fill="outline" expand="block" size="large" mode="md">Reativar</ion-button>
-            </ng-container>
-          </ion-col>
-        </ion-row>
-        <ion-row>
+        <ion-row class="ion-padding-horizontal">
           <ion-col size="12">
             <ion-list lines="full">
               <ion-item>
@@ -63,13 +53,8 @@
           </ion-col>
         </ion-row>
       </div>
-      <ion-alert
-          mode="md"
-          [isOpen]="this.alertDeletarCupom"
-          header="Alerta!"
-          subHeader="Você tem certeza que gostaria de excluir este cupom?"
-          [buttons]="this.alertButtons"
-        ></ion-alert>
+      <ion-alert mode="md" [isOpen]="this.alertDeletarCupom" header="Alerta!"
+        subHeader="Você tem certeza que gostaria de excluir este cupom?" [buttons]="this.alertButtons"></ion-alert>
     </ion-content>
   </ng-template>
 </ion-modal>
