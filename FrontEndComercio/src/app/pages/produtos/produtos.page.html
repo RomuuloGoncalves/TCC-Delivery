@@ -14,11 +14,16 @@
                 <ion-item>
                   <ion-select (ionChange)="filtrarSelecao($event)" interface="popover" mode="ios" placeholder="Select"
                     [multiple]="true" [(ngModel)]="selectedOptions">
-                    <ion-select-option *ngIf="this.marmitas.length" value="marmita" Default="true">Marmitas</ion-select-option>
+  
+                    <!-- <ion-select-option *ngIf="this.marmitas.length" value="marmita" Default="true">Marmitas</ion-select-option>
                     <ion-select-option *ngIf="this.bebidas.length" value="bebida">Bebidas</ion-select-option>
                     <ion-select-option *ngIf="this.sobremesas.length" value="sobremesa">Sobremesas</ion-select-option>
                     <ion-select-option *ngIf="this.combos.length" value="combo">Combo</ion-select-option>
-                    <ion-select-option *ngIf="this.acompanhamentos.length" value="acompanhamento">Acompanhamento</ion-select-option>
+                    <ion-select-option *ngIf="this.acompanhamentos.length" value="acompanhamento">Acompanhamento</ion-select-option> -->
+
+                    <ng-container *ngFor="let produtoCategoria of this.produtosOrganizados">
+                      <ion-select-option value="{{this.produtoCategoria[0]}}">{{this.produtoCategoria[0]}}</ion-select-option>
+                    </ng-container>
                   </ion-select>
                 </ion-item>
               </ion-list>
@@ -29,8 +34,8 @@
             </ion-col>
 
 
-            <ion-popover #popover [isOpen]="openPopover" (didDismiss)="openPopover = false" side="bottom" alignment="start"
-              mode="ios">
+            <ion-popover #popover [isOpen]="openPopover" (didDismiss)="openPopover = false" side="bottom"
+              alignment="start" mode="ios">
               <ng-template ngIf="{{popover}}">
                 <ion-content class="ion-padding">
                   <ion-row class="ion-justify-content-center">
@@ -49,7 +54,7 @@
       </ion-row>
     </ion-col>
 
-    <ion-col size="11">
+    <!-- <ion-col size="11">
       <ng-container *ngIf="!this.loading">
         <ion-row class="ion-justify-content-center">
           <ion-col size="11.9">
@@ -69,11 +74,27 @@
         </ion-row>
       </ng-container>
       <app-loading [loading]="this.loading"></app-loading>
+    </ion-col> -->
+
+    <ion-col size="11">
+ 
+
+      <ng-container *ngIf="!this.loading">
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="11.9">
+            <ion-accordion-group [multiple]="true" [value]="['Marmitas']">
+              <ng-container *ngFor="let produtoCategoria of this.produtosOrganizados">
+                <app-accordion (clickCard)="this.selecionarProduto($event)" *ngIf="this.filtrar[this.produtoCategoria[0]]" [tituloSessao]="this.produtoCategoria[0]"
+                  [produtos]="this.produtoCategoria[1]"></app-accordion>
+              </ng-container>
+            </ion-accordion-group>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+      <app-loading [loading]="this.loading"></app-loading>
     </ion-col>
+
   </ion-row>
-  <app-modal-produto
-    [isOpen]="this.isOpen"
-    (fechar)="this.isOpen = false"
-    [produto]="this.produtoSelecionado"
-  ></app-modal-produto>
+  <app-modal-produto [isOpen]="this.isOpen" (fechar)="this.isOpen = false"
+    [produto]="this.produtoSelecionado"></app-modal-produto>
 </ion-content>

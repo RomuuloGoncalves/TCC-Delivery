@@ -16,9 +16,7 @@ export class PedidoPage implements OnInit {
 
   constructor(private Pedidos: PedidosService, private Cliente: ClienteService, private route: ActivatedRoute) { }
   idPedido!: number;
-
   loading: boolean = true;
-
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.idPedido = params['id'];
@@ -54,9 +52,7 @@ export class PedidoPage implements OnInit {
 
     this.pedidoCliente.pedido_produtos.forEach((el: any) => {
       el.produto.imagem = el.produto.imagem || '../../../assets/imgs/default/cards-produtos.png';
-
       if (!categorias[el.produto.categoria.nome]) categorias[el.produto.categoria.nome] = [];
-
       categorias[el.produto.categoria.nome].push(el);
     });
 

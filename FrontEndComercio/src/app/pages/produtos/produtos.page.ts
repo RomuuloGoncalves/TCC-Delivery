@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { GrupoVariacoes } from 'src/app/core/interfaces/grupo-variacoes';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { ProdutosService } from 'src/app/core/services/produtos.service';
 
@@ -20,35 +19,23 @@ export class ProdutosPage implements OnInit {
   produtoSelecionado!: Produto;
   openPopover: boolean = false;
   isOpen: boolean = false;
-
   loading: boolean = true
+  isModalOpen = false;
 
-  marmitas: Produto[] = []
-  bebidas: Produto[] = []
-  sobremesas: Produto[] = []
-  acompanhamentos: Produto[] = []
-  combos: Produto[] = []
+  produtos!: Produto[]
+  produtosOrganizados!: any;
+
+  filtrar: { [chave: string]: boolean } = {};
+  selectedOptions: string[] = []
 
   formularioPopover(e: Event) {
     this.popover.event = e;
     this.openPopover = true;
   }
 
-  isModalOpen = false;
-
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
-
-  filtrar: { [chave: string]: boolean } = {
-    "marmita": true,
-    "bebida": true,
-    "combo": true,
-    "acompanhamento": true,
-    "sobremesa": true
-  }
-
-  selectedOptions: string[] = ["marmita", "bebida", "combo", "acompanhamento", "sobremesa"]
 
   filtrarSelecao(e: any) {
     for (const [chave, valor] of Object.entries(this.filtrar)) {
@@ -57,12 +44,10 @@ export class ProdutosPage implements OnInit {
 
     e.detail.value.forEach((chave: any) => {
       if (this.filtrar.hasOwnProperty(chave)) {
-        this.filtrar[chave] = true; // Definir o valor booleano como true se a chave existir no objeto
+        this.filtrar[chave] = true;
       }
     });
   }
-
-  produtos!: Produto[]
 
   recuperarTodosProdutos() {
     this.Produto.pegarProdutos().subscribe(
@@ -78,17 +63,24 @@ export class ProdutosPage implements OnInit {
   }
 
   organizarProdutos() {
-    this.produtos.forEach((elemento) => {
-      console.log(this.produtos)
-      if(elemento.imagem == null || elemento.imagem == '')
-        elemento.imagem = '../../../assets/imgs/default/cards-produtos.png'
+    const categorias: { [categoria: string]: Produto[] } = {};
 
-      elemento.categoria!.nome == 'Marmita Pronta' ? this.marmitas.push(elemento) : 1
-      elemento.categoria!.nome == 'Combos' ? this.combos.push(elemento) : 1
-      elemento.categoria!.nome == 'Bebida' ? this.bebidas.push(elemento) : 1
-      elemento.categoria!.nome == 'Sobremesa' ? this.sobremesas.push(elemento) : 1
-      elemento.categoria!.nome == 'Acompanhamento' ? this.acompanhamentos.push(elemento) : 1
-    })
+    this.produtos.forEach((el: any) => {
+      el.imagem = el.imagem || '../../../assets/imgs/default/cards-produtos.png';
+      if (!categorias[el.categoria.nome]) categorias[el.categoria.nome] = [];
+      categorias[el.categoria.nome].push(el);
+    });
+
+    this.produtosOrganizados = Object.entries(categorias);
+    this.criarFiltro()
+  }
+  
+  criarFiltro() {
+    this.produtosOrganizados.forEach((categoria: any) => {
+      this.filtrar[categoria[0]] = true;
+      this.selectedOptions.push(categoria[0])
+    });
+    console.log(this.filtrar);
   }
 
   selecionarProduto(produto: Produto) {
