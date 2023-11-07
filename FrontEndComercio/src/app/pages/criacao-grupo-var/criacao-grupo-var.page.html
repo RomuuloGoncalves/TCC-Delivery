@@ -24,7 +24,7 @@
                 <ion-select (ionChange)="produtoSelecionadoSelect($event)" aria-label="Variacao" interface="popover"
                   placeholder="Grupo para:">
                   <ng-container *ngFor="let obj of criarFormularoProduto">
-                    <ion-select-option value="{{obj.tipo}}">{{ obj.tipo }}</ion-select-option>
+                    <ion-select-option value="{{ obj.tipo }}">{{ obj.tipo }}</ion-select-option>
                   </ng-container>
                 </ion-select>
      

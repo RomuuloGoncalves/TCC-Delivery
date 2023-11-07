@@ -16,13 +16,9 @@ ion-content {
 
 }
 
-.container {
-
-    padding: 2rem;
-
+.wrapper {
     .itens-borda-superior {
         height: 100%;
-        top: -1rem;
     }
 
     .valor-inicial {
@@ -36,7 +32,7 @@ ion-content {
     }
 
     .titulo {
-        font-size: 2rem;
+        font-size: 1.3rem;
         color: var(--ion-color-primary);
         font-weight: 600;
     }
