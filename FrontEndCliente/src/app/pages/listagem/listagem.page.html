@@ -8,7 +8,7 @@
           (filtragem)="this.categoriasFiltradas = $event"></app-pesquisa-produto>
 
         <ng-container *ngFor="let categoria of this.categoriasFiltradas">
-          <app-sessao-cards-produto [cardMontagem]="true" [produtos]="categoria.produtos"></app-sessao-cards-produto>
+          <app-sessao-cards-produto [produtos]="categoria.produtos"></app-sessao-cards-produto>
         </ng-container>
 
         <ng-container *ngIf="!this.categoriasFiltradas.length">

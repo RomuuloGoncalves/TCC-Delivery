@@ -40,7 +40,7 @@
 
     <ng-container *ngFor="let categoria of this.categoriasFiltradas">
       <ng-container *ngIf="this.categoria.produtos?.length">
-        <app-sessao-cards-produto [tituloSessao]="categoria.nome" [cardMontagem]="true"
+        <app-sessao-cards-produto [tituloSessao]="categoria.nome"
         [produtos]="categoria.produtos"></app-sessao-cards-produto>
       </ng-container>
     </ng-container>

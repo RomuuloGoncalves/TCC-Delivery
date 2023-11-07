@@ -8,8 +8,14 @@
   <ion-col size="12">
     <ion-row class="grid ion-justify-content-start">
       <ng-container *ngFor="let produto of this.produtos">
-        <app-card-produto [produto]="produto" (click)="abrirModal(produto.id)" class="cards"></app-card-produto>
-      </ng-container>
+        <app-card-produto [produto]="produto" (click)="this.abrirModal(produto)" (fechar)="this.isOpen = false" class="cards"></app-card-produto>
+      </ng-container>    
     </ion-row>
   </ion-col>
 </ion-row>
+<ng-container *ngIf="this.idSelecionado">
+  <app-modal-produto
+    [id]="this.idSelecionado!"
+    [isOpen]="this.isOpen"
+  ></app-modal-produto>
+</ng-container>

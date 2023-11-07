@@ -23,6 +23,6 @@ export class CardCarrinhoComponent implements OnInit {
   }
 
   removerProduto(){
-    this.remover.emit(this.produto.id_produto)
+    this.remover.emit(this.produto.id)
   }
 }

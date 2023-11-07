@@ -1,7 +1,5 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { ProdutoService } from 'src/app/core/services/produto.service';
-import { ModalProdutoComponent } from '../modal-produto/modal-produto.component';
+import { Produto } from 'src/app/core/interfaces/produto';
 
 @Component({
   selector: 'app-sessao-cards-produto',
@@ -10,35 +8,20 @@ import { ModalProdutoComponent } from '../modal-produto/modal-produto.component'
 })
 export class SessaoCardsProdutoComponent implements OnInit {
 
-  constructor(private modalController: ModalController, private produtoService: ProdutoService) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
   @Input() tituloSessao?: string;
   @Input() produtos!: any;
-  @Input() cardMontagem: boolean = false;
 
-  async abrirModal(id: number) {
-    const modal = await this.modalController.create({
-      component: ModalProdutoComponent,
-      componentProps: {
-        id: id
-      }
-    });
-    return await modal.present()
-  }
+  isOpen: boolean = false;
+  idSelecionado?: number;
 
-  pegarProduto(id: number): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.produtoService.pegarProduto(id).subscribe(
-        (response) => {
-          resolve(response);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
-    });
+  abrirModal(produto: Produto) {
+    console.log(produto)
+    this.idSelecionado = produto.id!;
+    this.isOpen = true;
   }
 }

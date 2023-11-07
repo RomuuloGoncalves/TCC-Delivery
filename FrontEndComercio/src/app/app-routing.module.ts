@@ -89,6 +89,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/admin/dashboard/dashboard.module').then( m => m.DashboardPageModule),
     canActivate: [LogedInGuard]
   },
+  {
+    path: 'criacao-grupo-var',
+    loadChildren: () => import('./pages/criacao-grupo-var/criacao-grupo-var.module').then( m => m.CriacaoGrupoVarPageModule)
+  },
 ];
 
 @NgModule({

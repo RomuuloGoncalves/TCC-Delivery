@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { GrupoVariacoes } from 'src/app/core/interfaces/grupo-variacoes';
 import { Produto } from 'src/app/core/interfaces/produto';
@@ -11,40 +11,33 @@ import { ProdutoService } from 'src/app/core/services/produto.service';
 })
 export class ModalProdutoComponent implements OnInit {
 
-  constructor(private navParams: NavParams,
-    private modalController: ModalController,
-    private produtoService: ProdutoService) { }
+  constructor(private produtoService: ProdutoService) { }
 
   ngOnInit() {
-    console.log(this.id);
     this.carregarProduto();
   }
 
-  @Input() id: any;
+  @Input() public id!: number;
+  @Input() public isOpen: boolean = false;
+  @Output() public fechar: EventEmitter<any> = new EventEmitter();
+
   produto!: Produto;
-  loading: boolean = true
-  precoTotal!: number
+  loading: boolean = true;
+  precoTotal!: number;
 
   carregarProduto() {
     this.produtoService.pegarProduto(this.id).subscribe(
       (response) => {
-        console.log("reponse", response)
         this.produto = response;
-        this.loading = false
+        this.loading = false;
       },
       (error) => {
-        console.log(error)
+        console.error(error);
       }
     )
   }
 
-  variacoesSelecionadas: any[] = []
-
-  produtoModal = this.navParams.get('produto')
-
-  fecharModal() {
-    this.modalController.dismiss();
-  }
+  variacoesSelecionadas: any[] = [];
 
   stringify(obj: any) {
     return JSON.stringify(obj);
@@ -52,7 +45,6 @@ export class ModalProdutoComponent implements OnInit {
 
   alterarVariacoesSelecionadas(e: any, grupoVariacao: GrupoVariacoes) {
     let variacao = JSON.parse(e.detail.value);
-    console.log(variacao)
 
     this.variacoesSelecionadas = [];
     this.variacoesSelecionadas.push({
@@ -67,7 +59,7 @@ export class ModalProdutoComponent implements OnInit {
   calcPreco() {
     let preco: number = 0;
     this.variacoesSelecionadas.forEach(variacao => {
-      preco += Number(variacao.valor)
+      preco += Number(variacao.valor);
     });
     return preco;
   }

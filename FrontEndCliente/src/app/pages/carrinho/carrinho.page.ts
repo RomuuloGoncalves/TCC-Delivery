@@ -25,7 +25,7 @@ export class CarrinhoPage implements OnInit {
 
   produtos: Produto[] = [
     {
-      id_produto: 2,
+      id: 2,
       nome: 'Porções',
       quantidade: 3,
       variacao: {
@@ -39,7 +39,7 @@ export class CarrinhoPage implements OnInit {
       },
     },
     {
-      id_produto: 1,
+      id: 1,
       nome: 'Doces',
       quantidade: 2,
       variacao: {

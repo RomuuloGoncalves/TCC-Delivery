@@ -2,7 +2,7 @@ import { GrupoVariacoes } from "./grupo-variacoes";
 import { Variacao } from "./variacao";
 
 export interface Produto {
-  id_produto?: number;
+  id?: number;
   nome: string;
   imagem?: string;
   descricao?: string;
