@@ -28,17 +28,17 @@
           </ion-row>
           <ion-row class="input-container">
             <ion-input [readonly]="!this.estaEditando" [ngModel]="this.cliente.telefone" required name="telefone"
-              helperText=" " label="Telefone" type="tel"></ion-input>
+              helperText=" " label="Telefone" type="tel" [maskito]="this.Mask.telefone"  [maskitoElement]="this.Mask.maskPredicate"></ion-input>
             <ion-text class="erro" color="danger">{{ this.erros.telefone }}</ion-text>
           </ion-row>
           <ng-container *ngIf="this.estaEditando">
             <ion-row class="input-container">
-              <ion-input [readonly]="!this.estaEditando" [ngModel]="this.cliente.password" name="password"
+              <ion-input [readonly]="!this.estaEditando" minlength="8" [ngModel]="this.cliente.password" name="password"
                 helperText=" " label="Senha" type="pasword"></ion-input>
               <ion-text class="erro" color="danger">{{ this.erros.password }}</ion-text>
             </ion-row>
             <ion-row class="input-container">
-              <ion-input [readonly]="!this.estaEditando" ngModel errorText="Senhas não conferem invalida"
+              <ion-input [readonly]="!this.estaEditando" minlength="8" ngModel errorText="Senhas não conferem invalida"
                 name="confirmarPassword" label="Confirmar Senha" type="password"
                 pattern="{{ this.editarForm.form.value.password }}"></ion-input>
             </ion-row>

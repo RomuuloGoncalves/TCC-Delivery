@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MaskService } from 'src/app/core/controller/mask.service';
 import { ToastService } from 'src/app/core/controller/toast.service';
 import { Cliente } from 'src/app/core/interfaces/cliente';
 import { ClienteService } from 'src/app/core/services/cliente.service';
@@ -16,7 +17,11 @@ export class PerfilConfigComponent implements OnInit {
   @Input() public cliente!: Cliente;
   estaEditando: boolean = false;
 
-  constructor(private Cliente: ClienteService, private Toast: ToastService) {}
+  constructor(
+    private Cliente: ClienteService,
+    private Toast: ToastService,
+    public Mask: MaskService
+  ) {}
 
   ngOnInit() {}
 
