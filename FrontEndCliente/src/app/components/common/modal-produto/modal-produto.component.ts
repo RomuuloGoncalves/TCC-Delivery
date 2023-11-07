@@ -11,31 +11,17 @@ import { ProdutoService } from 'src/app/core/services/produto.service';
 })
 export class ModalProdutoComponent implements OnInit {
 
-  constructor(private produtoService: ProdutoService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.carregarProduto();
   }
 
-  @Input() public id!: number;
   @Input() public isOpen: boolean = false;
+  @Input() public produto?: Produto;
   @Output() public fechar: EventEmitter<any> = new EventEmitter();
 
-  produto!: Produto;
-  loading: boolean = true;
+  loading: boolean = false;
   precoTotal!: number;
-
-  carregarProduto() {
-    this.produtoService.pegarProduto(this.id).subscribe(
-      (response) => {
-        this.produto = response;
-        this.loading = false;
-      },
-      (error) => {
-        console.error(error);
-      }
-    )
-  }
 
   variacoesSelecionadas: any[] = [];
 

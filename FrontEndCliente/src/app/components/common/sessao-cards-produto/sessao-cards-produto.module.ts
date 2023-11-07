@@ -11,7 +11,7 @@ import { ModalProdutoModule } from '../modal-produto/modal-produto.module';
     CardProdutoComponent,
     SessaoCardsProdutoComponent,
   ],
-  imports: [CommonModule, IonicModule, RouterModule, ModalProdutoModule],
+  imports: [CommonModule, IonicModule, RouterModule],
   exports: [SessaoCardsProdutoComponent],
 })
 export class SessaoCardsProdutoModule {}

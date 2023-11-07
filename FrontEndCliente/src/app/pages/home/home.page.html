@@ -41,7 +41,7 @@
     <ng-container *ngFor="let categoria of this.categoriasFiltradas">
       <ng-container *ngIf="this.categoria.produtos?.length">
         <app-sessao-cards-produto [tituloSessao]="categoria.nome"
-        [produtos]="categoria.produtos"></app-sessao-cards-produto>
+        [produtos]="categoria.produtos" (selecionar)="this.abrirModal($event)"></app-sessao-cards-produto>
       </ng-container>
     </ng-container>
 
@@ -52,6 +52,13 @@
     </ng-container>
 
     <app-footer></app-footer>
+
+    <app-modal-produto
+      [produto]="this.produtoSelecionado"
+      [isOpen]="this.isOpen"
+      (fechar)="this.fecharModal()"
+    ></app-modal-produto>
+    
   </ng-container>
   <app-loading [loading]="this.loading"></app-loading>
 </ion-content>
