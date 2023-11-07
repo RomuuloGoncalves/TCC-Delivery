@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
+import { GrupoVariacoes } from 'src/app/core/interfaces/grupo-variacoes';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { ProdutoService } from 'src/app/core/services/produto.service';
 
@@ -45,42 +46,29 @@ export class ModalProdutoComponent implements OnInit {
     this.modalController.dismiss();
   }
 
-  alterarVariacoesSelecionadas(e: any) {
-    let variacoes = e.detail.value.split(',')
-    let repetiu = false
-    this.variacoesSelecionadas.forEach(variacao => {
-      variacao.grupo_variacao == variacoes[0] ? (variacao.variacao = variacoes[1],
-        repetiu = true) : null
+  stringify(obj: any) {
+    return JSON.stringify(obj);
+  }
+
+  alterarVariacoesSelecionadas(e: any, grupoVariacao: GrupoVariacoes) {
+    let variacao = JSON.parse(e.detail.value);
+    console.log(variacao)
+
+    this.variacoesSelecionadas = [];
+    this.variacoesSelecionadas.push({
+      grupo_variacao: grupoVariacao,
+      variacao: variacao,
     });
 
-    !repetiu ? (
-
-      this.variacoesSelecionadas = [],
-      this.variacoesSelecionadas.push(
-
-        {
-          grupo_variacao: {
-            id: variacoes[1],
-            tipo: variacoes[0]
-          },
-          variacao: {
-            id: variacoes[3],
-            nome: variacoes[2]
-          },
-          valor: variacoes[4]
-        }
-      )) : null
-
-        this.precoTotal = this.calcPreco()
+    this.precoTotal = this.calcPreco();
 
   }
 
   calcPreco() {
-    let preco: number = 0
+    let preco: number = 0;
     this.variacoesSelecionadas.forEach(variacao => {
       preco += Number(variacao.valor)
     });
-    return preco
-
+    return preco;
   }
 }

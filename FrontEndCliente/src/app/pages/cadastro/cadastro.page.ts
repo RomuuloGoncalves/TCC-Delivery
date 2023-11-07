@@ -19,7 +19,7 @@ export class CadastroPage implements OnInit {
     private Cliente: ClienteService,
     private Toast: ToastService,
     private router: Router,
-    public Mask: MaskService
+    public Mask: MaskService,
   ) { }
 
   @ViewChild('cadastroForm') private cadastoForm!: NgForm;

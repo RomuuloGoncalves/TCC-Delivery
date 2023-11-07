@@ -13,7 +13,8 @@ import { PerfilConfigComponent } from './perfil-config.component';
     IonicModule,
     FormsModule,
     MaskitoModule,
-    BtnLoadingModule
+    BtnLoadingModule,
+    MaskitoModule
   ],
   exports: [PerfilConfigComponent]
 })

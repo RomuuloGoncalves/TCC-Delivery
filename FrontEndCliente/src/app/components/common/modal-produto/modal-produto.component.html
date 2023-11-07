@@ -10,9 +10,9 @@
             </ion-label>
           </ion-col>
           <ion-col size="1" class="itens-borda-superior">
-            <ion-label (click)="fecharModal()">
-              <ion-icon class="icone-fechar-modal" name="close-outline"></ion-icon>
-            </ion-label>
+            <ion-button (click)="this.fecharModal()" fill="clear">
+              <ion-icon name="close-outline" size="large"></ion-icon>
+            </ion-button>
           </ion-col>
         </ion-row>
   
@@ -48,16 +48,6 @@
                       </ion-item>
                       <div class="ion-padding" slot="content">{{ this.produto.descricao }}</div>
                     </ion-accordion>
-                    <!-- <ion-accordion value="preco">
-                      <ion-item slot="header" color="light">
-                        <ion-label>Preço</ion-label>
-                      </ion-item>
-                      <div class="ion-padding ion-justify-content-between" slot="content">
-                        <p>Preço: </p>
-                        <span class="valor-inicial">R${{ this.produto.valor_inicial.toFixed(2).replace('.', ',') }}</span>
-                        <span class="valor-final">R${{ this.produto.valor_final.toFixed(2).replace('.', ',') }}</span>
-                      </div>
-                    </ion-accordion> -->
                   </ion-accordion-group>
   
                   <ion-title *ngIf="this.variacoesSelecionadas.length" class="subtitulo">
@@ -71,7 +61,6 @@
                         </ion-item>
                         <div class="ion-padding" slot="content">
                           <p>{{ variacao.variacao.nome }}</p>
-                          <!-- <p>Valor: R${{ variacao.variacao.valor_final || '0,00' }}</p> -->
                           <p>Valor: R${{ variacao.valor || '0,00' }}</p>
                         </div>
                       </ion-accordion>
@@ -82,19 +71,14 @@
               </ion-row>
   
               <ion-row>
-              <!-- <ion-row *ngIf="this.produto.categoria.id !== 1"> -->
                 <ion-col>
-                  <!-- diferente radio group para diferentes grupos variacoes -->
                   <ng-container *ngFor="let grupoVariacao of this.produto.grupo_variacao">
                     <ion-title class="ion-text-capitalize titulo-radio-group">{{ grupoVariacao.tipo }}</ion-title>
-                    <ion-radio-group (ionChange)="alterarVariacoesSelecionadas($event)">
-                    <!-- <ion-radio-group value="strawberries" (ngModel)="this.variacoesSelecionadas" (ionChange)="mostrar($event)"> -->
-                      <!-- lista as variacoes (opcoes) de cada grupo variacao -->
+                    <ion-radio-group (ionChange)="alterarVariacoesSelecionadas($event, grupoVariacao)">
                       <ng-container *ngFor="let variacao of grupoVariacao.variacao">
                         <ion-item>
                           <ion-label>{{ variacao.nome }}</ion-label>
-                          <ion-radio slot="end" value="{{ [grupoVariacao.tipo, grupoVariacao.id, variacao.nome, variacao.id, variacao.valor_inicial ] }}"></ion-radio>
-                          <!-- <ion-radio slot="end" value="{{ [grupoVariacao.tipo, grupoVariacao.id, variacao.nome, variacao.id, variacao.valor_final ] }}"></ion-radio> -->
+                          <ion-radio slot="end" value="{{ stringify(variacao) }}"></ion-radio>
                         </ion-item>
                       </ng-container>
                     </ion-radio-group>
@@ -121,12 +105,6 @@
           <ion-col size="auto">
             <app-contador [min]="1"></app-contador>
           </ion-col>
-          <!-- <ion-col size="auto" *ngIf="this.produto.categoria.id === 1">
-            <ion-label class="editar-marmita">
-              <ion-icon [routerLink]="['montagem-marmita']" (click)="fecharModal(); chamarDefinirMarmita(this.produto)"
-                name="create-outline"></ion-icon>
-            </ion-label>
-          </ion-col> -->
           <ion-col size="auto">
             <ion-button mode="ios">Adicionar</ion-button>
           </ion-col>
