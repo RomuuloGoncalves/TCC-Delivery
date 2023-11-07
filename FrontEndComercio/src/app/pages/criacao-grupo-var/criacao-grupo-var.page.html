@@ -5,26 +5,26 @@
       <ion-row class="ion-justify-content-center">
         <h1>CRIAR GRUPO VARIAÇÃO</h1>
       </ion-row>
-      <form action="" method="post">
+      <form action="" #cadastroForm="ngForm" method="post" (ngSubmit)="this.cadastrar()">
     
         <ion-row>
           <ion-col size="12">
             <ion-row>
-              <ion-input label="nome" label-placement="floating" fill="outline" placeholder="Digite o nome"></ion-input>
+              <ion-input ngModel label="nome" label-placement="floating" fill="outline" placeholder="Digite o nome"></ion-input>
             </ion-row>
             <ion-row>
-              <ion-input label="Quantidade minima" label-placement="floating" fill="outline"
+              <ion-input ngModel label="Quantidade minima" label-placement="floating" fill="outline"
                 placeholder="Quantidade minima"></ion-input>
             </ion-row>
             <ion-row>
-              <ion-input label="Quantidade maxima" label-placement="floating" fill="outline"
+              <ion-input ngModel label="Quantidade maxima" label-placement="floating" fill="outline"
                 placeholder="Quantidade maxima"></ion-input>
             </ion-row>
             <ion-row>
-                <ion-select (ionChange)="produtoSelecionadoSelect($event)" aria-label="Variacao" interface="popover"
+                <ion-select ngModel aria-label="Variacao" interface="popover"
                   placeholder="Grupo para:">
-                  <ng-container *ngFor="let obj of criarFormularoProduto">
-                    <ion-select-option value="{{obj.tipo}}">{{ obj.tipo }}</ion-select-option>
+                  <ng-container *ngFor="let categoria of categorias">
+                    <ion-select-option value="{{categoria.id}}">{{ categoria.nome }}</ion-select-option>
                   </ng-container>
                 </ion-select>
      

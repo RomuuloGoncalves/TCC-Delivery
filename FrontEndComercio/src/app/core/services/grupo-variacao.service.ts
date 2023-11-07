@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ServerService } from './server.service';
+import { GrupoVariacoes } from '../interfaces/grupo-variacoes';
 
 @Injectable({
   providedIn: 'root'
@@ -11,4 +12,7 @@ export class GrupoVariacaoService {
     return this.Server.get('/grupo-variacao');
   }
 
+  public cadastrarGrupoVar (grupoVar: GrupoVariacoes) {
+      return this.Server.post('/grupo-variacao/cadastrar', grupoVar);
+    }  
 }
