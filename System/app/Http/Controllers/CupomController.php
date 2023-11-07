@@ -150,14 +150,13 @@ class CupomController extends Controller {
     }
 
     public function pegarCupomNome(Request $request) {
-        $cod_cliente = $request->input('cod_cliente');
-        $cupom = Cupom::where('nome', $request->input('nome'))->first();
+        $cliente = ClienteController::getAuthCliente();
 
-        if($cupom == null or $cupom->status == 0)
-            return response()->json(['mensage' => 'Cupom Inválido'], 404);
+        if(!$cupom = Cupom::where('nome', $request->input('nome'))->first())
+            return response()->json(['message' => 'Cupom não encontrado!'], 404);
 
-        if(Pedido::where('cod_cliente', $cod_cliente)->where('cod_cupom', $cupom->id)->get() == [])
-            return response()->json(['mensage' => 'Este Cupom já foi utilizado'], 404);
+        if(Pedido::where('cod_cliente', $cliente->id)->where('cod_cupom', $cupom->id)->get())
+            return response()->json(['message' => 'Este Cupom já foi utilizado'], 200);
 
         return $cupom;
     }

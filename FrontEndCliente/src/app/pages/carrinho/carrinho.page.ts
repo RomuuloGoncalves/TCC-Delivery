@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, NgModuleFactory, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastService } from 'src/app/core/controller/toast.service';
 import { Cupom } from 'src/app/core/interfaces/cupom';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { CarrinhoService } from 'src/app/core/services/carrinho.service';
@@ -11,7 +13,7 @@ import { CupomService } from 'src/app/core/services/cupom.service';
   styleUrls: ['./carrinho.page.scss'],
 })
 export class CarrinhoPage implements OnInit {
-  constructor(private carrinhoService: CarrinhoService, private cupomService: CupomService) {}
+  constructor(private carrinhoService: CarrinhoService, private cupomService: CupomService, private Toast: ToastService) {}
 
   ngOnInit() {
     this.calcTotal();
@@ -72,15 +74,13 @@ export class CarrinhoPage implements OnInit {
   resgatarCupom() {
     let cupom: Cupom = this.formCupom.form.value
     this.cupomService.consultarNome(cupom).subscribe(
-      // fazer voltar bool
-      (response: any) => {
-        console.log("Cupom OK", response)
+      (response: Cupom) => {
+        this.Toast.mostrarToast('sucesso', 'Cupom encontrado!');
       },
-      (error: any) => {
-        console.log("Erro", error)
+      (badResponse: HttpErrorResponse) => {
+        this.Toast.mostrarToast('erro', badResponse.error.message);
       }
     )
-
   }
 
 
