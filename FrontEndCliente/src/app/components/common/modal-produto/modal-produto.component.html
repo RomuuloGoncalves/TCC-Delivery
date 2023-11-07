@@ -3,21 +3,22 @@
     <ion-content>
       <div class="wrapper">
         <ng-container *ngIf="!this.loading">
-          <ion-row class="ion-justify-content-between ion-align-items-center">
-            <ion-col size="8" class="itens-borda-superior">
-              <ion-label class="ion-padding">
-                <h2 class="titulo ion-text-capitalize">{{ this.produto.nome }}</h2>
-              </ion-label>
-            </ion-col>
-            <ion-col size="1" class="itens-borda-superior">
-              <ion-button (click)="this.fechar.emit()" fill="clear">
-                <ion-icon name="close-outline" size="large"></ion-icon>
-              </ion-button>
-            </ion-col>
-          </ion-row>
+          <ion-header class="ion-margin-bottom">
+            <ion-toolbar>
+              <ion-title>
+                <ion-label class="ion-padding">
+                  <h2 class="titulo ion-text-capitalize">{{ this.produto.nome }}</h2>
+                </ion-label>
+              </ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="this.fechar.emit()"><ion-icon name="close-outline"
+                    size="large"></ion-icon></ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
     
           <ion-row class="ion-justify-content-center">
-            <ion-col size-lg="10" size="">
+            <ion-col size-lg="10">
               <ion-row>
                 <ion-col class="imagem-container ion-justify-content-center">
                   <ion-img class="imagem" src="{{ this.produto.imagem ||  '../../../../assets/imgs/home-icons/garfo_faca_outline.png'}}"></ion-img>
@@ -27,13 +28,6 @@
               </ion-row>
     
               <ion-col class="detalhes">
-                <ion-row>
-                  <ion-col>
-                    <ion-label>
-                      <p class="subtitulo">Detalhes: </p>
-                    </ion-label>
-                  </ion-col>
-                </ion-row>
                 <ion-row class="informacoes">
                   <ion-col>
                     <ion-row class="ion-justify-content-start">
