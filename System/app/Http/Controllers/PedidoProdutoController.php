@@ -18,9 +18,8 @@ class PedidoProdutoController extends Controller
 
     public function store(Request $request) {
         $regras = [
-            'quantidade' => ['nullable', 'integer', 'min: 1', 'max_digits:30'],
-            'cod_pedido' => ['required', 'integer', 'max_digits:30'],
             'cod_produto' => ['required', 'integer', 'max_digits:30'],
+            'quantidade' => ['nullable', 'integer', 'min: 1', 'max_digits:30'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -29,20 +28,21 @@ class PedidoProdutoController extends Controller
             return response()->json($validacao->errors(), 422);
 
         if (!$cliente = ClienteController::getAuthCliente()) {
-            return response()->json(["Cliente Inválido", 404]);
+            return response()->json(["Cliente Inválido", 422]);
         }
 
-        if(!$pedido = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Em Carrinho')->first()) {
+        if(!$pedido = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->first()) {
             $pedido = PedidoController::store();
         }
 
         $pedido_produto = PedidoProduto::create([
-            'quantidade' => $request->input('quantidade'),
             'cod_pedido' => $pedido->id,
-            'cod_produto' => $request->input('cod_produto')
+            'cod_produto' => $request->input('cod_produto'),
+            'quantidade' => $request->input('quantidade')
         ]);
 
-        return response()->json($pedido_produto, 201);
+
+        return response()->json([$pedido_produto], 201);
     }
 
     /**

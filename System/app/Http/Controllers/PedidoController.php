@@ -28,7 +28,7 @@ class PedidoController extends Controller {
             'cod_cliente' => $cliente->id,
         ]);
 
-        return response()->json($pedido, 201);
+        return $pedido;
     }
 
     /**
