@@ -33,23 +33,16 @@ export class CriacaoGrupoVarPage implements OnInit {
 
   public cadastrar() {
     const grupoVar = this.cadastoForm.form.value;
+    grupoVar.cod_produto = Number(grupoVar.cod_produto)
     console.log(grupoVar)
 
     this.GrupoVar.cadastrarGrupoVar(grupoVar).subscribe(
       (response: any) => {
         this.erros = {};
-        if (response.created_at) {
-          this.cadastoForm.reset();
-          const tipo = 'sucesso';
-          const mensagem =  'Cadastro realizado com sucesso';
-        }
       },
 
       (badReponse: HttpErrorResponse) => {
-        const error = Object.entries(badReponse.error);
-        this.erros = {};
-
-        for (const [chave, valor] of error) this.erros[chave] = valor;
+      
       }
     )
   }
