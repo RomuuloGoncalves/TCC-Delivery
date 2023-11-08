@@ -22,7 +22,7 @@
               <ion-row class="ion-justify-content-center">
                 <ion-col size-lg="10">
                   <ion-row>
-                    <ion-col class="imagem-container ion-justify-content-center">
+                    <ion-col class="imagem-container ion-justify-content-center ion-margin-vertical">
                       <ion-img class="imagem"
                         src="{{ this.produto.imagem ||  '../../../../assets/imgs/home-icons/garfo_faca_outline.png'}}"></ion-img>
                     </ion-col>
@@ -54,11 +54,39 @@
                           <ng-container *ngFor="let variacao of this.variacoesSelecionadas">
                             <ion-accordion value="{{ variacao.variacao.nome }}">
                               <ion-item slot="header" color="light">
-                                <ion-label>{{ variacao.grupo_variacao.tipo }}</ion-label>
+                                <ion-label><b>{{ variacao.grupo_variacao.tipo }}</b></ion-label>
                               </ion-item>
                               <div class="ion-padding" slot="content">
-                                <p>{{ variacao.variacao.nome }}</p>
-                                <p>Valor: R${{ variacao.valor || '0,00' }}</p>
+                                <ng-container *ngFor="let variacao of variacoesSelecionadas">
+                                  <ion-item>
+                                    <ion-row class="ion-justify-content-between">
+                                      <ion-col size="auto">
+                                        <ion-text color="primary">
+                                          <b>Variação:</b>
+                                        </ion-text>
+                                      </ion-col>
+                                      <ion-col size="auto">
+                                        <ion-text>
+                                          <b>{{ variacao.variacao.nome }}</b>
+                                        </ion-text>
+                                      </ion-col>
+                                    </ion-row>
+                                  </ion-item>
+                                  <ion-item>
+                                    <ion-row class="ion-justify-content-between">
+                                      <ion-col size="auto">
+                                        <ion-text color="primary">
+                                          <b>Preço:</b>
+                                        </ion-text>
+                                      </ion-col>
+                                      <ion-col size="auto">
+                                        <ion-text>
+                                          <b>{{ variacao.variacao.valor_inicial?.toFixed(2)?.replace('.', ',') }}</b>
+                                        </ion-text>
+                                      </ion-col>
+                                    </ion-row>
+                                  </ion-item>
+                                </ng-container>
                               </div>
                             </ion-accordion>
                           </ng-container>
@@ -70,11 +98,14 @@
                     <ion-row>
                       <ion-col>
                         <ng-container *ngFor="let grupoVariacao of this.produto.grupo_variacao">
-                          <ion-title class="ion-text-capitalize titulo-radio-group">{{ grupoVariacao.tipo }}</ion-title>
+                          <ion-text color="primary">
+                            <h2>{{ grupoVariacao.tipo }}</h2>
+                          </ion-text>
                           <ion-radio-group (ionChange)="alterarVariacoesSelecionadas($event, grupoVariacao)">
                             <ng-container *ngFor="let variacao of grupoVariacao.variacao">
                               <ion-item>
-                                <ion-label>{{ variacao.nome }}</ion-label>
+                                <p><b>{{ variacao.nome }}</b> por R$
+                                  {{ variacao.valor_inicial?.toFixed(2)?.replace('.', ',') }}</p>
                                 <ion-radio slot="end" value="{{ stringify(variacao) }}"></ion-radio>
                               </ion-item>
                             </ng-container>
@@ -95,7 +126,7 @@
               <ion-row class="ion-justify-content-end ion-margin-horizontal">
 
                 <ion-col size="auto">
-                  <p><b>Total:</b> R${{ this.precoTotal || '0,00' }}</p>
+                  <p><b>Total:</b> R${{ this.precoTotal }}</p>
                 </ion-col>
               </ion-row>
 
@@ -111,9 +142,7 @@
           </ion-row>
         </ng-container>
       </div>
-      <app-loading
-        [loading]="!this.produto"
-      >
+      <app-loading [loading]="!this.produto">
       </app-loading>
     </ion-content>
   </ng-template>
