@@ -1,7 +1,7 @@
 <ion-modal backdropDismiss="false" [isOpen]="this.isOpen">
   <ng-template>
-  <ion-content>
-    <div class="wrapper">
+    <ion-content>
+      <div class="wrapper">
         <ng-container *ngIf="this.produto">
           <ion-header class="ion-margin-bottom">
             <ion-toolbar>
@@ -16,19 +16,20 @@
               </ion-buttons>
             </ion-toolbar>
           </ion-header>
-          
+
           <ion-row class="ion-margin-horizontal">
             <ion-col>
               <ion-row class="ion-justify-content-center">
                 <ion-col size-lg="10">
                   <ion-row>
                     <ion-col class="imagem-container ion-justify-content-center">
-                      <ion-img class="imagem" src="{{ this.produto.imagem ||  '../../../../assets/imgs/home-icons/garfo_faca_outline.png'}}"></ion-img>
+                      <ion-img class="imagem"
+                        src="{{ this.produto.imagem ||  '../../../../assets/imgs/home-icons/garfo_faca_outline.png'}}"></ion-img>
                     </ion-col>
                   </ion-row>
                   <ion-row>
                   </ion-row>
-        
+
                   <ion-col class="detalhes">
                     <ion-row class="informacoes">
                       <ion-col>
@@ -37,15 +38,15 @@
                             <ion-title class="subtitulo">
                               Descrição:
                             </ion-title>
-                            <ion-text >
+                            <ion-text>
                               <p class="ion-margin-top">
                                 {{ this.produto.descricao }}
                               </p>
                             </ion-text>
                           </ion-col>
                         </ion-row>
-                        
-        
+
+
                         <ion-title *ngIf="this.variacoesSelecionadas.length" class="subtitulo">
                           Informações do Produto:
                         </ion-title>
@@ -61,11 +62,11 @@
                               </div>
                             </ion-accordion>
                           </ng-container>
-        
+
                         </ion-accordion-group>
                       </ion-col>
                     </ion-row>
-        
+
                     <ion-row>
                       <ion-col>
                         <ng-container *ngFor="let grupoVariacao of this.produto.grupo_variacao">
@@ -79,7 +80,7 @@
                             </ng-container>
                           </ion-radio-group>
                         </ng-container>
-        
+
                       </ion-col>
                     </ion-row>
                   </ion-col>
@@ -90,25 +91,30 @@
                   <app-observacoes></app-observacoes>
                 </ion-col>
               </ion-row>
-              
-              <ion-row class="ion-justify-content-between ion-margin-horizontal">
+
+              <ion-row class="ion-justify-content-end ion-margin-horizontal">
+
                 <ion-col size="auto">
+                  <p><b>Total:</b> R${{ this.precoTotal || '0,00' }}</p>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="ion-justify-content-end ion-align-items-center">
+                <ion-col size="auto" class="ion-margin-horizontal">
                   <app-contador [min]="1"></app-contador>
                 </ion-col>
-                <ion-col size="auto">
-                  <p><b>Valor total:</b> R${{ this.precoTotal || '0,00' }}</p>
-                </ion-col>
+                <ion-button class="ion-magin-start">
+                  Adicionar
+                </ion-button>
               </ion-row>
-
-              <ion-row class="ion-justify-content-end">
-                <app-btn-loading [loading]="this.loading" btnNome="Adicionar"></app-btn-loading>
-              </ion-row>
-
             </ion-col>
           </ion-row>
         </ng-container>
-        <app-loading [loading]="!this.produto"></app-loading>
       </div>
+      <app-loading
+        [loading]="!this.produto"
+      >
+      </app-loading>
     </ion-content>
   </ng-template>
 </ion-modal>

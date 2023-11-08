@@ -17,7 +17,10 @@ export class HomePage implements OnInit {
   swiperRef: ElementRef | undefined;
   swiper?: Swiper;
 
-  constructor(private Categoria: CategoriaService, private Produto: ProdutoService) { }
+  constructor(
+    private Categoria: CategoriaService,
+    private Produto: ProdutoService
+  ) {}
 
   loading: boolean = true;
 
@@ -47,20 +50,19 @@ export class HomePage implements OnInit {
       (response: Categoria[]) => {
         this.categorias = [...response];
         this.categoriasFiltradas = [...response];
-        this.loading = false
+        this.loading = false;
       },
       (error) => {
         console.error(error);
       }
-    )
+    );
   }
 
-           
   abrirModal(id: number) {
     this.isOpen = true;
     this.selecionarProduto(id);
   }
-  
+
   selecionarProduto(id: number) {
     this.Produto.pegarProduto(id).subscribe(
       (response: any) => {
@@ -69,11 +71,10 @@ export class HomePage implements OnInit {
       (error: HttpErrorResponse) => {
         console.error(error);
       }
-    )
+    );
   }
 
   fecharModal() {
-    this.produtoSelecionado = undefined;
     this.isOpen = false;
   }
 }

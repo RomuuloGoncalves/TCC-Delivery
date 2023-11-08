@@ -8,7 +8,7 @@
           (filtragem)="this.categoriasFiltradas = $event"></app-pesquisa-produto>
 
         <ng-container *ngFor="let categoria of this.categoriasFiltradas">
-          <app-sessao-cards-produto [produtos]="categoria.produtos"></app-sessao-cards-produto>
+          <app-sessao-cards-produto (selecionar)="this.abrirModal($event)" [produtos]="categoria.produtos"></app-sessao-cards-produto>
         </ng-container>
 
         <ng-container *ngIf="!this.categoriasFiltradas.length">
@@ -18,7 +18,14 @@
         </ng-container>
       </ion-col>
     </ion-row>
+
     <app-footer></app-footer>
+
+    <app-modal-produto
+      [produto]="this.produtoSelecionado"
+      [isOpen]="this.isOpen"
+      (fechar)="this.fecharModal()"
+    ></app-modal-produto>
   </ng-container>
   <app-loading [loading]="this.loading"></app-loading>
 </ion-content>

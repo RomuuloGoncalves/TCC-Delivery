@@ -2,7 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Categoria } from 'src/app/core/interfaces/categoria';
+import { Produto } from 'src/app/core/interfaces/produto';
 import { CategoriaService } from 'src/app/core/services/categoria.service';
+import { ProdutoService } from 'src/app/core/services/produto.service';
 
 @Component({
   selector: 'app-listagem',
@@ -10,12 +12,19 @@ import { CategoriaService } from 'src/app/core/services/categoria.service';
   styleUrls: ['./listagem.page.scss'],
 })
 export class ListagemPage implements OnInit {
-  constructor(private route: ActivatedRoute, private Router: Router, private categoriaService: CategoriaService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private Router: Router,
+    private categoriaService: CategoriaService,
+    private Produto: ProdutoService
+  ) {}
 
   idProduto!: any;
   loading: boolean = true;
   categorias: Categoria[] = [];
   categoriasFiltradas: Categoria[] = [];
+  produtoSelecionado?: Produto;
+  isOpen: boolean = false;
 
   ngOnInit() {
     if (!this.ehStringValida(this.idProduto)) this.Router.navigate(['..']);
@@ -42,7 +51,23 @@ export class ListagemPage implements OnInit {
     const regexString: RegExp = /^[A-Za-z]+$/;
     return regexString.test(str);
   }
+  abrirModal(id: number) {
+    this.isOpen = true;
+    this.selecionarProduto(id);
+  }
 
+  selecionarProduto(id: number) {
+    this.Produto.pegarProduto(id).subscribe(
+      (response: any) => {
+        this.produtoSelecionado = response;
+      },
+      (error: HttpErrorResponse) => {
+        console.error(error);
+      }
+    );
+  }
 
-
+  fecharModal() {
+    this.isOpen = false;
+  }
 }

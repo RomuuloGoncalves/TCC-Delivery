@@ -1,8 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
 import { GrupoVariacoes } from 'src/app/core/interfaces/grupo-variacoes';
 import { Produto } from 'src/app/core/interfaces/produto';
-import { ProdutoService } from 'src/app/core/services/produto.service';
 
 @Component({
   selector: 'app-modal-produto',
