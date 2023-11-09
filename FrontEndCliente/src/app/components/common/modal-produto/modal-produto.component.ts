@@ -10,7 +10,10 @@ import { CarrinhoService } from 'src/app/core/services/carrinho.service';
   styleUrls: ['./modal-produto.component.scss'],
 })
 export class ModalProdutoComponent implements OnInit {
-  constructor(private carrinhoService: CarrinhoService, private toastService: ToastService) {}
+  constructor(
+    private carrinhoService: CarrinhoService,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit() {}
 
@@ -25,24 +28,29 @@ export class ModalProdutoComponent implements OnInit {
 
   alterarVariacoesSelecionadas(e: any, grupoVariacao: GrupoVariacoes) {
     let variacao = JSON.parse(e.detail.value);
-
-    this.variacoesSelecionadas.forEach(variacaoSelecionada => {
-      console.log("variacao selecionada", variacaoSelecionada)
-      variacaoSelecionada.grupo_variacao.id === variacao.cod_grupo_variacoes ? console.log("aaaaaaaaaaaaaaaa") : null
-    });
-
-    this.variacoesSelecionadas.push({
-      grupo_variacao: grupoVariacao,
-      variacao: variacao,
-    })
-
-    console.log("variacoes selecionadas",this.variacoesSelecionadas)
-    console.log("variacao", variacao)
-
-
+    let contador = 0;
+    this.variacoesSelecionadas.length
+      ? (this.variacoesSelecionadas.forEach((variacaoSelecionada) => {
+          contador += 1;
+          console.log(variacao);
+          console.log(variacaoSelecionada);
+          if (
+            variacaoSelecionada.grupo_variacao.id ===
+            variacao.cod_grupo_variacoes
+          ) {
+            this.variacoesSelecionadas.splice(contador - 1);
+          }
+        }),
+        this.variacoesSelecionadas.push({
+          grupo_variacao: grupoVariacao,
+          variacao: variacao,
+        }))
+      : this.variacoesSelecionadas.push({
+          grupo_variacao: grupoVariacao,
+          variacao: variacao,
+        });
 
     this.precoTotal = this.calcPreco();
-
   }
 
   public adicionarProduto() {
@@ -53,7 +61,10 @@ export class ModalProdutoComponent implements OnInit {
         setTimeout(() => {
           location.reload();
         }, 400),
-        this.toastService.mostrarToast('sucesso', 'Produto adicionado ao carrinho!'),
+        this.toastService.mostrarToast(
+          'sucesso',
+          'Produto adicionado ao carrinho!'
+        ),
         (this.variacoesSelecionadas = []),
         this.fechar.emit())
       : null;
@@ -76,5 +87,4 @@ export class ModalProdutoComponent implements OnInit {
     this.precoTotal = this.calcPreco();
     this.fechar.emit();
   }
-
 }

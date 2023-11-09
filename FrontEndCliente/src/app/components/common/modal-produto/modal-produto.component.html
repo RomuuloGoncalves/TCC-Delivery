@@ -55,7 +55,6 @@
                                 <ion-label><b>{{ variacaoSelecionada.grupo_variacao.tipo }}</b></ion-label>
                               </ion-item>
                               <div class="ion-padding" slot="content">
-                                <ng-container *ngFor="let variacaoSelecionada of variacoesSelecionadas">
                                   <ion-item>
                                     <ion-row class="ion-justify-content-between">
                                       <ion-col size="auto">
@@ -98,7 +97,6 @@
                                       </ion-col>
                                     </ion-row>
                                   </ion-item>
-                                </ng-container>
                               </div>
                             </ion-accordion>
                           </ng-container>
@@ -137,7 +135,7 @@
 
               <ion-row class="ion-justify-content-end ion-margin-horizontal">
 
-                <ion-col size="auto">
+                <ion-col size="auto"> 
                   <p><b>Total:</b> R${{ this.precoTotal || '0,00' }}</p>
                 </ion-col>
               </ion-row>
