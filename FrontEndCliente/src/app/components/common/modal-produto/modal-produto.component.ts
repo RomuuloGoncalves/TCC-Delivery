@@ -56,7 +56,7 @@ export class ModalProdutoComponent implements OnInit {
   private calcPreco() {
     let preco: number = 0;
     this.variacoesSelecionadas.forEach((variacao) => {
-      preco += Number(variacao.variacao.valor_inicial);
+      preco += Number(variacao.variacao.valor);
     });
     return preco;
   }

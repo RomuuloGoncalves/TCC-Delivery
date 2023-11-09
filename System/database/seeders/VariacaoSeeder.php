@@ -96,7 +96,6 @@ class VariacaoSeeder extends Seeder
 
         DB::table('Variacoes')->insert([
             'nome' => 'Picanha',
-            'valor_desconto' => 2.00,
             'valor' => 10.00,
             'descricao' => 'Picanha grelhada',
             'cod_grupo_variacoes' => 4,
