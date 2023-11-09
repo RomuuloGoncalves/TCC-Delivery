@@ -24,8 +24,7 @@ export class ProdutosService {
     return this.Server.put('/produto/editar', data);
   }
 
-  public adcionarProduto(data: any) {
-    console.log("service adicionar: ", data)
+  public cadastrarProduto(data: any) {
     return this.Server.post('/produto/cadastrar', data);
   }
 }

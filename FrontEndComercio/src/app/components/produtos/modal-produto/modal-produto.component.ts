@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { ProdutosService } from 'src/app/core/services/produtos.service';
 
@@ -7,7 +8,7 @@ import { ProdutosService } from 'src/app/core/services/produtos.service';
   templateUrl: './modal-produto.component.html',
   styleUrls: ['./modal-produto.component.scss'],
 })
-export class ModalProdutoComponent implements OnInit {
+export class ModalProdutoComponent implements OnInit, OnDestroy {
 
   @Input() public produto!: Produto;
   @Input() public isOpen: boolean = false;
@@ -15,9 +16,22 @@ export class ModalProdutoComponent implements OnInit {
   @Output() public editar: EventEmitter<any> = new EventEmitter();
 
 
-  constructor( private Produto: ProdutosService ) { }
+  constructor( private Produto: ProdutosService, private router: Router ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.produto)
+  }
+
+  ngOnDestroy(){
+    this.isOpen = false
+  }
+
+  navigate(){
+    this.fechar.emit();
+    setTimeout(() => {
+      this.router.navigate(['criacao-grupo-var', this.produto.id])
+    }, 100);
+  }
 
   excluirProduto(id: number){
     this.Produto.excluirProduto(id).subscribe(

@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Categoria } from 'src/app/core/interfaces/categoria';
 import { CategoriaService } from 'src/app/core/services/categoria.service';
 import { GrupoVariacaoService } from 'src/app/core/services/grupo-variacao.service';
@@ -11,29 +12,21 @@ import { GrupoVariacaoService } from 'src/app/core/services/grupo-variacao.servi
   styleUrls: ['./criacao-grupo-var.page.scss'],
 })
 export class CriacaoGrupoVarPage implements OnInit {
-  constructor(private Categoria: CategoriaService, private GrupoVar: GrupoVariacaoService) { }
+  constructor(private GrupoVar: GrupoVariacaoService, private route: ActivatedRoute) { }
   @ViewChild('cadastroForm') private cadastoForm!: NgForm;
-
+  cod_produto!: any
   ngOnInit() {
-    this.pegarCategoria()
+    this.route.params.subscribe(params => {
+      this.cod_produto = params['id'];
+    });
   }
 
+  isOpen = false
   erros: any = {};
-  categorias: Categoria[] = []
-  pegarCategoria() {
-    this.Categoria.pegarCategorias().subscribe(
-      (response: Categoria[]) => {
-        this.categorias = response;
-      },
-      (error: HttpErrorResponse) => {
-        console.error(error);
-      }
-    );
-  }
 
   public cadastrar() {
     const grupoVar = this.cadastoForm.form.value;
-    grupoVar.cod_produto = Number(grupoVar.cod_produto)
+    grupoVar.cod_produto = Number(this.cod_produto)
     console.log(grupoVar)
 
     this.GrupoVar.cadastrarGrupoVar(grupoVar).subscribe(
@@ -42,7 +35,7 @@ export class CriacaoGrupoVarPage implements OnInit {
       },
 
       (badReponse: HttpErrorResponse) => {
-      
+
       }
     )
   }

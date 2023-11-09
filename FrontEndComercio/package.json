@@ -27,7 +27,7 @@
     "@capacitor/keyboard": "5.0.2",
     "@capacitor/status-bar": "5.0.2",
     "@ionic/angular": "^7.0.0",
-    "@ionic/cli": "^7.1.1",
+    "@ionic/cli": "^6.18.0",
     "chart.js": "^4.4.0",
     "date-fns": "^2.30.0",
     "ionicons": "^7.0.0",

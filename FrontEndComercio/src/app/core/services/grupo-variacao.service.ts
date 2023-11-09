@@ -12,7 +12,7 @@ export class GrupoVariacaoService {
     return this.Server.get('/grupo-variacao');
   }
 
-  public cadastrarGrupoVar (grupoVar: GrupoVariacoes) {
+  public cadastrarGrupoVar (grupoVar: any) {
       return this.Server.post('/grupo-variacao/cadastrar', grupoVar);
     }  
 }

@@ -6,7 +6,6 @@
         <h1>CRIAR GRUPO VARIAÇÃO</h1>
       </ion-row>
       <form #cadastroForm="ngForm" (ngSubmit)="this.cadastrar()">
-
         <ion-row>
           <ion-col size="12">
             <ion-row>
@@ -21,20 +20,13 @@
               <ion-input ngModel name="quantidade_variacoes_max" label="Quantidade maxima" label-placement="floating" fill="outline"
                 placeholder="Quantidade maxima" type="number"></ion-input>
             </ion-row>
-            <ion-row>
-              <ion-select ngModel mode="md" name="cod_produto"  aria-label="Variacao" label="Selecione o produto"
-              label-placement="floating" fill="outline" placeholder="Selecione o produto">
-              <ng-container *ngFor="let categoria of categorias">
-                <ion-select-option value="{{categoria.id}}">{{ categoria.nome }}</ion-select-option>
-              </ng-container>
-            </ion-select>
-            </ion-row>
+  
           </ion-col>
         </ion-row>
 
         <ion-row>
           <ion-col size=6>
-            <ion-button size="large" type="submit" [routerLink]="['']" routerDirection="back"
+            <ion-button size="large" type="submit" [routerLink]="['/produtos']" routerDirection="back"
               expand="block">Voltar</ion-button>
           </ion-col>
           <ion-col size=6>
