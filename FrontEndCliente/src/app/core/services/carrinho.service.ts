@@ -17,8 +17,12 @@ export class CarrinhoService {
   }
 
   public adicionarProduto(produto: Produto) {
-    return console.log("produto produto a adicionar no carrinho", produto)
     return this.Server.put(`/cliente/carrinho/adicionar`, produto)
+  }
+
+  public adicionarCupom(id: number) {
+    console.log("adicionar cupom ao carrinh")
+    return this.Server.put(`/cliente/carrinho/adicionarCupom`, id)
   }
 
 }

@@ -65,7 +65,7 @@ export class CarrinhoPage implements OnInit {
     this.cupomService.consultarNome(cupom).subscribe(
       (response: Cupom) => {
         console.log(response)
-        // this.carrinhoService.adicionarCupom()
+        this.carrinhoService.adicionarCupom(Number(response.id))
         this.Toast.mostrarToast('sucesso', 'Cupom encontrado!');
       },
       (badResponse: HttpErrorResponse) => {
