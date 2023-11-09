@@ -11,14 +11,11 @@ export class CarrinhoService {
   public removerProduto(id: number) {
     return this.Server.delete(`/cliente/carrinho/delete/${id}`);
   }
-  // q porra é essa marreco?
-  public produtos(cod_cliente: Number) {
-    return this.Server.get(`pedido/carrinho/${cod_cliente}`);
+  public produtos() {
+    return this.Server.get(`/pedido/carrinho`);
   }
 
   public adicionarProduto(produto: Produto) {
-    return console.log("produto produto a adicionar no carrinho", produto)
-    return this.Server.put(`/cliente/carrinho/adicionar`, produto)
+    return this.Server.put(`/cliente/carrinho/adicionar`, produto);
   }
-
 }
