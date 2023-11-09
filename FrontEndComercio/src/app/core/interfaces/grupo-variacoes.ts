@@ -2,7 +2,7 @@ import { Variacao } from "./variacao";
 
 export interface GrupoVariacoes {
   id_grupo_variacoes?: number;
-  id_produto?: number;
+  id?: number;
   tipo: string;
   variacoes?: Variacao[];
   qtdd_min?: number;

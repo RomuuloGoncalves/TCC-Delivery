@@ -5,37 +5,35 @@
       <ion-row class="ion-justify-content-center">
         <h1>CRIAR VARIAÇÃO</h1>
       </ion-row>
-      <form action="" method="post">
+      <form #cadastroForm="ngForm" (ngSubmit)="this.cadastrar()">
         <ion-row>
-          <ion-col size="6">
-            <ion-select (ionChange)="produtoSelecionadoSelect($event)" aria-label="Variacao" interface="popover"
-              placeholder="Selecione o grupo variação">
-              <ng-container *ngFor="let obj of criarFormularoProduto">
-                <ion-select-option value="{{obj.tipo}}">{{ obj.tipo }}</ion-select-option>
+          <ion-col size="12">
+            <ion-select mode="md" ngModel name="cod_grupo_variacoes" aria-label="Variacao" label="Selecione o produto"
+            label-placement="floating" fill="outline" placeholder="Selecione o grupo variação">
+              <ng-container *ngFor=" let variacao of variacoes">
+                <ion-select-option value="{{variacao.id}}">{{ variacao.tipo }}</ion-select-option>
               </ng-container>
             </ion-select>
-          </ion-col>
-          <ion-col size="6">
-          
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col size="12">
             <ion-row>
-              <ion-input label="nome" label-placement="floating" fill="outline" placeholder="Digite o nome"></ion-input>
+              <ion-input ngModel name="nome" label="nome" label-placement="floating" fill="outline" placeholder="Digite o nome"></ion-input>
             </ion-row>
             <ion-row>
-              <ion-input label="Valor" label-placement="floating" fill="outline"
-                placeholder="Digite o valor"></ion-input>
+              <ion-input ngModel name="valor" label="Valor" label-placement="floating" fill="outline"
+                placeholder="Digite o valor" ></ion-input>
             </ion-row>
             <ion-row>
-              <ion-input type="number" label="Valor do desconto" label-placement="floating" fill="outline"
-                placeholder="Digite o Valor do desconto"></ion-input>
+              <ion-input ngModel name="imagem" label="Imagem" label-placement="floating" fill="outline"
+                placeholder="Escolhe a imagem do produto" type="file"></ion-input>
             </ion-row>
             <ion-row>
-              <ion-textarea label="Descrição" label-placement="floating" fill="outline"
+              <ion-textarea ngModel name="descricao" label="Descrição" label-placement="floating" fill="outline"
                 placeholder="Insira uma descrição"></ion-textarea>
             </ion-row>
+            
           </ion-col>
         </ion-row>
 

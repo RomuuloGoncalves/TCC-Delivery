@@ -26,10 +26,10 @@ export class ModalProdutoComponent implements OnInit, OnDestroy {
     this.isOpen = false
   }
 
-  navigate(){
+  navigate(rota:string){
     this.fechar.emit();
     setTimeout(() => {
-      this.router.navigate(['criacao-grupo-var', this.produto.id])
+      this.router.navigate([rota, this.produto.id])
     }, 100);
   }
 

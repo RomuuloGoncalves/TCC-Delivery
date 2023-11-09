@@ -7,7 +7,7 @@
             <ion-title>{{this.produto.nome}}</ion-title>
             <ion-buttons slot="end">
               <ion-button (click)="this.fechar.emit()"><ion-icon name="close-outline"
-                size="large"></ion-icon></ion-button>
+                  size="large"></ion-icon></ion-button>
             </ion-buttons>
           </ion-toolbar>
         </ion-header>
@@ -33,13 +33,18 @@
 
           <ion-col size="12">
             <ion-row class="ion-justify-content-center">
-              <ion-col size="3">
-                <ion-button expand="block" size="large" (click)="navigate()"routerDirection="back">Add</ion-button>
+              <ion-col size="4">
+                <ion-button expand="block" size="large" (click)="navigate('criacao-grupo-var')" routerDirection="back">Variantes</ion-button>
               </ion-col>
-              <ion-col size="3">
+              <ion-col size="4">
+                <ion-button expand="block" size="large" (click)="navigate('criacao-variacoes')" routerDirection="back">Variações</ion-button>
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="4">
                 <ion-button expand="block" size="large">Editar</ion-button>
               </ion-col>
-              <ion-col size="3">
+              <ion-col size="4">
                 <ion-button fill="outline" expand="block" size="large">Excluir</ion-button>
               </ion-col>
             </ion-row>

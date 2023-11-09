@@ -19,7 +19,7 @@ class VariacaoController extends Controller
     public function store(Request $request) {
         $regras = [
             'nome' => ['required', 'string', 'max:255'],
-            'valor' => ['required', 'decimal:2', 'min_digit:1', 'max_digits:999999999'],
+            'valor' => ['required'],
             'imagem' => ['nullable', 'string', 'max:500'],
             'descricao' => ['required', 'string', 'max:500'],
             'cod_grupo_variacoes' => ['required', 'integer', 'max_digits:30'],

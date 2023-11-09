@@ -45,7 +45,7 @@ const routes: Routes = [
     canActivate: [LogedInGuard]
   },
   {
-    path: 'criacao-variacoes',
+    path: 'criacao-variacoes/:id',
     loadChildren: () => import('./pages/criacao-variacoes/criacao-variacoes.module').then( m => m.CriacaoVariacoesPageModule),
     canActivate: [LogedInGuard]
   },
