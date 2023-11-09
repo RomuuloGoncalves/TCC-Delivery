@@ -10,6 +10,7 @@ import { CarrinhoPage } from './carrinho.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { CardCarrinhoModule } from 'src/app/components/carrinho/card-carrinho/card-carrinho.module';
+import { LoadingModule } from 'src/app/components/common/loading/loading.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { CardCarrinhoModule } from 'src/app/components/carrinho/card-carrinho/ca
     CarrinhoPageRoutingModule,
     HeaderModule,
     FooterModule,
-    CardCarrinhoModule
+    CardCarrinhoModule,
+    LoadingModule
   ],
   declarations: [CarrinhoPage],
 })

@@ -93,8 +93,8 @@ $router->group(['prefix' => 'pedido'], function () use ($router) {
     $router->get('/', 'PedidoController@index');
     $router->get('/historico', 'PedidoController@historico');
     $router->post('/editar', 'PedidoController@update');
+    $router->get('/carrinho', 'PedidoController@showCarrinho');
     $router->get('/{id}', 'PedidoController@show');
-    $router->get('/carrinho/{id}', 'PedidoController@showCarrinho');
     $router->get('/pedidos/{id}', 'PedidoController@showPedidosCliente');
 
 });
@@ -186,7 +186,6 @@ $router->group(['prefix' => 'pedido-produto'], function () use ($router) {
 */
 
 $router->group(['prefix' => 'dashboard'], function () use ($router) {
-    $router->get('/rendimento/help', 'DashboardController@help');
     $router->get('/rendimento/semanal', 'DashboardController@rendimento_semanal');
     $router->get('/rendimento/mensal', 'DashboardController@rendimento_mensal');
     $router->get('/rendimento/anual', 'DashboardController@rendimento_anual');
@@ -198,5 +197,4 @@ $router->group(['prefix' => 'dashboard'], function () use ($router) {
     $router->get('/categoria/semanal', 'DashboardController@categoria_semanal');
     $router->get('/categoria/mensal', 'DashboardController@categoria_mensal');
     $router->get('/categoria/anual', 'DashboardController@categoria_anual');
-
 });

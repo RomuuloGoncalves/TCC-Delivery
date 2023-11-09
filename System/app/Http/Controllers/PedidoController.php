@@ -81,7 +81,8 @@ class PedidoController extends Controller {
      */
 
     public function showCarrinho() {
-        $pedido = Pedido::with(['pedido_produtos.variacoes_selecionadas'])->where('cod_cliente', ClienteController::getAuthCliente()->id)->where('status', 'Carrinho')->get();
+        $cliente =  ClienteController::getAuthCliente();
+        $pedido = Pedido::with(['pedido_produtos.variacoes_selecionadas'])->where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->get();
 
         return response()->json($pedido, 200);
     }
@@ -93,7 +94,8 @@ class PedidoController extends Controller {
      */
 
     public function showPedidosCliente() {
-        $pedido = Pedido::with(['pedido_produtos.variacoes_selecionadas', 'endereco'])->where('cod_cliente', ClienteController::getAuthCliente()->id)->where('status', ['Em Espera', 'Em Entrega', 'Cancelado', 'Pronto'])->get();
+        $cliente =  ClienteController::getAuthCliente();
+        $pedido = Pedido::with(['pedido_produtos.variacoes_selecionadas', 'endereco'])->where('cod_cliente', $cliente->id)->where('status', ['Em Espera', 'Em Entrega', 'Cancelado', 'Pronto'])->get();
 
         return response()->json($pedido, 200);
     }
