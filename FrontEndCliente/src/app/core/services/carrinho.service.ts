@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ServerService } from './server.service';
 import { Produto } from '../interfaces/produto';
+import { Cupom } from '../interfaces/cupom';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,10 @@ export class CarrinhoService {
   public adicionarProduto(produto: Produto) {
     return console.log("produto produto a adicionar no carrinho", produto)
     return this.Server.put(`/cliente/carrinho/adicionar`, produto)
+  }
+
+  public adicionarCupom(cupom: Cupom) {
+    return this.Server.put(`/cliente/carrinho/adicionarCupom`, cupom)
   }
 
 }

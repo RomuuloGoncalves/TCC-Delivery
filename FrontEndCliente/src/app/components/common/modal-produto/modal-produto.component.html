@@ -24,7 +24,7 @@
                   <ion-row>
                     <ion-col class="imagem-container ion-justify-content-center ion-margin-vertical">
                       <ion-img class="imagem"
-                        src="{{ this.produto.imagem ||  '../../../../assets/imgs/home-icons/garfo_faca_outline.png'}}"></ion-img>
+                        src="{{ this.produto.imagem ||  '../../../../assets/imgs/home-icons/garfo_faca_outline.png' }}"></ion-img>
                     </ion-col>
                   </ion-row>
                   <ion-row>
@@ -51,13 +51,13 @@
                           Informações do Produto:
                         </ion-title>
                         <ion-accordion-group multiple="true">
-                          <ng-container *ngFor="let variacao of this.variacoesSelecionadas">
-                            <ion-accordion value="{{ variacao.variacao.nome }}">
+                          <ng-container *ngFor="let variacaoSelecionada of this.variacoesSelecionadas">
+                            <ion-accordion value="{{ variacaoSelecionada.variacao.nome }}">
                               <ion-item slot="header" color="light">
-                                <ion-label><b>{{ variacao.grupo_variacao.tipo }}</b></ion-label>
+                                <ion-label><b>{{ variacaoSelecionada.grupo_variacao.tipo }}</b></ion-label>
                               </ion-item>
                               <div class="ion-padding" slot="content">
-                                <ng-container *ngFor="let variacao of variacoesSelecionadas">
+                                <ng-container *ngFor="let variacaoSelecionada of variacoesSelecionadas">
                                   <ion-item>
                                     <ion-row class="ion-justify-content-between">
                                       <ion-col size="auto">
@@ -67,7 +67,7 @@
                                       </ion-col>
                                       <ion-col size="auto">
                                         <ion-text>
-                                          <b>{{ variacao.variacao.nome }}</b>
+                                          <b>{{ variacaoSelecionada.variacao.nome }}</b>
                                         </ion-text>
                                       </ion-col>
                                     </ion-row>
@@ -81,7 +81,7 @@
                                       </ion-col>
                                       <ion-col size="auto">
                                         <ion-text>
-                                          <b>{{ variacao.variacao.valor_inicial?.toFixed(2)?.replace('.', ',') }}</b>
+                                          <b>R${{ variacaoSelecionada.variacao.valor_inicial?.toFixed(2)?.replace('.', ',') }}</b>
                                         </ion-text>
                                       </ion-col>
                                     </ion-row>
