@@ -6,6 +6,7 @@ import Swiper from 'swiper';
 import { ProdutoService } from 'src/app/core/services/produto.service';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { CarrinhoService } from 'src/app/core/services/carrinho.service';
+import { ToastService } from 'src/app/core/controller/toast.service';
 
 @Component({
   selector: 'app-montagem-marmita',
@@ -25,7 +26,7 @@ export class MontagemMarmitaPage implements OnInit {
 
   ingredientes!: Produto;
 
-  constructor(private produtoService: ProdutoService, private carrinhoService: CarrinhoService) {}
+  constructor(private produtoService: ProdutoService, private carrinhoService: CarrinhoService, private toastService: ToastService) { }
 
   ngOnInit() {
     this.atualizarMarmita();
@@ -83,18 +84,21 @@ export class MontagemMarmitaPage implements OnInit {
     this.precoMarmita = 0;
     this.marmita.forEach((grupoVariacao) => {
       grupoVariacao.variacao?.forEach((variacao) => {
-        if (variacao.valor_inicial) this.precoMarmita += variacao.valor_inicial;
+        if (variacao.valor) this.precoMarmita += variacao.valor;
       });
     });
 
     this.calcTotal();
   }
 
-  // por redirect pra home e mensagem bicha
   adicionarProduto() {
     this.marmitaPersonalizada.grupo_variacao = this.marmita
     this.marmitaPersonalizada.quantidade = this.qtddMarmita
     this.carrinhoService.adicionarProduto(this.marmitaPersonalizada)
+    setTimeout(() => {
+      location.reload();
+    }, 400)
+    this.toastService.mostrarToast('sucesso', 'Produto adicionado ao carrinho!')
   }
 
   calcTotal() {

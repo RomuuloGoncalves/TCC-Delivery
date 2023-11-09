@@ -1,158 +1,188 @@
 <ion-content [fullscreen]="true">
-  <ion-header>
-    <app-header></app-header>
-  </ion-header>
-
-  <ion-row class="ion-margin">
-    <ion-col size="12">
-      <ion-row class="titulo-sessao">
-        <ion-label> Carrinho </ion-label>
-      </ion-row>
-    </ion-col>
-
-    <ion-col>
-      <ion-list>
-        <ion-item>
-          <ion-row
-            class="container__item ion-align-items-center ion-justify-content-around"
-          >
-            <ion-col offset="3" size="3">
-              <ion-row
-                class="ion-justify-content-center ion-align-items-center"
-              >
-                <ion-text><b>Preço</b></ion-text>
-              </ion-row>
-            </ion-col>
-
-            <ion-col size="2">
-              <ion-row
-                class="ion-justify-content-center ion-align-items-center"
-              >
-                <ion-text><b>Quantidade</b></ion-text>
-              </ion-row>
-            </ion-col>
-
-            <ion-col size="3">
-              <ion-row
-                class="ion-justify-content-center ion-align-items-center"
-              >
-                <ion-text><b>Subtotal</b></ion-text>
-              </ion-row>
-            </ion-col>
-
-            <ion-col size="1" class="remover">
-              <ion-row
-                class="ion-justify-content-center ion-align-items-center"
-              >
-                <ion-text><b>Remover</b></ion-text>
-              </ion-row>
-            </ion-col>
-          </ion-row>
-        </ion-item>
-
-        <ng-container *ngFor="let produto of this.produtos">
-          <app-card-carrinho
-            [produto]="produto"
-            (calc)="this.calcTotal()"
-            (remover)="removerProduto($event)"
-          ></app-card-carrinho>
-        </ng-container>
-      </ion-list>
-    </ion-col>
-  </ion-row>
-
-  <ion-row class="ion-margin ion-justify-content-center">
-    <ion-col size="12" sizeLg="5" class="ion-text-center">
-      <ion-row>
+  <ng-container *ngIf="!this.loading">
+    <ion-header>
+      <app-header></app-header>
+    </ion-header>
+  
+    <ng-container *ngIf="this.produtos.length">
+      <ion-row class="ion-margin">
         <ion-col size="12">
-          <ion-text class="ion-text-end">
-            <p><b>Resgatar Cupom</b></p>
-          </ion-text>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center ion-justify-content-end">
-        <ion-col size="6" sizeMd="5" sizeLg="8">
-          <ion-row class="ion-justify-content-end">
-            <ion-col size="12" sizeLg="auto">
-              <ion-row>
-                <ion-col size="auto">
-                  <img
-                    class="cupom__image"
-                    src="../../../assets/imgs/carrinho-icons/cupom 1.png"
-                    alt="Cupom"
-                  />
-                </ion-col>
-                <form #formCupom="ngForm" (ngSubmit)="this.resgatarCupom()" method="post">
-                  <ion-col>
-                    <ion-input ngModel placeholder="Cupom" name="nome" errorText=" "></ion-input>
-                  </ion-col>
-                  <ion-col size="auto">
-                    <ion-button type="submit">Resgatar</ion-button>
-                  </ion-col>
-                </form>
-              </ion-row>
-            </ion-col>
+          <ion-row class="titulo-sessao">
+            <ion-label> Carrinho </ion-label>
           </ion-row>
         </ion-col>
-      </ion-row>
-    </ion-col>
-
-    <ion-col size="12" sizeLg="5">
-      <ion-row class="ion-justify-content-end">
-        <ion-col size="6" sizeMd="5" sizeLg="8">
+      
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-row
+                class="container__item ion-align-items-center ion-justify-content-around"
+              >
+                <ion-col offset="3" size="3">
+                  <ion-row
+                    class="ion-justify-content-center ion-align-items-center"
+                  >
+                    <ion-text><b>Preço</b></ion-text>
+                  </ion-row>
+                </ion-col>
+    
+                <ion-col size="2">
+                  <ion-row
+                    class="ion-justify-content-center ion-align-items-center"
+                  >
+                    <ion-text><b>Quantidade</b></ion-text>
+                  </ion-row>
+                </ion-col>
+    
+                <ion-col size="3">
+                  <ion-row
+                    class="ion-justify-content-center ion-align-items-center"
+                  >
+                    <ion-text><b>Subtotal</b></ion-text>
+                  </ion-row>
+                </ion-col>
+    
+                <ion-col size="1" class="remover">
+                  <ion-row
+                    class="ion-justify-content-center ion-align-items-center"
+                  >
+                    <ion-text><b>Remover</b></ion-text>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-item>
+    
+            <ng-container *ngFor="let produto of this.produtos">
+              <app-card-carrinho
+                [produto]="produto"
+                (calc)="this.calcTotal()"
+                (remover)="removerProduto($event)"
+              ></app-card-carrinho>
+            </ng-container>
+          </ion-list>
+        </ion-col>
+      </ion-row>    
+      <ion-row class="ion-margin ion-justify-content-center">
+        <ion-col size="12" sizeLg="5" class="ion-text-center">
           <ion-row>
             <ion-col size="12">
               <ion-text class="ion-text-end">
-                <p><b>Fatura</b></p>
+                <p><b>Resgatar Cupom</b></p>
               </ion-text>
             </ion-col>
           </ion-row>
-          <ion-row class="ion-align-items-center ion-justify-content-center">
-            <ion-col size="12">
-              <ion-row class="ion-justify-content-between">
-                <ion-label class="finalizacao">Subtotal</ion-label>
-                <ion-text class="finalizacao__valores"
-                  >R$ {{ this.subtotal.toFixed(2).replace('.', ',') }}</ion-text
-                >
-              </ion-row>
-            </ion-col>
-            <ion-col size="12">
-              <ion-row class="ion-justify-content-between">
-                <ion-label class="finalizacao">Frete</ion-label>
-                <ion-text class="finalizacao__valores"
-                  >R$ {{ this.frete.toFixed(2).replace('.', ',') }}</ion-text
-                >
-              </ion-row>
-            </ion-col>
-            <ion-col size="12">
-              <ion-row class="ion-justify-content-between">
-                <ion-label id="finalizacao__total" class="finalizacao"
-                  >Total</ion-label
-                >
-                <ion-text class="finalizacao__valores"
-                  >R$ {{ this.total.toFixed(2).replace('.', ',') }}</ion-text
-                >
-              </ion-row>
-            </ion-col>
-
-            <ion-col size="12">
-              <ion-row class="ion-justify-content-center">
-                <ion-col size="12" class="ion-no-margin">
-                  <ion-row id="divisoria"></ion-row>
+          <ion-row class="ion-align-items-center ion-justify-content-end">
+            <ion-col size="6" sizeMd="5" sizeLg="8">
+              <ion-row class="ion-justify-content-end">
+                <ion-col size="12" sizeLg="auto">
+                  <ion-row>
+                    <ion-col size="auto">
+                      <img
+                        class="cupom__image"
+                        src="../../../assets/imgs/carrinho-icons/cupom 1.png"
+                        alt="Cupom"
+                      />
+                    </ion-col>
+                    <form #formCupom="ngForm" (ngSubmit)="this.resgatarCupom()" method="post">
+                      <ion-col>
+                        <ion-input ngModel placeholder="Cupom" name="nome" errorText=" "></ion-input>
+                      </ion-col>
+                      <ion-col size="auto">
+                        <ion-button type="submit">Resgatar</ion-button>
+                      </ion-col>
+                    </form>
+                  </ion-row>
                 </ion-col>
               </ion-row>
             </ion-col>
-
-            <ion-col>
-              <ion-row class="ion-align-items-center ion-justify-content-end">
-                <ion-button>Finalizar</ion-button>
+          </ion-row>
+        </ion-col>
+  
+        <ion-col size="12" sizeLg="5">
+          <ion-row class="ion-justify-content-end">
+            <ion-col size="6" sizeMd="5" sizeLg="8">
+              <ion-row>
+                <ion-col size="12">
+                  <ion-text class="ion-text-end">
+                    <p><b>Fatura</b></p>
+                  </ion-text>
+                </ion-col>
+              </ion-row>
+              <ion-row class="ion-align-items-center ion-justify-content-center">
+                <ion-col size="12">
+                  <ion-row class="ion-justify-content-between">
+                    <ion-label class="finalizacao">Subtotal</ion-label>
+                    <ion-text class="finalizacao__valores"
+                      >R$ {{ this.subtotal.toFixed(2).replace('.', ',') }}</ion-text
+                    >
+                  </ion-row>
+                </ion-col>
+                <ion-col size="12">
+                  <ion-row class="ion-justify-content-between">
+                    <ion-label class="finalizacao">Frete</ion-label>
+                    <ion-text class="finalizacao__valores"
+                    >R$ {{ this.frete.toFixed(2).replace('.', ',') }}</ion-text
+                    >
+                  </ion-row>
+                </ion-col>
+                <ion-col size="12">
+                  <ion-row class="ion-justify-content-between">
+                    <ion-label id="finalizacao__total" class="finalizacao"
+                    >Total</ion-label
+                    >
+                    <ion-text class="finalizacao__valores"
+                    >R$ {{ this.total.toFixed(2).replace('.', ',') }}</ion-text
+                    >
+                  </ion-row>
+                </ion-col>
+    
+                <ion-col size="12">
+                  <ion-row class="ion-justify-content-center">
+                    <ion-col size="12" class="ion-no-margin">
+                      <ion-row id="divisoria"></ion-row>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+    
+                <ion-col>
+                  <ion-row class="ion-align-items-center ion-justify-content-end">
+                    <ion-button>Finalizar</ion-button>
+                  </ion-row>
+                </ion-col>
               </ion-row>
             </ion-col>
           </ion-row>
         </ion-col>
       </ion-row>
-    </ion-col>
-  </ion-row>
+    </ng-container>
+    
+    <ng-container>
+      <ion-row class="ion-margin">
+        <ion-col size="12">
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="1.5" class="ion-margin-vertical">
+              <ion-img src="../../../../assets/imgs/montagem-marmita/carrinho_red_bold.png"></ion-img>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="auto">
+              <ion-text>
+                <h3>Não há itens no carrinho!</h3>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="auto">
+              <ion-button [routerLink]="['..']" routerDirection="back" class="ion-padding" fill="outline">Voltar para a página inicial</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ng-container>
 
-  <app-footer></app-footer>
+    <app-footer></app-footer>
+  </ng-container>
+  <app-loading
+    [loading]="this.loading"
+  ></app-loading>
 </ion-content>

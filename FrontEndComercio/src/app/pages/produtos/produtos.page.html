@@ -14,13 +14,6 @@
                 <ion-item>
                   <ion-select (ionChange)="filtrarSelecao($event)" interface="popover" mode="ios" placeholder="Select"
                     [multiple]="true" [(ngModel)]="selectedOptions">
-  
-                    <!-- <ion-select-option *ngIf="this.marmitas.length" value="marmita" Default="true">Marmitas</ion-select-option>
-                    <ion-select-option *ngIf="this.bebidas.length" value="bebida">Bebidas</ion-select-option>
-                    <ion-select-option *ngIf="this.sobremesas.length" value="sobremesa">Sobremesas</ion-select-option>
-                    <ion-select-option *ngIf="this.combos.length" value="combo">Combo</ion-select-option>
-                    <ion-select-option *ngIf="this.acompanhamentos.length" value="acompanhamento">Acompanhamento</ion-select-option> -->
-
                     <ng-container *ngFor="let produtoCategoria of this.produtosOrganizados">
                       <ion-select-option value="{{this.produtoCategoria[0]}}">{{this.produtoCategoria[0]}}</ion-select-option>
                     </ng-container>
@@ -54,31 +47,8 @@
       </ion-row>
     </ion-col>
 
-    <!-- <ion-col size="11">
-      <ng-container *ngIf="!this.loading">
-        <ion-row class="ion-justify-content-center">
-          <ion-col size="11.9">
-            <ion-accordion-group [multiple]="true" [value]="['Marmitas']">
-              <app-accordion (clickCard)="this.selecionarProduto($event)" *ngIf="this.filtrar['marmita'] && this.marmitas.length" [tituloSessao]="'Marmitas'"
-                [produtos]="this.marmitas"></app-accordion>
-              <app-accordion (clickCard)="this.selecionarProduto($event)" *ngIf="this.filtrar['bebida'] && this.bebidas.length" [tituloSessao]="'Bebidas'"
-                [produtos]="this.bebidas"></app-accordion>
-              <app-accordion (clickCard)="this.selecionarProduto($event)" *ngIf="this.filtrar['sobremesa'] && this.sobremesas.length" [tituloSessao]="'Sobremesas'"
-                [produtos]="this.sobremesas"></app-accordion>
-              <app-accordion (clickCard)="this.selecionarProduto($event)" *ngIf="this.filtrar['combo'] && this.combos.length" [tituloSessao]="'Combos'"
-                [produtos]="this.combos"></app-accordion>
-              <app-accordion (clickCard)="this.selecionarProduto($event)" *ngIf="this.filtrar['acompanhamento'] && this.acompanhamentos.length" [tituloSessao]="'Acompanhamentos'"
-                [produtos]="this.acompanhamentos"></app-accordion>
-            </ion-accordion-group>
-          </ion-col>
-        </ion-row>
-      </ng-container>
-      <app-loading [loading]="this.loading"></app-loading>
-    </ion-col> -->
-
     <ion-col size="11">
  
-
       <ng-container *ngIf="!this.loading">
         <ion-row class="ion-justify-content-center">
           <ion-col size="11.9">

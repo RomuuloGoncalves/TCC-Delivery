@@ -90,8 +90,12 @@ const routes: Routes = [
     canActivate: [LogedInGuard]
   },
   {
-    path: 'criacao-grupo-var',
+    path: 'criacao-grupo-var/:id',
     loadChildren: () => import('./pages/criacao-grupo-var/criacao-grupo-var.module').then( m => m.CriacaoGrupoVarPageModule)
+  },
+  {
+    path: 'criacao-produto',
+    loadChildren: () => import('./pages/criacao-produto/criacao-produto.module').then( m => m.CriacaoProdutoPageModule)
   },
 ];
 

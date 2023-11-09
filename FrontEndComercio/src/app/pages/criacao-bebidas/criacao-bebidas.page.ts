@@ -27,7 +27,7 @@ export class CriacaoBebidasPage implements OnInit {
   }
 
   criarBebida(e: any) {
-    this.produtoService.adcionarProduto(e).subscribe(
+    this.produtoService.cadastrarProduto(e).subscribe(
       (response) => {
         console.log('response: ', response)
       }

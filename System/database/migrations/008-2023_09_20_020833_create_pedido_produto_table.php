@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('Pedido_produtos', function (Blueprint $table) {
             $table->id('id');
             $table->integer('quantidade')->default(1);
+            $table->integer('observacao')->nullable();
             $table->unsignedBigInteger('cod_pedido');
             $table->unsignedBigInteger('cod_produto');
             $table->foreign('cod_pedido')->references('id')->on('Pedidos');

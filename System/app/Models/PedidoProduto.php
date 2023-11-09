@@ -10,6 +10,7 @@ class PedidoProduto extends Model
 {
     protected $fillable = [
         'quantidade',
+        'observacao',
         'cod_pedido',
         'cod_produto'
     ];
