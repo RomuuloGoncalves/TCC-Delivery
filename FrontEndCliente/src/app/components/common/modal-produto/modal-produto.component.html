@@ -45,8 +45,6 @@
                             </ion-text>
                           </ion-col>
                         </ion-row>
-
-
                         <ion-title *ngIf="this.variacoesSelecionadas.length" class="subtitulo">
                           Informações do Produto:
                         </ion-title>
@@ -105,7 +103,7 @@
                             <ng-container *ngFor="let variacao of grupoVariacao.variacao">
                               <ion-item>
                                 <p><b>{{ variacao.nome }}</b> por R$
-                                  {{ variacao.valor_inicial?.toFixed(2)?.replace('.', ',') }}</p>
+                                  {{ variacao.valor?.toFixed(2)?.replace('.', ',') }}</p>
                                 <ion-radio slot="end" value="{{ stringify(variacao) }}"></ion-radio>
                               </ion-item>
                             </ng-container>
