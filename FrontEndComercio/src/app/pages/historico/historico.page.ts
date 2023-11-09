@@ -9,17 +9,15 @@ import { PedidosService } from 'src/app/core/services/pedidos.service';
   styleUrls: ['./historico.page.scss'],
 })
 export class HistoricoPage implements OnInit {
-
   constructor(private Pedidos: PedidosService,) { }
 
+  loading: boolean = true
 
   ngOnInit() {
     this.recuperarHistoricoPedidos()
   }
 
   pedidos!: Pedido[]
-
-  loading: boolean = true
 
   recuperarHistoricoPedidos() {
     this.Pedidos.pegarHistoricoPedidos().subscribe(

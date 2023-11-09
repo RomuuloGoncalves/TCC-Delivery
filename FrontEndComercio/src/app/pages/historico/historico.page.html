@@ -9,7 +9,7 @@
         </ion-col>
         <ion-col size="6" sizeMd="auto">
           <ion-select interface="popover" (ionChange)="ordenar($event)" mode="ios" placeholder="Ordenar por">
-            <ion-select-option value="id" Default="true">ID</ion-select-option>
+            <ion-select-option value="id">ID</ion-select-option>
             <ion-select-option value="status">Status</ion-select-option>
             <ion-select-option value="quantidade">Quantidade</ion-select-option>
             <ion-select-option value="data">Data</ion-select-option>
@@ -19,9 +19,7 @@
     </ion-col>
   </ion-row>
   <ng-container *ngIf="!this.loading">
-    <app-tabela-pedidos
-      [pedidos]="this.pedidos"
-    ></app-tabela-pedidos>
+    <app-tabela-pedidos [pedidos]="this.pedidos"></app-tabela-pedidos>
   </ng-container>
   <app-loading [loading]="this.loading"></app-loading>
 </ion-content>

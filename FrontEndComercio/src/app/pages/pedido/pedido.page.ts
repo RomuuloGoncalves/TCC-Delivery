@@ -3,10 +3,7 @@ import { Pedido } from 'src/app/core/interfaces/pedido';
 import { Cliente } from 'src/app/core/interfaces/cliente';
 import { ActivatedRoute } from '@angular/router';
 import { PedidosService } from 'src/app/core/services/pedidos.service';
-import { ClienteService } from 'src/app/core/services/cliente.service';
 import { Produto } from 'src/app/core/interfaces/produto';
-
-
 @Component({
   selector: 'app-pedido',
   templateUrl: './pedido.page.html',
@@ -14,12 +11,12 @@ import { Produto } from 'src/app/core/interfaces/produto';
 })
 export class PedidoPage implements OnInit {
 
-  constructor(private Pedidos: PedidosService, private Cliente: ClienteService, private route: ActivatedRoute) { }
+  constructor(private Pedidos: PedidosService, private route: ActivatedRoute) { }
   idPedido!: number;
   loading: boolean = true;
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.idPedido = params['id'];
+      this.idPedido = Number(params['id']);
     });
 
     this.carregarPagina(Number(this.idPedido))
