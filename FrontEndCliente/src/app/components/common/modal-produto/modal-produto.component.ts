@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
 import { GrupoVariacoes } from 'src/app/core/interfaces/grupo-variacoes';
 import { Produto } from 'src/app/core/interfaces/produto';
-import { ProdutoService } from 'src/app/core/services/produto.service';
+import { CarrinhoService } from 'src/app/core/services/carrinho.service';
 
 @Component({
   selector: 'app-modal-produto',
@@ -10,38 +9,19 @@ import { ProdutoService } from 'src/app/core/services/produto.service';
   styleUrls: ['./modal-produto.component.scss'],
 })
 export class ModalProdutoComponent implements OnInit {
+  constructor(private carrinhoService: CarrinhoService) {}
 
-  constructor(private produtoService: ProdutoService) { }
+  ngOnInit() {}
 
-  ngOnInit() {
-    this.carregarProduto();
-  }
-
-  @Input() public id!: number;
   @Input() public isOpen: boolean = false;
+  @Input() public produto?: Produto;
   @Output() public fechar: EventEmitter<any> = new EventEmitter();
 
-  produto!: Produto;
-  loading: boolean = true;
+  loading: boolean = false;
   precoTotal!: number;
-
-  carregarProduto() {
-    this.produtoService.pegarProduto(this.id).subscribe(
-      (response) => {
-        this.produto = response;
-        this.loading = false;
-      },
-      (error) => {
-        console.error(error);
-      }
-    )
-  }
+  quantidade: number = 1;
 
   variacoesSelecionadas: any[] = [];
-
-  stringify(obj: any) {
-    return JSON.stringify(obj);
-  }
 
   alterarVariacoesSelecionadas(e: any, grupoVariacao: GrupoVariacoes) {
     let variacao = JSON.parse(e.detail.value);
@@ -53,14 +33,35 @@ export class ModalProdutoComponent implements OnInit {
     });
 
     this.precoTotal = this.calcPreco();
-
   }
 
-  calcPreco() {
+  // por mensagem bicha dizendo se foi ok
+  public adicionarProduto() {
+    this.produto
+      ? ((this.produto.grupo_variacao = this.variacoesSelecionadas),
+        (this.produto.quantidade = this.quantidade),
+        this.carrinhoService.adicionarProduto(this.produto),
+        (this.variacoesSelecionadas = []),
+        this.fechar.emit())
+      : null;
+  }
+
+  private calcPreco() {
     let preco: number = 0;
-    this.variacoesSelecionadas.forEach(variacao => {
-      preco += Number(variacao.valor);
+    this.variacoesSelecionadas.forEach((variacao) => {
+      preco += Number(variacao.variacao.valor_inicial);
     });
     return preco;
   }
+
+  stringify(obj: any) {
+    return JSON.stringify(obj);
+  }
+
+  fecharModal() {
+    this.variacoesSelecionadas = [];
+    this.precoTotal = this.calcPreco();
+    this.fechar.emit();
+  }
+
 }

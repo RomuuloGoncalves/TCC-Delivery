@@ -14,6 +14,7 @@ import { SessaoCardsProdutoModule } from 'src/app/components/common/sessao-cards
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { LoadingModule } from 'src/app/components/common/loading/loading.module';
 import { PesquisaProdutoModule } from 'src/app/components/common/pesquisa-produto/pesquisa-produto.module';
+import { ModalProdutoModule } from 'src/app/components/common/modal-produto/modal-produto.module';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { PesquisaProdutoModule } from 'src/app/components/common/pesquisa-produt
     HeaderModule,
     SessaoCardsProdutoModule,
     LoadingModule,
-    PesquisaProdutoModule
+    PesquisaProdutoModule,
+    ModalProdutoModule
   ],
   declarations: [HomePage, AtalhoHomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

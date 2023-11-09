@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Produto } from 'src/app/core/interfaces/produto';
 
 @Component({
@@ -15,13 +15,5 @@ export class SessaoCardsProdutoComponent implements OnInit {
 
   @Input() tituloSessao?: string;
   @Input() produtos!: any;
-
-  isOpen: boolean = false;
-  idSelecionado?: number;
-
-  abrirModal(produto: Produto) {
-    console.log(produto)
-    this.idSelecionado = produto.id!;
-    this.isOpen = true;
-  }
+  @Output() public selecionar: EventEmitter<number> = new EventEmitter();
 }

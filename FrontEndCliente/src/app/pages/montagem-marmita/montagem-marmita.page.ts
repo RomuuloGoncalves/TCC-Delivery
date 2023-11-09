@@ -5,6 +5,7 @@ import { GrupoVariacoes } from 'src/app/core/interfaces/grupo-variacoes';
 import Swiper from 'swiper';
 import { ProdutoService } from 'src/app/core/services/produto.service';
 import { Produto } from 'src/app/core/interfaces/produto';
+import { CarrinhoService } from 'src/app/core/services/carrinho.service';
 
 @Component({
   selector: 'app-montagem-marmita',
@@ -24,20 +25,20 @@ export class MontagemMarmitaPage implements OnInit {
 
   ingredientes!: Produto;
 
-  constructor(private produtoService: ProdutoService) {}
+  constructor(private produtoService: ProdutoService, private carrinhoService: CarrinhoService) {}
 
   ngOnInit() {
     this.atualizarMarmita();
     this.carregarMarmita();
   }
 
-  marmitaPersonalizavel!: Produto;
+  marmitaPersonalizada!: Produto;
   loading: boolean = true;
 
   private carregarMarmita() {
     this.produtoService.pegarProduto(1).subscribe(
       (response: Produto) => {
-        this.marmitaPersonalizavel = response;
+        this.marmitaPersonalizada = response;
         this.ingredientes = response;
         this.loading = false;
       },
@@ -87,6 +88,13 @@ export class MontagemMarmitaPage implements OnInit {
     });
 
     this.calcTotal();
+  }
+
+  // por redirect pra home e mensagem bicha
+  adicionarProduto() {
+    this.marmitaPersonalizada.grupo_variacao = this.marmita
+    this.marmitaPersonalizada.quantidade = this.qtddMarmita
+    this.carrinhoService.adicionarProduto(this.marmitaPersonalizada)
   }
 
   calcTotal() {

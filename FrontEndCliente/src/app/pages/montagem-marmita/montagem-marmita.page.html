@@ -4,7 +4,7 @@
 
     <ion-row class="ion-justify-content-center ingredientes ion-padding">
       <ion-col size="11" sizeMd="4">
-        <ion-row color="primary" class="card-image ion-justify-content-center ion-align-items-center ion-padding">
+        <ion-row color="primary" class="card__image ion-justify-content-center ion-align-items-center ion-padding">
           <img src="../../../assets/imgs/montagem-marmita/marmita.jfif" />
         </ion-row>
       </ion-col>
@@ -119,7 +119,7 @@
     </ion-row>
 
 
-    <ion-row class="ion-justify-content-center ion-align-items-center ion-padding-top">
+    <ion-row class="ion-justify-content-center ion-align-items-center ion-padding-vertical">
       <ion-col size="11" sizeMd="9">
         <ion-row class="ion-justify-content-between ion-align-items-center">
           <ion-col size="12" sizeLg="6">
@@ -128,7 +128,7 @@
           <ion-col size="12" sizeLg="4">
             <ion-row class="sessao-total ion-justify-content-between ion-margin-right">
               <ion-text class="sessao-total__preco">
-                <p>Preço</p>
+                <b>Preço</b>
               </ion-text>
               <ion-text class="sessao-total__info">
                 <p>{{ this.precoMarmita.toFixed(2).replace('.', ',') }}</p>
@@ -136,9 +136,10 @@
             </ion-row>
             <ion-row class="sessao-total ion-justify-content-between">
               <ion-text class="sessao-total__preco">
-                <p>Total</p>
+                <b>Total</b>
               </ion-text>
               <ion-text class="sessao-total__info">
+                <!-- <p>{{ (this.qtddMarmita * this.total).toFixed(2).replace('.', ',') }}</p> -->
                 <p>{{ this.total.toFixed(2).replace('.', ',') }}</p>
               </ion-text>
             </ion-row>
@@ -147,7 +148,7 @@
                 [contador]="this.qtddMarmita"
                 (change)="this.qtddMarmita = $event; this.calcTotal()"
                 [min]="1"></app-contador>
-              <ion-button>
+              <ion-button (click)="adicionarProduto()">
                 Adicionar
               </ion-button>
             </ion-row>
