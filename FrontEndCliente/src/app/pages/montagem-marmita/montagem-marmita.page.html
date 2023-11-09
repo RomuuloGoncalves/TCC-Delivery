@@ -98,7 +98,7 @@
                           (ionChange)="selecionarIngrediente(idIngrediente, idVariacao, $event); this.calcPrecoMarmita()">
 
                           <b>{{ variacao.nome }}</b> por R$
-                          {{ variacao.valor_inicial?.toFixed(2)?.replace('.', ',') }}
+                          {{ variacao.valor?.toFixed(2)?.replace('.', ',') }}
                         </ion-checkbox>
                         </ion-item>
                       </ion-list>

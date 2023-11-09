@@ -49,7 +49,7 @@ export class CarrinhoPage implements OnInit {
   calcTotal () {
     this.subtotal = 0;
     this.produtos.forEach((produto: Produto) => {
-      produto.subtotal = produto.quantidade! * produto.variacao?.valor_final!;
+      produto.subtotal = produto.quantidade! * produto.variacao?.valor!;
       this.subtotal += produto.subtotal;
     });
 

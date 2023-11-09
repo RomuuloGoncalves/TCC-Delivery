@@ -83,7 +83,7 @@ export class MontagemMarmitaPage implements OnInit {
     this.precoMarmita = 0;
     this.marmita.forEach((grupoVariacao) => {
       grupoVariacao.variacao?.forEach((variacao) => {
-        if (variacao.valor_inicial) this.precoMarmita += variacao.valor_inicial;
+        if (variacao.valor) this.precoMarmita += variacao.valor;
       });
     });
 
