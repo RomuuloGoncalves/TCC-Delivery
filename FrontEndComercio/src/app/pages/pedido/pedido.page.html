@@ -38,9 +38,16 @@
           <ion-col size="12" sizeMd="5" class="ion-no-padding ion-margin-horizontal">
             <ion-button size="large" fill="outline" expand="block" id="open-modal-pedido">Ver produtos</ion-button>
           </ion-col>
-          <ion-col size="12" sizeMd="5" class="ion-no-padding ion-margin-horizontal">
-            <ion-button size="large" color="tertiary" expand="block">Finalizar</ion-button>
-          </ion-col>
+          <ng-container *ngIf="this.pedidoCliente.status === 'Em Espera'">
+            <ion-col size="12" sizeMd="5" class="ion-no-padding ion-margin-horizontal">
+              <ion-button size="large" color="tertiary" expand="block">Entregar</ion-button>
+            </ion-col>
+          </ng-container>
+          <ng-container *ngIf="this.pedidoCliente.status === 'Em Entrega'">
+            <ion-col size="12" sizeMd="5" class="ion-no-padding ion-margin-horizontal">
+              <ion-button size="large" color="tertiary" expand="block">Finalizar</ion-button>
+            </ion-col>
+          </ng-container>
         </ion-row>
       </ion-col>
       <ion-col size="11" sizeLg="4" class="informacoes ion-padding ion-margin-horizontal">

@@ -22,7 +22,7 @@
               </ion-list>
             </ion-col>
 
-            <ion-col id="" (click)="formularioPopover($event)" size="1">
+            <ion-col (click)="formularioPopover($event)" size="1">
               <ion-icon name="add-outline"></ion-icon>
             </ion-col>
 
@@ -48,7 +48,7 @@
     </ion-col>
 
     <ion-col size="11">
- 
+
       <ng-container *ngIf="!this.loading">
         <ion-row class="ion-justify-content-center">
           <ion-col size="11.9">

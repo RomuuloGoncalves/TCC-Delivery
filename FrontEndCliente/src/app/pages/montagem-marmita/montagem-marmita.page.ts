@@ -7,6 +7,7 @@ import { ProdutoService } from 'src/app/core/services/produto.service';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { CarrinhoService } from 'src/app/core/services/carrinho.service';
 import { ToastService } from 'src/app/core/controller/toast.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-montagem-marmita',
@@ -91,14 +92,20 @@ export class MontagemMarmitaPage implements OnInit {
     this.calcTotal();
   }
 
-  adicionarProduto() {
-    this.marmitaPersonalizada.grupo_variacao = this.marmita
-    this.marmitaPersonalizada.quantidade = this.qtddMarmita
-    this.carrinhoService.adicionarProduto(this.marmitaPersonalizada)
-    setTimeout(() => {
-      location.reload();
-    }, 400)
-    this.toastService.mostrarToast('sucesso', 'Produto adicionado ao carrinho!')
+  adicionarMarmita() {
+    this.marmitaPersonalizada.grupo_variacao = this.marmita;
+    this.marmitaPersonalizada.quantidade = this.qtddMarmita;
+    this.carrinhoService.adicionarProduto(this.marmitaPersonalizada);
+
+    this.carrinhoService.adicionarProduto(this.marmitaPersonalizada).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.toastService.mostrarToast('sucesso', 'Produto adicionado ao carrinho!')
+      },
+      (badResponse: HttpErrorResponse) => {
+        console.error(badResponse);
+      }
+    )
   }
 
   calcTotal() {

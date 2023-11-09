@@ -18,7 +18,7 @@ export class CarrinhoPage implements OnInit {
   ngOnInit() {
     this.carregarPagina();
   }
-  
+
   @ViewChild('formCupom') private formCupom!: NgForm;
 
   frete: number = 25;
@@ -64,7 +64,6 @@ export class CarrinhoPage implements OnInit {
     let cupom: Cupom = this.formCupom.form.value
     this.cupomService.consultarNome(cupom).subscribe(
       (response: Cupom) => {
-        console.log(response)
         this.carrinhoService.adicionarCupom(Number(response.id))
         this.Toast.mostrarToast('sucesso', 'Cupom encontrado!');
       },
