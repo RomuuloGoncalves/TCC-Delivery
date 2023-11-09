@@ -9,7 +9,7 @@
             <ion-col size="12" class="titulo" *ngIf="this.id == 'mensalmente'">Red. Mês Atual</ion-col>
             <ion-col size="12" class="titulo" *ngIf="this.id == 'anualmente'">Rend. Ano Atual</ion-col>
 
-            <ion-col size="12" class="Valor">$ {{this.rendimentoBrutoAtual}}</ion-col>
+            <ion-col size="12" class="Valor">R$ {{this.rendimentoBrutoAtual.toFixed(2).replace('.', ',')}}</ion-col>
           </ion-row>
         </ion-col>
       </ion-row>
@@ -22,7 +22,7 @@
             <ion-col size="12" class="titulo" *ngIf="this.id == 'semanalmente'">Rend. Semana Passada</ion-col>
             <ion-col size="12" class="titulo" *ngIf="this.id == 'mensalmente'">Red. Mês Passado</ion-col>
             <ion-col size="12" class="titulo" *ngIf="this.id == 'anualmente'">Rend. Ano Passado</ion-col>
-            <ion-col size="12" class="Valor">$ {{this.rendimentoBrutoPassado}}</ion-col>
+            <ion-col size="12" class="Valor">R$ {{this.rendimentoBrutoPassado.toFixed(2).replace('.', ',')}}</ion-col>
           </ion-row>
         </ion-col>
       </ion-row>
@@ -33,16 +33,16 @@
         <ion-col size="8">
           <ion-row>
             <ion-col size="12" class="titulo">Lucro</ion-col>
-            <ion-col size="12" class="Valor">$ {{this.lucro}}</ion-col>
+            <ion-col size="12" class="Valor">R$ {{this.lucro.toFixed(2).replace('.', ',')}}</ion-col>
           </ion-row>
         </ion-col>
         <ion-col size="4">
           <ion-row class="ion-align-items-center ion-justify-content-center">
             <ion-icon name="cash-outline"></ion-icon>
-            <ng-container *ngIf="this.lucro > 0">
+            <ng-container *ngIf="this.lucro">
               <ion-icon name="arrow-up-outline"></ion-icon>
             </ng-container>
-            <ng-container *ngIf="-this.lucro > 0">
+            <ng-container *ngIf="this.lucro < 0">
               <ion-icon name="arrow-down-outline"></ion-icon>
             </ng-container>
           </ion-row>

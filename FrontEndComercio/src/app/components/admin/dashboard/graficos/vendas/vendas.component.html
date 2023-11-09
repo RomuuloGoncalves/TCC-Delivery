@@ -9,7 +9,7 @@
             <ion-col size="12" class="titulo" *ngIf="this.id == 'mensalmente'">Vendas Mês Atual</ion-col>
             <ion-col size="12" class="titulo" *ngIf="this.id == 'anualmente'">Vendas Ano Atual</ion-col>
 
-            <ion-col size="12" class="Valor">$ {{this.vendasAtuais}}</ion-col>
+            <ion-col size="12" class="Valor">R$ {{this.vendasAtuais.toFixed(2).replace('.', ',')}}</ion-col>
           </ion-row>
         </ion-col>
       </ion-row>
@@ -22,7 +22,7 @@
             <ion-col size="12" class="titulo" *ngIf="this.id == 'semanalmente'">Vendas Semana Passada</ion-col>
             <ion-col size="12" class="titulo" *ngIf="this.id == 'mensalmente'">Vendas Mês Passado</ion-col>
             <ion-col size="12" class="titulo" *ngIf="this.id == 'anualmente'">Vendas Ano Passado</ion-col>
-            <ion-col size="12" class="Valor">$ {{this.vendasPassadas}}</ion-col>
+            <ion-col size="12" class="Valor">R$ {{this.vendasPassadas.toFixed(2).replace('.', ',')}}</ion-col>
           </ion-row>
         </ion-col>
       </ion-row>
@@ -33,7 +33,7 @@
         <ion-col size="8">
           <ion-row>
             <ion-col size="12" class="titulo">Lucro</ion-col>
-            <ion-col size="12" class="Valor">$ {{this.lucro}}</ion-col>
+            <ion-col size="12" class="Valor">R$ {{this.lucro.toFixed(2).replace('.', ',')}}</ion-col>
           </ion-row>
         </ion-col>
         <ion-col size="4">

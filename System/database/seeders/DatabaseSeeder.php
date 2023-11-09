@@ -19,16 +19,16 @@ class DatabaseSeeder extends Seeder
         $quantidadel_inserts = 1;
         for ($i = 0; $i < $quantidadel_inserts; $i++) {
             $this->call([
-                // ClienteSeeder::class,
-                // CupomSeeder::class,
+                ClienteSeeder::class,
+                CupomSeeder::class,
                 CategoriaSeeder::class,
-                // ProdutoSeeder::class,
-                // EnderecoSeeder::class,
-                // PedidoSeeder::class,
-                // GrupoVariacaoSeeder::class,
-                // VariacaoSeeder::class,
-                // PedidoProdutoSeeder::class,
-                // VariacaoSelecionadaSeeder::class
+                ProdutoSeeder::class,
+                EnderecoSeeder::class,
+                GrupoVariacaoSeeder::class,
+                VariacaoSeeder::class,
+                PedidoSeeder::class,
+                PedidoProdutoSeeder::class,
+                VariacaoSelecionadaSeeder::class
             ]);
         }
     }

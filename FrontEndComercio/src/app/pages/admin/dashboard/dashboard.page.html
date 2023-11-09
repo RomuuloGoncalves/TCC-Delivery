@@ -1,52 +1,61 @@
 <ion-content [fullscreen]="true">
   <app-header></app-header>
-  <ion-row class="ion-justify-content-around ion-padding">
-    <ion-col size="11.5" class="grafico ">
-      <ion-row class="ion-justify-content-center">
-        <ion-col size="9">
-          <ion-label class="titulo__grafico">Rendimento</ion-label>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="12" sizeMd="11" sizeLg="10">
+      <ion-row class="ion-justify-content-around ion-padding">
+        <ion-col class="grafico ">
+          <ion-row class="ion-justify-content-between">
+            <ion-col size="auto">
+              <ion-label class="titulo__grafico">Rendimento</ion-label>
+            </ion-col>
+            <ion-col size="auto">
+              <ion-select aria-label="intevalo" interface="popover" (ionChange)="selecionarIntervalo($event)"
+                placeholder="Selecione" [(ngModel)]="selectedOptions">
+                <ion-select-option value="semanalmente">Semanalmente</ion-select-option>
+                <ion-select-option value="mensalmente">Mensalmente</ion-select-option>
+                <ion-select-option value="anualmente">Anualmente</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+          <app-rendimento [intervalo]="this.intervalo"></app-rendimento>
         </ion-col>
-        <ion-col size="2">
-          <ion-select aria-label="intevalo" interface="popover" (ionChange)="selecionarIntervalo($event)" placeholder="Selecione"  [(ngModel)]="selectedOptions">
-            <ion-select-option value="semanalmente">Semanalmente</ion-select-option>
-            <ion-select-option value="mensalmente">Mensalmente</ion-select-option>
-            <ion-select-option value="anualmente">Anualmente</ion-select-option>
-          </ion-select>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-around ion-padding">
+        <ion-col class="grafico">
+          <ion-row class="ion-justify-content-center">
+            <ion-label class="titulo__grafico">Vendas</ion-label>
+          </ion-row>
+          <app-vendas [intervalo]="this.intervalo"></app-vendas>
         </ion-col>
       </ion-row>
-      <app-rendimento [intervalo]="this.intervalo"></app-rendimento>
-    </ion-col>
-  </ion-row>
 
-  <ion-row class="ion-justify-content-around ion-padding">
-    <ion-col size="8" class="grafico ">
-      <ion-row class="ion-justify-content-center">
-        <ion-label class="titulo__grafico">Vendas</ion-label>
+      <ion-row>
+        <ion-col class="grafico">
+          <ion-row class="ion-justify-content-center">
+            <ion-label class="titulo__grafico">Categorias</ion-label>
+          </ion-row>
+          <app-categorias [intervalo]="this.intervalo"></app-categorias>
+        </ion-col>
       </ion-row>
-      <app-vendas [intervalo]="this.intervalo"></app-vendas>
-    </ion-col>
 
-    <ion-col size="3" class="grafico ">
-      <ion-row class="ion-justify-content-center">
-        <ion-label class="titulo__grafico">Detalhes</ion-label>
+      <ion-row class="ion-justify-content-around ion-padding">
+        <ion-col class="grafico ion-margin-vertical">
+          <ion-row class="ion-justify-content-center">
+            <ion-label class="titulo__grafico">Formas de Pagamento</ion-label>
+          </ion-row>
+          <app-formas-pagamentos></app-formas-pagamentos>
+        </ion-col>
       </ion-row>
-      <app-categorias [intervalo]="this.intervalo"></app-categorias>
-    </ion-col>
-  </ion-row>
 
-  <ion-row class="ion-justify-content-around ion-padding">
-    <ion-col size="12" sizeMd="5.5" class="grafico ion-margin-vertical">
-      <ion-row class="ion-justify-content-center">
-        <ion-label class="titulo__grafico">Formas de pagamento</ion-label>
+      <ion-row>
+        <ion-col class="grafico ion-margin-vertical">
+          <ion-row class="ion-justify-content-center">
+            <ion-label class="titulo__grafico">Taxa de Cancelamento</ion-label>
+          </ion-row>
+          <app-taxa-cancelamento></app-taxa-cancelamento>
+        </ion-col>
       </ion-row>
-      <app-formas-pagamentos></app-formas-pagamentos>
-    </ion-col>
-
-    <ion-col size="12" sizeMd="5.5" class="grafico ion-margin-vertical">
-      <ion-row class="ion-justify-content-center">
-        <ion-label class="titulo__grafico">Taxa de cancelamento</ion-label>
-      </ion-row>
-      <app-taxa-cancelamento></app-taxa-cancelamento>
     </ion-col>
   </ion-row>
 </ion-content>

@@ -9,20 +9,21 @@ Chart.register(...registerables);
   templateUrl: './taxa-cancelamento.component.html',
   styleUrls: ['./taxa-cancelamento.component.scss'],
 })
-export class TaxaCancelamentoComponent  implements OnInit {
+export class TaxaCancelamentoComponent implements OnInit {
+  constructor(private Pedidos: PedidosService) {}
 
-  constructor(private Pedidos: PedidosService) { }
-
-  
   ngOnInit() {
     this.recuperarTodosPedidos().then(() => {
-      this.gerarGrafico(this.pedidosCancelados.length, this.pedidosEntregues.length);
+      this.gerarGrafico(
+        this.pedidosCancelados.length,
+        this.pedidosEntregues.length
+      );
     });
   }
-  
-  pedidos!: Pedido[]
-  pedidosCancelados: Pedido[] = []
-  pedidosEntregues: Pedido[] = []
+
+  pedidos!: Pedido[];
+  pedidosCancelados: Pedido[] = [];
+  pedidosEntregues: Pedido[] = [];
   recuperarTodosPedidos(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       this.Pedidos.pegarPedidosHistorico().subscribe(
@@ -41,7 +42,9 @@ export class TaxaCancelamentoComponent  implements OnInit {
 
   organizarPedidos(pedidos: Pedido[]) {
     pedidos.forEach((pedido) => {
-      pedido.status.toLocaleLowerCase().trim() === 'cancelado' ? this.pedidosCancelados.push(pedido) : this.pedidosEntregues.push(pedido);
+      pedido.status.toLocaleLowerCase().trim() === 'cancelado'
+        ? this.pedidosCancelados.push(pedido)
+        : this.pedidosEntregues.push(pedido);
     });
   }
 
@@ -52,14 +55,14 @@ export class TaxaCancelamentoComponent  implements OnInit {
         labels: ['Taxa de Cancelamento'],
         datasets: [
           {
-            label: 'Marmitas:',
+            label: 'Cancelamentos',
             data: [cancelados],
             backgroundColor: ['#cf1d1d'],
             borderColor: ['#cf1d1d'],
             borderWidth: 1,
           },
           {
-            label: 'Marmitas:',
+            label: 'Entregues',
             data: [entregues],
             backgroundColor: ['#4bb43f'],
             borderColor: ['#4bb43f'],

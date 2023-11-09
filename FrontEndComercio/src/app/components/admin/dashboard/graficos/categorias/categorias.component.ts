@@ -9,12 +9,10 @@ Chart.register(...registerables);
   styleUrls: ['./categorias.component.scss'],
 })
 export class CategoriasComponent implements OnInit {
+  @Input() intervalo: string = 'semanalmente';
+  id: string = 'semanalmente';
 
-
-  @Input() intervalo: string = 'semanalmente'
-  id: string = 'semanalmente'
-
-  constructor(private DashBoard: DashboardService) { }
+  constructor(private DashBoard: DashboardService) {}
 
   ngOnInit() {
     this.recuperarDadosSemanais().then(() => {
@@ -22,30 +20,39 @@ export class CategoriasComponent implements OnInit {
     });
   }
   arrayCores: string[] = [
-    '#FAD02E', '#C7E4E9',
-    '#FFDAC1', '#A2D2FF',
-    '#FBE7C6', '#B9D4DB',
-    '#EFD3E3', '#C6FFC1',
-    '#FFD700', '#B6BAA4',
-    '#FFD07E', '#BFD6C1',
-    '#F8D577', '#C3E2E2',
-    '#F9C5E0', '#C7E1C4',
-    '#FFD573', '#B9D2A6',
-    '#F8D67F', '#C5E1DE']
-    
-  rendimentoBrutoAtual: any = 0
-  rendimentoBrutoPassado: any = 0
-  despesas: number = 0
-  lucro: number = 0
-  dados!: any
+    '#FAD02E',
+    '#C7E4E9',
+    '#FFDAC1',
+    '#A2D2FF',
+    '#FBE7C6',
+    '#B9D4DB',
+    '#EFD3E3',
+    '#C6FFC1',
+    '#FFD700',
+    '#B6BAA4',
+    '#FFD07E',
+    '#BFD6C1',
+    '#F8D577',
+    '#C3E2E2',
+    '#F9C5E0',
+    '#C7E1C4',
+    '#FFD573',
+    '#B9D2A6',
+    '#F8D67F',
+    '#C5E1DE',
+  ];
+
+  rendimentoBrutoAtual: any = 0;
+  rendimentoBrutoPassado: any = 0;
+  despesas: number = 0;
+  lucro: number = 0;
+  dados!: any;
 
   recuperarDadosSemanais(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       this.DashBoard.categoriasSemanais().subscribe(
         (response) => {
-          console.log("rendomento", response)
           this.dados = response;
-          console.log()
           resolve();
         },
         (error) => {
@@ -60,9 +67,7 @@ export class CategoriasComponent implements OnInit {
     return new Promise<void>((resolve, reject) => {
       this.DashBoard.categoriasMensais().subscribe(
         (response) => {
-          console.log("mensal", response)
           this.dados = response;
-          console.log()
           resolve();
         },
         (error) => {
@@ -77,9 +82,7 @@ export class CategoriasComponent implements OnInit {
     return new Promise<void>((resolve, reject) => {
       this.DashBoard.categoriasAnuais().subscribe(
         (response) => {
-          console.log("mensal", response)
           this.dados = response;
-          console.log()
           resolve();
         },
         (error) => {
@@ -90,129 +93,119 @@ export class CategoriasComponent implements OnInit {
     });
   }
 
-
-
-
-  borderWidth: number = 3
-
+  borderWidth: number = 3;
 
   gerarGrafico() {
     if (this.intervalo == 'semanalmente') {
-      this.id = 'semanalmente'
-
+      this.id = 'semanalmente';
 
       this.recuperarDadosSemanais().then(() => {
-        this.graficoSemanal()
+        this.graficoSemanal();
       });
     }
 
     if (this.intervalo == 'mensalmente') {
-      this.id = 'mensalmente'
+      this.id = 'mensalmente';
 
       this.recuperarDadosMensais().then(() => {
-        this.graficoMensal()
+        this.graficoMensal();
       });
     }
 
     if (this.intervalo == 'anualmente') {
-      this.id = 'anualmente'
+      this.id = 'anualmente';
 
       this.recuperarDadosAnuais().then(() => {
-        this.graficoAnual()
+        this.graficoAnual();
       });
     }
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['intervalo']) {
-      this.gerarGrafico()
+      this.gerarGrafico();
     }
   }
 
-
   graficoSemanal() {
-    this.destruirGraficos()
+    this.destruirGraficos();
 
     const semanalmente = new Chart('categoriaSemanalmente', {
-      type: 'pie',
+      type: 'bar',
       data: {
         labels: Object.keys(this.dados!.contagem_categorias),
         datasets: [
           {
-            label: 'Categorias mais vendidas',
+            label: 'Categorias',
             data: Object.values(this.dados!.contagem_categorias),
             backgroundColor: this.arrayCores,
             borderColor: this.arrayCores,
-            borderWidth: this.borderWidth
-          }
-        ]
+            borderWidth: this.borderWidth,
+          },
+        ],
       },
       options: {
         scales: {
           y: {
-            beginAtZero: true
-          }
-        }
-      }
+            beginAtZero: true,
+          },
+        },
+      },
     });
-
   }
 
   graficoMensal() {
-    this.destruirGraficos()
-
+    this.destruirGraficos();
 
     const mensalmente = new Chart('categoriaMensalmente', {
-      type: 'pie',
+      type: 'bar',
       data: {
         labels: Object.keys(this.dados!.contagem_categorias),
         datasets: [
           {
-            label: 'Categorias mais vendidas',
+            label: 'Categorias',
             data: Object.values(this.dados.contagem_categorias),
             backgroundColor: this.arrayCores,
             borderColor: this.arrayCores,
-            borderWidth: this.borderWidth
+            borderWidth: this.borderWidth,
           },
-        ]
+        ],
       },
       options: {
         scales: {
           y: {
-            beginAtZero: true
-          }
-        }
-      }
+            beginAtZero: true,
+          },
+        },
+      },
     });
-
   }
 
   graficoAnual() {
-    this.destruirGraficos()
+    this.destruirGraficos();
 
     const anualmente = new Chart('categoriaAnualmente', {
-      type: 'pie',
+      type: 'bar',
       data: {
         labels: Object.keys(this.dados!.contagem_categorias),
         datasets: [
           {
-            label: 'Categorias mais vendidas',
+            label: 'Categorias',
             data: Object.values(this.dados!.contagem_categorias),
             backgroundColor: this.arrayCores,
             borderColor: this.arrayCores,
-            borderWidth: this.borderWidth
+            borderWidth: this.borderWidth,
           },
-        ]
+        ],
       },
       options: {
         scales: {
           y: {
-            beginAtZero: true
-          }
-        }
-      }
+            beginAtZero: true,
+          },
+        },
+      },
     });
-
   }
 
   destruirGraficos() {

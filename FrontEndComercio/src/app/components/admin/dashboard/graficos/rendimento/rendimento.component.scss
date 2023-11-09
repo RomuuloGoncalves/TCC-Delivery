@@ -1,8 +1,11 @@
 .card {
   border-left: 5px solid #4bb43f;
-  border-radius: 5px;
   min-height: 100px;
-  box-shadow: 2px 2px 20px rgba(140, 139, 139, 0.681);
+
+  box-shadow: 0px 0px 8px var(--ion-color-primary);
+  outline: 1px solid var(--ion-color-secondary);
+  border-radius: 10px;
+
   ion-row {
     height: 100%;
   }
