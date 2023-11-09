@@ -27,16 +27,17 @@ export class ModalProdutoComponent implements OnInit {
     let variacao = JSON.parse(e.detail.value);
 
     this.variacoesSelecionadas.forEach(variacaoSelecionada => {
-      variacaoSelecionada.cod_grupo_variacao === variacao.cod_grupo_variacao ? variacaoSelecionada = variacao : (
-        this.variacoesSelecionadas = [],
-        this.variacoesSelecionadas.push({
-          grupo_variacao: grupoVariacao,
-          variacao: variacao,
-        })
-      )
+      console.log("variacao selecionada", variacaoSelecionada)
+      variacaoSelecionada.grupo_variacao.id === variacao.cod_grupo_variacoes ? console.log("aaaaaaaaaaaaaaaa") : null
     });
 
-    console.log(this.variacoesSelecionadas)
+    this.variacoesSelecionadas.push({
+      grupo_variacao: grupoVariacao,
+      variacao: variacao,
+    })
+
+    console.log("variacoes selecionadas",this.variacoesSelecionadas)
+    console.log("variacao", variacao)
 
 
 
