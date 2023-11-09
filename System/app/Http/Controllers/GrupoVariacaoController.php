@@ -14,9 +14,9 @@ class GrupoVariacaoController extends Controller
     public function store(Request $request) {
         $regras = [
             'tipo' => ['required', 'string', 'max:255'],
-            'quantidade_variacoes_min' => ['nullable', 'integer', 'max_digits:30'],
-            'quantidade_variacoes_max' => ['nullable', 'integer', 'max_digits:30'],
-            'cod_produto' => ['required', 'integer', 'max_digits:30']
+            'quantidade_variacoes_min' => ['required', 'integer'],
+            'quantidade_variacoes_max' => ['required', 'integer'],
+            'cod_produto' => ['required', 'integer']
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -26,9 +26,9 @@ class GrupoVariacaoController extends Controller
 
         $grupo_variacao = GrupoVariacao::create([
             'tipo' => $request->input('tipo'),
-            'quantidade_variacoes_min' => $request->input('quantidade_variacoes'),
-            'quantidade_variacoes_max' => $request->input('quantidade_variacoes'),
-            'valor_desconto' => $request->input('valor_desconto')
+            'quantidade_variacoes_min' => $request->input('quantidade_variacoes_min'),
+            'quantidade_variacoes_max' => $request->input('quantidade_variacoes_max'),
+            'cod_produto' => $request->input('cod_produto')
 
         ]);
 
@@ -38,9 +38,9 @@ class GrupoVariacaoController extends Controller
     public function update(Request $request) {
         $regras = [
             'tipo' => ['required', 'string', 'max:255'],
-            'quantidade_variacoes_min' => ['nullable', 'integer', 'max_digits:30'],
-            'quantidade_variacoes_max' => ['nullable', 'integer', 'max_digits:30'],
-            'cod_produto' => ['required', 'integer', 'max_digits:30']
+            'quantidade_variacoes_min' => ['nullable', 'integer'],
+            'quantidade_variacoes_max' => ['nullable', 'integer'],
+            'cod_produto' => ['required', 'integer']
         ];
 
         $validacao = Validator::make($request->all(), $regras);
