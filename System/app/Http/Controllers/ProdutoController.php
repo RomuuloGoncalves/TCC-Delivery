@@ -33,6 +33,7 @@ class ProdutoController extends Controller {
         $regras = [
             'nome' => ['required', 'string', 'max:255'],
             'descricao' => ['required', 'string', 'max:500'],
+            'imagem' => ['nullable', 'string', 'max:500'],
             'cod_categoria' => ['required', 'integer', 'max_digits:30'],
         ];
 
@@ -44,6 +45,7 @@ class ProdutoController extends Controller {
         $produto = Produto::create([
             'nome' => $request->input('nome'),
             'descricao' => $request->input('descricao'),
+            'imagem' => $request->input('imagem'),
             'cod_categoria' => $request->input('cod_categoria'),
         ]);
 
@@ -61,6 +63,7 @@ class ProdutoController extends Controller {
             'id' => ['required', 'integer', 'max_digits:30'],
             'nome' => ['nullable', 'string', 'max:255'],
             'descricao' => ['nullable', 'string', 'min:1', 'max:500'],
+            'imagem' => ['nullable', 'string', 'max:500'],
             'cod_categoria' => ['nullable', 'integer', 'max_digits:30']
         ];
 
@@ -70,7 +73,7 @@ class ProdutoController extends Controller {
             return response()->json($validacao->errors(), 422);
 
         $produto = Produto::find($request->input('id'));
-        $atributos = ['nome', 'descricao', 'cod_categoria'];
+        $atributos = ['nome', 'descricao', 'image', 'cod_categoria'];
 
         foreach($atributos as $atributo) {
             $request->input($atributo) !== null
