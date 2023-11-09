@@ -139,6 +139,7 @@
                 <b>Total</b>
               </ion-text>
               <ion-text class="sessao-total__info">
+                <!-- <p>{{ (this.qtddMarmita * this.total).toFixed(2).replace('.', ',') }}</p> -->
                 <p>{{ this.total.toFixed(2).replace('.', ',') }}</p>
               </ion-text>
             </ion-row>
@@ -147,7 +148,7 @@
                 [contador]="this.qtddMarmita"
                 (change)="this.qtddMarmita = $event; this.calcTotal()"
                 [min]="1"></app-contador>
-              <ion-button>
+              <ion-button (click)="adicionarProduto()">
                 Adicionar
               </ion-button>
             </ion-row>

@@ -11,7 +11,7 @@
                 </ion-label>
               </ion-title>
               <ion-buttons slot="end">
-                <ion-button (click)="this.fechar.emit()"><ion-icon name="close-outline"
+                <ion-button (click)="this.fecharModal()"><ion-icon name="close-outline"
                     size="large"></ion-icon></ion-button>
               </ion-buttons>
             </ion-toolbar>
@@ -126,15 +126,15 @@
               <ion-row class="ion-justify-content-end ion-margin-horizontal">
 
                 <ion-col size="auto">
-                  <p><b>Total:</b> R${{ this.precoTotal }}</p>
+                  <p><b>Total:</b> R${{ this.precoTotal || '0,00' }}</p>
                 </ion-col>
               </ion-row>
 
               <ion-row class="ion-justify-content-end ion-align-items-center ion-margin-horizontal">
                 <ion-col size="auto" class="ion-margin-horizontal">
-                  <app-contador [min]="1"></app-contador>
+                  <app-contador [min]="1" (change)="this.quantidade = $event"></app-contador>
                 </ion-col>
-                <ion-button class="ion-magin-start">
+                <ion-button class="ion-magin-start" (click)="adicionarProduto()">
                   Adicionar
                 </ion-button>
               </ion-row>
