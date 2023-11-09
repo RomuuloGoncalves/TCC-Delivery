@@ -18,7 +18,8 @@ class PedidoProdutoController extends Controller
      * @return void
      */
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $regras = [
             'cod_produto' => ['required', 'integer', 'max_digits:30'],
             'quantidade' => ['nullable', 'integer', 'min: 1', 'max_digits:30'],
@@ -37,7 +38,7 @@ class PedidoProdutoController extends Controller
             return response()->json(["Cliente Inválido", 422]);
         }
 
-        if(!$pedido = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->first()) {
+        if (!$pedido = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->first()) {
             $pedido = PedidoController::store();
         }
 
@@ -54,7 +55,7 @@ class PedidoProdutoController extends Controller
             ->get();
 
 
-        echo($variacoes_validas);
+        echo ($variacoes_validas);
         var_dump($array_cod_var_sel);
 
         exit();
@@ -64,7 +65,7 @@ class PedidoProdutoController extends Controller
         // }
 
 
-        foreach($array_cod_var_sel as $cod_variacao) {
+        foreach ($array_cod_var_sel as $cod_variacao) {
             $variacoes_selecionadas[] = VariacaoSelecionada::create([
                 'cod_pedido_produto' => $pedido_produto->id,
                 'cod_variacao' => $cod_variacao
@@ -80,12 +81,12 @@ class PedidoProdutoController extends Controller
      * @return PedidoProduto
      */
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
         $regras = [
             'id' => ['required', 'integer', 'max_digits:30'],
             'quantidade' => ['required', 'integer', 'max_digits:30'],
             'observacao' => ['nullable', 'string', 'max:255']
-
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -100,7 +101,7 @@ class PedidoProdutoController extends Controller
 
         $atributos = ['quantidade', 'observacao'];
 
-        foreach($atributos as $atributo) {
+        foreach ($atributos as $atributo) {
             $request->input($atributo) !== null
                 ? $pedido_produto->$atributo = $request->input($atributo)
                 : null;
@@ -116,9 +117,10 @@ class PedidoProdutoController extends Controller
      * @return PedidoProduto[]
      */
 
-    public function index() {
+    public function index()
+    {
         $pedido_produto = PedidoProduto::with(['variacoes_selecionadas.variacao.grupo_variacao' =>
-            function($query) {
+        function ($query) {
             $query->select('id', 'tipo');
         }])->get();
 
@@ -131,9 +133,10 @@ class PedidoProdutoController extends Controller
      * @return PedidoProduto
      */
 
-    public function show(int $id) {
+    public function show(int $id)
+    {
         $pedido_produto = PedidoProduto::with(['variacoes_selecionadas.variacao.grupo_variacao' =>
-            function($query) {
+        function ($query) {
             $query->select('id', 'tipo');
         }])->where('id', $id)->get();
 
@@ -146,10 +149,11 @@ class PedidoProdutoController extends Controller
      * @return void
      */
 
-    public function destroy(int $id) {
+    public function destroy(int $id)
+    {
         $pedido_produto = PedidoProduto::find($id);
 
-        if(!$pedido_produto)
+        if (!$pedido_produto)
             return response()->json(['message' => 'Pedido Produto inválido'], 422);
 
         $pedido_produto::delete();
@@ -162,7 +166,8 @@ class PedidoProdutoController extends Controller
      * @return VariacaoSelecionada
      */
 
-    public function updateVariacaoSelecionada(Request $request) {
+    public function updateVariacaoSelecionada(Request $request)
+    {
         $regras = [
             'id' => ['required', 'integer', 'max_digits:30'],
             'cod_variacao' => ['required', 'integer', 'max_digits:30']
@@ -186,10 +191,11 @@ class PedidoProdutoController extends Controller
      * @return void
      */
 
-    public function destroyVariacaoSelecionada(int $id) {
+    public function destroyVariacaoSelecionada(int $id)
+    {
         $variacao_selecionada = VariacaoSelecionada::find($id);
 
-        if(!$variacao_selecionada)
+        if (!$variacao_selecionada)
             return response()->json(['message' => 'Variação Selecionada inválida'], 422);
 
         $variacao_selecionada::delete();

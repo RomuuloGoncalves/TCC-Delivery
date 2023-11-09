@@ -9,9 +9,12 @@ use App\Models\PedidoProduto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class PedidoController extends Controller {
+class PedidoController extends Controller
+{
 
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
     /**
      * store
@@ -19,7 +22,8 @@ class PedidoController extends Controller {
      * @return Pedido
      */
 
-    static function store() {
+    static function store()
+    {
         if (!$cliente = ClienteController::getAuthCliente()) {
             return response()->json(['Cliente Inválido'], 404);
         }
@@ -37,7 +41,8 @@ class PedidoController extends Controller {
      * @return Pedido
      */
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
         $regras = [
             'id' => ['required', 'integer', 'max_digits:30'],
             'valor_total' => ['nullable', 'decimal:2', 'min_digit:1', 'max_digits:999999999'],
@@ -64,7 +69,7 @@ class PedidoController extends Controller {
 
         $atributos = ['valor_total', 'valor_com_desconto', 'data_pedido', 'data_entrega', 'data_pagamento', 'endereco_pedido', 'status', 'forma_pagamento', 'cod_funcionario', 'cod_endereco', 'cod_cupom'];
 
-        foreach($atributos as $atributo) {
+        foreach ($atributos as $atributo) {
             $request->input($atributo) !== null
                 ? $pedido->$atributo = $request->input($atributo)
                 : null;
@@ -80,7 +85,8 @@ class PedidoController extends Controller {
      * @return Pedido
      */
 
-    public function showCarrinho() {
+    public function showCarrinho()
+    {
         $cliente =  ClienteController::getAuthCliente();
         $pedido = Pedido::with(['pedido_produtos.variacoes_selecionadas'])->where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->get();
 
@@ -93,7 +99,8 @@ class PedidoController extends Controller {
      * @return Pedido
      */
 
-    public function showPedidosCliente() {
+    public function showPedidosCliente()
+    {
         $cliente =  ClienteController::getAuthCliente();
         $pedido = Pedido::with(['pedido_produtos.variacoes_selecionadas', 'endereco'])->where('cod_cliente', $cliente->id)->where('status', ['Em Espera', 'Em Entrega', 'Cancelado', 'Pronto'])->get();
 
@@ -106,13 +113,14 @@ class PedidoController extends Controller {
      * @return Pedido
      */
 
-    public function show(int $id) {
+    public function show(int $id)
+    {
         $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom'])->find($id);
         $pedido->pedido_produtos = PedidoProduto::with('produto')
             ->where('cod_pedido', $id)
             ->get();
 
-        foreach($pedido->pedido_produtos as $pedido_produto) {
+        foreach ($pedido->pedido_produtos as $pedido_produto) {
             $pedido_produto->produto->categoria = Categoria::where("id", $pedido_produto->produto->cod_categoria)->first();
         }
 
@@ -125,7 +133,8 @@ class PedidoController extends Controller {
      * @return Pedido[]
      */
 
-    public function index() {
+    public function index()
+    {
         $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom', 'pedido_produtos'])->whereIn('status', ['Em Espera', 'Em Entrega'])->get();
         return response()->json($pedido, 200);
     }
@@ -136,7 +145,8 @@ class PedidoController extends Controller {
      * @return Pedido[]
      */
 
-    public function historico() {
+    public function historico()
+    {
         $pedido = Pedido::with(['cliente', 'funcionario', 'endereco', 'cupom', 'pedido_produtos'])->whereIn('status', ['Cancelado', 'Pronto'])->get();
         return response()->json($pedido, 200);
     }

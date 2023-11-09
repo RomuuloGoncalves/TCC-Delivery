@@ -10,18 +10,17 @@ export class CarrinhoService {
   constructor(private Server: ServerService) {}
 
   public removerProduto(id: number) {
-    return this.Server.delete(`/cliente/carrinho/delete/${id}`);
+    return this.Server.delete(`/cliente/carrinho/delete}`);
   }
   public produtos() {
-    return this.Server.get(`/pedido/carrinho`);
+    return this.Server.get(`/cliente/carrinho`);
   }
 
   public adicionarProduto(produto: Produto) {
-    return this.Server.put(`/cliente/carrinho/adicionar`, produto)
+    return this.Server.post(`/cliente/carrinho/adicionar`, produto)
   }
 
   public adicionarCupom(id: number) {
-    console.log("adicionar cupom ao carrinh")
     return this.Server.put(`/cliente/carrinho/adicionarCupom`, id)
   }
 
