@@ -18,6 +18,7 @@ class Cliente extends Model implements AuthenticatableContract, AuthorizableCont
     protected $fillable = [
         'nome',
         'email',
+        'foto',
         'telefone',
         'password'
     ];

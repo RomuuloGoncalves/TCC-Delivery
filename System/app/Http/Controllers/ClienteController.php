@@ -43,6 +43,7 @@ class ClienteController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:Clientes'],
             'password' => ['required', 'string', 'max:255', 'min:8'],
             'telefone' => ['required', 'string', 'size:17', 'unique:Clientes'],
+
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -72,6 +73,7 @@ class ClienteController extends Controller
             'email' => ['nullable', 'string', 'email', 'max:255', 'unique:Clientes'],
             'password' => ['nullable', 'string', 'max:255', 'min:8'],
             'telefone' => ['nullable', 'string', 'size:17', 'unique:Clientes'],
+            'descricao' => ['required', 'string', 'max:500'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -83,7 +85,7 @@ class ClienteController extends Controller
         if (!$cliente)
             return response()->json(['error' => '"cliente" not found'], 404);
 
-        $atributos = ['nome', 'email', 'password', 'telefone'];
+        $atributos = ['nome', 'email', 'password', 'telefone', 'descricao'];
 
         foreach($atributos as $atributo) {
             if ($atributo === "password") {

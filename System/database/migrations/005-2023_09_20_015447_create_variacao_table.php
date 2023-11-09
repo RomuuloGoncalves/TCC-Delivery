@@ -16,9 +16,7 @@ return new class extends Migration
         Schema::create('Variacoes', function (Blueprint $table) {
             $table->id('id');
             $table->string('nome');
-            $table->unsignedDecimal('porcentagem_desconto', 5, 2)->nullable();
-            $table->unsignedDecimal('valor_desconto', 9, 2)->nullable();
-            $table->unsignedDecimal('valor_inicial', 9, 2)->default(0);
+            $table->unsignedDecimal('valor', 9, 2)->default(0);
             $table->string('imagem')->nullable();
             $table->string('descricao');
             $table->unsignedBigInteger('cod_grupo_variacoes');
