@@ -16,24 +16,24 @@ export class ModalProdutoComponent implements OnInit, OnDestroy {
   @Output() public editar: EventEmitter<any> = new EventEmitter();
 
 
-  constructor( private Produto: ProdutosService, private router: Router ) { }
+  constructor(private Produto: ProdutosService, private router: Router) { }
 
   ngOnInit() {
     console.log(this.produto)
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.isOpen = false
   }
 
-  navigate(rota:string){
+  navigate(rota: string) {
     this.fechar.emit();
     setTimeout(() => {
       this.router.navigate([rota, this.produto.id])
     }, 100);
   }
 
-  excluirProduto(id: number){
+  excluirProduto(id: any) {
     this.Produto.excluirProduto(id).subscribe(
       (response) => {
         console.log(response);
@@ -44,4 +44,24 @@ export class ModalProdutoComponent implements OnInit, OnDestroy {
       }
     );
   }
+
+
+  public alertButtons = [
+    {
+      text: 'Não',
+      role: 'cancel',
+      handler: () => {
+        console.log('Alert canceled');
+      },
+    },
+    {
+      text: 'Sim',
+      role: 'confirm',
+      handler: () => {
+        this.excluirProduto(this.produto.id)
+      },
+    },
+  ];
+
+
 }

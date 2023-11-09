@@ -34,10 +34,12 @@
           <ion-col size="12">
             <ion-row class="ion-justify-content-center">
               <ion-col size="4">
-                <ion-button expand="block" size="large" (click)="navigate('criacao-grupo-var')" routerDirection="back">Variantes</ion-button>
+                <ion-button expand="block" size="large" (click)="navigate('criacao-grupo-var')"
+                  routerDirection="back">Variantes</ion-button>
               </ion-col>
               <ion-col size="4">
-                <ion-button expand="block" size="large" (click)="navigate('criacao-variacoes')" routerDirection="back">Variações</ion-button>
+                <ion-button expand="block" size="large" (click)="navigate('criacao-variacoes')"
+                  routerDirection="back">Variações</ion-button>
               </ion-col>
             </ion-row>
             <ion-row class="ion-justify-content-center">
@@ -45,7 +47,9 @@
                 <ion-button expand="block" size="large">Editar</ion-button>
               </ion-col>
               <ion-col size="4">
-                <ion-button fill="outline" expand="block" size="large">Excluir</ion-button>
+                <ion-button fill="outline" expand="block" id="present-alert" size="large">Excluir</ion-button>
+
+                <ion-alert mode="ios" trigger="present-alert" header="Deseja excluir este produto?" [buttons]="alertButtons"></ion-alert>
               </ion-col>
             </ion-row>
           </ion-col>
