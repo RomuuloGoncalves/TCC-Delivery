@@ -18,7 +18,6 @@ export class ModalProdutoComponent implements OnInit {
   @Input() public produto?: Produto;
   @Output() public fechar: EventEmitter<any> = new EventEmitter();
 
-  loading: boolean = false;
   precoTotal!: number;
   quantidade: number = 1;
 
@@ -27,18 +26,24 @@ export class ModalProdutoComponent implements OnInit {
   alterarVariacoesSelecionadas(e: any, grupoVariacao: GrupoVariacoes) {
     let variacao = JSON.parse(e.detail.value);
 
-    this.variacoesSelecionadas = [];
-    this.variacoesSelecionadas.push({
-      grupo_variacao: grupoVariacao,
-      variacao: variacao,
+    this.variacoesSelecionadas.forEach(variacaoSelecionada => {
+      variacaoSelecionada.cod_grupo_variacao === variacao.cod_grupo_variacao ? variacaoSelecionada = variacao : (
+        this.variacoesSelecionadas = [],
+        this.variacoesSelecionadas.push({
+          grupo_variacao: grupoVariacao,
+          variacao: variacao,
+        })
+      )
     });
+
+    console.log(this.variacoesSelecionadas)
+
+
 
     this.precoTotal = this.calcPreco();
 
-    console.log(this.precoTotal.toFixed(2).replace('.', ','))
   }
 
-  // por mensagem bicha dizendo se foi ok
   public adicionarProduto() {
     this.produto
       ? ((this.produto.grupo_variacao = this.variacoesSelecionadas),

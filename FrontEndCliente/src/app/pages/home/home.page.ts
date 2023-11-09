@@ -76,5 +76,8 @@ export class HomePage implements OnInit {
 
   fecharModal() {
     this.isOpen = false;
+    setTimeout(() => {
+      this.produtoSelecionado = undefined;
+    }, 100);
   }
 }
