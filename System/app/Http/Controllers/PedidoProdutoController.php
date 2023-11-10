@@ -35,7 +35,7 @@ class PedidoProdutoController extends Controller
             return response()->json($validacao->errors(), 422);
 
         if (!$cliente = ClienteController::getAuthCliente()) {
-            return response()->json(["Cliente Inválido", 422]);
+            return response()->json(["Cliente Inválido"], 422);
         }
 
         if (!$pedido = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->first()) {
@@ -50,20 +50,38 @@ class PedidoProdutoController extends Controller
         ]);
 
         $array_cod_var_sel = $request->input('cod_variacoes');
-        $variacoes_validas = GrupoVariacao::with(['variacao'])
+        $grupo_variacoes = GrupoVariacao::with(['variacao'])
             ->where('cod_produto', $pedido_produto->cod_produto)
             ->get();
 
+        $array_cod_variacoes_validas = [];
 
-        echo ($variacoes_validas);
+        foreach ($grupo_variacoes as $item) {
+            $a = [];
+            foreach ($item->variacao as $variacao) {
+                $array_cod_variacoes_validas[] = $variacao->id;
+                $a[] = $variacao->id;
+            }
+
+            $interseccao = array_intersect($a, $array_cod_var_sel);
+
+            if($interseccao == []) {
+                return response()->json(["Alguma das Variações Selecionadas é inválida"], 422);
+            }
+
+            if($item->quantidade_variacoes_min < count($interseccao) || $item->quantidade_variacoes_max > count($interseccao))  {
+                return response()->json(["Quantidade de variações no campo $item->nome é Inválido."], 422);
+            }
+
+        }
+
+        var_dump(array_count_values($array_cod_var_sel));
+        var_dump($array_cod_variacoes_validas);
         var_dump($array_cod_var_sel);
 
-        exit();
-
-        // if(!) {
-        //     return response()->json(["Sem variações Selecionadas"]);
-        // }
-
+        if(array_diff($array_cod_var_sel, $array_cod_variacoes_validas)) {
+            return response()->json(["Alguma das Variações Selecionadas é inválida"], 422);
+        }
 
         foreach ($array_cod_var_sel as $cod_variacao) {
             $variacoes_selecionadas[] = VariacaoSelecionada::create([
@@ -106,6 +124,7 @@ class PedidoProdutoController extends Controller
                 ? $pedido_produto->$atributo = $request->input($atributo)
                 : null;
         }
+
         $pedido_produto->save();
 
         return response()->json($pedido_produto, 200);
