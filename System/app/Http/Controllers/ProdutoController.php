@@ -50,29 +50,29 @@ class ProdutoController extends Controller
 
         if ($request->hasFile('imagem')) {
             try {
-                $completeFileName = $request->file('imagem')->getClientOriginalName();
-                $fileNameOnly = pathinfo($completeFileName, PATHINFO_FILENAME);
-                $extension = $request->file('imagem')->getClientOriginalExtension();
-                $compPic = str_replace(' ', '_', $fileNameOnly) . '-' . rand() . '_' . time() . '.' . $extension;
+                $nomeCompletoImagem = $request->file('imagem')->getClientOriginalName();
+                $apenasNome = pathinfo($nomeCompletoImagem, PATHINFO_FILENAME);
+                $extensao = $request->file('imagem')->getClientOriginalextensao();
+                $nomeFinal = str_replace(' ', '_', $apenasNome) . '-' . rand() . '_' . time() . '.' . $extensao;
 
-                $uploadsPath = base_path('public/uploads');
-                if (!file_exists($uploadsPath)) {
-                    mkdir($uploadsPath, 0755, true);
+                $caminho = base_path('public/uploads');
+                if (!file_exists($caminho)) {
+                    mkdir($caminho, 0755, true);
                 }
 
-                $request->file('imagem')->move($uploadsPath, $compPic);
+                $request->file('imagem')->move($caminho, $nomeFinal);
             } catch (\Exception $e) {
                 return response()->json(['error' => $e->getMessage()], 500);
             }
         } else {
-            $compPic = null;
+            $nomeFinal = null;
         }
 
 
         $produto = Produto::create([
             'nome' => $request->input('nome'),
             'descricao' => $request->input('descricao'),
-            'imagem' => $compPic,
+            'imagem' => $nomeFinal,
             'cod_categoria' => $request->input('cod_categoria'),
         ]);
 
