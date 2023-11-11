@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToastService } from 'src/app/core/controller/toast.service';
 import { GrupoVariacoes } from 'src/app/core/interfaces/grupo-variacoes';
@@ -23,7 +24,7 @@ export class ModalProdutoComponent implements OnInit {
 
   precoTotal!: number;
   quantidade: number = 1;
-
+  observacao: string = '';
   variacoesSelecionadas: any[] = [];
 
   alterarVariacoesSelecionadas(e: any, grupoVariacao: GrupoVariacoes) {
@@ -32,14 +33,11 @@ export class ModalProdutoComponent implements OnInit {
     this.variacoesSelecionadas.length
       ? (this.variacoesSelecionadas.forEach((variacaoSelecionada) => {
           contador += 1;
-          console.log(variacao);
-          console.log(variacaoSelecionada);
           if (
             variacaoSelecionada.grupo_variacao.id ===
             variacao.cod_grupo_variacoes
-          ) {
+          )
             this.variacoesSelecionadas.splice(contador - 1);
-          }
         }),
         this.variacoesSelecionadas.push({
           grupo_variacao: grupoVariacao,
@@ -54,20 +52,25 @@ export class ModalProdutoComponent implements OnInit {
   }
 
   public adicionarProduto() {
-    this.produto
-      ? ((this.produto.grupo_variacao = this.variacoesSelecionadas),
-        (this.produto.quantidade = this.quantidade),
-        this.carrinhoService.adicionarProduto(this.produto),
-        setTimeout(() => {
-          location.reload();
-        }, 400),
+    const objProduto = {
+      id: this.produto!.id,
+      observacao: this.observacao,
+      grupo_variacao: this.variacoesSelecionadas,
+      quantidade: this.quantidade,
+    };
+
+    this.carrinhoService.adicionarProduto(objProduto).subscribe(
+      (response: any) => {
         this.toastService.mostrarToast(
           'sucesso',
-          'Produto adicionado ao carrinho!'
-        ),
-        (this.variacoesSelecionadas = []),
-        this.fechar.emit())
-      : null;
+          'Produto adicionado com sucesso!'
+        );
+        this.fechar.emit();
+      },
+      (badResponse: HttpErrorResponse) => {
+        console.error(badResponse);
+      }
+    );
   }
 
   private calcPreco() {
