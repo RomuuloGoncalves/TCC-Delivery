@@ -8,23 +8,22 @@ import { PedidosService } from 'src/app/core/services/pedidos.service';
   styleUrls: ['./pedidos.page.scss'],
 })
 export class PedidosPage implements OnInit {
+  constructor(private Pedidos: PedidosService) {}
 
-  constructor(private Pedidos: PedidosService) { }
-
-  loading: boolean = true
+  loading: boolean = true;
 
   ngOnInit() {
-    this.recuperarTodosPedidos()
+    this.recuperarTodosPedidos();
   }
 
-  pedidos!: Pedido[]
+  pedidos!: Pedido[];
 
   recuperarTodosPedidos() {
     this.Pedidos.pegarPedidos().subscribe(
       (response) => {
-        this.pedidos = response
-        this.ordenarPedidos = this.pedidos
-        this.loading = false
+        this.pedidos = response;
+        this.ordenarPedidos = this.pedidos;
+        this.loading = false;
       },
       (error) => {
         console.error(error);
@@ -32,15 +31,20 @@ export class PedidosPage implements OnInit {
     );
   }
 
-  ordenarPedidos!: any
+  ordenarPedidos!: any;
   ordenar(option: any) {
     if (option.detail.value == 'id')
-      this.pedidos = this.ordenarPedidos.sort((a: any, b: any) => a.id - b.id)
+      this.pedidos = this.ordenarPedidos.sort((a: any, b: any) => a.id - b.id);
     if (option.detail.value == 'status')
       this.pedidos.sort((a, b) => a.status.localeCompare(b.status));
     if (option.detail.value == 'quantidade')
-      this.pedidos = this.pedidos.sort((a, b) => a.pedido_produtos.length - b.pedido_produtos.length)
+      this.pedidos = this.pedidos.sort(
+        (a, b) => a.pedido_produtos.length - b.pedido_produtos.length
+      );
     if (option.detail.value == 'data')
-      this.pedidos = this.ordenarPedidos.sort((a: any, b: any) => Number(new Date(a.data_pedido)) - Number(new Date(b.data_pedido)))
+      this.pedidos = this.ordenarPedidos.sort(
+        (a: any, b: any) =>
+          Number(new Date(a.data_pedido)) - Number(new Date(b.data_pedido))
+      );
   }
 }

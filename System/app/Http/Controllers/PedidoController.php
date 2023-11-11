@@ -8,6 +8,7 @@ use App\Models\Pedido;
 use App\Models\PedidoProduto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class PedidoController extends Controller
 {
@@ -45,13 +46,12 @@ class PedidoController extends Controller
     {
         $regras = [
             'id' => ['required', 'integer', 'max_digits:30'],
-            'valor_total' => ['nullable', 'decimal:2', 'min_digit:1', 'max_digits:999999999'],
-            'valor_com_desconto' => ['nullable', 'decimal:2', 'min_digit:1', 'max_digits:999999999'],
+            'valor' => ['nullable', 'decimal:2', 'min_digit:1', 'max_digits:999999999'],
             'data_pedido' => ['nullable', 'date'],
             'data_entrega' => ['nullable', 'date'],
             'data_pagamento' => ['nullable', 'date'],
             'endereco_pedido' => ['nullable', 'json'],
-            'status' => ['nullable', 'in:Pronto, Em Entrega, Cancelado, Em Espera, Carrinho'],
+            'status' => ['nullable',  Rule::in(['Pronto', 'Em Entrega', 'Cancelado', 'Em Espera'])],
             'forma_pagamento' => ['nullable', 'in:Crédito, Dinheiro, Pix, Débito'],
             'cod_funcionario' => ['nullable', 'integer', 'max_digits:30'],
             'cod_endereco' => ['nullable', 'integer', 'max_digits:30'],

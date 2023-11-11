@@ -4,7 +4,8 @@
 
     <ion-row class="pedido" class="ion-justify-content-between ion-align-items-center ion-margin">
       <ion-col size="12" sizeMd="auto">
-        <ion-button fill="clear" [routerLink]="['/pedidos']" routerDirection="back"><ion-icon size="large" name="arrow-back-outline"></ion-icon></ion-button>
+        <ion-button fill="clear" [routerLink]="['/pedidos']" routerDirection="back"><ion-icon size="large"
+            name="arrow-back-outline"></ion-icon></ion-button>
       </ion-col>
       <h2 class="ion-margin-horizontal">Pedido #{{this.idPedido}}</h2>
     </ion-row>
@@ -38,16 +39,6 @@
           <ion-col size="12" sizeMd="5" class="ion-no-padding ion-margin-horizontal">
             <ion-button size="large" fill="outline" expand="block" id="open-modal-pedido">Ver produtos</ion-button>
           </ion-col>
-          <ng-container *ngIf="this.pedidoCliente.status === 'Em Espera'">
-            <ion-col size="12" sizeMd="5" class="ion-no-padding ion-margin-horizontal">
-              <ion-button size="large" color="tertiary" expand="block">Entregar</ion-button>
-            </ion-col>
-          </ng-container>
-          <ng-container *ngIf="this.pedidoCliente.status === 'Em Entrega'">
-            <ion-col size="12" sizeMd="5" class="ion-no-padding ion-margin-horizontal">
-              <ion-button size="large" color="tertiary" expand="block">Finalizar</ion-button>
-            </ion-col>
-          </ng-container>
         </ion-row>
       </ion-col>
       <ion-col size="11" sizeLg="4" class="informacoes ion-padding ion-margin-horizontal">
@@ -59,7 +50,7 @@
           </ion-item>
           <ion-item>
             <ion-text>
-              <p><b>CEP:</b> {{this.pedidoCliente!.endereco?.cep}}</p>
+              <p><b>Endereço:</b> {{this.pedidoCliente!.endereco_pedido}}</p>
             </ion-text>
           </ion-item>
           <ion-item>
@@ -68,9 +59,15 @@
             </ion-text>
           </ion-item>
           <ion-item>
-            <ion-text>
-              <p><b>Status:</b> {{this.pedidoCliente!.status}}</p>
+            <ion-text class="ion-margin-end">
+              <p><b>Status:</b></p>
             </ion-text>
+            <ion-select (ionChange)="this.editarStatusPedido($event)" [value]="this.pedidoCliente.status">
+              <ion-select-option value="Em Espera">Em Espera</ion-select-option>
+              <ion-select-option value="Em Entrega">Em Entrega</ion-select-option>
+              <ion-select-option value="Pronto">Pronto</ion-select-option>
+              <ion-select-option value="Cancelado">Cancelado</ion-select-option>
+            </ion-select>
           </ion-item>
         </ion-list>
       </ion-col>

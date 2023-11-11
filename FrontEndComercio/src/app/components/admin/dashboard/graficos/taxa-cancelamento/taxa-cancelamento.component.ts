@@ -13,31 +13,26 @@ export class TaxaCancelamentoComponent implements OnInit {
   constructor(private Pedidos: PedidosService) {}
 
   ngOnInit() {
-    this.recuperarTodosPedidos().then(() => {
-      this.gerarGrafico(
-        this.pedidosCancelados.length,
-        this.pedidosEntregues.length
-      );
-    });
+    this.recuperarTodosPedidos();;
   }
 
   pedidos!: Pedido[];
   pedidosCancelados: Pedido[] = [];
   pedidosEntregues: Pedido[] = [];
-  recuperarTodosPedidos(): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-      this.Pedidos.pegarPedidosHistorico().subscribe(
-        (response) => {
-          this.pedidos = response;
-          this.organizarPedidos(this.pedidos);
-          resolve(); // Resolve the promise when the data is retrieved and processed.
-        },
-        (error) => {
-          console.error(error);
-          reject(error); // Reject the promise if an error occurs.
-        }
-      );
-    });
+  recuperarTodosPedidos() {
+    this.Pedidos.pegarHistoricoPedidos().subscribe(
+      (response) => {
+        this.pedidos = response;
+        this.organizarPedidos(this.pedidos);
+        this.gerarGrafico(
+          this.pedidosCancelados.length,
+          this.pedidosEntregues.length
+        );
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 
   organizarPedidos(pedidos: Pedido[]) {
