@@ -3,6 +3,7 @@ import { Component, NgModuleFactory, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastService } from 'src/app/core/controller/toast.service';
 import { Cupom } from 'src/app/core/interfaces/cupom';
+import { PedidoProduto } from 'src/app/core/interfaces/pedido-produto';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { CarrinhoService } from 'src/app/core/services/carrinho.service';
 import { CupomService } from 'src/app/core/services/cupom.service';
@@ -25,8 +26,7 @@ export class CarrinhoPage implements OnInit {
   subtotal: number = 0;
   total: number = 0;
 
-  produtos: Produto[] = [
-  ];
+  pedidoProdutos: PedidoProduto[] = [];
 
   cupomNome?: string;
 
@@ -35,8 +35,8 @@ export class CarrinhoPage implements OnInit {
   carregarPagina() {
     this.loading = true;
     this.carrinhoService.produtos().subscribe(
-      (response: Produto[]) => {
-        this.produtos = response;
+      (response: PedidoProduto[]) => {
+        this.pedidoProdutos = response;
         this.calcTotal();
         this.loading = false;
       },
@@ -48,8 +48,8 @@ export class CarrinhoPage implements OnInit {
 
   calcTotal () {
     this.subtotal = 0;
-    this.produtos.forEach((produto: Produto) => {
-      produto.subtotal = produto.quantidade! * produto.variacao?.valor!;
+    this.pedidoProdutos.forEach((produto: PedidoProduto) => {
+      produto.subtotal = produto.quantidade! * produto.total!;
       this.subtotal += produto.subtotal;
     });
 

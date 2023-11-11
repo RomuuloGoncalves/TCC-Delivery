@@ -6,7 +6,7 @@ use App\Models\GrupoVariacao;
 use App\Models\PedidoProduto;
 use App\Models\VariacaoSelecionada;
 use App\Models\Pedido;
-
+use App\Models\Variacao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -21,82 +21,61 @@ class PedidoProdutoController extends Controller
     public function store(Request $request)
     {
         $regras = [
-            'cod_produto' => ['required', 'integer', 'max_digits:30'],
-            'quantidade' => ['nullable', 'integer', 'min: 1', 'max_digits:30'],
+            'id' => ['required', 'integer', 'max_digits:30'],
+            'quantidade' => ['integer', 'min: 1', 'max_digits:30'],
             'observacao' => ['nullable', 'string', 'max:255'],
-            'cod_variacoes' => ['nullable', 'array'],
-            'cod_variacoes.*' => ['nullable', 'integer', 'min:1 ', 'max_digits:30']
+            'grupo_variacao' => ['nullable', 'array'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);
 
-        if ($validacao->fails()) {
+        if ($validacao->fails())
             return response()->json($validacao->errors(), 422);
-        }
 
-        if (!$cliente = ClienteController::getAuthCliente()) {
+        if (!$cliente = ClienteController::getAuthCliente())
             return response()->json(["Cliente Inválido"], 422);
-        }
 
-        if (!$pedido = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->first()) {
+        if (!$pedido = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->first())
             $pedido = PedidoController::store();
+
+        $total = 0;
+
+        // Verificações
+        foreach ($request->input('grupo_variacao') as $grupo_variacao) {
+            if (!$grupo_variacao_obj = GrupoVariacao::where('id', $grupo_variacao['id'])->first())
+                return response()->json(['message' => 'Grupo variação inválido'], 422);
+
+            $qtdd_variacoes_selecionadas = count($grupo_variacao['variacao']);
+            if ($grupo_variacao_obj->quantidade_variacoes_min > $qtdd_variacoes_selecionadas)
+                return response()->json(['message' => 'Deves escolher mais ' . $grupo_variacao['tipo']]);
+
+            if ($grupo_variacao_obj->quantidade_variacoes_max < $qtdd_variacoes_selecionadas)
+                return response()->json(['message' => 'Deves escolher menos ' . $grupo_variacao['tipo']]);
+
+            foreach ($grupo_variacao['variacao'] as $variacao) {
+                if (!$variacao_obj = Variacao::where('cod_grupo_variacoes', $grupo_variacao_obj->id)->where('id', $variacao['id'])->first())
+                    return response()->json(['message' => 'Variação inválida'], 422);
+                $total += $variacao_obj->valor;
+            }
         }
 
         $pedido_produto = PedidoProduto::create([
             'cod_pedido' => $pedido->id,
-            'cod_produto' => $request->input('cod_produto'),
-            'quantidade' => ($request->input('quantidade') === null) ? 1 : $request->input('quantidade'),
-            'observacao' => $request->input('observacao')
+            'cod_produto' => $request->input('id'),
+            'quantidade' => $request->input('quantidade'),
+            'observacao' => $request->input('observacao'),
+            'total' => $total
         ]);
 
-
-        if(!$array_cod_var_sel = $request->input('cod_variacoes')) {
-            return response()->json(["Nenhuma váriação selecionada"], 422);
-        }
-
-        $grupo_variacoes = GrupoVariacao::with(['variacao'])
-            ->where('cod_produto', $pedido_produto->cod_produto)
-            ->get();
-
-        $array_cod_variacoes_validas = [];
-
-        foreach ($grupo_variacoes as $item) {
-            $a = [];
-            foreach ($item->variacao as $variacao) {
-                $a[] = $variacao->id;
-                $array_cod_variacoes_validas[] = $variacao->id;
-            }
-            $quantidade = count(array_intersect($a, $array_cod_var_sel));
-
-            if($quantidade < $item->quantidade_variacoes_min) {
-                return response()->json(["Escolha pelo menos $item->quantidade_variacoes_min variação(ões) em $item->tipo"], 422);
-            }
-
-            if($quantidade > $item->quantidade_variacoes_max) {
-                return response()->json(["Não Escolha mais que $item->quantidade_variacoes_max variação(ões) em $item->tipo"], 422);
+        foreach ($request->input('grupo_variacao') as $grupo_variacao) {
+            foreach ($grupo_variacao['variacao'] as $variacao) {
+                $variacao_selecionada = VariacaoSelecionada::create([
+                    'cod_pedido_produto' => $pedido_produto->id,
+                    'cod_variacao' => $variacao['id']
+                ]);
+                $variacao_selecionada->save();
             }
         }
-
-        if(array_diff($array_cod_var_sel, $array_cod_variacoes_validas))  {
-            return response()->json(["Alguma das Varições selecionadas é inválida"], 422);
-        }
-
-        $itens_repetidos = array_filter(array_count_values($array_cod_var_sel), function($valor) {
-            return $valor > 1;
-        });
-
-        if(!empty($itens_repetidos)) {
-            return response()->json(["Variações selecionadas repetidas"], 422);
-        }
-
-        foreach ($array_cod_var_sel as $cod_variacao) {
-            $variacoes_selecionadas[] = VariacaoSelecionada::create([
-                'cod_pedido_produto' => $pedido_produto->id,
-                'cod_variacao' => $cod_variacao
-            ]);
-        }
-
-        return response()->json([$pedido_produto, $variacoes_selecionadas], 201);
     }
 
     /**
@@ -144,7 +123,7 @@ class PedidoProdutoController extends Controller
 
     public function index()
     {
-        $pedido_produto = PedidoProduto::with(['variacoes_selecionadas.variacao.grupo_variacao' =>
+        $pedido_produto = PedidoProduto::with(['variacoes_selecionadas.variacao.grupo_variacao.produto' =>
         function ($query) {
             $query->select('id', 'tipo');
         }])->get();

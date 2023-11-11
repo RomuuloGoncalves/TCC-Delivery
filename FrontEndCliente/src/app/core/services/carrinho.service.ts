@@ -16,12 +16,11 @@ export class CarrinhoService {
     return this.Server.get(`/cliente/carrinho`);
   }
 
-  public adicionarProduto(produto: Produto) {
-    return this.Server.post(`/cliente/carrinho/adicionar`, produto)
+  public adicionarProduto(produto: any) {
+    return this.Server.post(`/cliente/carrinho/adicionar`, produto);
   }
 
   public adicionarCupom(id: number) {
-    return this.Server.put(`/cliente/carrinho/adicionarCupom`, id)
+    return this.Server.put(`/cliente/carrinho/adicionarCupom`, id);
   }
-
 }

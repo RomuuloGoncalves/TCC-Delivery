@@ -73,57 +73,57 @@
     <!-- categorias de ingredientes para seleção -->
     <ion-row class="ion-justify-content-center todos-ingredientes">
       <ion-col size="11" sizeMd="9" class="container-cards-ingredientes">
-        <swiper-container #swiper [loop]="false" [pagination]="{clickable: true, dynamicBullets: true}" [spaceBetween]="25" [breakpoints]="breakpoints">
-            <ng-container *ngFor="let ingrediente of this.ingredientes.grupo_variacao; let idIngrediente = index">
-              <ng-container *ngIf="ingrediente.variacao!.length">
-                <swiper-slide>
-                  <ion-card class="selecionar-ingredientes">
-                    <ion-card-header>
-                      <ion-card-title class="ion-text-capitalize">{{ ingrediente.tipo }}</ion-card-title>
-                      <ion-card-subtitle>Selecione o tipo de {{ ingrediente.tipo.toLocaleLowerCase()}} desejado</ion-card-subtitle>
-                      <ion-text color="danger">
-                        Minímo de {{ ingrediente.quantidade_variacoes_min }}
-                        <ng-container *ngIf="this.ingrediente.quantidade_variacoes_max">
-                          e máximo de {{ ingrediente.quantidade_variacoes_max }}
-                        </ng-container>
-                        opcões!
-                      </ion-text>
-                    </ion-card-header>
+        <swiper-container #swiper [loop]="false" [pagination]="{clickable: true, dynamicBullets: true}"
+          [spaceBetween]="25" [breakpoints]="breakpoints">
+          <ng-container *ngFor="let ingrediente of this.ingredientes.grupo_variacao; let idIngrediente = index">
+            <ng-container *ngIf="ingrediente.variacao!.length">
+              <swiper-slide>
+                <ion-card class="selecionar-ingredientes">
+                  <ion-card-header>
+                    <ion-card-title class="ion-text-capitalize">{{ ingrediente.tipo }}</ion-card-title>
+                    <ion-card-subtitle>Selecione o tipo de {{ ingrediente.tipo.toLocaleLowerCase()}}
+                      desejado</ion-card-subtitle>
+                    <ion-text color="danger">
+                      Minímo de {{ ingrediente.quantidade_variacoes_min }}
+                      <ng-container *ngIf="this.ingrediente.quantidade_variacoes_max">
+                        e máximo de {{ ingrediente.quantidade_variacoes_max }}
+                      </ng-container>
+                      opcões!
+                    </ion-text>
+                  </ion-card-header>
 
-                    <ion-card-content>
-                      <ion-list>
-                        <ion-item *ngFor="let variacao of this.ingrediente.variacao; let idVariacao = index">
-                          <ion-checkbox
-                          [disabled]="this.ehVariacaoDisabled(ingrediente, variacao)"
+                  <ion-card-content>
+                    <ion-list>
+                      <ion-item *ngFor="let variacao of this.ingrediente.variacao; let idVariacao = index">
+                        <ion-checkbox [disabled]="this.ehVariacaoDisabled(ingrediente, variacao)"
                           (ionChange)="selecionarIngrediente(idIngrediente, idVariacao, $event); this.calcPrecoMarmita()">
 
                           <b>{{ variacao.nome }}</b> por R$
                           {{ variacao.valor?.toFixed(2)?.replace('.', ',') }}
                         </ion-checkbox>
-                        </ion-item>
-                      </ion-list>
-                    </ion-card-content>
-                  </ion-card>
-                </swiper-slide>
-              </ng-container>
+                      </ion-item>
+                    </ion-list>
+                  </ion-card-content>
+                </ion-card>
+              </swiper-slide>
             </ng-container>
-          </swiper-container>
+          </ng-container>
+        </swiper-container>
 
-          <ion-button (click)="this.proximoCard()" class="trocar-card-ingrediente prox-card">
-            <ion-icon name="triangle" class="prox-card__triangulo"></ion-icon>
-          </ion-button>
-          <ion-button (click)="this.voltarCard()" class="trocar-card-ingrediente volt-card">
-            <ion-icon name="triangle" class="volt-card__triangulo"></ion-icon>
-          </ion-button>
+        <ion-button (click)="this.proximoCard()" class="trocar-card-ingrediente prox-card">
+          <ion-icon name="triangle" class="prox-card__triangulo"></ion-icon>
+        </ion-button>
+        <ion-button (click)="this.voltarCard()" class="trocar-card-ingrediente volt-card">
+          <ion-icon name="triangle" class="volt-card__triangulo"></ion-icon>
+        </ion-button>
       </ion-col>
     </ion-row>
-
 
     <ion-row class="ion-justify-content-center ion-align-items-center ion-padding-vertical">
       <ion-col size="11" sizeMd="9">
         <ion-row class="ion-justify-content-between ion-align-items-center">
           <ion-col size="12" sizeLg="6">
-            <app-observacoes></app-observacoes>
+            <app-observacoes (change)="this.attObservacao($event)"></app-observacoes>
           </ion-col>
           <ion-col size="12" sizeLg="4">
             <ion-row class="sessao-total ion-justify-content-between ion-margin-right">
@@ -143,9 +143,7 @@
               </ion-text>
             </ion-row>
             <ion-row class="sessao-total ion-justify-content-between">
-              <app-contador
-                [contador]="this.qtddMarmita"
-                (change)="this.qtddMarmita = $event; this.calcTotal()"
+              <app-contador [contador]="this.qtddMarmita" (change)="this.qtddMarmita = $event; this.calcTotal()"
                 [min]="1"></app-contador>
               <ion-button (click)="this.adicionarMarmita()">
                 Adicionar
@@ -157,7 +155,5 @@
     </ion-row>
     <app-footer></app-footer>
   </ng-container>
-  <app-loading
-    [loading]="this.loading"
-  ></app-loading>
+  <app-loading [loading]="this.loading"></app-loading>
 </ion-content>

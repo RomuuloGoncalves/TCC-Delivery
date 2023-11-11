@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
-use App\Models\Cliente;
 use App\Models\Pedido;
 use App\Models\PedidoProduto;
 use Illuminate\Http\Request;
@@ -88,9 +87,11 @@ class PedidoController extends Controller
     public function showCarrinho()
     {
         $cliente =  ClienteController::getAuthCliente();
-        $pedido = Pedido::with(['pedido_produtos.variacoes_selecionadas'])->where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->get();
+        if (!$pedido = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->first())
+            $pedido = PedidoController::store();
+        $produtos = PedidoProduto::with('produto')->where('cod_pedido', $pedido->id)->get(['total', 'observacao', 'quantidade', 'cod_produto']);
 
-        return response()->json($pedido, 200);
+        return response()->json($produtos, 200);
     }
 
     /**

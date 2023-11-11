@@ -15,6 +15,12 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./montagem-marmita.page.scss'],
 })
 export class MontagemMarmitaPage implements OnInit {
+  constructor(
+    private produtoService: ProdutoService,
+    private carrinhoService: CarrinhoService,
+    private toastService: ToastService
+  ) {}
+
   @ViewChild('swiper')
   swiperRef: ElementRef | undefined;
   swiper?: Swiper;
@@ -23,11 +29,21 @@ export class MontagemMarmitaPage implements OnInit {
 
   precoMarmita: number = 0.0;
   qtddMarmita: number = 1;
+  observacao: string = '';
   total: number = 0.0;
 
   ingredientes!: Produto;
 
-  constructor(private produtoService: ProdutoService, private carrinhoService: CarrinhoService, private toastService: ToastService) { }
+  breakpoints = {
+    576: {
+      slidesPerView: 1,
+      spaceBetween: 15,
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+  };
 
   ngOnInit() {
     this.atualizarMarmita();
@@ -48,6 +64,11 @@ export class MontagemMarmitaPage implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  attObservacao(event: any) {
+    const value = event.target.value;
+    this.observacao = value;
   }
 
   selecionarIngrediente(idIngrediente: number, idVariacao: number, event: any) {
@@ -93,19 +114,27 @@ export class MontagemMarmitaPage implements OnInit {
   }
 
   adicionarMarmita() {
-    this.marmitaPersonalizada.grupo_variacao = this.marmita;
-    this.marmitaPersonalizada.quantidade = this.qtddMarmita;
-    this.carrinhoService.adicionarProduto(this.marmitaPersonalizada);
+    const objMarmita = {
+      id: this.marmitaPersonalizada.id,
+      quantidade: this.qtddMarmita,
+      grupo_variacao: this.marmita,
+      observacao: this.observacao,
+    };
 
-    this.carrinhoService.adicionarProduto(this.marmitaPersonalizada).subscribe(
+    this.carrinhoService.adicionarProduto(objMarmita).subscribe(
       (response: any) => {
-        console.log(response);
-        this.toastService.mostrarToast('sucesso', 'Produto adicionado ao carrinho!')
+        this.toastService.mostrarToast(
+          'sucesso',
+          'Produto adicionado ao carrinho!'
+        );
+        setTimeout(() => {
+          location.reload();
+        }, 500);
       },
       (badResponse: HttpErrorResponse) => {
         console.error(badResponse);
       }
-    )
+    );
   }
 
   calcTotal() {
@@ -131,17 +160,6 @@ export class MontagemMarmitaPage implements OnInit {
       ingrediente.quantidade_variacoes_max
     );
   }
-
-  breakpoints = {
-    576: {
-      slidesPerView: 1,
-      spaceBetween: 15,
-    },
-    768: {
-      slidesPerView: 2,
-      spaceBetween: 20,
-    },
-  };
 
   proximoCard() {
     this.swiper = this.swiperRef?.nativeElement.swiper.slideNext();

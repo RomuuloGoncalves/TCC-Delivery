@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GrupoVariacao;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;

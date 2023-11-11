@@ -1,6 +1,6 @@
 import { outputAst } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Produto } from 'src/app/core/interfaces/produto';
+import { PedidoProduto } from 'src/app/core/interfaces/pedido-produto';
 
 @Component({
   selector: 'app-card-carrinho',
@@ -11,7 +11,7 @@ export class CardCarrinhoComponent implements OnInit {
 
   constructor() { }
 
-  @Input() produto!: Produto;
+  @Input() pedidoProduto!: PedidoProduto;
   @Output() calc: EventEmitter<any> = new EventEmitter();
   @Output() remover: EventEmitter<number> = new EventEmitter()
 
@@ -23,6 +23,6 @@ export class CardCarrinhoComponent implements OnInit {
   }
 
   removerProduto(){
-    this.remover.emit(this.produto.id)
+    this.remover.emit(this.pedidoProduto.id)
   }
 }

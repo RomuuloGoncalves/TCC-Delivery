@@ -10,4 +10,6 @@ export interface PedidoProduto {
   variacoes_selecionadas?: VariacaoSelecionada[];
   pedido?: Pedido;
   produto?: Produto;
+  total?: number;
+  subtotal?: number;
 }

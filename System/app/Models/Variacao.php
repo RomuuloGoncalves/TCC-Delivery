@@ -13,15 +13,12 @@ class Variacao extends Model
     protected $fillable = [
         'nome',
         'porcentagem_desconto',
-        'valor_desconto',
-        'valor_inicial',
-        'imagem',
-        'descricao',
+        'valor',
         'cod_grupo_variacoes'
     ];
 
     public $timestamps = false;
-    
+
     public function grupo_variacao(): BelongsTo
     {
         return $this->belongsTo(GrupoVariacao::class, 'cod_grupo_variacoes');

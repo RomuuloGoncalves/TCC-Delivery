@@ -5,6 +5,7 @@ import { VariacaoSelecionada } from "./variacao-selecionada";
 export interface PedidoProduto {
   id: number;
   quantidade: number;
+  total: number;
   cod_pedido: number;
   cod_produto: number;
   variacoes_selecionadas?: VariacaoSelecionada[];

@@ -12,7 +12,8 @@ class PedidoProduto extends Model
         'quantidade',
         'observacao',
         'cod_pedido',
-        'cod_produto'
+        'cod_produto',
+        'total'
     ];
 
     public $timestamps = false;

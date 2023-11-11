@@ -1,5 +1,6 @@
-import { GrupoVariacoes } from "./grupo-variacoes";
-import { Variacao } from "./variacao";
+import { Categoria } from './categoria';
+import { GrupoVariacoes } from './grupo-variacoes';
+import { Variacao } from './variacao';
 
 export interface Produto {
   id?: number;
@@ -10,4 +11,5 @@ export interface Produto {
   grupo_variacao?: GrupoVariacoes[];
   quantidade?: number;
   subtotal?: number;
+  categoria?: Categoria;
 }

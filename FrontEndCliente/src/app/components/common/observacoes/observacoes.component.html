@@ -7,6 +7,7 @@
     </ion-col>
   </ion-row>
   <ion-row class="ion-padding-bottom">
-    <ion-textarea class="observacoes__input" fill="outline" placeholder="Ex.: Tirar milho, cebola, etc." [counter]="true" [maxlength]="250"></ion-textarea>
+    <ion-textarea (ionInput)="this.change.emit($event)" class="observacoes__input" fill="outline"
+      placeholder="Ex.: Tirar milho, cebola, etc." [counter]="true" [maxlength]="250"></ion-textarea>
   </ion-row>
 </div>
