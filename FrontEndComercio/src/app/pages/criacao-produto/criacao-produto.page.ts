@@ -49,9 +49,8 @@ export class CriacaoProdutoPage implements OnInit {
     const produto = this.cadastoForm.form.value;
     produto.cod_categoria = Number(produto.cod_categoria)
     produto.imagem = this.arqsSelecionados[0]
-    JSON.stringify(produto.imagem )
   
-    console.log(produto.imagem)
+    console.log(produto)
 
     this.Produto.cadastrarProduto(produto).subscribe(
       (response: any) => {
