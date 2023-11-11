@@ -7,7 +7,7 @@
         <th>Status</th>
         <th>Quantidade</th>
       </thead>
-      <ng-container *ngFor="let pedido of this.pedidos" >
+      <ng-container *ngFor="let pedido of this.pedidos">
         <tr [routerLink]="['/pedido', pedido.id]" routerDirection="back">
           <td class="pedido__data">
             <ion-text class="ion-text-center">
@@ -23,7 +23,7 @@
               </p>
             </ion-text>
           </td>
-          <td class="pedido__status" >
+          <td class="pedido__status">
             <ion-text class="ion-text-center">
               <p>
                 {{pedido.status}}
@@ -40,5 +40,10 @@
         </tr>
       </ng-container>
     </table>
+    <ng-container *ngIf="!this.pedidos.length">
+      <ion-text color="primary" class="ion-text-center">
+        <h2>Não há pedidos!</h2>
+      </ion-text>
+    </ng-container>
   </ion-col>
 </ion-row>

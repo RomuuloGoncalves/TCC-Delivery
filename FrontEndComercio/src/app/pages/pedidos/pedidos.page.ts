@@ -16,7 +16,7 @@ export class PedidosPage implements OnInit {
     this.recuperarTodosPedidos();
   }
 
-  pedidos!: Pedido[];
+  pedidos: Pedido[] = [];
 
   recuperarTodosPedidos() {
     this.Pedidos.pegarPedidos().subscribe(
