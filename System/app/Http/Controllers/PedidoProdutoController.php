@@ -155,12 +155,10 @@ class PedidoProdutoController extends Controller
 
     public function destroy(int $id)
     {
-        $pedido_produto = PedidoProduto::find($id);
-
-        if (!$pedido_produto)
+        if (!$pedido_produto = PedidoProduto::find($id))
             return response()->json(['message' => 'Pedido Produto inválido'], 422);
 
-        $pedido_produto::delete();
+        $pedido_produto->delete();
         return response()->json(['message' => 'Pedido Produto deletado com sucesso'], 204);
     }
 

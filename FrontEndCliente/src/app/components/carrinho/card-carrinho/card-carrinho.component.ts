@@ -8,21 +8,15 @@ import { PedidoProduto } from 'src/app/core/interfaces/pedido-produto';
   styleUrls: ['./card-carrinho.component.scss'],
 })
 export class CardCarrinhoComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   @Input() pedidoProduto!: PedidoProduto;
   @Output() calc: EventEmitter<any> = new EventEmitter();
-  @Output() remover: EventEmitter<number> = new EventEmitter()
+  @Output() remover: EventEmitter<PedidoProduto> = new EventEmitter();
 
-  ngOnInit() { }
+  ngOnInit() {}
 
-
-  calcTotal() {
-
-  }
-
-  removerProduto(){
-    this.remover.emit(this.pedidoProduto.id)
+  removerProduto() {
+    this.remover.emit(this.pedidoProduto);
   }
 }

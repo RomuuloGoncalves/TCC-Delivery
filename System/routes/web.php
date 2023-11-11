@@ -37,6 +37,7 @@ $router->group(['prefix' => 'cliente'], function () use ($router) {
     $router->group(['prefix' => 'carrinho'], function () use ($router) {
         $router->get('/', 'PedidoController@showCarrinho');
         $router->post('/adicionar', 'PedidoProdutoController@store');
+        $router->delete('/excluir/{id}', 'PedidoProdutoController@destroy');
     });
 
     /*
@@ -164,7 +165,6 @@ $router->group(['prefix' => 'pedido-produto'], function () use ($router) {
     $router->post('/cadastrar', 'PedidoProdutoController@store');
     $router->put('/editar', 'PedidoProdutoController@update');
     $router->get('/{id}', 'PedidoProdutoController@show');
-    $router->delete('/excluir/{id}', 'PedidoProdutoController@destroy');
 
     /*
     |--------------------------------------------------------------------------

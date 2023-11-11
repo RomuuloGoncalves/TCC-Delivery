@@ -8,7 +8,9 @@
           </ion-row>
         </ion-col>
         <ion-col size="12" sizeMd="6">
-          <ion-text class="ion-text-center"><p>{{ this.pedidoProduto.produto!.nome }}</p></ion-text>
+          <ion-text class="ion-text-center">
+            <p>{{ this.pedidoProduto.produto!.nome }}</p>
+          </ion-text>
         </ion-col>
       </ion-row>
     </ion-col>
@@ -21,18 +23,17 @@
 
     <ion-col size="12" sizeMd="2">
       <ion-row class="ion-justify-content-center ion-align-items-center">
-        <app-contador
-          [contador]="this.pedidoProduto.quantidade!"
-          [min]="1"
-          (change)="this.pedidoProduto.quantidade = $event; this.calc.emit()"
-          ></app-contador>
+        <app-contador [contador]="this.pedidoProduto.quantidade!" [min]="1"
+          (change)="this.pedidoProduto.quantidade = $event; this.calc.emit()"></app-contador>
       </ion-row>
     </ion-col>
 
     <ion-col size="12" sizeLg="3">
       <ion-row class="ion-justify-content-end ion-align-items-center">
         <ion-col sizeMd="3" sizeLg="12">
-          <ion-text class="ion-text-center"><p>R$ {{ this.pedidoProduto.subtotal?.toFixed(2)?.replace('.', ',') }}</p></ion-text>
+          <ion-text class="ion-text-center">
+            <p>R$ {{ this.pedidoProduto.subtotal?.toFixed(2)?.replace('.', ',') }}</p>
+          </ion-text>
         </ion-col>
       </ion-row>
     </ion-col>

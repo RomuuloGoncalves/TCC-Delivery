@@ -14,7 +14,11 @@ import { CupomService } from 'src/app/core/services/cupom.service';
   styleUrls: ['./carrinho.page.scss'],
 })
 export class CarrinhoPage implements OnInit {
-  constructor(private carrinhoService: CarrinhoService, private cupomService: CupomService, private Toast: ToastService) {}
+  constructor(
+    private carrinhoService: CarrinhoService,
+    private cupomService: CupomService,
+    private Toast: ToastService
+  ) {}
 
   ngOnInit() {
     this.carregarPagina();
@@ -43,10 +47,10 @@ export class CarrinhoPage implements OnInit {
       (badResponse: HttpErrorResponse) => {
         console.error(badResponse);
       }
-    )
+    );
   }
 
-  calcTotal () {
+  calcTotal() {
     this.subtotal = 0;
     this.pedidoProdutos.forEach((produto: PedidoProduto) => {
       produto.subtotal = produto.quantidade! * produto.total!;
@@ -56,15 +60,24 @@ export class CarrinhoPage implements OnInit {
     this.total = this.subtotal + this.frete;
   }
 
-  removerProduto(e: number) {
-    this.carrinhoService.removerProduto(e).subscribe();
+  removerProduto(pedidoProduto: PedidoProduto) {
+    this.carrinhoService.removerProduto(pedidoProduto.id).subscribe(
+      (reponse) => {
+        const id = this.pedidoProdutos.indexOf(pedidoProduto);
+        this.pedidoProdutos.splice(id, 1);
+        this.Toast.mostrarToast('sucesso', 'Produto removido com sucesso!');
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 
   resgatarCupom() {
-    let cupom: Cupom = this.formCupom.form.value
+    let cupom: Cupom = this.formCupom.form.value;
     this.cupomService.consultarNome(cupom).subscribe(
       (response: Cupom) => {
-        this.carrinhoService.adicionarCupom(Number(response.id))
+        this.carrinhoService.adicionarCupom(Number(response.id));
         this.Toast.mostrarToast('sucesso', 'Cupom encontrado!');
       },
       (badResponse: HttpErrorResponse) => {

@@ -89,7 +89,7 @@ class PedidoController extends Controller
         $cliente =  ClienteController::getAuthCliente();
         if (!$pedido = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->first())
             $pedido = PedidoController::store();
-        $produtos = PedidoProduto::with('produto')->where('cod_pedido', $pedido->id)->get(['total', 'observacao', 'quantidade', 'cod_produto']);
+        $produtos = PedidoProduto::with('produto')->where('cod_pedido', $pedido->id)->get(['id', 'total', 'observacao', 'quantidade', 'cod_produto']);
 
         return response()->json($produtos, 200);
     }
