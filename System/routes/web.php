@@ -168,6 +168,7 @@ $router->group(['prefix' => 'grupo-variacao'], function () use ($router) {
 
 $router->group(['prefix' => 'pedido-produto'], function () use ($router) {
     $router->get('/', 'PedidoProdutoController@index');
+    $router->post('/cadastrar', 'PedidoProdutoController@store');
     $router->put('/editar', 'PedidoProdutoController@update');
     $router->get('/{id}', 'PedidoProdutoController@show');
     $router->delete('/excluir/{id}', 'PedidoProdutoController@destroy');
@@ -179,7 +180,6 @@ $router->group(['prefix' => 'pedido-produto'], function () use ($router) {
     */
 
     $router->group(['prefix' => 'variacao-selecionada'], function () use ($router) {
-        $router->post('/cadastrar', 'PedidoProdutoController@storeVariacaoSelecionada');
         $router->put('/editar', 'PedidoProdutoController@updateVariacaoSelecionada');
         $router->delete('/excluir/{id}', 'PedidoProdutoController@destroyVariacaoSelecionada');
     });

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('id');
             $table->string('tipo');
             $table->integer('quantidade_variacoes_min')->default(1);
-            $table->integer('quantidade_variacoes_max')->nullable();
+            $table->integer('quantidade_variacoes_max')->default(1);
             $table->unsignedBigInteger('cod_produto');
             $table->foreign('cod_produto')->references('id')->on('Produtos');
         });

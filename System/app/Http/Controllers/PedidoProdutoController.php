@@ -24,15 +24,15 @@ class PedidoProdutoController extends Controller
             'cod_produto' => ['required', 'integer', 'max_digits:30'],
             'quantidade' => ['nullable', 'integer', 'min: 1', 'max_digits:30'],
             'observacao' => ['nullable', 'string', 'max:255'],
-
             'cod_variacoes' => ['nullable', 'array'],
-            'cod_variacoes.*' => ['nullable', 'integer', 'max_digits:30']
+            'cod_variacoes.*' => ['nullable', 'integer', 'min:1 ', 'max_digits:30']
         ];
 
         $validacao = Validator::make($request->all(), $regras);
 
-        if ($validacao->fails())
+        if ($validacao->fails()) {
             return response()->json($validacao->errors(), 422);
+        }
 
         if (!$cliente = ClienteController::getAuthCliente()) {
             return response()->json(["Cliente Inválido"], 422);
@@ -45,11 +45,15 @@ class PedidoProdutoController extends Controller
         $pedido_produto = PedidoProduto::create([
             'cod_pedido' => $pedido->id,
             'cod_produto' => $request->input('cod_produto'),
-            'quantidade' => $request->input('quantidade'),
+            'quantidade' => ($request->input('quantidade') === null) ? 1 : $request->input('quantidade'),
             'observacao' => $request->input('observacao')
         ]);
 
-        $array_cod_var_sel = $request->input('cod_variacoes');
+
+        if(!$array_cod_var_sel = $request->input('cod_variacoes')) {
+            return response()->json(["Nenhuma váriação selecionada"], 422);
+        }
+
         $grupo_variacoes = GrupoVariacao::with(['variacao'])
             ->where('cod_produto', $pedido_produto->cod_produto)
             ->get();
@@ -59,28 +63,30 @@ class PedidoProdutoController extends Controller
         foreach ($grupo_variacoes as $item) {
             $a = [];
             foreach ($item->variacao as $variacao) {
-                $array_cod_variacoes_validas[] = $variacao->id;
                 $a[] = $variacao->id;
+                $array_cod_variacoes_validas[] = $variacao->id;
+            }
+            $quantidade = count(array_intersect($a, $array_cod_var_sel));
+
+            if($quantidade < $item->quantidade_variacoes_min) {
+                return response()->json(["Escolha pelo menos $item->quantidade_variacoes_min variação(ões) em $item->tipo"], 422);
             }
 
-            $interseccao = array_intersect($a, $array_cod_var_sel);
-
-            if($interseccao == []) {
-                return response()->json(["Alguma das Variações Selecionadas é inválida"], 422);
+            if($quantidade > $item->quantidade_variacoes_max) {
+                return response()->json(["Não Escolha mais que $item->quantidade_variacoes_max variação(ões) em $item->tipo"], 422);
             }
-
-            if($item->quantidade_variacoes_min < count($interseccao) || $item->quantidade_variacoes_max > count($interseccao))  {
-                return response()->json(["Quantidade de variações no campo $item->nome é Inválido."], 422);
-            }
-
         }
 
-        var_dump(array_count_values($array_cod_var_sel));
-        var_dump($array_cod_variacoes_validas);
-        var_dump($array_cod_var_sel);
+        if(array_diff($array_cod_var_sel, $array_cod_variacoes_validas))  {
+            return response()->json(["Alguma das Varições selecionadas é inválida"], 422);
+        }
 
-        if(array_diff($array_cod_var_sel, $array_cod_variacoes_validas)) {
-            return response()->json(["Alguma das Variações Selecionadas é inválida"], 422);
+        $itens_repetidos = array_filter(array_count_values($array_cod_var_sel), function($valor) {
+            return $valor > 1;
+        });
+
+        if(!empty($itens_repetidos)) {
+            return response()->json(["Variações selecionadas repetidas"], 422);
         }
 
         foreach ($array_cod_var_sel as $cod_variacao) {
