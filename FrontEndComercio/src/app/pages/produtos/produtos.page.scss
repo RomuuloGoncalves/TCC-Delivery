@@ -1,22 +1,18 @@
-ion-accordion-group {
-    width: 100%;
-}
-
 div[slot='content'] {
-    background: var(--ion-color-tertiary);
+  background: var(--ion-color-tertiary);
 }
 
 #titulo {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--ion-color-primary);
-  }
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ion-color-primary);
+}
 
 ion-icon {
-    &:hover {
-        cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
+  }
 
-    font-size: 2rem;
-    font-weight: 600;
+  font-size: 2rem;
+  font-weight: 600;
 }
