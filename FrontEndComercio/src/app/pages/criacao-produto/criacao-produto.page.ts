@@ -38,18 +38,29 @@ export class CriacaoProdutoPage implements OnInit {
     );
   }
 
+  arqsSelecionados: File[] = [];
+  nomeArqSelecionado?: string
+  selecionarArqs(event: any) {
+    this.arqsSelecionados = event.target.files;
+
+  }
+
   public cadastrarProduto() {
     const produto = this.cadastoForm.form.value;
     produto.cod_categoria = Number(produto.cod_categoria)
-    console.log(produto)
+    produto.imagem = this.arqsSelecionados[0]
+    JSON.stringify(produto.imagem )
+  
+    console.log(produto.imagem)
 
     this.Produto.cadastrarProduto(produto).subscribe(
       (response: any) => {
+        console.log(response)
         this.erros = {};
 
         if (response.id) {
-          this.cadastoForm.reset();
-          this.router.navigate(['/criacao-grupo-var', response.id]);
+          // this.cadastoForm.reset();
+          // this.router.navigate(['/criacao-grupo-var', response.id]);
 
           this.tipo = 'sucesso';
           this.mensagem = 'Produto cadatrado, se necessário, crie as varientes';
