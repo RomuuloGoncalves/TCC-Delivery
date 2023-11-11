@@ -26,6 +26,13 @@ export class ServerService {
     return this.http.post(`${this.url}${path}`, JSON.stringify(data), { headers });
   }
 
+  public upload(path: string, data: any): Observable<any> {
+    const token = this.Cookie.get('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(`${this.url}${path}`, data, { headers });
+  }
+
+
   public get(path: string): Observable<any> {
     const token = this.Cookie.get('token');
     const headers = new HttpHeaders({

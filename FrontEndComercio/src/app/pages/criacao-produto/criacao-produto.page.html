@@ -13,7 +13,8 @@
                 placeholder="Digite o nome"></ion-input>
             </ion-row>
             <ion-row>
-              <ion-input ngModel name="imagem" label="Imagem" label-placement="floating" fill="outline"
+
+              <ion-input type="file" class="input__file" id="file" #inputArqs  (change)="this.selecionarArqs($event)" label="Imagem" label-placement="floating" fill="outline"
                 placeholder="Escolhe a imagem do produto" type="file"></ion-input>
             </ion-row>
             <ion-row>

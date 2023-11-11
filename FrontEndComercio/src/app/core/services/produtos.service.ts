@@ -25,6 +25,6 @@ export class ProdutosService {
   }
 
   public cadastrarProduto(data: any) {
-    return this.Server.post('/produto/cadastrar', data);
+    return this.Server.upload('/produto/cadastrar', data);
   }
 }
