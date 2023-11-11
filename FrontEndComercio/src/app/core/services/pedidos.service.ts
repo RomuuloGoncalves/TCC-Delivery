@@ -1,25 +1,30 @@
 import { Injectable } from '@angular/core';
 import { ServerService } from './server.service';
+import { Pedido } from '../interfaces/pedido';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PedidosService {
-  constructor(private Server: ServerService) { }
+  constructor(private Server: ServerService) {}
 
-  public pegarPedidos () {
+  public pegarPedidos() {
     return this.Server.get('/pedido');
-  }
-
-  public pegarPedidosHistorico () {
-    return this.Server.get('/pedido/historico');
   }
 
   public pegarHistoricoPedidos() {
     return this.Server.get('/pedido/historico');
   }
 
-  public pegarPedidoID (id_pedido:number) {
-    return this.Server.get(`/pedido/${id_pedido}`);
+  public pegarPedidoID(id: number) {
+    return this.Server.get(`/pedido/${id}`);
+  }
+
+  public editarStatusPedido(id: number, status: string) {
+    const pedido = {
+      id: id,
+      status: status
+    };
+    return this.Server.put('/pedido/editar', pedido);
   }
 }

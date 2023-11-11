@@ -11,9 +11,9 @@ import { CuponsService } from 'src/app/core/services/cupons.service';
 export class EditarCupomPage implements OnInit {
 
   constructor( private Cupom: CuponsService, private route: ActivatedRoute) { }
-  
+
   idCupom!: Number;
-  cupom!: Cupom;
+  cupom?: Cupom;
   data!: any;
 
   loading: boolean = true;
@@ -30,7 +30,7 @@ export class EditarCupomPage implements OnInit {
     this.Cupom.pegarCupomID(idCupom).subscribe(
       (response) => {
         this.cupom = response;
-        this.data = this.cupom.data_validade.split(" ")[0].split("-");
+        this.data = this.cupom?.data_validade.split(" ")[0].split("-");
         this.loading = false;
 
       },

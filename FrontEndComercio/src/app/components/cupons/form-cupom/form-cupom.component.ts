@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Cupom } from 'src/app/core/interfaces/cupom';
 import { CuponsService } from 'src/app/core/services/cupons.service';
@@ -10,8 +17,7 @@ import { ToastService } from 'src/app/core/controller/toast.service';
   templateUrl: './form-cupom.component.html',
   styleUrls: ['./form-cupom.component.scss'],
 })
-export class FormCupomComponent  implements OnInit {
-
+export class FormCupomComponent implements OnInit {
   @Input() cupom?: Cupom;
   @Input() editar!: boolean;
 
@@ -19,38 +25,41 @@ export class FormCupomComponent  implements OnInit {
 
   @ViewChild('formCupom') private formCupom!: NgForm;
 
+  constructor(private Cupom: CuponsService, private Toast: ToastService) {}
 
-  constructor( private Cupom: CuponsService, private Toast: ToastService) { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   erros: any = {};
   loading: boolean = false;
   loadingBtn: boolean = false;
 
-
   enviarCupom() {
     const data = this.formCupom.form.value;
 
-    this.editar
-      ? this.atualizar()
-      : this.adicionar(data);
+    this.editar ? this.atualizar(data) : this.adicionar(data);
   }
 
-  atualizar(){
-
-  }
-
-  adicionar(data:any){
+  atualizar(cupom: Cupom) {
     this.loadingBtn = true;
-    data.porcentagem_desconto = Number(data.porcentagem_desconto).toFixed(2)
-    this.Cupom.adicionarCupom(data).subscribe(
+    this.Cupom.editarCupom(cupom).subscribe(
+      (response: any) => {
+        console.log(response);
+      },
+      (badReponse: HttpErrorResponse) => {
+        console.error(badReponse);
+      }
+    );
+  }
+
+  adicionar(cupom: Cupom) {
+    this.loadingBtn = true;
+    cupom.porcentagem_desconto = Number(cupom.porcentagem_desconto);
+    this.Cupom.adicionarCupom(cupom).subscribe(
       (response: any) => {
         if (response.created_at) {
           this.formCupom.form.reset();
           const tipo = 'sucesso';
-          const mensagem =  'Cadastro realizado com sucesso';
+          const mensagem = 'Cadastro realizado com sucesso';
 
           this.Toast.mostrarToast(tipo, mensagem);
         }
@@ -63,6 +72,6 @@ export class FormCupomComponent  implements OnInit {
         for (const [chave, valor] of error) this.erros[chave] = valor;
         this.loading = false;
       }
-    )
+    );
   }
 }

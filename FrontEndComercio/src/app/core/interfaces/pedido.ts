@@ -10,9 +10,9 @@ export interface Pedido {
   data_pedido: string;
   data_entrega: string;
   data_pagamento: string;
-  endereco?: Endereco;
   forma_pagamento: string;
   status: string;
   cliente?: Cliente;
+  endereco_pedido?: string;
   pedido_produtos: Produto[];
 }
