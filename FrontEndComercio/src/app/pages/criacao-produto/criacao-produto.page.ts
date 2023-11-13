@@ -50,16 +50,14 @@ export class CriacaoProdutoPage implements OnInit {
     produto.cod_categoria = Number(produto.cod_categoria)
     produto.imagem = this.arqsSelecionados[0]
   
-    console.log(produto)
-
     this.Produto.cadastrarProduto(produto).subscribe(
       (response: any) => {
         console.log(response)
         this.erros = {};
 
         if (response.id) {
-          // this.cadastoForm.reset();
-          // this.router.navigate(['/criacao-grupo-var', response.id]);
+          this.cadastoForm.reset();
+          this.router.navigate(['/criacao-grupo-var', response.id]);
 
           this.tipo = 'sucesso';
           this.mensagem = 'Produto cadatrado, se necessário, crie as varientes';

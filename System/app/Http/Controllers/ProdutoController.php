@@ -23,8 +23,14 @@ class ProdutoController extends Controller
      {
          $produtos = Produto::with('categoria')->get();
     
-     
-         return response()->json($produtos, 200);
+         $produtosComImagens = $produtos->map(function ($produto) {
+            // Adicione a URL da imagem ao objeto do produto
+            $produto->imagem = $produto->imagem ? 'uploads/' . $produto->imagem : null;
+    
+            return $produto;
+        });
+    
+        return response()->json($produtosComImagens, 200);
      }
 
     /**
@@ -52,7 +58,7 @@ class ProdutoController extends Controller
             try {
                 $nomeCompletoImagem = $request->file('imagem')->getClientOriginalName();
                 $apenasNome = pathinfo($nomeCompletoImagem, PATHINFO_FILENAME);
-                $extensao = $request->file('imagem')->getClientOriginalextensao();
+                $extensao = $request->file('imagem')->getClientOriginalExtension();
                 $nomeFinal = str_replace(' ', '_', $apenasNome) . '-' . rand() . '_' . time() . '.' . $extensao;
 
                 $caminho = base_path('public/uploads');
