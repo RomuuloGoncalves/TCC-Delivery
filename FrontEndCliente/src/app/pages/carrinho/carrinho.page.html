@@ -43,7 +43,8 @@
             </ion-item>
 
             <ng-container *ngFor="let pedidoProduto of this.pedidoProdutos">
-              <app-card-carrinho [pedidoProduto]="pedidoProduto!" (calc)="editarProduto(pedidoProduto);this.calcTotal();"
+              <app-card-carrinho [pedidoProduto]="pedidoProduto!"
+                (calc)="editarProduto(pedidoProduto);this.calcTotal();"
                 (remover)="removerProduto($event)"></app-card-carrinho>
             </ng-container>
           </ion-list>
@@ -70,9 +71,10 @@
                       <ion-col>
                         <ion-input ngModel placeholder="Cupom" name="nome" errorText=" "></ion-input>
                       </ion-col>
-                      <ion-col size="auto">
-                        <ion-button type="submit">Resgatar</ion-button>
-                      </ion-col>
+                      <ion-row class="ion-justify-content-end">
+                        <app-btn-loading [loading]="this.loadingCupom" [width]="115" [height]="36"
+                          btnNome="Resgatar"></app-btn-loading>
+                      </ion-row>
                     </form>
                   </ion-row>
                 </ion-col>

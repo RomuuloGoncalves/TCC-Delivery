@@ -45,6 +45,8 @@ export class MontagemMarmitaPage implements OnInit {
     },
   };
 
+  loadingAdicionar: boolean = false;
+
   ngOnInit() {
     this.atualizarMarmita();
     this.carregarMarmita();
@@ -114,6 +116,7 @@ export class MontagemMarmitaPage implements OnInit {
   }
 
   adicionarMarmita() {
+    this.loadingAdicionar = true;
     const objMarmita = {
       id: this.marmitaPersonalizada.id,
       quantidade: this.qtddMarmita,
@@ -130,6 +133,7 @@ export class MontagemMarmitaPage implements OnInit {
         setTimeout(() => {
           location.reload();
         }, 500);
+        this.loadingAdicionar = false;
       },
       (badResponse: HttpErrorResponse) => {
         console.error(badResponse);

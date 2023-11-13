@@ -1,14 +1,5 @@
-<ion-button
-  [style]="'height:' + this.height + 'px'"
-  class="cadastrar-btn"
-  expand="block"
-  type="submit"
-  [disabled]="this.loading || this.disabled"
->
-  <app-loading
-    [loading]="this.loading"
-    [color]="this.colorLoading"
-    [scale]="1"
-  ></app-loading>
+<ion-button [style]="'height:' + this.height + 'px;width:' + this.width + 'px;'" class="cadastrar-btn" expand="block"
+  type="submit" [disabled]="this.loading || this.disabled">
+  <app-loading [loading]="this.loading" [color]="this.colorLoading" [scale]="1"></app-loading>
   <p *ngIf="!this.loading">{{ this.btnNome }}</p>
 </ion-button>

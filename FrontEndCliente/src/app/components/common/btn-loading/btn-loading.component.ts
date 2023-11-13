@@ -5,9 +5,8 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './btn-loading.component.html',
   styleUrls: ['./btn-loading.component.scss'],
 })
-export class BtnLoadingComponent  implements OnInit {
-
-  constructor() { }
+export class BtnLoadingComponent implements OnInit {
+  constructor() {}
 
   @Input() public loading: boolean = false;
   @Input() public disabled: boolean = false;
@@ -16,7 +15,7 @@ export class BtnLoadingComponent  implements OnInit {
   @Input() public color: string = 'primary';
   @Input() public colorLoading: string = 'light';
   @Input() public height: number = 60;
+  @Input() public width: number = 240;
 
   ngOnInit() {}
-
 }

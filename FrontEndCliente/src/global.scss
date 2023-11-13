@@ -33,10 +33,12 @@
 *::-webkit-scrollbar {
   width: 7px;
 }
+
 *::-webkit-scrollbar-track {
   background: #dcdcdc;
   border-radius: 10px;
 }
+
 *::-webkit-scrollbar-thumb {
   background: #565656;
   border-radius: 10px;
@@ -48,4 +50,9 @@ ion-toast.sucesso {
 
 ion-toast.erro {
   --background: var(--ion-color-danger);
+}
+
+ion-modal {
+  --min-height: 80vh;
+  --min-width: 75vw;
 }

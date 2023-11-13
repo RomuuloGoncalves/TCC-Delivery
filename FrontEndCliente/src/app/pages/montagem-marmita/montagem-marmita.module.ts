@@ -14,6 +14,7 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ObservacoesModule } from 'src/app/components/common/observacoes/observacoes.module';
 import { ContadorModule } from 'src/app/components/common/contador/contador.module';
+import { BtnLoadingModule } from 'src/app/components/common/btn-loading/btn-loading.module';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { ContadorModule } from 'src/app/components/common/contador/contador.modu
     FooterModule,
     HeaderModule,
     ObservacoesModule,
-    ContadorModule
+    ContadorModule,
+    BtnLoadingModule,
   ],
   declarations: [MontagemMarmitaPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

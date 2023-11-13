@@ -17,7 +17,6 @@ import { ProdutoService } from 'src/app/core/services/produto.service';
 export class CarrinhoPage implements OnInit {
   constructor(
     private carrinhoService: CarrinhoService,
-    private Produto: ProdutoService,
     private cupomService: CupomService,
     private Toast: ToastService
   ) {}
@@ -37,6 +36,7 @@ export class CarrinhoPage implements OnInit {
   cupomNome?: string;
 
   loading: boolean = true;
+  loadingCupom: boolean = false;
 
   carregarPagina() {
     this.loading = true;
@@ -45,21 +45,12 @@ export class CarrinhoPage implements OnInit {
         this.pedidoProdutos = response;
         this.calcTotal();
         this.loading = false;
-        // this.colocarImagensArray(this.pedidoProdutos)
       },
       (badResponse: HttpErrorResponse) => {
         console.error(badResponse);
       }
     );
   }
-
-  // colocarImagensArray(array: any) {
-  //   array.forEach((produtos: any) => {
-  //   console.log(produtos)
-  //   produtos.produtos.imagem = (produtos.produtos.imagem ) ? this.Produto.pegarImagem(produtos.produtos.imagem) : '../../../assets/imgs/default/garfo_faca_outline.png';
-   
-  //   })
-  // }
 
   calcTotal() {
     this.subtotal = 0;
@@ -85,14 +76,17 @@ export class CarrinhoPage implements OnInit {
   }
 
   resgatarCupom() {
+    this.loadingCupom = true;
     let cupom: Cupom = this.formCupom.form.value;
     this.cupomService.consultarNome(cupom).subscribe(
       (response: Cupom) => {
         this.carrinhoService.adicionarCupom(Number(response.id));
         this.Toast.mostrarToast('sucesso', 'Cupom encontrado!');
+        this.loadingCupom = false;
       },
       (badResponse: HttpErrorResponse) => {
         this.Toast.mostrarToast('erro', badResponse.error.message);
+        this.loadingCupom = false;
       }
     );
   }
@@ -105,6 +99,6 @@ export class CarrinhoPage implements OnInit {
       (badResponse: HttpErrorResponse) => {
         console.error(badResponse);
       }
-    )
+    );
   }
 }

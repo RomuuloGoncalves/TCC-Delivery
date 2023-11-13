@@ -27,26 +27,30 @@ export class ModalProdutoComponent implements OnInit {
   observacao: string = '';
   grupoVariacoesSelecionados: GrupoVariacoes[] = [];
 
+  loading: boolean = false;
+
   alterarVariacoesSelecionadas(e: any, grupoVariacao: GrupoVariacoes) {
     let variacao = JSON.parse(e.detail.value);
 
-    (this.grupoVariacoesSelecionados!.length)
+    this.grupoVariacoesSelecionados!.length
       ? this.grupoVariacoesSelecionados!.forEach((grupo, id) => {
-          if (grupo.id === variacao.cod_grupo_variacoes)this.grupoVariacoesSelecionados!.splice(id);
+          if (grupo.id === variacao.cod_grupo_variacoes)
+            this.grupoVariacoesSelecionados!.splice(id);
         })
       : null;
-    
+
     this.grupoVariacoesSelecionados!.push({
       id: grupoVariacao.id,
       tipo: grupoVariacao.tipo,
       id_produto: grupoVariacao.id_produto,
-      variacao: [variacao]
+      variacao: [variacao],
     });
 
     this.precoTotal = this.calcPreco();
   }
 
   public adicionarProduto() {
+    this.loading = true;
     const objProduto = {
       id: this.produto!.id,
       observacao: this.observacao,
@@ -64,7 +68,7 @@ export class ModalProdutoComponent implements OnInit {
         setTimeout(() => {
           location.reload();
         }, 500);
-
+        this.loading = false;
         this.fechar.emit();
       },
       (badResponse: HttpErrorResponse) => {

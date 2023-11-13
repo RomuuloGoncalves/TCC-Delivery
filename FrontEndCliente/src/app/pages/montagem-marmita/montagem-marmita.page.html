@@ -145,9 +145,8 @@
             <ion-row class="sessao-total ion-justify-content-between">
               <app-contador [contador]="this.qtddMarmita" (change)="this.qtddMarmita = $event; this.calcTotal()"
                 [min]="1"></app-contador>
-              <ion-button (click)="this.adicionarMarmita()">
-                Adicionar
-              </ion-button>
+              <app-btn-loading [loading]="this.loadingAdicionar" btnNome="Adicionar" [height]="42" [width]="115"
+                (click)="this.adicionarMarmita()"></app-btn-loading>
             </ion-row>
           </ion-col>
         </ion-row>

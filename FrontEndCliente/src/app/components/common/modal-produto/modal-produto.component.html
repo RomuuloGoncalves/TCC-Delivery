@@ -32,7 +32,7 @@
 
                   <ion-col class="detalhes">
                     <ion-row class="informacoes">
-                      <ion-col>
+                      <ion-col class="ion-margin-bottom">
                         <ion-row class="ion-margin-vertical">
                           <ion-col>
                             <ion-title class="subtitulo">
@@ -55,48 +55,48 @@
                                 <ion-label><b>{{ grupoVariacao.tipo }}</b></ion-label>
                               </ion-item>
                               <div class="ion-padding" slot="content">
-                                  <ion-item>
-                                    <ion-row class="ion-justify-content-between">
-                                      <ion-col size="auto">
-                                        <ion-text color="primary">
-                                          <b>Variação:</b>
-                                        </ion-text>
-                                      </ion-col>
-                                      <ion-col size="auto">
-                                        <ion-text>
-                                          <b>{{ grupoVariacao.variacao![0].nome }}</b>
-                                        </ion-text>
-                                      </ion-col>
-                                    </ion-row>
-                                  </ion-item>
-                                  <ion-item>
-                                    <ion-row class="ion-justify-content-between">
-                                      <ion-col size="auto">
-                                        <ion-text color="primary">
-                                          <b>Preço:</b>
-                                        </ion-text>
-                                      </ion-col>
-                                      <ion-col size="auto">
-                                        <ion-text>
-                                          <b>R${{ grupoVariacao.variacao![0].valor?.toFixed(2)?.replace('.', ',') }}</b>
-                                        </ion-text>
-                                      </ion-col>
-                                    </ion-row>
-                                  </ion-item>
-                                  <ion-item>
-                                    <ion-row class="ion-justify-content-between">
-                                      <ion-col size="auto">
-                                        <ion-text color="primary">
-                                          <b>Descrição:</b>
-                                        </ion-text>
-                                      </ion-col>
-                                      <ion-col size="auto">
-                                        <ion-text>
-                                          <b>{{ grupoVariacao.variacao![0].descricao }}</b>
-                                        </ion-text>
-                                      </ion-col>
-                                    </ion-row>
-                                  </ion-item>
+                                <ion-item>
+                                  <ion-row class="ion-justify-content-between">
+                                    <ion-col size="auto">
+                                      <ion-text color="primary">
+                                        <b>Variação:</b>
+                                      </ion-text>
+                                    </ion-col>
+                                    <ion-col size="auto">
+                                      <ion-text>
+                                        <b>{{ grupoVariacao.variacao![0].nome }}</b>
+                                      </ion-text>
+                                    </ion-col>
+                                  </ion-row>
+                                </ion-item>
+                                <ion-item>
+                                  <ion-row class="ion-justify-content-between">
+                                    <ion-col size="auto">
+                                      <ion-text color="primary">
+                                        <b>Preço:</b>
+                                      </ion-text>
+                                    </ion-col>
+                                    <ion-col size="auto">
+                                      <ion-text>
+                                        <b>R${{ grupoVariacao.variacao![0].valor?.toFixed(2)?.replace('.', ',') }}</b>
+                                      </ion-text>
+                                    </ion-col>
+                                  </ion-row>
+                                </ion-item>
+                                <ion-item>
+                                  <ion-row class="ion-justify-content-between">
+                                    <ion-col size="auto">
+                                      <ion-text color="primary">
+                                        <b>Descrição:</b>
+                                      </ion-text>
+                                    </ion-col>
+                                    <ion-col size="auto">
+                                      <ion-text>
+                                        <b>{{ grupoVariacao.variacao![0].descricao }}</b>
+                                      </ion-text>
+                                    </ion-col>
+                                  </ion-row>
+                                </ion-item>
                               </div>
                             </ion-accordion>
                           </ng-container>
@@ -135,7 +135,7 @@
 
               <ion-row class="ion-justify-content-end ion-margin-horizontal">
 
-                <ion-col size="auto"> 
+                <ion-col size="auto">
                   <p><b>Total:</b> R$ {{ this.precoTotal || '0,00' }}</p>
                 </ion-col>
               </ion-row>
@@ -144,9 +144,8 @@
                 <ion-col size="auto" class="ion-margin-horizontal">
                   <app-contador [min]="1" (change)="this.change($event)"></app-contador>
                 </ion-col>
-                <ion-button class="ion-magin-start" (click)="adicionarProduto()">
-                  Adicionar
-                </ion-button>
+                <app-btn-loading [loading]="this.loading" (click)="adicionarProduto()" btnNome="Adicionar" [width]="140"
+                  [height]="46"></app-btn-loading>
               </ion-row>
             </ion-col>
           </ion-row>

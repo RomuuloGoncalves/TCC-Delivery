@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ServerService } from './server.service';
-import { Produto } from '../interfaces/produto';
-import { Cupom } from '../interfaces/cupom';
 import { PedidoProduto } from '../interfaces/pedido-produto';
 
 @Injectable({
