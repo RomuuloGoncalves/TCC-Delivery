@@ -45,14 +45,14 @@
                             </ion-text>
                           </ion-col>
                         </ion-row>
-                        <ion-title *ngIf="this.variacoesSelecionadas.length" class="subtitulo">
+                        <ion-title *ngIf="this.grupoVariacoesSelecionados.length" class="subtitulo">
                           Informações do Produto:
                         </ion-title>
                         <ion-accordion-group multiple="true">
-                          <ng-container *ngFor="let variacaoSelecionada of this.variacoesSelecionadas">
-                            <ion-accordion value="{{ variacaoSelecionada.variacao.nome }}">
+                          <ng-container *ngFor="let grupoVariacao of this.grupoVariacoesSelecionados">
+                            <ion-accordion value="{{ grupoVariacao.variacao![0].nome }}">
                               <ion-item slot="header" color="light">
-                                <ion-label><b>{{ variacaoSelecionada.grupo_variacao.tipo }}</b></ion-label>
+                                <ion-label><b>{{ grupoVariacao.tipo }}</b></ion-label>
                               </ion-item>
                               <div class="ion-padding" slot="content">
                                   <ion-item>
@@ -64,7 +64,7 @@
                                       </ion-col>
                                       <ion-col size="auto">
                                         <ion-text>
-                                          <b>{{ variacaoSelecionada.variacao.nome }}</b>
+                                          <b>{{ grupoVariacao.variacao![0].nome }}</b>
                                         </ion-text>
                                       </ion-col>
                                     </ion-row>
@@ -78,7 +78,7 @@
                                       </ion-col>
                                       <ion-col size="auto">
                                         <ion-text>
-                                          <b>R${{ variacaoSelecionada.variacao.valor?.toFixed(2)?.replace('.', ',') }}</b>
+                                          <b>R${{ grupoVariacao.variacao![0].valor?.toFixed(2)?.replace('.', ',') }}</b>
                                         </ion-text>
                                       </ion-col>
                                     </ion-row>
@@ -92,7 +92,7 @@
                                       </ion-col>
                                       <ion-col size="auto">
                                         <ion-text>
-                                          <b>{{ variacaoSelecionada.variacao.descricao }}</b>
+                                          <b>{{ grupoVariacao.variacao![0].descricao }}</b>
                                         </ion-text>
                                       </ion-col>
                                     </ion-row>
@@ -136,13 +136,13 @@
               <ion-row class="ion-justify-content-end ion-margin-horizontal">
 
                 <ion-col size="auto"> 
-                  <p><b>Total:</b> R${{ this.precoTotal || '0,00' }}</p>
+                  <p><b>Total:</b> R$ {{ this.precoTotal || '0,00' }}</p>
                 </ion-col>
               </ion-row>
 
               <ion-row class="ion-justify-content-end ion-align-items-center ion-margin-horizontal">
                 <ion-col size="auto" class="ion-margin-horizontal">
-                  <app-contador [min]="1" (change)="this.quantidade = $event"></app-contador>
+                  <app-contador [min]="1" (change)="this.change($event)"></app-contador>
                 </ion-col>
                 <ion-button class="ion-magin-start" (click)="adicionarProduto()">
                   Adicionar
