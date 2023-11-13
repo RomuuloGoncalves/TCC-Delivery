@@ -24,4 +24,8 @@ export class CarrinhoService {
   public adicionarCupom(id: number) {
     return this.Server.put(`/cliente/carrinho/adicionarCupom`, id);
   }
+
+  public editarProduto(produto: PedidoProduto) {
+    return this.Server.put(`/cliente/carrinho/editar`, produto);
+  }
 }

@@ -43,7 +43,7 @@
             </ion-item>
 
             <ng-container *ngFor="let pedidoProduto of this.pedidoProdutos">
-              <app-card-carrinho [pedidoProduto]="pedidoProduto!" (calc)="this.calcTotal()"
+              <app-card-carrinho [pedidoProduto]="pedidoProduto!" (calc)="editarProduto(pedidoProduto);this.calcTotal();"
                 (remover)="removerProduto($event)"></app-card-carrinho>
             </ng-container>
           </ion-list>
