@@ -129,6 +129,7 @@ class ProdutoController extends Controller
     public function show(int $id)
     {
         $produto = Produto::with(['categoria', 'grupo_variacao.variacao'])->where('id', $id)->find($id);
+        $produto->imagem = $produto->imagem ? 'uploads/' . $produto->imagem : null;
 
         if (!$produto)
             return response()->json(['mensage' => 'Produto não encontrado'], 404);

@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
   constructor(
     private Categoria: CategoriaService,
     private Produto: ProdutoService
-  ) {}
+  ) { }
 
   loading: boolean = true;
 
@@ -51,6 +51,7 @@ export class HomePage implements OnInit {
         this.categorias = [...response];
         this.categoriasFiltradas = [...response];
         this.loading = false;
+        this.colocarImagensArray(this.categorias)
       },
       (error) => {
         console.error(error);
@@ -67,11 +68,26 @@ export class HomePage implements OnInit {
     this.Produto.pegarProduto(id).subscribe(
       (response: any) => {
         this.produtoSelecionado = response;
+        this.colocarImagem(this.produtoSelecionado)
       },
       (error: HttpErrorResponse) => {
         console.error(error);
       }
     );
+  }
+
+  colocarImagem(produto: any) {
+    produto.imagem = (produto.imagem) ? `https://cuddly-funicular-jpv6ggxg59xc5vvg-8000.app.github.dev/${produto.imagem}` : '../../../assets/imgs/default/garfo_faca_outline.png';
+  }
+
+  colocarImagensArray(array: any) {
+    array.forEach((categoria: any) => {
+      categoria.produtos.forEach((produto: any) => {
+        console.log(produto.imagem)
+        produto.imagem = (produto.imagem) ? `https://cuddly-funicular-jpv6ggxg59xc5vvg-8000.app.github.dev/uploads/${produto.imagem}` : '../../../assets/imgs/default/garfo_faca_outline.png';
+        console.log(produto.imagem)
+      })
+    })
   }
 
   fecharModal() {

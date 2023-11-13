@@ -41,7 +41,7 @@ class CategoriaController extends Controller {
 
     public function index() {
         $categorias = Categoria::with(['produtos'])->get();
-
+    
         return response()->json($categorias, 200);
     }
 
