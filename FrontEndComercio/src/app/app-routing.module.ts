@@ -97,6 +97,10 @@ const routes: Routes = [
     path: 'criacao-produto',
     loadChildren: () => import('./pages/criacao-produto/criacao-produto.module').then( m => m.CriacaoProdutoPageModule)
   },
+  {
+    path: 'criacao-categoria',
+    loadChildren: () => import('./pages/criacao-categoria/criacao-categoria.module').then( m => m.CriacaoCategoriaPageModule)
+  },
 ];
 
 @NgModule({

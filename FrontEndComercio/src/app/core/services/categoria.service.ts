@@ -10,4 +10,7 @@ export class CategoriaService {
   public pegarCategorias () {
     return this.Server.get('/categoria');
   }
+  public cadastrarCategoria(data:any) {
+    return this.Server.post('/categoria/cadastrar', data);
+  }
 }
