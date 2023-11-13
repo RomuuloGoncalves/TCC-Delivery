@@ -96,188 +96,129 @@ class ProdutoSeeder extends Seeder
         ]);
 
         DB::table('Produtos')->insert([
+            'nome' => 'Bife Parmegiana, Farofa de Calabresa, Batata Palha e Arroz (Sem Feijão)',
+            'descricao' => 'Arroz, bife parmegiana, farofa de calabresa, batata palha',
+            'cod_categoria' => 3,
+        ]);
+        
+        DB::table('Produtos')->insert([
+            'nome' => 'Parmegiana de Frango, Farofa de Calabresa e Batata Palha (Sem Feijão)',
+            'descricao' => 'Arroz, filé de frango parmegiana, batata palha e farofa de calabresa',
+            'cod_categoria' => 3,
+        ]);
+        
+        DB::table('Produtos')->insert([
+            'nome' => 'Filé de Frango Parmegiana e Fritas (Sem Feijão)',
+            'descricao' => 'Delicioso filé de frango parmegiana preparado na hora, fritas e uma salada para acompanhar seu almoço',
+            'cod_categoria' => 3,
+        ]);
+        
+        DB::table('Produtos')->insert([
+            'nome' => 'Almôndega de Soja ao Molho, Purê de Batata e Mini Salada Simples',
+            'descricao' => 'Arroz, feijão, almôndega de soja ao molho sugo, purê de batata e salada alface, tomate e cebola',
+            'cod_categoria' => 4,
+        ]);
+        
+        DB::table('Produtos')->insert([
+            'nome' => 'Espaguete ao Sugo e Omelete de Queijo com Tomate',
+            'descricao' => 'Marmitex pequena de espaguete ao sugo e omelete de queijo com tomate',
+            'cod_categoria' => 4,
+        ]);
+        
+        DB::table('Produtos')->insert([
+            'nome' => 'Ovos à Parmegiana, Fritas e Maionese (Sem Feijão)',
+            'descricao' => 'Arroz, 2 ovos à parmegiana, fritas e maionese',
+            'cod_categoria' => 4,
+        ]);
+        
+        DB::table('Produtos')->insert([
+            'nome' => 'Arroz 500g',
+            'descricao' => 'Serve 2 pessoas',
+            'cod_categoria' => 5,
+        ]);
+        
+        DB::table('Produtos')->insert([
+            'nome' => 'Calabresa Acebolada 250g',
+            'descricao' => 'Calabresa acebolada',
+            'cod_categoria' => 5,
+        ]);
+        
+        DB::table('Produtos')->insert([
+            'nome' => 'Mini Salada Simples (Alface, Tomate e Cebola)',
+            'descricao' => 'Alface, tomate e cebola',
+            'cod_categoria' => 5,
+        ]);       
+                       
+        DB::table('Produtos')->insert([
             'nome' => '',
             'descricao' => '',
-            'cod_categoria' => 2,
+            'cod_categoria' => 6,
         ]);
-
-        // $faker = Factory::create();
-        // $categorias = DB::table('Categorias')->pluck('id')->toArray();
-        // unset($categorias[5]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Marmita Personalizada',
-        //     'descricao' => 'Uma marmita totalmente personálizavel, escolha oque você quiser.',
-        //     'cod_categoria' => 6,
-        // ]);
-        // for ($i = 1; $i <= 10; $i++) {
-        //     DB::table('Produtos')->insert([
-        //         'nome' => $faker->word(),
-        //         'descricao' => $faker->sentence(),
-        //         'cod_categoria' => $faker->randomElement($categorias),
-        //     ]);
-        // }
-
-        // Categoria 6: 'Marmita Personalizada'
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Marmita Personalizada',
-        //     'descricao' => 'Marmita totalmente personalizável, aproveite.',
-        //     'cod_categoria' => 6,
-        // ]);
-
-        // // Categoria 1: 'Marmita Pronta'
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Marmita de Frango Grelhado',
-        //     'descricao' => 'Uma marmita de frango grelhado com legumes',
-        //     'cod_categoria' => 1,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Marmita de Carne Assada',
-        //     'descricao' => 'Uma marmita de carne assada com batatas',
-        //     'cod_categoria' => 1,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Marmita de Peixe ao Molho',
-        //     'descricao' => 'Uma marmita de peixe ao molho com arroz',
-        //     'cod_categoria' => 1,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Marmita de Vegetais Salteados',
-        //     'descricao' => 'Uma marmita de vegetais salteados com tofu',
-        //     'cod_categoria' => 1,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Marmita de Massa à Bolonhesa',
-        //     'descricao' => 'Uma marmita de massa à bolonhesa',
-        //     'cod_categoria' => 1,
-        // ]);
-
-        // // Categoria 2: 'Bebida'
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Suco de Laranja Natural',
-        //     'descricao' => 'Suco de laranja natural e fresco',
-        //     'cod_categoria' => 2,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Água Mineral',
-        //     'descricao' => 'Garrafa de água mineral gelada',
-        //     'cod_categoria' => 2,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Refrigerante de Cola',
-        //     'descricao' => 'Lata de refrigerante de cola',
-        //     'cod_categoria' => 2,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Chá Gelado de Pêssego',
-        //     'descricao' => 'Chá gelado de pêssego enlatado',
-        //     'cod_categoria' => 2,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Café Expresso',
-        //     'descricao' => 'Café expresso forte e encorpado',
-        //     'cod_categoria' => 2,
-        // ]);
-
-        // // Categoria 3: 'Sobremesa'
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Torta de Chocolate',
-        //     'descricao' => 'Uma deliciosa torta de chocolate',
-        //     'cod_categoria' => 3,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Sorvete de Baunilha',
-        //     'descricao' => 'Sorvete de baunilha cremoso',
-        //     'cod_categoria' => 3,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Cheesecake de Morango',
-        //     'descricao' => 'Cheesecake com cobertura de morango',
-        //     'cod_categoria' => 3,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Pudim de Caramelo',
-        //     'descricao' => 'Pudim de caramelo caseiro',
-        //     'cod_categoria' => 3,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Mousse de Limão',
-        //     'descricao' => 'Mousse de limão refrescante',
-        //     'cod_categoria' => 3,
-        // ]);
-
-        // // Categoria 4: 'Combos'
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Combo Familiar',
-        //     'descricao' => 'Combo com várias marmitas e bebidas',
-        //     'cod_categoria' => 4,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Combo Fitness',
-        //     'descricao' => 'Combo com marmitas fitness e sobremesas',
-        //     'cod_categoria' => 4,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Combo Vegetariano',
-        //     'descricao' => 'Combo com marmitas vegetarianas e sucos',
-        //     'cod_categoria' => 4,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Combo Especial',
-        //     'descricao' => 'Combo com marmitas especiais e sobremesas',
-        //     'cod_categoria' => 4,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Combo Infantil',
-        //     'descricao' => 'Combo com marmitas infantis e brindes',
-        //     'cod_categoria' => 4,
-        // ]);
-
-        // // Categoria 5: 'Acompanhamento'
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Batatas Fritas',
-        //     'descricao' => 'Porção de batatas fritas crocantes',
-        //     'cod_categoria' => 5,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Salada Caesar',
-        //     'descricao' => 'Salada Caesar fresca com molho especial',
-        //     'cod_categoria' => 5,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Pão de Alho',
-        //     'descricao' => 'Pão de alho grelhado na brasa',
-        //     'cod_categoria' => 5,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Arroz Branco',
-        //     'descricao' => 'Porção de arroz branco soltinho',
-        //     'cod_categoria' => 5,
-        // ]);
-
-        // DB::table('Produtos')->insert([
-        //     'nome' => 'Legumes Grelhados',
-        //     'descricao' => 'Legumes grelhados e temperados',
-        //     'cod_categoria' => 5,
-        // ]);
+                               
+        DB::table('Produtos')->insert([
+            'nome' => '',
+            'descricao' => '',
+            'cod_categoria' => 6,
+        ]);
+                               
+        DB::table('Produtos')->insert([
+            'nome' => '',
+            'descricao' => '',
+            'cod_categoria' => 6,
+        ]);
+                               
+        DB::table('Produtos')->insert([
+            'nome' => '',
+            'descricao' => '',
+            'cod_categoria' => 6,
+        ]);
+                               
+        DB::table('Produtos')->insert([
+            'nome' => '',
+            'descricao' => '',
+            'cod_categoria' => 6,
+        ]);
+                               
+        DB::table('Produtos')->insert([
+            'nome' => '',
+            'descricao' => '',
+            'cod_categoria' => 6,
+        ]);
+                               
+        DB::table('Produtos')->insert([
+            'nome' => '',
+            'descricao' => '',
+            'cod_categoria' => 6,
+        ]);
+                               
+        DB::table('Produtos')->insert([
+            'nome' => '',
+            'descricao' => '',
+            'cod_categoria' => 6,
+        ]);
+                               
+        DB::table('Produtos')->insert([
+            'nome' => '',
+            'descricao' => '',
+            'cod_categoria' => 6,
+        ]);
+                               
+        DB::table('Produtos')->insert([
+            'nome' => '',
+            'descricao' => '',
+            'cod_categoria' => 6,
+        ]);
+                               
+        DB::table('Produtos')->insert([
+            'nome' => '',
+            'descricao' => '',
+            'cod_categoria' => 6,
+        ]);
+                               
+        DB::table('Produtos')->insert([
+            'nome' => '',
+            'descricao' => '',
+            'cod_categoria' => 7,
+        ]);
     }
 }

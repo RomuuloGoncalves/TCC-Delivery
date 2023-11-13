@@ -18,11 +18,11 @@ class CategoriaSeeder extends Seeder
         $nomes = [
             'Marmitex',
             'Marmitex Promoção do dia',
-            'Combo Ftit',
             'Marmitex Premium',
             'Marmita Vegetariana',
             'Porções',
-            'Bebidas'
+            'Bebidas',
+            'Combo Ftit'
         ];
         foreach ($nomes as $nome) {
             DB::table('Categorias')->insert([
