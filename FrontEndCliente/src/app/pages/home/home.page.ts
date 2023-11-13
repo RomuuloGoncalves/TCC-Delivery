@@ -77,14 +77,14 @@ export class HomePage implements OnInit {
   }
 
   colocarImagem(produto: any) {
-    produto.imagem = (produto.imagem) ? `https://cuddly-funicular-jpv6ggxg59xc5vvg-8000.app.github.dev/${produto.imagem}` : '../../../assets/imgs/default/garfo_faca_outline.png';
+    produto.imagem = (produto.imagem) ? this.Produto.pegarImagem(produto.imagem) : '../../../assets/imgs/default/garfo_faca_outline.png';
   }
 
   colocarImagensArray(array: any) {
     array.forEach((categoria: any) => {
       categoria.produtos.forEach((produto: any) => {
         console.log(produto.imagem)
-        produto.imagem = (produto.imagem) ? `https://cuddly-funicular-jpv6ggxg59xc5vvg-8000.app.github.dev/uploads/${produto.imagem}` : '../../../assets/imgs/default/garfo_faca_outline.png';
+        produto.imagem = (produto.imagem) ? this.Produto.pegarImagem(produto.imagem) : '../../../assets/imgs/default/garfo_faca_outline.png';
         console.log(produto.imagem)
       })
     })

@@ -24,8 +24,7 @@ class ProdutoController extends Controller
          $produtos = Produto::with('categoria')->get();
     
          $produtosComImagens = $produtos->map(function ($produto) {
-            // Adicione a URL da imagem ao objeto do produto
-            $produto->imagem = $produto->imagem ? 'uploads/' . $produto->imagem : null;
+            $produto->imagem = $produto->imagem ? $produto->imagem : null;
     
             return $produto;
         });
@@ -129,7 +128,7 @@ class ProdutoController extends Controller
     public function show(int $id)
     {
         $produto = Produto::with(['categoria', 'grupo_variacao.variacao'])->where('id', $id)->find($id);
-        $produto->imagem = $produto->imagem ? 'uploads/' . $produto->imagem : null;
+        $produto->imagem = $produto->imagem ? $produto->imagem : null;
 
         if (!$produto)
             return response()->json(['mensage' => 'Produto não encontrado'], 404);

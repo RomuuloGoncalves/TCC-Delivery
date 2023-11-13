@@ -1,6 +1,7 @@
 import { outputAst } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PedidoProduto } from 'src/app/core/interfaces/pedido-produto';
+import { ProdutoService } from 'src/app/core/services/produto.service';
 
 @Component({
   selector: 'app-card-carrinho',
@@ -8,7 +9,7 @@ import { PedidoProduto } from 'src/app/core/interfaces/pedido-produto';
   styleUrls: ['./card-carrinho.component.scss'],
 })
 export class CardCarrinhoComponent implements OnInit {
-  constructor() {}
+  constructor(private Produto: ProdutoService) {}
 
   @Input() pedidoProduto!: PedidoProduto;
   @Output() calc: EventEmitter<any> = new EventEmitter();
@@ -18,10 +19,8 @@ export class CardCarrinhoComponent implements OnInit {
     this.organizarImagens(this.pedidoProduto)
   }
 
-  organizarImagens(produto:any){
-    console.log(produto)
-    produto.produto.imagem = (produto.produto.imagem) ? `https://cuddly-funicular-jpv6ggxg59xc5vvg-8000.app.github.dev/uploads/${produto.produto.imagem}` : '../../../assets/imgs/default/garfo_faca_outline.png';
-    console.log(produto.produto.imagem)
+  organizarImagens(produtos:any){
+    produtos.produto.imagem = (produtos.produto.imagem ) ? this.Produto.pegarImagem(produtos.produto.imagem) : '../../../assets/imgs/default/garfo_faca_outline.png';
   }
 
   removerProduto() {

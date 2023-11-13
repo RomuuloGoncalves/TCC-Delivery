@@ -24,7 +24,12 @@ class ClienteSeeder extends Seeder
         //         'image' => $faker->imageUrl(640, 480, 'animals', true)
         //     ]);
         // }
-
+        DB::table('Clientes')->insert([
+            'nome' => 'a',
+            'email' => 'a@a.a',
+            'password' => Hash::make('asdasdasd'),
+            'telefone' => '1234567899',
+        ]);
 
         DB::table('Clientes')->insert([
             'nome' => 'Ana Silva',

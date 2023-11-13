@@ -10,9 +10,9 @@ export class ServerService {
   constructor(private http: HttpClient, private Cookie: CookieService) {}
 
   // private url: string = 'https://super-cod-9vvjwwggp66hpq6j-8000.app.github.dev';
-  private url: string = 'https://cuddly-funicular-jpv6ggxg59xc5vvg-8000.app.github.dev';
+  // private url: string = 'https://cuddly-funicular-jpv6ggxg59xc5vvg-8000.app.github.dev';
   // private url: string = 'https://bug-free-meme-jw7977wx94gc9qr-8000.app.github.dev';
-  // private url: string = 'http://127.0.0.1:8000';
+  private url: string = 'http://127.0.0.1:8000';
 
 
   public post(path: string, data: any): Observable<any> {
@@ -71,6 +71,12 @@ export class ServerService {
     if (!token) headers.set('Authorization', `Bearer ${token}`);
 
     return this.http.put(`${this.url}${path}`, JSON.stringify(data), { headers });
+  }
+
+
+  public imagem(imagem:any){
+    console.log(`${this.url}/uploads/${imagem}`)
+    return `${this.url}/uploads/${imagem}`
   }
 
 }

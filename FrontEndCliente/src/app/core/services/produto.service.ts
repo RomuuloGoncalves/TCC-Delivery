@@ -16,4 +16,8 @@ export class ProdutoService {
     return this.Server.get(`/produto/${id}`,);
   }
 
+  public pegarImagem(produto:any){
+    return this.Server.imagem(produto)
+  }
+
 }

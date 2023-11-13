@@ -39,12 +39,23 @@ export class ListagemPage implements OnInit {
         this.categorias = response;
         this.categoriasFiltradas = response;
         this.loading = false;
+        this.colocarImagensArray(this.categorias)
       },
       (error) => {
         console.error(error);
         this.loading = false;
       }
     )
+  }
+
+  colocarImagensArray(array: any) {
+    array.forEach((categoria: any) => {
+      categoria.produtos.forEach((produto: any) => {
+        console.log(produto.imagem)
+        produto.imagem = (produto.imagem) ? this.Produto.pegarImagem(produto.imagem) : '../../../assets/imgs/default/garfo_faca_outline.png';
+        console.log(produto.imagem)
+      })
+    })
   }
 
   ehStringValida(str: string) {

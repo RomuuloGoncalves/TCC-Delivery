@@ -34,4 +34,8 @@ export class ProdutosService {
 
     return this.Server.upload('/produto/cadastrar', formData);
   }
+
+  public pegarImagem(produto:any){
+    return this.Server.imagem(produto)
+  }
 }

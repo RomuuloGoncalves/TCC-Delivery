@@ -7,6 +7,7 @@ import { PedidoProduto } from 'src/app/core/interfaces/pedido-produto';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { CarrinhoService } from 'src/app/core/services/carrinho.service';
 import { CupomService } from 'src/app/core/services/cupom.service';
+import { ProdutoService } from 'src/app/core/services/produto.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -16,6 +17,7 @@ import { CupomService } from 'src/app/core/services/cupom.service';
 export class CarrinhoPage implements OnInit {
   constructor(
     private carrinhoService: CarrinhoService,
+    private Produto: ProdutoService,
     private cupomService: CupomService,
     private Toast: ToastService
   ) {}
@@ -43,12 +45,21 @@ export class CarrinhoPage implements OnInit {
         this.pedidoProdutos = response;
         this.calcTotal();
         this.loading = false;
+        // this.colocarImagensArray(this.pedidoProdutos)
       },
       (badResponse: HttpErrorResponse) => {
         console.error(badResponse);
       }
     );
   }
+
+  // colocarImagensArray(array: any) {
+  //   array.forEach((produtos: any) => {
+  //   console.log(produtos)
+  //   produtos.produtos.imagem = (produtos.produtos.imagem ) ? this.Produto.pegarImagem(produtos.produtos.imagem) : '../../../assets/imgs/default/garfo_faca_outline.png';
+   
+  //   })
+  // }
 
   calcTotal() {
     this.subtotal = 0;

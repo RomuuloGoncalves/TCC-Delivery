@@ -66,7 +66,7 @@ export class ProdutosPage implements OnInit {
     const categorias: { [categoria: string]: Produto[] } = {};
 
     this.produtos.forEach((el: any) => {
-      el.imagem = (el.imagem) ? `https://cuddly-funicular-jpv6ggxg59xc5vvg-8000.app.github.dev/${el.imagem}` : '../../../assets/imgs/default/cards-produtos.png';
+      el.imagem = (el.imagem) ? this.Produto.pegarImagem(el.imagem) : '../../../assets/imgs/default/cards-produtos.png';
       console.log(el.imagem_url)
       if (!categorias[el.categoria.nome]) categorias[el.categoria.nome] = [];
       categorias[el.categoria.nome].push(el);
