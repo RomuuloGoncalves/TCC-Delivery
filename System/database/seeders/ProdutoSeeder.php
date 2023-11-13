@@ -100,125 +100,126 @@ class ProdutoSeeder extends Seeder
             'descricao' => 'Arroz, bife parmegiana, farofa de calabresa, batata palha',
             'cod_categoria' => 3,
         ]);
-        
+
         DB::table('Produtos')->insert([
             'nome' => 'Parmegiana de Frango, Farofa de Calabresa e Batata Palha (Sem Feijão)',
             'descricao' => 'Arroz, filé de frango parmegiana, batata palha e farofa de calabresa',
             'cod_categoria' => 3,
         ]);
-        
+
         DB::table('Produtos')->insert([
             'nome' => 'Filé de Frango Parmegiana e Fritas (Sem Feijão)',
             'descricao' => 'Delicioso filé de frango parmegiana preparado na hora, fritas e uma salada para acompanhar seu almoço',
             'cod_categoria' => 3,
         ]);
-        
+
         DB::table('Produtos')->insert([
             'nome' => 'Almôndega de Soja ao Molho, Purê de Batata e Mini Salada Simples',
             'descricao' => 'Arroz, feijão, almôndega de soja ao molho sugo, purê de batata e salada alface, tomate e cebola',
             'cod_categoria' => 4,
         ]);
-        
+
         DB::table('Produtos')->insert([
             'nome' => 'Espaguete ao Sugo e Omelete de Queijo com Tomate',
             'descricao' => 'Marmitex pequena de espaguete ao sugo e omelete de queijo com tomate',
             'cod_categoria' => 4,
         ]);
-        
+
         DB::table('Produtos')->insert([
             'nome' => 'Ovos à Parmegiana, Fritas e Maionese (Sem Feijão)',
             'descricao' => 'Arroz, 2 ovos à parmegiana, fritas e maionese',
             'cod_categoria' => 4,
         ]);
-        
+
         DB::table('Produtos')->insert([
             'nome' => 'Arroz 500g',
             'descricao' => 'Serve 2 pessoas',
             'cod_categoria' => 5,
         ]);
-        
+
         DB::table('Produtos')->insert([
             'nome' => 'Calabresa Acebolada 250g',
             'descricao' => 'Calabresa acebolada',
             'cod_categoria' => 5,
         ]);
-        
+
         DB::table('Produtos')->insert([
             'nome' => 'Mini Salada Simples (Alface, Tomate e Cebola)',
             'descricao' => 'Alface, tomate e cebola',
             'cod_categoria' => 5,
-        ]);       
-                       
+        ]);
+
         DB::table('Produtos')->insert([
-            'nome' => '',
+            'nome' => 'Coca Cola 1,5 L',
             'descricao' => '',
             'cod_categoria' => 6,
         ]);
-                               
+        
         DB::table('Produtos')->insert([
-            'nome' => '',
+            'nome' => 'Mini Refrigerante',
             'descricao' => '',
             'cod_categoria' => 6,
         ]);
-                               
+        
         DB::table('Produtos')->insert([
-            'nome' => '',
+            'nome' => 'Refrigerante 600 ml',
             'descricao' => '',
             'cod_categoria' => 6,
         ]);
-                               
+        
         DB::table('Produtos')->insert([
-            'nome' => '',
+            'nome' => 'Refrigerante Lata',
             'descricao' => '',
             'cod_categoria' => 6,
         ]);
-                               
+        
         DB::table('Produtos')->insert([
-            'nome' => '',
+            'nome' => 'Suco de Laranja com Açúcar e com Gelo 300 ml',
             'descricao' => '',
             'cod_categoria' => 6,
         ]);
-                               
+        
         DB::table('Produtos')->insert([
-            'nome' => '',
+            'nome' => 'Suco de Laranja com Açúcar e com Gelo 500 ml',
             'descricao' => '',
             'cod_categoria' => 6,
         ]);
-                               
+        
         DB::table('Produtos')->insert([
-            'nome' => '',
+            'nome' => 'Suco de Laranja com Açúcar e com Gelo 500 ml',
             'descricao' => '',
             'cod_categoria' => 6,
         ]);
-                               
+        
         DB::table('Produtos')->insert([
-            'nome' => '',
+            'nome' => 'Suco de Maracujá 500 ml',
             'descricao' => '',
             'cod_categoria' => 6,
         ]);
-                               
+        
         DB::table('Produtos')->insert([
-            'nome' => '',
+            'nome' => 'Suco Polpa 500 ml Laranja com Acerola',
             'descricao' => '',
             'cod_categoria' => 6,
         ]);
-                               
+        
         DB::table('Produtos')->insert([
-            'nome' => '',
+            'nome' => 'Tuiubaina - 350 ml',
             'descricao' => '',
             'cod_categoria' => 6,
         ]);
-                               
+        
         DB::table('Produtos')->insert([
-            'nome' => '',
+            'nome' => 'Tuiubaina 2 Litros',
             'descricao' => '',
             'cod_categoria' => 6,
         ]);
-                               
+        
         DB::table('Produtos')->insert([
-            'nome' => '',
-            'descricao' => '',
+            'nome' => 'Combo Fit de Frango, Arroz Integral, Refogado, Mini Salada e Suco Rosa 300 ml Nat',
+            'descricao' => 'Arroz integral, tirinha de frango grelhado, refogado do dia, mini salada opção do dia, suco 300 ml: laranja, beterraba e cenoura (sem açúcar)',
             'cod_categoria' => 7,
         ]);
+        
     }
 }
