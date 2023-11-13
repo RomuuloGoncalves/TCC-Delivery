@@ -81,7 +81,7 @@
                 <ion-card class="selecionar-ingredientes">
                   <ion-card-header>
                     <ion-card-title class="ion-text-capitalize">{{ ingrediente.tipo }}</ion-card-title>
-                    <ion-card-subtitle>Selecione o tipo de {{ ingrediente.tipo.toLocaleLowerCase()}}
+                    <ion-card-subtitle>Selecione o tipo de {{ ingrediente.tipo!.toLocaleLowerCase()}}
                       desejado</ion-card-subtitle>
                     <ion-text color="danger">
                       Minímo de {{ ingrediente.quantidade_variacoes_min }}

@@ -25,28 +25,23 @@ export class ModalProdutoComponent implements OnInit {
   precoTotal!: number;
   quantidade: number = 1;
   observacao: string = '';
-  variacoesSelecionadas: any[] = [];
+  grupoVariacoesSelecionados: GrupoVariacoes[] = [];
 
   alterarVariacoesSelecionadas(e: any, grupoVariacao: GrupoVariacoes) {
     let variacao = JSON.parse(e.detail.value);
-    let contador = 0;
-    this.variacoesSelecionadas.length
-      ? (this.variacoesSelecionadas.forEach((variacaoSelecionada) => {
-          contador += 1;
-          if (
-            variacaoSelecionada.grupo_variacao.id ===
-            variacao.cod_grupo_variacoes
-          )
-            this.variacoesSelecionadas.splice(contador - 1);
-        }),
-        this.variacoesSelecionadas.push({
-          grupo_variacao: grupoVariacao,
-          variacao: variacao,
-        }))
-      : this.variacoesSelecionadas.push({
-          grupo_variacao: grupoVariacao,
-          variacao: variacao,
-        });
+
+    (this.grupoVariacoesSelecionados!.length)
+      ? this.grupoVariacoesSelecionados!.forEach((grupo, id) => {
+          if (grupo.id === variacao.cod_grupo_variacoes)this.grupoVariacoesSelecionados!.splice(id);
+        })
+      : null;
+    
+    this.grupoVariacoesSelecionados!.push({
+      id: grupoVariacao.id,
+      tipo: grupoVariacao.tipo,
+      id_produto: grupoVariacao.id_produto,
+      variacao: [variacao]
+    });
 
     this.precoTotal = this.calcPreco();
   }
@@ -55,7 +50,7 @@ export class ModalProdutoComponent implements OnInit {
     const objProduto = {
       id: this.produto!.id,
       observacao: this.observacao,
-      grupo_variacao: this.variacoesSelecionadas,
+      grupo_variacao: this.grupoVariacoesSelecionados,
       quantidade: this.quantidade,
     };
 
@@ -65,6 +60,11 @@ export class ModalProdutoComponent implements OnInit {
           'sucesso',
           'Produto adicionado com sucesso!'
         );
+
+        setTimeout(() => {
+          location.reload();
+        }, 500);
+
         this.fechar.emit();
       },
       (badResponse: HttpErrorResponse) => {
@@ -75,10 +75,15 @@ export class ModalProdutoComponent implements OnInit {
 
   private calcPreco() {
     let preco: number = 0;
-    this.variacoesSelecionadas.forEach((variacao) => {
-      preco += Number(variacao.variacao.valor);
+    this.grupoVariacoesSelecionados.forEach((grupoVaricao) => {
+      preco += Number(grupoVaricao.variacao![0].valor);
     });
-    return preco;
+    return preco * this.quantidade;
+  }
+
+  change(e: number) {
+    this.quantidade = e;
+    this.precoTotal = this.calcPreco();
   }
 
   stringify(obj: any) {
@@ -86,7 +91,7 @@ export class ModalProdutoComponent implements OnInit {
   }
 
   fecharModal() {
-    this.variacoesSelecionadas = [];
+    this.grupoVariacoesSelecionados = [];
     this.precoTotal = this.calcPreco();
     this.fechar.emit();
   }
