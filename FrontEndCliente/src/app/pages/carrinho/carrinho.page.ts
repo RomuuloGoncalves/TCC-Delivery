@@ -85,4 +85,15 @@ export class CarrinhoPage implements OnInit {
       }
     );
   }
+
+  editarProduto(produto: PedidoProduto) {
+    this.carrinhoService.editarProduto(produto).subscribe(
+      (response: any) => {
+        console.log(response);
+      },
+      (badResponse: HttpErrorResponse) => {
+        console.error(badResponse);
+      }
+    )
+  }
 }

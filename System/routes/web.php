@@ -38,6 +38,7 @@ $router->group(['prefix' => 'cliente'], function () use ($router) {
         $router->get('/', 'PedidoController@showCarrinho');
         $router->post('/adicionar', 'PedidoProdutoController@store');
         $router->delete('/excluir/{id}', 'PedidoProdutoController@destroy');
+        $router->put('/editar', 'PedidoProdutoController@update');
     });
 
     /*
@@ -77,7 +78,6 @@ $router->group(['prefix' => 'funcionario'], function () use ($router) {
 
 $router->group(['prefix' => 'cupom'], function () use ($router) {
     $router->post('/usar', 'CupomController@usar');
-    // });
     $router->post('/cadastrar', 'CupomController@store');
     $router->get('/', 'CupomController@index');
     $router->put('/editar', 'CupomController@update');
@@ -163,7 +163,6 @@ $router->group(['prefix' => 'grupo-variacao'], function () use ($router) {
 $router->group(['prefix' => 'pedido-produto'], function () use ($router) {
     $router->get('/', 'PedidoProdutoController@index');
     $router->post('/cadastrar', 'PedidoProdutoController@store');
-    $router->put('/editar', 'PedidoProdutoController@update');
     $router->get('/{id}', 'PedidoProdutoController@show');
 
     /*

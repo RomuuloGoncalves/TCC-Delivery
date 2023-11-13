@@ -97,7 +97,7 @@ class PedidoProdutoController extends Controller
         if ($validacao->fails())
             return response()->json($validacao->errors(), 422);
 
-        $pedido_produto = Pedido::find($request->input('id'));
+        $pedido_produto = PedidoProduto::find($request->input('id'));
 
         if (!$pedido_produto)
             return response()->json(['error' => '"Pedido Produto" not found'], 404);

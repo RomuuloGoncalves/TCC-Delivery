@@ -1,5 +1,5 @@
 <ion-row class="contador">
-  <ion-button class="contador__btn" (click)="this.decContador()">
+  <ion-button [disabled]="this.min && this.min === this.contador" class="contador__btn" (click)="this.decContador()">
     <ion-text>
       <ion-label>-</ion-label>
     </ion-text>
@@ -7,7 +7,7 @@
   <ion-text class="contador__qtdd ion-text-center">
     <p>{{ this.contador }}</p>
   </ion-text>
-  <ion-button  class="contador__btn" (click)="this.incContador()">
+  <ion-button [disabled]="this.max && this.max === this.contador" class="contador__btn" (click)="this.incContador()">
     <ion-text>
       <ion-label>+</ion-label>
     </ion-text>
