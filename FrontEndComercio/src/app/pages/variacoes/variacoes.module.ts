@@ -9,7 +9,6 @@ import { VariacoesPageRoutingModule } from './variacoes-routing.module';
 import { VariacoesPage } from './variacoes.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
 import { LoadingModule } from 'src/app/components/common/loading/loading.module';
-import { AccordionModule } from 'src/app/components/produtos/accordion/accordion.module';
 
 @NgModule({
   imports: [
@@ -18,8 +17,7 @@ import { AccordionModule } from 'src/app/components/produtos/accordion/accordion
     IonicModule,
     VariacoesPageRoutingModule,
     HeaderModule,
-    LoadingModule,
-    AccordionModule
+    LoadingModule
   ],
   declarations: [VariacoesPage]
 })
