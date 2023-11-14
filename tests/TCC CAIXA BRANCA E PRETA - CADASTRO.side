@@ -1,0 +1,214 @@
+{
+  "id": "09d02f91-73b6-4467-bb83-05c99fb5a0a7",
+  "version": "2.0",
+  "name": "TCC CAIXA BRANCA E PRETA",
+  "url": "http://localhost:8100/cadastro",
+  "tests": [{
+    "id": "89dd06cd-84a7-4d80-bd2f-2180bb8e6c16",
+    "name": "Cadastro Invalido",
+    "commands": [{
+      "id": "d5afe016-5f05-4586-8fe5-1d81e6236de6",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0e8731ad-f774-434a-82c3-2dbb532843a8",
+      "comment": "",
+      "command": "click",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e3530656-4cb5-409c-aadd-d62d7ea087ba",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Josue"
+    }, {
+      "id": "ee26dc3e-120d-4be8-9b35-cada8da699ab",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-1",
+      "targets": [
+        ["id=ion-input-1", "id"],
+        ["css=#ion-input-1", "css:finder"],
+        ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-row[2]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "a@a.a"
+    }, {
+      "id": "925ce903-a368-44f9-8fbe-70e1f720b119",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-2",
+      "targets": [
+        ["id=ion-input-2", "id"],
+        ["css=#ion-input-2", "css:finder"],
+        ["xpath=//input[@id='ion-input-2']", "xpath:attributes"],
+        ["xpath=//ion-row[3]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "+55 14 99999-9999"
+    }, {
+      "id": "c862d09e-d1e8-4fa5-841a-9eec6082128e",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-3",
+      "targets": [
+        ["id=ion-input-3", "id"],
+        ["css=#ion-input-3", "css:finder"],
+        ["xpath=//input[@id='ion-input-3']", "xpath:attributes"],
+        ["xpath=//ion-row[4]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "12345678"
+    }, {
+      "id": "6f3282c0-6402-4a88-9e41-6232c8ef36c7",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-4",
+      "targets": [
+        ["id=ion-input-4", "id"],
+        ["css=#ion-input-4", "css:finder"],
+        ["xpath=//input[@id='ion-input-4']", "xpath:attributes"],
+        ["xpath=//ion-row[5]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "12345678"
+    }, {
+      "id": "5a287387-289b-48bf-b980-607def1230c4",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=ion-input-4",
+      "targets": [
+        ["id=ion-input-4", "id"],
+        ["css=#ion-input-4", "css:finder"],
+        ["xpath=//input[@id='ion-input-4']", "xpath:attributes"],
+        ["xpath=//ion-row[5]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }]
+  }, {
+    "id": "d75d1df6-9471-43a0-856b-40af3c0df9b7",
+    "name": "Cadastro Valido",
+    "commands": [{
+      "id": "ce7061ab-bea8-4e63-b52e-489d28b6d8d5",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8100/cadastro",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e290e73d-8442-423f-aac9-38b4391255c8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1050x964",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "46bb4397-a3a3-4347-997e-5aacfa024804",
+      "comment": "",
+      "command": "click",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "710b317a-75a4-4bbf-889e-663a6ad6bd5a",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Josue"
+    }, {
+      "id": "eaa370f1-8020-4f18-991e-15fa53e91f44",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-1",
+      "targets": [
+        ["id=ion-input-1", "id"],
+        ["css=#ion-input-1", "css:finder"],
+        ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-row[2]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "josue@gmail.com"
+    }, {
+      "id": "dbc0d1ad-35f8-4a19-91ca-22e9d87675a6",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-2",
+      "targets": [
+        ["id=ion-input-2", "id"],
+        ["css=#ion-input-2", "css:finder"],
+        ["xpath=//input[@id='ion-input-2']", "xpath:attributes"],
+        ["xpath=//ion-row[3]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "+55 11 99999-9999"
+    }, {
+      "id": "5b605c4a-007b-43fd-9f3b-a07dfe63b232",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-3",
+      "targets": [
+        ["id=ion-input-3", "id"],
+        ["css=#ion-input-3", "css:finder"],
+        ["xpath=//input[@id='ion-input-3']", "xpath:attributes"],
+        ["xpath=//ion-row[4]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "12345678"
+    }, {
+      "id": "a9f06212-790d-43db-a3ef-5bcb34ee8f6b",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-4",
+      "targets": [
+        ["id=ion-input-4", "id"],
+        ["css=#ion-input-4", "css:finder"],
+        ["xpath=//input[@id='ion-input-4']", "xpath:attributes"],
+        ["xpath=//ion-row[5]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "12345678"
+    }, {
+      "id": "aa9339ce-3871-473a-bc11-bb978a0bddb4",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=ion-input-4",
+      "targets": [
+        ["id=ion-input-4", "id"],
+        ["css=#ion-input-4", "css:finder"],
+        ["xpath=//input[@id='ion-input-4']", "xpath:attributes"],
+        ["xpath=//ion-row[5]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }]
+  }],
+  "suites": [{
+    "id": "261e09e5-c026-499a-a070-e65e6fd7c9d7",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["89dd06cd-84a7-4d80-bd2f-2180bb8e6c16"]
+  }],
+  "urls": ["http://localhost:8100/cadastro", "http://localhost:8100/login"],
+  "plugins": []
+}

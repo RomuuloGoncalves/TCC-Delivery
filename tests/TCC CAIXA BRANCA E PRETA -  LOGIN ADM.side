@@ -1,0 +1,149 @@
+{
+  "id": "5fdf6cb6-b6dc-4e7a-8a19-e8e89e9ba058",
+  "version": "2.0",
+  "name": "TCC CAIXA BRANCA E PRETA -  LOGIN ADM",
+  "url": "http://localhost:4200/login",
+  "tests": [{
+    "id": "61bef905-e091-41c2-ae03-59dd933b05f3",
+    "name": "Login Invalido",
+    "commands": [{
+      "id": "03f9cd7d-5cdb-4215-a42c-4db5c7ac4420",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:4200/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "be659466-93f5-4938-8a2e-0793d11c2312",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1050x964",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "472821f9-0392-43ff-8d86-52d1934b7ede",
+      "comment": "",
+      "command": "click",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1a2a1eb5-a4c6-4ffb-a74f-9fe937256cf6",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Pedro"
+    }, {
+      "id": "874b5415-67de-4ac6-9498-37bf89942274",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-1",
+      "targets": [
+        ["id=ion-input-1", "id"],
+        ["css=#ion-input-1", "css:finder"],
+        ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-row[2]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "12345678"
+    }, {
+      "id": "aeaf8961-0323-4d28-afe3-4a41def57ad9",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=ion-input-1",
+      "targets": [
+        ["id=ion-input-1", "id"],
+        ["css=#ion-input-1", "css:finder"],
+        ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-row[2]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }]
+  }, {
+    "id": "e14ac967-bcb0-43b5-8ce7-f19da8ded6c3",
+    "name": "Login Valido",
+    "commands": [{
+      "id": "b2bb9632-53d1-4940-ac4c-b69f94cb42ce",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:4200/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2eeff46f-59a4-4bac-8b57-0c426d6504c2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1050x964",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7c1e4f59-7ebc-497f-a45b-a30486955719",
+      "comment": "",
+      "command": "click",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3f88e6b0-641f-4ce7-aebe-7267d06e0877",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "admin"
+    }, {
+      "id": "8d87fb2a-2d35-409b-86cd-80dd3adfaa23",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-1",
+      "targets": [
+        ["id=ion-input-1", "id"],
+        ["css=#ion-input-1", "css:finder"],
+        ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-row[2]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "asdasdasd"
+    }, {
+      "id": "96e78675-00ba-46b7-8012-f1f0356dc1d9",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=ion-input-1",
+      "targets": [
+        ["id=ion-input-1", "id"],
+        ["css=#ion-input-1", "css:finder"],
+        ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-row[2]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }]
+  }],
+  "suites": [{
+    "id": "4894d1fc-951b-49e4-a32c-5fcdabf204aa",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["61bef905-e091-41c2-ae03-59dd933b05f3"]
+  }],
+  "urls": [],
+  "plugins": []
+}
