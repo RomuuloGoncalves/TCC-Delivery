@@ -22,10 +22,12 @@ export class CriacaoProdutoPage implements OnInit {
   }
 
   erros: any = {};
-  categorias: Categoria[] = []
+  categorias: Categoria[] = [];
 
-  tipo!: string
-  mensagem!: string
+  tipo!: string;
+  mensagem!: string;
+
+  loading: boolean = false;
 
   pegarCategoria() {
     this.Categoria.pegarCategorias().subscribe(
@@ -49,24 +51,25 @@ export class CriacaoProdutoPage implements OnInit {
     const produto = this.cadastoForm.form.value;
     produto.cod_categoria = Number(produto.cod_categoria)
     produto.imagem = this.arqsSelecionados[0]
-  
+
     this.Produto.cadastrarProduto(produto).subscribe(
       (response: any) => {
-        console.log(response)
         this.erros = {};
 
         if (response.id) {
           this.cadastoForm.reset();
           this.router.navigate(['/criacao-grupo-var', response.id]);
-
-          this.tipo = 'sucesso';
-          this.mensagem = 'Produto cadatrado, se necessário, crie as varientes';
-          this.Toast.mostrarToast(this.tipo, this.mensagem);
+          this.Toast.mostrarToast('sucesso','Produto cadastrado com sucesso! Crie as variantes, caso tenha!');
         }
       },
 
       (badReponse: HttpErrorResponse) => {
+        const error = Object.entries(badReponse.error);
+        this.erros = {};
 
+        for (const [chave, valor] of error) this.erros[chave] = valor;
+
+        this.loading = false;
       }
     )
   }

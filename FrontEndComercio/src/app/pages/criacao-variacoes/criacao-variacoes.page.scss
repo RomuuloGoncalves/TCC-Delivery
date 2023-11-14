@@ -1,17 +1,25 @@
 form {
-    gap: 20px;
-  
-    ion-row {
-      margin: 10px 0;
-    }
-  
-    ion-textarea {
-      height: 100px;
-    }
+  gap: 20px;
+
+  ion-row {
+    margin: 10px 0;
   }
-  
-  h1 {
-    color: #909090;
-    font-size: 3rem;
+
+  ion-textarea {
+    height: 100px;
   }
-  
+}
+
+h1 {
+  color: #909090;
+  font-size: 3rem;
+}
+
+
+.input-container {
+  min-height: 80px;
+
+  .erro {
+    font-size: .8em;
+  }
+}

@@ -50,18 +50,8 @@ const routes: Routes = [
     canActivate: [LogedInGuard]
   },
   {
-    path: 'criacao-bebidas',
-    loadChildren: () => import('./pages/criacao-bebidas/criacao-bebidas.module').then( m => m.CriacaoBebidasPageModule),
-    canActivate: [LogedInGuard]
-  },
-  {
     path: 'criacao-comidas',
     loadChildren: () => import('./pages/criacao-comidas/criacao-comidas.module').then( m => m.CriacaoComidasPageModule),
-    canActivate: [LogedInGuard]
-  },
-  {
-    path: 'criacao-combos',
-    loadChildren: () => import('./pages/criacao-combos/criacao-combos.module').then( m => m.CriacaoCombosPageModule),
     canActivate: [LogedInGuard]
   },
   {
@@ -77,11 +67,6 @@ const routes: Routes = [
   {
     path: 'editar-cupom/:id',
     loadChildren: () => import('./pages/editar-cupom/editar-cupom.module').then( m => m.EditarCupomPageModule),
-    canActivate: [LogedInGuard]
-  },
-  {
-    path: 'editar-bebida/:id',
-    loadChildren: () => import('./pages/editar-bebida/editar-bebida.module').then( m => m.EditarBebidaPageModule),
     canActivate: [LogedInGuard]
   },
   {

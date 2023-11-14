@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Validator;
 
 class VariacaoController extends Controller
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
     /**
      * store
@@ -16,13 +18,13 @@ class VariacaoController extends Controller
      * @return Variacao
      */
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $regras = [
             'nome' => ['required', 'string', 'max:255'],
-            'valor' => ['required'],
-            'imagem' => ['nullable', 'string', 'max:500'],
+            'valor' => ['required', 'numeric', 'min:0'],
             'descricao' => ['required', 'string', 'max:500'],
-            'cod_grupo_variacoes' => ['required', 'integer', 'max_digits:30'],
+            'cod_grupo_variacoes' => ['required', 'integer', 'exists:Grupo_variacoes,id'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -33,7 +35,6 @@ class VariacaoController extends Controller
         $variacao = Variacao::create([
             'nome' => $request->input('nome'),
             'valor' => $request->input('valor'),
-            'imagem' => $request->input('imagem'),
             'descricao' => $request->input('descricao'),
             'cod_grupo_variacoes' => $request->input('cod_grupo_variacoes')
         ]);
@@ -47,11 +48,11 @@ class VariacaoController extends Controller
      * @return Variacao
      */
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
         $regras = [
             'nome' => ['nullable', 'string', 'max:255'],
             'valor' => ['nullable', 'decimal:2', 'min_digit:1', 'max_digits:999999999'],
-            'imagem' => ['nullable', 'string', 'max:500'],
             'descricao' => ['nullable', 'string', 'max:500']
         ];
 
@@ -66,7 +67,7 @@ class VariacaoController extends Controller
 
         $atributos = ['nome', 'valor', 'imagem', 'descricao'];
 
-        foreach($atributos as $atributo) {
+        foreach ($atributos as $atributo) {
             $request->input($atributo) !== null
                 ? $variacao->$atributo = $request->input($atributo)
                 : null;
@@ -82,8 +83,9 @@ class VariacaoController extends Controller
      * @return Variacao[]
      */
 
-    public function index() {
-        $variacao = Variacao::with(['grupo_variacao' => function($query) {
+    public function index()
+    {
+        $variacao = Variacao::with(['grupo_variacao' => function ($query) {
             $query->select('id', 'tipo');
         }])->get();
 
@@ -96,10 +98,11 @@ class VariacaoController extends Controller
      * @return void
      */
 
-    public function destroy(int $id) {
+    public function destroy(int $id)
+    {
         $variacao = Variacao::find($id);
 
-        if(!$variacao)
+        if (!$variacao)
             return response()->json(['message' => 'Variacao inválida'], 422);
 
         $variacao::find($id)->delete();

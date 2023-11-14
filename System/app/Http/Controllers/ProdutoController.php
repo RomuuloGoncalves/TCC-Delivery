@@ -19,18 +19,18 @@ class ProdutoController extends Controller
      * @return Produto[]
      */
 
-     public function index()
-     {
-         $produtos = Produto::with('categoria')->get();
-    
-         $produtosComImagens = $produtos->map(function ($produto) {
+    public function index()
+    {
+        $produtos = Produto::with('categoria')->get();
+
+        $produtosComImagens = $produtos->map(function ($produto) {
             $produto->imagem = $produto->imagem ? $produto->imagem : null;
-    
+
             return $produto;
         });
-    
+
         return response()->json($produtosComImagens, 200);
-     }
+    }
 
     /**
      * store
@@ -45,7 +45,7 @@ class ProdutoController extends Controller
             'nome' => ['required', 'string', 'max:255'],
             'descricao' => ['required', 'string', 'max:500'],
             'imagem' => ['nullable'],
-            'cod_categoria' => ['required', 'integer', 'max_digits:30'],
+            'cod_categoria' => ['required', 'integer', 'exists:Categorias,id', 'max_digits:30'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);

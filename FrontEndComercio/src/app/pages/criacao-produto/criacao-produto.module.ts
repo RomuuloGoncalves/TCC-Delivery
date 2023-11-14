@@ -8,6 +8,7 @@ import { CriacaoProdutoPageRoutingModule } from './criacao-produto-routing.modul
 
 import { CriacaoProdutoPage } from './criacao-produto.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
+import { BtnLoadingModule } from 'src/app/components/common/btn-loading/btn-loading.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     FormsModule,
     IonicModule,
     CriacaoProdutoPageRoutingModule,
-    HeaderModule
+    HeaderModule,
+    BtnLoadingModule
   ],
   declarations: [CriacaoProdutoPage]
 })

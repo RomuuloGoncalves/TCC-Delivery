@@ -1,32 +1,29 @@
 form {
-    gap: 20px;
-  
-    ion-row {
-      margin: 10px 0;
-    }
-  
-    ion-textarea {
-      height: 100px;
-    }
+  ion-row {
+    margin: 10px 0;
   }
-  
-  h1 {
-    color: #909090;
-    font-size: 3rem;
+
+  ion-textarea {
+    height: 100px;
   }
-  
-  ion-radio-group{
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+}
+
+h1 {
+  color: #909090;
+  font-size: 3rem;
+}
+
+ion-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+
+.input-container {
+  min-height: 80px;
+
+  .erro {
+    font-size: .8em;
   }
-  
-  .variacao{
-    font-size: 1.2rem;
-  }
-  
-  .inputs{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
+}
