@@ -10,7 +10,12 @@ export class CategoriaService {
   public pegarCategorias () {
     return this.Server.get('/categoria');
   }
+
   public cadastrarCategoria(data:any) {
     return this.Server.post('/categoria/cadastrar', data);
+  }
+
+  public excluirCategoria(id:any) {
+    return this.Server.delete(`/categoria/excluir/${id}`);
   }
 }

@@ -85,6 +85,10 @@ const routes: Routes = [
     path: 'variacoes/:id',
     loadChildren: () => import('./pages/variacoes/variacoes.module').then( m => m.VariacoesPageModule)
   },
+  {
+    path: 'categorias',
+    loadChildren: () => import('./pages/categorias/categorias.module').then( m => m.CategoriasPageModule)
+  },
 ];
 
 @NgModule({
