@@ -11,7 +11,6 @@ export class ServerService {
 
   private url: string = 'https://cautious-meme-w6w999p5693gpgq-8000.app.github.dev';
   // private url: string = 'https://cautious-meme-w6w999p5693gpgq-8000.app.github.dev/';
-  private url: string = 'https://cuddly-funicular-jpv6ggxg59xc5vvg-8000.app.github.dev';
 
   public post(path: string, data: any | null, url: string = this.url): Observable<any> {
     const headers = new HttpHeaders({
@@ -33,23 +32,20 @@ export class ServerService {
 
   public delete(path: string, url: string = this.url): Observable<any> {
     const token = this.Cookie.get('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.Cookie.get('token')}`
     });
-
-    if (!token) headers.set('Authorization', `Bearer ${token}`);
-
 
     return this.http.delete(`${this.url}${path}`, { headers });
   }
 
   public put(path: string, data: any, url: string = this.url): Observable<any> {
     const token = this.Cookie.get('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.Cookie.get('token')}`
     });
-
-    if (!token) headers.set('Authorization', `Bearer ${token}`);
 
     return this.http.put(`${url}${path}`, JSON.stringify(data), { headers });
   }

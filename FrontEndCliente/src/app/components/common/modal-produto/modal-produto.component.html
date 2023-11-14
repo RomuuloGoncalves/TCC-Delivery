@@ -45,108 +45,113 @@
                             </ion-text>
                           </ion-col>
                         </ion-row>
-                        <ion-title *ngIf="this.grupoVariacoesSelecionados.length" class="subtitulo">
-                          Informações do Produto:
-                        </ion-title>
-                        <ion-accordion-group multiple="true">
-                          <ng-container *ngFor="let grupoVariacao of this.grupoVariacoesSelecionados">
-                            <ion-accordion value="{{ grupoVariacao.variacao![0].nome }}">
-                              <ion-item slot="header" color="light">
-                                <ion-label><b>{{ grupoVariacao.tipo }}</b></ion-label>
-                              </ion-item>
-                              <div class="ion-padding" slot="content">
-                                <ion-item>
-                                  <ion-row class="ion-justify-content-between">
-                                    <ion-col size="auto">
-                                      <ion-text color="primary">
-                                        <b>Variação:</b>
-                                      </ion-text>
-                                    </ion-col>
-                                    <ion-col size="auto">
-                                      <ion-text>
-                                        <b>{{ grupoVariacao.variacao![0].nome }}</b>
-                                      </ion-text>
-                                    </ion-col>
-                                  </ion-row>
+                        <ng-container *ngIf="this.Cliente.logedIn">
+                          <ion-title *ngIf="this.grupoVariacoesSelecionados.length" class="subtitulo">
+                            Informações do Produto:
+                          </ion-title>
+                          <ion-accordion-group multiple="true">
+                            <ng-container *ngFor="let grupoVariacao of this.grupoVariacoesSelecionados">
+                              <ion-accordion value="{{ grupoVariacao.variacao![0].nome }}">
+                                <ion-item slot="header" color="light">
+                                  <ion-label><b>{{ grupoVariacao.tipo }}</b></ion-label>
                                 </ion-item>
-                                <ion-item>
-                                  <ion-row class="ion-justify-content-between">
-                                    <ion-col size="auto">
-                                      <ion-text color="primary">
-                                        <b>Preço:</b>
-                                      </ion-text>
-                                    </ion-col>
-                                    <ion-col size="auto">
-                                      <ion-text>
-                                        <b>R${{ grupoVariacao.variacao![0].valor?.toFixed(2)?.replace('.', ',') }}</b>
-                                      </ion-text>
-                                    </ion-col>
-                                  </ion-row>
-                                </ion-item>
-                                <ion-item>
-                                  <ion-row class="ion-justify-content-between">
-                                    <ion-col size="auto">
-                                      <ion-text color="primary">
-                                        <b>Descrição:</b>
-                                      </ion-text>
-                                    </ion-col>
-                                    <ion-col size="auto">
-                                      <ion-text>
-                                        <b>{{ grupoVariacao.variacao![0].descricao }}</b>
-                                      </ion-text>
-                                    </ion-col>
-                                  </ion-row>
-                                </ion-item>
-                              </div>
-                            </ion-accordion>
-                          </ng-container>
-
-                        </ion-accordion-group>
-                      </ion-col>
-                    </ion-row>
-
-                    <ion-row>
-                      <ion-col>
-                        <ng-container *ngFor="let grupoVariacao of this.produto.grupo_variacao">
-                          <ion-text color="primary">
-                            <h2>{{ grupoVariacao.tipo }}</h2>
-                          </ion-text>
-                          <ion-radio-group (ionChange)="alterarVariacoesSelecionadas($event, grupoVariacao)">
-                            <ng-container *ngFor="let variacao of grupoVariacao.variacao">
-                              <ion-item>
-                                <p><b>{{ variacao.nome }}</b> por R$
-                                  {{ variacao.valor?.toFixed(2)?.replace('.', ',') }}</p>
-                                <ion-radio slot="end" value="{{ stringify(variacao) }}"></ion-radio>
-                              </ion-item>
+                                <div class="ion-padding" slot="content">
+                                  <ion-item>
+                                    <ion-row class="ion-justify-content-between">
+                                      <ion-col size="auto">
+                                        <ion-text color="primary">
+                                          <b>Variação:</b>
+                                        </ion-text>
+                                      </ion-col>
+                                      <ion-col size="auto">
+                                        <ion-text>
+                                          <b>{{ grupoVariacao.variacao![0].nome }}</b>
+                                        </ion-text>
+                                      </ion-col>
+                                    </ion-row>
+                                  </ion-item>
+                                  <ion-item>
+                                    <ion-row class="ion-justify-content-between">
+                                      <ion-col size="auto">
+                                        <ion-text color="primary">
+                                          <b>Preço:</b>
+                                        </ion-text>
+                                      </ion-col>
+                                      <ion-col size="auto">
+                                        <ion-text>
+                                          <b>R${{ grupoVariacao.variacao![0].valor?.toFixed(2)?.replace('.', ',') }}</b>
+                                        </ion-text>
+                                      </ion-col>
+                                    </ion-row>
+                                  </ion-item>
+                                  <ion-item>
+                                    <ion-row class="ion-justify-content-between">
+                                      <ion-col size="auto">
+                                        <ion-text color="primary">
+                                          <b>Descrição:</b>
+                                        </ion-text>
+                                      </ion-col>
+                                      <ion-col size="auto">
+                                        <ion-text>
+                                          <b>{{ grupoVariacao.variacao![0].descricao }}</b>
+                                        </ion-text>
+                                      </ion-col>
+                                    </ion-row>
+                                  </ion-item>
+                                </div>
+                              </ion-accordion>
                             </ng-container>
-                          </ion-radio-group>
+  
+                          </ion-accordion-group>
                         </ng-container>
-
                       </ion-col>
                     </ion-row>
+                    <ng-container *ngIf="this.Cliente.logedIn">
+                      <ion-row>
+                        <ion-col>
+                          <ng-container *ngFor="let grupoVariacao of this.produto.grupo_variacao">
+                            <ion-text color="primary">
+                              <h2>{{ grupoVariacao.tipo }}</h2>
+                            </ion-text>
+                            <ion-radio-group (ionChange)="alterarVariacoesSelecionadas($event, grupoVariacao)">
+                              <ng-container *ngFor="let variacao of grupoVariacao.variacao">
+                                <ion-item>
+                                  <p><b>{{ variacao.nome }}</b> por R$
+                                    {{ variacao.valor?.toFixed(2)?.replace('.', ',') }}</p>
+                                  <ion-radio slot="end" value="{{ stringify(variacao) }}"></ion-radio>
+                                </ion-item>
+                              </ng-container>
+                            </ion-radio-group>
+                          </ng-container>
+  
+                        </ion-col>
+                      </ion-row>
+                    </ng-container>
                   </ion-col>
                 </ion-col>
               </ion-row>
-              <ion-row>
-                <ion-col class="ion-padding-horizontal">
-                  <app-observacoes></app-observacoes>
-                </ion-col>
-              </ion-row>
-
-              <ion-row class="ion-justify-content-end ion-margin-horizontal">
-
-                <ion-col size="auto">
-                  <p><b>Total:</b> R$ {{ this.precoTotal || '0,00' }}</p>
-                </ion-col>
-              </ion-row>
-
-              <ion-row class="ion-justify-content-end ion-align-items-center ion-margin-horizontal">
-                <ion-col size="auto" class="ion-margin-horizontal">
-                  <app-contador [min]="1" (change)="this.change($event)"></app-contador>
-                </ion-col>
-                <app-btn-loading [loading]="this.loading" (click)="adicionarProduto()" btnNome="Adicionar" [width]="140"
-                  [height]="46"></app-btn-loading>
-              </ion-row>
+              <ng-container *ngIf="this.Cliente.logedIn">
+                <ion-row>
+                  <ion-col class="ion-padding-horizontal">
+                    <app-observacoes></app-observacoes>
+                  </ion-col>
+                </ion-row>
+  
+                <ion-row class="ion-justify-content-end ion-margin-horizontal">
+  
+                  <ion-col size="auto">
+                    <p><b>Total:</b> R$ {{ this.precoTotal || '0,00' }}</p>
+                  </ion-col>
+                </ion-row>
+  
+                <ion-row class="ion-justify-content-end ion-align-items-center ion-margin-horizontal">
+                  <ion-col size="auto" class="ion-margin-horizontal">
+                    <app-contador [min]="1" (change)="this.change($event)"></app-contador>
+                  </ion-col>
+                  <app-btn-loading [loading]="this.loading" (click)="adicionarProduto()" btnNome="Adicionar" [width]="140"
+                    [height]="46"></app-btn-loading>
+                </ion-row>
+              </ng-container>
             </ion-col>
           </ion-row>
         </ng-container>
