@@ -60,7 +60,6 @@ export class CuponsPage implements OnInit {
       this.cuponsFiltrados = this.cupons.filter((cupom: Cupom) => !!Number(cupom.status));
     else if (this.selectedOptionFiltragem === 'invalido')
       this.cuponsFiltrados = this.cupons.filter((cupom: Cupom) => !Number(cupom.status));
-    console.log(this.selectedOptionFiltragem);
   }
 
   abrirModalCupom(cupom: Cupom) {

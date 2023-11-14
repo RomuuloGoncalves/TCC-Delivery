@@ -1,14 +1,13 @@
-form {
-  gap: 20px;
-
-  ion-row {
-    margin: 10px 0;
-  }
-
-}
-
 ng-container {
   ion-input {
     position: absolute;
+  }
+}
+
+.input-container {
+  min-height: 80px;
+
+  .erro {
+    font-size: .8em;
   }
 }

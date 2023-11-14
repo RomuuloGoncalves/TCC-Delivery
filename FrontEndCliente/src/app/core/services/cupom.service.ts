@@ -8,9 +8,9 @@ import { Cupom } from '../interfaces/cupom';
 export class CupomService {
 
   constructor(private Server: ServerService) { }
-  
-  consultarNome(cupom: Cupom) {
-    return this.Server.post('/cupom/info', cupom)
+
+  usarCupom(cupom: Cupom) {
+    return this.Server.post('/cupom/usar', cupom);
   }
 
 }
