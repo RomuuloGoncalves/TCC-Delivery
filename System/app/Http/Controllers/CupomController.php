@@ -77,20 +77,20 @@ class CupomController extends Controller
         if (!$cupom->status || !$cupom->quantidade)
             return response()->json(['message' => 'Cupom inválido'], 403);
 
-        if (Pedido::where('cod_cliente', $cliente->id)->where('cod_cupom', $cupom->id)->get())
+        if (!Pedido::where('cod_cliente', $cliente->id)->where('cod_cupom', $cupom->id)->get())
             return response()->json(['message' => 'Este Cupom já foi utilizado'], 403);
 
-        if (!$pedidoCarrinho = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Carrinho'))
+        if (!$pedidoCarrinho = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->first())
             return response()->json(['message' => 'Cliente não tem carrinho'], 422);
 
-        if ($pedidoCarrinho->cupom !== null)
-            return response()->json(['message' => 'Você já utilizou um cupom!']);
+        if ($pedidoCarrinho->cod_cupom !== null)
+            return response()->json(['message' => 'Você já utilizou um cupom!'], 422);
 
 
         $cupom->quantidade -= 1;
         $cupom->save();
 
-        $pedidoCarrinho->cupom = $cupom;
+        $pedidoCarrinho->cod_cupom = $cupom->id;
         $pedidoCarrinho->save();
 
         return response()->json($pedidoCarrinho, 200);
