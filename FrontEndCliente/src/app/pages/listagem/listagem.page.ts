@@ -71,6 +71,7 @@ export class ListagemPage implements OnInit {
     this.Produto.pegarProduto(id).subscribe(
       (response: any) => {
         this.produtoSelecionado = response;
+        this.produtoSelecionado!.imagem = (this.produtoSelecionado!.imagem) ? this.Produto.pegarImagem(this.produtoSelecionado!.imagem) : '../../../assets/imgs/default/garfo_faca_outline.png';
       },
       (error: HttpErrorResponse) => {
         console.error(error);

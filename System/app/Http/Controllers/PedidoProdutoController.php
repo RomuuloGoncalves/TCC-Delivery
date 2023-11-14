@@ -76,6 +76,8 @@ class PedidoProdutoController extends Controller
                 $variacao_selecionada->save();
             }
         }
+
+        return response()->json(['message' => 'Produto adicionado ao carrinho com sucesso!'], 200);
     }
 
     /**
