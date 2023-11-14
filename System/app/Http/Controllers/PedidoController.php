@@ -87,11 +87,10 @@ class PedidoController extends Controller
     public function showCarrinho()
     {
         $cliente =  ClienteController::getAuthCliente();
-        if (!$pedido = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->first())
+        if (!$pedido = Pedido::with('cupom')->where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->get(['id', 'cod_cupom'])->first())
             $pedido = PedidoController::store();
-        $produtos = PedidoProduto::with('produto')->where('cod_pedido', $pedido->id)->get(['id', 'total', 'observacao', 'quantidade', 'cod_produto']);
-
-        return response()->json($produtos, 200);
+        $pedido->pedido_produtos = PedidoProduto::with('produto')->where('cod_pedido', $pedido->id)->get(['id', 'total', 'observacao', 'quantidade', 'cod_produto']);
+        return response()->json($pedido, 200);
     }
 
     /**

@@ -34,6 +34,7 @@ export class CarrinhoPage implements OnInit {
   pedidoProdutos: PedidoProduto[] = [];
 
   cupomNome?: string;
+  cupom?: Cupom;
 
   loading: boolean = true;
   loadingCupom: boolean = false;
@@ -41,8 +42,10 @@ export class CarrinhoPage implements OnInit {
   carregarPagina() {
     this.loading = true;
     this.carrinhoService.produtos().subscribe(
-      (response: PedidoProduto[]) => {
-        this.pedidoProdutos = response;
+      (response: any) => {
+        this.pedidoProdutos = response.pedido_produtos;
+        this.cupom = response.cupom;
+
         this.calcTotal();
         this.loading = false;
       },
@@ -59,7 +62,10 @@ export class CarrinhoPage implements OnInit {
       this.subtotal += produto.subtotal;
     });
 
-    this.total = this.subtotal + this.frete;
+    const aux = this.subtotal + this.frete;
+    this.total = (!this.cupom)
+      ? aux
+      : (aux) - aux*0.01*this.cupom!.porcentagem_desconto!;
   }
 
   removerProduto(pedidoProduto: PedidoProduto) {
@@ -83,6 +89,9 @@ export class CarrinhoPage implements OnInit {
         this.carrinhoService.adicionarCupom(Number(response.id));
         this.Toast.mostrarToast('sucesso', 'Cupom encontrado!');
         this.loadingCupom = false;
+        setTimeout(() => {
+          location.reload()
+        }, 500);
       },
       (badResponse: HttpErrorResponse) => {
         this.Toast.mostrarToast('erro', badResponse.error.message);
