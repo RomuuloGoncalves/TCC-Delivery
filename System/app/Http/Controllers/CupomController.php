@@ -7,9 +7,12 @@ use App\Models\Pedido;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class CupomController extends Controller {
+class CupomController extends Controller
+{
 
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
     /**
      * index
@@ -17,7 +20,8 @@ class CupomController extends Controller {
      * @return Cupom
      */
 
-    public function index() {
+    public function index()
+    {
         $cupom = Cupom::all();
 
         return response()->json($cupom, 200);
@@ -29,15 +33,17 @@ class CupomController extends Controller {
      * @return void
      */
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $regras = [
             'nome' => ['required', 'string', 'max:255', 'unique:Cupons'],
-            'porcentagem_desconto' => ['nullable', 'decimal:2', 'min:0.1', 'max:100'],
-            'valor_desconto' => ['nullable', 'decimal:2', 'min_digit:1', 'max_digits:999999999'],
+            'porcentagem_desconto' => ['nullable', 'min:1', 'max:100'],
             'data_validade' => ['nullable', 'after:now'],
             'quantidade' => ['nullable', 'integer', 'max_digits:30'],
             'status' => ['required', 'boolean']
         ];
+
+        $request->merge(['nome' => strtoupper($request->input('nome'))]);
 
         $validacao = Validator::make($request->all(), $regras);
 
@@ -45,9 +51,8 @@ class CupomController extends Controller {
             return response()->json($validacao->errors(), 422);
 
         $cupom = Cupom::create([
-            'nome' => $request->input('nome'),
+            'nome' => strtoupper($request->input('nome')),
             'porcentagem_desconto' => $request->input('porcentagem_desconto'),
-            'valor_desconto' => $request->input('valor_desconto'),
             'data_validade' => $request->input('data_validade'),
             'quantidade' => $request->input('quantidade') != 0 ? $request->input('quantidade') : null,
             'status' => $request->input('status')
@@ -62,24 +67,33 @@ class CupomController extends Controller {
      * @return Cupom
      */
 
-    public function usar(Request $request) {
-        $id = $request->input('id');
-        $cod_cliente = $request->input('cod_cliente');
-        $cupom = Cupom::find($id);
+    public function usar(Request $request)
+    {
+        $cliente = ClienteController::getAuthCliente();
 
-        if($cupom == null or $cupom->status == 0)
-            return response()->json(['mensage' => 'Cupom Inválido'], 404);
+        if (!$cupom = Cupom::where('nome', strtoupper($request->input('nome')))->first())
+            return response()->json(['message' => 'Cupom não encontrado!'], 404);
 
-        if(Pedido::where('cod_cliente', $cod_cliente)->where('cod_cupom', $id)->get() == [])
-            return response()->json(['mensage' => 'Este Cupom já foi utilizado'], 404);
+        if (!$cupom->status || !$cupom->quantidade)
+            return response()->json(['message' => 'Cupom inválido'], 403);
 
-        if($cupom->quantidade !== null) {
-            $cupom->quantidade === 0
-                ? $cupom->status = 0
-                : $cupom->quantidade = $cupom->quantidade - 1;
-            $cupom->save();
-        }
-        return response()->json($cupom, 201);
+        if (Pedido::where('cod_cliente', $cliente->id)->where('cod_cupom', $cupom->id)->get())
+            return response()->json(['message' => 'Este Cupom já foi utilizado'], 403);
+
+        if (!$pedidoCarrinho = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Carrinho'))
+            return response()->json(['message' => 'Cliente não tem carrinho'], 422);
+
+        if ($pedidoCarrinho->cupom !== null)
+            return response()->json(['message' => 'Você já utilizou um cupom!']);
+
+
+        $cupom->quantidade -= 1;
+        $cupom->save();
+
+        $pedidoCarrinho->cupom = $cupom;
+        $pedidoCarrinho->save();
+
+        return response()->json($pedidoCarrinho, 200);
     }
 
     /**
@@ -88,12 +102,12 @@ class CupomController extends Controller {
      * @return Cupom
      */
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
         $regras = [
             'id' => ['required', 'integer', 'max_digits:30'],
             'nome' => ['required', 'string', 'max:255', 'unique:Cupons'],
-            'porcentagem_desconto' => ['nullable', 'decimal:2', 'min:0.1', 'max:100'],
-            'valor_desconto' => ['nullable', 'decimal:2', 'min_digit:1', 'max_digits:999999999'],
+            'porcentagem_desconto' => ['nullable', 'min:1', 'max:100'],
             'data_validade' => ['nullable', 'after:now'],
             'quantidade' => ['nullable', 'integer', 'max_digits:30'],
             'status' => ['required', 'boolean']
@@ -104,15 +118,14 @@ class CupomController extends Controller {
         if ($validacao->fails())
             return response()->json($validacao->errors(), 422);
 
-        $cupom = Cupom::find($request->input('id'));
-        if (!$cupom)
-            return response()->json(['error' => '"cupom" not found'], 404);
+        if (!$cupom = Cupom::find($request->input('id')))
+            return response()->json(['error' => 'Cupom não encontrado'], 404);
 
         $atributos = ['nome', 'porcentagem_desconto', 'valor_desconto', 'data_validade', 'quantidade', 'status'];
 
-        foreach($atributos as $atributo) {
-            $request->input($atributo) !== null
-                ? $cupom->$atributo = $request->input($atributo)
+        foreach ($atributos as $atributo) {
+            ($request->input($atributo) !== null)
+                ? $cupom->$atributo = ($atributo === 'nome') ? strtoupper($request->input($atributo)) : $request->input($atributo)
                 : null;
         }
         $cupom->save();
@@ -126,10 +139,11 @@ class CupomController extends Controller {
      * @return Cupom
      */
 
-    public function show(int $id) {
+    public function show(int $id)
+    {
         $cupom = Cupom::find($id);
 
-        if(!$cupom)
+        if (!$cupom)
             return response()->json(['mensage' => 'Cupom não encontrado'], 404);
 
         return response()->json($cupom, 200);
@@ -141,23 +155,12 @@ class CupomController extends Controller {
      * @return void
      */
 
-    public function destroy(int $id) {
-        if(!$cupom = Cupom::find($id))
+    public function destroy(int $id)
+    {
+        if (!$cupom = Cupom::find($id))
             return response()->json(['message' => 'Cupom inválido'], 422);
 
         $cupom->delete();
         return response()->json(['message' => 'Cupom deletado com sucesso'], 204);
-    }
-
-    public function pegarCupomNome(Request $request) {
-        $cliente = ClienteController::getAuthCliente();
-
-        if(!$cupom = Cupom::where('nome', $request->input('nome'))->first())
-            return response()->json(['message' => 'Cupom não encontrado!'], 404);
-
-        if(Pedido::where('cod_cliente', $cliente->id)->where('cod_cupom', $cupom->id)->get())
-            return response()->json(['message' => 'Este Cupom já foi utilizado'], 200);
-
-        return $cupom;
     }
 }

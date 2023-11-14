@@ -52,9 +52,9 @@ export class CriacaoProdutoPage implements OnInit {
     produto.cod_categoria = Number(produto.cod_categoria)
     produto.imagem = this.arqsSelecionados[0]
 
+    this.erros = {};
     this.Produto.cadastrarProduto(produto).subscribe(
       (response: any) => {
-        this.erros = {};
 
         if (response.id) {
           this.cadastoForm.reset();

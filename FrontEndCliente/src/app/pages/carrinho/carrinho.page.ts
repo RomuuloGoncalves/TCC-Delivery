@@ -78,7 +78,7 @@ export class CarrinhoPage implements OnInit {
   resgatarCupom() {
     this.loadingCupom = true;
     let cupom: Cupom = this.formCupom.form.value;
-    this.cupomService.consultarNome(cupom).subscribe(
+    this.cupomService.usarCupom(cupom).subscribe(
       (response: Cupom) => {
         this.carrinhoService.adicionarCupom(Number(response.id));
         this.Toast.mostrarToast('sucesso', 'Cupom encontrado!');
