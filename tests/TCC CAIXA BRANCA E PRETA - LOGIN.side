@@ -1,0 +1,221 @@
+{
+  "id": "64722da9-a92a-45a5-a431-c32c225bd5cd",
+  "version": "2.0",
+  "name": "TCC CAIXA BRANCA E PRETA - LOGIN",
+  "url": "http://localhost:8100/login",
+  "tests": [{
+    "id": "cdc8877e-1c7d-4543-be6a-814529764f25",
+    "name": "Login Invalido",
+    "commands": [{
+      "id": "976c9cf0-3124-4a5b-bff9-8cc5f69923eb",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8100/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "63c19c9e-cda2-41a4-bba1-4f83366594f9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1050x964",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9f5589f7-0836-4e41-957e-a471bb49a18c",
+      "comment": "",
+      "command": "click",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c9ba5a9e-eab5-4331-b2fa-04b2a419f6d0",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "jose@gmail.com"
+    }, {
+      "id": "0bf430ab-a5d9-48a5-a7ff-f1ed8cf7bc57",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-1",
+      "targets": [
+        ["id=ion-input-1", "id"],
+        ["css=#ion-input-1", "css:finder"],
+        ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-row[2]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "12345678"
+    }, {
+      "id": "af2751ef-bd5e-497b-aa25-7184446cf3e2",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=ion-input-1",
+      "targets": [
+        ["id=ion-input-1", "id"],
+        ["css=#ion-input-1", "css:finder"],
+        ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-row[2]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "12c2cb53-c91b-4770-b127-dccacf22ea1f",
+      "comment": "",
+      "command": "click",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9681b34c-e39e-4736-8803-08226e6d274e",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "josue@gmail.com"
+    }, {
+      "id": "dd3cf352-97bb-4545-aa05-6fbec1486dff",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_DOWN}"
+    }, {
+      "id": "d23c89d2-d71a-4353-899c-2037769aa3b7",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_TAB}"
+    }, {
+      "id": "cb0f4106-6dae-4a4f-9d69-f3a30dae3fd9",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-1",
+      "targets": [
+        ["id=ion-input-1", "id"],
+        ["css=#ion-input-1", "css:finder"],
+        ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-row[2]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "asdasdasd"
+    }, {
+      "id": "7086bbd1-084f-42be-ab84-2cbb2e5367d0",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=ion-input-1",
+      "targets": [
+        ["id=ion-input-1", "id"],
+        ["css=#ion-input-1", "css:finder"],
+        ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-row[2]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }]
+  }, {
+    "id": "3619a608-edaf-4df5-a6a0-aa567885f828",
+    "name": "Login Valido",
+    "commands": [{
+      "id": "64ef2af9-0b4d-4ad7-99d1-ca42f55cdaa2",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8100/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ad1af9e1-5ed0-4ef4-82e3-899b1428c569",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1050x964",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4d6248b2-763b-485e-a6f3-6fed670de802",
+      "comment": "",
+      "command": "click",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d329b903-0a84-44d1-b0f9-616f68c8aa86",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-0",
+      "targets": [
+        ["id=ion-input-0", "id"],
+        ["css=#ion-input-0", "css:finder"],
+        ["xpath=//input[@id='ion-input-0']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "josue@gmail.com"
+    }, {
+      "id": "06547f70-b8f1-4b75-9684-23a363379c39",
+      "comment": "",
+      "command": "type",
+      "target": "id=ion-input-1",
+      "targets": [
+        ["id=ion-input-1", "id"],
+        ["css=#ion-input-1", "css:finder"],
+        ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-row[2]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "12345678"
+    }, {
+      "id": "f6b8e683-9784-4875-b07a-22c3757f4577",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=ion-input-1",
+      "targets": [
+        ["id=ion-input-1", "id"],
+        ["css=#ion-input-1", "css:finder"],
+        ["xpath=//input[@id='ion-input-1']", "xpath:attributes"],
+        ["xpath=//ion-row[2]/ion-input/label/div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }]
+  }],
+  "suites": [{
+    "id": "2eda55e5-ebd5-4f53-b132-c15e7c32f1e5",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["cdc8877e-1c7d-4543-be6a-814529764f25"]
+  }],
+  "urls": ["http://localhost:8100/login"],
+  "plugins": []
+}
