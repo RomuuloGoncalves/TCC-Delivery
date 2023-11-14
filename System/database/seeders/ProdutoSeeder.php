@@ -97,7 +97,7 @@ class ProdutoSeeder extends Seeder
         ]);
 
         DB::table('Produtos')->insert([
-            'nome' => '2 Marmitex P= Filé Milanesa e Ovo Frito',
+            'nome' => '2 Marmitex Filé Milanesa e Ovo Frito',
             'descricao' => 'Arroz, feijão, filé de frango à milanesa e ovo frito',
             'cod_categoria' => 2,
             'imagem' => 'frango_a_milanesa.avif'
@@ -105,7 +105,7 @@ class ProdutoSeeder extends Seeder
         ]);
 
         DB::table('Produtos')->insert([
-            'nome' => '2 Marmitex P= Bife Acebolado e Ovo Frito',
+            'nome' => '2 Marmitex Bife Acebolado e Ovo Frito',
             'descricao' => 'Arroz, feijão, bife acebolado e ovo frito',
             'cod_categoria' => 2,
             'imagem' => 'bife_acebolado_ovo.avif'
