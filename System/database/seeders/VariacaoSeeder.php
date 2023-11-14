@@ -162,5 +162,125 @@ class VariacaoSeeder extends Seeder
             'valor' => 9.99,
             'cod_grupo_variacoes' => 33,
         ]);
+
+        // Marmita personalizada
+        DB::table('Variacoes')->insert([
+            'nome' => 'P',
+            'valor' => 10.00,
+            'cod_grupo_variacoes' => 35,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'M',
+            'valor' => 15.00,
+            'cod_grupo_variacoes' => 35,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'G',
+            'valor' => 20.00,
+            'cod_grupo_variacoes' => 35,
+        ]);
+
+        //--
+        DB::table('Variacoes')->insert([
+            'nome' => 'Branco',
+            'valor' => 9.99,
+            'cod_grupo_variacoes' => 36,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Integral',
+            'valor' => 9.99,
+            'cod_grupo_variacoes' => 36,
+        ]);
+
+        //--
+        DB::table('Variacoes')->insert([
+            'nome' => 'Normal',
+            'valor' => 9.99,
+            'cod_grupo_variacoes' => 37,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Feijoada',
+            'valor' => 9.99,
+            'cod_grupo_variacoes' => 37,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Carioca',
+            'valor' => 9.99,
+            'cod_grupo_variacoes' => 37,
+        ]);
+
+        //--
+        DB::table('Variacoes')->insert([
+            'nome' => 'Frango',
+            'valor' => 3.00,
+            'cod_grupo_variacoes' => 38,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Bife',
+            'valor' => 3.00,
+            'cod_grupo_variacoes' => 38,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Linguiça',
+            'valor' => 3.00,
+            'cod_grupo_variacoes' => 38,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Ovo',
+            'valor' => 2.00,
+            'cod_grupo_variacoes' => 38,
+        ]);
+
+        //--
+        DB::table('Variacoes')->insert([
+            'nome' => 'Batata Frita',
+            'valor' => 4.00,
+            'cod_grupo_variacoes' => 39,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Iscas de Frango',
+            'valor' => 8.00,
+            'cod_grupo_variacoes' => 39,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Calabresa',
+            'valor' => 8.00,
+            'cod_grupo_variacoes' => 39,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Iscas de Peixe',
+            'valor' => 5.00,
+            'cod_grupo_variacoes' => 39,
+        ]);
+
+        //--
+        DB::table('Variacoes')->insert([
+            'nome' => 'Alface',
+            'valor' => 2.00,
+            'cod_grupo_variacoes' => 40,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Tomate',
+            'valor' => 2.00,
+            'cod_grupo_variacoes' => 40,
+        ]);
+
+        DB::table('Variacoes')->insert([
+            'nome' => 'Colve',
+            'valor' => 2.00,
+            'cod_grupo_variacoes' => 40,
+        ]);
     }
 }

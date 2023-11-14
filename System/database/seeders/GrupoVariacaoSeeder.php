@@ -58,5 +58,49 @@ class GrupoVariacaoSeeder extends Seeder
                 'cod_produto' => $id,
             ]);
         }
+
+        $marmita_personalizada = DB::table('Produtos')->where('cod_categoria', 1)->get()->pluck('id');
+            DB::table('Grupo_variacoes')->insert([
+                'tipo' => 'Tamanho',
+                'cod_produto' => 1,
+                'quantidade_variacoes_min' => 1,
+                'quantidade_variacoes_max' => 1,
+            ]);
+
+            DB::table('Grupo_variacoes')->insert([
+                'tipo' => 'Arroz',
+                'cod_produto' => 1,
+                'quantidade_variacoes_min' => 1,
+                'quantidade_variacoes_max' => 1,
+            ]);
+
+            DB::table('Grupo_variacoes')->insert([
+                'tipo' => 'Feijão',
+                'cod_produto' => 1,
+                'quantidade_variacoes_min' => 1,
+                'quantidade_variacoes_max' => 1,
+            ]);
+
+            DB::table('Grupo_variacoes')->insert([
+                'tipo' => 'Mistura',
+                'cod_produto' => 1,
+                'quantidade_variacoes_min' => 0,
+                'quantidade_variacoes_max' => 2,
+            ]);
+
+            DB::table('Grupo_variacoes')->insert([
+                'tipo' => 'Acompanhamento',
+                'cod_produto' => 1,
+                'quantidade_variacoes_min' => 0,
+                'quantidade_variacoes_max' => 2,
+            ]);
+
+            DB::table('Grupo_variacoes')->insert([
+                'tipo' => 'Salada',
+                'cod_produto' => 1,
+                'quantidade_variacoes_min' => 0,
+                'quantidade_variacoes_max' => 1,
+            ]);
+        
     }
 }
