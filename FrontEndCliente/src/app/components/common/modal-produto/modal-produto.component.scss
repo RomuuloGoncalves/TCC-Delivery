@@ -15,10 +15,6 @@ ion-content {
   }
 
 }
-.imagem-container{
-  // background-image: url('../../../../assets/imgs/common/wallpaper.jpg');
-  background-size: cover;
-}
 .wrapper {
   .itens-borda-superior {
     height: 100%;
@@ -36,7 +32,8 @@ ion-content {
   }
 
   .imagem {
-    width: 100%;
+   border-radius: 20px;
+   box-shadow: 2px 2px 20px rgba(17, 17, 17, 0.452);
   }
 
   .subtitulo {

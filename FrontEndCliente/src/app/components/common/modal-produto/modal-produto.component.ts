@@ -4,6 +4,7 @@ import { ToastService } from 'src/app/core/controller/toast.service';
 import { GrupoVariacoes } from 'src/app/core/interfaces/grupo-variacoes';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { CarrinhoService } from 'src/app/core/services/carrinho.service';
+import { ClienteService } from 'src/app/core/services/cliente.service';
 
 @Component({
   selector: 'app-modal-produto',
@@ -13,7 +14,8 @@ import { CarrinhoService } from 'src/app/core/services/carrinho.service';
 export class ModalProdutoComponent implements OnInit {
   constructor(
     private carrinhoService: CarrinhoService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    public Cliente: ClienteService
   ) {}
 
   ngOnInit() {}
@@ -68,6 +70,7 @@ export class ModalProdutoComponent implements OnInit {
         setTimeout(() => {
           location.reload();
         }, 500);
+
         this.loading = false;
         this.fechar.emit();
       },

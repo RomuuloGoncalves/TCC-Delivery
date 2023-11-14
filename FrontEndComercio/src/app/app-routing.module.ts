@@ -50,11 +50,6 @@ const routes: Routes = [
     canActivate: [LogedInGuard]
   },
   {
-    path: 'criacao-comidas',
-    loadChildren: () => import('./pages/criacao-comidas/criacao-comidas.module').then( m => m.CriacaoComidasPageModule),
-    canActivate: [LogedInGuard]
-  },
-  {
     path: 'pedido/:id',
     loadChildren: () => import('./pages/pedido/pedido.module').then( m => m.PedidoPageModule),
     canActivate: [LogedInGuard]
