@@ -41,12 +41,16 @@ export class FormCupomComponent implements OnInit {
 
   atualizar(cupom: Cupom) {
     this.loadingBtn = true;
+    cupom.id = this.cupom?.id;
+
     this.Cupom.editarCupom(cupom).subscribe(
       (response: any) => {
-        console.log(response);
+        this.Toast.mostrarToast('sucesso', 'Cupom editado com sucesso!');
+        this.loadingBtn = false;
       },
       (badReponse: HttpErrorResponse) => {
         console.error(badReponse);
+        this.loadingBtn = false;
       }
     );
   }
@@ -54,15 +58,12 @@ export class FormCupomComponent implements OnInit {
   adicionar(cupom: Cupom) {
     this.loadingBtn = true;
     cupom.porcentagem_desconto = Number(cupom.porcentagem_desconto);
+    this.erros = {};
+
     this.Cupom.adicionarCupom(cupom).subscribe(
       (response: any) => {
-        if (response.created_at) {
-          this.formCupom.form.reset();
-          const tipo = 'sucesso';
-          const mensagem = 'Cadastro realizado com sucesso';
-
-          this.Toast.mostrarToast(tipo, mensagem);
-        }
+        this.formCupom.form.reset();
+        this.Toast.mostrarToast('sucesso', 'Cadastro realizado com sucesso');
         this.loadingBtn = false;
       },
       (badReponse: HttpErrorResponse) => {
@@ -70,7 +71,7 @@ export class FormCupomComponent implements OnInit {
         this.erros = {};
 
         for (const [chave, valor] of error) this.erros[chave] = valor;
-        this.loading = false;
+        this.loadingBtn = false;
       }
     );
   }
