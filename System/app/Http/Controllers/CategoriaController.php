@@ -41,7 +41,21 @@ class CategoriaController extends Controller {
 
     public function index() {
         $categorias = Categoria::with(['produtos'])->get();
-    
+
+        return response()->json($categorias, 200);
+    }
+
+    /**
+     * showHome
+     *
+     * @return Categoria[]
+     */
+
+    public function showHome() {
+        $categorias = Categoria::with(['produtos'])
+            ->where('id', '<>', 1)
+            ->get();
+
         return response()->json($categorias, 200);
     }
 

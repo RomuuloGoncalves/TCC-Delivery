@@ -108,6 +108,7 @@ $router->group(['prefix' => 'pedido'], function () use ($router) {
 $router->group(['prefix' => 'categoria'], function () use ($router) {
     $router->post('/cadastrar', 'CategoriaController@store');
     $router->get('/', 'CategoriaController@index');
+    $router->get('/home', 'CategoriaController@showHome');
     $router->get('/{id}', 'CategoriaController@show');
     $router->delete('/excluir/{id}', 'CategoriaController@destroy');
 });
