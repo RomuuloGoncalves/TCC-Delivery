@@ -173,15 +173,15 @@ class ProdutoSeeder extends Seeder
         ]);
 
         DB::table('Produtos')->insert([
-            'nome' => 'Calabresa Acebolada 250g',
-            'descricao' => 'Calabresa acebolada',
+            'nome' => 'Calabresa Acebolada',
+            'descricao' => 'Calabresa acebolada 250g',
             'cod_categoria' => 5,
             'imagem' => 'calabresa_acebolada.avif'
 
         ]);
 
         DB::table('Produtos')->insert([
-            'nome' => 'Mini Salada Simples (Alface, Tomate e Cebola)',
+            'nome' => 'Mini Salada Simples',
             'descricao' => 'Alface, tomate e cebola',
             'cod_categoria' => 5,
             'imagem' => 'salada_simples.avif'
@@ -189,8 +189,8 @@ class ProdutoSeeder extends Seeder
         ]);
 
         DB::table('Produtos')->insert([
-            'nome' => 'Coca Cola 1,5 L',
-            'descricao' => '',
+            'nome' => 'Coca-Cola',
+            'descricao' => 'Cola-Cola 1,5L',
             'cod_categoria' => 6,
         ]);
 
@@ -202,8 +202,8 @@ class ProdutoSeeder extends Seeder
         ]);
 
         DB::table('Produtos')->insert([
-            'nome' => 'Refrigerante 600 ml',
-            'descricao' => '',
+            'nome' => 'Refrigerante',
+            'descricao' => 'Refrigerante 600ml',
             'cod_categoria' => 6,
         ]);
 
@@ -214,49 +214,49 @@ class ProdutoSeeder extends Seeder
         ]);
 
         DB::table('Produtos')->insert([
-            'nome' => 'Suco de Laranja com Açúcar e com Gelo 300 ml',
-            'descricao' => '',
+            'nome' => 'Suco de Laranja com Açúcar e com Gelo',
+            'descricao' => 'Suco 300ml',
             'cod_categoria' => 6,
         ]);
 
         DB::table('Produtos')->insert([
-            'nome' => 'Suco de Laranja com Açúcar e com Gelo 500 ml',
-            'descricao' => '',
+            'nome' => 'Suco de Laranja com Açúcar e com Gelo',
+            'descricao' => 'Suco 500ml',
             'cod_categoria' => 6,
         ]);
 
         DB::table('Produtos')->insert([
-            'nome' => 'Suco de Laranja com Açúcar e com Gelo 500 ml',
-            'descricao' => '',
+            'nome' => 'Suco de Laranja com Açúcar e com Gelo',
+            'descricao' => 'Suco 500ml',
             'cod_categoria' => 6,
         ]);
 
         DB::table('Produtos')->insert([
-            'nome' => 'Suco de Maracujá 500 ml',
-            'descricao' => '',
+            'nome' => 'Suco de Maracujá',
+            'descricao' => 'Suco 500ml',
             'cod_categoria' => 6,
         ]);
 
         DB::table('Produtos')->insert([
-            'nome' => 'Suco Polpa 500 ml Laranja com Acerola',
-            'descricao' => '',
+            'nome' => 'Suco de Polpa Laranja com Acerola',
+            'descricao' => 'Suco 500 ml',
             'cod_categoria' => 6,
         ]);
 
         DB::table('Produtos')->insert([
-            'nome' => 'Tuiubaina - 350 ml',
-            'descricao' => '',
+            'nome' => 'Tuiubaina',
+            'descricao' => 'Tuiubaina 350ml',
             'cod_categoria' => 6,
         ]);
 
         DB::table('Produtos')->insert([
-            'nome' => 'Tuiubaina 2 Litros',
-            'descricao' => '',
+            'nome' => 'Tuiubaina',
+            'descricao' => 'Tuiubaina 2 Litros',
             'cod_categoria' => 6,
         ]);
 
         DB::table('Produtos')->insert([
-            'nome' => 'Combo Fit de Frango, Arroz Integral, Refogado, Mini Salada e Suco Rosa 300 ml Nat',
+            'nome' => 'Combo Fit de Frango',
             'descricao' => 'Arroz integral, tirinha de frango grelhado, refogado do dia, mini salada opção do dia, suco 300 ml: laranja, beterraba e cenoura (sem açúcar)',
             'cod_categoria' => 7,
             'imagem' => 'combo_fit.avif'
