@@ -6,6 +6,7 @@ import { PedidosService } from 'src/app/core/services/pedidos.service';
 import { Produto } from 'src/app/core/interfaces/produto';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastService } from 'src/app/core/controller/toast.service';
+import { ProdutosService } from 'src/app/core/services/produtos.service';
 @Component({
   selector: 'app-pedido',
   templateUrl: './pedido.page.html',
@@ -13,6 +14,7 @@ import { ToastService } from 'src/app/core/controller/toast.service';
 })
 export class PedidoPage implements OnInit {
   constructor(
+    private Produto: ProdutosService,
     private Pedidos: PedidosService,
     private route: ActivatedRoute,
     private Toast: ToastService
@@ -56,8 +58,7 @@ export class PedidoPage implements OnInit {
     const categorias: { [categoria: string]: Produto[] } = {};
 
     this.pedidoCliente.pedido_produtos.forEach((el: any) => {
-      el.produto.imagem =
-        el.produto.imagem || '../../../assets/imgs/default/cards-produtos.png';
+      el.produto.imagem = (el.produto.imagem) ? this.Produto.pegarImagem(el.produto.imagem) : '../../../assets/imgs/default/cards-produtos.png';
       if (!categorias[el.produto.categoria.nome])
         categorias[el.produto.categoria.nome] = [];
       categorias[el.produto.categoria.nome].push(el);
