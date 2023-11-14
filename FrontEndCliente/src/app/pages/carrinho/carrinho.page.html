@@ -3,7 +3,7 @@
     <ion-header>
       <app-header></app-header>
     </ion-header>
-
+    <div class="carrinho__container">
     <ng-container *ngIf="this.pedidoProdutos.length">
       <ion-row class="ion-margin">
         <ion-col size="12">
@@ -168,7 +168,7 @@
         </ion-col>
       </ion-row>
     </ng-container>
-
+    </div>
     <app-footer></app-footer>
   </ng-container>
   <app-loading [loading]="this.loading"></app-loading>
