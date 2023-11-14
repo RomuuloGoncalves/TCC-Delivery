@@ -20,22 +20,12 @@ export class ProdutosPage implements OnInit {
   openPopover: boolean = false;
   isOpen: boolean = false;
   loading: boolean = true
-  isModalOpen = false;
 
   produtos!: Produto[]
   produtosOrganizados!: any;
 
   filtrar: { [chave: string]: boolean } = {};
   selectedOptions: string[] = []
-
-  formularioPopover(e: Event) {
-    this.popover.event = e;
-    this.openPopover = true;
-  }
-
-  setOpen(isOpen: boolean) {
-    this.isModalOpen = isOpen;
-  }
 
   filtrarSelecao(e: any) {
     for (const [chave, valor] of Object.entries(this.filtrar)) {

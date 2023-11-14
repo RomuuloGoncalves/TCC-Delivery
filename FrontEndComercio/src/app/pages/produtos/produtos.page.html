@@ -12,36 +12,20 @@
             <ion-col size="11">
               <ion-list>
                 <ion-item>
-                  <ion-select (ionChange)="filtrarSelecao($event)" interface="popover" mode="ios" placeholder="Ordenar Por"
-                    [multiple]="true" [(ngModel)]="selectedOptions">
+                  <ion-select (ionChange)="filtrarSelecao($event)" interface="popover" mode="ios"
+                    placeholder="Ordenar Por" [multiple]="true" [(ngModel)]="selectedOptions">
                     <ng-container *ngFor="let produtoCategoria of this.produtosOrganizados">
-                      <ion-select-option value="{{this.produtoCategoria[0]}}">{{this.produtoCategoria[0]}}</ion-select-option>
+                      <ion-select-option
+                        value="{{this.produtoCategoria[0]}}">{{this.produtoCategoria[0]}}</ion-select-option>
                     </ng-container>
                   </ion-select>
                 </ion-item>
               </ion-list>
             </ion-col>
 
-            <ion-col (click)="formularioPopover($event)" size="1">
-              <ion-icon name="add-outline"></ion-icon>
+            <ion-col size="auto" routerLink="/criacao-produto">
+              <ion-icon size="large" name="add-outline"></ion-icon>
             </ion-col>
-
-
-            <ion-popover #popover [isOpen]="openPopover" (didDismiss)="openPopover = false" side="bottom"
-              alignment="start" mode="ios">
-              <ng-template ngIf="{{popover}}">
-                <ion-content class="ion-padding">
-                  <ion-row class="ion-justify-content-center">
-                    <ion-col size="10"><ion-button expand="block"
-                        [routerLink]="['/criacao/comidas']">Comidas</ion-button></ion-col>
-                    <ion-col size="10"><ion-button expand="block"
-                        [routerLink]="['/criacao/bebidas']">Bebidas</ion-button></ion-col>
-                    <ion-col size="10"><ion-button expand="block"
-                        [routerLink]="['/criacao-combos']">Combos</ion-button></ion-col>
-                  </ion-row>
-                </ion-content>
-              </ng-template>
-            </ion-popover>
           </ion-row>
         </ion-col>
       </ion-row>
@@ -54,7 +38,8 @@
           <ion-col size="12">
             <ion-accordion-group [multiple]="true" [value]="['Marmitas']">
               <ng-container *ngFor="let produtoCategoria of this.produtosOrganizados">
-                <app-accordion (clickCard)="this.selecionarProduto($event)" *ngIf="this.filtrar[this.produtoCategoria[0]]" [tituloSessao]="this.produtoCategoria[0]"
+                <app-accordion (clickCard)="this.selecionarProduto($event)"
+                  *ngIf="this.filtrar[this.produtoCategoria[0]]" [tituloSessao]="this.produtoCategoria[0]"
                   [produtos]="this.produtoCategoria[1]"></app-accordion>
               </ng-container>
             </ion-accordion-group>
