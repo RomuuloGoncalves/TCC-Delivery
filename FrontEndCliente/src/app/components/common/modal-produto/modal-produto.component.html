@@ -17,35 +17,36 @@
             </ion-toolbar>
           </ion-header>
 
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="12">
+              <ion-row class="ion-justify-content-center">
+                <img class="imagem" src="{{ this.produto.imagem }}">
+              </ion-row>
+            </ion-col>
+          </ion-row>
+          
           <ion-row class="ion-margin-horizontal">
             <ion-col>
               <ion-row class="ion-justify-content-center">
-                <ion-col size-lg="10">
-                  <ion-row class="ion-justify-content-center">
-                    <ion-col class="imagem-container ion-justify-content-center ion-margin-vertical">
-                      <ion-img class="imagem"
-                        src="{{ this.produto.imagem ||  '../../../../assets/imgs/home-icons/garfo_faca_outline.png' }}"></ion-img>
-                    </ion-col>
-                  </ion-row>
+                <ion-col size="10">
                   <ion-row>
-                  </ion-row>
+                    <ion-col class="detalhes">
+                      <ion-row class="informacoes">
+                        <ion-col class="ion-margin-bottom">
 
-                  <ion-col class="detalhes">
-                    <ion-row class="informacoes">
-                      <ion-col class="ion-margin-bottom">
-                        <ion-row class="ion-margin-vertical">
-                          <ion-col>
-                            <ion-title class="subtitulo">
-                              Descrição:
-                            </ion-title>
-                            <ion-text>
-                              <p class="ion-margin-top">
-                                {{ this.produto.descricao }}
-                              </p>
-                            </ion-text>
-                          </ion-col>
-                        </ion-row>
-                        <ng-container *ngIf="this.Cliente.logedIn">
+                          <ion-row class="ion-margin-vertical">
+                            <ion-col>
+                              <ion-title class="subtitulo">
+                                Descrição:
+                              </ion-title>
+                              <ion-text>
+                                <p class="ion-margin-top">
+                                  {{ this.produto.descricao }}
+                                </p>
+                              </ion-text>
+                            </ion-col>
+                          </ion-row>
+
                           <ion-title *ngIf="this.grupoVariacoesSelecionados.length" class="subtitulo">
                             Informações do Produto:
                           </ion-title>
@@ -101,12 +102,11 @@
                                 </div>
                               </ion-accordion>
                             </ng-container>
-  
+
                           </ion-accordion-group>
-                        </ng-container>
-                      </ion-col>
-                    </ion-row>
-                    <ng-container *ngIf="this.Cliente.logedIn">
+                        </ion-col>
+                      </ion-row>
+
                       <ion-row>
                         <ion-col>
                           <ng-container *ngFor="let grupoVariacao of this.produto.grupo_variacao">
@@ -123,13 +123,14 @@
                               </ng-container>
                             </ion-radio-group>
                           </ng-container>
-  
+
                         </ion-col>
                       </ion-row>
-                    </ng-container>
-                  </ion-col>
+                    </ion-col>
+                  </ion-row>
                 </ion-col>
               </ion-row>
+
               <ng-container *ngIf="this.Cliente.logedIn">
                 <ion-row>
                   <ion-col class="ion-padding-horizontal">
