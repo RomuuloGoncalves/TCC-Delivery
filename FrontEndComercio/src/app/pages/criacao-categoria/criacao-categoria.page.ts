@@ -26,10 +26,13 @@ export class CriacaoCategoriaPage implements OnInit {
   tipo!: string
   mensagem!: string
 
-  public cadastrarProduto() {
-    const produto = this.cadastoForm.form.value;
+  btnLoading: boolean = false
 
-    this.Categoria.cadastrarCategoria(produto).subscribe(
+  public cadastrarCategoria() {
+    this.btnLoading = true
+    const categoria = this.cadastoForm.form.value;
+
+    this.Categoria.cadastrarCategoria(categoria).subscribe(
       (response: any) => {
         console.log(response)
         this.erros = {};
@@ -40,11 +43,14 @@ export class CriacaoCategoriaPage implements OnInit {
           this.tipo = 'sucesso';
           this.mensagem = 'Categoria cadastrada';
           this.Toast.mostrarToast(this.tipo, this.mensagem);
+          this.btnLoading = false
         }
       },
 
-      (badReponse: HttpErrorResponse) => {
-
+      (badResponse: HttpErrorResponse) => {
+        console.log(badResponse)
+        this.erros = badResponse.error
+        this.btnLoading = false
       }
     )
   }

@@ -8,6 +8,7 @@ import { CriacaoCategoriaPageRoutingModule } from './criacao-categoria-routing.m
 
 import { CriacaoCategoriaPage } from './criacao-categoria.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
+import { BtnLoadingModule } from 'src/app/components/common/btn-loading/btn-loading.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     FormsModule,
     IonicModule,
     CriacaoCategoriaPageRoutingModule,
-    HeaderModule
+    HeaderModule,
+    BtnLoadingModule
   ],
   declarations: [CriacaoCategoriaPage]
 })
