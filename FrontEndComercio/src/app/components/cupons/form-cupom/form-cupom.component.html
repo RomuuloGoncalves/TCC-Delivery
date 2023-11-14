@@ -1,5 +1,4 @@
 <form #formCupom="ngForm" (ngSubmit)="this.enviarCupom()" method="post">
-
   <ion-row class="input-container">
     <ion-input ngModel required name="nome" label="Nome do cupom" label-placement="floating" fill="outline"
       placeholder="Digite o nome do cupom" value="{{this.cupom?.nome}}"></ion-input>
