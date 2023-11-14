@@ -9,9 +9,11 @@ import { Produto } from 'src/app/core/interfaces/produto';
 export class AccordionComponent implements OnInit {
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.produtos)
+  }
 
-  @Input() produtos?: Produto[];
+  @Input() produtos?: any[];
   @Input() tituloSessao?: string;
   @Output() clickCard: EventEmitter<Produto> = new EventEmitter();
 }

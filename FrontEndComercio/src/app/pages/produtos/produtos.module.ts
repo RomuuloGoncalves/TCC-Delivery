@@ -5,10 +5,10 @@ import { IonicModule } from '@ionic/angular';
 import { ProdutosPageRoutingModule } from './produtos-routing.module';
 import { ProdutosPage } from './produtos.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
-import { AccordionComponent } from 'src/app/components/produtos/accordion/accordion.component';
 import { LoadingModule } from 'src/app/components/common/loading/loading.module';
 import { ModalProdutoComponent } from 'src/app/components/produtos/modal-produto/modal-produto.component';
 import { CardProdutoComponent } from 'src/app/components/produtos/card-produto/card-produto.component';
+import { AccordionModule } from 'src/app/components/produtos/accordion/accordion.module';
 
 @NgModule({
   imports: [
@@ -17,8 +17,9 @@ import { CardProdutoComponent } from 'src/app/components/produtos/card-produto/c
     IonicModule,
     ProdutosPageRoutingModule,
     HeaderModule,
-    LoadingModule
+    LoadingModule,
+    AccordionModule
   ],
-  declarations: [ProdutosPage, AccordionComponent, CardProdutoComponent, ModalProdutoComponent]
+  declarations: [ProdutosPage, CardProdutoComponent, ModalProdutoComponent]
 })
 export class ProdutosPageModule {}
