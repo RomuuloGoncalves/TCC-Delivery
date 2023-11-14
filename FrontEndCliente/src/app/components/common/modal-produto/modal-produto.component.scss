@@ -1,5 +1,5 @@
 ion-content {
-
+  
   &::-webkit-scrollbar {
     width: 7px;
   }
@@ -15,7 +15,10 @@ ion-content {
   }
 
 }
-
+.imagem-container{
+  // background-image: url('../../../../assets/imgs/common/wallpaper.jpg');
+  background-size: cover;
+}
 .wrapper {
   .itens-borda-superior {
     height: 100%;
@@ -33,7 +36,7 @@ ion-content {
   }
 
   .imagem {
-    height: 100%;
+    width: 100%;
   }
 
   .subtitulo {
