@@ -122,10 +122,10 @@ $router->group(['prefix' => 'pedido'], function () use ($router) {
 */
 
 $router->group(['prefix' => 'categoria'], function () use ($router) {
-    $router->group(['middleware' => 'authFuncionario'], function () use ($router) {
+    // $router->group(['middleware' => 'authFuncionario'], function () use ($router) {
         $router->post('/cadastrar', 'CategoriaController@store');
         $router->delete('/excluir/{id}', 'CategoriaController@destroy');
-    });
+    // });
 
     $router->get('/', 'CategoriaController@index');
     $router->get('/home', 'CategoriaController@showHome');

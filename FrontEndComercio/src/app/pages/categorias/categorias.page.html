@@ -1,0 +1,40 @@
+<ion-content [fullscreen]="true">
+  <app-header></app-header>
+  <ion-row class="ion-padding ion-justify-content-center ion-align-items-center">
+    <ion-col size="12">
+      <ion-row class="ion-justify-content-between ion-align-items-center">
+        <ion-col size="12" sizeMd="auto">
+          <ion-label id="titulo">Categorias</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+
+    <ion-col size="11">
+      <ng-container *ngIf="!this.loading">
+        <ion-row class="">
+          <ng-container *ngFor="let categoria of categorias; let i = index">
+            <ion-col size="12" sizeMd="4">
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-title>{{categoria.nome}}</ion-card-title>
+                </ion-card-header>
+                
+                <ion-card-content>
+                  Quantidades de produtos: <b>{{this.quantidaProduto(categoria.produtos)}}</b>
+                </ion-card-content>
+
+                <ion-button fill="clear">Editar</ion-button>
+                <ion-button fill="fill" id="present-alert-{{i}}" (click)="this.excluirCategoria(this.categoria.id)">Excluir</ion-button>
+                <!-- <ion-alert mode="ios" trigger="present-alert-{{i}}" header="Deseja excluir esta categoria?"
+                [buttons]="alertButtons"></ion-alert> -->
+
+              </ion-card>
+            </ion-col>
+          </ng-container>
+        </ion-row>
+      </ng-container>
+      <app-loading [loading]="this.loading"></app-loading>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
