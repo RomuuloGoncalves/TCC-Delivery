@@ -3,47 +3,45 @@
   <ion-row class="ion-justify-content-center">
     <ion-col size="6">
       <ion-row class="ion-justify-content-center">
-        <h1>CRIAR VARIAÇÃO</h1>
+        <h1>Criar Variação</h1>
       </ion-row>
       <form #cadastroForm="ngForm" (ngSubmit)="this.cadastrar()">
         <ion-row>
-          <ion-col size="12">
-            <ion-select mode="md" ngModel name="cod_grupo_variacoes" aria-label="Variacao" label="Selecione o produto"
-            label-placement="floating" fill="outline" placeholder="Selecione o grupo variação">
+          <ion-col size="12" class="input-container">
+            <ion-select mode="md" ngModel required name="cod_grupo_variacoes" aria-label="Variacao"
+              label="Selecione o grupo variação" label-placement="floating" fill="outline"
+              placeholder="Selecione o grupo variação">
               <ng-container *ngFor=" let variacao of variacoes">
                 <ion-select-option value="{{variacao.id}}">{{ variacao.tipo }}</ion-select-option>
               </ng-container>
             </ion-select>
           </ion-col>
+          <ion-text class="erro" color="danger">{{ this.erros.cod_grupo_variacoes }}</ion-text>
         </ion-row>
-        <ion-row>
+        <ion-row class="input-container">
           <ion-col size="12">
             <ion-row>
-              <ion-input ngModel name="nome" label="nome" label-placement="floating" fill="outline" placeholder="Digite o nome"></ion-input>
+              <ion-input ngModel required name="nome" label="Nome" label-placement="floating" fill="outline"
+                placeholder="Digite o nome"></ion-input>
+              <ion-text class="erro" color="danger">{{ this.erros.nome }}</ion-text>
             </ion-row>
             <ion-row>
-              <ion-input ngModel name="valor" label="Valor" label-placement="floating" fill="outline"
-                placeholder="Digite o valor" ></ion-input>
+              <ion-input ngModel required type="number" min="0" name="valor" label="Valor" label-placement="floating"
+                fill="outline" placeholder="Digite o valor"></ion-input>
+              <ion-text class="erro" color="danger">{{ this.erros.valor }}</ion-text>
             </ion-row>
-            <!-- <ion-row>
-              <ion-input ngModel name="imagem" label="Imagem" label-placement="floating" fill="outline"
-                placeholder="Escolhe a imagem do produto" type="file"></ion-input>
-            </ion-row> -->
             <ion-row>
-              <ion-textarea ngModel name="descricao" label="Descrição" label-placement="floating" fill="outline"
-                placeholder="Insira uma descrição"></ion-textarea>
+              <ion-textarea ngModel required name="descricao" label="Descrição" label-placement="floating"
+                fill="outline" placeholder="Insira uma descrição"></ion-textarea>
+              <ion-text class="erro" color="danger">{{ this.erros.descricao }}</ion-text>
             </ion-row>
-            
+
           </ion-col>
         </ion-row>
 
-        <ion-row>
-          <ion-col size=6>
-            <ion-button size="large" type="submit" [routerLink]="['/produtos']" routerDirection="back" expand="block">Voltar</ion-button>
-          </ion-col>
-          <ion-col size=6>
-            <ion-button size="large" type="submit" expand="block">Nova Variação</ion-button>
-          </ion-col>
+        <ion-row class="ion-justify-content-center">
+          <app-btn-loading btnNome="Cadastrar" [loading]="this.loading"
+            [disabled]="!this.cadastroForm.valid"></app-btn-loading>
         </ion-row>
       </form>
     </ion-col>

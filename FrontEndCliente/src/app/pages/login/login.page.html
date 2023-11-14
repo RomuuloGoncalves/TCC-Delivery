@@ -14,7 +14,8 @@
               <ion-text class="erro" color="danger">{{ this.erros.email }}</ion-text>
             </ion-row>
             <ion-row class="input-container">
-              <ion-input ngModel required name="password" helperText=" " label="Senha" type="password" errorText="Deve ser maior que 8 caracteres" minlength="8" ></ion-input>
+              <ion-input ngModel required name="password" helperText=" " label="Senha" type="password"
+                errorText="Deve ser maior que 8 caracteres" minlength="8"></ion-input>
               <ion-text class="erro" color="danger">{{ this.erros.password }}</ion-text>
             </ion-row>
             <ion-text>
@@ -22,7 +23,8 @@
             </ion-text>
             <ion-row class="ion-justify-content-center ion-padding">
               <ion-col size="auto">
-                <app-btn-loading btnNome="Entrar" [loading]="this.loading" [disabled]="!this.loginForm.valid"></app-btn-loading>
+                <app-btn-loading btnNome="Entrar" [loading]="this.loading"
+                  [disabled]="!this.loginForm.valid"></app-btn-loading>
               </ion-col>
             </ion-row>
           </form>

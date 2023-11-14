@@ -17,27 +17,30 @@ export class CriacaoVariacoesPage implements OnInit {
   constructor(private Variacao: VariacaoService, private GrupoVar: GrupoVariacaoService, private route: ActivatedRoute, private Toast: ToastService, private router: Router,) { }
   @ViewChild('cadastroForm') private cadastoForm!: NgForm;
 
-  cod_produto!: any
+  cod_produto!: any;
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.cod_produto = params['id'];
     });
 
-    this.pegarGrupoVar()
+    this.pegarGrupoVar();
   }
 
-  variacoes!: GrupoVariacoes[]
+  variacoes!: GrupoVariacoes[];
   erros: any = {};
 
-  tipo!: string
-  mensagem!: string
+  loading: boolean = false;
 
   pegarGrupoVar() {
     this.GrupoVar.pegarGrupoVarProduto(this.cod_produto).subscribe(
       (response: GrupoVariacoes[]) => {
-        this.variacoes = response
-        console.log(this.variacoes)
+        this.variacoes = response;
+
+        if (!this.variacoes.length) {
+          this.router.navigate(['../../criacao-grupo-var', this.cod_produto]);
+          this.Toast.mostrarToast('erro', 'Cadastre algum grupo variação!');
+        }
       },
       (error: HttpErrorResponse) => {
         console.error(error);
@@ -50,23 +53,21 @@ export class CriacaoVariacoesPage implements OnInit {
     variacao.cod_produto = Number(this.cod_produto)
     variacao.cod_grupo_variacoes = Number(variacao.cod_grupo_variacoes)
     variacao.valor = Number(variacao.valor.replace(",", "."))
-    console.log(variacao)
 
     this.Variacao.cadastrarVariacao(variacao).subscribe(
       (response: any) => {
-        console.log(response)
         this.erros = {};
-        if (response.id) {
-          this.cadastoForm.reset();
-
-          this.tipo = 'sucesso';
-          this.mensagem = 'Variação criada, adicione mais se necessário';
-          this.Toast.mostrarToast(this.tipo, this.mensagem);
-        }
+        this.cadastoForm.reset();
+        this.Toast.mostrarToast('sucesso', 'Variação criada, adicione mais se necessário');
       },
 
       (badReponse: HttpErrorResponse) => {
+        const error = Object.entries(badReponse.error);
+        this.erros = {};
 
+        for (const [chave, valor] of error) this.erros[chave] = valor;
+
+        this.loading = false;
       }
     )
   }

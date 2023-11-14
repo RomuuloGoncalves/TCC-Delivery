@@ -9,9 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class GrupoVariacaoController extends Controller
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $regras = [
             'tipo' => ['required', 'string', 'max:255'],
             'quantidade_variacoes_min' => ['required', 'integer'],
@@ -19,7 +22,14 @@ class GrupoVariacaoController extends Controller
             'cod_produto' => ['required', 'integer']
         ];
 
+
+
         $validacao = Validator::make($request->all(), $regras);
+
+        if ($request->input('quantidade_variacoes_max') < $request->input('quantidade_variacoes_min'))
+            return response()->json([
+                'quantidade_variacoes_min' => ['Deve ser menor que quantidade máxima']
+            ], 422);
 
         if ($validacao->fails())
             return response()->json($validacao->errors(), 422);
@@ -35,7 +45,8 @@ class GrupoVariacaoController extends Controller
         return response()->json($grupo_variacao, 201);
     }
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
         $regras = [
             'tipo' => ['required', 'string', 'max:255'],
             'quantidade_variacoes_min' => ['nullable', 'integer'],
@@ -48,13 +59,18 @@ class GrupoVariacaoController extends Controller
         if ($validacao->fails())
             return response()->json($validacao->errors(), 422);
 
+        if ($request->input('quantidade_variacoes_max') < $request->input('quantidade_variacoes_min'))
+            return response()->json([
+                'quantidade_variacoes_min' => ['Deve ser menor que quantidade máxima']
+            ], 422);
+
         $grupo_variacao = GrupoVariacao::find($request->input('id'));
         if (!$grupo_variacao)
             return response()->json(['error' => '"Grupo_variacao" not found'], 404);
 
         $atributos = ['tipo', 'quantidade_variacoes_min', 'quantidade_variacoes_max'];
 
-        foreach($atributos as $atributo) {
+        foreach ($atributos as $atributo) {
             $request->input($atributo) !== null
                 ? $grupo_variacao->$atributo = $request->input($atributo)
                 : null;
@@ -64,13 +80,15 @@ class GrupoVariacaoController extends Controller
         return response()->json($grupo_variacao, 200);
     }
 
-    public function index() {
+    public function index()
+    {
         $grupo_variacao = GrupoVariacao::with(['produto', 'variacao'])->get();
 
         return response()->json($grupo_variacao, 200);
     }
 
-    public function show(int $cod_produto) {
+    public function show(int $cod_produto)
+    {
         $grupo_variacao = GrupoVariacao::with('variacao')
             ->where('cod_produto', $cod_produto)
             ->get();
@@ -78,10 +96,11 @@ class GrupoVariacaoController extends Controller
         return response()->json($grupo_variacao, 200);
     }
 
-    public function destroy(int $id) {
+    public function destroy(int $id)
+    {
         $grupo_variacao = GrupoVariacao::find($id);
 
-        if(!$grupo_variacao)
+        if (!$grupo_variacao)
             return response()->json(['message' => 'Grupo variacao inválida'], 422);
 
         $grupo_variacao::find($id)->delete();

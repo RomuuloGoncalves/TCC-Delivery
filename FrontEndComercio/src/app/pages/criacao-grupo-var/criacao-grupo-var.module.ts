@@ -8,6 +8,7 @@ import { CriacaoGrupoVarPageRoutingModule } from './criacao-grupo-var-routing.mo
 
 import { CriacaoGrupoVarPage } from './criacao-grupo-var.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
+import { BtnLoadingModule } from 'src/app/components/common/btn-loading/btn-loading.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     FormsModule,
     IonicModule,
     CriacaoGrupoVarPageRoutingModule,
-    HeaderModule
+    HeaderModule,
+    BtnLoadingModule
   ],
   declarations: [CriacaoGrupoVarPage]
 })

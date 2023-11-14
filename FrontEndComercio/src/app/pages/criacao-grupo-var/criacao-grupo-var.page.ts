@@ -14,7 +14,7 @@ import { GrupoVariacaoService } from 'src/app/core/services/grupo-variacao.servi
 })
 export class CriacaoGrupoVarPage implements OnInit {
   constructor(private GrupoVar: GrupoVariacaoService, private route: ActivatedRoute, private Toast: ToastService, private router: Router,) { }
- 
+
   @ViewChild('cadastroForm') private cadastoForm!: NgForm;
 
   cod_produto!: any
@@ -28,33 +28,33 @@ export class CriacaoGrupoVarPage implements OnInit {
   isOpen = false
   erros: any = {};
 
+  loading: boolean = false;
+
   tipo!:string
   mensagem!:string
 
   public cadastrar() {
+    this.loading = true;
     const grupoVar = this.cadastoForm.form.value;
     grupoVar.cod_produto = Number(this.cod_produto)
-    console.log(grupoVar)
 
     this.GrupoVar.cadastrarGrupoVar(grupoVar).subscribe(
       (response: any) => {
-        console.log(response)
         this.erros = {};
-        if (response.id) {
-          this.cadastoForm.reset();
-          this.router.navigate(['/criacao-variacoes', this.cod_produto]);
+        this.cadastoForm.reset();
+        this.router.navigate(['/criacao-variacoes', this.cod_produto]);
 
-          this.tipo = 'sucesso';
-          this.mensagem = 'Cadastro realizado com sucesso';
-          this.Toast.mostrarToast(this.tipo, this.mensagem);
-
-          this.mensagem = 'Adicione as Variações';
-          this.Toast.mostrarToast(this.tipo, this.mensagem);
-        }
+        this.Toast.mostrarToast('sucesso', 'Grupo Variação criado com sucesso! Agora, crie variações!');
+        this.loading = false;
       },
 
       (badReponse: HttpErrorResponse) => {
+        const error = Object.entries(badReponse.error);
+        this.erros = {};
 
+        for (const [chave, valor] of error) this.erros[chave] = valor;
+
+        this.loading = false;
       }
     )
   }

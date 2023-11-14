@@ -8,6 +8,7 @@ import { CriacaoVariacoesPageRoutingModule } from './criacao-variacoes-routing.m
 
 import { CriacaoVariacoesPage } from './criacao-variacoes.page';
 import { HeaderModule } from 'src/app/components/common/header/header.module';
+import { BtnLoadingModule } from 'src/app/components/common/btn-loading/btn-loading.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { HeaderModule } from 'src/app/components/common/header/header.module';
     FormsModule,
     IonicModule,
     CriacaoVariacoesPageRoutingModule,
-    HeaderModule
+    HeaderModule,
+    BtnLoadingModule
   ],
   declarations: [CriacaoVariacoesPage]
 })
