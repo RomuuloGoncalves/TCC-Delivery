@@ -1,0 +1,46 @@
+app-cards {
+    display: flex;
+  }
+  
+  ion-accordion-group {
+    width: 100%;
+    margin: 20px 20px 0 20px;
+  }
+  
+  ion-accordion {
+    border-radius: 20px;
+    margin-bottom: 6px;
+  }
+  
+  ion-item::part(native) {
+    background-color: var(--ion-color-tertiary);
+    font-weight: bold;
+    text-transform: capitalize;
+    border-radius: 20px;
+    height: 50px;
+  }
+  
+  
+  div[slot="content"] {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  @media(max-width: 1024px) {
+    div[slot="content"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media(max-width: 800px) {
+    div[slot="content"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media(max-width: 425px) {
+    div[slot="content"] {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  

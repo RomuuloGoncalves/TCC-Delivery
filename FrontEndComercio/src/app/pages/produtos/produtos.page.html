@@ -36,7 +36,7 @@
       <ng-container *ngIf="!this.loading">
         <ion-row class="ion-justify-content-center">
           <ion-col size="12">
-            <ion-accordion-group [multiple]="true" [value]="['Marmitas']">
+            <ion-accordion-group [multiple]="true">
               <ng-container *ngFor="let produtoCategoria of this.produtosOrganizados">
                 <app-accordion (clickCard)="this.selecionarProduto($event)"
                   *ngIf="this.filtrar[this.produtoCategoria[0]]" [tituloSessao]="this.produtoCategoria[0]"
