@@ -22,7 +22,7 @@ class CategoriaSeeder extends Seeder
             'Marmita Vegetariana',
             'Porções',
             'Bebidas',
-            'Combo Ftit'
+            'Combo Fit'
         ];
         foreach ($nomes as $nome) {
             DB::table('Categorias')->insert([
