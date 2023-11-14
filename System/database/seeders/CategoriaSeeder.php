@@ -17,7 +17,7 @@ class CategoriaSeeder extends Seeder
     {
         $nomes = [
             'Marmitex',
-            'Marmitex Promoção do dia',
+            'Marmitex do dia',
             'Marmitex Premium',
             'Marmita Vegetariana',
             'Porções',
