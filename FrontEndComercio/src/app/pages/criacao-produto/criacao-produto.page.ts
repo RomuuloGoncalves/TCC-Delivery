@@ -53,6 +53,7 @@ export class CriacaoProdutoPage implements OnInit {
     produto.imagem = this.arqsSelecionados[0]
 
     this.erros = {};
+    console.log(produto)
     this.Produto.cadastrarProduto(produto).subscribe(
       (response: any) => {
 

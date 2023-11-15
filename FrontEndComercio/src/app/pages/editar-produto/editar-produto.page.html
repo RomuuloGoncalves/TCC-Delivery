@@ -1,0 +1,58 @@
+<ion-content [fullscreen]="true">
+  <app-header></app-header>
+
+  <ng-container *ngIf="!this.isLoading">
+    <ion-row class="ion-justify-content-between ion-align-items-center ion-margin">
+
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" sizeMd="6">
+        <ion-row class="ion-justify-content-center">
+          <h1 class="ion-text-center">Editar Produto</h1>
+        </ion-row>
+        <form #cadastroProduto="ngForm" (ngSubmit)="this.atualizarProduto()">
+          <ion-row>
+            <ion-col size="12">
+              <ion-row class="input-container">
+                <ion-select ngModel required mode="md" name="cod_categoria" aria-label="Variacao"
+                  label="Selecione a categoria do produto" label-placement="floating" fill="outline"
+                  placeholder="Selecione o produto" [(ngModel)]="this.produto.cod_categoria">
+                  <ng-container *ngFor="let categoria of categorias">
+                    <ion-select-option value="{{categoria.id}}">{{ categoria.nome }}</ion-select-option>
+                  </ng-container>
+                </ion-select>
+                <ion-text class="erro" color="danger">{{ this.erros.categoria }}</ion-text>
+              </ion-row>
+              <ion-row class="input-container">
+                <ion-input ngModel required name="nome" label="Nome" label-placement="floating" fill="outline"
+                  placeholder="Digite o nome" [(ngModel)]="this.produto.nome"></ion-input>
+                <ion-text class="erro" color="danger">{{ this.erros.nome }}</ion-text>
+              </ion-row>
+              <ion-row class="input-container">
+                <ion-input type="file" name="imagem" class="input__file" id="file" #inputArqs (change)="this.selecionarArqs($event)"
+                  label="Imagem" label-placement="floating" fill="outline" placeholder="Escolhe a imagem do produto"
+                  type="file" [(ngModel)]="this.produto.imagem"></ion-input>
+                <ion-text class="erro" color="danger">{{ this.erros.email }}</ion-text>
+              </ion-row>
+              <ion-row class="input-container">
+                <ion-textarea ngModel required mode="md" name="descricao" label="Descrição" label-placement="floating"
+                  fill="outline" placeholder="Insira uma descrição" [(ngModel)]="this.produto.descricao"></ion-textarea>
+                <ion-text class="erro" color="danger">{{ this.erros.descricao }}</ion-text>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+  
+          <ion-row class="ion-justify-content-center ion-padding">
+            <ion-col size="auto">
+              <app-btn-loading [loading]="this.btnLoading" [disabled]="!this.cadastroProduto!.valid"
+                btnNome="Editar"></app-btn-loading>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ng-container>
+
+  <app-loading [loading]="isLoading"></app-loading>
+
+</ion-content>

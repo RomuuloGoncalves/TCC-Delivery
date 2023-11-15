@@ -89,6 +89,11 @@ const routes: Routes = [
     path: 'categorias',
     loadChildren: () => import('./pages/categorias/categorias.module').then( m => m.CategoriasPageModule)
   },
+  {
+    path: 'editar-produto/:id',
+    loadChildren: () => import('./pages/editar-produto/editar-produto.module').then( m => m.EditarProdutoPageModule)
+  },
+
 ];
 
 @NgModule({
