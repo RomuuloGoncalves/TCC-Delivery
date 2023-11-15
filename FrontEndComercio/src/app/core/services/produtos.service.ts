@@ -20,8 +20,8 @@ export class ProdutosService {
     return this.Server.delete(`/produto/excluir/${id_produto}`);
   }
 
-  public editarProduto(data: any) {
-    console.log("service editar: ", data)
+  public editarProduto(data: Produto) {
+    console.log(data)
     return this.Server.put('/produto/editar', data);
   }
 
@@ -31,7 +31,6 @@ export class ProdutosService {
     formData.append('cod_categoria', data.cod_categoria);
     formData.append('descricao', data.descricao);
     formData.append('imagem', data.imagem);
-
     return this.Server.upload('/produto/cadastrar', formData);
   }
 
