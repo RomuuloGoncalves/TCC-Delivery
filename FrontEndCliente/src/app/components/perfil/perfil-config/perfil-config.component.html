@@ -14,42 +14,45 @@
     </ion-row>
 
     <ion-row class="page_content ion-justify-content-center">
-      <ion-col size="12">
+      <ion-col size="8">
         <form #editarForm="ngForm" (ngSubmit)="this.editar()">
           <ion-row class="input-container">
-            <ion-input [readonly]="!this.estaEditando" [ngModel]="this.cliente.nome" required name="nome" helperText=" "
-              label="Nome" type="text"></ion-input>
-            <ion-text class="erro" color="danger">{{ this.erros.nome }}</ion-text>
+            <ion-col>
+              <ion-input [readonly]="!this.estaEditando" [ngModel]="this.cliente.nome" required name="nome" helperText=" "
+                label="Nome" type="text"></ion-input>
+              <ion-text class="erro" color="danger">{{ this.erros.nome }}</ion-text>
+            </ion-col>
           </ion-row>
           <ion-row class="input-container">
-            <ion-input [readonly]="!this.estaEditando" [ngModel]="this.cliente.email" required name="email"
-              helperText=" " label="Email" type="email"></ion-input>
-            <ion-text class="erro" color="danger">{{ this.erros.email }}</ion-text>
+            <ion-col>
+              <ion-input [readonly]="!this.estaEditando" [ngModel]="this.cliente.email" required name="email"
+                helperText=" " label="Email" type="email"></ion-input>
+              <ion-text class="erro" color="danger">{{ this.erros.email }}</ion-text>
+            </ion-col>
           </ion-row>
           <ion-row class="input-container">
-            <ion-input [readonly]="!this.estaEditando" [ngModel]="this.cliente.telefone" required name="telefone"
-              helperText=" " label="Telefone" type="tel" [maskito]="this.Mask.telefone"  [maskitoElement]="this.Mask.maskPredicate"></ion-input>
-            <ion-text class="erro" color="danger">{{ this.erros.telefone }}</ion-text>
+            <ion-col>
+              <ion-input [readonly]="!this.estaEditando" [ngModel]="this.cliente.telefone" required name="telefone"
+                helperText=" " label="Telefone" type="tel" [maskito]="this.Mask.telefone"  [maskitoElement]="this.Mask.maskPredicate"></ion-input>
+              <ion-text class="erro" color="danger">{{ this.erros.telefone }}</ion-text>
+            </ion-col>
+            
+            <ion-col size="auto" *ngIf="this.estaEditando">
+              <ion-button (click)="this.abrirFecharModal(true)"class="btn_alterar-senha">Alterar Senha</ion-button>
+            </ion-col>
           </ion-row>
-          <ng-container *ngIf="this.estaEditando">
-            <ion-row class="input-container">
-              <ion-input [readonly]="!this.estaEditando" minlength="8" [ngModel]="this.cliente.password" name="password"
-                helperText=" " label="Senha" type="pasword"></ion-input>
-              <ion-text class="erro" color="danger">{{ this.erros.password }}</ion-text>
-            </ion-row>
-            <ion-row class="input-container">
-              <ion-input [readonly]="!this.estaEditando" minlength="8" ngModel errorText="Senhas não conferem invalida"
-                name="confirmarPassword" label="Confirmar Senha" type="password"
-                pattern="{{ this.editarForm.form.value.password }}"></ion-input>
-            </ion-row>
-            <ion-row class="ion-justify-content-center">
-
-              <app-btn-loading btnNome="Editar" [loading]="this.loading"
-                [disabled]="!this.editarForm.valid || (this.editarForm.form.value.password && !this.editarForm.form.value.confirmarPassword)"></app-btn-loading>
-            </ion-row>
-          </ng-container>
+          <ion-row class="ion-justify-content-center" *ngIf="this.estaEditando">
+            <app-btn-loading btnNome="Editar" [loading]="this.loading"
+              [disabled]="!this.editarForm.valid || (this.editarForm.form.value.password && !this.editarForm.form.value.confirmarPassword)"></app-btn-loading>
+          </ion-row>
         </form>
       </ion-col>
     </ion-row>
   </ion-col>
+  <ng-container>
+    <app-alterar-senha
+    [isOpen]="this.isOpen"
+    (fechar)="this.abrirFecharModal(false)"
+    ></app-alterar-senha>
+  </ng-container>
 </ion-row>
