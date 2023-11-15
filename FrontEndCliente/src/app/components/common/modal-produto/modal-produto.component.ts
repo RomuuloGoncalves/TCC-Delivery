@@ -24,7 +24,7 @@ export class ModalProdutoComponent implements OnInit {
   @Input() public produto?: Produto;
   @Output() public fechar: EventEmitter<any> = new EventEmitter();
 
-  precoTotal!: number;
+  precoTotal: number = 0;
   quantidade: number = 1;
   observacao: string = '';
   grupoVariacoesSelecionados: GrupoVariacoes[] = [];

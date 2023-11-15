@@ -9,7 +9,7 @@ export class ProdutosService {
   constructor(private Server: ServerService) { }
 
   public pegarProdutos() {
-    return this.Server.dowload('/produto/');
+    return this.Server.get('/produto/');
   }
 
   public pegarprodutoID(id_produto: Number) {

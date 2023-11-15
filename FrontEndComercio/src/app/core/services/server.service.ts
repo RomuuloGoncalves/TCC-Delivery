@@ -18,10 +18,9 @@ export class ServerService {
   public post(path: string, data: any): Observable<any> {
     const token = this.Cookie.get('token');
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
     });
-
-    if (!token) headers.set('Authorization', `Bearer ${token}`);
 
     return this.http.post(`${this.url}${path}`, JSON.stringify(data), { headers });
   }
@@ -29,15 +28,8 @@ export class ServerService {
   public upload(path: string, data: any): Observable<any> {
     const token = this.Cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
     return this.http.post(`${this.url}${path}`, data, { headers });
-  }
-
-  public dowload(path: string): Observable<any> {
-    const token = this.Cookie.get('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-
-    return this.http.get(`${this.url}${path}`, { headers });
   }
 
   public get(path: string): Observable<any> {
@@ -53,11 +45,9 @@ export class ServerService {
   public delete(path: string): Observable<any> {
     const token = this.Cookie.get('token');
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
     });
-
-    if (!token) headers.set('Authorization', `Bearer ${token}`);
-
 
     return this.http.delete(`${this.url}${path}`, { headers });
   }
@@ -65,17 +55,15 @@ export class ServerService {
   public put(path: string, data: any): Observable<any> {
     const token = this.Cookie.get('token');
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
     });
-
-    if (!token) headers.set('Authorization', `Bearer ${token}`);
 
     return this.http.put(`${this.url}${path}`, JSON.stringify(data), { headers });
   }
 
 
   public imagem(imagem:any){
-    console.log(`${this.url}/uploads/${imagem}`)
     return `${this.url}/uploads/${imagem}`
   }
 

@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Categoria } from 'src/app/core/interfaces/categoria';
 import { CategoriaService } from 'src/app/core/services/categoria.service';
-import { ProdutosPage } from '../produtos/produtos.page';
 
 @Component({
   selector: 'app-categorias',
@@ -17,18 +16,37 @@ export class CategoriasPage implements OnInit {
     this.recuperarCategorias()
   }
 
+  public alertExcluirCateogria = false;
+
+  public alertButtons = [
+    {
+      text: 'Não',
+      role: 'cancel',
+      handler: () => {
+        this.alertExcluirCateogria = false;
+      }
+    },
+    {
+      text: 'Sim',
+      role: 'confirm',
+      handler: () => {
+        this.excluirCategoria();
+      },
+    },
+  ];
+
   openPopover: boolean = false;
   isOpen: boolean = false;
   loading: boolean = true
 
-  categorias!: Categoria[]
+  categorias!: Categoria[];
+  categoriaSelecionada?: Categoria;
 
   recuperarCategorias() {
     this.Categoria.pegarCategorias().subscribe(
       (response) => {
         this.categorias = response
         this.loading = false
-        console.log(this.categorias)
       },
       (error) => {
         console.error(error);
@@ -37,36 +55,25 @@ export class CategoriasPage implements OnInit {
   }
 
   quantidaProduto(produtos: any){
-    return produtos.length
+    return produtos.length;
   }
 
-  excluirCategoria(id: any) {
-    this.Categoria.excluirCategoria(id).subscribe(
-      (response) => {
-        console.log(response);
-        window.location.reload();
+  excluirCategoria() {
+    this.Categoria.excluirCategoria(this.categoriaSelecionada?.id).subscribe(
+      (response: any) => {
+        const id = this.categorias.indexOf(this.categoriaSelecionada!);
+        this.categorias.splice(id, 1);
+        this.categoriaSelecionada = undefined;
+        this.alertExcluirCateogria = false;
       },
       (error) => {
         console.error(error);
       }
     );
   }
-  
-  public alertButtons = [
-    {
-      text: 'Não',
-      role: 'cancel',
-      handler: () => {
-        console.log('Alert canceled');
-      },
-    },
-    {
-      text: 'Sim',
-      role: 'confirm',
-      handler: () => {
-        // this.excluirCategoria(id)
-      },
-    },
-  ];
 
+  selecionarCategoria(categoria: Categoria) {
+    this.categoriaSelecionada = categoria;
+    this.alertExcluirCateogria = true;
+  }
 }
