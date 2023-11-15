@@ -1,0 +1,8 @@
+<ion-accordion value="{{tituloSessao}}">
+  <ion-item slot="header" color="secondary">
+    <ion-label>{{ tituloSessao }}</ion-label>
+  </ion-item>
+  <div slot="content">
+    <app-cards-variacao (click)="this.clickCard.emit(variacao)" *ngFor="let variacao of variacoes" [variacao]="variacao"></app-cards-variacao>
+  </div>
+</ion-accordion>

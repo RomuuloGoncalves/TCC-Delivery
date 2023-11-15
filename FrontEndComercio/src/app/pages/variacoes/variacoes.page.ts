@@ -11,32 +11,40 @@ import { GrupoVariacaoService } from 'src/app/core/services/grupo-variacao.servi
 })
 export class VariacoesPage implements OnInit {
 
-  constructor(private grupoVariacaoService: GrupoVariacaoService, private route: ActivatedRoute) { }
-
-  grupoVariacoes!: GrupoVariacoes[]
+  constructor(private GrupoVariacao: GrupoVariacaoService, private route: ActivatedRoute) { }
 
   id_produto!: number
-
   ngOnInit() {
-
     this.route.params.subscribe(params => {
       this.id_produto = params['id'];
     });
-    console.log(this.id_produto)
+    
+    this.recuperarGrupoVariacoes()
+  }
 
-    this.grupoVariacaoService.pegarGrupoVarProduto(this.id_produto).subscribe(
+  isOpen: boolean = false;
+  variacaoSelecionada!: any;
+
+
+  grupoVariacoes!: GrupoVariacoes[]
+
+  recuperarGrupoVariacoes(){
+    this.GrupoVariacao.pegarGrupoVarProduto(this.id_produto).subscribe(
       (response) => {
-        console.log(response)
-        this.grupoVariacaoService = response
+        this.grupoVariacoes = response
         this.loading = false
+        console.log(this.grupoVariacoes)
       },
+
       (badResponse: HttpErrorResponse) => {
         console.log(badResponse)
       }
     )
-
+  }
+  selecionarProduto(variacao: any) {
+    this.variacaoSelecionada = variacao;
+    this.isOpen = true;
   }
 
   loading: boolean = true
-
 }

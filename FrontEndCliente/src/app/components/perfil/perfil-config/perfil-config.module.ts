@@ -5,6 +5,7 @@ import { MaskitoModule } from '@maskito/angular';
 import { FormsModule } from '@angular/forms';
 import { BtnLoadingModule } from '../../common/btn-loading/btn-loading.module';
 import { PerfilConfigComponent } from './perfil-config.component';
+import { AlterarSenhaModule } from '../alterar-senha/alterar-senha.module';
 
 @NgModule({
   declarations: [PerfilConfigComponent],
@@ -14,7 +15,8 @@ import { PerfilConfigComponent } from './perfil-config.component';
     FormsModule,
     MaskitoModule,
     BtnLoadingModule,
-    MaskitoModule
+    MaskitoModule,
+    AlterarSenhaModule
   ],
   exports: [PerfilConfigComponent]
 })

@@ -16,6 +16,7 @@ export class PerfilConfigComponent implements OnInit {
 
   @Input() public cliente!: Cliente;
   estaEditando: boolean = false;
+  isOpen: boolean = false
 
   constructor(
     private Cliente: ClienteService,
@@ -59,4 +60,9 @@ export class PerfilConfigComponent implements OnInit {
     this.editarForm.form.controls['telefone'].setValue(this.cliente.telefone);
     this.editarForm.form.controls['email'].setValue(this.cliente.email);
   }
+
+  abrirFecharModal(e: boolean) {
+    this.isOpen = e;
+  }
+
 }

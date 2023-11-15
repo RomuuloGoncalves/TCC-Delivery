@@ -10,4 +10,8 @@ export class VariacaoService {
   public cadastrarVariacao(data: any) {
     return this.Server.post('/variacao/cadastrar', data);
   }
+
+  public excluirVariacao(id: any) {
+    return this.Server.delete(`/variacao/excluir/${id}`);
+  }
 }

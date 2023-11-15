@@ -103,6 +103,47 @@ class ClienteController extends Controller
     }
 
     /**
+     * alterarSenha
+     *
+     * @return void
+     */
+
+    public function alterarSenha(Request $request) {
+        $regras = [
+            'password' => ['nullable', 'string', 'max:255', 'min:8'],
+            'newPassword' => ['nullable', 'string', 'max:255', 'min:8', 'different:password'],
+            'confirmNewPassword' => ['nullable', 'string', 'max:255', 'min:8', 'same:newPassword'],
+        ];
+
+        $validacao = Validator::make($request->all(), $regras);
+
+        if ($validacao->fails())
+            return response()->json($validacao->errors(), 422);
+
+        if (!$cliente = $this->getAuthCliente())
+            return response()->json(['error' => '"cliente" not found'], 404);
+
+        $credenciais = [
+            'email' => $cliente->email,
+            'password' => $request->input('password')
+        ];
+
+        if(!auth('cliente')->attempt($credenciais))
+            return response()->json(['error' => 'Senha inválida'], 422);
+
+        if(!$newPassword = $request->input('newPassword') === $request->input('confirmNewPassword'))
+            return response()->json(['error' => 'Coloque a mesma senha'], 422);
+
+        $cliente->password = password_hash($newPassword, PASSWORD_DEFAULT);
+        $cliente->save();
+        print_r(password_hash($newPassword, PASSWORD_DEFAULT));
+        print_r($cliente->password);
+        exit();
+
+        return response()->json(["Foi"], 200);
+    }
+
+    /**
      * login
      *
      * @return void

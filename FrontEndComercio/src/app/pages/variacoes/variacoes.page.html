@@ -1,46 +1,26 @@
 <ion-content [fullscreen]="true">
   <app-header></app-header>
-<!-- 
   <ion-row class="ion-padding ion-justify-content-center ion-align-items-center">
     <ion-col size="12">
       <ion-row class="ion-justify-content-between ion-align-items-center">
         <ion-col size="12" sizeMd="auto">
-          <ion-label id="titulo">Produtos</ion-label>
+          <ion-label id="titulo">Variações</ion-label>
         </ion-col>
         <ion-col size="12" sizeMd="auto">
-          <ion-row class="ion-justify-between ion-align-items-center">
-            <ion-col size="11">
-              <ion-list>
-                <ion-item>
-                  <ion-select (ionChange)="filtrarSelecao($event)" interface="popover" mode="ios"
-                    placeholder="Ordenar Por" [multiple]="true" [(ngModel)]="selectedOptions">
-                    <ng-container *ngFor="let produtoCategoria of this.produtosOrganizados">
-                      <ion-select-option
-                        value="{{this.produtoCategoria[0]}}">{{this.produtoCategoria[0]}}</ion-select-option>
-                    </ng-container>
-                  </ion-select>
-                </ion-item>
-              </ion-list>
-            </ion-col>
 
-            <ion-col size="auto" routerLink="/criacao-produto">
-              <ion-icon size="large" name="add-outline"></ion-icon>
-            </ion-col>
-          </ion-row>
         </ion-col>
       </ion-row>
     </ion-col>
 
     <ion-col size="11">
-
       <ng-container *ngIf="!this.loading">
         <ion-row class="ion-justify-content-center">
           <ion-col size="12">
-            <ion-accordion-group [multiple]="true" [value]="['Marmitas']">
-              <ng-container *ngFor="let produtoCategoria of this.produtosOrganizados">
-                <app-accordion (clickCard)="this.selecionarProduto($event)"
-                  *ngIf="this.filtrar[this.produtoCategoria[0]]" [tituloSessao]="this.produtoCategoria[0]"
-                  [produtos]="this.produtoCategoria[1]"></app-accordion>
+            <ion-accordion-group [multiple]="true">
+              <ng-container *ngFor="let grupoVariacao of grupoVariacoes">
+                <app-accordion-grupo-var (clickCard)="this.selecionarProduto($event)"
+                   [tituloSessao]="this.grupoVariacao.tipo"
+                  [variacoes]="this.grupoVariacao.variacao"></app-accordion-grupo-var>
               </ng-container>
             </ion-accordion-group>
           </ion-col>
@@ -48,8 +28,6 @@
       </ng-container>
       <app-loading [loading]="this.loading"></app-loading>
     </ion-col>
-
   </ion-row>
-  <app-modal-produto [isOpen]="this.isOpen" (fechar)="this.isOpen = false"
-    [produto]="this.produtoSelecionado"></app-modal-produto> -->
+
 </ion-content>
