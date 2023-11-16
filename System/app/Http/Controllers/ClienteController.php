@@ -111,8 +111,8 @@ class ClienteController extends Controller
     public function alterarSenha(Request $request) {
         $regras = [
             'password' => ['nullable', 'string', 'max:255', 'min:8'],
-            'newPassword' => ['nullable', 'string', 'max:255', 'min:8', 'different:password'],
-            'confirmNewPassword' => ['nullable', 'string', 'max:255', 'min:8', 'same:newPassword'],
+            'newPassword' => ['nullable', 'string', 'max:255', 'min:8'],
+            'confirmNewPassword' => ['nullable', 'string', 'max:255', 'min:8'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -123,24 +123,25 @@ class ClienteController extends Controller
         if (!$cliente = $this->getAuthCliente())
             return response()->json(['error' => '"cliente" not found'], 404);
 
+        $data = $request->all();
         $credenciais = [
             'email' => $cliente->email,
-            'password' => $request->input('password')
+            'password' => $data['password']
         ];
 
-        if(!auth('cliente')->attempt($credenciais))
-            return response()->json(['error' => 'Senha inválida'], 422);
+        if(!$token = auth('cliente')->attempt($credenciais))
+            return response()->json(['password' => 'Senha inválida'], 422);
 
-        if(!$newPassword = $request->input('newPassword') === $request->input('confirmNewPassword'))
-            return response()->json(['error' => 'Coloque a mesma senha'], 422);
+        if(!$data['password'] === $data['newPassword'])
+            return response()->json(['newPassword' => 'Não insira a mesma senha antiga'], 422);
 
-        $cliente->password = password_hash($newPassword, PASSWORD_DEFAULT);
+        if(!$data['newPassword'] === $data['confirmNewPassword'])
+            return response()->json(['confirmNewPassword' => 'Insira a mesma senha'], 422);
+
+        $cliente->password = password_hash($data['newPassword'], PASSWORD_DEFAULT);
         $cliente->save();
-        print_r(password_hash($newPassword, PASSWORD_DEFAULT));
-        print_r($cliente->password);
-        exit();
 
-        return response()->json(["Foi"], 200);
+        return response()->json("Foi", 201);
     }
 
     /**

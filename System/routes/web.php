@@ -27,6 +27,7 @@
 
         $router->group(['middleware' => 'authCliente'], function () use ($router) {
             $router->put('/editar', 'ClienteController@update');
+            $router->put('/alterar-senha', 'ClienteController@alterarSenha');
             $router->get('/', 'ClienteController@index');
         });
 

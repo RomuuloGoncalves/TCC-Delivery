@@ -29,6 +29,10 @@ export class ClienteService {
     return this.Server.put('/cliente/editar', cliente);
   }
 
+  public alterarSenha (data: any) {
+    return this.Server.put('/cliente/alterar-senha', data);
+  }
+
   public limparToken() {
     this.Cookie.delete('token');
   }
