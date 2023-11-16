@@ -12,11 +12,11 @@
         <img class="page__header__icon" src="../../../../assets/imgs/perfil-icons/add.svg" alt="adicionar">
       </ion-col>
     </ion-row>
-
-    <ion-row class="page_content ion-justify-content-center">
+  </ion-col>
+  <ion-col size="12">
+    <ion-row class="page__content ion-justify-content-center ion-align-items-center">
       <ion-col size="12">
-        <ion-row [class.ion-hide]="this.estaCadEndereco"
-          class="page__content__list ion-justify-content-center ion-align-items-start">
+        <ion-row [class.ion-hide]="this.estaCadEndereco" class="page__content__list ion-justify-content-center ion-align-items-start">
           <ion-col size="12">
             <ion-accordion-group>
               <ion-text *ngIf="!this.enderecos.length" color="danger">

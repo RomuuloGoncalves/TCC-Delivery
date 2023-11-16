@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ToastService } from 'src/app/core/controller/toast.service';
-import { ActionSheetController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { ClienteService } from 'src/app/core/services/cliente.service';
 import { Cliente } from 'src/app/core/interfaces/cliente';
@@ -15,7 +14,6 @@ import { Cliente } from 'src/app/core/interfaces/cliente';
 export class AlterarSenhaComponent implements OnInit {
   @ViewChild('alterarSenhaForm') private alterarSenhaForm!: NgForm;
 
-  @Input() public cliente!: Cliente;
   @Input() public isOpen: boolean = false;
   @Output() public fechar: EventEmitter<any> = new EventEmitter();
 
@@ -30,10 +28,9 @@ export class AlterarSenhaComponent implements OnInit {
     this.fechar.emit();
   }
 
-  loadingCadAlterarSenha: boolean = false;
-
   erros: any = {};
 
+  loadingCadAlterarSenha: boolean = false;
   alertMudarSenha: boolean = false;
 
   public alertButtons = [
