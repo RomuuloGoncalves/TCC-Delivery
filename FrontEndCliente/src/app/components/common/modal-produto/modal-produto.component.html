@@ -17,7 +17,7 @@
             </ion-toolbar>
           </ion-header>
 
-          
+
           <ion-row class="ion-justify-content-center">
             <ion-col size="10">
               <ion-row class="ion-justify-content-center">
@@ -138,20 +138,20 @@
                     <app-observacoes></app-observacoes>
                   </ion-col>
                 </ion-row>
-  
+
                 <ion-row class="ion-justify-content-end ion-margin-horizontal">
-  
+
                   <ion-col size="auto">
-                    <p><b>Total:</b> R$ {{ this.precoTotal || '0,00' }}</p>
+                    <p><b>Total:</b> R$ {{ this.precoTotal.toFixed(2).replace('.', ',') }}</p>
                   </ion-col>
                 </ion-row>
-  
+
                 <ion-row class="ion-justify-content-end ion-align-items-center ion-margin-horizontal">
                   <ion-col size="auto" class="ion-margin-horizontal">
                     <app-contador [min]="1" (change)="this.change($event)"></app-contador>
                   </ion-col>
-                  <app-btn-loading [loading]="this.loading" (click)="adicionarProduto()" btnNome="Adicionar" [width]="140"
-                    [height]="46"></app-btn-loading>
+                  <app-btn-loading [loading]="this.loading" (click)="adicionarProduto()" btnNome="Adicionar"
+                    [width]="140" [height]="46"></app-btn-loading>
                 </ion-row>
               </ng-container>
             </ion-col>
