@@ -11,6 +11,10 @@ export class VariacaoService {
     return this.Server.post('/variacao/cadastrar', data);
   }
 
+  public pegarProduto(id: number) {
+    return this.Server.get(`/variacao/${id}`);
+  }
+
   public excluirVariacao(id: any) {
     return this.Server.delete(`/variacao/excluir/${id}`);
   }

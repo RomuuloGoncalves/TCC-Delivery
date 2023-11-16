@@ -29,9 +29,14 @@
                 <ion-text class="erro" color="danger">{{ this.erros.nome }}</ion-text>
               </ion-row>
               <ion-row class="input-container">
-                <ion-input type="file" name="imagem" class="input__file" id="file" #inputArqs (change)="this.selecionarArqs($event)"
+                <ion-col size="4">
+                  <img src="{{this.produto.imagem}}">
+                </ion-col>
+                <ion-col size="8">
+                  <ion-input type="file" name="imagem" class="input__file" id="file" #inputArqs (change)="this.selecionarArqs($event)"
                   label="Imagem" label-placement="floating" fill="outline" placeholder="Escolhe a imagem do produto"
                   type="file" [(ngModel)]="this.produto.imagem"></ion-input>
+                </ion-col>
                 <ion-text class="erro" color="danger">{{ this.erros.email }}</ion-text>
               </ion-row>
               <ion-row class="input-container">

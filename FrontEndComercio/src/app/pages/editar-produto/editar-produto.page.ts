@@ -40,6 +40,7 @@ export class EditarProdutoPage implements OnInit {
     this.produtoService.pegarprodutoID(this.produto_id).subscribe(
       (response) => {
         this.produto = response;
+        this.produto.imagem = ( response.imagem) ? this.produtoService.pegarImagem(this.produto.imagem) : '../../../assets/imgs/default/cards-produtos.png';
         this.produto.cod_categoria = this.produto.cod_categoria?.toString()
         this.isLoading = false;
       },
@@ -57,7 +58,6 @@ export class EditarProdutoPage implements OnInit {
     dadosProduto.id = this.produto.id
     dadosProduto.imagem = this.arqsSelecionados[0];
     dadosProduto.cod_categoria = Number(dadosProduto.cod_categoria);
-    console.log(dadosProduto)
     this.produtoService.editarProduto(dadosProduto).subscribe(
       (response) => {
         this.btnLoading = false;
