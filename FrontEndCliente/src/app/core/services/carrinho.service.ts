@@ -26,4 +26,8 @@ export class CarrinhoService {
   public editarProduto(produto: PedidoProduto) {
     return this.Server.put(`/cliente/carrinho/editar`, produto);
   }
+
+  public finalizar(data: any) {
+    return this.Server.put(`/cliente/carrinho/finalizar`, data);
+  }
 }

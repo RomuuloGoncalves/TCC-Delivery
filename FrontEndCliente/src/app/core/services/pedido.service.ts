@@ -17,8 +17,4 @@ export class PedidoService {
   public editar(pedido: Pedido) {
     return this.Server.put('/pedido/editar', pedido);
   }
-
-  public pedidosCliente(cod_cliente: Number) {
-    return this.Server.get(`pedido/pedidos/${cod_cliente}`);
-  }
 }
