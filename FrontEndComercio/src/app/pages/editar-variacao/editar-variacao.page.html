@@ -1,0 +1,49 @@
+<ion-content [fullscreen]="true">
+  <app-header></app-header>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="6">
+      <ion-row class="ion-justify-content-center">
+        <h1>Criar Variação</h1>
+      </ion-row>
+      <form #cadastroForm="ngForm" (ngSubmit)="this.editar()">
+        <ion-row>
+          <ion-col size="12" class="input-container">
+            <ion-select mode="md" ngModel required name="cod_grupo_variacoes" aria-label="Variacao"
+              label="Selecione o grupo variação" label-placement="floating" fill="outline"
+              placeholder="Selecione o grupo variação">
+              <ng-container *ngFor=" let grupoVariacao of grupoVariacoes">
+                <ion-select-option value="{{grupoVariacao.id}}">{{ grupoVariacao.tipo }}</ion-select-option>
+              </ng-container>
+            </ion-select>
+          </ion-col>
+          <ion-text class="erro" color="danger">{{ this.erros.cod_grupo_variacoes }}</ion-text>
+        </ion-row>
+        <ion-row class="input-container">
+          <ion-col size="12">
+            <ion-row>
+              <ion-input ngModel required name="nome" label="Nome" label-placement="floating" fill="outline"
+                placeholder="Digite o nome"></ion-input>
+              <ion-text class="erro" color="danger">{{ this.erros.nome }}</ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-input ngModel required type="text" min="0" name="valor" label="Valor" label-placement="floating"
+                fill="outline" placeholder="Digite o valor"></ion-input>
+              <ion-text class="erro" color="danger">{{ this.erros.valor }}</ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-textarea ngModel required name="descricao" label="Descrição" label-placement="floating"
+                fill="outline" placeholder="Insira uma descrição"></ion-textarea>
+              <ion-text class="erro" color="danger">{{ this.erros.descricao }}</ion-text>
+            </ion-row>
+
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-justify-content-center">
+          <app-btn-loading btnNome="Cadastrar" [loading]="this.loading"
+            [disabled]="!this.cadastroForm.valid"></app-btn-loading>
+        </ion-row>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-content>

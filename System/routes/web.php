@@ -163,6 +163,7 @@
             $router->post('/cadastrar', 'VariacaoController@store');
             $router->get('/', 'VariacaoController@index');
             $router->put('/editar', 'VariacaoController@update');
+            $router->delete('/{id}', 'VariacaoController@show');
             $router->delete('/excluir/{id}', 'VariacaoController@destroy');
         });
     });
