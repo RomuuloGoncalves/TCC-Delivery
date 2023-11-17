@@ -89,9 +89,9 @@ class PedidoController extends Controller
     public function showCarrinho()
     {
         $cliente =  ClienteController::getAuthCliente();
-        if (!$pedido = Pedido::with('pedido_produtos')->where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->get(['id', 'cod_cupom'])->first())
+        if (!$pedido = Pedido::with('cupom')->where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->get(['id', 'cod_cupom'])->first())
             $pedido = PedidoController::store();
-        $pedido->pedido_produtos = PedidoProduto::with('produto')->where('cod_pedido', $pedido->id)->get(['id', 'total', 'observacao', 'quantidade', 'cod_produto']);
+        $pedido->pedido_produtos = PedidoProduto::with('produto')->where('cod_pedido', $pedido->id)->get();
         return response()->json($pedido, 200);
     }
 
@@ -111,11 +111,11 @@ class PedidoController extends Controller
         if (!$pedido = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->first())
             PedidoController::store();
 
-        if(!$endereco = Endereco::where('id', $request->input('cod_endereco'))->where('cod_cliente', $cliente->id)->first())
+        if (!$endereco = Endereco::where('id', $request->input('cod_endereco'))->where('cod_cliente', $cliente->id)->first())
             return response()->json(['cod_endereco' => 'Endereco inválido'], 422);
 
         $valor = 25.00;
-        foreach($pedido->pedido_produtos as $pedido_produto) {
+        foreach ($pedido->pedido_produtos as $pedido_produto) {
             $valor += $pedido_produto->total * $pedido_produto->quantidade;
         }
 
@@ -140,7 +140,7 @@ class PedidoController extends Controller
     public function showPedidosCliente()
     {
 
-        if(!$cliente = ClienteController::getAuthCliente())
+        if (!$cliente = ClienteController::getAuthCliente())
             return response()->json(['error' => '"Cliente" not found'], 404);
 
         $pedidos = Pedido::with(['pedido_produtos.variacoes_selecionadas', 'endereco'])->where('cod_cliente', $cliente->id)->where('status', ['Em Espera', 'Em Entrega', 'Cancelado', 'Pronto'])->get();
