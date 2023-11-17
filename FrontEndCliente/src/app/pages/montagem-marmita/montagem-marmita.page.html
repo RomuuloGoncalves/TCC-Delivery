@@ -70,10 +70,9 @@
       </ion-col>
     </ion-row>
 
-    <!-- categorias de ingredientes para seleção -->
     <ion-row class="ion-justify-content-center todos-ingredientes">
       <ion-col size="11" sizeMd="9" class="container-cards-ingredientes">
-        <swiper-container #swiper [loop]="false" [pagination]="{clickable: true, dynamicBullets: true}"
+        <swiper-container #swiper [loop]="true" [pagination]="{clickable: true, dynamicBullets: true}"
           [spaceBetween]="25" [breakpoints]="breakpoints">
           <ng-container *ngFor="let ingrediente of this.ingredientes.grupo_variacao; let idIngrediente = index">
             <ng-container *ngIf="ingrediente.variacao!.length">
@@ -146,7 +145,8 @@
               <app-contador [contador]="this.qtddMarmita" (change)="this.qtddMarmita = $event; this.calcTotal()"
                 [min]="1"></app-contador>
               <form (ngSubmit)="this.adicionarMarmita()">
-                <app-btn-loading [loading]="this.loadingAdicionar" [disabled]="!this.marmita.length" btnNome="Adicionar" [height]="42" [width]="115"></app-btn-loading>
+                <app-btn-loading [loading]="this.loadingAdicionar" [disabled]="!this.marmita.length" btnNome="Adicionar"
+                  [height]="42" [width]="115"></app-btn-loading>
               </form>
             </ion-row>
           </ion-col>
