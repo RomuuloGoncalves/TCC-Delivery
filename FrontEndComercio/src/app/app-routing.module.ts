@@ -93,6 +93,10 @@ const routes: Routes = [
     path: 'editar-produto/:id',
     loadChildren: () => import('./pages/editar-produto/editar-produto.module').then( m => m.EditarProdutoPageModule)
   },
+  {
+    path: 'editar-variacao/:id',
+    loadChildren: () => import('./pages/editar-variacao/editar-variacao.module').then( m => m.EditarVariacaoPageModule)
+  },
 
 ];
 

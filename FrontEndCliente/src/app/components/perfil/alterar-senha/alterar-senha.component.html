@@ -1,30 +1,65 @@
 <ion-modal backdropDismiss="false" [isOpen]="this.isOpen">
   <ng-template>
     <ion-content>
-      <ion-header>
+      <ion-header class="modal__header">
         <ion-toolbar>
-          <ion-title>
+          <ion-title class="modal__header__title">
             <b>Alterar Senha</b>
           </ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="this.fecharModal()"> a </ion-button>
+            <img class="modal__header__close" (click)="this.fecharModal()" src="../../../../assets/imgs/header-icons/close.png" alt="fechar">
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
+      <ion-col>
+        <ion-row class="modal__content ion-justify-content-center ion-align-items-center">
+          <ion-col size="11">
+            <form #alterarSenhaForm="ngForm" (ngSubmit)="this.clickMudarSenha()">
+                <ion-row>
+                  <ion-col>
+                    <ion-input (paste)="($event.preventDefault())" fill="outline" ngModel name="password" label="Senha:" type="password"
+                      required></ion-input>
+                    <ion-text class="erro" color="danger">{{ this.erros.password }}</ion-text>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col>
+                    <ion-input (paste)="($event.preventDefault())" fill="outline" ngModel name="novaSenha" label="Nova senha:" type="password"
+                      required></ion-input>
+                    <ion-text class="erro" color="danger">{{ this.erros.novaSenha }}</ion-text>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col>
+                    <ion-input (paste)="($event.preventDefault())" fill="outline" ngModel name="confirmarNovaSenha" label="Confirmar nova senha:" type="password"
+                      required></ion-input>
+                    <ion-text class="erro" color="danger">{{ this.erros.confirmarNovaSenha }}</ion-text>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="ion-justify-content-center ion-padding">
+                  <ion-col size="auto">
+                    <app-btn-loading
+                      btnNome="Alterar Senha"
+                      [disabled]="!this.alterarSenhaForm.valid"
+                      [loading]="this.loadingCadAlterarSenha"
+                    ></app-btn-loading>
+                  </ion-col>
+                </ion-row>
+            </form>
+          </ion-col>
+        </ion-row>
+      </ion-col>
     </ion-content>
+    <ion-alert
+          mode="ios"
+          [isOpen]="this.alertMudarSenha"
+          header="Deseja mudar sua senha?"
+          [buttons]="this.alertButtons"
+        ></ion-alert>
   </ng-template>
 </ion-modal>
-
-<!-- <ion-col>
-  <ion-input [readonly]="!this.estaEditando" minlength="8" ngModel errorText="Senhas não conferem invalida"
-    name="confirmarPassword" label="Confirmar Senha" type="password"
-    pattern="{{ this.editarForm.form.value.password }}"></ion-input>
-
-  <ion-col>
-                <ion-input [readonly]="!this.estaEditando" minlength="8" [ngModel]="this.cliente.password" name="password"
-                  helperText=" " label="Senha" type="pasword"></ion-input>
-                <ion-text class="erro" color="danger">{{ this.erros.password }}</ion-text>
-              </ion-col>
-</ion-col> -->
 
 

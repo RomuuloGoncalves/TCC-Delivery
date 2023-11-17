@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Pedido;
 use App\Models\PedidoProduto;
+use App\Models\Endereco;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Carbon\Carbon;
 
 class PedidoController extends Controller
 {
@@ -87,9 +89,45 @@ class PedidoController extends Controller
     public function showCarrinho()
     {
         $cliente =  ClienteController::getAuthCliente();
-        if (!$pedido = Pedido::with('cupom')->where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->get(['id', 'cod_cupom'])->first())
+        if (!$pedido = Pedido::with('pedido_produtos')->where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->get(['id', 'cod_cupom'])->first())
             $pedido = PedidoController::store();
         $pedido->pedido_produtos = PedidoProduto::with('produto')->where('cod_pedido', $pedido->id)->get(['id', 'total', 'observacao', 'quantidade', 'cod_produto']);
+        return response()->json($pedido, 200);
+    }
+
+    public function finalizarPedido(Request $request)
+    {
+        $regras = [
+            'forma_pagamento' => ['required', Rule::in(['Crédito', 'Dinheiro', 'Pix', 'Débito'])],
+            'cod_endereco' => ['required', 'integer', 'max_digits:30'],
+        ];
+
+        $validacao = Validator::make($request->all(), $regras);
+
+        if ($validacao->fails())
+            return response()->json($validacao->errors(), 422);
+
+        $cliente =  ClienteController::getAuthCliente();
+        if (!$pedido = Pedido::where('cod_cliente', $cliente->id)->where('status', 'Carrinho')->first())
+            PedidoController::store();
+
+        if(!$endereco = Endereco::where('id', $request->input('cod_endereco'))->where('cod_cliente', $cliente->id)->first())
+            return response()->json(['cod_endereco' => 'Endereco inválido'], 422);
+
+        $valor = 25.00;
+        foreach($pedido->pedido_produtos as $pedido_produto) {
+            $valor += $pedido_produto->total * $pedido_produto->quantidade;
+        }
+
+        $pedido->valor_total = $valor;
+        $pedido->data_pedido = Carbon::now();
+        $pedido->forma_pagamento = $request->input('forma_pagamento');
+        $pedido->endereco_pedido = $endereco->toJson();
+        $pedido->cod_endereco = $endereco->id;
+        $pedido->status = 'Em Espera';
+        $pedido->save();
+
+        PedidoController::store();
         return response()->json($pedido, 200);
     }
 
@@ -101,10 +139,13 @@ class PedidoController extends Controller
 
     public function showPedidosCliente()
     {
-        $cliente =  ClienteController::getAuthCliente();
-        $pedido = Pedido::with(['pedido_produtos.variacoes_selecionadas', 'endereco'])->where('cod_cliente', $cliente->id)->where('status', ['Em Espera', 'Em Entrega', 'Cancelado', 'Pronto'])->get();
 
-        return response()->json($pedido, 200);
+        if(!$cliente = ClienteController::getAuthCliente())
+            return response()->json(['error' => '"Cliente" not found'], 404);
+
+        $pedidos = Pedido::with(['pedido_produtos.variacoes_selecionadas', 'endereco'])->where('cod_cliente', $cliente->id)->where('status', ['Em Espera', 'Em Entrega', 'Cancelado', 'Pronto'])->get();
+
+        return response()->json($pedidos, 200);
     }
 
     /**

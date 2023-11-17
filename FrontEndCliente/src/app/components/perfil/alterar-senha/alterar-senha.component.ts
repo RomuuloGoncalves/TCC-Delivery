@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ToastService } from 'src/app/core/controller/toast.service';
-import { ActionSheetController } from '@ionic/angular';
+import { NgForm } from '@angular/forms';
+import { ClienteService } from 'src/app/core/services/cliente.service';
+import { Cliente } from 'src/app/core/interfaces/cliente';
 
 @Component({
   selector: 'app-alterar-senha',
@@ -10,32 +12,25 @@ import { ActionSheetController } from '@ionic/angular';
 })
 
 export class AlterarSenhaComponent implements OnInit {
+  @ViewChild('alterarSenhaForm') private alterarSenhaForm!: NgForm;
+
   @Input() public isOpen: boolean = false;
   @Output() public fechar: EventEmitter<any> = new EventEmitter();
 
-  constructor() {}
+  constructor(private Cliente: ClienteService, private Toast: ToastService) {}
 
   ngOnInit() {
+    this.erros = {};
   }
 
   fecharModal() {
+    this.resetForm();
     this.fechar.emit();
   }
 
-  loadingCadEndereco: boolean = false;
-  estaCadEndereco: boolean = false;
-
   erros: any = {};
 
-  dados = {
-    nome: '',
-    cep: '',
-    rua: '',
-    bairro: '',
-    numero: '',
-    complemento: ''
-  };
-
+  loadingCadAlterarSenha: boolean = false;
   alertMudarSenha: boolean = false;
 
   public alertButtons = [
@@ -55,11 +50,36 @@ export class AlterarSenhaComponent implements OnInit {
     },
   ];
 
-  public clickDeletarEndereco() {
+  public clickMudarSenha() {
     this.alertMudarSenha = true;
   }
 
   public mudarSenha() {
-    
+    this.loadingCadAlterarSenha = true
+    this.alertMudarSenha = false;
+    const dados = this.alterarSenhaForm.form.value
+    console.log(dados)
+    this.Cliente.alterarSenha(dados).subscribe(
+      (response: Cliente) => {
+        this.erros = {};
+        this.Toast.mostrarToast('sucesso', 'Senha Alterada com sucesso!');
+        this.loadingCadAlterarSenha = false;
+        this.fecharModal()
+      },
+      (badReponse: HttpErrorResponse) => {
+        const error = Object.entries(badReponse.error);
+        this.erros = {};
+        for (const [chave, valor] of error) this.erros[chave] = valor;
+        console.log(this.erros)
+        this.loadingCadAlterarSenha = false
+      }
+    )
+  }
+
+  public resetForm() {
+    this.erros = {};
+    this.alterarSenhaForm.form.controls['password'].setValue('');
+    this.alterarSenhaForm.form.controls['novaSenha'].setValue('');
+    this.alterarSenhaForm.form.controls['confirmarNovaSenha'].setValue('');
   }
 }

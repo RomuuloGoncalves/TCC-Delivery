@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { AlterarSenhaComponent } from './alterar-senha.component';
 import { LoadingModule } from '../../common/loading/loading.module';
 import { FormsModule } from '@angular/forms';
 import { BtnLoadingModule } from '../../common/btn-loading/btn-loading.module';
+import { PedidosComponent } from './pedidos.component';
 
 @NgModule({
-  declarations: [AlterarSenhaComponent],
+  declarations: [PedidosComponent],
   imports: [CommonModule, IonicModule, RouterModule, LoadingModule, BtnLoadingModule, FormsModule],
-  exports: [AlterarSenhaComponent]
+  exports: [PedidosComponent]
 })
-export class AlterarSenhaModule {}
+export class PedidosModule {}

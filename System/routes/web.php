@@ -26,7 +26,9 @@
         $router->post('/logout', 'ClienteController@logout');
 
         $router->group(['middleware' => 'authCliente'], function () use ($router) {
+            $router->get('/pedidos', 'PedidoController@showPedidosCliente');
             $router->put('/editar', 'ClienteController@update');
+            $router->put('/alterar-senha', 'ClienteController@alterarSenha');
             $router->get('/', 'ClienteController@index');
         });
 
@@ -42,6 +44,7 @@
                 $router->post('/adicionar', 'PedidoProdutoController@store');
                 $router->delete('/excluir/{id}', 'PedidoProdutoController@destroy');
                 $router->put('/editar', 'PedidoProdutoController@update');
+                $router->put('/finalizar', 'PedidoController@finalizarPedido');
             });
         });
 
@@ -110,7 +113,6 @@
             $router->get('/', 'PedidoController@index');
             $router->get('/historico', 'PedidoController@historico');
             $router->get('/{id}', 'PedidoController@show');
-            $router->get('/pedidos/{id}', 'PedidoController@showPedidosCliente');
         });
     });
 
@@ -161,6 +163,7 @@
             $router->post('/cadastrar', 'VariacaoController@store');
             $router->get('/', 'VariacaoController@index');
             $router->put('/editar', 'VariacaoController@update');
+            $router->delete('/{id}', 'VariacaoController@show');
             $router->delete('/excluir/{id}', 'VariacaoController@destroy');
         });
     });

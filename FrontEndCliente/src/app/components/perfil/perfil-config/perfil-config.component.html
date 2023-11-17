@@ -12,8 +12,9 @@
         <img class="page__header__icon" src="../../../../assets/imgs/perfil-icons/add.svg" alt="adicionar">
       </ion-col>
     </ion-row>
-
-    <ion-row class="page_content ion-justify-content-center">
+  </ion-col>
+  <ion-col size="12">
+    <ion-row class="page__content ion-justify-content-center ion-align-items-center">
       <ion-col size="8">
         <form #editarForm="ngForm" (ngSubmit)="this.editar()">
           <ion-row class="input-container">
@@ -36,7 +37,7 @@
                 helperText=" " label="Telefone" type="tel" [maskito]="this.Mask.telefone"  [maskitoElement]="this.Mask.maskPredicate"></ion-input>
               <ion-text class="erro" color="danger">{{ this.erros.telefone }}</ion-text>
             </ion-col>
-            
+
             <ion-col size="auto" *ngIf="this.estaEditando">
               <ion-button (click)="this.abrirFecharModal(true)"class="btn_alterar-senha">Alterar Senha</ion-button>
             </ion-col>

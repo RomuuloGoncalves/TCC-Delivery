@@ -92,6 +92,22 @@ class VariacaoController extends Controller
         return response()->json($variacao, 200);
     }
 
+        /**
+     * show
+     *
+     * @return Variacao
+     */
+
+     public function show(int $id)
+     {
+         $variacao = Variacao::with(['grupo_variacao'])->where('id', $id)->find($id);
+ 
+         if (!$variacao)
+             return response()->json(['mensage' => 'Variacao não encontrada'], 404);
+ 
+         return response()->json($variacao, 200);
+     }
+
     /**
      * destroy
      *
