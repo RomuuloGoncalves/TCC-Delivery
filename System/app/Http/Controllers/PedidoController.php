@@ -122,7 +122,9 @@ class PedidoController extends Controller
         $pedido->valor_total = $valor;
         $pedido->data_pedido = Carbon::now();
         $pedido->forma_pagamento = $request->input('forma_pagamento');
-        $pedido->endereco_pedido = $endereco->toJson();
+        $pedido->endereco_pedido = "$endereco->rua, N° $endereco->numero";
+        if ($endereco->complemento)
+            $pedido->endereco_pedido += ", $endereco->complemento";
         $pedido->cod_endereco = $endereco->id;
         $pedido->status = 'Em Espera';
         $pedido->save();

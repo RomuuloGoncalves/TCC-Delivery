@@ -3,11 +3,11 @@ import { Component, NgModuleFactory, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastService } from 'src/app/core/controller/toast.service';
 import { Cupom } from 'src/app/core/interfaces/cupom';
+import { Endereco } from 'src/app/core/interfaces/endereco';
 import { PedidoProduto } from 'src/app/core/interfaces/pedido-produto';
-import { Produto } from 'src/app/core/interfaces/produto';
 import { CarrinhoService } from 'src/app/core/services/carrinho.service';
 import { CupomService } from 'src/app/core/services/cupom.service';
-import { ProdutoService } from 'src/app/core/services/produto.service';
+import { EnderecoService } from 'src/app/core/services/endereco.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -18,7 +18,8 @@ export class CarrinhoPage implements OnInit {
   constructor(
     private carrinhoService: CarrinhoService,
     private cupomService: CupomService,
-    private Toast: ToastService
+    private Toast: ToastService,
+    private Endereco: EnderecoService
   ) {}
 
   ngOnInit() {
@@ -27,9 +28,10 @@ export class CarrinhoPage implements OnInit {
 
   @ViewChild('formCupom') private formCupom!: NgForm;
 
-  frete: number = 25;
   subtotal: number = 0;
   total: number = 0;
+
+  isOpen: boolean = false;
 
   pedidoProdutos: PedidoProduto[] = [];
 
@@ -38,6 +40,8 @@ export class CarrinhoPage implements OnInit {
 
   loading: boolean = true;
   loadingCupom: boolean = false;
+
+  enderecos?: Endereco[];
 
   carregarPagina() {
     this.loading = true;
@@ -62,7 +66,7 @@ export class CarrinhoPage implements OnInit {
       this.subtotal += produto.subtotal;
     });
 
-    const aux = this.subtotal + this.frete;
+    const aux = this.subtotal;
     this.total = (!this.cupom)
       ? aux
       : (aux) - aux*0.01*this.cupom!.porcentagem_desconto!;
@@ -109,5 +113,18 @@ export class CarrinhoPage implements OnInit {
         console.error(badResponse);
       }
     );
+  }
+
+  abrirModal() {
+    this.isOpen = true;
+    this.enderecos = undefined;
+    this.Endereco.listagem().subscribe(
+      (response: Endereco[]) => {
+        this.enderecos = response;
+      },
+      (error: HttpErrorResponse) => {
+        console.error(error);
+      }
+    )
   }
 }

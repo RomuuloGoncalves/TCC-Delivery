@@ -1,5 +1,5 @@
 ion-content {
-  
+
   &::-webkit-scrollbar {
     width: 7px;
   }
@@ -15,6 +15,7 @@ ion-content {
   }
 
 }
+
 .wrapper {
   .itens-borda-superior {
     height: 100%;
@@ -32,8 +33,8 @@ ion-content {
   }
 
   .imagem {
-   border-radius: 20px;
-   box-shadow: 2px 2px 20px rgba(17, 17, 17, 0.452);
+    border-radius: 20px;
+    box-shadow: 2px 2px 20px rgba(17, 17, 17, 0.452);
   }
 
   .subtitulo {

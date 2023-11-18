@@ -20,7 +20,7 @@ return new class extends Migration
             $table->dateTime('data_pedido')->nullable();
             $table->dateTime('data_entrega')->nullable();
             $table->dateTime('data_pagamento')->nullable();
-            $table->json('endereco_pedido')->nullable();
+            $table->string('endereco_pedido')->nullable();
             $table->enum('status', ['Pronto', 'Em Entrega', 'Cancelado', 'Em Espera', 'Carrinho'])->default('Carrinho');
             $table->enum('forma_pagamento', ['Crédito', 'Dinheiro', 'Pix', 'Débito'])->nullable();
             $table->unsignedBigInteger('cod_cliente');
