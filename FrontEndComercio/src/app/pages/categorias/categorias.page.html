@@ -1,11 +1,11 @@
 <ion-content [fullscreen]="true">
   <ng-container *ngIf="!this.loading">
     <app-header></app-header>
-    <ion-row class="ion-justify-content-between ion-align-items-center">
-      <ion-col size="12" sizeMd="6">
+    <ion-row class="ion-justify-content-between ion-align-items-center ion-padding">
+      <ion-col size="12" sizeMd="auto">
         <ion-label id="titulo">Categorias</ion-label>
       </ion-col>
-      <ion-col size="12" sizeMd="4">
+      <ion-col size="12" sizeMd="auto">
         <ion-row class="ion-justify-between ion-align-items-center">
           <ion-col [routerLink]="['/criacao-cupons']" routerDirection="back" size="1">
             <ion-icon name="add-outline"></ion-icon>
@@ -45,6 +45,6 @@
     </ion-row>
   </ng-container>
   <app-loading [loading]="this.loading"></app-loading>
-  <ion-alert mode="ios" [isOpen]="this.alertExcluirCateogria" header="Deseja excluir este cupom?"
+  <ion-alert mode="ios" [isOpen]="this.alertExcluirCateogria" header="Deseja excluir esta categoria?"
     [buttons]="this.alertButtons"></ion-alert>
 </ion-content>
