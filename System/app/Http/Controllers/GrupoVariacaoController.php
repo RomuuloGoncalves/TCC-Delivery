@@ -87,7 +87,18 @@ class GrupoVariacaoController extends Controller
         return response()->json($grupo_variacao, 200);
     }
 
-    public function show(int $cod_produto)
+    public function show(int $id)
+    {
+        $grupo_variacao = GrupoVariacao::with('variacao')
+            ->where('id', $id)->find($id);
+
+        if (!$grupo_variacao)
+            return response()->json(['mensage' => 'Variacao não encontrada'], 404);
+
+        return response()->json($grupo_variacao, 200);
+    }
+
+    public function showProduto(int $cod_produto)
     {
         $grupo_variacao = GrupoVariacao::with('variacao')
             ->where('cod_produto', $cod_produto)

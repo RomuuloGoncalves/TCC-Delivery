@@ -2,11 +2,11 @@ import { Produto } from "./produto";
 import { Variacao } from "./variacao";
 
 export interface GrupoVariacoes {
-  id_grupo_variacoes?: number;
   id?: number;
   tipo: string;
   variacao?: Variacao[];
-  qtdd_min?: number;
-  qtdd_max?: number;
+  quantidade_variacoes_min: number;
+  quantidade_variacoes_max: number;
+  cod_produto: number;
   produto?: Produto;
 }
