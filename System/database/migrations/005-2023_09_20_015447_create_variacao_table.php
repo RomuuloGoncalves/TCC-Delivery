@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('Variacoes', function (Blueprint $table) {
             $table->id('id');
             $table->string('nome');
+            $table->string('descricao')->nullable();
             $table->unsignedDecimal('valor', 8, 2)->default(0);
             $table->string('imagem')->nullable();
             $table->unsignedBigInteger('cod_grupo_variacoes');

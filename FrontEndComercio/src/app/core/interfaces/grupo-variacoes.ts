@@ -1,3 +1,4 @@
+import { Produto } from "./produto";
 import { Variacao } from "./variacao";
 
 export interface GrupoVariacoes {
@@ -7,4 +8,5 @@ export interface GrupoVariacoes {
   variacao?: Variacao[];
   qtdd_min?: number;
   qtdd_max?: number;
+  produto?: Produto;
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ServerService } from './server.service';
+import { Variacao } from '../interfaces/variacao';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,12 @@ export class VariacaoService {
     return this.Server.post('/variacao/cadastrar', data);
   }
 
-  public pegarProduto(id: number) {
+  public pegarVariacao(id: number) {
     return this.Server.get(`/variacao/${id}`);
+  }
+
+  public editarVariacao(data: any) {
+    return this.Server.put('/variacao/editar', data);
   }
 
   public excluirVariacao(id: any) {

@@ -5,6 +5,6 @@
   <ion-card-content>
     Preço <b>{{variacao!.valor}}</b>
   </ion-card-content>
-  <ion-button fill="clear">Editar</ion-button>
-  <ion-button fill="clear">Excluir</ion-button>
+  <ion-button fill="clear" (click)="navigate('editar-variacao')">Editar</ion-button>
+  <ion-button fill="clear" (click)="excluir()">Excluir</ion-button>
 </ion-card>

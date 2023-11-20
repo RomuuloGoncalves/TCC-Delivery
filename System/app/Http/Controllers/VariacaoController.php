@@ -52,7 +52,7 @@ class VariacaoController extends Controller
     {
         $regras = [
             'nome' => ['nullable', 'string', 'max:255'],
-            'valor' => ['nullable', 'decimal:2', 'min_digit:1', 'max_digits:999999999'],
+            'valor' => ['required', 'numeric', 'min:0'],
             'descricao' => ['nullable', 'string', 'max:500']
         ];
 
@@ -100,7 +100,7 @@ class VariacaoController extends Controller
 
      public function show(int $id)
      {
-         $variacao = Variacao::with(['grupo_variacao'])->where('id', $id)->find($id);
+         $variacao = Variacao::with(['grupo_variacao.produto'])->where('id', $id)->find($id);
  
          if (!$variacao)
              return response()->json(['mensage' => 'Variacao não encontrada'], 404);
