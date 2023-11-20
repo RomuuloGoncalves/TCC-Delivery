@@ -64,7 +64,7 @@ export class AlterarSenhaComponent implements OnInit {
         this.erros = {};
         this.Toast.mostrarToast('sucesso', 'Senha Alterada com sucesso!');
         this.loadingCadAlterarSenha = false;
-        this.resetForm()
+        this.fecharModal()
       },
       (badReponse: HttpErrorResponse) => {
         const error = Object.entries(badReponse.error);
@@ -79,7 +79,7 @@ export class AlterarSenhaComponent implements OnInit {
   public resetForm() {
     this.erros = {};
     this.alterarSenhaForm.form.controls['password'].setValue('');
-    this.alterarSenhaForm.form.controls['newPassword'].setValue('');
-    this.alterarSenhaForm.form.controls['confirmNewPassword'].setValue('');
+    this.alterarSenhaForm.form.controls['novaSenha'].setValue('');
+    this.alterarSenhaForm.form.controls['confirmarNovaSenha'].setValue('');
   }
 }

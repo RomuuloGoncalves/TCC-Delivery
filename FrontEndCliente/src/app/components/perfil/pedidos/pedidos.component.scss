@@ -1,0 +1,43 @@
+.page {
+  background-color: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  height: 650px;
+  border-radius: 20px;
+  margin: 40px;
+  padding: 40px;
+
+  &__header {
+    &__title {
+      font-size: 1.8rem;
+      color: var(--ion-color-dark);
+    }
+
+    &__icon {
+      width: 35px;
+      cursor: pointer;
+    }
+  }
+
+  .input-container {
+    min-height: 87px;
+
+    .erro {
+      font-size: .8em;
+    }
+  }
+
+  form {
+    ion-text {
+      font-size: 0.8rem;
+    }
+
+    ion-input {
+      --color: var(--ion-color-primary-variation);
+      margin-bottom: 10px;
+    }
+
+    .btn_alterar-senha {
+      height: 51px;
+    }
+  }
+}

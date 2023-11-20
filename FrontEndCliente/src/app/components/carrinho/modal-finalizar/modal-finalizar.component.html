@@ -1,0 +1,102 @@
+<ion-modal backdropDismiss="false" [isOpen]="this.isOpen">
+  <ng-template>
+    <ion-content>
+      <div class="wrapper">
+        <ng-container *ngIf="this.enderecos !== undefined">
+          <ion-header>
+            <ion-toolbar>
+              <ion-title class="titulo">Finalizar Pedido</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="this.fechar.emit()"><ion-icon name="close-outline"
+                    size="large"></ion-icon></ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ng-container *ngIf="this.enderecos.length">
+            <form (ngSubmit)="this.finalizarCarrinho()">
+              <ion-row>
+                <ion-col class="ion-margin">
+                  <ion-text color="secondary">
+                    <h1>Endereços:</h1>
+                  </ion-text>
+                </ion-col>
+              </ion-row>
+              <ion-row class="ion-align-items-center ion-padding-horizontal ion-justify-content-center">
+                <ion-col size="12">
+                  <ion-radio-group (ionChange)="this.selecionarEndereco($event)">
+                    <ng-container *ngFor="let endereco of this.enderecos; let id = index">
+                      <ion-item>
+                        <ion-radio [value]="id">
+                          <ion-item class="endereco__item">
+                            <p><b>Nome: </b> {{this.endereco.nome}}</p>
+                          </ion-item>
+                          <ion-item class="endereco__item" lines="none">
+                            <p><b>Endereço: </b>Rua {{ endereco.rua }}, N° {{endereco.numero}} {{ (endereco.complemento)
+                              ?
+                              ', ' +
+                              this.endereco.complemento : ''}}</p>
+                          </ion-item>
+                        </ion-radio>
+                      </ion-item>
+                    </ng-container>
+                  </ion-radio-group>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="ion-margin">
+                  <ion-text color="secondary">
+                    <h1>Formas de Pagamento:</h1>
+                  </ion-text>
+                </ion-col>
+              </ion-row>
+              <ion-row class="ion-align-items-center ion-padding-horizontal ion-justify-content-center">
+                <ion-col size="12">
+                  <ion-radio-group (ionChange)="this.selecionarFormaPagamento($event)">
+                    <ion-item>
+                      <ion-radio value="Crédito" justify="space-between">Crédito</ion-radio>
+                    </ion-item>
+                    <ion-item>
+                      <ion-radio value="Dinheiro" justify="space-between">Dinheiro</ion-radio>
+                    </ion-item>
+                    <ion-item>
+                      <ion-radio value="Pix" justify="space-between">Pix</ion-radio>
+                    </ion-item>
+                    <ion-item>
+                      <ion-radio value="Débito" justify="space-between">Débito</ion-radio>
+                    </ion-item>
+                  </ion-radio-group>
+                </ion-col>
+              </ion-row>
+              <ion-row class="ion-justify-content-center">
+                <ion-col size="auto" class="ion-margin-vertical">
+                  <app-btn-loading btnNome="Finalizar" [loading]="this.loading"
+                    [disabled]="!(this.enderecoSelecionado && this.formaPagamentoSelecionada)"></app-btn-loading>
+                </ion-col>
+              </ion-row>
+            </form>
+          </ng-container>
+          <ng-container *ngIf="!this.enderecos.length">
+            <ion-row class="ion-justify-content-center ion-align-content-center">
+              <ion-col class="ion-margin">
+                <ion-text color="primary" class="ion-text-center">
+                  <h1>Você não possue endereços! </h1>
+                </ion-text>
+                <ion-text class="ion-text-center">
+                  <h4>Cadastre pelo meno um endereço para finalizar o pedido!</h4>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="auto">
+                <ion-button class="ion-padding" (click)="this.fecharModal()" fill="outline">
+                  Ir para a página do perfil
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ng-container>
+        </ng-container>
+      </div>
+      <app-loading [loading]="this.enderecos === undefined"></app-loading>
+    </ion-content>
+  </ng-template>
+</ion-modal>

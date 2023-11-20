@@ -12,6 +12,7 @@ import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { CardCarrinhoModule } from 'src/app/components/carrinho/card-carrinho/card-carrinho.module';
 import { LoadingModule } from 'src/app/components/common/loading/loading.module';
 import { BtnLoadingModule } from 'src/app/components/common/btn-loading/btn-loading.module';
+import { ModalFinalizarComponent } from 'src/app/components/carrinho/modal-finalizar/modal-finalizar.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,6 @@ import { BtnLoadingModule } from 'src/app/components/common/btn-loading/btn-load
     LoadingModule,
     BtnLoadingModule,
   ],
-  declarations: [CarrinhoPage],
+  declarations: [CarrinhoPage, ModalFinalizarComponent],
 })
 export class CarrinhoPageModule {}

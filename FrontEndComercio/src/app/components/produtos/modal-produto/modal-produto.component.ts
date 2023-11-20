@@ -19,7 +19,6 @@ export class ModalProdutoComponent implements OnInit, OnDestroy {
   constructor(private Produto: ProdutosService, private router: Router) { }
 
   ngOnInit() {
-    console.log(this.produto)
   }
 
   ngOnDestroy() {

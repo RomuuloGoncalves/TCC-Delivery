@@ -26,4 +26,13 @@ export class CarrinhoService {
   public editarProduto(produto: PedidoProduto) {
     return this.Server.put(`/cliente/carrinho/editar`, produto);
   }
+
+  public finalizar(formaPagamento: string, cod_endereco: number) {
+    const data = {
+      forma_pagamento: formaPagamento,
+      cod_endereco: cod_endereco
+    };
+
+    return this.Server.put('/cliente/carrinho/finalizar', data);
+  }
 }

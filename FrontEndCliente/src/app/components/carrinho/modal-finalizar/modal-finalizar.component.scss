@@ -1,0 +1,13 @@
+ion-item::part(native) {
+  background: transparent;
+}
+
+.endereco__item {
+  width: 500px;
+}
+
+.titulo {
+  font-size: 1.3rem;
+  color: var(--ion-color-primary);
+  font-weight: 600;
+}

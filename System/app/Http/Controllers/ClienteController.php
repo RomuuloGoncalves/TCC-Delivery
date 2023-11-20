@@ -111,8 +111,8 @@ class ClienteController extends Controller
     public function alterarSenha(Request $request) {
         $regras = [
             'password' => ['nullable', 'string', 'max:255', 'min:8'],
-            'newPassword' => ['nullable', 'string', 'max:255', 'min:8'],
-            'confirmNewPassword' => ['nullable', 'string', 'max:255', 'min:8'],
+            'novaSenha' => ['nullable', 'string', 'max:255', 'min:8'],
+            'confirmarNovaSenha' => ['nullable', 'string', 'max:255', 'min:8'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -132,13 +132,13 @@ class ClienteController extends Controller
         if(!$token = auth('cliente')->attempt($credenciais))
             return response()->json(['password' => 'Senha inválida'], 422);
 
-        if(!$data['password'] === $data['newPassword'])
-            return response()->json(['newPassword' => 'Não insira a mesma senha antiga'], 422);
+        if(!$data['password'] === $data['novaSenha'])
+            return response()->json(['novaSenha' => 'Não insira a mesma senha antiga'], 422);
 
-        if(!$data['newPassword'] === $data['confirmNewPassword'])
-            return response()->json(['confirmNewPassword' => 'Insira a mesma senha'], 422);
+        if(!$data['novaSenha'] === $data['confirmarNovaSenha'])
+            return response()->json(['confirmarNovaSenha' => 'Insira a mesma senha'], 422);
 
-        $cliente->password = password_hash($data['newPassword'], PASSWORD_DEFAULT);
+        $cliente->password = password_hash($data['novaSenha'], PASSWORD_DEFAULT);
         $cliente->save();
 
         return response()->json("Foi", 201);
