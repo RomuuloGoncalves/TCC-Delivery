@@ -33,9 +33,9 @@ class FuncionarioController extends Controller {
 
     public function store(Request $request) {
         $regras = [
-            'nome' => ['required', 'string', 'max:255'],
-            'login' => ['required', 'string', 'string', 'max:255', 'unique:Funcionarios'],
-            'password' => ['required', 'string', 'max:255', 'min:8'],
+            'nome' => ['required', 'string', 'min:2', 'max:80'],
+            'login' => ['required', 'string', 'max:255', 'unique:Funcionarios'],
+            'password' => ['required', 'string', 'min:8', 'max:255'],
             'nivel_acesso' => ['required', Rule::in(['1', '2', '3'])],
         ];
 
@@ -63,7 +63,7 @@ class FuncionarioController extends Controller {
     public function login(Request $request) {
         $regras = [
             'login' => ['required', 'string', 'max:255', 'exists:Funcionarios'],
-            'password' => ['required', 'string', 'max:255', 'min:8'],
+            'password' => ['required', 'string', 'min:8', 'max:255'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);

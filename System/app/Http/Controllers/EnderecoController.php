@@ -20,10 +20,10 @@ class EnderecoController extends Controller {
 
     public function store(Request $request) {
         $regras = [
-            'nome' => ['required', 'string', 'max:255'],
+            'nome' => ['required', 'min:2', 'max:80', 'unique:Enderecos'],
             'complemento' => ['nullable', 'string', 'max:255'],
             'bairro' => ['required', 'string', 'max:255'],
-            'numero' => ['required', 'string', 'max:255'],
+            'numero' => ['required', 'integer', 'min:1', 'max_digits:5'],
             'rua' => ['required', 'string', 'max:255'],
             'cep' => ['nullable', 'string', 'size:9'],
         ];
@@ -55,10 +55,10 @@ class EnderecoController extends Controller {
     public function update(Request $request) {
         $regras = [
             'id' => ['required', 'integer', 'max_digits:30'],
-            'nome' => ['nullable', 'string', 'max:255'],
+            'nome' => ['nullable', 'string', 'min:2', 'max:80', 'unique:Enderecos'],
             'complemento' => ['nullable', 'string', 'max:255'],
             'bairro' => ['nullable', 'string', 'max:255'],
-            'numero' => ['nullable', 'string', 'max:255'],
+            'numero' => ['nullable', 'integer', 'min:1', 'max_digits:5'],
             'rua' => ['nullable', 'string', 'max:255'],
             'cep' => ['nullable', 'string', 'size:9']
         ];

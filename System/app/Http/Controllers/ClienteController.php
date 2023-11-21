@@ -39,11 +39,10 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         $regras = [
-            'nome' => ['required', 'string', 'max:255'],
+            'nome' => ['required', 'string', 'min:2', 'max:80'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:Clientes'],
-            'password' => ['required', 'string', 'max:255', 'min:8'],
+            'password' => ['required', 'string', 'min:8', 'max:255'],
             'telefone' => ['required', 'string', 'size:17', 'unique:Clientes'],
-
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -69,9 +68,9 @@ class ClienteController extends Controller
 
     public function update(Request $request) {
         $regras = [
-            'nome' => ['nullable', 'string', 'max:255'],
+            'nome' => ['nullable', 'string', 'min:2', 'max:80'],
             'email' => ['nullable', 'string', 'email', 'max:255', 'unique:Clientes'],
-            'password' => ['nullable', 'string', 'max:255', 'min:8'],
+            'password' => ['nullable', 'string', 'min:8', 'max:255'],
             'telefone' => ['nullable', 'string', 'size:17', 'unique:Clientes'],
             'descricao' => ['required', 'string', 'max:500'],
         ];
@@ -110,9 +109,9 @@ class ClienteController extends Controller
 
     public function alterarSenha(Request $request) {
         $regras = [
-            'password' => ['nullable', 'string', 'max:255', 'min:8'],
-            'novaSenha' => ['nullable', 'string', 'max:255', 'min:8'],
-            'confirmarNovaSenha' => ['nullable', 'string', 'max:255', 'min:8'],
+            'password' => ['nullable', 'string', 'min:8', 'max:255'],
+            'novaSenha' => ['nullable', 'string', 'min:8', 'max:255'],
+            'confirmarNovaSenha' => ['nullable', 'string', 'min:8', 'max:255'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);
@@ -141,7 +140,7 @@ class ClienteController extends Controller
         $cliente->password = password_hash($data['novaSenha'], PASSWORD_DEFAULT);
         $cliente->save();
 
-        return response()->json("Foi", 201);
+        return response()->json("Senha alterada com sucesso", 201);
     }
 
     /**
@@ -154,7 +153,7 @@ class ClienteController extends Controller
     {
         $regras = [
             'email' => ['required', 'string', 'email', 'max:255', 'exists:Clientes'],
-            'password' => ['required', 'string', 'max:255', 'min:8'],
+            'password' => ['required', 'string', 'min:8', 'max:255'],
         ];
 
         $validacao = Validator::make($request->all(), $regras);

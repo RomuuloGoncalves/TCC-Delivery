@@ -17,16 +17,16 @@ class GrupoVariacaoController extends Controller
     {
         $regras = [
             'tipo' => ['required', 'string', 'max:255'],
-            'quantidade_variacoes_min' => ['required', 'integer'],
-            'quantidade_variacoes_max' => ['required', 'integer'],
+            'quantidade_variacoes_min' => ['required', 'integer', 'min:1'],
+            'quantidade_variacoes_max' => ['required', 'integer', 'min:1'],
             'cod_produto' => ['required', 'integer']
         ];
 
-
-
         $validacao = Validator::make($request->all(), $regras);
+        $quantidade_max = $request->input('quantidade_variacoes_max');
+        $quantidade_min = $request->input('quantidade_variacoes_min');
 
-        if ($request->input('quantidade_variacoes_max') < $request->input('quantidade_variacoes_min'))
+        if ($quantidade_max < $quantidade_min)
             return response()->json([
                 'quantidade_variacoes_min' => ['Deve ser menor que quantidade máxima']
             ], 422);
@@ -36,8 +36,8 @@ class GrupoVariacaoController extends Controller
 
         $grupo_variacao = GrupoVariacao::create([
             'tipo' => $request->input('tipo'),
-            'quantidade_variacoes_min' => $request->input('quantidade_variacoes_min'),
-            'quantidade_variacoes_max' => $request->input('quantidade_variacoes_max'),
+            'quantidade_variacoes_min' => $quantidade_min,
+            'quantidade_variacoes_max' => $quantidade_max,
             'cod_produto' => $request->input('cod_produto')
 
         ]);

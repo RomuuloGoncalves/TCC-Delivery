@@ -36,8 +36,8 @@ class CupomController extends Controller
     public function store(Request $request)
     {
         $regras = [
-            'nome' => ['required', 'string', 'max:255', 'unique:Cupons'],
-            'porcentagem_desconto' => ['nullable', 'min:1', 'max:100'],
+            'nome' => ['required', 'string', 'min:2', 'max:80', 'unique:Cupons'],
+            'porcentagem_desconto' => ['nullable', 'numeric', 'min:1', 'max:100'],
             'data_validade' => ['nullable', 'after:now'],
             'quantidade' => ['nullable', 'integer', 'max_digits:30'],
             'status' => ['required', 'boolean']
@@ -106,8 +106,8 @@ class CupomController extends Controller
     {
         $regras = [
             'id' => ['required', 'integer', 'max_digits:30'],
-            'nome' => ['required', 'string', 'max:255', 'unique:Cupons'],
-            'porcentagem_desconto' => ['nullable', 'min:1', 'max:100'],
+            'nome' => ['required', 'string', 'min:8', 'max:255', 'unique:Cupons'],
+            'porcentagem_desconto' => ['nullable', 'numeric', 'min:1', 'max:100'],
             'data_validade' => ['nullable', 'after:now'],
             'quantidade' => ['nullable', 'integer', 'max_digits:30'],
             'status' => ['required', 'boolean']
