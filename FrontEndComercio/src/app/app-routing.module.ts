@@ -97,6 +97,11 @@ const routes: Routes = [
     path: 'editar-variacao/:id',
     loadChildren: () => import('./pages/editar-variacao/editar-variacao.module').then( m => m.EditarVariacaoPageModule)
   },
+  {
+    path: 'editar-grupo-var/:id',
+    loadChildren: () => import('./pages/editar-grupo-var/editar-grupo-var.module').then( m => m.EditarGrupoVarPageModule)
+  },
+
 
 ];
 

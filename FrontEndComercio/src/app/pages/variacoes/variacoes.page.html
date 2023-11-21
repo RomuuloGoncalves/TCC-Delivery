@@ -19,7 +19,7 @@
             <ion-accordion-group [multiple]="true">
               <ng-container *ngFor="let grupoVariacao of grupoVariacoes">
                 <app-accordion-grupo-var (clickCard)="this.selecionarProduto($event)"
-                   [tituloSessao]="this.grupoVariacao.tipo"
+                   [grupoVariacao]="this.grupoVariacao"
                   [variacoes]="this.grupoVariacao.variacao"></app-accordion-grupo-var>
               </ng-container>
             </ion-accordion-group>

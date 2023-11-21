@@ -178,7 +178,8 @@
         $router->group(['middleware' => 'authFuncionario'], function () use ($router) {
             $router->post('/cadastrar', 'GrupoVariacaoController@store');
             $router->get('/', 'GrupoVariacaoController@index');
-            $router->get('/{cod_produto}', 'GrupoVariacaoController@show');
+            $router->get('/{cod_produto}', 'GrupoVariacaoController@showProduto');
+            $router->get('/desc/{id}', 'GrupoVariacaoController@show');
             $router->put('/editar', 'GrupoVariacaoController@update');
             $router->delete('/excluir/{id}', 'GrupoVariacaoController@destroy');
         });

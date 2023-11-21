@@ -38,6 +38,7 @@ export class EditarVariacaoPage implements OnInit {
     this.variacaoService.pegarVariacao(this.id_variacao).subscribe(
       (response: Variacao) => {
         this.variacao = response;
+        console.log(this.variacao)
       },
       (error: HttpErrorResponse) => {
         console.error(error);
@@ -57,9 +58,13 @@ export class EditarVariacaoPage implements OnInit {
         this.location.back();
         this.Toast.mostrarToast('sucesso', 'Variação atualizada com sucesso!');
       },
-      (error: HttpErrorResponse) => {
-        console.error(error);
-      }
+      (badResponse: HttpErrorResponse) => {
+        const error = Object.entries(badResponse.error);
+        this.erros = {};
+
+        for (const [chave, valor] of error) this.erros[chave] = valor;
+
+        this.btnLoading = false;      }
     );
   }
 }
