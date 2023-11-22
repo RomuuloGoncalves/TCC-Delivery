@@ -31,9 +31,7 @@ export class VendasComponent implements OnInit {
     return new Promise<void>((resolve, reject) => {
       this.DashBoard.vendasSemanais().subscribe(
         (response) => {
-          console.log("vendas", response)
           this.dados = response;
-          console.log()
           resolve();
         },
         (error) => {
@@ -48,9 +46,7 @@ export class VendasComponent implements OnInit {
     return new Promise<void>((resolve, reject) => {
       this.DashBoard.vendasMensais().subscribe(
         (response) => {
-          console.log("mensal", response)
           this.dados = response;
-          console.log()
           resolve();
         },
         (error) => {
@@ -65,9 +61,7 @@ export class VendasComponent implements OnInit {
     return new Promise<void>((resolve, reject) => {
       this.DashBoard.vendasAnuais().subscribe(
         (response) => {
-          console.log("mensal", response)
           this.dados = response;
-          console.log()
           resolve();
         },
         (error) => {

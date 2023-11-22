@@ -58,7 +58,6 @@ export class AlterarSenhaComponent implements OnInit {
     this.loadingCadAlterarSenha = true
     this.alertMudarSenha = false;
     const dados = this.alterarSenhaForm.form.value
-    console.log(dados)
     this.Cliente.alterarSenha(dados).subscribe(
       (response: Cliente) => {
         this.erros = {};

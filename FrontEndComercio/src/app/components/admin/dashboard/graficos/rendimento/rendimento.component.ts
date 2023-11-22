@@ -32,9 +32,7 @@ export class RendimentoComponent implements OnInit, OnChanges {
     return new Promise<void>((resolve, reject) => {
       this.DashBoard.rendimentoSemanal().subscribe(
         (response) => {
-          console.log("rendomento", response)
           this.dados = response;
-          console.log()
           resolve();
         },
         (error) => {
@@ -49,9 +47,7 @@ export class RendimentoComponent implements OnInit, OnChanges {
     return new Promise<void>((resolve, reject) => {
       this.DashBoard.rendimentoMensal().subscribe(
         (response) => {
-          console.log("mensal", response)
           this.dados = response;
-          console.log()
           resolve();
         },
         (error) => {
@@ -66,9 +62,7 @@ export class RendimentoComponent implements OnInit, OnChanges {
     return new Promise<void>((resolve, reject) => {
       this.DashBoard.rendimentoAnual().subscribe(
         (response) => {
-          console.log("mensal", response)
           this.dados = response;
-          console.log()
           resolve();
         },
         (error) => {

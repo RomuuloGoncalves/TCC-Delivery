@@ -1,0 +1,53 @@
+<ion-modal backdropDismiss="false" [isOpen]="this.isOpen">
+  <ng-template>
+    <ion-content>
+      <div class="wrapper">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>{{this.varicao.nome}}</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="this.fechar.emit()"><ion-icon name="close-outline"
+                  size="large"></ion-icon></ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-row class="ion-align-items-center ion-padding-horizontal ion-justify-content-center">
+          <ion-col size="11.5">
+            <ion-row class="ion-justify-content-center">
+              <img src="{{this.varicao.imagem}}" alt="{{this.varicao.nome}}">
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="12" sizeMd="8">
+            <ion-list lines="full">
+              <ion-item>
+                <ion-label><b>Nome:</b> {{ this.varicao.nome }}</ion-label>
+              </ion-item>
+              
+              <ion-item>
+                <ion-label><b>Descrição:</b> {{ this.varicao.descricao }}</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+
+          <ion-col size="12">
+
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="12" sizeLg="4">
+                <ion-button expand="block" size="large">Editar</ion-button>
+              </ion-col>
+              <ion-col size="12" sizeLg="4">
+                <ion-button fill="outline" expand="block" id="present-alert" size="large">Excluir</ion-button>
+
+                <ion-alert mode="ios" trigger="present-alert" header="Deseja excluir este produto?"
+                  [buttons]="alertButtons"></ion-alert>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

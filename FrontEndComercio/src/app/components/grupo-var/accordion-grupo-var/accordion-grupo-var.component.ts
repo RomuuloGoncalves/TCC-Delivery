@@ -30,7 +30,6 @@ export class AccordionGrupoVarComponent  implements OnInit {
     this.grupoVariacao.id ? (
     this.grupoVariacaoService.excluirGrupVar(this.grupoVariacao.id).subscribe(
       (response) => {
-        console.log(response);
         window.location.reload();
       },
       (error) => {

@@ -57,7 +57,6 @@ export class ProdutosPage implements OnInit {
 
     this.produtos.forEach((el: any) => {
       el.imagem = (el.imagem) ? this.Produto.pegarImagem(el.imagem) : '../../../assets/imgs/default/cards-produtos.png';
-      console.log(el.imagem_url)
       if (!categorias[el.categoria.nome]) categorias[el.categoria.nome] = [];
       categorias[el.categoria.nome].push(el);
     });
@@ -71,7 +70,6 @@ export class ProdutosPage implements OnInit {
       this.filtrar[categoria[0]] = true;
       this.selectedOptions.push(categoria[0])
     });
-    console.log(this.filtrar);
   }
 
   selecionarProduto(produto: Produto) {

@@ -51,10 +51,6 @@ export class CriacaoProdutoPage implements OnInit {
     const produto = this.cadastoForm.form.value;
     produto.cod_categoria = Number(produto.cod_categoria)
     produto.imagem = this.arqsSelecionados[0]
-    console.log(produto)
-    console.log(produto.imagem)
-    console.log(produto.imagem.nome)
-    alert()
 
     this.erros = {};
     console.log(produto)

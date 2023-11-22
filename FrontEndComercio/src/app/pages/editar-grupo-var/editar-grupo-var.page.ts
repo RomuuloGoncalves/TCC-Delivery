@@ -30,9 +30,6 @@ export class EditarGrupoVarPage implements OnInit {
       (response) => {
         this.grupoVariacao = response
         this.isLoading = false
-        console.log(response)
-        console.log(this.grupoVariacao.quantidade_variacoes_min)
-        console.log(this.grupoVariacao.quantidade_variacoes_max)
       },
       (error: HttpErrorResponse) => {
         console.error(error)
@@ -65,6 +62,5 @@ export class EditarGrupoVarPage implements OnInit {
         this.btnLoading = false;
       }
     )
-    console.log(dadosVariacao)
   }
 }

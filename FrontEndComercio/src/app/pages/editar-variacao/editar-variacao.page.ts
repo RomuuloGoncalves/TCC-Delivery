@@ -38,7 +38,6 @@ export class EditarVariacaoPage implements OnInit {
     this.variacaoService.pegarVariacao(this.id_variacao).subscribe(
       (response: Variacao) => {
         this.variacao = response;
-        console.log(this.variacao)
       },
       (error: HttpErrorResponse) => {
         console.error(error);
@@ -50,7 +49,6 @@ export class EditarVariacaoPage implements OnInit {
     this.btnLoading = true;
     const dadosVariacao = this.editarForm.form.value;
     dadosVariacao.id = this.variacao.id;
-    console.log(this.route.snapshot);
     this.variacaoService.editarVariacao(dadosVariacao).subscribe(
       (response) => {
         this.btnLoading = false;

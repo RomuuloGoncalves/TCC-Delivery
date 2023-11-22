@@ -29,7 +29,6 @@ export class ListagemPage implements OnInit {
   ngOnInit() {
     if (!this.ehStringValida(this.idProduto)) this.Router.navigate(['..']);
     this.idProduto = this.route.snapshot.paramMap.get('produto');
-    console.log(this.idProduto)
     this.carregarPagina();
   }
 
@@ -51,9 +50,7 @@ export class ListagemPage implements OnInit {
   colocarImagensArray(array: any) {
     array.forEach((categoria: any) => {
       categoria.produtos.forEach((produto: any) => {
-        console.log(produto.imagem)
         produto.imagem = (produto.imagem) ? this.Produto.pegarImagem(produto.imagem) : '../../../assets/imgs/default/garfo_faca_outline.png';
-        console.log(produto.imagem)
       })
     })
   }

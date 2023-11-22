@@ -48,7 +48,6 @@ export class ServerService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
-    console.log(`${this.url}${path}`)
     return this.http.delete(`${this.url}${path}`, { headers });
   }
 

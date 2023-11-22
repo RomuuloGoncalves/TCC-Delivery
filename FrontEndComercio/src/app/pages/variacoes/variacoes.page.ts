@@ -33,7 +33,6 @@ export class VariacoesPage implements OnInit {
       (response) => {
         this.grupoVariacoes = response
         this.loading = false
-        console.log(this.grupoVariacoes)
       },
 
       (badResponse: HttpErrorResponse) => {

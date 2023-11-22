@@ -25,7 +25,6 @@ export class CardsVariacaoComponent  implements OnInit {
     console.log("excluir", this.variacao.id)
     this.variacaoService.excluirVariacao(this.variacao.id).subscribe(
       (response) => {
-        console.log(response);
         window.location.reload();
       },
       (error) => {

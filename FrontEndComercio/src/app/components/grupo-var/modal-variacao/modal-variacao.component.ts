@@ -1,22 +1,27 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { GrupoVariacoes } from 'src/app/core/interfaces/grupo-variacoes';
 import { Produto } from 'src/app/core/interfaces/produto';
+import { Variacao } from 'src/app/core/interfaces/variacao';
 import { ProdutosService } from 'src/app/core/services/produtos.service';
+import { VariacaoService } from 'src/app/core/services/variacao.service';
 
 @Component({
-  selector: 'app-modal-produto',
-  templateUrl: './modal-produto.component.html',
-  styleUrls: ['./modal-produto.component.scss'],
+  selector: 'app-modal-variacao',
+  templateUrl: './modal-variacao.component.html',
+  styleUrls: ['./modal-variacao.component.scss'],
 })
-export class ModalProdutoComponent implements OnInit, OnDestroy {
+export class ModalVariacaoComponent  implements OnInit {
 
-  @Input() public produto!: Produto;
+ 
+  @Input() public varicao!: Variacao;
   @Input() public isOpen: boolean = false;
   @Output() public fechar: EventEmitter<any> = new EventEmitter();
   @Output() public editar: EventEmitter<any> = new EventEmitter();
 
 
-  constructor(private Produto: ProdutosService, private router: Router) { }
+  constructor(private Variacao: VariacaoService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -28,12 +33,12 @@ export class ModalProdutoComponent implements OnInit, OnDestroy {
   navigate(rota: string) {
     this.fechar.emit();
     setTimeout(() => {
-      this.router.navigate([rota, this.produto.id])
+      this.router.navigate([rota, this.varicao.id])
     }, 100);
   }
 
   excluirProduto(id: any) {
-    this.Produto.excluirProduto(id).subscribe(
+    this.Variacao.cadastrarVariacao(id).subscribe(
       (response) => {
         window.location.reload();
       },
@@ -60,6 +65,5 @@ export class ModalProdutoComponent implements OnInit, OnDestroy {
       },
     },
   ];
-
 
 }
